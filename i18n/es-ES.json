@@ -1,3 +1,6 @@
 {
-  "first_text": "Has presionado el boton varias veces"
+  "firstText": "Has presionado el boton varias veces",
+  "bankScreen": {
+    "title": "Como sería?"
+  }
 }

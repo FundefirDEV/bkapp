@@ -33,7 +33,9 @@ class I18n implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   /// "You have pushed the button this many times:"
-  String get first_text => "You have pushed the button this many times:";
+  String get firstText => "You have pushed the button this many times:";
+  /// "How Would it be?"
+  String get bankScreenTitle => "How Would it be?";
 }
 
 class _I18n_en_US extends I18n {
@@ -48,7 +50,10 @@ class _I18n_es_ES extends I18n {
 
   /// "Has presionado el boton varias veces"
   @override
-  String get first_text => "Has presionado el boton varias veces";
+  String get firstText => "Has presionado el boton varias veces";
+  /// "Como sería?"
+  @override
+  String get bankScreenTitle => "Como sería?";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
