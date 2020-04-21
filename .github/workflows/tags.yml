@@ -1,4 +1,4 @@
-on: tags
+on: tag
 name: Test, Build and Release apk
 jobs:
   build:
