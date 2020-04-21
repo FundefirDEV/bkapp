@@ -1,4 +1,7 @@
-on: tag
+on:
+  create:
+    tags:
+      - v*
 name: Test, Build and Release apk
 jobs:
   build:
