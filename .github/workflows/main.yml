@@ -1,4 +1,12 @@
-on: push
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v0 # Push events to v1 tag
+      - v0.* # Push events to v1 tag
+      - v1 # Push events to v1 tag
+      - v1.*
 name: Test, Build and Release apk
 jobs:
   build:
