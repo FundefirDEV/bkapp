@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bk_core/bk_groups.dart';
-import 'package:bk_core/src/utils.dart';
+// import 'package:bk_core/src/utils.dart';
 
 class HomeTestScreen extends StatefulWidget {
   HomeTestScreen({Key key, this.title}) : super(key: key);
@@ -28,6 +28,13 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
     setState(() {
       _credit = credit;
     });
+
+    print('\n============== Classic =====================\n');
+    print('List of capital Dues ${_credit.listOfCapitalDues}');
+    print('List of ordinary interest');
+
+    _credit.listOrdinaryInterest.forEach((interest) => print(
+        '${interest.capitalDue} + ${interest.interestCalculate} = ${interest.total}'));
   }
 
   void _goToLogin() {
