@@ -5,7 +5,18 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: disable the keychain credential helper
+        run: git config --global credential.helper ""
+      - name: enable the local store credential helper
+        run: git config --global --add credential.helper store
+      - name: add credential
+        run: echo "https://x-access-token:${{ secrets.ORG_TOKEN }}@github.com" >> ~/.git-credentials
+      - name: tell git to use https instead of ssh whenever it encounters it
+        run: 'git config --global url."https://github.com/".insteadof git@github.com:'
       - uses: actions/checkout@v1
+        with:
+          token: ${{ secrets.ORG_TOKEN }}
+          submodules: true
       - uses: actions/setup-java@v1
         with:
           java-version: "12.x"

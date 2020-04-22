@@ -68,6 +68,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                     width: SizeConfig.safeBlockHorizontal * 50,
                     height: SizeConfig.safeBlockVertical * 20,
                     child: Column(children: <Widget>[
+                      Text('Hola Mundo'),
                       Text(
                           "Cantidad de cuotas: ${_credit?.amountOfDues?.toString() ?? 0}"),
                       Text("Monto: ${_credit?.amount?.toString() ?? 0}"),
