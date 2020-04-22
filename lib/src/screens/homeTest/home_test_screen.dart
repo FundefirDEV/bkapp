@@ -3,6 +3,8 @@ import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bk_core/bk_groups.dart';
+import 'package:bk_core/src/utils.dart';
 
 class HomeTestScreen extends StatefulWidget {
   HomeTestScreen({Key key, this.title}) : super(key: key);
@@ -14,56 +16,74 @@ class HomeTestScreen extends StatefulWidget {
 }
 
 class _HomeTestScreenState extends State<HomeTestScreen> {
+  Credit _credit;
+
+  _createCredit() {
+    var credit = Credit(
+        amount: 3000,
+        amountOfDues: 3,
+        ordinaryInterestPercentaje: 3,
+        typeOfInterestCalc: TypeOfInterestCalc.CLASSIC);
+
+    setState(() {
+      _credit = credit;
+    });
+  }
 
   void _goToLogin() {
-    Navigator.pushNamed(
-      context,
-      loginRoute,
-      arguments: LoginScreenArgs(
-        I18n.of(context).loginScreenTitle,
-        I18n.of(context).loginScreenText
-      )
-    );
+    Navigator.pushNamed(context, loginRoute,
+        arguments: LoginScreenArgs(I18n.of(context).loginScreenTitle,
+            I18n.of(context).loginScreenText));
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              I18n.of(context).firstText,
-              style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 5,
-                fontWeight: FontWeight.w100
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                I18n.of(context).firstText,
+                style: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 5,
+                    fontWeight: FontWeight.w100),
               ),
-            ),
-            Card(
-              elevation: 20.0,
-              child: InkWell(
-                onTap: () => print('jeje'),
-                child: Container(
-                  width: SizeConfig.safeBlockHorizontal * 50,
-                  height: SizeConfig.safeBlockVertical * 20,
-                  child: Text('Hola Mundo'),
+              Card(
+                elevation: 20.0,
+                child: InkWell(
+                  onTap: () => print('jeje'),
+                  child: Container(
+                    width: SizeConfig.safeBlockHorizontal * 50,
+                    height: SizeConfig.safeBlockVertical * 20,
+                    child: Column(children: <Widget>[
+                      Text(
+                          "Cantidad de cuotas: ${_credit?.amountOfDues?.toString() ?? 0}"),
+                      Text("Monto: ${_credit?.amount?.toString() ?? 0}"),
+                      Text(
+                          "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
+                      RaisedButton(
+                        onPressed: _createCredit,
+                        color: Colors.amber,
+                        child: Text('Create credit',
+                            style: TextStyle(fontSize: 20)),
+                      )
+                    ]),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: RaisedButton(
-        onPressed: _goToLogin,
-        child: Text(I18n.of(context).goToLogin),
-        color: Colors.blueAccent,
-        textColor: Colors.white,
-      )
-    );
+        floatingActionButton: RaisedButton(
+          onPressed: _goToLogin,
+          child: Text(I18n.of(context).goToLogin),
+          color: Colors.blueAccent,
+          textColor: Colors.white,
+        ));
   }
 }
