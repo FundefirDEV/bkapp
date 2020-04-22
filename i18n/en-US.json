@@ -1,6 +1,14 @@
 {
-    "firstText": "You have pushed the button this many times:",
-    "bankScreen": {
-        "title": "How Would it be?"
-      }
+  "pageNotFound": "No route defined for {route}",
+  "testText": "Test text",
+  "firstText": "You have pushed the button this many times:",
+  "goToLogin": "Go to login",
+  "loginScreen": {
+    "title": "Login title",
+    "text": "We're in the login screen!!",
+    "back": "Back"
+  },
+  "bankScreen": {
+      "title": "How Would it be?"
+    }
 }

@@ -32,8 +32,20 @@ class I18n implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  /// "No route defined for ${route}"
+  String pageNotFound(String route) => "No route defined for ${route}";
+  /// "Test text"
+  String get testText => "Test text";
   /// "You have pushed the button this many times:"
   String get firstText => "You have pushed the button this many times:";
+  /// "Go to login"
+  String get goToLogin => "Go to login";
+  /// "Login title"
+  String get loginScreenTitle => "Login title";
+  /// "We're in the login screen!!"
+  String get loginScreenText => "We're in the login screen!!";
+  /// "Back"
+  String get loginScreenBack => "Back";
   /// "How Would it be?"
   String get bankScreenTitle => "How Would it be?";
 }
@@ -48,9 +60,27 @@ class _I18n_en_US extends I18n {
 class _I18n_es_ES extends I18n {
   const _I18n_es_ES();
 
+  /// "No existe una ruta definida para ${route}"
+  @override
+  String pageNotFound(String route) => "No existe una ruta definida para ${route}";
+  /// "Texto de prueba"
+  @override
+  String get testText => "Texto de prueba";
   /// "Has presionado el boton varias veces"
   @override
   String get firstText => "Has presionado el boton varias veces";
+  /// "Ir a login"
+  @override
+  String get goToLogin => "Ir a login";
+  /// "Login título"
+  @override
+  String get loginScreenTitle => "Login título";
+  /// "Estamos en la pantalla del login!!"
+  @override
+  String get loginScreenText => "Estamos en la pantalla del login!!";
+  /// "Volver"
+  @override
+  String get loginScreenBack => "Volver";
   /// "Como sería?"
   @override
   String get bankScreenTitle => "Como sería?";

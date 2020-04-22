@@ -1,24 +1,29 @@
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 
 class HomeTestScreen extends StatefulWidget {
-  HomeTestScreen({Key key, this.title, this.age}) : super(key: key);
+  HomeTestScreen({Key key, this.title}) : super(key: key);
 
   final String title;
-  final int age;
 
   @override
   _HomeTestScreenState createState() => _HomeTestScreenState();
 }
 
 class _HomeTestScreenState extends State<HomeTestScreen> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void _goToLogin() {
+    Navigator.pushNamed(
+      context,
+      loginRoute,
+      arguments: LoginScreenArgs(
+        I18n.of(context).loginScreenTitle,
+        I18n.of(context).loginScreenText
+      )
+    );
   }
 
   @override
@@ -50,18 +55,15 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                 ),
               ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: RaisedButton(
+        onPressed: _goToLogin,
+        child: Text(I18n.of(context).goToLogin),
+        color: Colors.blueAccent,
+        textColor: Colors.white,
+      )
     );
   }
 }
