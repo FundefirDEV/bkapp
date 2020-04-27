@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -21,14 +22,16 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: [
         i18n,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate
       ],
       supportedLocales: i18n.supportedLocales,
       localeResolutionCallback: i18n.resolution(
         fallback: new Locale("es", "ES")
       ),
       onGenerateRoute: Router.generateRoute,
-      initialRoute: testRoute
+      initialRoute: loginRoute
     );
   }
 }

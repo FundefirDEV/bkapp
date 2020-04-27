@@ -16,9 +16,8 @@ class Router {
         );
         break;
       case loginRoute:
-        LoginScreenArgs data = settings.arguments;
         return MaterialPageRoute(
-          builder: (_) => LoginScreen(data: data)
+          builder: (_) => LoginScreen()
         );
         break;
       default:

@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -38,9 +37,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
   }
 
   void _goToLogin() {
-    Navigator.pushNamed(context, loginRoute,
-        arguments: LoginScreenArgs(I18n.of(context).loginScreenTitle,
-            I18n.of(context).loginScreenText));
+    Navigator.pushNamed(context, loginRoute);
   }
 
   @override
@@ -51,40 +48,44 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                I18n.of(context).firstText,
-                style: TextStyle(
-                    fontSize: SizeConfig.safeBlockHorizontal * 5,
-                    fontWeight: FontWeight.w100),
-              ),
-              Card(
-                elevation: 20.0,
-                child: InkWell(
-                  onTap: () => print('jeje'),
-                  child: Container(
-                    width: SizeConfig.safeBlockHorizontal * 50,
-                    height: SizeConfig.safeBlockVertical * 20,
-                    child: Column(children: <Widget>[
-                      Text('Hola Mundo'),
-                      Text(
-                          "Cantidad de cuotas: ${_credit?.amountOfDues?.toString() ?? 0}"),
-                      Text("Monto: ${_credit?.amount?.toString() ?? 0}"),
-                      Text(
-                          "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
-                      RaisedButton(
-                        onPressed: _createCredit,
-                        color: Colors.amber,
-                        child: Text('Create credit',
-                            style: TextStyle(fontSize: 20)),
-                      )
-                    ]),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  I18n.of(context).firstText,
+                  style: TextStyle(
+                      fontSize: SizeConfig.safeBlockHorizontal * 5,
+                      fontWeight: FontWeight.w100),
+                ),
+                Card(
+                  elevation: 20.0,
+                  child: InkWell(
+                    onTap: () => print('jeje'),
+                    child: Container(
+                      width: SizeConfig.safeBlockHorizontal * 50,
+                      height: SizeConfig.safeBlockVertical * 20,
+                      child: SingleChildScrollView(
+                        child: Column(children: <Widget>[
+                          Text('Hola Mundo'),
+                          Text(
+                              "Cantidad de cuotas: ${_credit?.amountOfDues?.toString() ?? 0}"),
+                          Text("Monto: ${_credit?.amount?.toString() ?? 0}"),
+                          Text(
+                              "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
+                          RaisedButton(
+                            onPressed: _createCredit,
+                            color: Colors.amber,
+                            child: Text('Create credit',
+                                style: TextStyle(fontSize: 20)),
+                          )
+                        ]),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         floatingActionButton: RaisedButton(

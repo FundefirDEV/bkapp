@@ -40,12 +40,20 @@ class I18n implements WidgetsLocalizations {
   String get firstText => "You have pushed the button this many times:";
   /// "Go to login"
   String get goToLogin => "Go to login";
-  /// "Login title"
-  String get loginScreenTitle => "Login title";
-  /// "We're in the login screen!!"
-  String get loginScreenText => "We're in the login screen!!";
-  /// "Back"
-  String get loginScreenBack => "Back";
+  /// "ENTER"
+  String get actionTextEnter => "ENTER";
+  /// "I'M NEW"
+  String get actionTextImNew => "I'M NEW";
+  /// "User"
+  String get formUser => "User";
+  /// "Password"
+  String get formPassword => "Password";
+  /// "This field is required"
+  String get errorRequired => "This field is required";
+  /// "Go to "
+  String get loginScreenTextOne => "Go to ";
+  /// "your bank"
+  String get loginScreenTextTwo => "your bank";
   /// "How Would it be?"
   String get bankScreenTitle => "How Would it be?";
 }
@@ -72,15 +80,27 @@ class _I18n_es_ES extends I18n {
   /// "Ir a login"
   @override
   String get goToLogin => "Ir a login";
-  /// "Login título"
+  /// "INGRESAR"
   @override
-  String get loginScreenTitle => "Login título";
-  /// "Estamos en la pantalla del login!!"
+  String get actionTextEnter => "INGRESAR";
+  /// "SOY NUEVO"
   @override
-  String get loginScreenText => "Estamos en la pantalla del login!!";
-  /// "Volver"
+  String get actionTextImNew => "SOY NUEVO";
+  /// "Usuario"
   @override
-  String get loginScreenBack => "Volver";
+  String get formUser => "Usuario";
+  /// "Clave"
+  @override
+  String get formPassword => "Clave";
+  /// "Este campo es obligatorio"
+  @override
+  String get errorRequired => "Este campo es obligatorio";
+  /// "Entra a "
+  @override
+  String get loginScreenTextOne => "Entra a ";
+  /// "tu banko"
+  @override
+  String get loginScreenTextTwo => "tu banko";
   /// "Como sería?"
   @override
   String get bankScreenTitle => "Como sería?";

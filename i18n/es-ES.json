@@ -3,10 +3,20 @@
   "testText": "Texto de prueba",
   "firstText": "Has presionado el boton varias veces",
   "goToLogin": "Ir a login",
+  "actionText": {
+    "enter": "INGRESAR",
+    "imNew": "SOY NUEVO"
+  },
+  "form": {
+    "user": "Usuario",
+    "password": "Clave"
+  },
+  "error": {
+    "required": "Este campo es obligatorio"
+  },
   "loginScreen": {
-    "title": "Login título",
-    "text": "Estamos en la pantalla del login!!",
-    "back": "Volver"
+    "textOne": "Entra a ",
+    "textTwo": "tu banko"
   },
   "bankScreen": {
     "title": "Como sería?"
