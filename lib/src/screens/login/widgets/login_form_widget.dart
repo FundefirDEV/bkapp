@@ -15,34 +15,31 @@ class LoginFormWidget extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return CardButtonsWidget(
-            accept: context.bloc<LoginFormBloc>().submit,
-            cancel: () {},
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  TextFieldBlocBuilder(
-                    textFieldBloc: context.bloc<LoginFormBloc>().username,
-                    errorBuilder: (context, string) =>
-                      I18n.of(context).errorRequired,
-                    decoration: InputDecoration(
-                      labelText: I18n.of(context).formUser,
-                      prefixIcon: Icon(Icons.account_circle)
-                    )
-                  ),
-                  TextFieldBlocBuilder(
-                    textFieldBloc: context.bloc<LoginFormBloc>().password,
-                    suffixButton: SuffixButton.obscureText,
-                    errorBuilder: (context, string) =>
-                      I18n.of(context).errorRequired,
-                    decoration: InputDecoration(
-                      labelText: I18n.of(context).formPassword,
-                      prefixIcon: Icon(Icons.lock_open)
-                    )
-                  ),
-                ],
-              ),
-            )
-          );
+              accept: context.bloc<LoginFormBloc>().submit,
+              cancel: () {},
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    TextFieldBlocBuilder(
+                        key: Key('input-username'),
+                        textFieldBloc: context.bloc<LoginFormBloc>().username,
+                        errorBuilder: (context, string) =>
+                            I18n.of(context).errorRequired,
+                        decoration: InputDecoration(
+                            labelText: I18n.of(context).formUser,
+                            prefixIcon: Icon(Icons.account_circle))),
+                    TextFieldBlocBuilder(
+                        key: Key('input-password'),
+                        textFieldBloc: context.bloc<LoginFormBloc>().password,
+                        suffixButton: SuffixButton.obscureText,
+                        errorBuilder: (context, string) =>
+                            I18n.of(context).errorRequired,
+                        decoration: InputDecoration(
+                            labelText: I18n.of(context).formPassword,
+                            prefixIcon: Icon(Icons.lock_open))),
+                  ],
+                ),
+              ));
         },
       ),
     );

@@ -19,3 +19,19 @@ git commit -am "Pulled down update to submodule_dir"
 # Or, if you're a busy person:
 git submodule foreach git pull origin master
 ```
+
+## Running test coverage
+
+```sh
+ flutter test --coverage
+ genhtml -o coverage coverage/lcov.info
+```
+
+## Running regressive test
+
+```sh
+flutter drive --target=test_driver/app.dart
+
+flutter drive --target=test_driver/app.dart --no-build
+flutter drive --target=test_driver/app.dart --no-build --no-track-widget-creation
+```
