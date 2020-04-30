@@ -40,6 +40,13 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
     Navigator.pushNamed(context, loginRoute);
   }
 
+  void _goToIntro() {
+    Navigator.pushNamed(
+      context,
+      introRoute
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -89,7 +96,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
           ),
         ),
         floatingActionButton: RaisedButton(
-          onPressed: _goToLogin,
+          onPressed: _goToIntro,
           child: Text(I18n.of(context).goToLogin),
           color: Colors.blueAccent,
           textColor: Colors.white,

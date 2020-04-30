@@ -18,7 +18,19 @@
     "textOne": "Go to ",
     "textTwo": "your bank"
   },
+  "introScreen":{
+    "financialLife": "Start being in control of your financial life",
+    "youKnow": "You know what a ",
+    "grupoBk": "group Bk",
+    "selectOption": "Select an option to continue",
+    "howDoesA": "¿HOWS DOES A ",
+    "questionGroupBk":"GROUP BK?",
+    "educativeMedia":"Educative media",
+    "register":"Register my ",
+    "accountBk":"BK account",
+    "guidedForm":"Guided form"
+  },
   "bankScreen": {
-      "title": "How Would it be?"
-    }
+    "title": "How Would it be?"
+  }
 }

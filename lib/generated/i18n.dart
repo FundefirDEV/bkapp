@@ -54,6 +54,26 @@ class I18n implements WidgetsLocalizations {
   String get loginScreenTextOne => "Go to ";
   /// "your bank"
   String get loginScreenTextTwo => "your bank";
+  /// "Start being in control of your financial life"
+  String get introScreenFinancialLife => "Start being in control of your financial life";
+  /// "You know what a "
+  String get introScreenYouKnow => "You know what a ";
+  /// "group Bk"
+  String get introScreenGrupoBk => "group Bk";
+  /// "Select an option to continue"
+  String get introScreenSelectOption => "Select an option to continue";
+  /// "¿HOWS DOES A "
+  String get introScreenHowDoesA => "¿HOWS DOES A ";
+  /// "GROUP BK?"
+  String get introScreenQuestionGroupBk => "GROUP BK?";
+  /// "Educative media"
+  String get introScreenEducativeMedia => "Educative media";
+  /// "Register my "
+  String get introScreenRegister => "Register my ";
+  /// "BK account"
+  String get introScreenAccountBk => "BK account";
+  /// "Guided form"
+  String get introScreenGuidedForm => "Guided form";
   /// "How Would it be?"
   String get bankScreenTitle => "How Would it be?";
 }
@@ -101,6 +121,36 @@ class _I18n_es_ES extends I18n {
   /// "tu banko"
   @override
   String get loginScreenTextTwo => "tu banko";
+  /// "Empieza a tener el control de tu vida financiera"
+  @override
+  String get introScreenFinancialLife => "Empieza a tener el control de tu vida financiera";
+  /// "Sabes qué es un "
+  @override
+  String get introScreenYouKnow => "Sabes qué es un ";
+  /// "grupo Bk"
+  @override
+  String get introScreenGrupoBk => "grupo Bk";
+  /// "Selecciona una opción para seguir"
+  @override
+  String get introScreenSelectOption => "Selecciona una opción para seguir";
+  /// "¿CÓMO FUNCIONA UN "
+  @override
+  String get introScreenHowDoesA => "¿CÓMO FUNCIONA UN ";
+  /// "GRUPO BK?"
+  @override
+  String get introScreenQuestionGroupBk => "GRUPO BK?";
+  /// "Video educativo"
+  @override
+  String get introScreenEducativeMedia => "Video educativo";
+  /// "REGISTRAR MI "
+  @override
+  String get introScreenRegister => "REGISTRAR MI ";
+  /// "CUENTA BK"
+  @override
+  String get introScreenAccountBk => "CUENTA BK";
+  /// "Formulario guiado"
+  @override
+  String get introScreenGuidedForm => "Formulario guiado";
   /// "Como sería?"
   @override
   String get bankScreenTitle => "Como sería?";

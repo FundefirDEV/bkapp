@@ -25,6 +25,8 @@ git submodule foreach git pull origin master
 ```sh
  flutter test --coverage
  genhtml -o coverage coverage/lcov.info
+ #Open Coverage
+ open coverage/index.html
 ```
 
 ## Running regressive test

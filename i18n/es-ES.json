@@ -18,6 +18,18 @@
     "textOne": "Entra a ",
     "textTwo": "tu banko"
   },
+  "introScreen": {
+    "financialLife": "Empieza a tener el control de tu vida financiera",
+    "youKnow": "Sabes qué es un ",
+    "grupoBk": "grupo Bk",
+    "selectOption": "Selecciona una opción para seguir",
+    "howDoesA": "¿CÓMO FUNCIONA UN ",
+    "questionGroupBk":"GRUPO BK?",
+    "educativeMedia":"Video educativo",
+    "register":"REGISTRAR MI ",
+    "accountBk":"CUENTA BK",
+    "guidedForm":"Formulario guiado"
+  },
   "bankScreen": {
     "title": "Como sería?"
   }
