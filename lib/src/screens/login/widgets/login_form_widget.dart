@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 
@@ -10,36 +11,40 @@ class LoginFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _goToHomeTest() {
+      Navigator.pushNamed(context, testRoute);
+    }
+
     return BlocProvider(
       create: (context) => LoginFormBloc(),
       child: Builder(
         builder: (context) {
           return CardButtonsWidget(
-              accept: context.bloc<LoginFormBloc>().submit,
-              cancel: () {},
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    TextFieldBlocBuilder(
-                        key: Key('input-username'),
-                        textFieldBloc: context.bloc<LoginFormBloc>().username,
-                        errorBuilder: (context, string) =>
-                            I18n.of(context).errorRequired,
-                        decoration: InputDecoration(
-                            labelText: I18n.of(context).formUser,
-                            prefixIcon: Icon(Icons.account_circle))),
-                    TextFieldBlocBuilder(
-                        key: Key('input-password'),
-                        textFieldBloc: context.bloc<LoginFormBloc>().password,
-                        suffixButton: SuffixButton.obscureText,
-                        errorBuilder: (context, string) =>
-                            I18n.of(context).errorRequired,
-                        decoration: InputDecoration(
-                            labelText: I18n.of(context).formPassword,
-                            prefixIcon: Icon(Icons.lock_open))),
-                  ],
-                ),
-              ));
+            accept: context.bloc<LoginFormBloc>().submit,
+            cancel: _goToHomeTest,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  TextFieldBlocBuilder(
+                      key: Key('input-username'),
+                      textFieldBloc: context.bloc<LoginFormBloc>().username,
+                      errorBuilder: (context, string) =>
+                          I18n.of(context).errorRequired,
+                      decoration: InputDecoration(
+                          labelText: I18n.of(context).formUser,
+                          prefixIcon: Icon(Icons.account_circle))),
+                  TextFieldBlocBuilder(
+                      key: Key('input-password'),
+                      textFieldBloc: context.bloc<LoginFormBloc>().password,
+                      suffixButton: SuffixButton.obscureText,
+                      errorBuilder: (context, string) =>
+                          I18n.of(context).errorRequired,
+                      decoration: InputDecoration(
+                          labelText: I18n.of(context).formPassword,
+                          prefixIcon: Icon(Icons.lock_open))),
+                ],
+              ),
+            ));
         },
       ),
     );

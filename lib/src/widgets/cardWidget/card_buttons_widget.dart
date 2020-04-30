@@ -40,6 +40,7 @@ class CardButtonsWidget extends StatelessWidget {
               Column(
                 children: <Widget>[
                   RaisedButton(
+                    key: Key('raisedButton-accept'),
                     onPressed: this.accept,
                     color: Colors.blue,
                     padding: EdgeInsets.symmetric(
@@ -61,6 +62,7 @@ class CardButtonsWidget extends StatelessWidget {
                   ),
                   if (this.cancel != null) ...[
                     FlatButton(
+                      key: Key('flatButton-cancel'),
                       onPressed: this.cancel,
                       child: Text(
                         this.cancelText ?? I18n.of(context).actionTextImNew,
