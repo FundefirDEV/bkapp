@@ -9,7 +9,9 @@
   },
   "form": {
     "user": "User",
-    "password": "Password"
+    "password": "Password",
+    "firstName": "First name",
+    "secondName": "Second name"
   },
   "error": {
     "required": "This field is required"
@@ -31,6 +33,9 @@
     "guidedForm":"Guided form"
   },
   "bankScreen": {
-    "title": "How Would it be?"
+      "title": "How Would it be?"
+  },
+  "registerName": {
+    "title": "Now we need some data"
   }
 }

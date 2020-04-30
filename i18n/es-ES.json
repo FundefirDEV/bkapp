@@ -9,7 +9,9 @@
   },
   "form": {
     "user": "Usuario",
-    "password": "Clave"
+    "password": "Clave",
+    "firstName": "Primer nombre",
+    "secondName": "Segundo nombre"
   },
   "error": {
     "required": "Este campo es obligatorio"
@@ -32,5 +34,8 @@
   },
   "bankScreen": {
     "title": "Como sería?"
+  },
+  "registerName": {
+    "title": "Ahora necesitamos algunos datos"
   }
 }

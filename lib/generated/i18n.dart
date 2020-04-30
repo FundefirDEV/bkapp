@@ -48,6 +48,10 @@ class I18n implements WidgetsLocalizations {
   String get formUser => "User";
   /// "Password"
   String get formPassword => "Password";
+  /// "First name"
+  String get formFirstName => "First name";
+  /// "Second name"
+  String get formSecondName => "Second name";
   /// "This field is required"
   String get errorRequired => "This field is required";
   /// "Go to "
@@ -76,6 +80,8 @@ class I18n implements WidgetsLocalizations {
   String get introScreenGuidedForm => "Guided form";
   /// "How Would it be?"
   String get bankScreenTitle => "How Would it be?";
+  /// "Now we need some data"
+  String get registerNameTitle => "Now we need some data";
 }
 
 class _I18n_en_US extends I18n {
@@ -112,6 +118,12 @@ class _I18n_es_ES extends I18n {
   /// "Clave"
   @override
   String get formPassword => "Clave";
+  /// "Primer nombre"
+  @override
+  String get formFirstName => "Primer nombre";
+  /// "Segundo nombre"
+  @override
+  String get formSecondName => "Segundo nombre";
   /// "Este campo es obligatorio"
   @override
   String get errorRequired => "Este campo es obligatorio";
@@ -154,6 +166,9 @@ class _I18n_es_ES extends I18n {
   /// "Como sería?"
   @override
   String get bankScreenTitle => "Como sería?";
+  /// "Ahora necesitamos algunos datos"
+  @override
+  String get registerNameTitle => "Ahora necesitamos algunos datos";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
