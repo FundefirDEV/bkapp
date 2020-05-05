@@ -1,4 +1,6 @@
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
+import 'package:bkapp_flutter/src/widgets/modals/bottomModal/register_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -97,5 +99,14 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
           color: Colors.blueAccent,
           textColor: Colors.white,
         ));
+  }
+    void _showDialog(context) {
+    showModalBottomSheet(backgroundColor: Colors.transparent ,context: context,builder: (context){
+      return BottomModal(
+        width: SizeConfig.blockSizeHorizontal * 100,
+        height:SizeConfig.blockSizeVertical * 40,
+        child: RegisterModal(),
+      );
+    });
   }
 }

@@ -5,7 +5,9 @@
   "goToLogin": "Go to login",
   "actionText": {
     "enter": "ENTER",
-    "imNew": "I'M NEW"
+    "imNew": "I'M NEW",
+    "close":"CLOSE"
+
   },
   "form": {
     "user": "User",
@@ -41,6 +43,18 @@
       "second": "let's create your profile",
       "subtitle": "Select your gender"
     }
+  },
+  "introRegister":{
+    "modal":{
+      "title":"How would you like to",
+      "createAccount": "create your account",
+      "interrogation":"?",
+      "gmail":"Gmail",
+      "custom":"Customised"
+    }
+  },
+  "bankScreen": {
+      "title": "How Would it be?"
   },
   "registerName": {
     "title": "Now we need some data"

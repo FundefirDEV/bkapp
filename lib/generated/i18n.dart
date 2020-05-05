@@ -44,6 +44,8 @@ class I18n implements WidgetsLocalizations {
   String get actionTextEnter => "ENTER";
   /// "I'M NEW"
   String get actionTextImNew => "I'M NEW";
+  /// "CLOSE"
+  String get actionTextClose => "CLOSE";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -90,6 +92,18 @@ class I18n implements WidgetsLocalizations {
   String get genderScreenTextSecond => "let's create your profile";
   /// "Select your gender"
   String get genderScreenTextSubtitle => "Select your gender";
+  /// "How would you like to"
+  String get introRegisterModalTitle => "How would you like to";
+  /// "create your account"
+  String get introRegisterModalCreateAccount => "create your account";
+  /// "?"
+  String get introRegisterModalInterrogation => "?";
+  /// "Gmail"
+  String get introRegisterModalGmail => "Gmail";
+  /// "Customised"
+  String get introRegisterModalCustom => "Customised";
+  /// "How Would it be?"
+  String get bankScreenTitle => "How Would it be?";
   /// "Now we need some data"
   String get registerNameTitle => "Now we need some data";
   /// "¡VERY "
@@ -128,6 +142,9 @@ class _I18n_es_ES extends I18n {
   /// "SOY NUEVO"
   @override
   String get actionTextImNew => "SOY NUEVO";
+  /// "CERRAR"
+  @override
+  String get actionTextClose => "CERRAR";
   /// "Usuario"
   @override
   String get formUser => "Usuario";
@@ -179,7 +196,22 @@ class _I18n_es_ES extends I18n {
   /// "Formulario guiado"
   @override
   String get introScreenGuidedForm => "Formulario guiado";
-  /// "hombre"
+  /// "¿Cómo te gustaría"
+  @override
+  String get introRegisterModalTitle => "¿Cómo te gustaría";
+  /// "crear tu cuenta"
+  @override
+  String get introRegisterModalCreateAccount => "crear tu cuenta";
+  /// "?"
+  @override
+  String get introRegisterModalInterrogation => "?";
+  /// "Gmail"
+  @override
+  String get introRegisterModalGmail => "Gmail";
+  /// "Personalizado"
+  @override
+  String get introRegisterModalCustom => "Personalizado";
+  /// "Como sería?"
   @override
   String get genderScreenMan => "hombre";
   /// "mujer"
