@@ -44,5 +44,10 @@
   },
   "registerName": {
     "title": "Ahora necesitamos algunos datos"
+  },
+  "bankCreatedScreen": {
+    "very" : "¡MUY ",
+    "good": "BIEN!",
+    "hasBeenCreaed": " ha sido creado"
   }
 }

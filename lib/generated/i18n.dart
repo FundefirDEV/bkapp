@@ -92,6 +92,12 @@ class I18n implements WidgetsLocalizations {
   String get genderScreenTextSubtitle => "Select your gender";
   /// "Now we need some data"
   String get registerNameTitle => "Now we need some data";
+  /// "¡VERY "
+  String get bankCreatedScreenVery => "¡VERY ";
+  /// "GOOD!"
+  String get bankCreatedScreenGood => "GOOD!";
+  /// " has been created"
+  String get bankCreatedScreenHasBeenCreaed => " has been created";
 }
 
 class _I18n_en_US extends I18n {
@@ -194,6 +200,15 @@ class _I18n_es_ES extends I18n {
   /// "Ahora necesitamos algunos datos"
   @override
   String get registerNameTitle => "Ahora necesitamos algunos datos";
+  /// "¡MUY "
+  @override
+  String get bankCreatedScreenVery => "¡MUY ";
+  /// "BIEN!"
+  @override
+  String get bankCreatedScreenGood => "BIEN!";
+  /// " ha sido creado"
+  @override
+  String get bankCreatedScreenHasBeenCreaed => " ha sido creado";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

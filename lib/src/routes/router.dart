@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/register_user_steps_screen.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,11 @@ class Router {
           builder: (_) => GenderScreen()
         );
         break;
+        return MaterialPageRoute(builder: (_) => RegisterUserStepsScreen());
+      case bankCreatedRoute:
+        return MaterialPageRoute(builder: (_) => BankCreatedScreen());
+        break;
+
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(
