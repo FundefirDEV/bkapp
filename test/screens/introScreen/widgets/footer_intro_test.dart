@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../base_tester.dart';
+import '../../../base_tester.dart';
 
 void main() {
   group('Test FooterIntro Widget', () {

@@ -11,9 +11,6 @@ class LoginFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _goToHomeTest() {
-      Navigator.pushNamed(context, testRoute);
-    }
 
     return BlocProvider(
       create: (context) => LoginFormBloc(),
@@ -21,7 +18,7 @@ class LoginFormWidget extends StatelessWidget {
         builder: (context) {
           return CardButtonsWidget(
             accept: context.bloc<LoginFormBloc>().submit,
-            cancel: _goToHomeTest,
+            cancel: () => Navigator.pushNamed(context, introRoute),
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -29,22 +26,23 @@ class LoginFormWidget extends StatelessWidget {
                       key: Key('input-username'),
                       textFieldBloc: context.bloc<LoginFormBloc>().username,
                       errorBuilder: (context, string) =>
-                          I18n.of(context).errorRequired,
+                        I18n.of(context).errorRequired,
                       decoration: InputDecoration(
-                          labelText: I18n.of(context).formUser,
-                          prefixIcon: Icon(Icons.account_circle))),
+                        labelText: I18n.of(context).formUser,
+                        prefixIcon: Icon(Icons.account_circle))),
                   TextFieldBlocBuilder(
                       key: Key('input-password'),
                       textFieldBloc: context.bloc<LoginFormBloc>().password,
                       suffixButton: SuffixButton.obscureText,
                       errorBuilder: (context, string) =>
-                          I18n.of(context).errorRequired,
+                        I18n.of(context).errorRequired,
                       decoration: InputDecoration(
-                          labelText: I18n.of(context).formPassword,
-                          prefixIcon: Icon(Icons.lock_open))),
+                        labelText: I18n.of(context).formPassword,
+                        prefixIcon: Icon(Icons.lock_open))),
                 ],
               ),
-            ));
+            )
+          );
         },
       ),
     );

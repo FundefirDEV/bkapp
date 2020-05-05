@@ -32,8 +32,15 @@
     "accountBk":"BK account",
     "guidedForm":"Guided form"
   },
-  "bankScreen": {
-      "title": "How Would it be?"
+  "genderScreen": {
+    "man": "male",
+    "woman": "female",
+    "other": "other",
+    "text": {
+      "first": "Hey, ",
+      "second": "let's create your profile",
+      "subtitle": "Select your gender"
+    }
   },
   "registerName": {
     "title": "Now we need some data"

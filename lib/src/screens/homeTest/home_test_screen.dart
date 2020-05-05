@@ -36,10 +36,6 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
         '${interest.capitalDue} + ${interest.interestCalculate} = ${interest.total}'));
   }
 
-  void _goToLogin() {
-    Navigator.pushNamed(context, loginRoute);
-  }
-
   void _goToIntro() {
     Navigator.pushNamed(
       context,

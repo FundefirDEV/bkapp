@@ -78,8 +78,18 @@ class I18n implements WidgetsLocalizations {
   String get introScreenAccountBk => "BK account";
   /// "Guided form"
   String get introScreenGuidedForm => "Guided form";
-  /// "How Would it be?"
-  String get bankScreenTitle => "How Would it be?";
+  /// "male"
+  String get genderScreenMan => "male";
+  /// "female"
+  String get genderScreenWoman => "female";
+  /// "other"
+  String get genderScreenOther => "other";
+  /// "Hey, "
+  String get genderScreenTextFirst => "Hey, ";
+  /// "let's create your profile"
+  String get genderScreenTextSecond => "let's create your profile";
+  /// "Select your gender"
+  String get genderScreenTextSubtitle => "Select your gender";
   /// "Now we need some data"
   String get registerNameTitle => "Now we need some data";
 }
@@ -136,12 +146,12 @@ class _I18n_es_ES extends I18n {
   /// "Empieza a tener el control de tu vida financiera"
   @override
   String get introScreenFinancialLife => "Empieza a tener el control de tu vida financiera";
-  /// "Sabes qué es un "
+  /// "¿Sabes qué es un "
   @override
-  String get introScreenYouKnow => "Sabes qué es un ";
-  /// "grupo Bk"
+  String get introScreenYouKnow => "¿Sabes qué es un ";
+  /// "grupo Bk?"
   @override
-  String get introScreenGrupoBk => "grupo Bk";
+  String get introScreenGrupoBk => "grupo Bk?";
   /// "Selecciona una opción para seguir"
   @override
   String get introScreenSelectOption => "Selecciona una opción para seguir";
@@ -163,9 +173,24 @@ class _I18n_es_ES extends I18n {
   /// "Formulario guiado"
   @override
   String get introScreenGuidedForm => "Formulario guiado";
-  /// "Como sería?"
+  /// "hombre"
   @override
-  String get bankScreenTitle => "Como sería?";
+  String get genderScreenMan => "hombre";
+  /// "mujer"
+  @override
+  String get genderScreenWoman => "mujer";
+  /// "otro"
+  @override
+  String get genderScreenOther => "otro";
+  /// "Hola, "
+  @override
+  String get genderScreenTextFirst => "Hola, ";
+  /// "vamos a crear tu perfil"
+  @override
+  String get genderScreenTextSecond => "vamos a crear tu perfil";
+  /// "Selecciona tu género"
+  @override
+  String get genderScreenTextSubtitle => "Selecciona tu género";
   /// "Ahora necesitamos algunos datos"
   @override
   String get registerNameTitle => "Ahora necesitamos algunos datos";

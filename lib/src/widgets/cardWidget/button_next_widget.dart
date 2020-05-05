@@ -19,12 +19,12 @@ class ButtonNextWidget extends StatelessWidget {
         onTap: this.onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockVertical * 3,
-              vertical: SizeConfig.safeBlockVertical * 3),
+            horizontal: SizeConfig.safeBlockVertical * 3,
+            vertical: SizeConfig.safeBlockVertical * 3),
           child: Container(
             alignment: Alignment.center,
-            width: 70,
-            height: 70,
+            width: SizeConfig.safeBlockHorizontal * 20,
+            height: SizeConfig.safeBlockVertical * 20,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(

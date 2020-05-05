@@ -12,6 +12,7 @@ class ButtonBackWidget extends StatelessWidget {
             horizontal: SizeConfig.safeBlockHorizontal * 6),
         child: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: Color(0xFFa6a4a4),
           onPressed: () => Navigator.pop(context),
         ));
   }

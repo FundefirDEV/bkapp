@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/footer_intro.dart';
-import 'package:bkapp_flutter/src/screens/introRegister/widgets/title_intro.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/widgets/bgOval/bg_oval.dart';
 import 'package:bkapp_flutter/src/widgets/carousel/carousel.dart';
 import 'package:flutter/material.dart';
@@ -31,17 +32,23 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
     SizeConfig().init(context);
     List<ItemCarousel> characters = [
       ItemCarousel(
-          text1: I18n.of(context).introScreenHowDoesA,
-          text2: I18n.of(context).introScreenQuestionGroupBk,
-          image: 'assets/images/robot_read.svg',
-          iconText: I18n.of(context).introScreenEducativeMedia,
-          icon: 'assets/images/icon_media.svg'),
+        key: Key('itemCarousel-known-bk'),
+        text1: I18n.of(context).introScreenHowDoesA,
+        text2: I18n.of(context).introScreenQuestionGroupBk,
+        image: 'assets/images/robot_read.svg',
+        iconText: I18n.of(context).introScreenEducativeMedia,
+        icon: 'assets/images/icon_media.svg',
+        onPressed: () => Navigator.pushNamed(context, testRoute)
+      ),
       ItemCarousel(
-          text1: I18n.of(context).introScreenRegister,
-          text2: I18n.of(context).introScreenAccountBk,
-          image: 'assets/images/robot_create.svg',
-          iconText: I18n.of(context).introScreenGuidedForm,
-          icon: 'assets/images/icon_form.svg'),
+        key: Key('itemCarousel-create-bk'),
+        text1: I18n.of(context).introScreenRegister,
+        text2: I18n.of(context).introScreenAccountBk,
+        image: 'assets/images/robot_create.svg',
+        iconText: I18n.of(context).introScreenGuidedForm,
+        icon: 'assets/images/icon_form.svg',
+        onPressed: () => Navigator.pushNamed(context, genderRoute)
+      )
     ];
 
     return Material(
@@ -53,12 +60,16 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
             SafeArea(
               child: Column(
                 children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Container(child: TitleIntro()),
+                  Container(
+                    child: HeaderContent(
+                      width: SizeConfig.safeBlockHorizontal * 80,
+                      firstText: I18n.of(context).introScreenYouKnow,
+                      secondText: I18n.of(context).introScreenGrupoBk,
+                      subtitle: I18n.of(context).introScreenSelectOption,
+                      subtitleWith: SizeConfig.safeBlockHorizontal * 50,
+                    )
                   ),
                   Expanded(
-                    flex: 2,
                     child: PageView(
                       controller: _pageController,
                       children: <Widget>[
@@ -67,7 +78,10 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
                       ],
                     ),
                   ),
-                  Expanded(flex: 1, child: Container(child: FooterIntro())),
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: SizeConfig.safeBlockVertical * 7),
+                    child: FooterIntro()
+                  ),
                 ],
               ),
             )

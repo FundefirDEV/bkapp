@@ -1,6 +1,5 @@
-
-
-import 'package:bkapp_flutter/src/screens/userFllInfo/register_user_steps_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/register_user_steps_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
@@ -14,8 +13,8 @@ class Router {
     switch (settings.name) {
       case testRoute:
         return MaterialPageRoute(
-            builder: (context) =>
-                HomeTestScreen(title: I18n.of(context).testText));
+          builder: (context) =>
+            HomeTestScreen(title: I18n.of(context).testText));
         break;
       case loginRoute:
         return MaterialPageRoute(builder: (_) => LoginScreen());
@@ -26,14 +25,24 @@ class Router {
         );
         break;
       case registerNameStep:
-        return MaterialPageRoute(builder: (_) => RegisterUserStepsScreen());
+        final RegisterUserStepsArgs data = settings.arguments;
+        return PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 350),
+          pageBuilder: (context, _, __) => RegisterUserStepsScreen(data: data)
+        );
+        break;
+      case genderRoute:
+        return MaterialPageRoute(
+          builder: (_) => GenderScreen()
+        );
+        break;
       default:
         return MaterialPageRoute(
-            builder: (BuildContext context) => Scaffold(
-                  body: Center(
-                      child: Text(
-                          I18n.of(context).pageNotFound('${settings.name}'))),
-                ));
+          builder: (BuildContext context) => Scaffold(
+            body: Center(
+              child: Text(
+                I18n.of(context).pageNotFound('${settings.name}'))),
+          ));
     }
   }
 }

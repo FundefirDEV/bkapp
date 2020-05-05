@@ -22,8 +22,8 @@
   },
   "introScreen": {
     "financialLife": "Empieza a tener el control de tu vida financiera",
-    "youKnow": "Sabes qué es un ",
-    "grupoBk": "grupo Bk",
+    "youKnow": "¿Sabes qué es un ",
+    "grupoBk": "grupo Bk?",
     "selectOption": "Selecciona una opción para seguir",
     "howDoesA": "¿CÓMO FUNCIONA UN ",
     "questionGroupBk":"GRUPO BK?",
@@ -32,8 +32,15 @@
     "accountBk":"CUENTA BK",
     "guidedForm":"Formulario guiado"
   },
-  "bankScreen": {
-    "title": "Como sería?"
+  "genderScreen": {
+    "man": "hombre",
+    "woman": "mujer",
+    "other": "otro",
+    "text": {
+      "first": "Hola, ",
+      "second": "vamos a crear tu perfil",
+      "subtitle": "Selecciona tu género"
+    }
   },
   "registerName": {
     "title": "Ahora necesitamos algunos datos"

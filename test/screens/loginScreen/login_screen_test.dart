@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/homeTest/home_test_screen.dart';
+import 'package:bkapp_flutter/src/screens/introRegister/intro_register_screen.dart';
 import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
 import 'package:bkapp_flutter/src/screens/login/widgets/login_form_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../base_tester.dart';
+import '../../base_tester.dart';
 
 void main() {
   group('Test LoginScreen', () {
@@ -81,7 +81,7 @@ void main() {
 
       await tester.tap(find.byKey(Key('flatButton-cancel')));
       await tester.pumpAndSettle();
-      expect(find.byType(HomeTestScreen), findsOneWidget);
+      expect(find.byType(IntroRegisterScreen), findsOneWidget);
     });
   });
 }

@@ -37,44 +37,47 @@ class CardButtonsWidget extends StatelessWidget {
             children: <Widget>[
               this.child,
               SizedBox(height: 10.0),
-              Column(
-                children: <Widget>[
-                  RaisedButton(
-                    key: Key('raisedButton-accept'),
-                    onPressed: this.accept,
-                    color: Colors.blue,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30.0,
-                      vertical: 10.0
-                    ),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)
-                    ),
-                    child: Text(
-                      this.acceptText ?? I18n.of(context).actionTextEnter,
-                      style: TextStyle(
-                        fontSize: SizeConfig.safeBlockHorizontal * 4,
-                        color: Colors.white,
-                        letterSpacing: 3.0,
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Column(
+                  children: <Widget>[
+                    RaisedButton(
+                      key: Key('raisedButton-accept'),
+                      onPressed: this.accept,
+                      color: Colors.blue,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 12.0
                       ),
-                    ),
-                  ),
-                  if (this.cancel != null) ...[
-                    FlatButton(
-                      key: Key('flatButton-cancel'),
-                      onPressed: this.cancel,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0)
+                      ),
                       child: Text(
-                        this.cancelText ?? I18n.of(context).actionTextImNew,
+                        this.acceptText ?? I18n.of(context).actionTextEnter,
                         style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                          color: Colors.black54,
-                          letterSpacing: 2.0
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          color: Colors.white,
+                          letterSpacing: 3.0,
                         ),
                       ),
                     ),
-                  ]
-                ],
+                    if (this.cancel != null) ...[
+                      FlatButton(
+                        key: Key('flatButton-cancel'),
+                        onPressed: this.cancel,
+                        child: Text(
+                          this.cancelText ?? I18n.of(context).actionTextImNew,
+                          style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                            color: Colors.black54,
+                            letterSpacing: 2.0
+                          ),
+                        ),
+                      ),
+                    ]
+                  ],
+                ),
               )
             ],
           ),
