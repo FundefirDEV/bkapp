@@ -64,6 +64,7 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
                     child: HeaderContent(
                       width: SizeConfig.safeBlockHorizontal * 80,
                       firstText: I18n.of(context).introScreenYouKnow,
+                      firstFontWeight: FontWeight.w300,
                       secondText: I18n.of(context).introScreenGrupoBk,
                       subtitle: I18n.of(context).introScreenSelectOption,
                       subtitleWith: SizeConfig.safeBlockHorizontal * 50,

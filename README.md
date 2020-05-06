@@ -1,12 +1,12 @@
-# bkapp_flutter
+# BKapp flutter
 
-## Cloning
+### Cloning
 
 ```sh
 git clone --recursive git@github.com:Fundefir-dev/bk_app.git
 ```
 
-## Update submodules
+### Update submodules
 
 ```sh
 git submodule init # Only When the clone is not recursive
@@ -20,7 +20,7 @@ git commit -am "Pulled down update to submodule_dir"
 git submodule foreach git pull origin master
 ```
 
-## Running test coverage
+### Running test coverage
 
 ```sh
  flutter test --coverage
@@ -29,11 +29,41 @@ git submodule foreach git pull origin master
  open coverage/index.html
 ```
 
-## Running regressive test
+### Running regressive test
 
 ```sh
 flutter drive --target=test_driver/app.dart
 
 flutter drive --target=test_driver/app.dart --no-build
 flutter drive --target=test_driver/app.dart --no-build --no-track-widget-creation
+```
+
+### ThemeData
+
+We use custom color scheme ``extension`` in the file ``custom_color_scheme.dart``.
+
+##### Use
+
+1. Import it into the file
+```sh
+  import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+```
+
+2. Assign to the right property
+```sh
+color: Theme.of(context).colorScheme.primaryColor
+```
+
+Some colors have swatches and the **greater** number the color **darkest**:
+- primaryColor: **50, 100 & 200**
+```sh
+Theme.of(context).colorScheme.primaryColor[50]
+```
+- primaryColorDark: **50 & 100**
+```sh
+Theme.of(context).colorScheme.primaryColorDark[100]
+```
+- grayColor: **50, 100, 200, 300 & 400**
+```sh
+Theme.of(context).colorScheme.grayColor[200]
 ```

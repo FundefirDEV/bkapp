@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Bk App',
       theme: ThemeData(
         fontFamily: 'Nunito',
-        primarySwatch: Colors.blue,
       ),
       localizationsDelegates: [
         i18n,

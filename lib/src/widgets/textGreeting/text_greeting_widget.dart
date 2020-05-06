@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class TextGreetingWidget extends StatelessWidget {
@@ -28,16 +29,16 @@ class TextGreetingWidget extends StatelessWidget {
       width: this.width,
       child: Column(
         children: <Widget>[
-          _title(),
+          _title(context),
           if (this.subtitle != null) ...[
-            _subtitle()
+            _subtitle(context)
           ]
         ],
       ),
     );
   }
 
-  Widget _title() {
+  Widget _title(context) {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
@@ -45,7 +46,7 @@ class TextGreetingWidget extends StatelessWidget {
           TextSpan(
             text: this.firstText,
             style: TextStyle(
-              color: Color(0xFF5C5C5C),
+              color: Theme.of(context).colorScheme.grayColor,
               fontSize: SizeConfig.safeBlockHorizontal * 5.8,
               fontWeight: this.firstFontWeight ?? FontWeight.w200
             ),
@@ -53,7 +54,7 @@ class TextGreetingWidget extends StatelessWidget {
           TextSpan(
             text: this.secondText,
             style: TextStyle(
-              color: Color(0xFF5C5C5C),
+              color: Theme.of(context).colorScheme.grayColor,
               fontSize: SizeConfig.safeBlockHorizontal * 5.8,
               fontWeight: this.secondFontWeight ?? FontWeight.w700
             ),
@@ -63,7 +64,7 @@ class TextGreetingWidget extends StatelessWidget {
     );
   }
 
-  Widget _subtitle() {
+  Widget _subtitle(context) {
     return Container(
       width: this.subtitleWith,
       child: Padding(
@@ -72,7 +73,7 @@ class TextGreetingWidget extends StatelessWidget {
           this.subtitle,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Color(0xFF5C5C5C),
+            color: Theme.of(context).colorScheme.grayColor,
             fontSize: SizeConfig.safeBlockHorizontal * 4.5,
             fontWeight: FontWeight.w100
           )

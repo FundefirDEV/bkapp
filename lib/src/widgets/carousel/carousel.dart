@@ -1,8 +1,10 @@
 import 'package:bkapp_flutter/src/screens/introRegister/items_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/size_config.dart';
+import '../../utils/custom_color_scheme.dart';
 
 class Carousel extends StatelessWidget {
   final ItemCarousel item;
@@ -39,8 +41,8 @@ class Carousel extends StatelessWidget {
                     ],
                     color: Colors.white,
                     border: Border.all(
-                      color: Colors.blue[100],
-                      width: 2
+                      color: Theme.of(context).colorScheme.primaryColor[100],
+                      width: 1
                     ),
                     borderRadius: BorderRadius.circular(10)
                   ),
@@ -65,7 +67,10 @@ class Carousel extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                           text: item.text1,
-                          style: TextStyle(color: Colors.black, fontSize: SizeConfig.blockSizeHorizontal * 4),
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.grayColor,
+                            fontSize: SizeConfig.blockSizeHorizontal * 4
+                          ),
                           children: <TextSpan>[
                             TextSpan(text: item.text2, style: TextStyle(fontWeight: FontWeight.w700))
                           ],
@@ -90,7 +95,10 @@ class Carousel extends StatelessWidget {
                         padding: EdgeInsets.only(left: 10),
                         child: Text(
                           item.iconText,
-                          style: TextStyle(color: Colors.white, fontSize: SizeConfig.blockSizeHorizontal * 4),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: SizeConfig.blockSizeHorizontal * 4
+                          ),
                         )
                       )
                     ]

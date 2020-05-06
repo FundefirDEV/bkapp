@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class CardButtonsWidget extends StatelessWidget {
@@ -44,7 +45,7 @@ class CardButtonsWidget extends StatelessWidget {
                     RaisedButton(
                       key: Key('raisedButton-accept'),
                       onPressed: this.accept,
-                      color: Colors.blue,
+                      color: Theme.of(context).colorScheme.primaryColor,
                       padding: EdgeInsets.symmetric(
                         horizontal: 30.0,
                         vertical: 12.0
@@ -70,7 +71,7 @@ class CardButtonsWidget extends StatelessWidget {
                           this.cancelText ?? I18n.of(context).actionTextImNew,
                           style: TextStyle(
                             fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                            color: Colors.black54,
+                            color: Theme.of(context).colorScheme.grayColor,
                             letterSpacing: 2.0
                           ),
                         ),

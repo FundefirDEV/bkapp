@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +25,14 @@ class RegisterUserStepsScreen extends StatelessWidget {
             ),
             SizedBox(height: SizeConfig.safeBlockVertical * 4),
             Expanded(
-              child: _containerInfo()
+              child: _containerInfo(context)
             )
           ],
     )
     ));
   }
 
-  Widget _containerInfo() {
+  Widget _containerInfo(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -47,7 +48,7 @@ class RegisterUserStepsScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Row(
               children: <Widget>[
-                Expanded(child: _stepContainer()),
+                Expanded(child: _stepContainer(context)),
                 Expanded(
                   child: Container(
                     alignment: Alignment.centerRight,
@@ -63,7 +64,7 @@ class RegisterUserStepsScreen extends StatelessWidget {
         ]);
   }
 
-  Container _stepContainer() {
+  Container _stepContainer(BuildContext context) {
     return Container(
         child: Padding(
           padding:
@@ -75,7 +76,7 @@ class RegisterUserStepsScreen extends StatelessWidget {
                   fontSize: SizeConfig.safeBlockHorizontal * 4,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 2.0,
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.grayColor,
                 ),
             children: <TextSpan>[
               TextSpan(

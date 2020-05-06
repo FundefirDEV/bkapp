@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,7 +29,10 @@ class ButtonNextWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
-                    colors: [Color(0xff87daf8), Color(0xff4fb3ee)],
+                    colors: [
+                      Theme.of(context).colorScheme.primaryColor[50],
+                      Theme.of(context).colorScheme.primaryColor[100]
+                    ],
                     stops: [0, 1],
                     begin: Alignment(-1.00, 0.00),
                     end: Alignment(1.00, -0.00))),
