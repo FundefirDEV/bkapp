@@ -66,5 +66,14 @@
   },
   "selectCountry": {
     "whereAreYouFrom" : "Where are you from?"
+  },
+  "inviteModal":{
+    "partner": "PARTNER",
+    "name": "Name",
+    "cellPhone": "Cell phone",
+    "add": "ADD",
+    "fromMyContacts": "from my contacts",
+    "youHave": "You have ",
+    "partners": " partners"
   }
 }

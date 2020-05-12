@@ -65,5 +65,14 @@
   },
   "selectCountry": {
     "whereAreYouFrom" : "¿De qué país eres?"
+  },
+  "inviteModal":{
+    "partner": "SOCIO",
+    "name": "Nombre",
+    "cellPhone": "Número celular",
+    "add": "AGREGAR",
+    "fromMyContacts": "desde mís contactos",
+    "youHave": "Tienes ",
+    "partners": " socios"
   }
 }

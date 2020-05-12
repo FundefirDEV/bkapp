@@ -114,6 +114,20 @@ class I18n implements WidgetsLocalizations {
   String get bankCreatedScreenHasBeenCreaed => " has been created";
   /// "Where are you from?"
   String get selectCountryWhereAreYouFrom => "Where are you from?";
+  /// "PARTNER"
+  String get inviteModalPartner => "PARTNER";
+  /// "Name"
+  String get inviteModalName => "Name";
+  /// "Cell phone"
+  String get inviteModalCellPhone => "Cell phone";
+  /// "ADD"
+  String get inviteModalAdd => "ADD";
+  /// "from my contacts"
+  String get inviteModalFromMyContacts => "from my contacts";
+  /// "You have "
+  String get inviteModalYouHave => "You have ";
+  /// " partners"
+  String get inviteModalPartners => " partners";
 }
 
 class _I18n_en_US extends I18n {
@@ -249,6 +263,27 @@ class _I18n_es_ES extends I18n {
   /// "¿De qué país eres?"
   @override
   String get selectCountryWhereAreYouFrom => "¿De qué país eres?";
+  /// "SOCIO"
+  @override
+  String get inviteModalPartner => "SOCIO";
+  /// "Nombre"
+  @override
+  String get inviteModalName => "Nombre";
+  /// "Número celular"
+  @override
+  String get inviteModalCellPhone => "Número celular";
+  /// "AGREGAR"
+  @override
+  String get inviteModalAdd => "AGREGAR";
+  /// "desde mís contactos"
+  @override
+  String get inviteModalFromMyContacts => "desde mís contactos";
+  /// "Tienes "
+  @override
+  String get inviteModalYouHave => "Tienes ";
+  /// " socios"
+  @override
+  String get inviteModalPartners => " socios";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
