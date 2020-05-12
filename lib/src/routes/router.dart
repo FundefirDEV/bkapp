@@ -37,11 +37,9 @@ class Router {
           builder: (_) => GenderScreen()
         );
         break;
-        return MaterialPageRoute(builder: (_) => RegisterUserStepsScreen());
       case bankCreatedRoute:
         return MaterialPageRoute(builder: (_) => BankCreatedScreen());
         break;
-
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(

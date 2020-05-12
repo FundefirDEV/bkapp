@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 // have color swatches (50, 100, 200...)
 
 Map<int, Color> primaryDarkCodes = {
-  50: Color.fromRGBO(44, 90, 145, 1),
-  100: Color.fromRGBO(20, 35, 97, 1),
+  50: Color(0xFF2C5A91),
+  100: Color(0xFF142361), // default color
 };
 
 Map<int, Color> primaryCodes = {
-  50: Color.fromRGBO(135, 218, 248, 1),
-  100: Color.fromRGBO(86, 197, 255, 1),
-  200: Color.fromRGBO(29, 136, 192, 1),
+  50: Color(0xFF87DAF8),
+  100: Color(0xFF56C5FF),
+  200: Color(0xFF1D88C0), // default color
 };
 
 Map<int, Color> textCodes = {
-  50: Color.fromRGBO(236, 236, 236, 1),
-  100: Color.fromRGBO(216, 216, 216, 1),
-  200: Color.fromRGBO(166, 164, 164, 1),
-  300: Color.fromRGBO(92, 92, 92, 1),
-  400: Color.fromRGBO(42, 42, 42, 1),
+  50: Color(0xFFECECEC),
+  100: Color(0xFFD8D8D8),
+  200: Color(0xFFA6A4A4),
+  300: Color(0xFF5C5C5C), // default color
+  400: Color(0xFF2A2A2A),
 };
 
 extension CustomColorScheme on ColorScheme {

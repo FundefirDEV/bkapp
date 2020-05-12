@@ -112,6 +112,8 @@ class I18n implements WidgetsLocalizations {
   String get bankCreatedScreenGood => "GOOD!";
   /// " has been created"
   String get bankCreatedScreenHasBeenCreaed => " has been created";
+  /// "Where are you from?"
+  String get selectCountryWhereAreYouFrom => "Where are you from?";
 }
 
 class _I18n_en_US extends I18n {
@@ -196,22 +198,7 @@ class _I18n_es_ES extends I18n {
   /// "Formulario guiado"
   @override
   String get introScreenGuidedForm => "Formulario guiado";
-  /// "¿Cómo te gustaría"
-  @override
-  String get introRegisterModalTitle => "¿Cómo te gustaría";
-  /// "crear tu cuenta"
-  @override
-  String get introRegisterModalCreateAccount => "crear tu cuenta";
-  /// "?"
-  @override
-  String get introRegisterModalInterrogation => "?";
-  /// "Gmail"
-  @override
-  String get introRegisterModalGmail => "Gmail";
-  /// "Personalizado"
-  @override
-  String get introRegisterModalCustom => "Personalizado";
-  /// "Como sería?"
+  /// "hombre"
   @override
   String get genderScreenMan => "hombre";
   /// "mujer"
@@ -229,6 +216,24 @@ class _I18n_es_ES extends I18n {
   /// "Selecciona tu género"
   @override
   String get genderScreenTextSubtitle => "Selecciona tu género";
+  /// "¿Cómo te gustaría"
+  @override
+  String get introRegisterModalTitle => "¿Cómo te gustaría";
+  /// "crear tu cuenta"
+  @override
+  String get introRegisterModalCreateAccount => "crear tu cuenta";
+  /// "?"
+  @override
+  String get introRegisterModalInterrogation => "?";
+  /// "Gmail"
+  @override
+  String get introRegisterModalGmail => "Gmail";
+  /// "Personalizado"
+  @override
+  String get introRegisterModalCustom => "Personalizado";
+  /// "Como sería?"
+  @override
+  String get bankScreenTitle => "Como sería?";
   /// "Ahora necesitamos algunos datos"
   @override
   String get registerNameTitle => "Ahora necesitamos algunos datos";
@@ -241,6 +246,9 @@ class _I18n_es_ES extends I18n {
   /// " ha sido creado"
   @override
   String get bankCreatedScreenHasBeenCreaed => " ha sido creado";
+  /// "¿De qué país eres?"
+  @override
+  String get selectCountryWhereAreYouFrom => "¿De qué país eres?";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

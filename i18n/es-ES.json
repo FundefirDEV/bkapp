@@ -62,5 +62,8 @@
     "very" : "¡MUY ",
     "good": "BIEN!",
     "hasBeenCreaed": " ha sido creado"
+  },
+  "selectCountry": {
+    "whereAreYouFrom" : "¿De qué país eres?"
   }
 }

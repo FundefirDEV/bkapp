@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/homeTest/home_test_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/intro_register_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/items_carousel.dart';
@@ -13,17 +12,6 @@ import '../../base_tester.dart';
 
 void main() {
   group('Test IntroScreen Widget', () {
-
-    List<ItemCarousel> characters = [
-      ItemCarousel(
-        text1: 'Text 1',
-        text2: 'Text 2',
-        image: 'assets/images/robot_read.svg',
-        iconText: 'Text 3',
-        icon: 'assets/images/icon_media.svg',
-        onPressed: (context) => Navigator.pushNamed(context, genderRoute)
-      )
-    ];
     testWidgets('Find FooterIntro widget', (WidgetTester tester) async {
       final testKey = Key('my-id');
       await tester.pumpWidget(baseTester(child: FooterIntro(key: testKey)));
