@@ -6,3 +6,4 @@ const String registerNameUser = '/registerNameUser';
 const String registerEmailUser = '/registerEmailUser';
 const String registerPhoneUser = '/registerPhoneUser';
 const String bankCreatedRoute = '/bank-created';
+const String selectAddressRoute = '/select-address';

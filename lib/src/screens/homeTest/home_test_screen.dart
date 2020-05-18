@@ -43,7 +43,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
   void _goToIntro() {
     Navigator.pushNamed(
       context,
-      introRoute
+      selectAddressRoute
     );
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
-class BgCountry extends StatelessWidget {
+class BgBankRegister extends StatelessWidget {
   final Widget child;
-  const BgCountry({Key key, this.child}) : super(key: key);
+  const BgBankRegister({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

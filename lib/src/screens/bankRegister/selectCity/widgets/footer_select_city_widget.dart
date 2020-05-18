@@ -2,21 +2,21 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FooterSelectCountry extends StatelessWidget {
-  const FooterSelectCountry({Key key}) : super(key: key);
+class FooterSelectCityWidget extends StatelessWidget {
+  const FooterSelectCityWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      key: Key('footer-select-country-container'),
+      key: Key('footer-select-city-container'),
       alignment: Alignment.bottomCenter,
-      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical *6),
+      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            key: Key('footer-select-country-text-container'),
+            key: Key('footer-select-city-text-container'),
             margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 13),
             child: RichText(
               text: TextSpan(
@@ -40,7 +40,7 @@ class FooterSelectCountry extends StatelessWidget {
             ),
           ),
           Container(
-            key: Key('footer-select-country-image-container'),
+            key: Key('footer-select-city-image-container'),
             margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
             child: SvgPicture.asset(
               'assets/images/path.svg'

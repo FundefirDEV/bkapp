@@ -88,5 +88,10 @@
     "fromMyContacts": "from my contacts",
     "youHave": "You have ",
     "partners": " partners"
+  },
+  "selectCity": {
+    "enterSateCity": "Enter your state and city",
+    "city": "CITY",
+    "state": "STATE"
   }
 }

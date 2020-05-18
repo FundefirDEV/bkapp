@@ -88,5 +88,10 @@
     "fromMyContacts": "desde mís contactos",
     "youHave": "Tienes ",
     "partners": " socios"
+  },
+  "selectCity": {
+    "enterSateCity": "Coloca tu estado y ciudad",
+    "city": "CIUDAD",
+    "State": "ESTADO"
   }
 }

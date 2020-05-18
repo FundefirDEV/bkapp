@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         fallback: new Locale("es", "ES")
       ),
       onGenerateRoute: Router.generateRoute,
-      initialRoute: genderRoute
+      initialRoute: loginRoute
     );
   }
 }
