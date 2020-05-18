@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/register_user_steps_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,8 +20,8 @@ class GenderButtonsWidget extends StatelessWidget {
   void _selectGender(BuildContext context, String gender) {
      Navigator.pushNamed(
       context,
-      registerNameStep,
-      arguments: RegisterUserStepsArgs(
+      registerNameUser,
+      arguments: RegisterNameStepArgs(
         gender,
         images[gender]
       )

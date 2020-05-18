@@ -8,12 +8,23 @@ class RegisterNameStepBloc extends FormBloc<String, String> {
   final secondName = TextFieldBloc(
     validators: [FieldBlocValidators.required]
   );
+  final email = TextFieldBloc(
+    validators: [
+        FieldBlocValidators.required,
+        FieldBlocValidators.email,
+      ]
+  );
+  final phone = TextFieldBloc(
+    validators: [FieldBlocValidators.required]
+  );
 
   RegisterNameStepBloc() {
     addFieldBlocs(
       fieldBlocs: [
         firstName,
-        secondName
+        secondName,
+        email,
+        phone
       ]
     );
   }
@@ -22,7 +33,8 @@ class RegisterNameStepBloc extends FormBloc<String, String> {
   void onSubmitting() async {
     print(firstName.value);
     print(secondName.value);
-
+    print(email.value);
+    print(phone.value);
     await Future<void>.delayed(Duration(seconds: 1));
 
     emitSuccess();
@@ -31,5 +43,7 @@ class RegisterNameStepBloc extends FormBloc<String, String> {
   void dispose() {
     firstName.close();
     secondName.close();
+    email.close();
+    phone.close();
   }
 }

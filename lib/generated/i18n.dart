@@ -54,6 +54,10 @@ class I18n implements WidgetsLocalizations {
   String get formFirstName => "First name";
   /// "Second name"
   String get formSecondName => "Second name";
+  /// "Email"
+  String get formEmail => "Email";
+  /// "Phone"
+  String get formPhone => "Phone";
   /// "This field is required"
   String get errorRequired => "This field is required";
   /// "Go to "
@@ -106,6 +110,22 @@ class I18n implements WidgetsLocalizations {
   String get bankScreenTitle => "How Would it be?";
   /// "Now we need some data"
   String get registerNameTitle => "Now we need some data";
+  /// "Very good"
+  String get registerEmailTitle => "Very good";
+  /// "Only a few personal details are missing"
+  String get registerEmailSubtitle => "Only a few personal details are missing";
+  /// "To finish create your password"
+  String get registerPhoneTitle => "To finish create your password";
+  /// "To create "
+  String get registerPhoneTextOne => "To create ";
+  /// "your password "
+  String get registerPhoneTextTwo => "your password ";
+  /// "we "
+  String get registerPhoneTextThree => "we ";
+  /// "need your "
+  String get registerPhoneTextFour => "need your ";
+  /// "cell number"
+  String get registerPhoneTextFive => "cell number";
   /// "¡VERY "
   String get bankCreatedScreenVery => "¡VERY ";
   /// "GOOD!"
@@ -173,6 +193,12 @@ class _I18n_es_ES extends I18n {
   /// "Segundo nombre"
   @override
   String get formSecondName => "Segundo nombre";
+  /// "Correo electrónico"
+  @override
+  String get formEmail => "Correo electrónico";
+  /// "Celular"
+  @override
+  String get formPhone => "Celular";
   /// "Este campo es obligatorio"
   @override
   String get errorRequired => "Este campo es obligatorio";
@@ -251,6 +277,30 @@ class _I18n_es_ES extends I18n {
   /// "Ahora necesitamos algunos datos"
   @override
   String get registerNameTitle => "Ahora necesitamos algunos datos";
+  /// "Muy bien"
+  @override
+  String get registerEmailTitle => "Muy bien";
+  /// "Solo falta unos pocos datos personales"
+  @override
+  String get registerEmailSubtitle => "Solo falta unos pocos datos personales";
+  /// "Para finalizar crea tu clave"
+  @override
+  String get registerPhoneTitle => "Para finalizar crea tu clave";
+  /// "Para crear "
+  @override
+  String get registerPhoneTextOne => "Para crear ";
+  /// "tu clave "
+  @override
+  String get registerPhoneTextTwo => "tu clave ";
+  /// "necesitamos"
+  @override
+  String get registerPhoneTextThree => "necesitamos";
+  /// "tu "
+  @override
+  String get registerPhoneTextFour => "tu ";
+  /// "número celular"
+  @override
+  String get registerPhoneTextFive => "número celular";
   /// "¡MUY "
   @override
   String get bankCreatedScreenVery => "¡MUY ";

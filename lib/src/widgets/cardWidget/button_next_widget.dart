@@ -16,6 +16,7 @@ class ButtonNextWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Material(
       child: InkWell(
+        key: Key('buttonNextStep'),
         borderRadius: BorderRadius.circular(100),
         onTap: this.onTap,
         child: Padding(

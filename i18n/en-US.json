@@ -6,14 +6,15 @@
   "actionText": {
     "enter": "ENTER",
     "imNew": "I'M NEW",
-    "close":"CLOSE"
-
+    "close": "CLOSE"
   },
   "form": {
     "user": "User",
     "password": "Password",
     "firstName": "First name",
-    "secondName": "Second name"
+    "secondName": "Second name",
+    "email": "Email",
+    "phone": "Phone"
   },
   "error": {
     "required": "This field is required"
@@ -22,17 +23,17 @@
     "textOne": "Go to ",
     "textTwo": "your bank"
   },
-  "introScreen":{
+  "introScreen": {
     "financialLife": "Start being in control of your financial life",
     "youKnow": "You know what a ",
     "grupoBk": "group Bk",
     "selectOption": "Select an option to continue",
     "howDoesA": "¿HOWS DOES A ",
-    "questionGroupBk":"GROUP BK?",
-    "educativeMedia":"Educative media",
-    "register":"Register my ",
-    "accountBk":"BK account",
-    "guidedForm":"Guided form"
+    "questionGroupBk": "GROUP BK?",
+    "educativeMedia": "Educative media",
+    "register": "Register my ",
+    "accountBk": "BK account",
+    "guidedForm": "Guided form"
   },
   "genderScreen": {
     "man": "male",
@@ -44,30 +45,42 @@
       "subtitle": "Select your gender"
     }
   },
-  "introRegister":{
-    "modal":{
-      "title":"How would you like to",
+  "introRegister": {
+    "modal": {
+      "title": "How would you like to",
       "createAccount": "create your account",
-      "interrogation":"?",
-      "gmail":"Gmail",
-      "custom":"Customised"
+      "interrogation": "?",
+      "gmail": "Gmail",
+      "custom": "Customised"
     }
   },
   "bankScreen": {
-      "title": "How Would it be?"
+    "title": "How Would it be?"
   },
   "registerName": {
     "title": "Now we need some data"
   },
+  "registerEmail": {
+    "title": "Very good",
+    "subtitle": "Only a few personal details are missing"
+  },
+  "registerPhone": {
+    "title": "To finish create your password",
+    "textOne": "To create ",
+    "textTwo": "your password ",
+    "textThree": "we ",
+    "textFour": "need your ",
+    "textFive": "cell number"
+  },
   "bankCreatedScreen": {
-    "very" : "¡VERY ",
+    "very": "¡VERY ",
     "good": "GOOD!",
     "hasBeenCreaed": " has been created"
   },
   "selectCountry": {
-    "whereAreYouFrom" : "Where are you from?"
+    "whereAreYouFrom": "Where are you from?"
   },
-  "inviteModal":{
+  "inviteModal": {
     "partner": "PARTNER",
     "name": "Name",
     "cellPhone": "Cell phone",

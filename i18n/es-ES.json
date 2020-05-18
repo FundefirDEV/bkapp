@@ -6,13 +6,15 @@
   "actionText": {
     "enter": "INGRESAR",
     "imNew": "SOY NUEVO",
-    "close":"CERRAR"
+    "close": "CERRAR"
   },
   "form": {
     "user": "Usuario",
     "password": "Clave",
     "firstName": "Primer nombre",
-    "secondName": "Segundo nombre"
+    "secondName": "Segundo nombre",
+    "email": "Correo electrónico",
+    "phone": "Celular"
   },
   "error": {
     "required": "Este campo es obligatorio"
@@ -27,11 +29,11 @@
     "grupoBk": "grupo Bk?",
     "selectOption": "Selecciona una opción para seguir",
     "howDoesA": "¿CÓMO FUNCIONA UN ",
-    "questionGroupBk":"GRUPO BK?",
-    "educativeMedia":"Video educativo",
-    "register":"REGISTRAR MI ",
-    "accountBk":"CUENTA BK",
-    "guidedForm":"Formulario guiado"
+    "questionGroupBk": "GRUPO BK?",
+    "educativeMedia": "Video educativo",
+    "register": "REGISTRAR MI ",
+    "accountBk": "CUENTA BK",
+    "guidedForm": "Formulario guiado"
   },
   "genderScreen": {
     "man": "hombre",
@@ -43,13 +45,13 @@
       "subtitle": "Selecciona tu género"
     }
   },
-  "introRegister":{
-    "modal":{
-      "title":"¿Cómo te gustaría",
+  "introRegister": {
+    "modal": {
+      "title": "¿Cómo te gustaría",
       "createAccount": "crear tu cuenta",
-      "interrogation":"?",
-      "gmail":"Gmail",
-      "custom":"Personalizado"
+      "interrogation": "?",
+      "gmail": "Gmail",
+      "custom": "Personalizado"
     }
   },
   "bankScreen": {
@@ -58,15 +60,27 @@
   "registerName": {
     "title": "Ahora necesitamos algunos datos"
   },
+  "registerEmail": {
+    "title": "Muy bien",
+    "subtitle": "Solo falta unos pocos datos personales"
+  },
+  "registerPhone": {
+    "title": "Para finalizar crea tu clave",
+    "textOne": "Para crear ",
+    "textTwo": "tu clave ",
+    "textThree": "necesitamos",
+    "textFour": "tu ",
+    "textFive": "número celular"
+  },
   "bankCreatedScreen": {
-    "very" : "¡MUY ",
+    "very": "¡MUY ",
     "good": "BIEN!",
     "hasBeenCreaed": " ha sido creado"
   },
   "selectCountry": {
-    "whereAreYouFrom" : "¿De qué país eres?"
+    "whereAreYouFrom": "¿De qué país eres?"
   },
-  "inviteModal":{
+  "inviteModal": {
     "partner": "SOCIO",
     "name": "Nombre",
     "cellPhone": "Número celular",

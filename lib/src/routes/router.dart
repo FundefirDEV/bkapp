@@ -1,6 +1,8 @@
 import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/register_user_steps_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
@@ -14,39 +16,49 @@ class Router {
     switch (settings.name) {
       case testRoute:
         return MaterialPageRoute(
-          builder: (context) =>
-            HomeTestScreen(title: I18n.of(context).testText));
+            builder: (context) =>
+                HomeTestScreen(title: I18n.of(context).testText));
         break;
       case loginRoute:
         return MaterialPageRoute(builder: (_) => LoginScreen());
         break;
       case introRoute:
-        return MaterialPageRoute(
-          builder: (_) => IntroRegisterScreen()
-        );
-        break;
-      case registerNameStep:
-        final RegisterUserStepsArgs data = settings.arguments;
-        return PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 350),
-          pageBuilder: (context, _, __) => RegisterUserStepsScreen(data: data)
-        );
-        break;
-      case genderRoute:
-        return MaterialPageRoute(
-          builder: (_) => GenderScreen()
-        );
+        return MaterialPageRoute(builder: (_) => IntroRegisterScreen());
         break;
       case bankCreatedRoute:
         return MaterialPageRoute(builder: (_) => BankCreatedScreen());
+        break;  
+      case registerNameUser:
+        final RegisterNameStepArgs data = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) =>
+                RegisterNameStepScreen(data: data));
+        break;
+      case registerEmailUser:
+        final RegisterEmailStepArgs data = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) =>
+                RegisterEmailStepScreen(data: data));
+        break; 
+      case registerPhoneUser:
+        final RegisterPhoneStepArgs data = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) =>
+                RegisterPhoneStepScreen(data: data));
+        break;  
+      case genderRoute:
+        return MaterialPageRoute(builder: (_) => GenderScreen());
         break;
       default:
         return MaterialPageRoute(
-          builder: (BuildContext context) => Scaffold(
-            body: Center(
-              child: Text(
-                I18n.of(context).pageNotFound('${settings.name}'))),
-          ));
+            builder: (BuildContext context) => Scaffold(
+                  body: Center(
+                      child: Text(
+                          I18n.of(context).pageNotFound('${settings.name}'))),
+                ));
     }
   }
 }

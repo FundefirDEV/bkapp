@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/profileRegister/register_user_steps_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/genderButtons/gender_buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,7 +14,7 @@ void main() {
       expect(find.byKey(Key('genderImage-male')), findsOneWidget);
       await tester.tap(find.byKey(Key('genderImage-male')));
       await tester.pumpAndSettle();
-      expect(find.byType(RegisterUserStepsScreen), findsOneWidget);
+      expect(find.byType(RegisterNameStepScreen), findsOneWidget);
     });
 
     testWidgets(
@@ -26,7 +26,7 @@ void main() {
         expect(find.byKey(Key('genderImage-female')), findsOneWidget);
         await tester.tap(find.byKey(Key('genderImage-female')));
         await tester.pumpAndSettle();
-        expect(find.byType(RegisterUserStepsScreen), findsOneWidget);
+        expect(find.byType(RegisterNameStepScreen), findsOneWidget);
       }
     );
 
@@ -39,7 +39,7 @@ void main() {
         expect(find.byKey(Key('genderImage-other')), findsOneWidget);
         await tester.tap(find.byKey(Key('genderImage-other')));
         await tester.pumpAndSettle();
-        expect(find.byType(RegisterUserStepsScreen), findsOneWidget);
+        expect(find.byType(RegisterNameStepScreen), findsOneWidget);
       }
     );
   });
