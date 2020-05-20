@@ -50,6 +50,8 @@ class I18n implements WidgetsLocalizations {
   String get formUser => "User";
   /// "Password"
   String get formPassword => "Password";
+  /// "Confirm password"
+  String get formConfirmPassword => "Confirm password";
   /// "First name"
   String get formFirstName => "First name";
   /// "Second name"
@@ -193,6 +195,9 @@ class _I18n_es_ES extends I18n {
   /// "Clave"
   @override
   String get formPassword => "Clave";
+  /// "Confirmar clave"
+  @override
+  String get formConfirmPassword => "Confirmar clave";
   /// "Primer nombre"
   @override
   String get formFirstName => "Primer nombre";

@@ -11,6 +11,7 @@
   "form": {
     "user": "User",
     "password": "Password",
+    "confirmPassword": "Confirm password",
     "firstName": "First name",
     "secondName": "Second name",
     "email": "Email",

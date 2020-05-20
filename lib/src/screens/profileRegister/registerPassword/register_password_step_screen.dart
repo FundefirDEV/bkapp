@@ -1,21 +1,22 @@
+import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_container_widget.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/widgets/register_password_container_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPhoneStepScreen extends StatefulWidget {
-  final RegisterPhoneStepArgs data;
-  RegisterPhoneStepScreen({Key key, this.data}) : super(key: key);
+class RegisterPasswordStepScreen extends StatefulWidget {
+  final RegisterPasswordStepArgs data;
+  RegisterPasswordStepScreen({Key key, this.data}) : super(key: key);
 
   @override
-  _RegisterPhoneStepScreenState createState() =>
-      _RegisterPhoneStepScreenState();
+  _RegisterPasswordStepScreenState createState() =>
+      _RegisterPasswordStepScreenState();
 }
 
-class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> {
+class _RegisterPasswordStepScreenState
+    extends State<RegisterPasswordStepScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -30,24 +31,24 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> {
           Expanded(
               flex: 2,
               child: SingleChildScrollView(
-                child: RegisterPhoneContainerWidget(
+                child: RegisterPasswordContainerWidget(
                     tag: widget.data.tag, image: widget.data.image),
               )),
           Expanded(
               child: FooterStepWidget(
-            currentStep: 3,
+            currentStep: 4,
             numberOfSteps: 4,
-            route: registerPasswordUser,
+            route: registerEmailUser,
             renderNextWidget:
-                RegisterPasswordStepArgs(widget.data.tag, widget.data.image),
+                RegisterEmailStepArgs(widget.data.tag, widget.data.image),
           ))
         ]);
   }
 }
 
-class RegisterPhoneStepArgs {
+class RegisterPasswordStepArgs {
   final String tag;
   final String image;
 
-  RegisterPhoneStepArgs(this.tag, this.image);
+  RegisterPasswordStepArgs(this.tag, this.image);
 }

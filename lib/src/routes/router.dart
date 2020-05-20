@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_sc
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -28,7 +29,7 @@ class Router {
         break;
       case bankCreatedRoute:
         return MaterialPageRoute(builder: (_) => BankCreatedScreen());
-        break;  
+        break;
       case registerNameUser:
         final RegisterNameStepArgs data = settings.arguments;
         return PageRouteBuilder(
@@ -42,14 +43,21 @@ class Router {
             transitionDuration: Duration(milliseconds: 350),
             pageBuilder: (context, _, __) =>
                 RegisterEmailStepScreen(data: data));
-        break; 
+        break;
       case registerPhoneUser:
         final RegisterPhoneStepArgs data = settings.arguments;
         return PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 350),
             pageBuilder: (context, _, __) =>
                 RegisterPhoneStepScreen(data: data));
-        break;  
+        break;
+      case registerPasswordUser:
+        final RegisterPasswordStepArgs data = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) =>
+                RegisterPasswordStepScreen(data: data));
+        break;
       case genderRoute:
         return MaterialPageRoute(builder: (_) => GenderScreen());
         break;
