@@ -128,6 +128,14 @@ class I18n implements WidgetsLocalizations {
   String get registerPhoneTextFour => "need your ";
   /// "cell number"
   String get registerPhoneTextFive => "cell number";
+  /// "VERY "
+  String get confimInvitationBankTitleOne => "VERY ";
+  /// "GOOD!"
+  String get confimInvitationBankTitleTwo => "GOOD!";
+  /// "Your profile has been created"
+  String get confimInvitationBankSubtitle => "Your profile has been created";
+  /// "You don't have any pending invitation yet, now let's create your first "
+  String get confimInvitationBankDescription => "You don't have any pending invitation yet, now let's create your first ";
   /// "¡VERY "
   String get bankCreatedScreenVery => "¡VERY ";
   /// "GOOD!"
@@ -322,6 +330,18 @@ class _I18n_es_ES extends I18n {
   /// "número celular"
   @override
   String get registerPhoneTextFive => "número celular";
+  /// "¡MUY "
+  @override
+  String get confimInvitationBankTitleOne => "¡MUY ";
+  /// "BIEN!"
+  @override
+  String get confimInvitationBankTitleTwo => "BIEN!";
+  /// "Tu perfil ha sido creado"
+  @override
+  String get confimInvitationBankSubtitle => "Tu perfil ha sido creado";
+  /// "Aún no tienes alguna invitación pendiente, ahora creemos tu primer "
+  @override
+  String get confimInvitationBankDescription => "Aún no tienes alguna invitación pendiente, ahora creemos tu primer ";
   /// "¡MUY "
   @override
   String get bankCreatedScreenVery => "¡MUY ";

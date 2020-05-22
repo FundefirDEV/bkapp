@@ -73,6 +73,12 @@
     "textFour": "need your ",
     "textFive": "cell number"
   },
+  "confimInvitationBank": {
+    "titleOne": "VERY ",
+    "titleTwo": "GOOD!",
+    "subtitle": "Your profile has been created",
+    "description": "You don't have any pending invitation yet, now let's create your first "
+  },
   "bankCreatedScreen": {
     "very": "¡VERY ",
     "good": "GOOD!",

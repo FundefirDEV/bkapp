@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/widgets/register_password_container_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
@@ -38,9 +38,9 @@ class _RegisterPasswordStepScreenState
               child: FooterStepWidget(
             currentStep: 4,
             numberOfSteps: 4,
-            route: registerEmailUser,
-            renderNextWidget:
-                RegisterEmailStepArgs(widget.data.tag, widget.data.image),
+            route: confirmInvitationBank,
+            renderNextWidget: ConfirmInvitationBankStepArgs(
+                widget.data.tag, widget.data.image),
           ))
         ]);
   }

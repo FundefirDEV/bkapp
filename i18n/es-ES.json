@@ -73,6 +73,12 @@
     "textFour": "tu ",
     "textFive": "número celular"
   },
+  "confimInvitationBank": {
+    "titleOne": "¡MUY ",
+    "titleTwo": "BIEN!",
+    "subtitle": "Tu perfil ha sido creado",
+    "description": "Aún no tienes alguna invitación pendiente, ahora creemos tu primer "
+  },
   "bankCreatedScreen": {
     "very": "¡MUY ",
     "good": "BIEN!",
