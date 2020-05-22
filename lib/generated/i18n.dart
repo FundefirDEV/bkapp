@@ -156,6 +156,16 @@ class I18n implements WidgetsLocalizations {
   String get selectCityCity => "CITY";
   /// "STATE"
   String get selectCityState => "STATE";
+  /// "By last!"
+  String get bankNameByLast => "By last!";
+  /// "Put the name of your BKgroup"
+  String get bankNamePutName => "Put the name of your BKgroup";
+  /// "Write here"
+  String get bankNameWriteHere => "Write here";
+  /// "Name"
+  String get bankNameNameBk => "Name";
+  /// "Create"
+  String get bankNameCreate => "Create";
 }
 
 class _I18n_en_US extends I18n {
@@ -354,6 +364,21 @@ class _I18n_es_ES extends I18n {
   /// "ESTADO"
   @override
   String get selectCityState => "ESTADO";
+  /// "¡Por último!"
+  @override
+  String get bankNameByLast => "¡Por último!";
+  /// "Coloca el nombre de tu BKgrupo"
+  @override
+  String get bankNamePutName => "Coloca el nombre de tu BKgrupo";
+  /// "Esbriba aquí"
+  @override
+  String get bankNameWriteHere => "Esbriba aquí";
+  /// "Nombre"
+  @override
+  String get bankNameNameBk => "Nombre";
+  /// "Crear"
+  @override
+  String get bankNameCreate => "Crear";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

@@ -8,3 +8,4 @@ const String registerPhoneUser = '/registerPhoneUser';
 const String registerPasswordUser = '/registerPassword';
 const String bankCreatedRoute = '/bank-created';
 const String selectAddressRoute = '/select-address';
+const String nameBkRoute = '/name-bk';

@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/name_bk_screen.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
@@ -60,10 +61,13 @@ class Router {
         break;
       case genderRoute:
         return MaterialPageRoute(builder: (_) => GenderScreen());
-        break;
+      break;
       case selectAddressRoute:
         return MaterialPageRoute(builder: (_) => SelectCityScreen());
-        break;
+      break;
+      case nameBkRoute:
+        return MaterialPageRoute(builder: (_) => NameBkScreen());
+      break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

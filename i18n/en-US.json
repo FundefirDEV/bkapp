@@ -94,5 +94,12 @@
     "enterSateCity": "Enter your state and city",
     "city": "CITY",
     "state": "STATE"
+  },
+  "bankName": {
+    "byLast":"By last!",
+    "putName":"Put the name of your BKgroup",
+    "writeHere":"Write here",
+    "nameBk":"Name",
+    "create":"Create"
   }
 }

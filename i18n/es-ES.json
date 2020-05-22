@@ -94,5 +94,12 @@
     "enterSateCity": "Coloca tu estado y ciudad",
     "city": "CIUDAD",
     "State": "ESTADO"
+  },
+  "bankName": {
+    "byLast":"¡Por último!",
+    "putName":"Coloca el nombre de tu BKgrupo",
+    "writeHere":"Esbriba aquí",
+    "nameBk":"Nombre",
+    "create":"Crear"
   }
 }
