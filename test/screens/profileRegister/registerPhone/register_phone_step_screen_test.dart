@@ -57,6 +57,14 @@ void main() {
           .pumpWidget(baseTester(child: RegisterPhoneStepScreen(data: data)));
       await tester.pumpAndSettle();
 
+      expect(find.text('+57'), findsOneWidget);
+
+      expect(find.byKey(Key('country0')), findsNWidgets(2));
+      await tester.tap(find.byKey(Key('country2')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('+51'), findsOneWidget);
+
       expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
       await tester.tap(find.byKey(Key('buttonNextStep')));
       await tester.pumpAndSettle();

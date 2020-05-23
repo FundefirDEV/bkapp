@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'items_country.dart';
 
 class CountryCarousel extends StatefulWidget {
-  CountryCarousel({Key key}) : super(key: key);
+  CountryCarousel({Key key, this.callback}) : super(key: key);
+
+  final callback;
 
   @override
   _CountryCarouselState createState() => _CountryCarouselState();
@@ -42,13 +44,19 @@ class _CountryCarouselState extends State<CountryCarousel> {
   animateItemBuilder(int index) {
     List<ItemCountry> country = [
       ItemCountry(
-          image: 'assets/images/argentina.svg'
+        phoneCode: '+54',
+        name:'Argentina',
+        image: 'assets/images/argentina.svg'
       ),
       ItemCountry(
-          image: 'assets/images/colombia.svg'
+        phoneCode: '+57',
+        name:'Colombia',
+        image: 'assets/images/colombia.svg'
       ),
       ItemCountry(
-          image: 'assets/images/peru.svg'
+        phoneCode: '+51',
+        name:'Perú',
+        image: 'assets/images/peru.svg'
       )
     ];
 
@@ -87,6 +95,11 @@ class _CountryCarouselState extends State<CountryCarousel> {
                 Material(
                   color: Colors.transparent,
                   child: InkWell(
+                    key: Key("country${i.toString()}"),
+                    onTap: () {
+                      widget.callback(country[i]);
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       child: SvgPicture.asset(
                         country[i].image,

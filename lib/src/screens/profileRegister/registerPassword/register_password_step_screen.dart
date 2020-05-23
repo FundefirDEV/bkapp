@@ -25,6 +25,7 @@ class _RegisterPasswordStepScreenState
 
   Widget _containerInfo() {
     return Column(
+        key: Key('column-register-password'),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           ButtonBackWidget(),

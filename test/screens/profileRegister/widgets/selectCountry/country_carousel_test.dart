@@ -1,9 +1,9 @@
-import 'package:bkapp_flutter/src/screens/bankRegister/selectCountry/widgets/countryCarousel/country_carousel.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarousel/country_carousel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../base_tester.dart';
+import '../../../../base_tester.dart';
 
 void main() {
   group('Test Country Carousel Widget', () {

@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_form_widget.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarousel/items_country.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,10 @@ import 'package:flutter_svg/svg.dart';
 class RegisterPhoneContainerWidget extends StatelessWidget {
   final String tag;
   final String image;
+  final ItemCountry country;
 
-  const RegisterPhoneContainerWidget({Key key, this.tag, this.image})
+  const RegisterPhoneContainerWidget(
+      {Key key, this.tag, this.image, this.country})
       : super(key: key);
 
   @override
@@ -23,7 +26,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
               vertical: SizeConfig.safeBlockVertical * 2,
             ),
             child: Column(children: <Widget>[
-              RegisterPhoneFormWidget(),
+              RegisterPhoneFormWidget(country: country),
               Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.safeBlockVertical * 4,
