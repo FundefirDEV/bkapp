@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -17,26 +18,26 @@ class ButtonCreateBkWidget extends StatelessWidget {
           child: Padding(
             key: Key('padding-label-button-create'),
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              I18n.of(context).bankNameCreate,
-              key: Key('text-flatbutton-create'),
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 5.5,
-              )
-            ),
+            child: Text(I18n.of(context).bankNameCreate,
+                key: Key('text-flatbutton-create'),
+                style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 5.5,
+                )),
           ),
-          onPressed: () {},
+          onPressed: () {
+            _nextStepWidget(context);
+          },
           shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: Colors.white,
-              width: 1,
-              style: BorderStyle.solid
-            ),
-            borderRadius: BorderRadius.circular(30.0)
-          ),
+              side: BorderSide(
+                  color: Colors.white, width: 1, style: BorderStyle.solid),
+              borderRadius: BorderRadius.circular(30.0)),
         ),
       ),
     );
+  }
+
+  void _nextStepWidget(BuildContext context) {
+    Navigator.pushNamed(context, bankCreatedRoute);
   }
 }

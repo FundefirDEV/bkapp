@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,11 +14,19 @@ class NumberPageNameBkWidget extends StatelessWidget {
         key: Key('row-content-image-text-footer'),
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            key: Key('footer-name-bk-image-left-container'),
-            margin: EdgeInsets.only(right: SizeConfig.blockSizeHorizontal * 5),
-            child: SvgPicture.asset(
-              'assets/images/left_arrow.svg'
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              key: Key('inkwell-number-page-redirect'),
+              onTap: () {
+                _prevStepWidget(context);
+              },
+              child: Container(
+                key: Key('footer-name-bk-image-left-container'),
+                margin:
+                    EdgeInsets.only(right: SizeConfig.blockSizeHorizontal * 5),
+                child: SvgPicture.asset('assets/images/left_arrow.svg'),
+              ),
             ),
           ),
           Container(
@@ -44,9 +53,13 @@ class NumberPageNameBkWidget extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+
+  void _prevStepWidget(BuildContext context) {
+    Navigator.pushNamed(context, selectAddressRoute);
   }
 }

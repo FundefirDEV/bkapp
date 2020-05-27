@@ -30,7 +30,9 @@ class Router {
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());
         break;
       case bankCreatedRoute:
-        return MaterialPageRoute(builder: (_) => BankCreatedScreen());
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) => BankCreatedScreen());
         break;
       case registerNameUser:
         final RegisterNameStepArgs data = settings.arguments;
@@ -70,13 +72,17 @@ class Router {
 
       case genderRoute:
         return MaterialPageRoute(builder: (_) => GenderScreen());
-      break;
+        break;
       case selectAddressRoute:
-        return MaterialPageRoute(builder: (_) => SelectCityScreen());
-      break;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) => SelectCityScreen());
+        break;
       case nameBkRoute:
-        return MaterialPageRoute(builder: (_) => NameBkScreen());
-      break;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) => NameBkScreen());
+        break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
@@ -39,6 +40,17 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
+    });
+
+    testWidgets('Bank invitation step screen redirect select country',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+          baseTester(child: ConfirmInvitationBankStepScreen(data: data)));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('btn-rigth-confirm-invitation-bank')));
+      await tester.pumpAndSettle();
+      expect(find.byType(SelectCityScreen), findsOneWidget);
     });
   });
 }

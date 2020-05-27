@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/widgets/confirm_invitation_bank_container_widget.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
@@ -53,8 +52,16 @@ class _ConfirmInvitationBankStepScreenState
                   padding: EdgeInsets.symmetric(
                       horizontal: SizeConfig.safeBlockVertical * 3,
                       vertical: SizeConfig.safeBlockVertical * 5),
-                  child: ButtonNextWidget(onTap: () {})))
+                  child: ButtonNextWidget(
+                      key: Key('btn-rigth-confirm-invitation-bank'),
+                      onTap: () {
+                        _nextStepWidget(context);
+                      })))
         ]);
+  }
+
+  void _nextStepWidget(BuildContext context) {
+    Navigator.pushNamed(context, selectAddressRoute);
   }
 }
 
