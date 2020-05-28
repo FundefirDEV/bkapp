@@ -1,5 +1,5 @@
+import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/add_partners_register_screen.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/footerNameBkWidget/widgets/number_page_namebk_widget.dart';
-import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -38,7 +38,7 @@ void main() {
 
       await tester.tap(find.byKey(Key('inkwell-number-page-redirect')));
       await tester.pumpAndSettle();
-      expect(find.byType(SelectCityScreen), findsOneWidget);
+      expect(find.byType(AddPartnersRegisterScreen), findsOneWidget);
     });
   });
 }

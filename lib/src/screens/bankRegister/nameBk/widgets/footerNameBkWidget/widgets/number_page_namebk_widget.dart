@@ -23,15 +23,17 @@ class NumberPageNameBkWidget extends StatelessWidget {
               },
               child: Container(
                 key: Key('footer-name-bk-image-left-container'),
-                margin:
-                    EdgeInsets.only(right: SizeConfig.blockSizeHorizontal * 5),
+                margin: EdgeInsets.only(right: 10.0),
                 child: SvgPicture.asset('assets/images/left_arrow.svg'),
               ),
             ),
           ),
           Container(
             key: Key('footer-name-bk-text-container'),
-            margin: EdgeInsets.only(right: SizeConfig.blockSizeHorizontal * 13),
+            margin: EdgeInsets.only(
+              left: SizeConfig.blockSizeHorizontal * 6,
+              right: SizeConfig.blockSizeHorizontal * 16
+            ),
             child: RichText(
               key: Key('number-page-text'),
               text: TextSpan(
@@ -60,6 +62,6 @@ class NumberPageNameBkWidget extends StatelessWidget {
   }
 
   void _prevStepWidget(BuildContext context) {
-    Navigator.pushNamed(context, selectAddressRoute);
+    Navigator.pushNamed(context, addPartnersRegisterRoute);
   }
 }

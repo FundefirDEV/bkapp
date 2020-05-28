@@ -24,14 +24,14 @@ class FooterStepWidget extends StatelessWidget {
         child: Row(children: <Widget>[
           Expanded(child: _stepContainer(context)),
           Expanded(
-              child: Container(
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.safeBlockVertical * 3,
-                      vertical: SizeConfig.safeBlockVertical * 6),
-                  child: ButtonNextWidget(onTap: () {
-                    _nextStepWidget(context);
-                  })))
+            child: Container(
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.safeBlockVertical * 3,
+                  vertical: SizeConfig.safeBlockVertical * 6),
+              child: ButtonNextWidget(onTap: () {
+                _nextStepWidget(context);
+              })))
         ]));
   }
 

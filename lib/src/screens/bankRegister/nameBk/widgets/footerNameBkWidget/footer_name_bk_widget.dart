@@ -1,5 +1,6 @@
-import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/footerNameBkWidget/widgets/button_create_bk_widget.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/footerNameBkWidget/widgets/number_page_namebk_widget.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,13 @@ class FooterNameBkWidget extends StatelessWidget {
         key: Key('column-footer-namebk'),
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          ButtonCreateBkWidget(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: ButtonLineRoundedWidget(
+              onPressed: () {},
+              firstText: I18n.of(context).bankNameCreate,
+            ),
+          ),
           NumberPageNameBkWidget()
         ],
       ),

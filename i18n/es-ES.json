@@ -18,7 +18,8 @@
     "phone": "Celular"
   },
   "error": {
-    "required": "Este campo es obligatorio"
+    "required": "Este campo es obligatorio",
+    "isEmpty": "¡No hay nada aquí!"
   },
   "loginScreen": {
     "textOne": "Entra a ",
@@ -106,6 +107,19 @@
     "putName":"Coloca el nombre de tu BKgrupo",
     "writeHere":"Esbriba aquí",
     "nameBk":"Nombre",
-    "create":"Crear"
+    "create":"CREAR"
+  },
+  "bankRegister": {
+    "addPartners": {
+      "firstTitle": "Ahora agrega los socios",
+      "secondText": "de tu BKapp",
+      "title": "socios",
+      "minimum": "Mínimo ",
+      "eight": "8 ",
+      "button": {
+        "add": "AGREGAR ",
+        "partner": "SOCIO"
+      }
+    }
   }
 }

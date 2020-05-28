@@ -18,7 +18,8 @@
     "phone": "Phone"
   },
   "error": {
-    "required": "This field is required"
+    "required": "This field is required",
+    "isEmpty": "there is nothing here!"
   },
   "loginScreen": {
     "textOne": "Go to ",
@@ -106,6 +107,19 @@
     "putName":"Put the name of your BKgroup",
     "writeHere":"Write here",
     "nameBk":"Name",
-    "create":"Create"
+    "create":"CREATE"
+  },
+  "bankRegister": {
+    "addPartners": {
+      "firstTitle": "Now add the partners",
+      "secondText": "from your BKapp",
+      "title": "partners",
+      "minimum": "Minimum ",
+      "eight": "8 ",
+      "button": {
+        "add": "ADD ",
+        "partner": "PARTNER"
+      }
+    }
   }
 }

@@ -8,8 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'invite_form_Bloc.dart';
 
-//HOW TO CALL IT:
-//showDialog(context: context, builder: (BuildContext context) => InviteModal()),
+//NOTE HOW TO CALL IT:
+// showDialog(context: context, builder: (BuildContext context) => InviteModal()),
 class InviteModal extends StatelessWidget {
   final content = InviteModalContent();
 

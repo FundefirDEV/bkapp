@@ -62,6 +62,8 @@ class I18n implements WidgetsLocalizations {
   String get formPhone => "Phone";
   /// "This field is required"
   String get errorRequired => "This field is required";
+  /// "there is nothing here!"
+  String get errorIsEmpty => "there is nothing here!";
   /// "Go to "
   String get loginScreenTextOne => "Go to ";
   /// "your bank"
@@ -172,8 +174,22 @@ class I18n implements WidgetsLocalizations {
   String get bankNameWriteHere => "Write here";
   /// "Name"
   String get bankNameNameBk => "Name";
-  /// "Create"
-  String get bankNameCreate => "Create";
+  /// "CREATE"
+  String get bankNameCreate => "CREATE";
+  /// "Now add the partners"
+  String get bankRegisterAddPartnersFirstTitle => "Now add the partners";
+  /// "from your BKapp"
+  String get bankRegisterAddPartnersSecondText => "from your BKapp";
+  /// "partners"
+  String get bankRegisterAddPartnersTitle => "partners";
+  /// "Minimum "
+  String get bankRegisterAddPartnersMinimum => "Minimum ";
+  /// "8 "
+  String get bankRegisterAddPartnersEight => "8 ";
+  /// "ADD "
+  String get bankRegisterAddPartnersButtonAdd => "ADD ";
+  /// "PARTNER"
+  String get bankRegisterAddPartnersButtonPartner => "PARTNER";
 }
 
 class _I18n_en_US extends I18n {
@@ -231,6 +247,9 @@ class _I18n_es_ES extends I18n {
   /// "Este campo es obligatorio"
   @override
   String get errorRequired => "Este campo es obligatorio";
+  /// "¡No hay nada aquí!"
+  @override
+  String get errorIsEmpty => "¡No hay nada aquí!";
   /// "Entra a "
   @override
   String get loginScreenTextOne => "Entra a ";
@@ -396,9 +415,30 @@ class _I18n_es_ES extends I18n {
   /// "Nombre"
   @override
   String get bankNameNameBk => "Nombre";
-  /// "Crear"
+  /// "CREAR"
   @override
-  String get bankNameCreate => "Crear";
+  String get bankNameCreate => "CREAR";
+  /// "Ahora agrega los socios"
+  @override
+  String get bankRegisterAddPartnersFirstTitle => "Ahora agrega los socios";
+  /// "de tu BKapp"
+  @override
+  String get bankRegisterAddPartnersSecondText => "de tu BKapp";
+  /// "socios"
+  @override
+  String get bankRegisterAddPartnersTitle => "socios";
+  /// "Mínimo "
+  @override
+  String get bankRegisterAddPartnersMinimum => "Mínimo ";
+  /// "8 "
+  @override
+  String get bankRegisterAddPartnersEight => "8 ";
+  /// "AGREGAR "
+  @override
+  String get bankRegisterAddPartnersButtonAdd => "AGREGAR ";
+  /// "SOCIO"
+  @override
+  String get bankRegisterAddPartnersButtonPartner => "SOCIO";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

@@ -10,3 +10,4 @@ const String confirmInvitationBank = '/confirmInvitationBank';
 const String bankCreatedRoute = '/bank-created';
 const String selectAddressRoute = '/select-address';
 const String nameBkRoute = '/name-bk';
+const String addPartnersRegisterRoute = '/add-partners-register-bank';

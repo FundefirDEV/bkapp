@@ -9,19 +9,22 @@ class BgBankRegister extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       key: Key('material-bg-country'),
-      child: Container(
-        key: Key('container-bg-country'),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Theme.of(context).colorScheme.primaryColor[100],
-              Theme.of(context).colorScheme.primaryColorDark
-            ]
-          )
+      child: Hero(
+        tag: 'bg-next-register',
+        child: Container(
+          key: Key('container-bg-country'),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Theme.of(context).colorScheme.primaryColor[100],
+                Theme.of(context).colorScheme.primaryColorDark
+              ]
+            )
+          ),
+          child: this.child,
         ),
-        child: this.child,
       )
     );
   }

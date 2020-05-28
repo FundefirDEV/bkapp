@@ -18,7 +18,10 @@ class FooterSelectCityWidget extends StatelessWidget {
         children: <Widget>[
           Container(
             key: Key('footer-select-city-text-container'),
-            margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 13),
+            margin: EdgeInsets.only(
+              left: SizeConfig.blockSizeHorizontal * 16,
+              right: SizeConfig.blockSizeHorizontal * 6
+            ),
             child: RichText(
               text: TextSpan(
                 children: [
@@ -49,8 +52,7 @@ class FooterSelectCityWidget extends StatelessWidget {
               },
               child: Container(
                 key: Key('footer-select-city-image-container'),
-                margin:
-                    EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
+                margin: EdgeInsets.only(left: 10.0),
                 child: SvgPicture.asset('assets/images/path.svg'),
               ),
             ),
@@ -61,6 +63,6 @@ class FooterSelectCityWidget extends StatelessWidget {
   }
 
   void _nextStepWidget(BuildContext context) {
-    Navigator.pushNamed(context, nameBkRoute);
+    Navigator.pushNamed(context, addPartnersRegisterRoute);
   }
 }

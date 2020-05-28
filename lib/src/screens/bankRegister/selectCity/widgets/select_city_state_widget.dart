@@ -27,6 +27,7 @@ class SelectCityStateWidget extends StatelessWidget {
                     key: Key('theme-dropdown-state'),
                     data: Theme.of(context).copyWith(
                     textTheme: Theme.of(context).textTheme.copyWith(
+                        // FIXME this subhead has to be replaced
                         subhead: Theme.of(context).textTheme.subhead.copyWith(
                           color: Colors.white,
                           fontSize: SizeConfig.blockSizeHorizontal * 6,

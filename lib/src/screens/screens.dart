@@ -1,0 +1,13 @@
+export 'login/login_screen.dart';
+export 'introRegister/intro_register_screen.dart';
+export 'profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
+export 'profileRegister/gender_screen.dart';
+export 'profileRegister/registerEmail/register_email_step_screen.dart';
+export 'profileRegister/registerName/register_name_step_screen.dart';
+export 'profileRegister/registerPassword/register_password_step_screen.dart';
+export 'profileRegister/registerPhone/register_phone_step_screen.dart';
+export 'bankCreated/bank_created_screen.dart';
+export 'bankRegister/nameBk/name_bk_screen.dart';
+export 'bankRegister/addParterns/add_partners_register_screen.dart';
+export 'bankRegister/selectCity/select_city_screen.dart';
+export 'homeTest/home_test_screen.dart';
