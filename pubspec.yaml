@@ -25,10 +25,11 @@ dependencies:
     path: ./bk_packages/bk_core
   flutter_svg: ^0.17.4
   flutter_form_bloc: ^0.14.0
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   animate_do: ^1.7.2
+  dio: ^3.0.9
+  mockito: ^4.1.1
+  equatable: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -42,12 +43,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
 

@@ -1,6 +1,9 @@
+import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class LoginFormBloc extends FormBloc<String, String> {
+  final LoginRepository repository;
 
   final username = TextFieldBloc(
     validators: [FieldBlocValidators.required]
@@ -9,7 +12,7 @@ class LoginFormBloc extends FormBloc<String, String> {
     validators: [FieldBlocValidators.required]
   );
 
-  LoginFormBloc() {
+  LoginFormBloc({@required this.repository}) {
     addFieldBlocs(
       fieldBlocs: [
         username,
@@ -20,11 +23,10 @@ class LoginFormBloc extends FormBloc<String, String> {
 
   @override
   void onSubmitting() async {
-    print(username.value);
-    print(password.value);
-
-    await Future<void>.delayed(Duration(seconds: 1));
-
+    await repository.postLogin(
+      username: username.value,
+      password: password.value
+    );
     emitSuccess();
   }
 
