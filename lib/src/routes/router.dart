@@ -1,16 +1,8 @@
-import 'dart:io';
-
-import 'package:bkapp_flutter/core/bloc/loginFormBloc/login_form_bloc.dart';
-import 'package:bkapp_flutter/core/services/api/api_provider.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,15 +13,7 @@ class Router {
                 HomeTestScreen(title: I18n.of(context).testText));
         break;
       case loginRoute:
-        return MaterialPageRoute(builder: (_) =>
-          BlocProvider(
-            create: (context) => LoginFormBloc(
-              repository: loginRepository
-            ),
-            child: Builder(
-              builder: (context) => LoginScreen()),
-          )
-        );
+        return MaterialPageRoute(builder: (_) => loginRouteBloc());
         break;
       case introRoute:
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());

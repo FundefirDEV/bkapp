@@ -1,11 +1,12 @@
-import 'package:bkapp_flutter/core/services/api/custom_exception.dart';
+import 'package:bkapp_flutter/core/services/api/custom_exceptions.dart';
 import 'package:dio/dio.dart';
 
 class ApiResponses {
   static dynamic apiResponse(Response response) {
     switch (response.statusCode) {
       case 200:
-        print(response.data.toString());
+        // NOTE Watch the states in the console
+        // print(response.data.toString());
         return response.data;
         break;
       case 400:

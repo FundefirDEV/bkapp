@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bkapp_flutter/core/services/api/custom_exception.dart';
+import 'package:bkapp_flutter/core/services/api/custom_exceptions.dart';
 import 'package:bkapp_flutter/core/services/api/responses.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';

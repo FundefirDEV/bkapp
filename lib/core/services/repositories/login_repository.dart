@@ -8,6 +8,8 @@ class LoginRepository {
     @required this.apiProvider
   }) : assert(apiProvider != null);
 
+  LoginRepository.test({@required this.apiProvider});
+
   Future<Map<String, dynamic>> postLogin({
     @required String username,
     @required String password
@@ -27,8 +29,8 @@ class LoginRepository {
     //TODO write to keystore/keychain
   }
 
-  Future<bool> hasToken() async {
+  Future<bool> hasToken({bool token = false}) async {
     //TODO read from keystore/keychain
-    return false;
+    return token;
   }
 }

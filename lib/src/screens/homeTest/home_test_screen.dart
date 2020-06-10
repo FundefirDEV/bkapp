@@ -1,14 +1,15 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bk_core/bk_groups.dart';
-// import 'package:bk_core/src/utils.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class HomeTestScreen extends StatefulWidget {
-  HomeTestScreen({Key key, this.title}) : super(key: key);
+  HomeTestScreen({Key key, @required this.title}) : super(key: key);
 
   final String title;
 
@@ -51,6 +52,12 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () => BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut())
+            )
+          ],
         ),
         body: Center(
           child: SingleChildScrollView(

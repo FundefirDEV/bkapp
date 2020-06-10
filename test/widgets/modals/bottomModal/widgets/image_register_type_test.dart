@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/name_bk_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/widgets/image_register_type.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,4 +1,6 @@
 export 'login/login_screen.dart';
+export 'login/splash_screen.dart';
+export 'login/login_indicator_screen.dart';
 export 'introRegister/intro_register_screen.dart';
 export 'profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 export 'profileRegister/gender_screen.dart';

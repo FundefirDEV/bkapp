@@ -2,12 +2,50 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:bkapp_flutter/src/routes/router.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:logger/logger.dart';
 
-void main() => runApp(MyApp());
+class SimpleBlocDelegate extends BlocDelegate {
+  var logger = Logger(printer: PrettyPrinter(
+      colors: false,
+      errorMethodCount: 1,
+      printEmojis: true,
+      printTime: true,
+      lineLength: 80,
+      methodCount: 0,
+    ));
+
+  @override
+  void onEvent(Bloc bloc, Object event) {
+    logger.i(event);
+    super.onEvent(bloc, event);
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    logger.v({
+      'currentState': '${transition.currentState}',
+      'event': '${transition.event}',
+      'nextState': '${transition.nextState}'
+    });
+    super.onTransition(bloc, transition);
+  }
+
+  @override
+  void onError(Bloc bloc, Object error, StackTrace stackTrace) {
+    logger.e(error);
+    super.onError(bloc, error, stackTrace);
+  }
+}
+
+void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

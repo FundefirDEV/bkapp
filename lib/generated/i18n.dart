@@ -40,6 +40,8 @@ class I18n implements WidgetsLocalizations {
   String get firstText => "You have pushed the button this many times:";
   /// "Go to login"
   String get goToLogin => "Go to login";
+  /// "Splash Screen"
+  String get splashScreen => "Splash Screen";
   /// "ENTER"
   String get actionTextEnter => "ENTER";
   /// "I'M NEW"
@@ -214,6 +216,9 @@ class _I18n_es_ES extends I18n {
   /// "Ir a login"
   @override
   String get goToLogin => "Ir a login";
+  /// "Splash Screen"
+  @override
+  String get splashScreen => "Splash Screen";
   /// "INGRESAR"
   @override
   String get actionTextEnter => "INGRESAR";

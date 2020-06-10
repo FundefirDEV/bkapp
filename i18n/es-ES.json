@@ -3,6 +3,7 @@
   "testText": "Texto de prueba",
   "firstText": "Has presionado el boton varias veces",
   "goToLogin": "Ir a login",
+  "splashScreen": "Splash Screen",
   "actionText": {
     "enter": "INGRESAR",
     "imNew": "SOY NUEVO",
