@@ -10,14 +10,15 @@ import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:logger/logger.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
-  var logger = Logger(printer: PrettyPrinter(
-      colors: false,
-      errorMethodCount: 1,
-      printEmojis: true,
-      printTime: true,
-      lineLength: 80,
-      methodCount: 0,
-    ));
+  var logger = Logger(
+      printer: PrettyPrinter(
+    colors: false,
+    errorMethodCount: 1,
+    printEmojis: true,
+    printTime: true,
+    lineLength: 80,
+    methodCount: 0,
+  ));
 
   @override
   void onEvent(Bloc bloc, Object event) {
@@ -52,23 +53,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final i18n = I18n.delegate;
     return MaterialApp(
-      title: 'Bk App',
-      theme: ThemeData(
-        fontFamily: 'Nunito',
-      ),
-      localizationsDelegates: [
-        i18n,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate
-      ],
-      supportedLocales: i18n.supportedLocales,
-      localeResolutionCallback: i18n.resolution(
-        fallback: new Locale("es", "ES")
-      ),
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: loginRoute
-    );
+        title: 'Bk App',
+        theme: ThemeData(
+          fontFamily: 'Nunito',
+        ),
+        localizationsDelegates: [
+          i18n,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate
+        ],
+        supportedLocales: i18n.supportedLocales,
+        localeResolutionCallback:
+            i18n.resolution(fallback: new Locale("es", "ES")),
+        onGenerateRoute: Router.generateRoute,
+        initialRoute: loginRoute);
   }
 }

@@ -13,3 +13,4 @@ export 'bankRegister/nameBk/name_bk_screen.dart';
 export 'bankRegister/addParterns/add_partners_register_screen.dart';
 export 'bankRegister/selectCity/select_city_screen.dart';
 export 'homeTest/home_test_screen.dart';
+export 'utils/utils_screen.dart';

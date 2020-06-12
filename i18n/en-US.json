@@ -104,11 +104,11 @@
     "state": "STATE"
   },
   "bankName": {
-    "byLast":"By last!",
-    "putName":"Put the name of your BKgroup",
-    "writeHere":"Write here",
-    "nameBk":"Name",
-    "create":"CREATE"
+    "byLast": "By last!",
+    "putName": "Put the name of your BKgroup",
+    "writeHere": "Write here",
+    "nameBk": "Name",
+    "create": "CREATE"
   },
   "bankRegister": {
     "addPartners": {
@@ -122,5 +122,23 @@
         "partner": "PARTNER"
       }
     }
+  },
+  "utils": {
+    "utils": "Utils",
+    "approvals": "Approvals",
+    "requests": "requests",
+    "rulesOf": "Rules of",
+    "groupBk": "bk group",
+    "withdrawalOf": "Withdrawal of",
+    "partners": "Partners",
+    "paymentOf": "Payment of",
+    "profits": "Profits",
+    "approveCreditActions": "Approve credits\nand actions",
+    "KnowManageBk": "Know how to\nmanage your banko",
+    "DeleteDeliverActions": "Delete and\ndeliver actions",
+    "KnowEarningsYear": "Know your\nearnings for the year",
+    "exemptions": "Exemptions",
+    "assignment": "Assignment",
+    "administrator": "administrator"
   }
 }

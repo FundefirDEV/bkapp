@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 import 'repositories.dart';
 
-String localIp = '192.168.0.8';
+String localIp;
 
 // NOTE Connect Dio to proxyman
 Dio _proxyDio({String ip}) {
@@ -14,15 +14,17 @@ Dio _proxyDio({String ip}) {
   Dio dio = new Dio();
 
   if (ip != null) {
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (client) {
       // Hook into the findProxy callback to set the client's proxy.
       client.findProxy = (url) {
         return 'PROXY $proxy';
       };
-      
+
       // This is a workaround to allow Proxyman to receive
       // SSL payloads when your app is running on Android.
-      client.badCertificateCallback = (X509Certificate cert, String host, int port) => Platform.isAndroid;
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => Platform.isAndroid;
     };
   }
 
@@ -30,7 +32,6 @@ Dio _proxyDio({String ip}) {
 }
 
 final LoginRepository loginRepository = LoginRepository(
-  apiProvider: ApiProvider(
-    httpClient: _proxyDio(ip: localIp),
-  )
-);
+    apiProvider: ApiProvider(
+  httpClient: _proxyDio(ip: localIp),
+));

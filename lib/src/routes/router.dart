@@ -1,3 +1,12 @@
+import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/name_bk_screen.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -73,9 +82,10 @@ class Router {
         break;
       case addPartnersRegisterRoute:
         return PageRouteBuilder(
-          transitionDuration: Duration(microseconds: 350),
-          pageBuilder: (context, _, __) => AddPartnersRegisterScreen()
-        );
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => AddPartnersRegisterScreen());
+      case utilsScreenRoute:
+        return MaterialPageRoute(builder: (_) => UtilsScreen());
         break;
       default:
         return MaterialPageRoute(

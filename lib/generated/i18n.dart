@@ -192,6 +192,38 @@ class I18n implements WidgetsLocalizations {
   String get bankRegisterAddPartnersButtonAdd => "ADD ";
   /// "PARTNER"
   String get bankRegisterAddPartnersButtonPartner => "PARTNER";
+  /// "Útiles"
+  String get utilsUtils => "Útiles";
+  /// "Approvals"
+  String get utilsApprovals => "Approvals";
+  /// "requests"
+  String get utilsRequests => "requests";
+  /// "Rules of"
+  String get utilsRulesOf => "Rules of";
+  /// "bk group"
+  String get utilsGroupBk => "bk group";
+  /// "Withdrawal of"
+  String get utilsWithdrawalOf => "Withdrawal of";
+  /// "Partners"
+  String get utilsPartners => "Partners";
+  /// "Payment of"
+  String get utilsPaymentOf => "Payment of";
+  /// "Profits"
+  String get utilsProfits => "Profits";
+  /// "Approve credits\nand actions"
+  String get utilsApproveCreditActions => "Approve credits\nand actions";
+  /// "Know how to\nmanage your banko"
+  String get utilsKnowManageBk => "Know how to\nmanage your banko";
+  /// "Delete and\ndeliver actions"
+  String get utilsDeleteDeliverActions => "Delete and\ndeliver actions";
+  /// "Know your\nearnings for the year"
+  String get utilsKnowEarningsYear => "Know your\nearnings for the year";
+  /// "Exemptions"
+  String get utilsExemptions => "Exemptions";
+  /// "Assignment"
+  String get utilsAssignment => "Assignment";
+  /// "administrator"
+  String get utilsAdministrator => "administrator";
 }
 
 class _I18n_en_US extends I18n {
@@ -444,6 +476,54 @@ class _I18n_es_ES extends I18n {
   /// "SOCIO"
   @override
   String get bankRegisterAddPartnersButtonPartner => "SOCIO";
+  /// "Útiles"
+  @override
+  String get utilsUtils => "Útiles";
+  /// "Approvals"
+  @override
+  String get utilsApprovals => "Approvals";
+  /// "peticiones"
+  @override
+  String get utilsRequests => "peticiones";
+  /// "Reglas del"
+  @override
+  String get utilsRulesOf => "Reglas del";
+  /// "grupo bk"
+  @override
+  String get utilsGroupBk => "grupo bk";
+  /// "Retiro de"
+  @override
+  String get utilsWithdrawalOf => "Retiro de";
+  /// "socios"
+  @override
+  String get utilsPartners => "socios";
+  /// "Pago de"
+  @override
+  String get utilsPaymentOf => "Pago de";
+  /// "ganancias"
+  @override
+  String get utilsProfits => "ganancias";
+  /// "Aprobar créditos\ny acciones"
+  @override
+  String get utilsApproveCreditActions => "Aprobar créditos\ny acciones";
+  /// "Conoce cómo\nmanejar tu banko"
+  @override
+  String get utilsKnowManageBk => "Conoce cómo\nmanejar tu banko";
+  /// "Elimina y entrega\nlas acciones"
+  @override
+  String get utilsDeleteDeliverActions => "Elimina y entrega\nlas acciones";
+  /// "Conoce tus\nganancias del año"
+  @override
+  String get utilsKnowEarningsYear => "Conoce tus\nganancias del año";
+  /// "Exoneraciones"
+  @override
+  String get utilsExemptions => "Exoneraciones";
+  /// "Asignar"
+  @override
+  String get utilsAssignment => "Asignar";
+  /// "administradores"
+  @override
+  String get utilsAdministrator => "administradores";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

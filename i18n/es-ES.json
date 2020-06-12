@@ -104,11 +104,11 @@
     "State": "ESTADO"
   },
   "bankName": {
-    "byLast":"¡Por último!",
-    "putName":"Coloca el nombre de tu BKgrupo",
-    "writeHere":"Esbriba aquí",
-    "nameBk":"Nombre",
-    "create":"CREAR"
+    "byLast": "¡Por último!",
+    "putName": "Coloca el nombre de tu BKgrupo",
+    "writeHere": "Esbriba aquí",
+    "nameBk": "Nombre",
+    "create": "CREAR"
   },
   "bankRegister": {
     "addPartners": {
@@ -122,5 +122,23 @@
         "partner": "SOCIO"
       }
     }
+  },
+  "utils": {
+    "utils": "Útiles",
+    "approvals": "Approvals",
+    "requests": "peticiones",
+    "rulesOf": "Reglas del",
+    "groupBk": "grupo bk",
+    "withdrawalOf": "Retiro de",
+    "partners": "socios",
+    "paymentOf": "Pago de",
+    "profits": "ganancias",
+    "approveCreditActions": "Aprobar créditos\ny acciones",
+    "KnowManageBk": "Conoce cómo\nmanejar tu banko",
+    "DeleteDeliverActions": "Elimina y entrega\nlas acciones",
+    "KnowEarningsYear": "Conoce tus\nganancias del año",
+    "exemptions": "Exoneraciones",
+    "assignment": "Asignar",
+    "administrator": "administradores"
   }
 }
