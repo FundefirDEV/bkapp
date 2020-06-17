@@ -106,11 +106,11 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('raisedButton-accept')));
-      await tester.pump();
+      await tester.pumpAndSettle();
       expect(find.text('This field is required'), findsNWidgets(2));
       await tester.enterText(
         find.byKey(Key('input-username')),
-        'Nuevo Usuario'
+        'correo@gmail.com'
       );
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();

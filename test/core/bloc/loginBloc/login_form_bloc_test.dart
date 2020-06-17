@@ -39,7 +39,7 @@ void main() {
     )
   );
 
-  testWidgets('The onSubmittin should fail', (WidgetTester tester) async {
+  testWidgets('The onSubmitting should fail', (WidgetTester tester) async {
     await tester.pumpWidget(widgetTester);
     await tester.pumpAndSettle();
 
@@ -67,7 +67,7 @@ void main() {
   });
 
 
-  test('The onSubmittin should works', () async {
+  test('The onSubmitting should works', () async {
     formBloc = LoginFormBloc(
       authenticationBloc: authenticationBloc = AuthenticationBloc(
         loginRepository: tapi
@@ -93,7 +93,8 @@ void main() {
     );
 
     formBloc.onSubmitting();
-    expect(formBloc.state, isInstanceOf<FormBlocLoaded>());
+    expect(authenticationBloc.state, isA<AuthenticationUninitialized>());
+    expect(formBloc.state, isA<FormBlocLoaded>());
   });
 
   tearDown(() {

@@ -4,11 +4,12 @@
 
 import 'dart:convert';
 
-Partner partnerFromJson(String str) => Partner.fromJson(json.decode(str));
+PartnerModel partnerFromJson(String str) => PartnerModel.fromJson(json.decode(str));
 
-String partnerToJson(Partner data) => json.encode(data.toJson());
+String partnerToJson(PartnerModel data) => json.encode(data.toJson());
 
-class Partner {
+class PartnerModel {
+  String id;
   String firstname;
   String lastname;
   String gender;
@@ -19,7 +20,8 @@ class Partner {
   String password;
   String passwordConfirmation;
 
-  Partner({
+  PartnerModel({
+    this.id,
     this.firstname,
     this.lastname,
     this.gender,
@@ -31,26 +33,28 @@ class Partner {
     this.passwordConfirmation,
   });
 
-  factory Partner.fromJson(Map<String, dynamic> json) => Partner(
+  factory PartnerModel.fromJson(Map<String, dynamic> json) => PartnerModel(
+    id: json["id"],
     firstname: json["firstname"],
     lastname: json["lastname"],
-    gender: json["gender"],
-    country: json["country"],
+    gender: json["gender"] ?? null,
+    country: json["country"] ?? null,
     phone: json["phone"],
-    email: json["email"],
-    validationCode: json["validationCode"],
+    email: json["email"] ?? null,
+    validationCode: json["validationCode"] ?? null,
     password: json["password"],
     passwordConfirmation: json["passwordConfirmation"],
   );
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "firstname": firstname,
     "lastname": lastname,
-    "gender": gender,
-    "country": country,
+    "gender": gender ?? null,
+    "country": country ?? null,
     "phone": phone,
-    "email": email,
-    "validationCode": validationCode,
+    "email": email ?? null,
+    "validationCode": validationCode ?? null,
     "password": password,
     "passwordConfirmation": passwordConfirmation,
     };

@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/registerNameStepBloc/register_name_step_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -9,40 +9,37 @@ class RegisterPasswordFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RegisterNameStepBloc(),
-      child: Builder(
-        builder: (context) {
-          return Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.safeBlockVertical * 6),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    TextFieldBlocBuilder(
-                        textFieldBloc:
-                            context.bloc<RegisterNameStepBloc>().password,
-                        suffixButton: SuffixButton.obscureText,
-                        errorBuilder: (context, string) =>
-                            I18n.of(context).errorRequired,
-                        decoration: InputDecoration(
-                            labelText: I18n.of(context).formPassword,
-                            prefixIcon: Icon(Icons.person))),
-                    TextFieldBlocBuilder(
-                        textFieldBloc: context
-                            .bloc<RegisterNameStepBloc>()
-                            .passwordConfirm,
-                        suffixButton: SuffixButton.obscureText,
-                        errorBuilder: (context, string) =>
-                            I18n.of(context).errorRequired,
-                        decoration: InputDecoration(
-                            labelText: I18n.of(context).formConfirmPassword,
-                            prefixIcon: Icon(Icons.person))),
-                  ],
-                ),
-              ));
-        },
-      ),
-    );
+    //ignore: close_sinks
+    final profilePassword = context.bloc<AppBloc>().profileRegisterBloc;
+
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: SizeConfig.safeBlockVertical * 6),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            TextFieldBlocBuilder(
+              textFieldBloc: profilePassword.passwordBloc.password,
+              suffixButton: SuffixButton.obscureText,
+              errorBuilder: (context, string) =>
+                  I18n.of(context).errorRequired,
+              decoration: InputDecoration(
+                labelText: I18n.of(context).formPassword,
+                prefixIcon: Icon(Icons.person)
+              )
+            ),
+            TextFieldBlocBuilder(
+              textFieldBloc: profilePassword.passwordBloc.passwordConfirm,
+              suffixButton: SuffixButton.obscureText,
+              errorBuilder: (context, string) =>
+                  I18n.of(context).errorRequired,
+              decoration: InputDecoration(
+                labelText: I18n.of(context).formConfirmPassword,
+                prefixIcon: Icon(Icons.person)
+              )
+            ),
+          ],
+        ),
+      ));
   }
 }

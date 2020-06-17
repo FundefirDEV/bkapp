@@ -1,1 +1,1 @@
-export 'partner.dart';
+export 'partner_model.dart';

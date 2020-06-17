@@ -1,4 +1,5 @@
 {
+  "appName": "BKapp",
   "pageNotFound": "No route defined for {route}",
   "testText": "Test text",
   "firstText": "You have pushed the button this many times:",

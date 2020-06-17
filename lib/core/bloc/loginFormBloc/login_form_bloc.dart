@@ -8,7 +8,10 @@ class LoginFormBloc extends FormBloc<String, String> {
   final AuthenticationBloc authenticationBloc;
 
   final username = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
+    validators: [
+      FieldBlocValidators.required,
+      FieldBlocValidators.email,
+    ]
   );
   final password = TextFieldBloc(
     validators: [FieldBlocValidators.required]

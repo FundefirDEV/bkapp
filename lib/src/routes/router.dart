@@ -35,16 +35,16 @@ class Router {
       case registerNameUser:
         final RegisterNameStepArgs data = settings.arguments;
         return PageRouteBuilder(
-            transitionDuration: Duration(milliseconds: 350),
-            pageBuilder: (context, _, __) =>
-                RegisterNameStepScreen(data: data));
+          transitionDuration: Duration(milliseconds: 350),
+          pageBuilder: (_, __, ___) => RegisterNameStepScreen(data: data)
+        );
         break;
       case registerEmailUser:
         final RegisterEmailStepArgs data = settings.arguments;
         return PageRouteBuilder(
-            transitionDuration: Duration(milliseconds: 350),
-            pageBuilder: (context, _, __) =>
-                RegisterEmailStepScreen(data: data));
+          transitionDuration: Duration(milliseconds: 350),
+          pageBuilder: (_, __, ___) => RegisterEmailStepScreen(data: data)
+        );
         break;
       case registerPhoneUser:
         final RegisterPhoneStepArgs data = settings.arguments;

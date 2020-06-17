@@ -2,8 +2,11 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
 import 'package:dio/dio.dart';
+import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:bloc_test/bloc_test.dart';
+
+class MockLoginRepository extends Mock implements LoginRepository {}
 
 void main() {
   LoginRepository repository = LoginRepository(
@@ -11,6 +14,19 @@ void main() {
       httpClient: new Dio(),
     )
   );
+  AuthenticationBloc authenticationBloc;
+  MockLoginRepository loginRepository;
+
+  setUp(() {
+    loginRepository = MockLoginRepository();
+    authenticationBloc = AuthenticationBloc(
+      loginRepository: loginRepository
+    );
+  });
+
+  tearDown(() {
+    authenticationBloc?.close();
+  });
 
   final Map<String, dynamic> token = {
     'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
@@ -18,6 +34,27 @@ void main() {
   };
 
   group('Test LoginBloc and AuthenticationBloc', () {
+
+    test('initial state is correct', () {
+      expect(authenticationBloc.initialState, AuthenticationUninitialized());
+    });
+
+    test('close does not emit new states', () {
+      expectLater(
+        authenticationBloc,
+        emitsInOrder([AuthenticationUninitialized(), emitsDone]),
+      );
+      authenticationBloc.close();
+    });
+
+    test('Assert authentication should return an assertion error', () {
+      expect(() =>
+        AuthenticationBloc(
+          loginRepository: null
+        ),
+        throwsA(isA<AssertionError>())
+      );
+    });
 
     blocTest(
       'Test when the app is initialized from scratch',

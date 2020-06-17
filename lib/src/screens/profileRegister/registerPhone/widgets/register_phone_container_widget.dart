@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_form_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarousel/items_country.dart';
@@ -5,6 +6,8 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.d
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RegisterPhoneContainerWidget extends StatelessWidget {
   final String tag;
@@ -17,9 +20,10 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profile = context.bloc<AppBloc>().profileRegisterBloc;
     return Column(
       children: <Widget>[
-        _headerContainer(context),
+        _headerContainer(context, profile),
         Container(
             padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.safeBlockVertical * 3,
@@ -78,7 +82,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
     );
   }
 
-  Container _headerContainer(BuildContext context) {
+  Container _headerContainer(BuildContext context, ProfileRegisterBloc profile) {
     return Container(
       child: Row(
         children: <Widget>[
@@ -93,13 +97,17 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
                 image: SvgPicture.asset(this.image),
                 tag: this.tag,
               )),
-          _infoUser(context)
+          _infoUser(context, profile)
         ],
       ),
     );
   }
 
-  Container _infoUser(BuildContext context) {
+  Container _infoUser(BuildContext context, ProfileRegisterBloc profile) {
+    
+    String firstName = profile.nameBloc.firstName.value;
+    String lastName = profile.nameBloc.secondName.value;
+
     return Container(
         width: SizeConfig.safeBlockHorizontal * 60,
         padding: EdgeInsets.only(right: SizeConfig.safeBlockHorizontal * 10),
@@ -107,7 +115,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
           Container(
               alignment: Alignment.topLeft,
               child: Text(
-                'Marcos Nope',
+                '$firstName $lastName',
                 style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 6,
                   fontWeight: FontWeight.w200,
@@ -118,20 +126,21 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: EdgeInsets.symmetric(
                   vertical: SizeConfig.safeBlockVertical * 0.5),
-              child: Text('data.code.trip@gmail.com',
-                  style: TextStyle(
-                    fontSize: SizeConfig.safeBlockHorizontal * 4,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black54,
-                  ))),
+              child: Text(
+                '${profile.emailBloc.email.value}',
+                style: TextStyle(
+                  fontSize: SizeConfig.safeBlockHorizontal * 4,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black54,
+                ))),
           Container(
-              alignment: Alignment.topLeft,
-              child: Text(I18n.of(context).registerPhoneTitle,
-                  style: TextStyle(
-                    fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                    fontWeight: FontWeight.w200,
-                    color: Colors.black,
-                  )))
+            alignment: Alignment.topLeft,
+            child: Text(I18n.of(context).registerPhoneTitle,
+                style: TextStyle(
+                  fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                  fontWeight: FontWeight.w200,
+                  color: Colors.black,
+                )))
         ]));
   }
 }

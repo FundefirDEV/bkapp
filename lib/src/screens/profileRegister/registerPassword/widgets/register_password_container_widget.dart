@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/widgets/register_password_form_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class RegisterPasswordContainerWidget extends StatelessWidget {
@@ -44,6 +46,11 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
   }
 
   Container _infoUser(BuildContext context) {
+    //ignore: close_sinks
+    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    String firstName = profile.nameBloc.firstName.value;
+    String lastName = profile.nameBloc.secondName.value;
+
     return Container(
         width: SizeConfig.safeBlockHorizontal * 60,
         padding: EdgeInsets.only(right: SizeConfig.safeBlockHorizontal * 10),
@@ -51,7 +58,7 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
           Container(
               alignment: Alignment.topLeft,
               child: Text(
-                'Marcos Nope',
+                '$firstName $lastName',
                 style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 6,
                   fontWeight: FontWeight.w200,
@@ -59,21 +66,29 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
                 ),
               )),
           Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.symmetric(
-                  vertical: SizeConfig.safeBlockVertical * 0.5),
-              child: Text('data.code.trip@gmail.com',
-                  style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 4,
-                      fontWeight: FontWeight.w200,
-                      color: Theme.of(context).colorScheme.grayColor))),
+            alignment: Alignment.topLeft,
+            padding: EdgeInsets.symmetric(
+                vertical: SizeConfig.safeBlockVertical * 0.5),
+            child: Text(
+              '${profile.emailBloc.email.value}',
+              style: TextStyle(
+                fontSize: SizeConfig.safeBlockHorizontal * 4,
+                fontWeight: FontWeight.w200,
+                color: Theme.of(context).colorScheme.grayColor
+              )
+            )
+          ),
           Container(
-              alignment: Alignment.topLeft,
-              child: Text('321 494 5839',
-                  style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 4,
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.grayColor)))
+            alignment: Alignment.topLeft,
+            child: Text(
+              '${profile.phoneBloc.phone.value}',
+              style: TextStyle(
+                fontSize: SizeConfig.safeBlockHorizontal * 4,
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).colorScheme.grayColor
+              )
+            )
+          )
         ]));
   }
 }

@@ -32,6 +32,8 @@ class I18n implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  /// "BKapp"
+  String get appName => "BKapp";
   /// "No route defined for ${route}"
   String pageNotFound(String route) => "No route defined for ${route}";
   /// "Test text"
@@ -236,6 +238,9 @@ class _I18n_en_US extends I18n {
 class _I18n_es_ES extends I18n {
   const _I18n_es_ES();
 
+  /// "BKapp"
+  @override
+  String get appName => "BKapp";
   /// "No existe una ruta definida para ${route}"
   @override
   String pageNotFound(String route) => "No existe una ruta definida para ${route}";

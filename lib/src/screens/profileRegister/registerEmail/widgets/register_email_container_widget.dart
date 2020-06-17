@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/widgets/register_email_form_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
@@ -9,8 +11,11 @@ class RegisterEmailContainerWidget extends StatelessWidget {
   final String tag;
   final String image;
 
-  const RegisterEmailContainerWidget({Key key, this.tag, this.image})
-      : super(key: key);
+  const RegisterEmailContainerWidget({
+    Key key,
+    this.tag,
+    this.image
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +23,14 @@ class RegisterEmailContainerWidget extends StatelessWidget {
       children: <Widget>[
         _headerContainer(context),
         Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockVertical * 3,
-              vertical: SizeConfig.safeBlockVertical * 2,
-            ),
-            child: Column(children: <Widget>[RegisterEmailFormWidget()]))
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.safeBlockVertical * 3,
+            vertical: SizeConfig.safeBlockVertical * 2,
+          ),
+          child: Column(children: <Widget>[
+            RegisterEmailFormWidget()
+          ])
+        )
       ],
     );
   }
@@ -48,7 +56,12 @@ class RegisterEmailContainerWidget extends StatelessWidget {
     );
   }
 
-  Container _infoUser(BuildContext context) {
+  Widget _infoUser(BuildContext context) {
+    //ignore: close_sinks
+    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    String firstName = profile.nameBloc.firstName.value;
+    String lastName = profile.nameBloc.secondName.value;
+
     return Container(
         width: SizeConfig.safeBlockHorizontal * 60,
         padding: EdgeInsets.only(right: SizeConfig.safeBlockHorizontal * 10),
@@ -65,15 +78,18 @@ class RegisterEmailContainerWidget extends StatelessWidget {
                 ),
               )),
           Container(
-              alignment: Alignment.topLeft,
-              padding:
-                  EdgeInsets.only(bottom: SizeConfig.safeBlockVertical * 1),
-              child: Text('¡Marcos Nope!',
-                  style: TextStyle(
-                    fontSize: SizeConfig.safeBlockHorizontal * 6,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black54,
-                  ))),
+            alignment: Alignment.topLeft,
+            padding:
+                EdgeInsets.only(bottom: SizeConfig.safeBlockVertical * 1),
+            child: Text(
+              '$firstName $lastName',
+              style: TextStyle(
+                fontSize: SizeConfig.safeBlockHorizontal * 6,
+                fontWeight: FontWeight.w700,
+                color: Colors.black54,
+              )
+            )
+          ),
           Container(
               alignment: Alignment.topLeft,
               child: Text(I18n.of(context).registerEmailSubtitle,

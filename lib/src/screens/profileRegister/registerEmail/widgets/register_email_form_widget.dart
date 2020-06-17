@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/registerNameStepBloc/register_name_step_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -9,22 +9,19 @@ class RegisterEmailFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RegisterNameStepBloc(),
-      child: Builder(
-        builder: (context) {
-          return Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: SizeConfig.safeBlockVertical * 5,
-                  horizontal: SizeConfig.safeBlockHorizontal * 6),
-              child: TextFieldBlocBuilder(
-                  textFieldBloc: context.bloc<RegisterNameStepBloc>().email,
-                  errorBuilder: (context, string) =>
-                      I18n.of(context).errorRequired,
-                  decoration:
-                      InputDecoration(labelText: I18n.of(context).formEmail)));
-        },
-      ),
+    //ignore: close_sinks
+    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    return Container(
+      padding: EdgeInsets.symmetric(
+          vertical: SizeConfig.safeBlockVertical * 5,
+          horizontal: SizeConfig.safeBlockHorizontal * 6),
+      child: TextFieldBlocBuilder(
+          textFieldBloc: profile.emailBloc.email,
+          errorBuilder: (context, string) =>
+              I18n.of(context).errorRequired,
+          decoration:
+              InputDecoration(labelText: I18n.of(context).formEmail)
+      )
     );
   }
 }

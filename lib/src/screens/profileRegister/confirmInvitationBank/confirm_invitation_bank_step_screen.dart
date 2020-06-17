@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/widgets/confirm_invitation_bank_container_widget.dart';
@@ -5,6 +6,7 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ConfirmInvitationBankStepScreen extends StatefulWidget {
   final ConfirmInvitationBankStepArgs data;
@@ -41,26 +43,30 @@ class _ConfirmInvitationBankStepScreenState
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-              flex: 2,
-              child: SingleChildScrollView(
-                child: ConfirmInvitationBankContainerWidget(
-                    tag: widget.data.tag, image: widget.data.image),
-              )),
+            flex: 2,
+            child: SingleChildScrollView(
+              child: ConfirmInvitationBankContainerWidget(
+                tag: widget.data.tag, image: widget.data.image
+              ),
+            )
+          ),
           Expanded(
-              child: Container(
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.safeBlockVertical * 3,
-                      vertical: SizeConfig.safeBlockVertical * 5),
-                  child: ButtonNextWidget(
-                      key: Key('btn-rigth-confirm-invitation-bank'),
-                      onTap: () {
-                        _nextStepWidget(context);
-                      })))
+            child: Container(
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.safeBlockVertical * 3,
+                  vertical: SizeConfig.safeBlockVertical * 5),
+              child: ButtonNextWidget(
+                key: Key('btn-rigth-confirm-invitation-bank'),
+                onTap: () => _nextStepWidget(context)
+              )
+            )
+          )
         ]);
   }
 
   void _nextStepWidget(BuildContext context) {
+    context.bloc<AppBloc>().profileRegisterBloc.submit();
     Navigator.pushNamed(context, selectAddressRoute);
   }
 }

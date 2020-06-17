@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/country_modal_content_widget.dart';
@@ -8,7 +11,6 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
-import 'package:flutter/material.dart';
 
 class RegisterPhoneStepScreen extends StatefulWidget {
   final RegisterPhoneStepArgs data;
@@ -51,6 +53,8 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> with 
             currentStep: 3,
             numberOfSteps: 4,
             route: registerPasswordUser,
+            currentBlocSubmit: 
+              context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.submit,
             renderNextWidget:
               RegisterPasswordStepArgs(widget.data.tag, widget.data.image),
           )

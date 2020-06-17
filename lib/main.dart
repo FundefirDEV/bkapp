@@ -9,6 +9,8 @@ import 'package:bkapp_flutter/src/routes/router.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:logger/logger.dart';
 
+import 'core/bloc/app_bloc.dart';
+
 class SimpleBlocDelegate extends BlocDelegate {
   var logger = Logger(
       printer: PrettyPrinter(
@@ -52,7 +54,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final i18n = I18n.delegate;
-    return MaterialApp(
+    return BlocProvider(
+      create: (context) => AppBloc(),
+      child: MaterialApp(
         title: 'Bk App',
         theme: ThemeData(
           fontFamily: 'Nunito',
@@ -65,9 +69,12 @@ class MyApp extends StatelessWidget {
           DefaultCupertinoLocalizations.delegate
         ],
         supportedLocales: i18n.supportedLocales,
-        localeResolutionCallback:
-            i18n.resolution(fallback: new Locale("es", "ES")),
+        localeResolutionCallback: i18n.resolution(
+          fallback: new Locale("es", "ES")
+        ),
         onGenerateRoute: Router.generateRoute,
-        initialRoute: loginRoute);
+        initialRoute: loginRoute,
+      ),
+    );
   }
 }
