@@ -10,6 +10,8 @@ import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register
 import 'package:bkapp_flutter/src/screens/profileRegister/registerName/register_name_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profile/profile_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileEdit/profile_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -94,11 +96,20 @@ class Router {
             pageBuilder: (context, _, __) => AddPartnersRegisterScreen());
       case utilsScreenRoute:
         return MaterialPageRoute(builder: (_) => UtilsScreen());
+      case profileScreen:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => ProfileScreen());
         break;
       case menuNavigator:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => MenuNavigatorScreen());
+        case profileEditScreen:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => ProfileEditScreen());
+        break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

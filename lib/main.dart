@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
           fallback: new Locale("es", "ES")
         ),
         onGenerateRoute: Router.generateRoute,
-        initialRoute: loginRoute,
+        initialRoute: profileScreen,
       ),
     );
   }

@@ -157,5 +157,23 @@
     "partners": "SOCIOS",
     "box": "CAJA",
     "borrowed": "PRESTADO"
+  },
+  "profileScreen": {
+    "edit": "EDITAR",
+    "profile": "Perfil",
+    "id": "Cédula",
+    "birthDate":"Fecha de nacimiento",
+    "scholarship": "Escolaridad",
+    "profession": "Profesión",
+    "mys": "MIS",
+    "my": "MI",
+    "earnings": "GANANCIAS",
+    "credit": "CRÉDITO",
+    "shares": "ACCIONES"
+  },
+  "profileEditScreen": {
+    "editionMode": "MODO EDICIÓN",
+    "update": "ACTUALIZAR",
+    "lastName": "Primer apellido"
   }
 }

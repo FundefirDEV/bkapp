@@ -14,3 +14,7 @@ const String addPartnersRegisterRoute = '/add-partners-register-bank';
 const String utilsScreenRoute = '/utilsScreen';
 const String homeBk = '/home-bk';
 const String menuNavigator = '/menu-navigator';
+const String profileScreen = '/profile-screen';
+const String profileEditScreen = '/profile-edit-screen';
+
+

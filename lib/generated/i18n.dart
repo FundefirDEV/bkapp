@@ -254,6 +254,34 @@ class I18n implements WidgetsLocalizations {
   String get homeScreenBox => "BOX";
   /// "BORROWED"
   String get homeScreenBorrowed => "BORROWED";
+  /// "EDIT"
+  String get profileScreenEdit => "EDIT";
+  /// "Profile"
+  String get profileScreenProfile => "Profile";
+  /// "ID"
+  String get profileScreenId => "ID";
+  /// "Birth date"
+  String get profileScreenBirthDate => "Birth date";
+  /// "Scholarship"
+  String get profileScreenScholarship => "Scholarship";
+  /// "Profession"
+  String get profileScreenProfession => "Profession";
+  /// "MY"
+  String get profileScreenMys => "MY";
+  /// "MY"
+  String get profileScreenMy => "MY";
+  /// "EARNINGS"
+  String get profileScreenEarnings => "EARNINGS";
+  /// "CREDIT"
+  String get profileScreenCredit => "CREDIT";
+  /// "SHARES"
+  String get profileScreenShares => "SHARES";
+  /// "EDIT MODE"
+  String get profileEditScreenEditionMode => "EDIT MODE";
+  /// "UPDATE"
+  String get profileEditScreenUpdate => "UPDATE";
+  /// "Last Name"
+  String get profileEditScreenLastName => "Last Name";
 }
 
 class _I18n_en_US extends I18n {
@@ -599,6 +627,48 @@ class _I18n_es_ES extends I18n {
   /// "PRESTADO"
   @override
   String get homeScreenBorrowed => "PRESTADO";
+  /// "EDITAR"
+  @override
+  String get profileScreenEdit => "EDITAR";
+  /// "Perfil"
+  @override
+  String get profileScreenProfile => "Perfil";
+  /// "Cédula"
+  @override
+  String get profileScreenId => "Cédula";
+  /// "Fecha de nacimiento"
+  @override
+  String get profileScreenBirthDate => "Fecha de nacimiento";
+  /// "Escolaridad"
+  @override
+  String get profileScreenScholarship => "Escolaridad";
+  /// "Profesión"
+  @override
+  String get profileScreenProfession => "Profesión";
+  /// "MIS"
+  @override
+  String get profileScreenMys => "MIS";
+  /// "MI"
+  @override
+  String get profileScreenMy => "MI";
+  /// "GANANCIAS"
+  @override
+  String get profileScreenEarnings => "GANANCIAS";
+  /// "CRÉDITO"
+  @override
+  String get profileScreenCredit => "CRÉDITO";
+  /// "ACCIONES"
+  @override
+  String get profileScreenShares => "ACCIONES";
+  /// "MODO EDICIÓN"
+  @override
+  String get profileEditScreenEditionMode => "MODO EDICIÓN";
+  /// "ACTUALIZAR"
+  @override
+  String get profileEditScreenUpdate => "ACTUALIZAR";
+  /// "Primer apellido"
+  @override
+  String get profileEditScreenLastName => "Primer apellido";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
