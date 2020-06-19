@@ -12,3 +12,5 @@ const String selectAddressRoute = '/select-address';
 const String nameBkRoute = '/name-bk';
 const String addPartnersRegisterRoute = '/add-partners-register-bank';
 const String utilsScreenRoute = '/utilsScreen';
+const String homeBk = '/home-bk';
+const String menuNavigator = '/menu-navigator';

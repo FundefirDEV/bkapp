@@ -15,7 +15,6 @@ class CardAdministratorUtils extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       key: Key('container-card-administrator-${adminCharacters.key}'),
-      width: SizeConfig.blockSizeHorizontal * 41,
       height: SizeConfig.blockSizeVertical * 10,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -29,7 +28,7 @@ class CardAdministratorUtils extends StatelessWidget {
           ]),
       margin: EdgeInsets.symmetric(
           vertical: SizeConfig.blockSizeVertical * 1.5,
-          horizontal: SizeConfig.safeBlockHorizontal * 2),
+          horizontal: SizeConfig.safeBlockHorizontal * 1.5),
       child: Row(
         key: Key('row-content-card-administrator-${adminCharacters.key}'),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

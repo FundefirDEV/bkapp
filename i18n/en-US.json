@@ -141,5 +141,21 @@
     "exemptions": "Exemptions",
     "assignment": "Assignment",
     "administrator": "administrator"
+  },
+  "homeScreen": {
+    "myData": "MY DATA",
+    "groupBk": "GROUP BK",
+    "me": "ME",
+    "my": "MY",
+    "earnings": "EARNINGS",
+    "credit": "CREDIT",
+    "shares": "SHARES",
+    "market": "MARKET",
+    "credits": "CREDITS",
+    "tips": "TIPS",
+    "reports": "REPORTS",
+    "partners": "PARTNERS",
+    "box": "BOX",
+    "borrowed": "BORROWED"
   }
 }

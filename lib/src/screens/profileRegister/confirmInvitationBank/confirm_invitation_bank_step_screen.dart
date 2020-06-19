@@ -43,25 +43,20 @@ class _ConfirmInvitationBankStepScreenState
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            flex: 2,
-            child: SingleChildScrollView(
-              child: ConfirmInvitationBankContainerWidget(
-                tag: widget.data.tag, image: widget.data.image
-              ),
-            )
-          ),
+              flex: 2,
+              child: SingleChildScrollView(
+                child: ConfirmInvitationBankContainerWidget(
+                    tag: widget.data.tag, image: widget.data.image),
+              )),
           Expanded(
-            child: Container(
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.safeBlockVertical * 3,
-                  vertical: SizeConfig.safeBlockVertical * 5),
-              child: ButtonNextWidget(
-                key: Key('btn-rigth-confirm-invitation-bank'),
-                onTap: () => _nextStepWidget(context)
-              )
-            )
-          )
+              child: Container(
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.safeBlockVertical * 3,
+                      vertical: SizeConfig.safeBlockVertical * 5),
+                  child: ButtonNextWidget(
+                      key: Key('btn-rigth-confirm-invitation-bank'),
+                      onTap: () => _nextStepWidget(context))))
         ]);
   }
 

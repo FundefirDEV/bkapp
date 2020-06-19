@@ -11,7 +11,7 @@ class TitleHeaderUtilsWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       key: Key('title-util-container'),
-      margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 5),
+      margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 4),
       child: Row(
         key: Key('row-title-container'),
         mainAxisAlignment: MainAxisAlignment.center,

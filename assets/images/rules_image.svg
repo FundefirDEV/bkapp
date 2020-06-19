@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="73" viewBox="0 0 109 73">
+    <g fill="none" fill-rule="evenodd" transform="translate(-14)">
+        <rect width="122.4" height="88.2" fill="#FFE166" rx="9.9"/>
+        <g>
+            <path stroke="#FFF" stroke-dasharray="23.4 7.2" stroke-linecap="square" stroke-width="1.8" d="M22.317 1.35L72.181 1.35" transform="translate(27.9 18)"/>
+            <path stroke="#FFF" stroke-dasharray="37.8 7.2" stroke-linecap="round" stroke-width="1.8" d="M22.317 8.1L72.181 8.1" transform="translate(27.9 18)"/>
+            <path fill="#FFF" fill-rule="nonzero" d="M6.607 9c-.198 0-.364-.097-.5-.291l-2.55-3.44-2.549 3.494C.895 8.921.757 9 .593 9c-.158 0-.297-.06-.415-.177C.059 8.704 0 8.566 0 8.408c0-.115.034-.218.102-.309l2.795-3.722L.415 1.028C.33.92.288.795.288.655.288.473.343.32.453.191.563.064.703 0 .873 0c.197 0 .367.094.508.282l2.32 3.14L6.024.246C6.136.082 6.28 0 6.455 0c.146 0 .278.056.393.168.116.113.174.242.174.387 0 .11-.04.222-.118.337L4.379 4.34l2.694 3.64c.085.127.127.249.127.364 0 .176-.056.329-.17.46-.112.13-.254.195-.423.195z" transform="translate(27.9 18)"/>
+            <g>
+                <path stroke="#FFF" stroke-dasharray="23.4 7.2" stroke-linecap="square" stroke-width="1.8" d="M22.317 1.35L72.181 1.35" transform="translate(27.9 18) translate(0 27.9)"/>
+                <path stroke="#FFF" stroke-dasharray="37.8 7.2" stroke-linecap="round" stroke-width="1.8" d="M22.317 8.1L72.181 8.1" transform="translate(27.9 18) translate(0 27.9)"/>
+                <path fill="#FFF" fill-rule="nonzero" d="M6.607 9c-.198 0-.364-.097-.5-.291l-2.55-3.44-2.549 3.494C.895 8.921.757 9 .593 9c-.158 0-.297-.06-.415-.177C.059 8.704 0 8.566 0 8.408c0-.115.034-.218.102-.309l2.795-3.722L.415 1.028C.33.92.288.795.288.655.288.473.343.32.453.191.563.064.703 0 .873 0c.197 0 .367.094.508.282l2.32 3.14L6.024.246C6.136.082 6.28 0 6.455 0c.146 0 .278.056.393.168.116.113.174.242.174.387 0 .11-.04.222-.118.337L4.379 4.34l2.694 3.64c.085.127.127.249.127.364 0 .176-.056.329-.17.46-.112.13-.254.195-.423.195z" transform="translate(27.9 18) translate(0 27.9)"/>
+            </g>
+        </g>
+    </g>
+</svg>

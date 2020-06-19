@@ -141,5 +141,21 @@
     "exemptions": "Exoneraciones",
     "assignment": "Asignar",
     "administrator": "administradores"
+  },
+  "homeScreen": {
+    "myData": "MIS DATOS",
+    "groupBk": "GRUPO BK",
+    "me": "MI",
+    "my": "MIS",
+    "earnings": "GANANCIAS",
+    "credit": "CRÉDITO",
+    "shares": "ACCIONES",
+    "market": "MARKET",
+    "credits": "CRÉDITOS",
+    "tips": "TIPS",
+    "reports": "REPORTES",
+    "partners": "SOCIOS",
+    "box": "CAJA",
+    "borrowed": "PRESTADO"
   }
 }

@@ -194,8 +194,8 @@ class I18n implements WidgetsLocalizations {
   String get bankRegisterAddPartnersButtonAdd => "ADD ";
   /// "PARTNER"
   String get bankRegisterAddPartnersButtonPartner => "PARTNER";
-  /// "Útiles"
-  String get utilsUtils => "Útiles";
+  /// "Utils"
+  String get utilsUtils => "Utils";
   /// "Approvals"
   String get utilsApprovals => "Approvals";
   /// "requests"
@@ -226,6 +226,34 @@ class I18n implements WidgetsLocalizations {
   String get utilsAssignment => "Assignment";
   /// "administrator"
   String get utilsAdministrator => "administrator";
+  /// "MY DATA"
+  String get homeScreenMyData => "MY DATA";
+  /// "GROUP BK"
+  String get homeScreenGroupBk => "GROUP BK";
+  /// "ME"
+  String get homeScreenMe => "ME";
+  /// "MY"
+  String get homeScreenMy => "MY";
+  /// "EARNINGS"
+  String get homeScreenEarnings => "EARNINGS";
+  /// "CREDIT"
+  String get homeScreenCredit => "CREDIT";
+  /// "SHARES"
+  String get homeScreenShares => "SHARES";
+  /// "MARKET"
+  String get homeScreenMarket => "MARKET";
+  /// "CREDITS"
+  String get homeScreenCredits => "CREDITS";
+  /// "TIPS"
+  String get homeScreenTips => "TIPS";
+  /// "REPORTS"
+  String get homeScreenReports => "REPORTS";
+  /// "PARTNERS"
+  String get homeScreenPartners => "PARTNERS";
+  /// "BOX"
+  String get homeScreenBox => "BOX";
+  /// "BORROWED"
+  String get homeScreenBorrowed => "BORROWED";
 }
 
 class _I18n_en_US extends I18n {
@@ -529,6 +557,48 @@ class _I18n_es_ES extends I18n {
   /// "administradores"
   @override
   String get utilsAdministrator => "administradores";
+  /// "MIS DATOS"
+  @override
+  String get homeScreenMyData => "MIS DATOS";
+  /// "GRUPO BK"
+  @override
+  String get homeScreenGroupBk => "GRUPO BK";
+  /// "MI"
+  @override
+  String get homeScreenMe => "MI";
+  /// "MIS"
+  @override
+  String get homeScreenMy => "MIS";
+  /// "GANANCIAS"
+  @override
+  String get homeScreenEarnings => "GANANCIAS";
+  /// "CRÉDITO"
+  @override
+  String get homeScreenCredit => "CRÉDITO";
+  /// "ACCIONES"
+  @override
+  String get homeScreenShares => "ACCIONES";
+  /// "MARKET"
+  @override
+  String get homeScreenMarket => "MARKET";
+  /// "CRÉDITOS"
+  @override
+  String get homeScreenCredits => "CRÉDITOS";
+  /// "TIPS"
+  @override
+  String get homeScreenTips => "TIPS";
+  /// "REPORTES"
+  @override
+  String get homeScreenReports => "REPORTES";
+  /// "SOCIOS"
+  @override
+  String get homeScreenPartners => "SOCIOS";
+  /// "CAJA"
+  @override
+  String get homeScreenBox => "CAJA";
+  /// "PRESTADO"
+  @override
+  String get homeScreenBorrowed => "PRESTADO";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

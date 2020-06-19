@@ -2,7 +2,7 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/utils/utils_cards_item.dart';
 import 'package:bkapp_flutter/src/screens/utils/utis_card_administrator_item.dart';
 import 'package:bkapp_flutter/src/screens/utils/widgets/widget.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class UtilsScreen extends StatefulWidget {
@@ -64,27 +64,27 @@ class _UtilsScreenState extends State<UtilsScreen> {
         titleWeight: I18n.of(context).utilsAdministrator,
       )
     ];
-    return Material(
-      color: Theme.of(context).colorScheme.primaryColorDark[50],
-      child: SafeArea(
-        key: Key('safearea-util-screen'),
-        child: Column(
-          key: Key('column-util-screen'),
-          children: <Widget>[
-            TitleHeaderUtilsWidget(),
-            for (var i = 0; i < characters.length; i++)
-              UtilCardDescription(characters: characters[i]),
-            Row(
-              key: Key('row-util-screen-cards'),
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CardAdministratorUtils(adminCharacters: adminCharacters[0]),
-                CardAdministratorUtils(adminCharacters: adminCharacters[1]),
-              ],
-            ),
-          ],
-        ),
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: AppBarWidget(
+                container: SafeArea(
+      key: Key('safearea-util-screen'),
+      child: Column(
+        key: Key('column-util-screen'),
+        children: <Widget>[
+          TitleHeaderUtilsWidget(),
+          for (var i = 0; i < characters.length; i++)
+            UtilCardDescription(characters: characters[i]),
+          Row(
+            key: Key('row-util-screen-cards'),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CardAdministratorUtils(adminCharacters: adminCharacters[0]),
+              CardAdministratorUtils(adminCharacters: adminCharacters[1]),
+            ],
+          ),
+        ],
       ),
-    );
+    ))));
   }
 }

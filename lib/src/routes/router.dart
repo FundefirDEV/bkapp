@@ -1,6 +1,9 @@
+import 'package:bkapp_flutter/core/bloc/loginFormBloc/login_form_bloc.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/name_bk_screen.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/select_city_screen.dart';
+import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/gender_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
@@ -11,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -22,7 +25,12 @@ class Router {
                 HomeTestScreen(title: I18n.of(context).testText));
         break;
       case loginRoute:
-        return MaterialPageRoute(builder: (_) => loginRouteBloc());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) =>
+                      LoginFormBloc(repository: loginRepository),
+                  child: Builder(builder: (context) => LoginScreen()),
+                ));
         break;
       case introRoute:
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());
@@ -87,6 +95,10 @@ class Router {
       case utilsScreenRoute:
         return MaterialPageRoute(builder: (_) => UtilsScreen());
         break;
+      case menuNavigator:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => MenuNavigatorScreen());
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(
