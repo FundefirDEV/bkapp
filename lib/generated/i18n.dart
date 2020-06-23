@@ -294,6 +294,14 @@ class I18n implements WidgetsLocalizations {
   String get profileEditScreenUpdate => "UPDATE";
   /// "Last Name"
   String get profileEditScreenLastName => "Last Name";
+  /// "Credit request"
+  String get preApprovedCreditModalCreditrequest => "Credit request";
+  /// "pre-approved"
+  String get preApprovedCreditModalPreApproved => "pre-approved";
+  /// "Your request position is: "
+  String get preApprovedCreditModalYourPosition => "Your request position is: ";
+  /// "Request of shares"
+  String get preApprovedSharesModalSharesrequest => "Request of shares";
 }
 
 class _I18n_en_US extends I18n {
@@ -699,6 +707,18 @@ class _I18n_es_ES extends I18n {
   /// "Primer apellido"
   @override
   String get profileEditScreenLastName => "Primer apellido";
+  /// "Solicitud de crédito"
+  @override
+  String get preApprovedCreditModalCreditrequest => "Solicitud de crédito";
+  /// "pre-aprobada"
+  @override
+  String get preApprovedCreditModalPreApproved => "pre-aprobada";
+  /// "Tu posición de solicitud es: "
+  @override
+  String get preApprovedCreditModalYourPosition => "Tu posición de solicitud es: ";
+  /// "Compra de acciones"
+  @override
+  String get preApprovedSharesModalSharesrequest => "Compra de acciones";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

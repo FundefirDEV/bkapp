@@ -185,5 +185,13 @@
     "editionMode": "EDIT MODE",
     "update": "UPDATE",
     "lastName": "Last Name"
+  },
+  "preApprovedCreditModal":{
+    "Creditrequest": "Credit request",
+    "preApproved":"pre-approved",
+    "yourPosition": "Your request position is: "
+  },
+  "preApprovedSharesModal":{
+    "Sharesrequest": "Request of shares"
   }
 }

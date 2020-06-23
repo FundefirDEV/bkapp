@@ -185,5 +185,13 @@
     "editionMode": "MODO EDICIÓN",
     "update": "ACTUALIZAR",
     "lastName": "Primer apellido"
+  },
+  "preApprovedCreditModal":{
+    "Creditrequest": "Solicitud de crédito",
+    "preApproved":"pre-aprobada",
+    "yourPosition": "Tu posición de solicitud es: "
+  },
+  "preApprovedSharesModal":{
+    "Sharesrequest": "Compra de acciones"
   }
 }

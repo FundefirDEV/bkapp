@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="275" height="275" viewBox="0 0 275 275">
+    <g fill="none" fill-rule="evenodd" transform="translate(-1)">
+        <path fill="#56C5FF" d="M193.764 38.295H202.764V40.295H193.764z" opacity=".77" transform="rotate(-61 198.264 39.295)"/>
+        <path fill="#56C5FF" d="M9.804 163.274H19.804000000000002V166.274H9.804z" opacity=".85" transform="rotate(34 14.804 164.774)"/>
+        <circle cx="223.552" cy="224.42" r="3.5" stroke="#E96161" stroke-width="1.5" opacity=".79" transform="rotate(166 223.552 224.42)"/>
+        <circle cx="270.692" cy="177.511" r="4" stroke="#E96161" stroke-width="1.5" opacity=".79" transform="rotate(-5 270.692 177.51)"/>
+        <circle cx="135.368" cy="196.489" r="4.5" stroke="#E96161" stroke-width="1.5" opacity=".8" transform="rotate(71 135.368 196.49)"/>
+        <circle cx="137.603" cy="39.781" r="4" stroke="#E96161" stroke-width="1.5" opacity=".74" transform="rotate(-157 137.603 39.78)"/>
+        <circle cx="23.927" cy="271.021" r="3" stroke="#E96161" stroke-width="1.5" opacity=".92" transform="rotate(-58 23.927 271.021)"/>
+        <circle cx="6" cy="111.607" r="4" stroke="#E96161" stroke-width="1.5" opacity=".78" transform="rotate(-128 6 111.607)"/>
+        <path stroke="#FDCD15" stroke-width="2" d="M203.862 116.721L202.862 113.165 203.862 110.426 202.862 106.571 203.862 102.721" opacity=".76" transform="rotate(-100 203.362 109.72)"/>
+        <path stroke="#FDCD15" stroke-width="2" d="M141.828 267.987L140.828 264.939 141.828 262.591 140.828 259.287 141.828 255.987" opacity=".7" transform="rotate(138 141.328 261.987)"/>
+        <path stroke="#FDCD15" stroke-width="2" d="M144.156 118.721L143.156 115.419 144.156 112.876 143.156 109.296 144.156 105.721" opacity=".86" transform="rotate(127 143.656 112.221)"/>
+        <path stroke="#FDCD15" stroke-width="2" d="M20.621 14L19.621 10.444 20.621 7.705 19.621 3.85 20.621 0" opacity=".81" transform="rotate(157 20.121 7)"/>
+    </g>
+</svg>
