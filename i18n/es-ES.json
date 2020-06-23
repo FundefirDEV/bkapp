@@ -126,7 +126,7 @@
   },
   "utils": {
     "utils": "Útiles",
-    "approvals": "Approvals",
+    "approvals": "Aprobaciones",
     "requests": "peticiones",
     "rulesOf": "Reglas del",
     "groupBk": "grupo bk",
@@ -141,6 +141,16 @@
     "exemptions": "Exoneraciones",
     "assignment": "Asignar",
     "administrator": "administradores"
+  },
+  "mainMenu": {
+    "actions": {
+      "title": "¿Qué vas a hacer?",
+      "credit": "pedir un\n crédito",
+      "profits": "pago de\n ganancias",
+      "meeting": "iniciar reunión",
+      "actions": "comprar\n acciones",
+      "partner": "agregar / borrar\n socio"
+    }
   },
   "homeScreen": {
     "myData": "MIS DATOS",

@@ -25,7 +25,7 @@ Widget loginRouteBloc() {
           return SplashPage();
         }
         if (state is AuthenticationAuthenticated) {
-          return HomeTestScreen(title: 'Home DATA',);
+          return MenuNavigatorScreen();
         }
         if (state is AuthenticationUnauthenticated) {
           return LoginScreen();

@@ -142,6 +142,16 @@
     "assignment": "Assignment",
     "administrator": "administrator"
   },
+  "mainMenu": {
+    "actions": {
+      "title": "What will you do?",
+      "credit": "requesting a\n credit",
+      "profits": "payment of\n profits",
+      "meeting": "start meeting",
+      "actions": "buy actions",
+      "partner": "add / remove\n partner"
+    }
+  },
   "homeScreen": {
     "myData": "MY DATA",
     "groupBk": "GROUP BK",

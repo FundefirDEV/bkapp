@@ -226,6 +226,18 @@ class I18n implements WidgetsLocalizations {
   String get utilsAssignment => "Assignment";
   /// "administrator"
   String get utilsAdministrator => "administrator";
+  /// "What will you do?"
+  String get mainMenuActionsTitle => "What will you do?";
+  /// "requesting a\n credit"
+  String get mainMenuActionsCredit => "requesting a\n credit";
+  /// "payment of\n profits"
+  String get mainMenuActionsProfits => "payment of\n profits";
+  /// "start meeting"
+  String get mainMenuActionsMeeting => "start meeting";
+  /// "buy actions"
+  String get mainMenuActionsActions => "buy actions";
+  /// "add / remove\n partner"
+  String get mainMenuActionsPartner => "add / remove\n partner";
   /// "MY DATA"
   String get homeScreenMyData => "MY DATA";
   /// "GROUP BK"
@@ -540,9 +552,9 @@ class _I18n_es_ES extends I18n {
   /// "Útiles"
   @override
   String get utilsUtils => "Útiles";
-  /// "Approvals"
+  /// "Aprobaciones"
   @override
-  String get utilsApprovals => "Approvals";
+  String get utilsApprovals => "Aprobaciones";
   /// "peticiones"
   @override
   String get utilsRequests => "peticiones";
@@ -585,6 +597,24 @@ class _I18n_es_ES extends I18n {
   /// "administradores"
   @override
   String get utilsAdministrator => "administradores";
+  /// "¿Qué vas a hacer?"
+  @override
+  String get mainMenuActionsTitle => "¿Qué vas a hacer?";
+  /// "pedir un\n crédito"
+  @override
+  String get mainMenuActionsCredit => "pedir un\n crédito";
+  /// "pago de\n ganancias"
+  @override
+  String get mainMenuActionsProfits => "pago de\n ganancias";
+  /// "iniciar reunión"
+  @override
+  String get mainMenuActionsMeeting => "iniciar reunión";
+  /// "comprar\n acciones"
+  @override
+  String get mainMenuActionsActions => "comprar\n acciones";
+  /// "agregar / borrar\n socio"
+  @override
+  String get mainMenuActionsPartner => "agregar / borrar\n socio";
   /// "MIS DATOS"
   @override
   String get homeScreenMyData => "MIS DATOS";
