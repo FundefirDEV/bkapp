@@ -14,8 +14,8 @@
     "user": "Usuario",
     "password": "Clave",
     "confirmPassword": "Confirmar clave",
-    "firstName": "Primer nombre",
-    "secondName": "Segundo nombre",
+    "firstName": "Nombre",
+    "secondName": "Apellido",
     "email": "Correo electrónico",
     "phone": "Celular"
   },

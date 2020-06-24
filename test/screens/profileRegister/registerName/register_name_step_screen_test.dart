@@ -44,13 +44,29 @@ void main() {
     });
 
     testWidgets('Other push to RegisterEmailStepScreen', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: RegisterNameStepScreen(data: data)));
+      await tester.pumpWidget(
+        baseTester(
+          child: RegisterNameStepScreen(data: data)
+        )
+      );
       await tester.pumpAndSettle();
       
       expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
       await tester.tap(find.byKey(Key('buttonNextStep')));
       await tester.pumpAndSettle();
       expect(find.byType(RegisterEmailStepScreen), findsOneWidget);
+    });
+
+    testWidgets('Test placeholder texts', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        baseTester(
+          child: RegisterNameStepScreen(data: data)
+        )
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('First name'), findsOneWidget);
+      expect(find.text('Last name'), findsOneWidget);
     });
   });
 }

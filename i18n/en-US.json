@@ -15,7 +15,7 @@
     "password": "Password",
     "confirmPassword": "Confirm password",
     "firstName": "First name",
-    "secondName": "Second name",
+    "secondName": "Last name",
     "email": "Email",
     "phone": "Phone"
   },
