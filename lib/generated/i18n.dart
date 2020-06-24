@@ -527,9 +527,9 @@ class _I18n_es_ES extends I18n {
   /// "Coloca el nombre de tu BKgrupo"
   @override
   String get bankNamePutName => "Coloca el nombre de tu BKgrupo";
-  /// "Esbriba aquí"
+  /// "Escriba aquí"
   @override
-  String get bankNameWriteHere => "Esbriba aquí";
+  String get bankNameWriteHere => "Escriba aquí";
   /// "Nombre"
   @override
   String get bankNameNameBk => "Nombre";

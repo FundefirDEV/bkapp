@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +20,19 @@ class BankCreatedScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Center(child : _buildText(context, bkName)),
-              Center(
-                key: Key('svgPicture_bank_created'),
-                child: SvgPicture.asset('assets/images/bank_created.svg')),
+              FadeInUp(
+                child: Center(
+                  key: Key('svgPicture_bank_created'),
+                  child: SvgPicture.asset('assets/images/bank_created.svg')),
+              ),
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:<Widget>[ 
-                  ButtonNextWidget(onTap: () => {},),
+                  children:<Widget>[
+                    ButtonNextWidget(
+                      onTap: () =>
+                        Navigator.pushNamed(context, selectAddressRoute)
+                      ),
                   ]
                 ),
               )

@@ -36,12 +36,17 @@ class ProfileRegisterBloc extends FormBloc<String, String>{
 
   @override
   void onSubmitting() {
-    logger.v({
-      'firstValue': '${_nameBloc.firstName.value}',
-      'email': '${_emailBloc.email.value}',
-      'phone': '${_phoneBloc.phone.value}',
-      'password': '${_passwordBloc.password.value}'
-    });
+    try {
+      logger.v({
+        'firstValue': '${_nameBloc.firstName.value}',
+        'email': '${_emailBloc.email.value}',
+        'phone': '${_phoneBloc.phone.value}',
+        'password': '${_passwordBloc.password.value}'
+      });
+      emitSuccess();
+    } catch(e) {
+      emitFailure();
+    }
   }
 
   Future<void> close() {
