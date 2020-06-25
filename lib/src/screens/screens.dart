@@ -17,3 +17,5 @@ export 'bankRegister/addParterns/add_partners_register_screen.dart';
 export 'bankRegister/selectCity/select_city_screen.dart';
 export 'homeTest/home_test_screen.dart';
 export 'utils/utils_screen.dart';
+export 'buyShares/buy_shares_screen.dart';
+export 'buyShares/confirmationBuyShares/confirmation_buy_shares.dart';

@@ -172,7 +172,7 @@
     "edit": "EDITAR",
     "profile": "Perfil",
     "id": "Cédula",
-    "birthDate":"Fecha de nacimiento",
+    "birthDate": "Fecha de nacimiento",
     "scholarship": "Escolaridad",
     "profession": "Profesión",
     "mys": "MIS",
@@ -186,12 +186,30 @@
     "update": "ACTUALIZAR",
     "lastName": "Primer apellido"
   },
-  "preApprovedCreditModal":{
+  "preApprovedCreditModal": {
     "Creditrequest": "Solicitud de crédito",
-    "preApproved":"pre-aprobada",
+    "preApproved": "pre-aprobada",
     "yourPosition": "Tu posición de solicitud es: "
   },
-  "preApprovedSharesModal":{
+  "preApprovedSharesModal": {
     "Sharesrequest": "Compra de acciones"
+  },
+  "buyShares": {
+    "actions": "Acciones",
+    "my": "MIS",
+    "shareValue": "Valor de la acción",
+    "actionsAvailable": "Acciones disponibles",
+    "howMany": "¿Cuantas",
+    "youWant": "quieres",
+    "toBuy": "comprar?",
+    "yourRequestMustBe": "Tu solicitud debe ser ",
+    "approved": "aprobada",
+    "forHim": "por el",
+    "administrator": "administrador",
+    "numberActions": "Número de acciones",
+    "buy": "COMPRAR",
+    "requestedActions": "Acciones solicitadas",
+    "applicationDate": "Fecha de solicitud",
+    "status": "Estado"
   }
 }

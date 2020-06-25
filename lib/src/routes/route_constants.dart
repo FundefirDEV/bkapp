@@ -16,5 +16,5 @@ const String utilsScreenRoute = '/utilsScreen';
 const String homeBk = '/home-bk';
 const String profileScreen = '/profile-screen';
 const String profileEditScreen = '/profile-edit-screen';
-
-
+const String buySharesScreenRoute = '/buyShares';
+const String confirmationBuySharesRoute = '/confirmationBuySharesSRoute';

@@ -27,7 +27,7 @@ jobs:
         with:
           flutter-version: "1.12.13+hotfix.9"
       - run: flutter pub get
-      - run: flutter test --coverage && flutter pub run remove_from_coverage -f coverage/lcov.info -r 'lib/generated'
+      - run: flutter test --coverage && flutter pub run remove_from_coverage -f coverage/lcov.info -r 'lib/generated' -r 'lib/src/screens/homeTest'
       - uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}

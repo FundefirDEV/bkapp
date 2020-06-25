@@ -172,7 +172,7 @@
     "edit": "EDIT",
     "profile": "Profile",
     "id": "ID",
-    "birthDate":"Birth date",
+    "birthDate": "Birthday",
     "scholarship": "Scholarship",
     "profession": "Profession",
     "mys": "MY",
@@ -186,12 +186,30 @@
     "update": "UPDATE",
     "lastName": "Last Name"
   },
-  "preApprovedCreditModal":{
+  "preApprovedCreditModal": {
     "Creditrequest": "Credit request",
-    "preApproved":"pre-approved",
+    "preApproved": "pre-approved",
     "yourPosition": "Your request position is: "
   },
-  "preApprovedSharesModal":{
+  "preApprovedSharesModal": {
     "Sharesrequest": "Request of shares"
+  },
+  "buyShares": {
+    "actions": "Actions",
+    "my": "MY",
+    "shareValue": "Share Value",
+    "actionsAvailable": "Actions Available",
+    "howMany": "How many",
+    "youWant": "you want",
+    "toBuy": "to buy?",
+    "yourRequestMustBe": "Your request must be",
+    "approved": "approved",
+    "forHim": "for him",
+    "administrator": "administrator",
+    "numberActions": "Number of actions",
+    "buy": "BUY",
+    "requestedActions": "Requested actions",
+    "applicationDate": "Application date",
+    "status": "Status"
   }
 }

@@ -16,8 +16,7 @@ class Router {
         return MaterialPageRoute(builder: (_) => MenuNavigatorScreen());
         break;
       case loginRoute:
-        return MaterialPageRoute(
-            builder: (_) => loginRouteBloc());
+        return MaterialPageRoute(builder: (_) => loginRouteBloc());
         break;
       case introRoute:
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());
@@ -30,16 +29,14 @@ class Router {
       case registerNameUser:
         final RegisterNameStepArgs data = settings.arguments;
         return PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 350),
-          pageBuilder: (_, __, ___) => RegisterNameStepScreen(data: data)
-        );
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (_, __, ___) => RegisterNameStepScreen(data: data));
         break;
       case registerEmailUser:
         final RegisterEmailStepArgs data = settings.arguments;
         return PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 350),
-          pageBuilder: (_, __, ___) => RegisterEmailStepScreen(data: data)
-        );
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (_, __, ___) => RegisterEmailStepScreen(data: data));
         break;
       case registerPhoneUser:
         final RegisterPhoneStepArgs data = settings.arguments;
@@ -90,21 +87,24 @@ class Router {
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => MenuNavigatorScreen());
-        case profileEditScreen:
+      case profileEditScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => ProfileEditScreen());
         break;
+      case buySharesScreenRoute:
+        return MaterialPageRoute(builder: (_) => BuySharesScreen());
+        break;
+      case confirmationBuySharesRoute:
+        return MaterialPageRoute(builder: (_) => ConfirmationBuyShares());
+        break;
       default:
         return MaterialPageRoute(
-          builder: (BuildContext context) => Scaffold(
-            body: Center(
-              child: Text(
-                I18n.of(context).pageNotFound('${settings.name}')
-              )
-            ),
-          )
-        );
+            builder: (BuildContext context) => Scaffold(
+                  body: Center(
+                      child: Text(
+                          I18n.of(context).pageNotFound('${settings.name}'))),
+                ));
     }
   }
 }

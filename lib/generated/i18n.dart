@@ -272,8 +272,8 @@ class I18n implements WidgetsLocalizations {
   String get profileScreenProfile => "Profile";
   /// "ID"
   String get profileScreenId => "ID";
-  /// "Birth date"
-  String get profileScreenBirthDate => "Birth date";
+  /// "Birthday"
+  String get profileScreenBirthDate => "Birthday";
   /// "Scholarship"
   String get profileScreenScholarship => "Scholarship";
   /// "Profession"
@@ -302,6 +302,38 @@ class I18n implements WidgetsLocalizations {
   String get preApprovedCreditModalYourPosition => "Your request position is: ";
   /// "Request of shares"
   String get preApprovedSharesModalSharesrequest => "Request of shares";
+  /// "Actions"
+  String get buySharesActions => "Actions";
+  /// "MY"
+  String get buySharesMy => "MY";
+  /// "Share Value"
+  String get buySharesShareValue => "Share Value";
+  /// "Actions Available"
+  String get buySharesActionsAvailable => "Actions Available";
+  /// "How many"
+  String get buySharesHowMany => "How many";
+  /// "you want"
+  String get buySharesYouWant => "you want";
+  /// "to buy?"
+  String get buySharesToBuy => "to buy?";
+  /// "Your request must be"
+  String get buySharesYourRequestMustBe => "Your request must be";
+  /// "approved"
+  String get buySharesApproved => "approved";
+  /// "for him"
+  String get buySharesForHim => "for him";
+  /// "administrator"
+  String get buySharesAdministrator => "administrator";
+  /// "Number of actions"
+  String get buySharesNumberActions => "Number of actions";
+  /// "BUY"
+  String get buySharesBuy => "BUY";
+  /// "Requested actions"
+  String get buySharesRequestedActions => "Requested actions";
+  /// "Application date"
+  String get buySharesApplicationDate => "Application date";
+  /// "Status"
+  String get buySharesStatus => "Status";
 }
 
 class _I18n_en_US extends I18n {
@@ -719,6 +751,54 @@ class _I18n_es_ES extends I18n {
   /// "Compra de acciones"
   @override
   String get preApprovedSharesModalSharesrequest => "Compra de acciones";
+  /// "Acciones"
+  @override
+  String get buySharesActions => "Acciones";
+  /// "MIS"
+  @override
+  String get buySharesMy => "MIS";
+  /// "Valor de la acción"
+  @override
+  String get buySharesShareValue => "Valor de la acción";
+  /// "Acciones disponibles"
+  @override
+  String get buySharesActionsAvailable => "Acciones disponibles";
+  /// "¿Cuantas"
+  @override
+  String get buySharesHowMany => "¿Cuantas";
+  /// "quieres"
+  @override
+  String get buySharesYouWant => "quieres";
+  /// "comprar?"
+  @override
+  String get buySharesToBuy => "comprar?";
+  /// "Tu solicitud debe ser "
+  @override
+  String get buySharesYourRequestMustBe => "Tu solicitud debe ser ";
+  /// "aprobada"
+  @override
+  String get buySharesApproved => "aprobada";
+  /// "por el"
+  @override
+  String get buySharesForHim => "por el";
+  /// "administrador"
+  @override
+  String get buySharesAdministrator => "administrador";
+  /// "Número de acciones"
+  @override
+  String get buySharesNumberActions => "Número de acciones";
+  /// "COMPRAR"
+  @override
+  String get buySharesBuy => "COMPRAR";
+  /// "Acciones solicitadas"
+  @override
+  String get buySharesRequestedActions => "Acciones solicitadas";
+  /// "Fecha de solicitud"
+  @override
+  String get buySharesApplicationDate => "Fecha de solicitud";
+  /// "Estado"
+  @override
+  String get buySharesStatus => "Estado";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

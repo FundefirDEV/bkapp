@@ -8,3 +8,4 @@ export 'profileRegisterBloc/profile_phone_bloc.dart';
 export 'profileRegisterBloc/profile_password_bloc.dart';
 export 'selectCityBloc/select_city_bloc.dart';
 export 'profileEdition/profile_edit_form_Bloc.dart';
+export 'buySharesBloc/buy_shares_form_bloc.dart';
