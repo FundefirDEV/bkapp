@@ -34,7 +34,7 @@ class _ConfirmInvitationBankStepScreenState
                   CircularProgressIndicator();
                 },
                 onSuccess: (context, state) {
-                  Navigator.pushNamed(context, bankCreatedRoute);
+                  Navigator.pushNamed(context, selectAddressRoute);
                 },
                 child: Column(
                   children: <Widget>[

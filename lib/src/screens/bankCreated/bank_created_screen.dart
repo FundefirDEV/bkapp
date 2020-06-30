@@ -31,7 +31,7 @@ class BankCreatedScreen extends StatelessWidget {
                   children:<Widget>[
                     ButtonNextWidget(
                       onTap: () =>
-                        Navigator.pushNamed(context, selectAddressRoute)
+                        Navigator.pushNamed(context, menuNavigator)
                       ),
                   ]
                 ),

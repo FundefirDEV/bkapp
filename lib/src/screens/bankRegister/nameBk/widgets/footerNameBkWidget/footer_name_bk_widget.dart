@@ -24,7 +24,7 @@ class FooterNameBkWidget extends StatelessWidget {
             child: ButtonLineRoundedWidget(
               key: Key('footer-button-next-step'),
               onPressed: () {
-                Navigator.pushNamed(context, menuNavigator);
+                Navigator.pushNamed(context, bankCreatedRoute);
               },
               firstText: I18n.of(context).bankNameCreate,
             ),
