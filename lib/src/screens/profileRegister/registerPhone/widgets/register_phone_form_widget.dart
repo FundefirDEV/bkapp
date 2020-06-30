@@ -4,6 +4,7 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarouse
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterPhoneFormWidget extends StatelessWidget {
   final ItemCountry country;
@@ -17,26 +18,25 @@ class RegisterPhoneFormWidget extends StatelessWidget {
     final profile = context.bloc<AppBloc>().profileRegisterBloc;
 
     return Container(
-      child: Row(
+        child: Row(
       children: <Widget>[
         Container(
+          width: SizeConfig.blockSizeHorizontal * 8,
           margin: EdgeInsets.only(
-          right: SizeConfig.blockSizeHorizontal * 1,
-          top: SizeConfig.blockSizeVertical * 4),
-          child: Text(country.phoneCode)),
+              right: SizeConfig.blockSizeHorizontal * 1,
+              top: SizeConfig.blockSizeVertical * 4),
+          child: SvgPicture.asset(country.image),
+        ),
         Container(
-          width: SizeConfig.blockSizeHorizontal * 80,
+          width: SizeConfig.blockSizeHorizontal * 75,
           height: SizeConfig.blockSizeVertical * 15,
           child: TextFieldBlocBuilder(
-            textFieldBloc: profile.phoneBloc.phone,
-            errorBuilder: (context, string) =>
-              I18n.of(context).errorRequired,
-            decoration:
-              InputDecoration(labelText: I18n.of(context).formPhone)
-          ),
+              textFieldBloc: profile.phoneBloc.phone,
+              errorBuilder: (context, string) => I18n.of(context).errorRequired,
+              decoration:
+                  InputDecoration(labelText: I18n.of(context).formPhone)),
         ),
       ],
-      )
-    );
+    ));
   }
 }

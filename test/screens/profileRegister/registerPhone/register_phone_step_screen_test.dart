@@ -1,8 +1,11 @@
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/country_modal_content_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
+import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -57,18 +60,26 @@ void main() {
           .pumpWidget(baseTester(child: RegisterPhoneStepScreen(data: data)));
       await tester.pumpAndSettle();
 
-      expect(find.text('+57'), findsOneWidget);
-
       expect(find.byKey(Key('country0')), findsNWidgets(2));
       await tester.tap(find.byKey(Key('country2')));
       await tester.pumpAndSettle();
-
-      expect(find.text('+51'), findsOneWidget);
 
       expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
       await tester.tap(find.byKey(Key('buttonNextStep')));
       await tester.pumpAndSettle();
       expect(find.byType(RegisterPasswordStepScreen), findsOneWidget);
+    });
+
+    testWidgets('Opem Modal Country', (WidgetTester tester) async {
+      await tester
+          .pumpWidget(baseTester(child: RegisterPhoneStepScreen(data: data)));
+      await tester.pumpAndSettle();
+
+      expect(
+          find.byKey(Key('inkell-register-phone-container')), findsOneWidget);
+      await tester.tap(find.byKey(Key('inkell-register-phone-container')));
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      expect(find.byType(InkWell), findsNWidgets(3));
     });
   });
 }

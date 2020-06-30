@@ -61,5 +61,27 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(UtilsScreen), findsOneWidget);
     });
+
+    testWidgets('redirect jump 0', (WidgetTester tester) async {
+      await tester
+          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(Key('option-home')), findsOneWidget);
+      await tester.tap(find.byKey(Key('option-home')));
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      expect(find.byType(HomeScreen), findsOneWidget);
+    });
+
+    testWidgets('redirect jump 1', (WidgetTester tester) async {
+      await tester
+          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(Key('option-utils')), findsOneWidget);
+      await tester.tap(find.byKey(Key('option-utils')));
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      expect(find.byType(UtilsScreen), findsOneWidget);
+    });
   });
 }

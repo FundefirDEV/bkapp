@@ -13,13 +13,15 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
   final String tag;
   final String image;
   final ItemCountry country;
+  final Function openModalCountry;
 
   const RegisterPhoneContainerWidget(
-      {Key key, this.tag, this.image, this.country})
+      {Key key, this.tag, this.image, this.country, this.openModalCountry})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final profile = context.bloc<AppBloc>().profileRegisterBloc;
     return Column(
       children: <Widget>[
@@ -30,7 +32,11 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
               vertical: SizeConfig.safeBlockVertical * 2,
             ),
             child: Column(children: <Widget>[
-              RegisterPhoneFormWidget(country: country),
+              InkWell(
+                key: Key('inkell-register-phone-container'),
+                child: RegisterPhoneFormWidget(country: country),
+                onTap: this.openModalCountry,
+              ),
               Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.safeBlockVertical * 4,
@@ -82,7 +88,8 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
     );
   }
 
-  Container _headerContainer(BuildContext context, ProfileRegisterBloc profile) {
+  Container _headerContainer(
+      BuildContext context, ProfileRegisterBloc profile) {
     return Container(
       child: Row(
         children: <Widget>[
@@ -104,7 +111,6 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
   }
 
   Container _infoUser(BuildContext context, ProfileRegisterBloc profile) {
-    
     String firstName = profile.nameBloc.firstName.value;
     String lastName = profile.nameBloc.secondName.value;
 
@@ -126,21 +132,20 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: EdgeInsets.symmetric(
                   vertical: SizeConfig.safeBlockVertical * 0.5),
-              child: Text(
-                '${profile.emailBloc.email.value}',
-                style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 4,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black54,
-                ))),
+              child: Text('${profile.emailBloc.email.value}',
+                  style: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 4,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black54,
+                  ))),
           Container(
-            alignment: Alignment.topLeft,
-            child: Text(I18n.of(context).registerPhoneTitle,
-                style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                  fontWeight: FontWeight.w200,
-                  color: Colors.black,
-                )))
+              alignment: Alignment.topLeft,
+              child: Text(I18n.of(context).registerPhoneTitle,
+                  style: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                    fontWeight: FontWeight.w200,
+                    color: Colors.black,
+                  )))
         ]));
   }
 }

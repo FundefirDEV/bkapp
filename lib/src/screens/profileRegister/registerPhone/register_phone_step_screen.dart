@@ -21,8 +21,10 @@ class RegisterPhoneStepScreen extends StatefulWidget {
       _RegisterPhoneStepScreenState();
 }
 
-class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> with AfterLayoutMixin<RegisterPhoneStepScreen>{
-  ItemCountry country = ItemCountry(image: '', phoneCode: '+57', name: 'Colombia');
+class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen>
+    with AfterLayoutMixin<RegisterPhoneStepScreen> {
+  ItemCountry country = ItemCountry(
+      image: 'assets/images/colombia.svg', phoneCode: '+57', name: 'Colombia');
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -31,36 +33,37 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> with 
 
   @override
   void afterFirstLayout(BuildContext context) {
-    _showDialog(context);
+    showDialog(context);
   }
 
   Widget _containerInfo() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        ButtonBackWidget(),
-        Expanded(
-          flex: 2,
-          child: SingleChildScrollView(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          ButtonBackWidget(),
+          Expanded(
+            flex: 2,
+            child: SingleChildScrollView(
               child: RegisterPhoneContainerWidget(
-                tag: widget.data.tag, image: widget.data.image,
-                country: country
+                key: Key('register-phone-container'),
+                tag: widget.data.tag,
+                image: widget.data.image,
+                country: country,
+                openModalCountry: () => showDialog(context),
               ),
             ),
-        ),
-        Expanded(
-          child: FooterStepWidget(
+          ),
+          Expanded(
+              child: FooterStepWidget(
             currentStep: 3,
             numberOfSteps: 4,
             route: registerPasswordUser,
-            currentBlocSubmit: 
-              context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.submit,
+            currentBlocSubmit:
+                context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.submit,
             renderNextWidget:
-              RegisterPasswordStepArgs(widget.data.tag, widget.data.image),
-          )
-        )
-      ]
-    );
+                RegisterPasswordStepArgs(widget.data.tag, widget.data.image),
+          ))
+        ]);
   }
 
   _receiveCountry(ItemCountry data) {
@@ -70,18 +73,18 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> with 
     print(data.name);
   }
 
-  _showDialog(context) {
+  @visibleForTesting
+  showDialog(context) {
     SizeConfig().init(context);
     showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-      return BottomModal(
-        width: SizeConfig.blockSizeHorizontal * 100,
-        height:SizeConfig.blockSizeVertical * 30,
-        child: CountryModalContentWidget(callback:_receiveCountry)
-      );
-    });
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return BottomModal(
+              width: SizeConfig.blockSizeHorizontal * 100,
+              height: SizeConfig.blockSizeVertical * 30,
+              child: CountryModalContentWidget(callback: _receiveCountry));
+        });
   }
 }
 
