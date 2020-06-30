@@ -11,6 +11,7 @@ void main() {
 
   test('Test name bloc', () {
     phoneBloc.onSubmitting();
+    phoneBloc.emitSuccess();
     expect(phoneBloc.state, isA<FormBlocLoaded>());
   });
 

@@ -2,6 +2,8 @@
 
 [![codecov](https://codecov.io/gh/Fundefir-dev/bk_app/branch/master/graph/badge.svg?token=36HA1X385U)](https://codecov.io/gh/Fundefir-dev/bk_app)
 
+![Test, Build master](https://github.com/Fundefir-dev/bk_app/workflows/Test,%20Build%20master/badge.svg)
+
 ### Cloning
 
 ```sh

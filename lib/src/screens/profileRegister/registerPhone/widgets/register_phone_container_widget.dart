@@ -44,28 +44,31 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       RichText(
-                          text: TextSpan(
-                              text: I18n.of(context).registerPhoneTextOne,
-                              style: TextStyle(
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w200,
-                                color: Colors.black54,
-                              ),
-                              children: <TextSpan>[
+                        text: TextSpan(
+                          text: I18n.of(context).registerPhoneTextOne,
+                          style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 4,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w200,
+                            color: Colors.black54,
+                          ),
+                          children: <TextSpan>[
                             TextSpan(
                               text: I18n.of(context).registerPhoneTextTwo,
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ),
                             TextSpan(
-                                text: I18n.of(context).registerPhoneTextThree,
-                                style: TextStyle(
-                                  fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                  letterSpacing: 1,
-                                  fontWeight: FontWeight.w200,
-                                  color: Colors.black54,
-                                ))
-                          ])),
+                              text: I18n.of(context).registerPhoneTextThree,
+                              style: TextStyle(
+                                fontSize: SizeConfig.safeBlockHorizontal * 4,
+                                letterSpacing: 1,
+                                fontWeight: FontWeight.w200,
+                                color: Colors.black54,
+                              )
+                            )
+                          ]
+                        )
+                      ),
                       RichText(
                           text: TextSpan(
                               text: I18n.of(context).registerPhoneTextFour,

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/bloc/inviteFormBloc/invite_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/card_buttons_widget.dart';
@@ -6,7 +7,6 @@ import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal_conten
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'invite_form_Bloc.dart';
 
 //NOTE HOW TO CALL IT:
 // showDialog(context: context, builder: (BuildContext context) => InviteModal()),

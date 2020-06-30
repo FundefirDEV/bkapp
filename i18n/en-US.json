@@ -21,6 +21,7 @@
   },
   "error": {
     "required": "This field is required",
+    "graterThanNine": "The number should be greater than 9",
     "isEmpty": "there is nothing here!"
   },
   "loginScreen": {

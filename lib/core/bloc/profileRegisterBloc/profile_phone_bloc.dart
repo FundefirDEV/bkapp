@@ -1,7 +1,11 @@
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ProfilePhoneBloc extends FormBloc<String, String> {
-  final phone = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final phone = TextFieldBloc(validators: [
+    UtilsTools.required,
+    UtilsTools.minPhoneNumber,
+  ]);
 
   ProfilePhoneBloc() {
     addFieldBlocs(fieldBlocs: [phone]);

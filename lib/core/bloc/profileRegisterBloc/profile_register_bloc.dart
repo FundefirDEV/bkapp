@@ -40,7 +40,7 @@ class ProfileRegisterBloc extends FormBloc<String, String>{
       logger.v({
         'firstValue': '${_nameBloc.firstName.value}',
         'email': '${_emailBloc.email.value}',
-        'phone': '${_phoneBloc.phone.value}',
+        'phone': '${_phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), '')}',
         'password': '${_passwordBloc.password.value}'
       });
       emitSuccess();

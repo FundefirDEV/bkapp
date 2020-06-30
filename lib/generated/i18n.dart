@@ -66,6 +66,8 @@ class I18n implements WidgetsLocalizations {
   String get formPhone => "Phone";
   /// "This field is required"
   String get errorRequired => "This field is required";
+  /// "The number should be greater than 9"
+  String get errorGraterThanNine => "The number should be greater than 9";
   /// "there is nothing here!"
   String get errorIsEmpty => "there is nothing here!";
   /// "Go to "
@@ -397,6 +399,9 @@ class _I18n_es_ES extends I18n {
   /// "Este campo es obligatorio"
   @override
   String get errorRequired => "Este campo es obligatorio";
+  /// "El número debe ser mayor a 9"
+  @override
+  String get errorGraterThanNine => "El número debe ser mayor a 9";
   /// "¡No hay nada aquí!"
   @override
   String get errorIsEmpty => "¡No hay nada aquí!";

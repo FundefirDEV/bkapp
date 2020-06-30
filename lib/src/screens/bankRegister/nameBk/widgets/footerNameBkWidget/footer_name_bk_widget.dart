@@ -22,6 +22,7 @@ class FooterNameBkWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 30.0),
             child: ButtonLineRoundedWidget(
+              key: Key('footer-button-next-step'),
               onPressed: () {
                 Navigator.pushNamed(context, menuNavigator);
               },
