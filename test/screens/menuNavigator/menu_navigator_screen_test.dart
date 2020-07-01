@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
+import 'package:bkapp_flutter/src/screens/menuNavigator/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -16,23 +17,21 @@ void main() {
       expect(find.byKey(keyMenu), findsOneWidget);
     });
 
-    testWidgets('Change three options the menu', (WidgetTester tester) async {
+    testWidgets('Find custom bottom bar', (WidgetTester tester) async {
       await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+          .pumpWidget(baseTester(child: MenuNavigatorScreen()));
       await tester.pumpAndSettle();
-      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(CustomBottomBar), findsOneWidget);
     });
 
-    testWidgets('Change menu options', (WidgetTester tester) async {
-      final optionHome = Key('option-home');
-      final optionUtils = Key('option-utils');
-      final optionProfile = Key('option-profile');
+    testWidgets('Find three barItems', (WidgetTester tester) async {
       await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+          .pumpWidget(baseTester(child: MenuNavigatorScreen()));
       await tester.pumpAndSettle();
-      expect(find.byKey(optionHome), findsOneWidget);
-      expect(find.byKey(optionUtils), findsOneWidget);
-      expect(find.byKey(optionProfile), findsOneWidget);
+      final customBottomBar = tester.widget<CustomBottomBar>(
+        find.byType(CustomBottomBar)
+      );
+      expect(customBottomBar.items.length, equals(3));
     });
 
     testWidgets('Change option additional menu', (WidgetTester tester) async {
@@ -56,32 +55,32 @@ void main() {
       await tester
           .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(Key('option-utils')));
+      await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(milliseconds: 100));
       await tester.pumpAndSettle();
       expect(find.byType(UtilsScreen), findsOneWidget);
     });
 
-    testWidgets('redirect jump 0', (WidgetTester tester) async {
+    testWidgets('redirect jump to home', (WidgetTester tester) async {
       await tester
           .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('option-home')), findsOneWidget);
-      await tester.tap(find.byKey(Key('option-home')));
+      expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
+      await tester.tap(find.byKey(Key('home-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(seconds: 3));
       expect(find.byType(HomeScreen), findsOneWidget);
     });
 
-    testWidgets('redirect jump 1', (WidgetTester tester) async {
+    testWidgets('redirect to profile', (WidgetTester tester) async {
       await tester
           .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('option-utils')), findsOneWidget);
-      await tester.tap(find.byKey(Key('option-utils')));
+      expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
+      await tester.tap(find.byKey(Key('profile-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(seconds: 3));
-      expect(find.byType(UtilsScreen), findsOneWidget);
+      expect(find.text('Empty Body 2'), findsOneWidget);
     });
   });
 }

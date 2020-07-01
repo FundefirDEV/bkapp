@@ -144,6 +144,11 @@
     "administrator": "administradores"
   },
   "mainMenu": {
+    "bar": {
+      "home": "home",
+      "utils": "útiles",
+      "profile": "perfil"
+    },
     "actions": {
       "title": "¿Qué vas a hacer?",
       "credit": "pedir un\n crédito",

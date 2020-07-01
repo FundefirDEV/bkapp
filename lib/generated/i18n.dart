@@ -228,6 +228,12 @@ class I18n implements WidgetsLocalizations {
   String get utilsAssignment => "Assignment";
   /// "administrator"
   String get utilsAdministrator => "administrator";
+  /// "home"
+  String get mainMenuBarHome => "home";
+  /// "utils"
+  String get mainMenuBarUtils => "utils";
+  /// "profile"
+  String get mainMenuBarProfile => "profile";
   /// "What will you do?"
   String get mainMenuActionsTitle => "What will you do?";
   /// "requesting a\n credit"
@@ -642,6 +648,15 @@ class _I18n_es_ES extends I18n {
   /// "administradores"
   @override
   String get utilsAdministrator => "administradores";
+  /// "home"
+  @override
+  String get mainMenuBarHome => "home";
+  /// "útiles"
+  @override
+  String get mainMenuBarUtils => "útiles";
+  /// "perfil"
+  @override
+  String get mainMenuBarProfile => "perfil";
   /// "¿Qué vas a hacer?"
   @override
   String get mainMenuActionsTitle => "¿Qué vas a hacer?";
