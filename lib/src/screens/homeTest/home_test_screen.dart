@@ -42,10 +42,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
   }
 
   void _goToIntro() {
-    Navigator.pushNamed(
-      context,
-      selectAddressRoute
-    );
+    Navigator.pushNamed(context, selectAddressRoute);
   }
 
   @override
@@ -56,9 +53,9 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
           title: Text(widget.title),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () => BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut())
-            )
+                icon: Icon(Icons.exit_to_app),
+                onPressed: () => BlocProvider.of<AuthenticationBloc>(context)
+                    .add(LoggedOut()))
           ],
         ),
         body: Center(
@@ -88,7 +85,10 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                           Text(
                               "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
                           RaisedButton(
-                            onPressed: () => showModalBottomSheet(context: context, builder: (BuildContext context) => PreApprovedCreditModal()),
+                            onPressed: () => showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    PreApprovedCreditModal()),
                             color: Colors.red,
                             child: Text('Invite Modal',
                                 style: TextStyle(fontSize: 20)),

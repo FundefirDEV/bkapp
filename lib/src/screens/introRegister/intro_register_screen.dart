@@ -1,9 +1,9 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/footer_intro.dart';
+import 'package:bkapp_flutter/src/screens/introRegister/widgets/introCarousel/intro_carousel.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/widgets/bgOval/bg_oval.dart';
-import 'package:bkapp_flutter/src/widgets/carousel/carousel.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/register_modal.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +74,7 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
                       controller: _pageController,
                       children: <Widget>[
                         for (var i = 0; i < characters.length; i++)
-                          Carousel(item: characters[i])
+                          IntroCarousel(item: characters[i])
                       ],
                     ),
                   ),

@@ -2,7 +2,7 @@ import 'package:bkapp_flutter/src/screens/homeTest/home_test_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/intro_register_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/items_carousel.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/footer_intro.dart';
-import 'package:bkapp_flutter/src/widgets/carousel/carousel.dart';
+import 'package:bkapp_flutter/src/screens/introRegister/widgets/introCarousel/intro_carousel.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/register_modal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ void main() {
             icon: 'assets/images/icon_media.svg')
       ];
       await tester.pumpWidget(
-          baseTester(child: Carousel(key: testKey, item: characters[0])));
+          baseTester(child: IntroCarousel(key: testKey, item: characters[0])));
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
       expect(find.byKey(testKey), findsNWidgets(1));
