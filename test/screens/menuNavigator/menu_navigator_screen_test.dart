@@ -1,8 +1,10 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../base_tester.dart';
@@ -34,7 +36,7 @@ void main() {
       expect(customBottomBar.items.length, equals(3));
     });
 
-    testWidgets('Change option additional menu', (WidgetTester tester) async {
+    testWidgets('Find option additional menu', (WidgetTester tester) async {
       final optionAdditional = Key('option-additional');
       await tester
           .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
@@ -73,14 +75,44 @@ void main() {
     });
 
     testWidgets('redirect to profile', (WidgetTester tester) async {
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(
+        baseTester(
+          child: BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: PageController(initialPage: 0)
+            ),
+            child: MenuNavigatorScreen()
+          )
+        )
+      );
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('profile-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(seconds: 3));
-      expect(find.text('Empty Body 2'), findsOneWidget);
+      expect(find.text('Empty Body 3'), findsOneWidget);
+    });
+
+    testWidgets('Open actions menu animated', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        baseTester(
+          child: BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: PageController(initialPage: 0)
+            ),
+            child: MenuNavigatorScreen()
+          )
+        )
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('option-additional')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(MenuActions), findsOneWidget);
+
+      await tester.tap(find.byKey(Key('option-additional')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(MenuActions), findsOneWidget);
     });
   });
 }

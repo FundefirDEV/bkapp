@@ -1,9 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/utils/utils_cards_item.dart';
 import 'package:bkapp_flutter/src/screens/utils/utis_card_administrator_item.dart';
 import 'package:bkapp_flutter/src/screens/utils/widgets/widget.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class UtilsScreen extends StatefulWidget {
   UtilsScreen({Key key}) : super(key: key);
@@ -15,6 +17,9 @@ class UtilsScreen extends StatefulWidget {
 class _UtilsScreenState extends State<UtilsScreen> {
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
+    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+
     List<UtilsCardsItem> characters = [
       UtilsCardsItem(
         key: 'aprobation',
@@ -24,6 +29,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsApprovals,
         titleWeight: I18n.of(context).utilsRequests,
         textDescription: I18n.of(context).utilsApproveCreditActions,
+        onPressed: () => navigateBloc.add(ButtonPressed(goTo: 3))
       ),
       UtilsCardsItem(
         key: 'rules',

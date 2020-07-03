@@ -39,6 +39,14 @@ void main() {
       expect(authenticationBloc.initialState, AuthenticationUninitialized());
     });
 
+    test('test login props', () {
+      expect(LoggedIn(token: token).props, [token]);
+    });
+
+    test('test login props like string', () {
+      expect(LoggedIn(token: token).toString(), 'LoggedIn { token: $token }');
+    });
+
     test('close does not emit new states', () {
       expectLater(
         authenticationBloc,

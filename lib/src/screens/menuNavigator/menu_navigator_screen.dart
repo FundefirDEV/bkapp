@@ -1,9 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import 'widgets/widgets.dart';
 
@@ -17,23 +19,23 @@ class _MenuNavigatorState
   extends State<MenuNavigatorScreen>
   with SingleTickerProviderStateMixin {
   PageController _myPage = PageController(initialPage: 0);
-  AnimationController _controller;
+  AnimationController _animateController;
 
   @override
   void initState() {
-    _controller = AnimationController(
+    _animateController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 380)
     );
 
-    _controller.addListener(() => setState(() {}));
+    _animateController.addListener(() => setState(() {}));
     super.initState();
   }
   bool hasLoaded = false;
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _animateController?.dispose();
     super.dispose();
   }
 
@@ -68,41 +70,50 @@ class _MenuNavigatorState
       ),
       body: Stack(
         children: <Widget>[
-            PageView(
-            controller: _myPage,
-            onPageChanged: (int) {
-              print('Page Changes to index $int');
-            },
-            children: <Widget>[
-              HomeScreen(),
-              UtilsScreen(),
-              Center(
-                child: Container(
-                  child: Text('Empty Body 2'),
+          BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: _myPage
+            ),
+            child: PageView(
+              controller: _myPage,
+              children: <Widget>[
+                HomeScreen(),
+                UtilsScreen(),
+                Center(
+                  child: Container(
+                    child: Text('Empty Body 3'),
+                  ),
                 ),
-              )
-            ],
-            physics:
-                NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
+                Center(
+                  child: Container(
+                    height: 100.0,
+                    width:  100.0,
+                    color: Colors.redAccent,
+                    child: Text('Empty Body 4'),
+                  ),
+                ),
+              ],
+              physics: NeverScrollableScrollPhysics(),// Comment this if you need to use Swipe.
+            ),
           ),
           MenuActions(
             hasLoaded: hasLoaded,
-            controller: _controller
+            controller: _animateController
           )
         ],
       ),
       floatingActionButton: FloatingButton(
         key: Key('option-additional'),
-        onPressed: () => _controller.isAnimating ? null : _buttonPressed(),
-        controller: _controller,
+        onPressed: () => _animateController.isAnimating ? null : _buttonPressed(),
+        controller: _animateController,
       )
     );
   }
 
   void _buttonPressed() {
-    _controller.isCompleted
-    ? _controller.reverse()
-    : _controller.forward();
+    _animateController.isCompleted
+    ? _animateController.reverse()
+    : _animateController.forward();
     setState(() => hasLoaded = !hasLoaded);
   }
 }
