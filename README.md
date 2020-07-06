@@ -79,3 +79,5 @@ Theme.of(context).colorScheme.primaryColorDark[100]
 ```sh
 Theme.of(context).colorScheme.grayColor[200]
 ```
+
+....
