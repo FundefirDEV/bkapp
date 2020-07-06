@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
+import 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -97,6 +98,10 @@ class Router {
         break;
       case confirmationBuySharesRoute:
         return MaterialPageRoute(builder: (_) => ConfirmationBuyShares());
+      case approvalsScreen:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => ApprovalsScreen());
         break;
       default:
         return MaterialPageRoute(

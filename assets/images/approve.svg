@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="61px" height="52px" viewBox="0 0 61 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>approve</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Utils_approve_screen" transform="translate(-39.000000, -493.000000)">
+            <g id="approve_marcos" transform="translate(39.000000, 385.000000)">
+                <g id="approve" transform="translate(0.000000, 108.000000)">
+                    <path d="M0,0 L34,0 C48.9116882,8.13480987e-16 61,12.0883118 61,27 L61,52 L61,52 L10,52 C4.4771525,52 6.76353751e-16,47.5228475 0,42 L0,0 L0,0 Z" id="Rectangle" fill="#56C5FF"></path>
+                    <path d="M38.6185566,21.3552807 C38.1100522,20.8815596 37.2854363,20.8815596 36.7769319,21.3553616 L25.2768491,32.0706307 L19.2231549,26.4300659 C18.7146505,25.956264 17.8900346,25.956264 17.3814434,26.4300659 C16.8728522,26.9038679 16.8728522,27.6722085 17.3814434,28.1460913 L24.3559499,34.6446283 C24.6102455,34.8815697 24.9435473,35 25.2767622,35 C25.6099772,35 25.9433658,34.8814888 26.1975746,34.6446283 L38.6185566,23.071306 C39.1271478,22.5975041 39.1271478,21.8291635 38.6185566,21.3552807 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

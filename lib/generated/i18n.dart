@@ -342,6 +342,48 @@ class I18n implements WidgetsLocalizations {
   String get buySharesApplicationDate => "Application date";
   /// "Status"
   String get buySharesStatus => "Status";
+  /// "Approvals"
+  String get approvalsScreenApproval => "Approvals";
+  /// "Petitions"
+  String get approvalsScreenPetitions => "Petitions";
+  /// "Accepted"
+  String get approvalsScreenAccepted => "Accepted";
+  /// "Rechazadas"
+  String get approvalsScreenRejected => "Rechazadas";
+  /// "Shares"
+  String get approvalsScreenShares => "Shares";
+  /// "Credits"
+  String get approvalsScreenCredits => "Credits";
+  /// "Payments"
+  String get approvalsScreenPayments => "Payments";
+  /// "No requests"
+  String get approvalsScreenNoRequest => "No requests";
+  /// "Approvals"
+  String get approveCreditModalApproval => "Approvals";
+  /// "Petitions"
+  String get approveCreditModalPetitions => "Petitions";
+  /// "Accepted"
+  String get approveCreditModalAccepted => "Accepted";
+  /// "Rechazadas"
+  String get approveCreditModalRejected => "Rechazadas";
+  /// "Shares"
+  String get approveCreditModalShares => "Shares";
+  /// "Credits"
+  String get approveCreditModalCredits => "Credits";
+  /// "Payments"
+  String get approveCreditModalPayments => "Payments";
+  /// "No requests"
+  String get approveCreditModalNoRequest => "No requests";
+  /// "The credit of "
+  String get approvedRejectedModalTheCredit => "The credit of ";
+  /// "has"
+  String get approvedRejectedModalHas => "has";
+  /// "been"
+  String get approvedRejectedModalBeen => "been";
+  /// "rechazado"
+  String get approvedRejectedModalRejected => "rechazado";
+  /// "aceptado"
+  String get approvedRejectedModalAccepted => "aceptado";
 }
 
 class _I18n_en_US extends I18n {
@@ -819,6 +861,45 @@ class _I18n_es_ES extends I18n {
   /// "Estado"
   @override
   String get buySharesStatus => "Estado";
+  /// "Aprobaciones"
+  @override
+  String get approvalsScreenApproval => "Aprobaciones";
+  /// "Peticiones"
+  @override
+  String get approvalsScreenPetitions => "Peticiones";
+  /// "Aceptadas"
+  @override
+  String get approvalsScreenAccepted => "Aceptadas";
+  /// "Rechazadas"
+  @override
+  String get approvalsScreenRejected => "Rechazadas";
+  /// "Acciones"
+  @override
+  String get approvalsScreenShares => "Acciones";
+  /// "Créditos"
+  @override
+  String get approvalsScreenCredits => "Créditos";
+  /// "Pago de cuotas"
+  @override
+  String get approvalsScreenPayments => "Pago de cuotas";
+  /// "No hay solicitudes"
+  @override
+  String get approvalsScreenNoRequest => "No hay solicitudes";
+  /// "El crédito de "
+  @override
+  String get approvedRejectedModalTheCredit => "El crédito de ";
+  /// "ha"
+  @override
+  String get approvedRejectedModalHas => "ha";
+  /// "sido"
+  @override
+  String get approvedRejectedModalBeen => "sido";
+  /// "rechazado"
+  @override
+  String get approvedRejectedModalRejected => "rechazado";
+  /// "aceptado"
+  @override
+  String get approvedRejectedModalAccepted => "aceptado";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

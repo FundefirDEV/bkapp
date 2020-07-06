@@ -217,5 +217,22 @@
     "requestedActions": "Acciones solicitadas",
     "applicationDate": "Fecha de solicitud",
     "status": "Estado"
+  },
+  "approvalsScreen": {
+    "approval": "Aprobaciones",
+    "petitions": "Peticiones",
+    "accepted": "Aceptadas",
+    "rejected": "Rechazadas",
+    "shares": "Acciones",
+    "credits": "Créditos",
+    "payments": "Pago de cuotas",
+    "noRequest": "No hay solicitudes"
+  },
+  "approvedRejectedModal": {
+    "theCredit": "El crédito de ",
+    "has": "ha",
+    "been": "sido",
+    "rejected": "rechazado",
+    "accepted": "aceptado"
   }
 }

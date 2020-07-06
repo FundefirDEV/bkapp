@@ -1,13 +1,11 @@
-
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class TopContainerContentProfileScreen { 
-  
+class TopContainerContentProfileScreen {
   Container profileAndArrow() {
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
+      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 0.3),
       child: Row(
         key: Key('row_top_container_profile_Screen'),
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -40,21 +38,19 @@ class TopContainerContentProfileScreen {
     return Container(
       key: Key('Top_container_profile_Screen'),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          FlatButton(
-              key: Key('Salo_button_container_profile_Screen'),
-              color: Colors.transparent,
-              onPressed: () => {},
-              shape: CircleBorder(),
-              child: SvgPicture.asset('assets/images/salo_bot.svg')),
-          SizedBox(
-            width: SizeConfig.safeBlockHorizontal * 30,
+          Container(
+            height: SizeConfig.blockSizeVertical * 5,
+            child: InkWell(
+                key: Key('Salo_button_container_profile_Screen'),
+                onTap: () => {},
+                child: SvgPicture.asset('assets/images/salo_bot.svg')),
           ),
-          FlatButton(
+          SizedBox(width: SizeConfig.safeBlockHorizontal * 61,),
+          InkWell(
               key: Key('Exit_button_container_profile_Screen'),
-              onPressed: () => {},
-              shape: CircleBorder(),
+              onTap: () => {},
               child: SvgPicture.asset('assets/images/icon_exit.svg')),
         ],
       ),

@@ -217,5 +217,34 @@
     "requestedActions": "Requested actions",
     "applicationDate": "Application date",
     "status": "Status"
+  },
+  "approvalsScreen": {
+    "approval": "Approvals",
+    "petitions": "Petitions",
+    "accepted": "Accepted",
+    "rejected": "Rechazadas",
+    "shares": "Shares",
+    "credits": "Credits",
+    "payments": "Payments",
+    "noRequest": "No requests"
+  },
+   "approveCreditModal": {
+    "approval": "Approvals",
+    "petitions": "Petitions",
+    "accepted": "Accepted",
+    "rejected": "Rechazadas",
+    "shares": "Shares",
+    "credits": "Credits",
+    "payments": "Payments",
+    "noRequest": "No requests"
+  },
+    "approvedRejectedModal": {
+    "theCredit": "The credit of ",
+    "has": "has",
+    "been": "been",
+    "rejected": "rechazado",
+    "accepted": "aceptado"
+
   }
+
 }

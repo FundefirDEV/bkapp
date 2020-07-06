@@ -21,8 +21,8 @@ class TopContainerProfileScreen {
         ),
         gradient: LinearGradient(
           colors: [
-            Theme.of(context).colorScheme.primaryColorDark,
-            Theme.of(context).colorScheme.secondary
+            Theme.of(context).colorScheme.primaryColorDark[50],
+            Theme.of(context).colorScheme.primaryColor[100]
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -32,6 +32,7 @@ class TopContainerProfileScreen {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           content.saloAndArrow(),
+          SizedBox(height: SizeConfig.blockSizeVertical * 1.3,),
           content.profileAndArrow(),
           topContainerInformation(),
           Container(

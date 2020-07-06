@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+
 class GainButtonProfileScreen {
   Container gainContainerButton(context) {
     return Container(
@@ -14,8 +15,8 @@ class GainButtonProfileScreen {
           borderRadius: BorderRadius.all(Radius.circular(10)),
           gradient: LinearGradient(
             colors: [
-              Theme.of(context).colorScheme.secondary,
-              Theme.of(context).colorScheme.secondaryVariant
+              Theme.of(context).colorScheme.primaryColor[100],
+              Theme.of(context).colorScheme.primaryColor,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
