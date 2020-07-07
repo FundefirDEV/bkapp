@@ -5,7 +5,7 @@ on:
 name: Test, Build master
 jobs:
   build:
-    name: Build APK
+    name: Run test on master
     runs-on: ubuntu-latest
     steps:
       - name: disable the keychain credential helper
@@ -32,7 +32,6 @@ jobs:
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: ./coverage/lcov.info
-      - run: flutter build apk --debug --split-per-abi
   release-on-push:
     name: Generate a release github
     runs-on: ubuntu-latest
