@@ -31,7 +31,7 @@ class CardBuyShares extends StatelessWidget {
         children: <Widget>[
           Container(
             key: Key('blue-container-card-buy-share'),
-            width: 100,
+            width: 110,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),

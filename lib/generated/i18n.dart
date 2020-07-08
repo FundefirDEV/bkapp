@@ -384,6 +384,14 @@ class I18n implements WidgetsLocalizations {
   String get approvedRejectedModalRejected => "rechazado";
   /// "aceptado"
   String get approvedRejectedModalAccepted => "aceptado";
+  /// "SPECIAL"
+  String get statusCreditSpecial => "SPECIAL";
+  /// "STATUS"
+  String get statusCreditStatus => "STATUS";
+  /// "DUES"
+  String get statusCreditDues => "DUES";
+  /// "Value requested"
+  String get statusCreditValueRequested => "Value requested";
 }
 
 class _I18n_en_US extends I18n {
@@ -900,6 +908,18 @@ class _I18n_es_ES extends I18n {
   /// "aceptado"
   @override
   String get approvedRejectedModalAccepted => "aceptado";
+  /// "ESPECIAL"
+  @override
+  String get statusCreditSpecial => "ESPECIAL";
+  /// "ESTADO"
+  @override
+  String get statusCreditStatus => "ESTADO";
+  /// "CUOTAS"
+  @override
+  String get statusCreditDues => "CUOTAS";
+  /// "Valor solicitado"
+  @override
+  String get statusCreditValueRequested => "Valor solicitado";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

@@ -70,11 +70,10 @@ class MyApp extends StatelessWidget {
           DefaultCupertinoLocalizations.delegate
         ],
         supportedLocales: i18n.supportedLocales,
-        localeResolutionCallback: i18n.resolution(
-          fallback: new Locale("es", "ES")
-        ),
+        localeResolutionCallback:
+            i18n.resolution(fallback: new Locale("es", "ES")),
         onGenerateRoute: Router.generateRoute,
-        initialRoute: menuNavigator,
+        initialRoute: creditStatusScreenRoute,
       ),
     );
   }

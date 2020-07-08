@@ -20,3 +20,4 @@ export 'utils/utils_screen.dart';
 export 'buyShares/buy_shares_screen.dart';
 export 'buyShares/confirmationBuyShares/confirmation_buy_shares.dart';
 export 'approvals/approvals_screen.dart';
+export 'credirRequest/widgets/statusCreditRequest/status_credit_request_widget.dart';

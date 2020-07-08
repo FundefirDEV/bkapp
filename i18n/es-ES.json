@@ -234,5 +234,11 @@
     "been": "sido",
     "rejected": "rechazado",
     "accepted": "aceptado"
+  },
+  "statusCredit": {
+    "special": "ESPECIAL",
+    "status": "ESTADO",
+    "dues": "CUOTAS",
+    "valueRequested": "Valor solicitado"
   }
 }

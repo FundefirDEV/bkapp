@@ -103,6 +103,9 @@ class Router {
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => ApprovalsScreen());
         break;
+      case creditStatusScreenRoute:
+        return MaterialPageRoute(builder: (_) => StatusCreditRequestWidget());
+        break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

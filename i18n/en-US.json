@@ -228,7 +228,7 @@
     "payments": "Payments",
     "noRequest": "No requests"
   },
-   "approveCreditModal": {
+  "approveCreditModal": {
     "approval": "Approvals",
     "petitions": "Petitions",
     "accepted": "Accepted",
@@ -238,13 +238,17 @@
     "payments": "Payments",
     "noRequest": "No requests"
   },
-    "approvedRejectedModal": {
+  "approvedRejectedModal": {
     "theCredit": "The credit of ",
     "has": "has",
     "been": "been",
     "rejected": "rechazado",
     "accepted": "aceptado"
-
+  },
+  "statusCredit": {
+    "special": "SPECIAL",
+    "status": "STATUS",
+    "dues": "DUES",
+    "valueRequested": "Value requested"
   }
-
 }
