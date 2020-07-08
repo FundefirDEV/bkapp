@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 //NOTE HOW TO CALL IT:
 // showModalBottomSheet(context: context, builder: (BuildContext context) => PreApprovedCreditModal()),
 class PreApprovedCreditModal extends StatelessWidget {
+  PreApprovedCreditModal({this.navigateBloc});
+
+  final MenuNavigatorBloc navigateBloc;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -58,7 +63,10 @@ class PreApprovedCreditModal extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: FlatButton(
           key: Key('FlatButton_credit_modal'),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pop(context);
+            navigateBloc.add(ButtonPressed(goTo: 6));
+          },
           child: Text( I18n.of(context).actionTextClose,
             style: TextStyle(
               color: Theme.of(context).colorScheme.grayColor,

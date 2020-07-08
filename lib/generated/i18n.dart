@@ -416,8 +416,8 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenPerson => "Person";
   /// "5% current interest"
   String get creditScreenCurrentInterest => "5% current interest";
-  /// "Select your state"
-  String get creditScreenSelectYourState => "Select your state";
+  /// "Credit use"
+  String get creditScreenSelectYourState => "Credit use";
   /// "Credit request"
   String get creditScreenCreditRequest => "Credit request";
   /// "Value to request"
@@ -430,10 +430,10 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenDetail => "Detail";
   /// "Way to pay"
   String get creditScreenWayToPay => "Way to pay";
-  /// "Avances"
-  String get creditScreenAdvances => "Avances";
-  /// "Cuotas"
-  String get creditScreenInstallments => "Cuotas";
+  /// "Advance"
+  String get creditScreenAdvances => "Advance";
+  /// "Installments"
+  String get creditScreenInstallments => "Installments";
 }
 
 class _I18n_en_US extends I18n {
@@ -998,9 +998,9 @@ class _I18n_es_ES extends I18n {
   /// "Interés del 5%"
   @override
   String get creditScreenCurrentInterest => "Interés del 5%";
-  /// "Selecciona tu ciudad"
+  /// "Uso del crédito"
   @override
-  String get creditScreenSelectYourState => "Selecciona tu ciudad";
+  String get creditScreenSelectYourState => "Uso del crédito";
   /// "Solicitar crédito"
   @override
   String get creditScreenCreditRequest => "Solicitar crédito";
@@ -1019,9 +1019,9 @@ class _I18n_es_ES extends I18n {
   /// "Forma de pago"
   @override
   String get creditScreenWayToPay => "Forma de pago";
-  /// "Avances"
+  /// "Por Adelantado"
   @override
-  String get creditScreenAdvances => "Avances";
+  String get creditScreenAdvances => "Por Adelantado";
   /// "Cuotas"
   @override
   String get creditScreenInstallments => "Cuotas";

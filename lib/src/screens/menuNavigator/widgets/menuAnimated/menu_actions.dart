@@ -93,6 +93,7 @@ class MenuActions extends StatelessWidget {
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
+            key: Key('credit-button-line'),
             onPressed: () {
               navigateBloc.add(ButtonPressed(goTo: 3));
               isPressed();
@@ -121,6 +122,7 @@ class MenuActions extends StatelessWidget {
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
+            key: Key('actions-button-line'),
             onPressed: () {
               navigateBloc.add(ButtonPressed(goTo: 4));
               isPressed();

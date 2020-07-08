@@ -258,14 +258,14 @@
     "withInterest": "Con interés",
     "person": "Persona",
     "currentInterest": "Interés del 5%",
-    "selectYourState": "Selecciona tu ciudad",
+    "selectYourState": "Uso del crédito",
     "creditRequest": "Solicitar crédito",
     "valueToRequest": "Valor a solicitar",
     "numberOfFees": "Número de cuotas",
     "UseOfCredit": "Uso del crédito",
     "Detail": "Detalle",
     "wayToPay": "Forma de pago",
-    "advances": "Avances",
+    "advances": "Por Adelantado",
     "installments": "Cuotas"
   }
 }

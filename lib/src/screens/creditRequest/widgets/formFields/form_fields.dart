@@ -55,6 +55,7 @@ class FormFields extends StatelessWidget {
           ),
           TextFieldBlocBuilder(
             key: Key('buy-shares-form-numberactssiossdsddsns'),
+            // REVIEW Why use buyShares instead creditBloc?
             textFieldBloc:
                 context.bloc<AppBloc>().buySharesFormBloc.numberactions,
             errorBuilder: (context, string) =>

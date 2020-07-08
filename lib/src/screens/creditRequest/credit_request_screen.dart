@@ -1,8 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/src/widgets/modals/approveDiscardRequest/approve_credit_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
-import 'package:bkapp_flutter/src/widgets/modals/bottomModal/register_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved_credit_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -81,7 +79,7 @@ class CreditScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 30.0, bottom: 35.0),
           child: RaisedButton(
             key: Key('raisedButton-accept'),
-            onPressed: () => _showDialog(context),
+            onPressed: () => _showDialog(context, menuNavigatorBloc),
             color: Theme.of(context).colorScheme.primaryColor,
             padding: EdgeInsets.symmetric(
               horizontal: 30.0,
@@ -105,7 +103,7 @@ class CreditScreen extends StatelessWidget {
     ));
   }
 
-  void _showDialog(BuildContext context) {
+  void _showDialog(BuildContext context, menuNavigatorBloc) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -113,7 +111,7 @@ class CreditScreen extends StatelessWidget {
         return BottomModal(
           width: SizeConfig.blockSizeHorizontal * 100,
           height: SizeConfig.blockSizeVertical * 45,
-          child: PreApprovedCreditModal(),
+          child: PreApprovedCreditModal(navigateBloc: menuNavigatorBloc,),
         );
       }
     );

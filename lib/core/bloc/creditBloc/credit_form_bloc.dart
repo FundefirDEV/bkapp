@@ -18,9 +18,9 @@ class CreditFormBloc extends FormBloc<String, String> {
 
   final selectState = SelectFieldBloc(
     items: [
-      'Cundinamarca',
-      'Valle del Cauca',
-      'Magdalena'
+      'Generación de ingresos',
+      'Fortalecimiento familiar',
+      'Consumo'
     ],
   );
 

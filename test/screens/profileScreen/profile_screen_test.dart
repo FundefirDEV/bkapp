@@ -10,7 +10,6 @@ void main() {
       final topContainerKey = Key('Top_container_profile_Screen');
       final topContainerInformationKey =
           Key('Top_container_information_profile_Screen');
-      final backButtonKey = Key('Back_button_profile_screen');
       final profilePictureKey = Key('Profile_picture');
       final saloButtonKey = Key('Salo_button_container_profile_Screen');
       final exitButtonKey = Key('Exit_button_container_profile_Screen');
@@ -26,7 +25,6 @@ void main() {
       expect(find.byKey(profilePictureKey), findsOneWidget);
       expect(find.byKey(saloButtonKey), findsOneWidget);
       expect(find.byKey(exitButtonKey), findsOneWidget);
-      expect(find.byKey(backButtonKey), findsOneWidget);
       expect(find.byKey(rowTextTopContainerKey), findsOneWidget);
       expect(find.byKey(editButtonKey), findsOneWidget);
       expect(find.byKey(topContainerKey), findsNWidgets(2));

@@ -268,14 +268,14 @@
     "withInterest": "Interest",
     "person": "Person",
     "currentInterest": "5% current interest",
-    "selectYourState": "Select your state",
+    "selectYourState": "Credit use",
     "creditRequest": "Credit request",
     "valueToRequest": "Value to request",
     "numberOfFees": "Number of fees",
     "UseOfCredit": "Use of credit",
     "Detail": "Detail",
     "wayToPay": "Way to pay",
-    "advances": "Avances",
-    "installments": "Cuotas"
+    "advances": "Advance",
+    "installments": "Installments"
   }
 }

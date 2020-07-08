@@ -86,7 +86,9 @@ class _MenuNavigatorState
                 UtilsScreen(),
                 ProfileScreen(),
                 CreditScreen(oldIndex: currentIndex),
-                BuySharesScreen(oldIndex: currentIndex)
+                BuySharesScreen(oldIndex: currentIndex),
+                ApprovalsScreen(oldIndex: currentIndex),
+                StatusCreditRequestWidget()
               ],
               physics: NeverScrollableScrollPhysics(),// Comment this if you need to use Swipe.
             ),

@@ -109,10 +109,50 @@ void main() {
       await tester.tap(find.byKey(Key('option-additional')));
       await tester.pumpAndSettle(const Duration(seconds: 2));
       expect(find.byType(MenuActions), findsOneWidget);
+    });
+
+    testWidgets('Go to credit screen', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        baseTester(
+          child: BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: PageController(initialPage: 0)
+            ),
+            child: MenuNavigatorScreen()
+          )
+        )
+      );
+      await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));
       await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(MenuActions), findsOneWidget);
+      
+      expect(find.byKey(Key('credit-button-line')), findsOneWidget);
+      await tester.tap(find.byKey(Key('credit-button-line')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(CreditScreen), findsOneWidget);
+    });
+
+    testWidgets('Go to actions screen', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        baseTester(
+          child: BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: PageController(initialPage: 0)
+            ),
+            child: MenuNavigatorScreen()
+          )
+        )
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('option-additional')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      
+      expect(find.byKey(Key('actions-button-line')), findsOneWidget);
+      await tester.tap(find.byKey(Key('actions-button-line')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(BuySharesScreen), findsOneWidget);
     });
   });
 }

@@ -6,29 +6,21 @@ class TopContainerContentProfileScreen {
   Container profileAndArrow() {
     return Container(
       margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 0.3),
-      child: Row(
+      child: Stack(
+        alignment: Alignment.center,
         key: Key('row_top_container_profile_Screen'),
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          FlatButton(
-            key: Key('Back_button_profile_screen'),
-            onPressed: () => {},
-            shape: CircleBorder(),
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
+          Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: Text(
+              'Perfil',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
-          SizedBox(width: SizeConfig.safeBlockHorizontal * 15),
-          Text(
-            'Perfil',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 25,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          SizedBox(width: SizeConfig.safeBlockHorizontal * 40),
         ],
       ),
     );

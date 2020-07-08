@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/card_approvals.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/number_petitions.dart';
@@ -10,9 +11,15 @@ import 'package:flutter/material.dart';
 import 'content/accepted_discarted_container.dart';
 import 'content/title_approve_screen.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ApprovalsScreen extends StatefulWidget {
-  ApprovalsScreen({Key key}) : super(key: key);
+  ApprovalsScreen({
+    Key key,
+    @required this.oldIndex
+  }) : super(key: key);
+
+  final int oldIndex;
 
   @override
   _ApprovalsScreenState createState() => _ApprovalsScreenState();
@@ -27,13 +34,18 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
       '[{"name":"Marcos Nope","type":"pago","price":"200000.0", "quantity":"1"},{"name":"Gibran Raydan","type":"pago","price":"300000.0", "quantity":"1"},{"name":"Daniel Tavera","type":"pago","price":"30000.0", "quantity":"1"}]');
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
+    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
 
     return AppBarWidget(
       container: Column(
           key: Key('Column-appbar-approvals-screen'),
           children: <Widget>[
-            TitleApprovalsWidget(),
+            TitleApprovalsWidget(
+              navigateBloc: menuNavigatorBloc,
+              oldIndex: widget.oldIndex,
+            ),
             CardApprovals(
               childBlue: NumberPetitions(),
               childWhite: AcceptedDiscarted()
