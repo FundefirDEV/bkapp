@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/environment_config.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -57,6 +58,10 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8.0),
             child: Container(child: _finalText(context)),
           ),
+        ),
+        Text(
+          EnvironmentConfig.ENV,
+          style: TextStyle(color: Colors.white, fontSize: 10),
         )
       ],
     );

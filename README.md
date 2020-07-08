@@ -3,7 +3,13 @@
 [![codecov](https://codecov.io/gh/Fundefir-dev/bk_app/branch/master/graph/badge.svg?token=36HA1X385U)](https://codecov.io/gh/Fundefir-dev/bk_app)
 
 ![Test, Build master](https://github.com/Fundefir-dev/bk_app/workflows/Test,%20Build%20master/badge.svg)
-[![Codemagic build status](https://api.codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f03816ef9cfa6000e6d3b48/status_badge.svg)](https://codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f03816ef9cfa6000e6d3b48/latest_build)
+
+Production: [![Codemagic build status PROD](https://api.codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f03816ef9cfa6000e6d3b48/status_badge.svg)](https://codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f03816ef9cfa6000e6d3b48/latest_build)
+
+QA: [![Codemagic build status QA](https://api.codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f0647b532c6cf2b4f64a10d/status_badge.svg)](https://codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f0647b532c6cf2b4f64a10d/latest_build)
+
+Stage: [![Codemagic build Stage](https://api.codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f064b18d9ccd53cdbc2002a/status_badge.svg)](https://codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f064b18d9ccd53cdbc2002a/latest_build)
+
 
 ### Cloning
 

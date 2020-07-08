@@ -6,6 +6,11 @@ class EnvironmentConfig {
       defaultValue: "https://bkservice.fundefir-dev.com");
 
   ///
+  /// Environment PROD; QA; STAGE or DEV
+  ///
+  static const String ENV = String.fromEnvironment('ENV', defaultValue: "DEV");
+
+  ///
   /// Mock for service, use only when the API service is not available
   ///
   @Deprecated('Prefer "API_URL", the mock url is temporally.')
