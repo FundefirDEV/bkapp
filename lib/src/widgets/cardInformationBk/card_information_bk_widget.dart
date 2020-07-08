@@ -1,13 +1,18 @@
-import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class CardBuyShares extends StatelessWidget {
-  const CardBuyShares({Key key, this.childBlue, this.childWhite})
-      : super(key: key);
+class CardInformationBkWidget extends StatelessWidget {
+  CardInformationBkWidget({
+    Key key,
+    this.childBlue,
+    this.childWhite,
+    this.childBlueWidth
+  }) : super(key: key);
 
   final Widget childBlue;
   final Widget childWhite;
+  final double childBlueWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class CardBuyShares extends StatelessWidget {
         children: <Widget>[
           Container(
             key: Key('blue-container-card-buy-share'),
-            width: 110,
+            width: this.childBlueWidth ?? 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),

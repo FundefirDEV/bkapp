@@ -18,7 +18,7 @@ class AppBarWidget extends StatelessWidget {
                   top: 0,
                   child: Container(
                     width: SizeConfig.blockSizeHorizontal * 100,
-                    height: SizeConfig.blockSizeVertical * 35,
+                    height: SizeConfig.blockSizeVertical * 45,
                     child: SvgPicture.asset('assets/images/oval_top.svg',
                         fit: BoxFit.cover),
                   )),
@@ -26,14 +26,18 @@ class AppBarWidget extends StatelessWidget {
                   child: Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeHorizontal * 6),
-                      child: Column(
-                          children: <Widget>[_header(), this.container])))
+                      child: Column(children: <Widget>[
+                        _header(),
+                        Expanded(
+                            child: SingleChildScrollView(child: this.container))
+                      ])))
             ])));
   }
 
   Container _header() {
     return Container(
-        padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.5),
+        padding:
+            EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 2.5),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

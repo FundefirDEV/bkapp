@@ -1,4 +1,6 @@
 import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
+import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
+import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../base_tester.dart';
@@ -28,6 +30,16 @@ void main() {
               widget.text.toPlainText() ==
                   "¡VERY GOOD!\nsuperBk has been created"),
           findsOneWidget);
+    });
+
+    testWidgets('Go to the next screen', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: BankCreatedScreen()));
+      await tester.pumpAndSettle();
+      
+      await tester.tap(find.byType(ButtonNextWidget));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MenuNavigatorScreen), findsOneWidget);
     });
   });
 }

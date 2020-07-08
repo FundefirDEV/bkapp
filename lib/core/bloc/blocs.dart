@@ -11,3 +11,4 @@ export 'profileRegisterBloc/profile_pin_code_verification_bloc.dart';
 export 'selectCityBloc/select_city_bloc.dart';
 export 'profileEdition/profile_edit_form_Bloc.dart';
 export 'buySharesBloc/buy_shares_form_bloc.dart';
+export 'creditBloc/credit_form_bloc.dart';

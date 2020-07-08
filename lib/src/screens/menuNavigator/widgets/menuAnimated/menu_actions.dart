@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../widgets.dart';
 import 'menu_animation.dart';
@@ -9,13 +11,15 @@ class MenuActions extends StatelessWidget {
   MenuActions({
     Key key,
     @required this.hasLoaded,
-    @required this.controller
+    @required this.controller,
+    this.isPressed
   }) : animation = MenuAnimation(controller),
        super(key: key);
 
   final bool hasLoaded;
   final AnimationController controller;
   final MenuAnimation animation;
+  final Function isPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -80,13 +84,19 @@ class MenuActions extends StatelessWidget {
   }
 
   Widget _firstColumn(BuildContext context) {
+    // ignore: close_sinks
+    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
-            onPressed: () {},
+            onPressed: () {
+              navigateBloc.add(ButtonPressed(goTo: 3));
+              isPressed();
+            },
             text: I18n.of(context).mainMenuActionsCredit,
           ),
         ),
@@ -102,13 +112,19 @@ class MenuActions extends StatelessWidget {
   }
 
   Widget _thirdColumn(BuildContext context) {
+    // ignore: close_sinks
+    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
-            onPressed: () {},
+            onPressed: () {
+              navigateBloc.add(ButtonPressed(goTo: 4));
+              isPressed();
+            },
             text: I18n.of(context).mainMenuActionsActions,
           ),
         ),

@@ -100,7 +100,7 @@ class Router {
             pageBuilder: (context, _, __) => ProfileEditScreen());
         break;
       case buySharesScreenRoute:
-        return MaterialPageRoute(builder: (_) => BuySharesScreen());
+        return MaterialPageRoute(builder: (_) => BuySharesScreen(oldIndex: 0));
         break;
       case confirmationBuySharesRoute:
         return MaterialPageRoute(builder: (_) => ConfirmationBuyShares());
@@ -112,6 +112,8 @@ class Router {
       case creditStatusScreenRoute:
         return MaterialPageRoute(builder: (_) => StatusCreditRequestWidget());
         break;
+      case creditRoute:
+        return MaterialPageRoute(builder: (_) => CreditScreen(oldIndex: 0));
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

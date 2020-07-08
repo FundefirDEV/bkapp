@@ -1,8 +1,8 @@
-import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/card_buy_shares_widget.dart';
-import 'package:bkapp_flutter/src/screens/credirRequest/widgets/statusCreditRequest/status_credit_request_widget.dart';
-import 'package:bkapp_flutter/src/screens/credirRequest/widgets/statusCreditRequest/widgets/statusTextCreditRequest/status_text_credit_request_widget.dart';
-import 'package:bkapp_flutter/src/screens/credirRequest/widgets/statusCreditRequest/widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
-import 'package:bkapp_flutter/src/screens/credirRequest/widgets/statusCreditRequest/widgets/titleStausCredit/title_status_credit_widget.dart';
+import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/statusTextCreditRequest/status_text_credit_request_widget.dart';
+import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
+import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/titleStausCredit/title_status_credit_widget.dart';
+import 'package:bkapp_flutter/src/screens/screens.dart';
+import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -32,7 +32,7 @@ void main() {
 
     testWidgets('Render CardBuyShares', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester.pumpWidget(baseTester(child: CardBuyShares(key: testKey)));
+      await tester.pumpWidget(baseTester(child: CardInformationBkWidget(key: testKey)));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);

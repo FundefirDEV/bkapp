@@ -8,7 +8,8 @@
   "actionText": {
     "enter": "INGRESAR",
     "imNew": "SOY NUEVO",
-    "close": "CERRAR"
+    "close": "CERRAR",
+    "request": "SOLICITAR"
   },
   "form": {
     "user": "Usuario",
@@ -247,5 +248,24 @@
     "weSendToYour": "que enviamos a \n tu ",
     "cellNumber": "número celular",
     "pinCodeComplete": "Por favor llene todas las celdas correctamente"
+  },
+  "creditScreen": {
+    "tab": {
+      "titleOne": "Normal",
+      "titleTwo": "Especial"
+    },
+    "youCanRequest": "Puedes solicitar hasta",
+    "withInterest": "Con interés",
+    "person": "Persona",
+    "currentInterest": "Interés del 5%",
+    "selectYourState": "Selecciona tu ciudad",
+    "creditRequest": "Solicitar crédito",
+    "valueToRequest": "Valor a solicitar",
+    "numberOfFees": "Número de cuotas",
+    "UseOfCredit": "Uso del crédito",
+    "Detail": "Detalle",
+    "wayToPay": "Forma de pago",
+    "advances": "Avances",
+    "installments": "Cuotas"
   }
 }

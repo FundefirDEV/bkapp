@@ -70,7 +70,6 @@ class TopContainerProfileScreen {
             key: Key('Text_column_top_container_profile_sreen'),
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 10),
                 child: Column(
                   children: <Widget>[
                     RichText(
@@ -104,7 +103,10 @@ class TopContainerProfileScreen {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        SvgPicture.asset('assets/images/colombia_profile.svg'),
+                        SvgPicture.asset(
+                          'assets/images/colombia_profile.svg',
+                          height: 30.0,
+                        ),
                         Text(
                           '3138129220',
                           style: TextStyle(color: Colors.white),

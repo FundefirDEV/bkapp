@@ -7,6 +7,7 @@ import 'package:bkapp_flutter/src/screens/utils/utis_card_administrator_item.dar
 import 'package:bkapp_flutter/src/screens/utils/widgets/widget.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 
 class UtilsScreen extends StatefulWidget {
   UtilsScreen({Key key}) : super(key: key);
@@ -23,15 +24,14 @@ class _UtilsScreenState extends State<UtilsScreen> {
 
     List<UtilsCardsItem> characters = [
       UtilsCardsItem(
-        key: 'aprobation',
-        image: 'assets/images/check.svg',
-        aprobations: true,
-        number: "4 ",
-        title: I18n.of(context).utilsApprovals,
-        titleWeight: I18n.of(context).utilsRequests,
-        textDescription: I18n.of(context).utilsApproveCreditActions,
-        onPressed: () => navigateBloc.add(ButtonPressed(goTo: 3))
-      ),
+          key: 'aprobation',
+          image: 'assets/images/check.svg',
+          aprobations: true,
+          number: "4 ",
+          title: I18n.of(context).utilsApprovals,
+          titleWeight: I18n.of(context).utilsRequests,
+          textDescription: I18n.of(context).utilsApproveCreditActions,
+          onPressed: () => navigateBloc.add(ButtonPressed(goTo: 3))),
       UtilsCardsItem(
         key: 'rules',
         image: 'assets/images/parchment.svg',
@@ -72,14 +72,13 @@ class _UtilsScreenState extends State<UtilsScreen> {
       )
     ];
     return Scaffold(
-        body: SingleChildScrollView(
-            child: AppBarWidget(
-                container: SafeArea(
+        body: AppBarWidget(
+            container: SafeArea(
       key: Key('safearea-util-screen'),
       child: Column(
         key: Key('column-util-screen'),
         children: <Widget>[
-          TitleHeaderUtilsWidget(),
+          TitleHeaderWidget(title: I18n.of(context).utilsUtils),
           for (var i = 0; i < characters.length; i++)
             UtilCardDescription(characters: characters[i]),
           Row(
@@ -92,6 +91,6 @@ class _UtilsScreenState extends State<UtilsScreen> {
           ),
         ],
       ),
-    ))));
+    )));
   }
 }

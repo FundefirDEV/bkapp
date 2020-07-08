@@ -21,6 +21,9 @@ class _MenuNavigatorState
   PageController _myPage = PageController(initialPage: 0);
   AnimationController _animateController;
 
+  bool hasLoaded = false;
+  int currentIndex = 0;
+
   @override
   void initState() {
     _animateController = AnimationController(
@@ -31,7 +34,6 @@ class _MenuNavigatorState
     _animateController.addListener(() => setState(() {}));
     super.initState();
   }
-  bool hasLoaded = false;
 
   @override
   void dispose() {
@@ -49,7 +51,10 @@ class _MenuNavigatorState
         notchedShape: CircularNotchedRectangle(),
         color: Theme.of(context).colorScheme.grayColor[200],
         selectedColor: Theme.of(context).colorScheme.primaryColor,
-        onTabSelected: (index) => _myPage.jumpToPage(index),
+        onTabSelected: (index) {
+          _myPage.jumpToPage(index);
+          setState(() => currentIndex = index);
+        },
         items: [
           BottomBarItem(
             key: Key('home-bottom-bar-item'),
@@ -68,39 +73,30 @@ class _MenuNavigatorState
           )
         ],
       ),
-      body: Stack(
-        children: <Widget>[
-          BlocProvider(
-            create: (context) => MenuNavigatorBloc(
-              controller: _myPage
-            ),
-            child: PageView(
+      body: BlocProvider(
+        create: (context) => MenuNavigatorBloc(
+          controller: _myPage
+        ),
+        child: Stack(
+          children: <Widget>[
+            PageView(
               controller: _myPage,
               children: <Widget>[
                 HomeScreen(),
                 UtilsScreen(),
-                Center(
-                  child: Container(
-                    child: Text('Empty Body 3'),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    height: 100.0,
-                    width:  100.0,
-                    color: Colors.redAccent,
-                    child: Text('Empty Body 4'),
-                  ),
-                ),
+                ProfileScreen(),
+                CreditScreen(oldIndex: currentIndex),
+                BuySharesScreen(oldIndex: currentIndex)
               ],
               physics: NeverScrollableScrollPhysics(),// Comment this if you need to use Swipe.
             ),
-          ),
-          MenuActions(
-            hasLoaded: hasLoaded,
-            controller: _animateController
-          )
-        ],
+            MenuActions(
+              hasLoaded: hasLoaded,
+              controller: _animateController,
+              isPressed: () => _buttonPressed(),
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingButton(
         key: Key('option-additional'),

@@ -1,9 +1,8 @@
-import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/widgets/shares_buy_text_widget.dart';
+import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/shares_buy_text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import '../../../../../base_tester.dart';
+import '../../../../base_tester.dart';
 
 void main() {
   group('Test SharesBuyText  Widget', () {

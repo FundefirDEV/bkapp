@@ -8,7 +8,8 @@
   "actionText": {
     "enter": "ENTER",
     "imNew": "I'M NEW",
-    "close": "CLOSE"
+    "close": "CLOSE",
+    "request": "REQUEST"
   },
   "form": {
     "user": "User",
@@ -250,12 +251,31 @@
     "status": "STATUS",
     "dues": "DUES",
     "valueRequested": "Value requested"
-  ],
+  },
   "pinCodeVerification": {
     "put": "Put ",
     "theCode": "the code ",
     "weSendToYour": "we send to \n your ",
     "cellNumber": "cell number",
     "pinCodeComplete": "Please fill all the cells correctly"
+  },
+  "creditScreen": {
+    "tab": {
+      "titleOne": "Normal",
+      "titleTwo": "Special"
+    },
+    "youCanRequest": "You can request up to",
+    "withInterest": "Interest",
+    "person": "Person",
+    "currentInterest": "5% current interest",
+    "selectYourState": "Select your state",
+    "creditRequest": "Credit request",
+    "valueToRequest": "Value to request",
+    "numberOfFees": "Number of fees",
+    "UseOfCredit": "Use of credit",
+    "Detail": "Detail",
+    "wayToPay": "Way to pay",
+    "advances": "Avances",
+    "installments": "Cuotas"
   }
 }

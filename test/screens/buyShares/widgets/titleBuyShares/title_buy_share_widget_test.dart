@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/widgets/titleBuyShares/title_buy_share_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ void main() {
     testWidgets('Render TitleBuyShareWidget', (WidgetTester tester) async {
       final testKey = Key('my-id');
       await tester
-          .pumpWidget(baseTester(child: TitleBuyShareWidget(key: testKey)));
+          .pumpWidget(baseTester(child: TitleBuyShareWidget(key: testKey, oldIndex: 0, navigateBloc: MenuNavigatorBloc(controller: PageController()))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -18,7 +19,7 @@ void main() {
 
     testWidgets('TitleBuyShareWidget render structure',
         (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: TitleBuyShareWidget()));
+      await tester.pumpWidget(baseTester(child: TitleBuyShareWidget(oldIndex: 0, navigateBloc: MenuNavigatorBloc(controller: PageController()))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('title-buy-share-container')), findsOneWidget);

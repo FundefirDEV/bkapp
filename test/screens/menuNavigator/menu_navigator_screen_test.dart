@@ -90,7 +90,7 @@ void main() {
       expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('profile-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(seconds: 3));
-      expect(find.text('Empty Body 3'), findsOneWidget);
+      expect(find.byType(ProfileScreen), findsOneWidget);
     });
 
     testWidgets('Open actions menu animated', (WidgetTester tester) async {

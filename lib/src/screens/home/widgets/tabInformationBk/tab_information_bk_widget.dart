@@ -1,8 +1,8 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/widgets/custom_tab_indicator_widget.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/widgets/detail_group_data_bk_widget.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/widgets/detail_my_data_bk_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/customTabIndicator/custom_tab_indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 

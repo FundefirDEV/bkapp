@@ -28,17 +28,20 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      key: Key('Scaffold-approvals-screen'),
-      body: SafeArea(
-          key: Key('SafeArea-approvals-screen'),
-          child: Column(
-              key: Key('Main-column-approvals-screen'),
-              children: <Widget>[
-                buildAppBarWidget(),
-                separationContainer(context),
-                buildScroolable(),
-              ])),
+
+    return AppBarWidget(
+      container: Column(
+          key: Key('Column-appbar-approvals-screen'),
+          children: <Widget>[
+            TitleApprovalsWidget(),
+            CardApprovals(
+              childBlue: NumberPetitions(),
+              childWhite: AcceptedDiscarted()
+            ),
+            separationContainer(context),
+            buildScroolable()
+          ],
+        ),
     );
   }
 
@@ -50,100 +53,86 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
     );
   }
 
-  Expanded buildScroolable() {
-    return Expanded(
-      key: Key('Expanded-scroolable-approvals-screen'),
-      child: Container(
-        key: Key('Main-container-scroolable-approvals-screen'),
-        color: Theme.of(context).colorScheme.grayColor[100],
-        child: SingleChildScrollView(
-            key: Key('Scroolable-approvals-screen'),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  I18n.of(context).approvalsScreenShares,
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                separationContainer(context),
-                sharesExample.length > 0
-                    ? Container(
-                        key:
-                            Key('Container-scroolable-shares-approvals-screen'),
-                        height: SizeConfig.blockSizeVertical * 20,
-                        child: Carousel(
-                          viewportFraction:
-                              SizeConfig.blockSizeHorizontal * 0.09,
-                          children: <Widget>[
-                            for (var i = 0; i < sharesExample.length; i++)
-                              RequestShareCard(
-                                  partnerName: sharesExample[i]["name"],
-                                  price: sharesExample[i]["price"],
-                                  quantity: sharesExample[i]["quantity"],
-                                  requesType: sharesExample[i]["type"]),
-                          ],
-                        ))
-                    : noDataContainer(),
-                separationContainer(context),
-                Text(
-                  I18n.of(context).approvalsScreenCredits,
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                separationContainer(context),
-                creditExample.length > 0
-                    ? Container(
-                        key: Key(
-                            'Container-scroolable-credits-approvals-screen'),
-                        height: SizeConfig.blockSizeVertical * 20,
-                        child: Carousel(
-                          viewportFraction:
-                              SizeConfig.blockSizeHorizontal * 0.09,
-                          children: <Widget>[
-                            for (var i = 0; i < creditExample.length; i++)
-                              RequestShareCard(
-                                  partnerName: creditExample[i]["name"],
-                                  price: creditExample[i]["price"],
-                                  quantity: creditExample[i]["quantity"],
-                                  requesType: creditExample[i]["type"]),
-                          ],
-                        ))
-                    : noDataContainer(),
-                separationContainer(context),
-                Text(
-                  I18n.of(context).approvalsScreenPayments,
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                separationContainer(context),
-                creditExample.length > 0
-                    ? Container(
-                        key: Key(
-                            'Container-scroolable-payment-approvals-screen'),
-                        height: SizeConfig.blockSizeVertical * 20,
-                        child: Carousel(
-                          viewportFraction:
-                              SizeConfig.blockSizeHorizontal * 0.09,
-                          children: <Widget>[
-                            for (var i = 0; i < paymentExample.length; i++)
-                              RequestShareCard(
-                                  partnerName: paymentExample[i]["name"],
-                                  price: paymentExample[i]["price"],
-                                  quantity: paymentExample[i]["quantity"],
-                                  requesType: paymentExample[i]["type"]),
-                          ],
-                        ))
-                    : noDataContainer(),
-                separationContainer(context),
-              ],
-            )),
+  Widget buildScroolable() {
+    return Container(
+      key: Key('Main-container-scroolable-approvals-screen'),
+      color: Theme.of(context).colorScheme.grayColor[100],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            I18n.of(context).approvalsScreenShares,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          SizedBox(height: 20.0),
+          sharesExample.length > 0
+              ? Carousel(
+                heigthContainer: 150.0,
+                viewportFraction:
+                    SizeConfig.blockSizeHorizontal * 0.1,
+                children: <Widget>[
+                  for (var i = 0; i < sharesExample.length; i++)
+                    RequestShareCard(
+                        partnerName: sharesExample[i]["name"],
+                        price: sharesExample[i]["price"],
+                        quantity: sharesExample[i]["quantity"],
+                        requesType: sharesExample[i]["type"]),
+                ],
+              )
+              : noDataContainer(),
+          SizedBox(height: 20.0),
+          Text(
+            I18n.of(context).approvalsScreenCredits,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          SizedBox(height: 20.0),
+          creditExample.length > 0
+              ? Carousel(
+                heigthContainer: 150.0,
+                viewportFraction:
+                    SizeConfig.blockSizeHorizontal * 0.1,
+                children: <Widget>[
+                  for (var i = 0; i < creditExample.length; i++)
+                    RequestShareCard(
+                        partnerName: creditExample[i]["name"],
+                        price: creditExample[i]["price"],
+                        quantity: creditExample[i]["quantity"],
+                        requesType: creditExample[i]["type"]),
+                ],
+              )
+              : noDataContainer(),
+          SizedBox(height: 20.0),
+          Text(
+            I18n.of(context).approvalsScreenPayments,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          SizedBox(height: 20.0),
+          creditExample.length > 0
+              ? Carousel(
+                heigthContainer: 150.0,
+                viewportFraction:
+                    SizeConfig.blockSizeHorizontal * 0.1,
+                children: <Widget>[
+                  for (var i = 0; i < paymentExample.length; i++)
+                    RequestShareCard(
+                        partnerName: paymentExample[i]["name"],
+                        price: paymentExample[i]["price"],
+                        quantity: paymentExample[i]["quantity"],
+                        requesType: paymentExample[i]["type"]),
+                ],
+              )
+              : noDataContainer(),
+          SizedBox(height: 20.0),
+        ],
       ),
     );
   }
@@ -157,22 +146,5 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
         fontWeight: FontWeight.w500,
       ),
     ));
-  }
-
-  AppBarWidget buildAppBarWidget() {
-    return AppBarWidget(
-        key: Key('Appbar-approvals-screen'),
-        container: Container(
-          key: Key('Container-appbar-approvals-screen'),
-          child: Column(
-            key: Key('Column-appbar-approvals-screen'),
-            children: <Widget>[
-              TitleApprovalsWidget(),
-              CardApprovals(
-                  childBlue: NumberPetitions(),
-                  childWhite: AcceptedDiscarted()),
-            ],
-          ),
-        ));
   }
 }

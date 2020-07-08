@@ -10,15 +10,12 @@ class BuySharesFormBloc extends FormBloc<String, String> {
 
   @override
   void onSubmitting() async {
-    try {
-      print(numberactions.value);
-      emitSuccess(canSubmitAgain: true);
-    } catch (e) {
-      emitLoadFailed();
-    }
+    print(numberactions.value);
+    emitSuccess(canSubmitAgain: true);
   }
 
-  void dispose() {
-    numberactions.close();
+  Future<void> close() {
+    numberactions?.close();
+    return super.close();
   }
 }
