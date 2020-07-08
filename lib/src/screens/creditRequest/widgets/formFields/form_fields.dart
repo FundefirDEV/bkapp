@@ -46,16 +46,15 @@ class FormFields extends StatelessWidget {
           DropdownFieldBlocBuilder<String>(
             key: Key('list-state-kgh'),
             showEmptyItem: false,
-            selectFieldBloc: creditFormBloc.selectState,
+            selectFieldBloc: creditFormBloc.creditUse,
             decoration: InputDecoration(
-              labelText: I18n.of(context).creditScreenSelectYourState,
+              labelText: I18n.of(context).creditScreenUseOfCredit,
               suffixIcon: Icon(Icons.keyboard_arrow_down),
             ),
             itemBuilder: (context, value) => value,
           ),
           TextFieldBlocBuilder(
             key: Key('buy-shares-form-numberactssiossdsddsns'),
-            // REVIEW Why use buyShares instead creditBloc?
             textFieldBloc:
                 context.bloc<AppBloc>().buySharesFormBloc.numberactions,
             errorBuilder: (context, string) =>

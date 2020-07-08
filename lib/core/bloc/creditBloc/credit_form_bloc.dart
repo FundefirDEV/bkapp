@@ -16,7 +16,7 @@ class CreditFormBloc extends FormBloc<String, String> {
     validators: [FieldBlocValidators.required]
   );
 
-  final selectState = SelectFieldBloc(
+  final creditUse = SelectFieldBloc(
     items: [
       'Generación de ingresos',
       'Fortalecimiento familiar',
@@ -34,7 +34,7 @@ class CreditFormBloc extends FormBloc<String, String> {
       specialInterest,
       valueCredit,
       installments,
-      selectState,
+      creditUse,
       paymentMethods
     ]);
   }
@@ -50,7 +50,7 @@ class CreditFormBloc extends FormBloc<String, String> {
     specialInterest?.close();
     valueCredit?.close();
     installments?.close();
-    selectState?.close();
+    creditUse?.close();
     paymentMethods?.close();
     return super.close();
   }

@@ -416,16 +416,14 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenPerson => "Person";
   /// "5% current interest"
   String get creditScreenCurrentInterest => "5% current interest";
-  /// "Credit use"
-  String get creditScreenSelectYourState => "Credit use";
   /// "Credit request"
   String get creditScreenCreditRequest => "Credit request";
   /// "Value to request"
   String get creditScreenValueToRequest => "Value to request";
   /// "Number of fees"
   String get creditScreenNumberOfFees => "Number of fees";
-  /// "Use of credit"
-  String get creditScreenUseOfCredit => "Use of credit";
+  /// "Credit use"
+  String get creditScreenUseOfCredit => "Credit use";
   /// "Detail"
   String get creditScreenDetail => "Detail";
   /// "Way to pay"
@@ -998,9 +996,6 @@ class _I18n_es_ES extends I18n {
   /// "Interés del 5%"
   @override
   String get creditScreenCurrentInterest => "Interés del 5%";
-  /// "Uso del crédito"
-  @override
-  String get creditScreenSelectYourState => "Uso del crédito";
   /// "Solicitar crédito"
   @override
   String get creditScreenCreditRequest => "Solicitar crédito";

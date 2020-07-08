@@ -154,5 +154,36 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 2));
       expect(find.byType(BuySharesScreen), findsOneWidget);
     });
+
+    testWidgets('Test action buttons', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        baseTester(
+          child: BlocProvider(
+            create: (context) => MenuNavigatorBloc(
+              controller: PageController(initialPage: 0)
+            ),
+            child: MenuNavigatorScreen()
+          )
+        )
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('option-additional')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+
+      await tester.tap(find.byKey(Key('meeting-button-line')));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('profits-button-line')));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('partners-button-line')));
+      await tester.pumpAndSettle();
+      
+      
+      await tester.tap(find.byKey(Key('actions-button-line')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(BuySharesScreen), findsOneWidget);
+    });
   });
 }

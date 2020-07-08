@@ -69,6 +69,7 @@ class MenuActions extends StatelessWidget {
             Container(
               width: double.infinity,
               child: ButtonLine(
+                key: Key('meeting-button-line'),
                 onPressed: () {},
                 text: I18n.of(context).mainMenuActionsMeeting,
               ),
@@ -104,6 +105,7 @@ class MenuActions extends StatelessWidget {
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
+            key: Key('profits-button-line'),
             onPressed: () {},
             text: I18n.of(context).mainMenuActionsProfits,
           ),
@@ -133,6 +135,7 @@ class MenuActions extends StatelessWidget {
         Container(
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
+            key: Key('partners-button-line'),
             onPressed: () {},
             text: I18n.of(context).mainMenuActionsPartner,
           ),

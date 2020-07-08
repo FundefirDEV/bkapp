@@ -38,9 +38,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
       color: Theme.of(context).colorScheme.grayColor[50],
       child: AppBarWidget(
         key: Key('appbar-buy-share-screen'),
-        container: BlocProvider(
-          key: Key('bloc-provider-buy-share-screen'),
-          create: (context) => context.bloc<AppBloc>().buySharesFormBloc,
+        container: Container(
           child: Builder(
               key: Key('builder-buy-share-screen'),
               builder: (context) {
@@ -52,7 +50,8 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                       print('Loading');
                     },
                     onSuccess: (context, state) {
-                      Navigator.pushNamed(context, confirmationBuySharesRoute);
+                      context.bloc<MenuNavigatorBloc>()
+                        .add(ButtonPressed(goTo: 7));
                     },
                     onFailure: (context, state) {
                       print('Failure');
@@ -74,7 +73,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                   ),
                 );
               }),
-        ),
+        )
       ),
     );
   }

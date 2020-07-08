@@ -107,7 +107,7 @@ class Router {
       case approvalsScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => ApprovalsScreen());
+            pageBuilder: (context, _, __) => ApprovalsScreen(oldIndex: 1));
         break;
       case creditStatusScreenRoute:
         return MaterialPageRoute(builder: (_) => StatusCreditRequestWidget());
