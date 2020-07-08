@@ -53,6 +53,12 @@ class Router {
             pageBuilder: (context, _, __) =>
                 RegisterPasswordStepScreen(data: data));
         break;
+      case registerpinCodeVerification:
+        final RegisterPinCodeScreenStepArgs data = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 350),
+            pageBuilder: (context, _, __) => PinCodeStepScreen(data: data));
+        break;
       case confirmInvitationBank:
         final ConfirmInvitationBankStepArgs data = settings.arguments;
         return PageRouteBuilder(

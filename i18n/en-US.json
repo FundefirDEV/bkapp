@@ -250,5 +250,12 @@
     "status": "STATUS",
     "dues": "DUES",
     "valueRequested": "Value requested"
+  ],
+  "pinCodeVerification": {
+    "put": "Put ",
+    "theCode": "the code ",
+    "weSendToYour": "we send to \n your ",
+    "cellNumber": "cell number",
+    "pinCodeComplete": "Please fill all the cells correctly"
   }
 }

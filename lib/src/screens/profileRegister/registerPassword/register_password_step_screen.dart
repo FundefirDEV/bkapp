@@ -39,11 +39,11 @@ class _RegisterPasswordStepScreenState
               )),
           Expanded(
               child: FooterStepWidget(
-            currentStep: 4,
-            numberOfSteps: 4,
+            currentStep: 5,
+            numberOfSteps: 5,
             route: confirmInvitationBank,
-            currentBlocSubmit: 
-              context.bloc<AppBloc>().profileRegisterBloc.passwordBloc.submit,
+            currentBlocSubmit:
+                context.bloc<AppBloc>().profileRegisterBloc.passwordBloc.submit,
             renderNextWidget: ConfirmInvitationBankStepArgs(
                 widget.data.tag, widget.data.image),
           ))

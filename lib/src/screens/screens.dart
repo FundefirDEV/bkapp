@@ -9,6 +9,7 @@ export 'profileRegister/registerEmail/register_email_step_screen.dart';
 export 'profileRegister/registerName/register_name_step_screen.dart';
 export 'profileRegister/registerPassword/register_password_step_screen.dart';
 export 'profileRegister/registerPhone/register_phone_step_screen.dart';
+export 'profileRegister/pinCodeVerification/pin_code_verification.dart';
 export 'profile/profile_screen.dart';
 export 'profileEdit/profile_edit_screen.dart';
 export 'bankCreated/bank_created_screen.dart';

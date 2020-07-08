@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
         localeResolutionCallback:
             i18n.resolution(fallback: new Locale("es", "ES")),
         onGenerateRoute: Router.generateRoute,
-        initialRoute: creditStatusScreenRoute,
+        initialRoute: loginRoute,
       ),
     );
   }

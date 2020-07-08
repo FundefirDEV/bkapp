@@ -240,5 +240,12 @@
     "status": "ESTADO",
     "dues": "CUOTAS",
     "valueRequested": "Valor solicitado"
+  },
+  "pinCodeVerification": {
+    "put": "Coloca ",
+    "theCode": "el código ",
+    "weSendToYour": "que enviamos a \n tu ",
+    "cellNumber": "número celular",
+    "pinCodeComplete": "Por favor llene todas las celdas correctamente"
   }
 }

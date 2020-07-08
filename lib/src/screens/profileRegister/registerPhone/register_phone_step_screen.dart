@@ -1,8 +1,8 @@
+import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/country_modal_content_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_container_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarousel/items_country.dart';
@@ -56,12 +56,12 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen>
           Expanded(
               child: FooterStepWidget(
             currentStep: 3,
-            numberOfSteps: 4,
-            route: registerPasswordUser,
+            numberOfSteps: 5,
+            route: registerpinCodeVerification,
             currentBlocSubmit:
                 context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.submit,
-            renderNextWidget:
-                RegisterPasswordStepArgs(widget.data.tag, widget.data.image),
+            renderNextWidget: RegisterPinCodeScreenStepArgs(
+                widget.data.tag, widget.data.image),
           ))
         ]);
   }

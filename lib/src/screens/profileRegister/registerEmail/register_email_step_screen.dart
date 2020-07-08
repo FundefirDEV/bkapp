@@ -33,17 +33,15 @@ class _RegisterEmailStepScreenState extends State<RegisterEmailStepScreen> {
               flex: 2,
               child: SingleChildScrollView(
                 child: RegisterEmailContainerWidget(
-                  tag: widget.data.tag,
-                  image: widget.data.image
-                ),
+                    tag: widget.data.tag, image: widget.data.image),
               )),
           Expanded(
               child: FooterStepWidget(
             currentStep: 2,
-            numberOfSteps: 4,
+            numberOfSteps: 5,
             route: registerPhoneUser,
             currentBlocSubmit:
-              context.bloc<AppBloc>().profileRegisterBloc.emailBloc.submit,
+                context.bloc<AppBloc>().profileRegisterBloc.emailBloc.submit,
             renderNextWidget:
                 RegisterPhoneStepArgs(widget.data.tag, widget.data.image),
           ))

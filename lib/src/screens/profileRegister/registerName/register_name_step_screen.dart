@@ -36,32 +36,27 @@ class _RegisterNameStepScreenState extends State<RegisterNameStepScreen> {
 
   Widget _containerInfo(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Expanded(
-          flex: 2,
-          child: SingleChildScrollView(
-            child: RegisterNameContainerWidget(
-              tag: widget.data.tag,
-              image: widget.data.image
-            ),
-          )
-        ),
-        Expanded(
-          child: FooterStepWidget(
-          currentStep: 1,
-          numberOfSteps: 4,
-          route: registerEmailUser,
-          currentBlocSubmit:
-            context.bloc<AppBloc>().profileRegisterBloc.nameBloc.submit,
-          renderNextWidget:
-            RegisterEmailStepArgs(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+              flex: 2,
+              child: SingleChildScrollView(
+                child: RegisterNameContainerWidget(
+                    tag: widget.data.tag, image: widget.data.image),
+              )),
+          Expanded(
+              child: FooterStepWidget(
+            currentStep: 1,
+            numberOfSteps: 5,
+            route: registerEmailUser,
+            currentBlocSubmit:
+                context.bloc<AppBloc>().profileRegisterBloc.nameBloc.submit,
+            renderNextWidget: RegisterEmailStepArgs(
               widget.data.tag,
               widget.data.image,
             ),
-          )
-        )
-      ]);
+          ))
+        ]);
   }
 }
 

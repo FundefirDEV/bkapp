@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
@@ -65,7 +65,7 @@ void main() {
       expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
       await tester.tap(find.byKey(Key('buttonNextStep')));
       await tester.pumpAndSettle();
-      expect(find.byType(RegisterPasswordStepScreen), findsOneWidget);
+      expect(find.byType(PinCodeStepScreen), findsOneWidget);
     });
 
     testWidgets('Opem Modal Country', (WidgetTester tester) async {
@@ -81,30 +81,23 @@ void main() {
     });
 
     testWidgets('Testing phone formatter', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        baseTester(child: RegisterPhoneStepScreen(data: data))
-      );
+      await tester
+          .pumpWidget(baseTester(child: RegisterPhoneStepScreen(data: data)));
       await tester.pumpAndSettle();
 
       await tester.enterText(
-        find.byKey(Key('phone-input-field')),
-        '3023901035'
-      );
+          find.byKey(Key('phone-input-field')), '3023901035');
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
       expect(find.text('(302) 390-1035'), findsOneWidget);
     });
 
     testWidgets('Testing error greater than 9', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        baseTester(child: RegisterPhoneStepScreen(data: data))
-      );
+      await tester
+          .pumpWidget(baseTester(child: RegisterPhoneStepScreen(data: data)));
       await tester.pumpAndSettle();
 
-      await tester.enterText(
-        find.byKey(Key('phone-input-field')),
-        '302390'
-      );
+      await tester.enterText(find.byKey(Key('phone-input-field')), '302390');
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
       expect(find.text('The number should be greater than 9'), findsOneWidget);
