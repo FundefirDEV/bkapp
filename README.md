@@ -25,13 +25,25 @@ git commit -am "Pulled down update to submodule_dir"
 git submodule foreach git pull origin master
 ```
 
-### Running test coverage
+## Get started
 
-```sh
- flutter test --coverage
- genhtml -o coverage coverage/lcov.info
- #Open Coverage
- open coverage/index.html
+Please install [https://github.com/Fundefir-dev/commons](https://github.com/Fundefir-dev/commons).
+
+With `fd` commands, run `fd_console project` for view the different options and helpers.
+
+## Create a release
+
+In your PR, you can to add a label
+
+`release:patch`  this is used by deploy bugs.
+
+`release:patch`  this is used by minor versions.
+
+`release:major`  this is used by major versions.
+
+### Running coverage
+```
+fd_console project coverage
 ```
 
 ### Running regressive test
@@ -81,4 +93,10 @@ Theme.of(context).colorScheme.primaryColorDark[100]
 Theme.of(context).colorScheme.grayColor[200]
 ```
 
-....
+### Environment vars
+
+If you need to add a new env var, you should be to add in the file `lib/environment_config.dart`
+
+```
+flutter run --dart-define=SOME_VAR=SOME_VALUE
+```
