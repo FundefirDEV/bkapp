@@ -11,6 +11,13 @@ class EnvironmentConfig {
   static const String ENV = String.fromEnvironment('ENV', defaultValue: "DEV");
 
   ///
+  /// DSN for sentry
+  ///
+  static const String DSN_SENTRY = String.fromEnvironment('DSN_SENTRY',
+      defaultValue:
+          "https://a0fbbeb4e5b54038a445c62c8a313411@o306138.ingest.sentry.io/5320740");
+
+  ///
   /// Mock for service, use only when the API service is not available
   ///
   @Deprecated('Prefer "API_URL", the mock url is temporally.')

@@ -1,8 +1,11 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -11,6 +14,12 @@ import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:logger/logger.dart';
 
 import 'core/bloc/app_bloc.dart';
+
+import 'package:sentry/sentry.dart';
+
+final SentryClient sentry = SentryClient(
+    dsn: EnvironmentConfig.DSN_SENTRY,
+    environmentAttributes: Event(environment: EnvironmentConfig.ENV));
 
 class SimpleBlocDelegate extends BlocDelegate {
   var logger = Logger(
@@ -46,14 +55,41 @@ class SimpleBlocDelegate extends BlocDelegate {
   }
 }
 
-void main() {
-  BlocSupervisor.delegate = SimpleBlocDelegate();
-  runApp(MyApp());
+void main() async {
+  try {
+    BlocSupervisor.delegate = SimpleBlocDelegate();
+    runApp(MyApp());
+  } catch (error, stackTrace) {
+    await sendError(error, stackTrace);
+  }
+}
+
+Future sendError(error, StackTrace stackTrace) async {
+  if (EnvironmentConfig.ENV != "DEV") {
+    await sentry.captureException(
+      exception: error,
+      stackTrace: stackTrace,
+    );
+  } else {
+    print({
+      "exception": error,
+      "stackTrace": stackTrace,
+    });
+  }
+}
+
+void setOrientation(context) {
+  final data = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+  if (TabletDetector.isTablet(data) == false) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+  }
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    setOrientation(context);
     final i18n = I18n.delegate;
     return BlocProvider(
       create: (context) => AppBloc(),
