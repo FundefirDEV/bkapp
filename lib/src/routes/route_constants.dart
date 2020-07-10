@@ -22,3 +22,7 @@ const String confirmationBuySharesRoute = '/confirmationBuySharesSRoute';
 const String approvalsScreen = '/approvals-screen';
 const String creditStatusScreenRoute = '/creditStatusScreenRoute';
 const String creditRoute = '/credit-screen';
+const String rulesScreen = '/rules-screen';
+const String rulesEditScreen = '/rules-edit-screen';
+
+

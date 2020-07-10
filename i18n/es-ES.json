@@ -266,5 +266,25 @@
     "wayToPay": "Forma de pago",
     "advances": "Por Adelantado",
     "installments": "Cuotas"
+  },
+  "rulesScreen": {
+    "bkRules": "Reglas del BK",
+    "creationDate": "Fecha creación: ",
+    "credit": "Crédito",
+    "interest": "Interés",
+    "payment": "Pagos",
+    "shares": "Acciones",
+    "funds": "Fondos",
+    "reunion": "Reunión",
+    "maxValue": "Valor máximo",
+    "maxDues": "Cuotas máximas",
+    "ordinaryInterest": "Interés ordinario",
+    "defaultInterest": "Interés de mora",
+    "paymentMetods": "Forma de pago",
+    "sharesValue": "Valor por acción",
+    "expenseReserve": "Reserva de gatos",
+    "incobrableFund": "Fondo incobrable",
+    "week": "Semana",
+    "day": "Día"
   }
 }

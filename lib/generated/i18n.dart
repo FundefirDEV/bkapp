@@ -432,6 +432,42 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenAdvances => "Advance";
   /// "Installments"
   String get creditScreenInstallments => "Installments";
+  /// "BK rules"
+  String get rulesScreenBkRules => "BK rules";
+  /// "Creation date: "
+  String get rulesScreenCreationDate => "Creation date: ";
+  /// "Credit"
+  String get rulesScreenCredit => "Credit";
+  /// "Interest"
+  String get rulesScreenInterest => "Interest";
+  /// "Payment"
+  String get rulesScreenPayment => "Payment";
+  /// "Shares"
+  String get rulesScreenShares => "Shares";
+  /// "Founds"
+  String get rulesScreenFunds => "Founds";
+  /// "Reunion"
+  String get rulesScreenReunion => "Reunion";
+  /// "Max value"
+  String get rulesScreenMaxValue => "Max value";
+  /// "Max dues"
+  String get rulesScreenMaxDues => "Max dues";
+  /// "Ordinary interest"
+  String get rulesScreenOrdinaryInterest => "Ordinary interest";
+  /// "Default interest"
+  String get rulesScreenDefaultInterest => "Default interest";
+  /// "Payment method"
+  String get rulesScreenPaymentMetods => "Payment method";
+  /// "Shares value"
+  String get rulesScreenSharesValue => "Shares value";
+  /// "Expense reserve"
+  String get rulesScreenExpenseReserve => "Expense reserve";
+  /// "Incobrable fund"
+  String get rulesScreenIncobrableFund => "Incobrable fund";
+  /// "Week"
+  String get rulesScreenWeek => "Week";
+  /// "Day"
+  String get rulesScreenDay => "Day";
 }
 
 class _I18n_en_US extends I18n {
@@ -1020,6 +1056,60 @@ class _I18n_es_ES extends I18n {
   /// "Cuotas"
   @override
   String get creditScreenInstallments => "Cuotas";
+  /// "Reglas del BK"
+  @override
+  String get rulesScreenBkRules => "Reglas del BK";
+  /// "Fecha creación: "
+  @override
+  String get rulesScreenCreationDate => "Fecha creación: ";
+  /// "Crédito"
+  @override
+  String get rulesScreenCredit => "Crédito";
+  /// "Interés"
+  @override
+  String get rulesScreenInterest => "Interés";
+  /// "Pagos"
+  @override
+  String get rulesScreenPayment => "Pagos";
+  /// "Acciones"
+  @override
+  String get rulesScreenShares => "Acciones";
+  /// "Fondos"
+  @override
+  String get rulesScreenFunds => "Fondos";
+  /// "Reunión"
+  @override
+  String get rulesScreenReunion => "Reunión";
+  /// "Valor máximo"
+  @override
+  String get rulesScreenMaxValue => "Valor máximo";
+  /// "Cuotas máximas"
+  @override
+  String get rulesScreenMaxDues => "Cuotas máximas";
+  /// "Interés ordinario"
+  @override
+  String get rulesScreenOrdinaryInterest => "Interés ordinario";
+  /// "Interés de mora"
+  @override
+  String get rulesScreenDefaultInterest => "Interés de mora";
+  /// "Forma de pago"
+  @override
+  String get rulesScreenPaymentMetods => "Forma de pago";
+  /// "Valor por acción"
+  @override
+  String get rulesScreenSharesValue => "Valor por acción";
+  /// "Reserva de gatos"
+  @override
+  String get rulesScreenExpenseReserve => "Reserva de gatos";
+  /// "Fondo incobrable"
+  @override
+  String get rulesScreenIncobrableFund => "Fondo incobrable";
+  /// "Semana"
+  @override
+  String get rulesScreenWeek => "Semana";
+  /// "Día"
+  @override
+  String get rulesScreenDay => "Día";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

@@ -1,5 +1,7 @@
 import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
 import 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
+import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
+import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -114,6 +116,16 @@ class Router {
         break;
       case creditRoute:
         return MaterialPageRoute(builder: (_) => CreditScreen(oldIndex: 0));
+      case rulesScreen:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => RulesScreen());
+        break;
+      case rulesEditScreen:
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => RulesEditScreen());
+        break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

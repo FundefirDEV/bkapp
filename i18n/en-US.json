@@ -276,5 +276,25 @@
     "wayToPay": "Way to pay",
     "advances": "Advance",
     "installments": "Installments"
+  },
+  "rulesScreen": {
+    "bkRules": "BK rules",
+    "creationDate": "Creation date: ",
+    "credit": "Credit",
+    "interest": "Interest",
+    "payment": "Payment",
+    "shares": "Shares",
+    "funds": "Founds",
+    "reunion": "Reunion",
+    "maxValue": "Max value",
+    "maxDues": "Max dues",
+    "ordinaryInterest": "Ordinary interest",
+    "defaultInterest": "Default interest",
+    "paymentMetods": "Payment method",
+    "sharesValue": "Shares value",
+    "expenseReserve": "Expense reserve",
+    "incobrableFund": "Incobrable fund",
+    "week": "Week",
+    "day": "Day"
   }
 }
