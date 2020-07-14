@@ -1,6 +1,8 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import '../../base_tester.dart';
 
 void main() {
@@ -10,7 +12,11 @@ void main() {
       final topMainContainerKey = Key('top_main_container_rules_screen');
       final bottomMainContainerKey = Key('bottom_main_container_rules_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(scaffolsKey), findsOneWidget);
@@ -25,7 +31,11 @@ void main() {
       final rowKey = Key('row_top_container_rules_Screen');
       final columnKey = Key('text_column_top_container_rules_sreen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainContainerKey), findsOneWidget);
@@ -37,17 +47,17 @@ void main() {
 
     testWidgets('Find top container content rules screen',
         (WidgetTester tester) async {
-      final rowContentKey = Key('row_top_container_content_rules_Screen');
-      final backButtonKey = Key('back_button_content_rules_screen');
       final containerContentKey = Key('top_container_content_rules_Screen');
       final saloKey = Key('salo_button_container_content_rules_Screen');
       final exitKey = Key('exit_button_container_content_rules_Screen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(rowContentKey), findsOneWidget);
-      expect(find.byKey(backButtonKey), findsOneWidget);
       expect(find.byKey(containerContentKey), findsOneWidget);
       expect(find.byKey(saloKey), findsOneWidget);
       expect(find.byKey(exitKey), findsOneWidget);
@@ -62,7 +72,11 @@ void main() {
       final containerKey = Key('credit_container_rules_screen');
       final rowKey = Key('row_container_rules_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainRowKey), findsOneWidget);
@@ -76,7 +90,11 @@ void main() {
       final creditKey = Key('container-credits-rules');
       final duesKey = Key('container_dues_rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(creditKey), findsOneWidget);
@@ -90,7 +108,11 @@ void main() {
       final middleContainerKey = Key('middle_container_interest_rules');
       final bottomContainerKey = Key('bottom_container_interest_rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainContainerKey), findsOneWidget);
@@ -108,7 +130,11 @@ void main() {
       final containerKey = Key('payment_container_rules_screen');
       final rowKey = Key('payment_row_rules_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainRowKey), findsOneWidget);
@@ -121,7 +147,11 @@ void main() {
     testWidgets('Find payment rules container', (WidgetTester tester) async {
       final paymentKey = Key('container_payments_rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(paymentKey), findsOneWidget);
@@ -133,7 +163,11 @@ void main() {
       final topContainerKey = Key('top_container_shares_rules');
       final bottomContainerKey = Key('bottom_container_shares_rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainContainerKey), findsOneWidget);
@@ -150,7 +184,11 @@ void main() {
       final containerKey = Key('funds_container_rules_screen');
       final rowKey = Key('funds_row_rules_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainRowKey), findsOneWidget);
@@ -164,7 +202,11 @@ void main() {
       final creditKey = Key('container-fund-rules');
       final duesKey = Key('container-incobrable-rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(creditKey), findsOneWidget);
@@ -178,7 +220,11 @@ void main() {
       final middleContainerKey = Key('middle_container_reunion_rules');
       final bottomContainerKey = Key('bottom_container_reunion_rules');
 
-      await tester.pumpWidget(baseTester(child: RulesScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(mainContainerKey), findsOneWidget);

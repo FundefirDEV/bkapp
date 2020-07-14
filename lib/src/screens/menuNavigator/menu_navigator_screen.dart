@@ -1,6 +1,8 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
+import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
@@ -97,7 +99,9 @@ class _MenuNavigatorState
                 BuySharesScreen(oldIndex: currentIndex),
                 ApprovalsScreen(oldIndex: currentIndex),
                 StatusCreditRequestWidget(),
-                ConfirmationBuyShares()
+                ConfirmationBuyShares(),
+                RulesScreen(),
+                RulesEditScreen()
               ],
               physics: NeverScrollableScrollPhysics(),// Comment this if you need to use Swipe.
             ),

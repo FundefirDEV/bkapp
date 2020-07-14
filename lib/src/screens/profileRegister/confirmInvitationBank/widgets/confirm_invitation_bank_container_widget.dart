@@ -32,7 +32,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                       letterSpacing: 1,
-                      fontWeight: FontWeight.w200,
+                      fontWeight: FontWeight.w400,
                       color: Theme.of(context).colorScheme.grayColor,
                     ),
                     children: <TextSpan>[

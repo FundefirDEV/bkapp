@@ -50,7 +50,7 @@ class BankCreatedScreen extends StatelessWidget {
                 text: I18n.of(context).bankCreatedScreenVery,
                 style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 5,
-                  fontWeight: FontWeight.w200,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: 2.0,
                   color: Colors.grey,
                 ),
@@ -70,7 +70,7 @@ class BankCreatedScreen extends StatelessWidget {
               TextSpan(
                 text: I18n.of(context).bankCreatedScreenHasBeenCreaed,
                 style: TextStyle(
-                  fontWeight: FontWeight.w200,
+                  fontWeight: FontWeight.w400,
                 ),
               )
           ]),

@@ -1,5 +1,7 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../base_tester.dart';
 
@@ -11,7 +13,11 @@ void main() {
       final containerTextFieldKey =
           Key('container_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(scaffolsKey), findsOneWidget);
@@ -28,7 +34,11 @@ void main() {
           Key('container_update_button_rules_edit_screen');
       final flatButtonKey = Key('flatButton_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(scrollViewKey), findsOneWidget);
@@ -43,7 +53,11 @@ void main() {
       final middleRowKey = Key('row_middle_textFields_rules_edit_screen');
       final bottomRowKey = Key('row_bottom_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(rowTextFieldKey), findsOneWidget);
@@ -56,7 +70,11 @@ void main() {
       final columnKey = Key('top_container_column_rules_edit_Screen');
       final infoKey = Key('top_container_info_rules_edit_Screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(containerKey), findsOneWidget);
@@ -70,7 +88,11 @@ void main() {
         (WidgetTester tester) async {
       final sharesKey = Key('shares_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(sharesKey), findsOneWidget);
@@ -80,7 +102,11 @@ void main() {
         (WidgetTester tester) async {
       final paymentKey = Key('payment_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(paymentKey), findsOneWidget);
@@ -89,7 +115,11 @@ void main() {
         (WidgetTester tester) async {
       final maxCreditKey = Key('maxCredit_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(maxCreditKey), findsOneWidget);
@@ -98,7 +128,11 @@ void main() {
         (WidgetTester tester) async {
       final maxDues = Key('maxDues_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(maxDues), findsOneWidget);
@@ -107,7 +141,11 @@ void main() {
         (WidgetTester tester) async {
       final ordinaryKey = Key('ordinaryInterest_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(ordinaryKey), findsOneWidget);
@@ -116,7 +154,11 @@ void main() {
         (WidgetTester tester) async {
       final ordinaryKey = Key('ordinaryInterest_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(ordinaryKey), findsOneWidget);
@@ -125,7 +167,11 @@ void main() {
         (WidgetTester tester) async {
       final fundKey = Key('fund_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(fundKey), findsOneWidget);
@@ -134,7 +180,11 @@ void main() {
         (WidgetTester tester) async {
       final incobrableKey = Key('incobrable_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(incobrableKey), findsOneWidget);
@@ -143,7 +193,11 @@ void main() {
         (WidgetTester tester) async {
       final weekKey = Key('week_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(weekKey), findsOneWidget);
@@ -152,7 +206,11 @@ void main() {
         (WidgetTester tester) async {
       final dayKey = Key('day_textFields_rules_edit_screen');
 
-      await tester.pumpWidget(baseTester(child: RulesEditScreen()));
+      await tester.pumpWidget(baseTester(
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+              child: RulesEditScreen())));
       await tester.pumpAndSettle();
 
       expect(find.byKey(dayKey), findsOneWidget);

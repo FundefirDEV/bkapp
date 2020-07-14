@@ -38,6 +38,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsRulesOf,
         titleWeight: I18n.of(context).utilsGroupBk,
         textDescription: I18n.of(context).utilsKnowManageBk,
+        onPressed: () => navigateBloc.add(ButtonPressed(goTo: 8)),
       ),
       UtilsCardsItem(
         key: 'withdrawall',

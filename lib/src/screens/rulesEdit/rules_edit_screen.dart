@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,13 @@ class RulesEditScreen extends StatefulWidget {
   @override
   _RulesEditScreenState createState() => _RulesEditScreenState();
 }
-class _RulesEditScreenState extends State<RulesEditScreen> {
 
+class _RulesEditScreenState extends State<RulesEditScreen> {
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
+    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+
     SizeConfig().init(context);
     return Scaffold(
       key: Key('scaffold_rules_edit_screen'),
@@ -33,7 +37,9 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
             color: Colors.grey[300],
             child: Container(
                 color: Colors.grey[300],
-                child: TopContainerEditRulesScreen()),
+                child: TopContainerEditRulesScreen(
+                  navigateBloc: navigateBloc,
+                )),
           ),
           Flexible(
             child: Container(
@@ -60,10 +66,7 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                           child: Row(
                             key: Key('row_middle_textFields_rules_edit_screen'),
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              PaymentField(),
-                              ShareField()
-                            ],
+                            children: <Widget>[PaymentField(), ShareField()],
                           )),
                       Row(
                         key: Key('row_bottom_textFields_rules_edit_screen'),
@@ -86,6 +89,7 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
     );
   }
 }
+
 class UpdateButton extends StatelessWidget {
   const UpdateButton({Key key}) : super(key: key);
 

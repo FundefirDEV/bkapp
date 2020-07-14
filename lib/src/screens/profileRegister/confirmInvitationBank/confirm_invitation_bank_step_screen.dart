@@ -40,7 +40,7 @@ class _ConfirmInvitationBankStepScreenState
                   children: <Widget>[
                       HeaderContent(
                         width: SizeConfig.safeBlockHorizontal * 60,
-                        firstText: I18n.of(context).confimInvitationBankTitleOne,
+                        firstText: I18n.of(context).confimInvitationBankTitleOne, 
                         secondText: I18n.of(context).confimInvitationBankTitleTwo,
                         subtitle: I18n.of(context).confimInvitationBankSubtitle,
                       ),
