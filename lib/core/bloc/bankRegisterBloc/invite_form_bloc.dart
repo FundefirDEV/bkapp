@@ -1,12 +1,17 @@
+import 'package:bkapp_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class InviteFormBloc extends FormBloc<String, String> {
 
   final name = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
+    validators: [UtilsTools.required]
   );
   final cellPhone = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
+    validators: [
+      UtilsTools.required,
+      UtilsTools.minPhoneNumber,
+    ]
   );
 
   InviteFormBloc() {
@@ -20,16 +25,13 @@ class InviteFormBloc extends FormBloc<String, String> {
 
   @override
   void onSubmitting() async {
-    print(name.value);
-    print(cellPhone.value);
-
-    await Future<void>.delayed(Duration(seconds: 1));
-
-    emitSuccess();
+    emitSuccess(canSubmitAgain: true);
+    clear();
   }
 
-  void dispose() {
+  Future<void> close() {
     name.close();
     cellPhone.close();
+    return super.close();
   }
 }

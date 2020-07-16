@@ -21,7 +21,7 @@ final SentryClient sentry = SentryClient(
     dsn: EnvironmentConfig.DSN_SENTRY,
     environmentAttributes: Event(environment: EnvironmentConfig.ENV));
 
-class SimpleBlocDelegate extends BlocDelegate {
+class SimpleBlocDelegate extends BlocObserver {
   var logger = Logger(
       printer: PrettyPrinter(
     colors: false,
@@ -57,7 +57,7 @@ class SimpleBlocDelegate extends BlocDelegate {
 
 void main() async {
   try {
-    BlocSupervisor.delegate = SimpleBlocDelegate();
+    Bloc.observer = SimpleBlocDelegate();
     runApp(MyApp());
   } catch (error, stackTrace) {
     await sendError(error, stackTrace);

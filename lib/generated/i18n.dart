@@ -52,6 +52,10 @@ class I18n implements WidgetsLocalizations {
   String get actionTextClose => "CLOSE";
   /// "REQUEST"
   String get actionTextRequest => "REQUEST";
+  /// "ADD"
+  String get actionTextAdd => "ADD";
+  /// "Search"
+  String get actionTextSearch => "Search";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -194,6 +198,8 @@ class I18n implements WidgetsLocalizations {
   String get bankRegisterAddPartnersMinimum => "Minimum ";
   /// "8 "
   String get bankRegisterAddPartnersEight => "8 ";
+  /// "There're no partners"
+  String get bankRegisterAddPartnersNothing => "There're no partners";
   /// "ADD "
   String get bankRegisterAddPartnersButtonAdd => "ADD ";
   /// "PARTNER"
@@ -520,6 +526,12 @@ class _I18n_es_ES extends I18n {
   /// "SOLICITAR"
   @override
   String get actionTextRequest => "SOLICITAR";
+  /// "AGREGAR"
+  @override
+  String get actionTextAdd => "AGREGAR";
+  /// "Buscar"
+  @override
+  String get actionTextSearch => "Buscar";
   /// "Usuario"
   @override
   String get formUser => "Usuario";
@@ -733,6 +745,9 @@ class _I18n_es_ES extends I18n {
   /// "8 "
   @override
   String get bankRegisterAddPartnersEight => "8 ";
+  /// "No hay socios"
+  @override
+  String get bankRegisterAddPartnersNothing => "No hay socios";
   /// "AGREGAR "
   @override
   String get bankRegisterAddPartnersButtonAdd => "AGREGAR ";

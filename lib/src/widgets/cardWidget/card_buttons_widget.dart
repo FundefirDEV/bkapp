@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/bank_register_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/invite_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';

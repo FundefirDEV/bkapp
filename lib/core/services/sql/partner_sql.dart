@@ -23,7 +23,7 @@ class PartnerDatabaseProvider {
     return await openDatabase(path, version: 1,
       onCreate: (Database db, int version) async {
         await db.execute("CREATE TABLE Partner ("
-          "id TEXT,"
+          "id integer primary key AUTOINCREMENT,"
           "firstname TEXT,"
           "lastname TEXT,"
           "gender TEXT,"
@@ -33,7 +33,7 @@ class PartnerDatabaseProvider {
           "validationCode TEXT,"
           "password TEXT,"
           "passwordConfirmation TEXT"
-        );
+        ")");
       }
     );
   }
@@ -59,9 +59,26 @@ class PartnerDatabaseProvider {
     return response;
   }
 
+  deletePartnerById(int id) async {
+    final db = await database;
+    return await db.rawDelete("DELETE FROM Partner WHERE id = $id");
+  }
+
   deleteAllPartners() async {
     final db = await database;
     db.delete("Partner");
+  }
+
+  Future<PartnerModel> getPartnerById(int id) async {
+    final db = await database;
+    var response = await db.query(
+      'Partner',
+      where: "id = ?",
+      whereArgs: [id]
+    );
+    return response.isNotEmpty
+      ? PartnerModel.fromJson(response.first)
+      : null;
   }
 
   Future<List<PartnerModel>> getAllParters() async {
@@ -71,5 +88,10 @@ class PartnerDatabaseProvider {
       (prop) => PartnerModel.fromJson(prop)
     ).toList();
     return list;
+  }
+
+  Future closeDatabase() async {
+    final db = await database;
+    return db.close();
   }
 }

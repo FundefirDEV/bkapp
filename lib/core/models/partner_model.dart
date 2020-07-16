@@ -9,7 +9,7 @@ PartnerModel partnerFromJson(String str) => PartnerModel.fromJson(json.decode(st
 String partnerToJson(PartnerModel data) => json.encode(data.toJson());
 
 class PartnerModel {
-  String id;
+  int id;
   String firstname;
   String lastname;
   String gender;
@@ -36,26 +36,26 @@ class PartnerModel {
   factory PartnerModel.fromJson(Map<String, dynamic> json) => PartnerModel(
     id: json["id"],
     firstname: json["firstname"],
-    lastname: json["lastname"],
-    gender: json["gender"] ?? null,
-    country: json["country"] ?? null,
+    lastname: json["lastname"] != null ? json["lastname"] : null,
+    gender: json["gender"] != null ? json["gender"] : null,
+    country: json["country"] != null ? json["country"] : null,
     phone: json["phone"],
-    email: json["email"] ?? null,
-    validationCode: json["validationCode"] ?? null,
-    password: json["password"],
-    passwordConfirmation: json["passwordConfirmation"],
+    email: json["email"] != null ? json["email"] : null,
+    validationCode: json["validationCode"] != null ? json["validationCode"] : null,
+    password: json["password"] != null ? json["password"] : null,
+    passwordConfirmation: json["passwordConfirmation"] != null ? json["passwordConfirmation"] : null,
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "firstname": firstname,
-    "lastname": lastname,
-    "gender": gender ?? null,
-    "country": country ?? null,
+    "lastname": lastname != null ? lastname : null,
+    "gender": gender != null ? gender : null,
+    "country": country != null ? country : null,
     "phone": phone,
-    "email": email ?? null,
-    "validationCode": validationCode ?? null,
-    "password": password,
-    "passwordConfirmation": passwordConfirmation,
+    "email": email != null ? email : null,
+    "validationCode": validationCode != null ? validationCode : null,
+    "password": password != null ? password : null,
+    "passwordConfirmation": passwordConfirmation != null ? passwordConfirmation : null,
     };
 }

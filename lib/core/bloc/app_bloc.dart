@@ -5,6 +5,7 @@ import 'profileRegisterBloc/profile_register_bloc.dart';
 
 class AppBloc extends FormBloc<String, String> {
   ProfileRegisterBloc _profileRegisterBloc;
+  BankRegisterBloc _bankRegisterBloc;
   ProfileEditFormBloc _profileEditFormBloc;
   BuySharesFormBloc _buySharesFormBloc;
   CreditFormBloc _creditFormBloc;
@@ -12,6 +13,7 @@ class AppBloc extends FormBloc<String, String> {
 
   AppBloc()
       : _profileRegisterBloc = ProfileRegisterBloc(),
+        _bankRegisterBloc = BankRegisterBloc(),
         _profileEditFormBloc = ProfileEditFormBloc(),
         _buySharesFormBloc = BuySharesFormBloc(),
         _creditFormBloc = CreditFormBloc(),
@@ -19,6 +21,7 @@ class AppBloc extends FormBloc<String, String> {
 
 
   ProfileRegisterBloc get profileRegisterBloc => _profileRegisterBloc;
+  BankRegisterBloc get bankRegisterBloc => _bankRegisterBloc;
   ProfileEditFormBloc get profileEditFormBloc => _profileEditFormBloc;
   BuySharesFormBloc get buySharesFormBloc => _buySharesFormBloc;
   CreditFormBloc get creditFormBloc => _creditFormBloc;

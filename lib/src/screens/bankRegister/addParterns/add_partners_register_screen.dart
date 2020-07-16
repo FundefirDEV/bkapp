@@ -62,7 +62,9 @@ class _AddPartnersRegisterScreenState
               flex: 2,
               child: FadeTransition(
                 opacity: _animation,
-                child: PartnersStructureWidget()
+                child: PartnersStructureWidget(
+                  onSave: (data) => print(data),
+                )
               )
             ),
             FooterBkWidget()

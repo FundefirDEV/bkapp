@@ -12,13 +12,9 @@ class SelectCityBloc extends FormBloc<String, String> {
 
   @override
   void onLoading() async {
-    try {
-      selectState.updateValue('Select your state');
-      selectCity.updateValue('Select your city');
-      emitLoaded();
-    } catch (e) {
-      emitLoadFailed();
-    }
+    selectState.updateValue('Select your state');
+    selectCity.updateValue('Select your city');
+    emitLoaded();
   }
 
   SelectCityBloc(): super(isLoading: true) {
@@ -36,7 +32,6 @@ class SelectCityBloc extends FormBloc<String, String> {
     print(selectCity.value);
 
     await Future<void>.delayed(Duration(seconds: 1));
-
     emitSuccess();
   }
 

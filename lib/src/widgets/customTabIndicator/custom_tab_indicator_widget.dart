@@ -6,15 +6,15 @@ class CustomTabIndicator extends Decoration {
   CustomTabIndicator({this.indicatorHeight = 25.0});
 
   @override
-  _CustomPainter createBoxPainter([VoidCallback onChanged]) {
-    return new _CustomPainter(this, onChanged);
+  CustomPainter createBoxPainter([VoidCallback onChanged]) {
+    return new CustomPainter(this, onChanged);
   }
 }
 
-class _CustomPainter extends BoxPainter {
+class CustomPainter extends BoxPainter {
   final CustomTabIndicator decoration;
   double get indicatorHeight => decoration.indicatorHeight;
-  _CustomPainter(this.decoration, VoidCallback onChanged)
+  CustomPainter(this.decoration, VoidCallback onChanged)
       : assert(decoration != null),
         super(onChanged);
 

@@ -36,7 +36,7 @@ void main() {
   group('Test LoginBloc and AuthenticationBloc', () {
 
     test('initial state is correct', () {
-      expect(authenticationBloc.initialState, AuthenticationUninitialized());
+      expect(authenticationBloc.state, AuthenticationUninitialized());
     });
 
     test('test login props', () {

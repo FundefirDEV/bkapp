@@ -47,9 +47,7 @@ class FooterSelectCityWidget extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               key: Key('inkwell-select-city-redirect'),
-              onTap: () {
-                _nextStepWidget(context);
-              },
+              onTap: () => _nextStepWidget(context),
               child: Container(
                 key: Key('footer-select-city-image-container'),
                 margin: EdgeInsets.only(left: 10.0),

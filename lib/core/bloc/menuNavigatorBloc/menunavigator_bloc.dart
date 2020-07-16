@@ -11,10 +11,9 @@ class MenuNavigatorBloc
   extends Bloc<MenuNavigatorEvent, MenuNavigatorState> {
   final PageController controller;
 
-  MenuNavigatorBloc({@required this.controller});
-
-  @override
-  MenuNavigatorState get initialState => MenuNavigatorInitial();
+  MenuNavigatorBloc({
+    @required this.controller
+  }) : super(MenuNavigatorInitial());
 
   @override
   Stream<MenuNavigatorState> mapEventToState(

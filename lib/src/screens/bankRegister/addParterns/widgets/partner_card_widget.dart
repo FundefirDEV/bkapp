@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -6,16 +7,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 class PartnerCardWidget extends StatelessWidget {
   const PartnerCardWidget({
     Key key,
+    @required this.id,
     @required this.name,
-    @required this.mobile
+    @required this.mobile,
+    this.onSave
   }) : super(key: key);
 
+  final int id;
   final String name;
   final String mobile;
+  final Function onSave;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
 
     return Stack(
       key: Key('first-stack-partner-card'),
@@ -33,10 +39,10 @@ class PartnerCardWidget extends StatelessWidget {
                 children: <Widget>[
                   SvgPicture.asset(
                     'assets/images/user_icon_yellow.svg',
-                    width: SizeConfig.safeBlockHorizontal * 12,
+                    width: SizeConfig.safeBlockHorizontal * 10,
                   ),
                   Positioned(
-                    bottom: 17.0,
+                    bottom: 21.0,
                     right: 10.0,
                     child: _dataPartner()
                   )
@@ -49,7 +55,10 @@ class PartnerCardWidget extends StatelessWidget {
           top: -5.0,
           right: -9.0,
           child: RawMaterialButton(
-            onPressed: () {},
+            onPressed: () async {
+              await partnerDb.deletePartnerById(id);
+              onSave();
+            },
             elevation: 4.0,
             constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
             shape: CircleBorder(),
@@ -67,7 +76,7 @@ class PartnerCardWidget extends StatelessWidget {
 
   Widget _dataPartner() {
     return Container(
-      width: SizeConfig.safeBlockHorizontal * 25,
+      width: SizeConfig.safeBlockHorizontal * 27,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -84,7 +93,7 @@ class PartnerCardWidget extends StatelessWidget {
           Text(mobile,
             maxLines: 1,
             style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+              fontSize: 12.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.4
             ),
