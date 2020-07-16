@@ -16,11 +16,13 @@ class ApiResponses {
       case 403:
         throw UnauthorisedException(response.data.toString());
         break;
+      case 404:
+        throw NotFoundException(response.data.toString());
+        break;
       case 500:
       default:
         throw FetchDataException(
-          'Error occured while Communication with Server with StatusCode : ${response.statusCode}'
-        );
+            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }
   }
 }

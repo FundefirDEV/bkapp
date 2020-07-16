@@ -11,7 +11,7 @@ class CustomException implements Exception {
 
 class FetchDataException extends CustomException {
   FetchDataException([String message])
-    : super(message, 'Error during comunication: ');
+      : super(message, 'Error during comunication: ');
 }
 
 class BadRequestException extends CustomException {
@@ -24,4 +24,8 @@ class UnauthorisedException extends CustomException {
 
 class InvalidInputException extends CustomException {
   InvalidInputException([String message]) : super(message, "Invalid Input: ");
+}
+
+class NotFoundException extends CustomException {
+  NotFoundException([String message]) : super(message, "Not found: ");
 }

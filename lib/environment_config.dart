@@ -23,5 +23,27 @@ class EnvironmentConfig {
   @Deprecated('Prefer "API_URL", the mock url is temporally.')
   static const String API_URL_MOCK = String.fromEnvironment('API_URL_MOCK',
       defaultValue:
-          "https://virtserver.swaggerhub.com/jairoFg12/bk_service/0.0.1/v3");
+          "https://virtserver.swaggerhub.com/jairoFg12/bk_service/0.0.1");
+}
+
+class ApiEndpoints {
+  ///
+  /// Login for bk_services
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String login({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/login";
+  }
+
+  ///
+  /// Register for bk_services
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String register({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/regsiter";
+  }
 }
