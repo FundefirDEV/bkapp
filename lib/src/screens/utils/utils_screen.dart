@@ -65,11 +65,11 @@ class _UtilsScreenState extends State<UtilsScreen> {
         titleWeight: I18n.of(context).utilsExemptions,
       ),
       UtilsCardsAdministratorItem(
-        key: 'assign-admin',
-        image: 'assets/images/admin_icon.svg',
-        title: I18n.of(context).utilsAssignment,
-        titleWeight: I18n.of(context).utilsAdministrator,
-      )
+          key: 'assign-admin',
+          image: 'assets/images/admin_icon.svg',
+          title: I18n.of(context).utilsAssignment,
+          titleWeight: I18n.of(context).utilsAdministrator,
+          onPressed: () => navigateBloc.add(ButtonPressed(goTo: 10)))
     ];
     return Scaffold(
         body: AppBarWidget(
@@ -78,7 +78,10 @@ class _UtilsScreenState extends State<UtilsScreen> {
       child: Column(
         key: Key('column-util-screen'),
         children: <Widget>[
-          TitleHeaderWidget(title: I18n.of(context).utilsUtils, showArrow: false,),
+          TitleHeaderWidget(
+            title: I18n.of(context).utilsUtils,
+            showArrow: false,
+          ),
           for (var i = 0; i < characters.length; i++)
             UtilCardDescription(characters: characters[i]),
           Row(

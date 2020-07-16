@@ -296,5 +296,12 @@
     "incobrableFund": "Incobrable fund",
     "week": "Week",
     "day": "Day"
+  },
+  "administratorAssignment": {
+    "title": "Administrator \nAssignment",
+    "titleModalAssign": "Are you sure you assign \n this partner as administrator?",
+    "titleModalRemove": "Are you sure about removing \n this partner as admin?",
+    "accept": "ACCEPT",
+    "close": "CLOSE"
   }
 }

@@ -286,5 +286,12 @@
     "incobrableFund": "Fondo incobrable",
     "week": "Semana",
     "day": "Día"
+  },
+  "administratorAssignment": {
+    "title": "Asignación de \nAdministradores",
+    "titleModalAssign": "¿Estás seguro de asignar \n este socio como administrador?",
+    "titleModalRemove": "¿Estás seguro de quitar \n este socio como admin?",
+    "accept": "ACEPTAR",
+    "close": "CERRAR"
   }
 }

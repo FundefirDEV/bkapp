@@ -4,13 +4,13 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TitleHeaderWidget extends StatelessWidget {
-  TitleHeaderWidget({
-    Key key,
-    this.title,
-    this.oldIndex,
-    this.navigateBloc,
-    this.showArrow: true
-  }) : super(key: key);
+  TitleHeaderWidget(
+      {Key key,
+      this.title,
+      this.oldIndex,
+      this.navigateBloc,
+      this.showArrow: true})
+      : super(key: key);
 
   final String title;
   final oldIndex;
@@ -37,8 +37,8 @@ class TitleHeaderWidget extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     oldIndex != null
-                      ? navigateBloc.add(ButtonPressed(goTo: oldIndex))
-                      : Navigator.pop(context);
+                        ? navigateBloc.add(ButtonPressed(goTo: oldIndex))
+                        : Navigator.pop(context);
                   },
                   child: Container(
                     key: Key('left-arrow-image-container-title'),
@@ -60,10 +60,11 @@ class TitleHeaderWidget extends StatelessWidget {
             child: Text(
               this.title,
               key: Key('title-text'),
+              textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 7,
-                  color: Colors.white,
-                ),
+                fontSize: SizeConfig.blockSizeHorizontal * 7,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

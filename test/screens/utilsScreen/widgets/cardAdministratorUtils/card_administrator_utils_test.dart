@@ -37,6 +37,9 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
+          find.byKey(Key('material-card-administrator-${characters[0].key}')),
+          findsOneWidget);
+      expect(
           find.byKey(Key('container-card-administrator-${characters[0].key}')),
           findsOneWidget);
       expect(

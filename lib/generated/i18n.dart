@@ -468,6 +468,16 @@ class I18n implements WidgetsLocalizations {
   String get rulesScreenWeek => "Week";
   /// "Day"
   String get rulesScreenDay => "Day";
+  /// "Administrator \nAssignment"
+  String get administratorAssignmentTitle => "Administrator \nAssignment";
+  /// "Are you sure you assign \n this partner as administrator?"
+  String get administratorAssignmentTitleModalAssign => "Are you sure you assign \n this partner as administrator?";
+  /// "Are you sure about removing \n this partner as admin?"
+  String get administratorAssignmentTitleModalRemove => "Are you sure about removing \n this partner as admin?";
+  /// "ACCEPT"
+  String get administratorAssignmentAccept => "ACCEPT";
+  /// "CLOSE"
+  String get administratorAssignmentClose => "CLOSE";
 }
 
 class _I18n_en_US extends I18n {
@@ -1110,6 +1120,21 @@ class _I18n_es_ES extends I18n {
   /// "Día"
   @override
   String get rulesScreenDay => "Día";
+  /// "Asignación de \nAdministradores"
+  @override
+  String get administratorAssignmentTitle => "Asignación de \nAdministradores";
+  /// "¿Estás seguro de asignar \n este socio como administrador?"
+  @override
+  String get administratorAssignmentTitleModalAssign => "¿Estás seguro de asignar \n este socio como administrador?";
+  /// "¿Estás seguro de quitar \n este socio como admin?"
+  @override
+  String get administratorAssignmentTitleModalRemove => "¿Estás seguro de quitar \n este socio como admin?";
+  /// "ACEPTAR"
+  @override
+  String get administratorAssignmentAccept => "ACEPTAR";
+  /// "CERRAR"
+  @override
+  String get administratorAssignmentClose => "CERRAR";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
