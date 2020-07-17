@@ -155,7 +155,7 @@
     },
     "actions": {
       "title": "What will you do?",
-      "credit": "requesting a\n credit",
+      "credit": "credit",
       "profits": "payment of\n profits",
       "meeting": "start meeting",
       "actions": "buy actions",
@@ -192,6 +192,7 @@
     "shares": "SHARES"
   },
   "profileEditScreen": {
+    "title": "Profile Edit",
     "editionMode": "EDIT MODE",
     "update": "UPDATE",
     "lastName": "Last Name"

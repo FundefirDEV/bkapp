@@ -1,4 +1,6 @@
 import 'package:bkapp_flutter/src/screens/profile/profile_screen.dart';
+import 'package:bkapp_flutter/src/screens/profileEdit/profile_edit_screen.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../base_tester.dart';
@@ -29,7 +31,7 @@ void main() {
       expect(find.byKey(editButtonKey), findsOneWidget);
       expect(find.byKey(topContainerKey), findsNWidgets(2));
       expect(find.byKey(topContainerInformationKey), findsNWidgets(2));
-      expect(find.byKey(rowTopContainerKey), findsNWidgets(2));
+      expect(find.byKey(rowTopContainerKey), findsOneWidget);
     });
     testWidgets('Middle container profile screen', (WidgetTester tester) async {
       final rowKey = Key('Row_middle_containers_profile_screen');
@@ -80,6 +82,24 @@ void main() {
       expect(find.byKey(creditsKey), findsOneWidget);
       expect(find.byKey(actionsKey), findsOneWidget);
       expect(find.byKey(ritchText), findsNWidgets(2));
+    });
+
+    testWidgets('Test title widgets', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: ProfileScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(TitleHeaderWidget), findsOneWidget);
+      expect(find.byType(SingleChildScrollView), findsOneWidget);
+    });
+
+    testWidgets('Test edit button pressed', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: ProfileScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(Key('Edit_button_profile_screen')), findsOneWidget);
+      await tester.tap(find.byKey(Key('Edit_button_profile_screen')));
+      await tester.pumpAndSettle();
+      expect(find.byType(ProfileEditScreen), findsOneWidget);
     });
   });
 }

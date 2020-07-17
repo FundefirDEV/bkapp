@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/administ
 import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/list_partners.dart';
 import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/widgets/switchAdmin/switch_admin_widget.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -71,6 +72,40 @@ void main() {
 
       expect(find.byKey(Key('column_administrator_assignmen_screen')),
           findsOneWidget);
+    });
+
+    testWidgets('modal accept works correctly',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(
+          child: administratorAssignmentScreen(
+        testKey,
+      )));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('switch_admin_1')));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ImageBottomModal), findsOneWidget);
+      await tester.tap(find.byKey(Key('flat_button_image_botton_modal_accept')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(Key('switch_admin_1')), findsOneWidget);
+    });
+
+    testWidgets('modal cancel works correctly',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(
+          child: administratorAssignmentScreen(
+        testKey,
+      )));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('switch_admin_1')));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ImageBottomModal), findsOneWidget);
+      await tester.tap(find.byKey(Key('flat_button_image_botton_modal_close')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(Key('switch_admin_1')), findsOneWidget);
     });
   });
 }

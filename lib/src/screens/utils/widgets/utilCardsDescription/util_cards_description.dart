@@ -15,6 +15,7 @@ class UtilCardDescription extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        key: Key('inkwell-${characters.key}'),
         onTap: characters.onPressed,
         child: Container(
             key: Key('util-card-description-container-${characters.key}'),

@@ -155,9 +155,9 @@
     },
     "actions": {
       "title": "¿Qué vas a hacer?",
-      "credit": "pedir un\n crédito",
+      "credit": "crédito",
       "profits": "pago de\n ganancias",
-      "meeting": "iniciar reunión",
+      "meeting": "cierre de reunión",
       "actions": "comprar\n acciones",
       "partner": "agregar / borrar\n socio"
     }
@@ -192,6 +192,7 @@
     "shares": "ACCIONES"
   },
   "profileEditScreen": {
+    "title": "Editar Perfil",
     "editionMode": "MODO EDICIÓN",
     "update": "ACTUALIZAR",
     "lastName": "Primer apellido"

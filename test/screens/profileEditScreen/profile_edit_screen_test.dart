@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/profileEdit/profile_edit_screen.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../base_tester.dart';
@@ -71,6 +72,14 @@ void main() {
 
       expect(find.byKey(containerKey), findsOneWidget);
       expect(find.byKey(flatButtonKey), findsOneWidget);
+    });
+
+    testWidgets('Test title widgets', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: ProfileEditScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(TitleHeaderWidget), findsOneWidget);
+      expect(find.byType(SingleChildScrollView), findsNWidgets(2));
     });
   });
 }

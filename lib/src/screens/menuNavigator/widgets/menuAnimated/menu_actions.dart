@@ -92,6 +92,7 @@ class MenuActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
+          height: 70.0,
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
             key: Key('credit-button-line'),
@@ -103,6 +104,7 @@ class MenuActions extends StatelessWidget {
           ),
         ),
         Container(
+          height: 70.0,
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
             key: Key('profits-button-line'),
@@ -122,6 +124,7 @@ class MenuActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
+          height: 70.0,
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
             key: Key('actions-button-line'),
@@ -133,6 +136,7 @@ class MenuActions extends StatelessWidget {
           ),
         ),
         Container(
+          height: 70.0,
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
             key: Key('partners-button-line'),

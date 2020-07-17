@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profile/content/top_container_content_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,24 +29,28 @@ class TopContainerProfileScreen {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          content.saloAndArrow(),
-          SizedBox(height: SizeConfig.blockSizeVertical * 1.3,),
-          content.profileAndArrow(),
-          topContainerInformation(),
-          Container(
-              height: SizeConfig.safeBlockVertical * 4,
-              child: FlatButton(
-                  key: Key('Edit_button_profile_screen'),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, profileEditScreen),
-                  child: Text(
-                    I18n.of(context).profileScreenEdit,
-                    style: TextStyle(color: Colors.white),
-                  )))
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            content.saloAndArrow(),
+            TitleHeaderWidget(
+              title: I18n.of(context).profileScreenProfile,
+              showArrow: false,
+            ),
+            topContainerInformation(),
+            Container(
+                height: SizeConfig.safeBlockVertical * 4,
+                child: FlatButton(
+                    key: Key('Edit_button_profile_screen'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, profileEditScreen),
+                    child: Text(
+                      I18n.of(context).profileScreenEdit,
+                      style: TextStyle(color: Colors.white),
+                    )))
+          ],
+        ),
       ),
     );
   }

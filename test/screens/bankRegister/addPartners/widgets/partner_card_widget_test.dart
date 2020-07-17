@@ -1,22 +1,28 @@
 import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/partner_card_widget.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../base_tester.dart';
 
 void main() {
+
+  Widget partnerTester({ key }) {
+    return PartnerCardWidget(
+      key: key,
+      id: 1,
+      name: 'Daniel Tavera',
+      mobile: '21332324',
+    );
+  }
   group('Test partner card widget', () {
 
     testWidgets('PartnerCardWidget exists', (WidgetTester tester) async {
       final testKey = Key('partner-card-id');
       await tester.pumpWidget(
         baseTester(
-          child: PartnerCardWidget(
-            key: testKey,
-            name: 'Daniel Tavera',
-            mobile: '21332324',
-          )
+          child: partnerTester(key: testKey)
         )
       );
       await tester.pumpAndSettle();
@@ -27,11 +33,7 @@ void main() {
       final testKey = Key('partner-card-id');
       await tester.pumpWidget(
         baseTester(
-          child: PartnerCardWidget(
-            key: testKey,
-            name: 'Daniel Tavera',
-            mobile: '21332324',
-          )
+          child: partnerTester(key: testKey)
         )
       );
       await tester.pumpAndSettle();
@@ -43,10 +45,7 @@ void main() {
       final secondStack = Key('second-stack-partner-card');
       await tester.pumpWidget(
         baseTester(
-          child: PartnerCardWidget(
-            name: 'Daniel Tavera',
-            mobile: '21332324',
-          )
+          child: partnerTester()
         )
       );
       await tester.pumpAndSettle();
@@ -59,10 +58,7 @@ void main() {
     testWidgets('Finding props into Text widget', (WidgetTester tester) async {
       await tester.pumpWidget(
         baseTester(
-          child: PartnerCardWidget(
-            name: 'Daniel Tavera',
-            mobile: '21332324',
-          )
+          child: partnerTester()
         )
       );
       await tester.pumpAndSettle();

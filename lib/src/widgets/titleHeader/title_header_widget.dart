@@ -43,6 +43,7 @@ class TitleHeaderWidget extends StatelessWidget {
                   child: Container(
                     key: Key('left-arrow-image-container-title'),
                     alignment: Alignment.centerLeft,
+                    height: 40.0,
                     width: SizeConfig.blockSizeHorizontal * 20,
                     child: SvgPicture.asset(
                       'assets/images/left_arrow.svg',

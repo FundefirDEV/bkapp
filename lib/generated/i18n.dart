@@ -244,8 +244,8 @@ class I18n implements WidgetsLocalizations {
   String get mainMenuBarProfile => "profile";
   /// "What will you do?"
   String get mainMenuActionsTitle => "What will you do?";
-  /// "requesting a\n credit"
-  String get mainMenuActionsCredit => "requesting a\n credit";
+  /// "credit"
+  String get mainMenuActionsCredit => "credit";
   /// "payment of\n profits"
   String get mainMenuActionsProfits => "payment of\n profits";
   /// "start meeting"
@@ -304,6 +304,8 @@ class I18n implements WidgetsLocalizations {
   String get profileScreenCredit => "CREDIT";
   /// "SHARES"
   String get profileScreenShares => "SHARES";
+  /// "Profile Edit"
+  String get profileEditScreenTitle => "Profile Edit";
   /// "EDIT MODE"
   String get profileEditScreenEditionMode => "EDIT MODE";
   /// "UPDATE"
@@ -850,15 +852,15 @@ class _I18n_es_ES extends I18n {
   /// "¿Qué vas a hacer?"
   @override
   String get mainMenuActionsTitle => "¿Qué vas a hacer?";
-  /// "pedir un\n crédito"
+  /// "crédito"
   @override
-  String get mainMenuActionsCredit => "pedir un\n crédito";
+  String get mainMenuActionsCredit => "crédito";
   /// "pago de\n ganancias"
   @override
   String get mainMenuActionsProfits => "pago de\n ganancias";
-  /// "iniciar reunión"
+  /// "cierre de reunión"
   @override
-  String get mainMenuActionsMeeting => "iniciar reunión";
+  String get mainMenuActionsMeeting => "cierre de reunión";
   /// "comprar\n acciones"
   @override
   String get mainMenuActionsActions => "comprar\n acciones";
@@ -940,6 +942,9 @@ class _I18n_es_ES extends I18n {
   /// "ACCIONES"
   @override
   String get profileScreenShares => "ACCIONES";
+  /// "Editar Perfil"
+  @override
+  String get profileEditScreenTitle => "Editar Perfil";
   /// "MODO EDICIÓN"
   @override
   String get profileEditScreenEditionMode => "MODO EDICIÓN";

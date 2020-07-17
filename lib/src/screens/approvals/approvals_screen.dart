@@ -7,9 +7,9 @@ import 'package:bkapp_flutter/src/screens/approvals/content/request_card.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/carousel/carousel_widget.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'content/accepted_discarted_container.dart';
-import 'content/title_approve_screen.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
@@ -42,9 +42,14 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
       container: Column(
           key: Key('Column-appbar-approvals-screen'),
           children: <Widget>[
-            TitleApprovalsWidget(
-              navigateBloc: menuNavigatorBloc,
-              oldIndex: widget.oldIndex,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: TitleHeaderWidget(
+                title: I18n.of(context).approvalsScreenApproval,
+                showArrow: true,
+                oldIndex: widget.oldIndex,
+                navigateBloc: menuNavigatorBloc,
+              ),
             ),
             CardApprovals(
               childBlue: NumberPetitions(),

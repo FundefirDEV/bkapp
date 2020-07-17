@@ -2,7 +2,6 @@ import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dar
 import 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/accepted_discarted_container.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/request_card.dart';
-import 'package:bkapp_flutter/src/screens/approvals/content/title_approve_screen.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -46,7 +45,6 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(AppBarWidget), findsOneWidget);
-      expect(find.byType(TitleApprovalsWidget), findsOneWidget);
       expect(find.byType(AcceptedDiscarted), findsOneWidget);
     });
   });
