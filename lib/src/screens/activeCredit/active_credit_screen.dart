@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/index.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -6,13 +7,17 @@ import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class ActiveCreditScreen extends StatelessWidget {
-  ActiveCreditScreen({Key key}) : super(key: key);
+  final int oldIndex;
+
+  ActiveCreditScreen({Key key, @required this.oldIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return AppBarWidget(
         key: Key('active-credit-screen'),
@@ -20,6 +25,8 @@ class ActiveCreditScreen extends StatelessWidget {
           children: <Widget>[
             TitleHeaderWidget(
               title: I18n.of(context).activeCreditCredits,
+              oldIndex: oldIndex,
+              navigateBloc: menuNavigatorBloc,
             ),
             _subtitle(context),
             CardInformationBkWidget(

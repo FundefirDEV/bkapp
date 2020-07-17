@@ -96,7 +96,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   RulesScreen(),
                   RulesEditScreen(),
                   AdministratorAssignmentScreen(),
-                  ActiveCreditScreen()
+                  ActiveCreditScreen(oldIndex: currentIndex)
                 ],
                 physics:
                     NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

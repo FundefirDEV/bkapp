@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/detail_credit_widget.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/fee_next_card_widget.dart';
@@ -7,22 +8,29 @@ import 'package:bkapp_flutter/src/widgets/carousel/carousel_widget.dart';
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../base_tester.dart';
 
 void main() {
+  Widget activeCreditTester({key}) {
+    return BlocProvider(
+        create: (context) => MenuNavigatorBloc(controller: PageController()),
+        child: ActiveCreditScreen(key: key, oldIndex: 0));
+  }
+
   group('Test Active Credit screen', () {
     final key = Key('active-credit');
     testWidgets('Render Active Credit screen', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ActiveCreditScreen(key: key)));
+      await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
 
       expect(find.byKey(key), findsOneWidget);
     });
 
     testWidgets('Render structure main', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ActiveCreditScreen(key: key)));
+      await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
       expect(find.byType(AppBarWidget), findsOneWidget);
       expect(find.byType(TitleHeaderWidget), findsOneWidget);
@@ -32,7 +40,7 @@ void main() {
     });
 
     testWidgets('Find Carousel Widget', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ActiveCreditScreen(key: key)));
+      await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
 
       final testKey = Key('my-id');
@@ -50,14 +58,14 @@ void main() {
     });
 
     testWidgets('Change title and subtitle', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ActiveCreditScreen(key: key)));
+      await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('subtitle-credit')), findsOneWidget);
       expect(find.byKey(Key('subtitle-fee-pending')), findsOneWidget);
     });
 
     testWidgets('Render button pay fee', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ActiveCreditScreen(key: key)));
+      await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('raisedButton-pay-fee')), findsOneWidget);
     });
