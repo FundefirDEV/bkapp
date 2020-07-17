@@ -7,46 +7,36 @@ class LoginFormBloc extends FormBloc<String, String> {
   final LoginRepository repository;
   final AuthenticationBloc authenticationBloc;
 
-  final username = TextFieldBloc(
-    validators: [
-      FieldBlocValidators.required,
-      FieldBlocValidators.email,
-    ]
-  );
-  final password = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
-  );
+  final username = TextFieldBloc(validators: [
+    FieldBlocValidators.required,
+    FieldBlocValidators.email,
+  ]);
+  final password = TextFieldBloc(validators: [FieldBlocValidators.required]);
 
-  LoginFormBloc({
-    @required this.repository,
-    @required this.authenticationBloc
-  }) {
-    addFieldBlocs(
-      fieldBlocs: [
-        username,
-        password
-      ]
-    );
+  LoginFormBloc(
+      {@required this.repository, @required this.authenticationBloc}) {
+    addFieldBlocs(fieldBlocs: [username, password]);
   }
 
   @override
   void onSubmitting() async {
     try {
       final token = await repository.postLogin(
-        username: username.value,
-        password: password.value
-      );
+          username: username.value, password: password.value);
 
       authenticationBloc.add(LoggedIn(token: token));
       emitSuccess(canSubmitAgain: true);
       clear();
     } catch (e) {
-      emitFailure();
+      username.addFieldError('Bad credentials');
+      password.addFieldError('Bad credentials');
+      emitFailure(failureResponse: e.message);
     }
   }
 
-  void dispose() {
+  Future<void> close() {
     username.close();
     password.close();
+    return super.close();
   }
 }

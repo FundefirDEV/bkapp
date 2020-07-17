@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/descriptionCreditRequest/description_credit_request_widget.dart';
@@ -28,7 +29,11 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
       container: Column(
         key: Key('status-credit_request-widget-column'),
         children: <Widget>[
-          TitleStatusCreditWidget(),
+          TitleHeaderWidget(
+            title: I18n.of(context).approvalsScreenCredits,
+            oldIndex: 0,
+            navigateBloc: navigateBloc,
+          ),
           Container(
             key: Key('status-credit_request-widget-container-text'),
             margin: EdgeInsets.only(bottom: 10),

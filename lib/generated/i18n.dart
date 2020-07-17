@@ -76,6 +76,10 @@ class I18n implements WidgetsLocalizations {
   String get errorGraterThanNine => "The number should be greater than 9";
   /// "there is nothing here!"
   String get errorIsEmpty => "there is nothing here!";
+  /// "Incorrect username or password"
+  String get errorInvalidUser => "Incorrect username or password";
+  /// "Enter a valid email address"
+  String get errorInvalidEmail => "Enter a valid email address";
   /// "Go to "
   String get loginScreenTextOne => "Go to ";
   /// "your bank"
@@ -600,6 +604,12 @@ class _I18n_es_ES extends I18n {
   /// "¡No hay nada aquí!"
   @override
   String get errorIsEmpty => "¡No hay nada aquí!";
+  /// "Usuario o contraseña incorrecto"
+  @override
+  String get errorInvalidUser => "Usuario o contraseña incorrecto";
+  /// "Ingrese un correo electrónico válido"
+  @override
+  String get errorInvalidEmail => "Ingrese un correo electrónico válido";
   /// "Entra a "
   @override
   String get loginScreenTextOne => "Entra a ";

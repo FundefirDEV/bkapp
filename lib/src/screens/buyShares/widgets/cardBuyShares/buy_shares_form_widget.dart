@@ -28,11 +28,11 @@ class BuySharesFormWidget extends StatelessWidget {
                 errorBuilder: (context, string) =>
                     I18n.of(context).errorRequired,
                 decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(0),
-                    labelText: I18n.of(context).buySharesNumberActions,
-                    labelStyle:
-                        TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
-                    suffixIcon: Icon(Icons.attach_money))),
+                  contentPadding: EdgeInsets.all(0),
+                  labelText: I18n.of(context).buySharesNumberActions,
+                  labelStyle:
+                      TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
+                )),
           ),
         ),
         Container(

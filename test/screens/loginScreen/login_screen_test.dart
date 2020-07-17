@@ -13,46 +13,36 @@ import '../../base_tester.dart';
 
 void main() {
   LoginRepository repository = LoginRepository(
-    apiProvider: ApiProvider(
-      httpClient: new Dio(),
-    )
-  );
+      apiProvider: ApiProvider(
+    httpClient: new Dio(),
+  ));
 
   var baseWidget;
 
   setUp(() {
     baseWidget = baseTester(
-      child: BlocProvider(
-        create: (context) => LoginFormBloc(
-          authenticationBloc: AuthenticationBloc(
-            loginRepository: repository
-          ),
-          repository: repository
-        ),
-        child: Builder(
-          builder: (context) => LoginFormWidget(),
-        )
-      )
-    );
+        child: BlocProvider(
+            create: (context) => LoginFormBloc(
+                authenticationBloc:
+                    AuthenticationBloc(loginRepository: repository),
+                repository: repository),
+            child: Builder(
+              builder: (context) => LoginFormWidget(),
+            )));
   });
 
   group('Test LoginScreen', () {
     testWidgets('Find LoginScreen widget', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester.pumpWidget(
-        baseTester(
+      await tester.pumpWidget(baseTester(
           child: BlocProvider(
-            create: (context) => LoginFormBloc(
-              authenticationBloc: AuthenticationBloc(
-                loginRepository: repository
-              ),
-              repository: repository
-            ),
-            child: Builder(
-              builder: (context) => LoginScreen(key: testKey),
-          )
-        )
-      ));
+              create: (context) => LoginFormBloc(
+                  authenticationBloc:
+                      AuthenticationBloc(loginRepository: repository),
+                  repository: repository),
+              child: Builder(
+                builder: (context) => LoginScreen(key: testKey),
+              ))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsNWidgets(1));
@@ -60,21 +50,15 @@ void main() {
 
     testWidgets('Find LoginFormWidget widget', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester.pumpWidget(
-        baseTester(
+      await tester.pumpWidget(baseTester(
           child: BlocProvider(
-            create: (context) => LoginFormBloc(
-              authenticationBloc: AuthenticationBloc(
-                loginRepository: repository
-              ),
-              repository: repository
-            ),
-            child: Builder(
-              builder: (context) => LoginFormWidget(key: testKey),
-            )
-          )
-        )
-      );
+              create: (context) => LoginFormBloc(
+                  authenticationBloc:
+                      AuthenticationBloc(loginRepository: repository),
+                  repository: repository),
+              child: Builder(
+                builder: (context) => LoginFormWidget(key: testKey),
+              ))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -92,16 +76,15 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.enterText(
-        find.byKey(Key('input-username')),
-        'Nuevo Usuario'
-      );
+          find.byKey(Key('input-username')), 'Nuevo Usuario');
 
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pump();
       expect(find.text('Nuevo Usuario'), findsOneWidget);
     });
 
-    testWidgets('Press button and test hint erros', (WidgetTester tester) async {
+    testWidgets('Press button and test hint erros',
+        (WidgetTester tester) async {
       await tester.pumpWidget(baseWidget);
       await tester.pumpAndSettle();
 
@@ -109,9 +92,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('This field is required'), findsNWidgets(2));
       await tester.enterText(
-        find.byKey(Key('input-username')),
-        'correo@gmail.com'
-      );
+          find.byKey(Key('input-username')), 'correo@gmail.com');
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
       expect(find.text('This field is required'), findsNWidgets(1));

@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/utils/errorHandler/error_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 
@@ -15,7 +16,7 @@ class LoginFormWidget extends StatelessWidget {
         key: Key('input-username'),
         textFieldBloc: context.bloc<LoginFormBloc>().username,
         keyboardType: TextInputType.emailAddress,
-        errorBuilder: (context, string) => I18n.of(context).errorRequired,
+        errorBuilder: errorHandler,
         decoration: InputDecoration(
             labelText: I18n.of(context).formUser,
             prefixIcon: Icon(Icons.account_circle)));
@@ -24,7 +25,7 @@ class LoginFormWidget extends StatelessWidget {
         key: Key('input-password'),
         textFieldBloc: context.bloc<LoginFormBloc>().password,
         suffixButton: SuffixButton.obscureText,
-        errorBuilder: (context, string) => I18n.of(context).errorRequired,
+        errorBuilder: errorHandler,
         decoration: InputDecoration(
             labelText: I18n.of(context).formPassword,
             prefixIcon: Icon(Icons.lock_open)));
