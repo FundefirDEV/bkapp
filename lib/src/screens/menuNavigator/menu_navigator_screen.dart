@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/administrator_assignment_screen.dart';
@@ -94,7 +95,8 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   ConfirmationBuyShares(),
                   RulesScreen(),
                   RulesEditScreen(),
-                  AdministratorAssignmentScreen()
+                  AdministratorAssignmentScreen(),
+                  ActiveCreditScreen()
                 ],
                 physics:
                     NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

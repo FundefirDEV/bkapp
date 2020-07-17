@@ -306,5 +306,25 @@
     "titleModalRemove": "Are you sure about removing \n this partner as admin?",
     "accept": "ACCEPT",
     "close": "CLOSE"
+  },
+  "activeCredit": {
+    "credits": "Credits",
+    "special": "SPECIAL",
+    "installments": "FEE",
+    "maximumPaymentDate": "Maximum payment date",
+    "amountToBePaid": "Pay",
+    "default": "Default interest",
+    "capital": "Capital",
+    "interest": "Interest",
+    "pay": "PAY",
+    "pendingInstallment": "Pending installment",
+    "installmentsNumber": "Installment #",
+    "dueDate": "Due date",
+    "creditDetail": "Credit Detail",
+    "CreditAwarded": "Credit awarded",
+    "ordinaryInterest": "Ordinary interest",
+    "defaultInterest": "Default interest",
+    "totalPayments": "Total payments",
+    "applicationDate": "Application date"
   }
 }

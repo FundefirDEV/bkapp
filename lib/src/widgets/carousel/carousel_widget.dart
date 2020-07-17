@@ -7,7 +7,10 @@ class Carousel extends StatefulWidget {
   final double heigthContainer;
 
   Carousel(
-      {Key key, this.viewportFraction, this.children, this.heigthContainer})
+      {Key key,
+      this.viewportFraction = 0.3,
+      this.children,
+      this.heigthContainer = 200})
       : super(key: key);
 
   @override

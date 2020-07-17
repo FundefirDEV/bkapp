@@ -296,5 +296,25 @@
     "titleModalRemove": "¿Estás seguro de quitar \n este socio como admin?",
     "accept": "ACEPTAR",
     "close": "CERRAR"
+  },
+  "activeCredit": {
+    "credits": "Créditos",
+    "special": "ESPECIAL",
+    "installments": "CUOTA",
+    "maximumPaymentDate": "Fecha máxima\nde pago",
+    "amountToBePaid": "Valor a pagar",
+    "default": "De mora",
+    "capital": "A capital",
+    "interest": "A interés",
+    "pay": "PAGAR",
+    "pendingInstallment": "Cuotas pendientes",
+    "installmentsNumber": "Cuota #",
+    "dueDate": "Fecha de vencimiento",
+    "creditDetail": "Detalle del Crédito",
+    "CreditAwarded": "Crédito otorgado",
+    "ordinaryInterest": "Intereses del crédito",
+    "defaultInterest": "Intereses de mora",
+    "totalPayments": "Cantidad otorgada",
+    "applicationDate": "Fecha de solicitud"
   }
 }

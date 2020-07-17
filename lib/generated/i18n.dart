@@ -484,6 +484,42 @@ class I18n implements WidgetsLocalizations {
   String get administratorAssignmentAccept => "ACCEPT";
   /// "CLOSE"
   String get administratorAssignmentClose => "CLOSE";
+  /// "Credits"
+  String get activeCreditCredits => "Credits";
+  /// "SPECIAL"
+  String get activeCreditSpecial => "SPECIAL";
+  /// "FEE"
+  String get activeCreditInstallments => "FEE";
+  /// "Maximum payment date"
+  String get activeCreditMaximumPaymentDate => "Maximum payment date";
+  /// "Pay"
+  String get activeCreditAmountToBePaid => "Pay";
+  /// "Default interest"
+  String get activeCreditDefault => "Default interest";
+  /// "Capital"
+  String get activeCreditCapital => "Capital";
+  /// "Interest"
+  String get activeCreditInterest => "Interest";
+  /// "PAY"
+  String get activeCreditPay => "PAY";
+  /// "Pending installment"
+  String get activeCreditPendingInstallment => "Pending installment";
+  /// "Installment #"
+  String get activeCreditInstallmentsNumber => "Installment #";
+  /// "Due date"
+  String get activeCreditDueDate => "Due date";
+  /// "Credit Detail"
+  String get activeCreditCreditDetail => "Credit Detail";
+  /// "Credit awarded"
+  String get activeCreditCreditAwarded => "Credit awarded";
+  /// "Ordinary interest"
+  String get activeCreditOrdinaryInterest => "Ordinary interest";
+  /// "Default interest"
+  String get activeCreditDefaultInterest => "Default interest";
+  /// "Total payments"
+  String get activeCreditTotalPayments => "Total payments";
+  /// "Application date"
+  String get activeCreditApplicationDate => "Application date";
 }
 
 class _I18n_en_US extends I18n {
@@ -1150,6 +1186,60 @@ class _I18n_es_ES extends I18n {
   /// "CERRAR"
   @override
   String get administratorAssignmentClose => "CERRAR";
+  /// "Créditos"
+  @override
+  String get activeCreditCredits => "Créditos";
+  /// "ESPECIAL"
+  @override
+  String get activeCreditSpecial => "ESPECIAL";
+  /// "CUOTA"
+  @override
+  String get activeCreditInstallments => "CUOTA";
+  /// "Fecha máxima\nde pago"
+  @override
+  String get activeCreditMaximumPaymentDate => "Fecha máxima\nde pago";
+  /// "Valor a pagar"
+  @override
+  String get activeCreditAmountToBePaid => "Valor a pagar";
+  /// "De mora"
+  @override
+  String get activeCreditDefault => "De mora";
+  /// "A capital"
+  @override
+  String get activeCreditCapital => "A capital";
+  /// "A interés"
+  @override
+  String get activeCreditInterest => "A interés";
+  /// "PAGAR"
+  @override
+  String get activeCreditPay => "PAGAR";
+  /// "Cuotas pendientes"
+  @override
+  String get activeCreditPendingInstallment => "Cuotas pendientes";
+  /// "Cuota #"
+  @override
+  String get activeCreditInstallmentsNumber => "Cuota #";
+  /// "Fecha de vencimiento"
+  @override
+  String get activeCreditDueDate => "Fecha de vencimiento";
+  /// "Detalle del Crédito"
+  @override
+  String get activeCreditCreditDetail => "Detalle del Crédito";
+  /// "Crédito otorgado"
+  @override
+  String get activeCreditCreditAwarded => "Crédito otorgado";
+  /// "Intereses del crédito"
+  @override
+  String get activeCreditOrdinaryInterest => "Intereses del crédito";
+  /// "Intereses de mora"
+  @override
+  String get activeCreditDefaultInterest => "Intereses de mora";
+  /// "Cantidad otorgada"
+  @override
+  String get activeCreditTotalPayments => "Cantidad otorgada";
+  /// "Fecha de solicitud"
+  @override
+  String get activeCreditApplicationDate => "Fecha de solicitud";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

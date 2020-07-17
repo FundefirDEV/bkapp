@@ -1,5 +1,5 @@
-import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 
 class StatusTextCreditRequest extends StatelessWidget {
@@ -35,7 +35,7 @@ class StatusTextCreditRequest extends StatelessWidget {
                         text: 'PENDIENTE',
                         style: TextStyle(
                             letterSpacing: 2,
-                            fontSize: SizeConfig.blockSizeHorizontal * 4)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 2.5)),
                   ],
                 ),
               ),
