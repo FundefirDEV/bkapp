@@ -4,7 +4,13 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class FeeNextCardWidget extends StatelessWidget {
-  const FeeNextCardWidget({Key key}) : super(key: key);
+  final String feeNumber;
+  final String valueFee;
+  final String paymentDate;
+
+  const FeeNextCardWidget(
+      {Key key, this.valueFee, this.paymentDate, this.feeNumber})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +56,9 @@ class FeeNextCardWidget extends StatelessWidget {
                   children: [
                     TextSpan(
                         text:
-                            '${I18n.of(context).activeCreditInstallmentsNumber}1\n'),
+                            '${I18n.of(context).activeCreditInstallmentsNumber}${this.feeNumber}\n'),
                     TextSpan(
-                        text: r'$11.000 COP',
+                        text: r'$' + this.valueFee + ' COP',
                         style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                             fontWeight: FontWeight.w100)),
@@ -71,7 +77,7 @@ class FeeNextCardWidget extends StatelessWidget {
                     TextSpan(
                         text: '${I18n.of(context).activeCreditDueDate}:\n'),
                     TextSpan(
-                        text: '28 / 5 / 2020',
+                        text: this.paymentDate,
                         style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                             fontWeight: FontWeight.w100)),

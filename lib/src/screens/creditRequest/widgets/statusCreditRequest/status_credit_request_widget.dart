@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'widgets/descriptionCreditRequest/description_credit_request_widget.dart';
 import 'widgets/statusTextCreditRequest/status_text_credit_request_widget.dart';
 import 'widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
-import 'widgets/titleStausCredit/title_status_credit_widget.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class StatusCreditRequestWidget extends StatefulWidget {

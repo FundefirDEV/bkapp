@@ -1,9 +1,10 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/statusTextCreditRequest/status_text_credit_request_widget.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
-import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/titleStausCredit/title_status_credit_widget.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
+import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -28,16 +29,21 @@ void main() {
       expect(find.byKey(testKey), findsOneWidget);
     });
 
-    testWidgets('Render TitleStatusCreditWidget', (WidgetTester tester) async {
-      final testKey = Key('my-id');
-      await tester
-          .pumpWidget(baseTester(child: TitleStatusCreditWidget(key: testKey)));
+    testWidgets('Render AppBarWidget', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: approvalTester(key: testKey)));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(testKey), findsOneWidget);
+      expect(find.byType(AppBarWidget), findsOneWidget);
     });
 
-    testWidgets('Render CardBuyShares', (WidgetTester tester) async {
+    testWidgets('Render TitleHeaderWidget', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: approvalTester(key: testKey)));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(TitleHeaderWidget), findsOneWidget);
+    });
+
+    testWidgets('Render CardInformationBkWidget', (WidgetTester tester) async {
       final testKey = Key('my-id');
       await tester
           .pumpWidget(baseTester(child: CardInformationBkWidget(key: testKey)));
@@ -75,6 +81,13 @@ void main() {
           findsOneWidget);
       expect(
           find.byKey(Key('status-credit_request-widget-text')), findsOneWidget);
+    });
+    testWidgets('Render CloseContainerInviteModal structure',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: approvalTester(key: testKey)));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(Key('close_container_invite_modal')), findsOneWidget);
     });
   });
 }

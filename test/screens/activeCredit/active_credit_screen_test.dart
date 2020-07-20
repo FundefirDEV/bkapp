@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/detail_credit_widget.dart';
@@ -40,12 +42,21 @@ void main() {
     });
 
     testWidgets('Find Carousel Widget', (WidgetTester tester) async {
+      List paymentExample = jsonDecode(
+          '[{"date":"20 / 08 /2020","feeValue":"115.000"},{"date":"20 / 09 /2020","feeValue":"115.000"},{"date":"20 / 10 /2020","feeValue":"115.000"}]');
       await tester.pumpWidget(baseTester(child: activeCreditTester(key: key)));
       await tester.pumpAndSettle();
 
       final testKey = Key('my-id');
       final viewportFraction = 0.8;
-      final children = <Widget>[FeeNextCardWidget()];
+      final children = <Widget>[
+        for (var i = 0; i < paymentExample.length; i++)
+          FeeNextCardWidget(
+            feeNumber: (i + 2).toString(),
+            paymentDate: paymentExample[i]["date"],
+            valueFee: paymentExample[i]["feeValue"],
+          )
+      ];
       await tester.pumpWidget(baseTester(
           child: Carousel(
         key: testKey,
@@ -54,7 +65,7 @@ void main() {
       )));
       await tester.pumpAndSettle();
       expect(find.byKey(testKey), findsOneWidget);
-      expect(find.byType(FeeNextCardWidget), findsOneWidget);
+      expect(find.byType(FeeNextCardWidget), findsNWidgets(3));
     });
 
     testWidgets('Change title and subtitle', (WidgetTester tester) async {
