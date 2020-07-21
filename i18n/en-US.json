@@ -254,6 +254,7 @@
   },
   "statusCredit": {
     "special": "SPECIAL",
+    "normal": "NORMAL",
     "status": "STATUS",
     "dues": "DUES",
     "valueRequested": "Value requested"
@@ -313,6 +314,7 @@
   "activeCredit": {
     "credits": "Credits",
     "special": "SPECIAL",
+    "normal":"NORMAL",
     "installments": "FEE",
     "maximumPaymentDate": "Maximum payment date",
     "amountToBePaid": "Pay",
@@ -324,7 +326,8 @@
     "installmentsNumber": "Installment #",
     "dueDate": "Due date",
     "creditDetail": "Credit Detail",
-    "CreditAwarded": "Credit awarded",
+    "creditAwarded": "Credit awarded",
+    "totalCredit": "Total Credit",
     "ordinaryInterest": "Ordinary interest",
     "defaultInterest": "Default interest",
     "totalPayments": "Total payments",

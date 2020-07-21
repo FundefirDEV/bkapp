@@ -37,7 +37,7 @@ class FeeNumberWidget extends StatelessWidget {
                           fontSize: 12.5,
                           fontWeight: FontWeight.w700)),
                 ),
-                Text('28 / 05 / 2020',
+                Text('20 / 10 / 2020',
                     style: TextStyle(color: Colors.white, fontSize: 12))
               ]))
         ],

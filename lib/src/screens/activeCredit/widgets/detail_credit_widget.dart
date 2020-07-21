@@ -62,7 +62,7 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditCreditAwarded),
-                          Text(r'$20.000',
+                          Text(r'$300.000',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                     Expanded(
@@ -70,7 +70,7 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditOrdinaryInterest),
-                          Text(r'$2.000',
+                          Text(r'$45.000',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                     Expanded(
@@ -85,8 +85,8 @@ class DetailCreditWidget extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                          Text(I18n.of(context).activeCreditCreditAwarded),
-                          Text(r'$50.000',
+                          Text(I18n.of(context).activeCreditTotalCredit),
+                          Text(r'$345.000',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                     Expanded(
@@ -94,7 +94,7 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditApplicationDate),
-                          Text('May 29, 2020',
+                          Text('Ago 20, 2020',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                     Expanded(
@@ -102,7 +102,7 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditDueDate),
-                          Text('May 28, 2020',
+                          Text('Oct 20, 2020',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                   ],

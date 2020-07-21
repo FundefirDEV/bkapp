@@ -18,9 +18,8 @@ class NormalCredit extends StatelessWidget {
       childBlueWidth: SizeConfig.blockSizeHorizontal * 30,
       childWhite: Container(
         padding: EdgeInsets.symmetric(
-          vertical: SizeConfig.safeBlockVertical * 2,
-          horizontal: SizeConfig.safeBlockHorizontal * 8
-        ),
+            vertical: SizeConfig.safeBlockVertical * 2,
+            horizontal: SizeConfig.safeBlockHorizontal * 8),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -35,11 +34,8 @@ class NormalCredit extends StatelessWidget {
                       I18n.of(context).creditScreenYouCanRequest,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
-                          fontSize:
-                              SizeConfig.blockSizeHorizontal * 3.8,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .grayColor[300]),
+                          fontSize: SizeConfig.blockSizeHorizontal * 3.8,
+                          color: Theme.of(context).colorScheme.grayColor[300]),
                     ),
                   ),
                 ),
@@ -48,11 +44,8 @@ class NormalCredit extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text(r'$500.000',
                         style: TextStyle(
-                            fontSize:
-                                SizeConfig.blockSizeHorizontal * 6,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .grayColor[300],
+                            fontSize: SizeConfig.blockSizeHorizontal * 6,
+                            color: Theme.of(context).colorScheme.grayColor[300],
                             fontWeight: FontWeight.w100)),
                   ),
                 )
@@ -69,11 +62,8 @@ class NormalCredit extends StatelessWidget {
                     child: Text(
                       I18n.of(context).creditScreenWithInterest,
                       style: TextStyle(
-                          fontSize:
-                              SizeConfig.blockSizeHorizontal * 3.8,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .grayColor[300]),
+                          fontSize: SizeConfig.blockSizeHorizontal * 3.8,
+                          color: Theme.of(context).colorScheme.grayColor[300]),
                     ),
                   ),
                 ),
@@ -82,11 +72,8 @@ class NormalCredit extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text(r'5%',
                         style: TextStyle(
-                            fontSize:
-                                SizeConfig.blockSizeHorizontal * 6,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .grayColor[300],
+                            fontSize: SizeConfig.blockSizeHorizontal * 6,
+                            color: Theme.of(context).colorScheme.grayColor[300],
                             fontWeight: FontWeight.w100)),
                   ),
                 )

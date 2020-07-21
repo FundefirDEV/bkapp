@@ -400,6 +400,8 @@ class I18n implements WidgetsLocalizations {
   String get approvedRejectedModalAccepted => "aceptado";
   /// "SPECIAL"
   String get statusCreditSpecial => "SPECIAL";
+  /// "NORMAL"
+  String get statusCreditNormal => "NORMAL";
   /// "STATUS"
   String get statusCreditStatus => "STATUS";
   /// "DUES"
@@ -494,6 +496,8 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditCredits => "Credits";
   /// "SPECIAL"
   String get activeCreditSpecial => "SPECIAL";
+  /// "NORMAL"
+  String get activeCreditNormal => "NORMAL";
   /// "FEE"
   String get activeCreditInstallments => "FEE";
   /// "Maximum payment date"
@@ -518,6 +522,8 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditCreditDetail => "Credit Detail";
   /// "Credit awarded"
   String get activeCreditCreditAwarded => "Credit awarded";
+  /// "Total Credit"
+  String get activeCreditTotalCredit => "Total Credit";
   /// "Ordinary interest"
   String get activeCreditOrdinaryInterest => "Ordinary interest";
   /// "Default interest"
@@ -1066,6 +1072,9 @@ class _I18n_es_ES extends I18n {
   /// "ESPECIAL"
   @override
   String get statusCreditSpecial => "ESPECIAL";
+  /// "NORMAL"
+  @override
+  String get statusCreditNormal => "NORMAL";
   /// "ESTADO"
   @override
   String get statusCreditStatus => "ESTADO";
@@ -1207,6 +1216,9 @@ class _I18n_es_ES extends I18n {
   /// "ESPECIAL"
   @override
   String get activeCreditSpecial => "ESPECIAL";
+  /// "NORMAL"
+  @override
+  String get activeCreditNormal => "NORMAL";
   /// "CUOTA"
   @override
   String get activeCreditInstallments => "CUOTA";
@@ -1243,9 +1255,12 @@ class _I18n_es_ES extends I18n {
   /// "Crédito otorgado"
   @override
   String get activeCreditCreditAwarded => "Crédito otorgado";
-  /// "Intereses del crédito"
+  /// "Total Crédito a Pagar"
   @override
-  String get activeCreditOrdinaryInterest => "Intereses del crédito";
+  String get activeCreditTotalCredit => "Total Crédito a Pagar";
+  /// "Intereses Ordinarios"
+  @override
+  String get activeCreditOrdinaryInterest => "Intereses Ordinarios";
   /// "Intereses de mora"
   @override
   String get activeCreditDefaultInterest => "Intereses de mora";

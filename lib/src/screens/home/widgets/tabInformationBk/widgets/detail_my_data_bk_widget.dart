@@ -33,7 +33,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(r'$1.000.000',
+                            Text(r'$0',
                                 style: TextStyle(
                                     color: Colors.white,
                                     letterSpacing: 1.5,
@@ -119,7 +119,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 top: SizeConfig.safeBlockVertical * 0.8),
-                            child: Text(r'$500.000',
+                            child: Text(r'$0',
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.grayColor,
@@ -162,7 +162,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   top: SizeConfig.safeBlockVertical * 0.8),
-                              child: Text(r'$50',
+                              child: Text(r'$10',
                                   style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme

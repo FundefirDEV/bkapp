@@ -86,7 +86,7 @@ class ActiveCreditScreen extends StatelessWidget {
           top: SizeConfig.safeBlockVertical * 3,
           bottom: SizeConfig.safeBlockVertical * 4),
       child: Text(
-        I18n.of(context).activeCreditSpecial,
+        I18n.of(context).activeCreditNormal,
         key: Key('subtitle-credit'),
         style: TextStyle(color: Colors.white, letterSpacing: 4),
       ),

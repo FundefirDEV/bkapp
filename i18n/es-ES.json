@@ -244,6 +244,7 @@
   },
   "statusCredit": {
     "special": "ESPECIAL",
+    "normal": "NORMAL",
     "status": "ESTADO",
     "dues": "CUOTAS",
     "valueRequested": "Valor solicitado"
@@ -303,6 +304,7 @@
   "activeCredit": {
     "credits": "Créditos",
     "special": "ESPECIAL",
+    "normal": "NORMAL",
     "installments": "CUOTA",
     "maximumPaymentDate": "Fecha máxima\nde pago",
     "amountToBePaid": "Valor a pagar",
@@ -314,8 +316,9 @@
     "installmentsNumber": "Cuota #",
     "dueDate": "Fecha de vencimiento",
     "creditDetail": "Detalle del Crédito",
-    "CreditAwarded": "Crédito otorgado",
-    "ordinaryInterest": "Intereses del crédito",
+    "creditAwarded": "Crédito otorgado",
+    "totalCredit": "Total Crédito a Pagar",
+    "ordinaryInterest": "Intereses Ordinarios",
     "defaultInterest": "Intereses de mora",
     "totalPayments": "Cantidad otorgada",
     "applicationDate": "Fecha de solicitud"

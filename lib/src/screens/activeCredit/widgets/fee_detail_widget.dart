@@ -25,7 +25,7 @@ class FeeDetailWidget extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                       child: Text(I18n.of(context).activeCreditAmountToBePaid)),
-                  Text(r'$11.000',
+                  Text(r'$115.000',
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,
@@ -60,7 +60,7 @@ class FeeDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(child: Text(I18n.of(context).activeCreditCapital)),
-                  Text(r'$10.000',
+                  Text(r'$100.000',
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,
@@ -74,7 +74,7 @@ class FeeDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(child: Text(I18n.of(context).activeCreditInterest)),
-                  Text(r'%1.000',
+                  Text(r'15.000',
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,

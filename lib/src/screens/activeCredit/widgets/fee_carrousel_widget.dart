@@ -10,7 +10,7 @@ class FeeCarrouselWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List paymentExample = jsonDecode(
-        '[{"date":"20 / 08 /2020","feeValue":"115.000"},{"date":"20 / 09 /2020","feeValue":"115.000"},{"date":"20 / 10 /2020","feeValue":"115.000"}]');
+        '[{"date":"20 / 09 /2020","feeValue":"115.000"},{"date":"20 / 10 /2020","feeValue":"115.000"}]');
 
     SizeConfig().init(context);
     return Carousel(

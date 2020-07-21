@@ -33,7 +33,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4),
                   ),
                   Text(
-                    "\$ 20.000",
+                    "\$ 300.000",
                     key: Key('description-credit-request-text-value'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],
@@ -63,7 +63,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4),
                   ),
                   Text(
-                    '10/05/2020',
+                    '20/07/2020',
                     key: Key('description-credit-request-date'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],

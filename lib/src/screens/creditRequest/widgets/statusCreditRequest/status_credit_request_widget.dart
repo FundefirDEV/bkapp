@@ -37,7 +37,7 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
             key: Key('status-credit_request-widget-container-text'),
             margin: EdgeInsets.only(bottom: 10),
             child: Text(
-              I18n.of(context).statusCreditSpecial,
+              I18n.of(context).statusCreditNormal,
               key: Key('status-credit_request-widget-text'),
               style: TextStyle(color: Colors.white, letterSpacing: 3.02),
             ),
@@ -52,7 +52,7 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
                   vertical: SizeConfig.blockSizeVertical * 3),
               key: Key('close_container_invite_modal'),
               child: FlatButton(
-                  key: Key('flat_button_load_partners'),
+                  key: Key('flat_button_credit_active'),
                   onPressed: () {
                     navigateBloc.add(ButtonPressed(goTo: 11));
                   },

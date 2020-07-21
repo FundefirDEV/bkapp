@@ -35,7 +35,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w800,
                                 color: Theme.of(context).colorScheme.grayColor),
                           ),
-                          Text(r'$4.000.000',
+                          Text(r'$500000',
                               style: TextStyle(
                                   letterSpacing: 1.5,
                                   fontSize: 24,
@@ -102,7 +102,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 0.8),
-                          child: Text(r'430',
+                          child: Text(r'50',
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .colorScheme
@@ -130,7 +130,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 0.8),
-                          child: Text(r'$300.000',
+                          child: Text(r'$0',
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .colorScheme
