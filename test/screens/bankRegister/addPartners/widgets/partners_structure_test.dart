@@ -1,8 +1,7 @@
-import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/partners_structure.dart';
-import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/contacts/contact_list.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

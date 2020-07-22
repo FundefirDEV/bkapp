@@ -1,6 +1,4 @@
 import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
-import 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
-import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';

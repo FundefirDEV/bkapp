@@ -532,6 +532,22 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditTotalPayments => "Total payments";
   /// "Application date"
   String get activeCreditApplicationDate => "Application date";
+  /// "Partners"
+  String get addPartnerPartner => "Partners";
+  /// "ACTIVES"
+  String get addPartnerActives => "ACTIVES";
+  /// "PENDING"
+  String get addPartnerPending => "PENDING";
+  /// "You can remove a partner"
+  String get addPartnerBottomText => "You can remove a partner";
+  /// "at any time"
+  String get addPartnerAnyTime => "at any time";
+  /// "Are sure you want to "
+  String get deletePartnerModalAreYouSure => "Are sure you want to ";
+  /// "delete this partner?"
+  String get deletePartnerModalDeletePartner => "delete this partner?";
+  /// "DELETE"
+  String get deletePartnerModalDelete => "DELETE";
 }
 
 class _I18n_en_US extends I18n {
@@ -1270,6 +1286,30 @@ class _I18n_es_ES extends I18n {
   /// "Fecha de solicitud"
   @override
   String get activeCreditApplicationDate => "Fecha de solicitud";
+  /// "Socios"
+  @override
+  String get addPartnerPartner => "Socios";
+  /// "ACTIVOS"
+  @override
+  String get addPartnerActives => "ACTIVOS";
+  /// "PENDIENTES"
+  @override
+  String get addPartnerPending => "PENDIENTES";
+  /// "Podrás agregar o eliminar un socio en"
+  @override
+  String get addPartnerBottomText => "Podrás agregar o eliminar un socio en";
+  /// "cualquier momento"
+  @override
+  String get addPartnerAnyTime => "cualquier momento";
+  /// "¿Seguro que quieres"
+  @override
+  String get deletePartnerModalAreYouSure => "¿Seguro que quieres";
+  /// "eliminar este socio?"
+  @override
+  String get deletePartnerModalDeletePartner => "eliminar este socio?";
+  /// "ELIMINAR"
+  @override
+  String get deletePartnerModalDelete => "ELIMINAR";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

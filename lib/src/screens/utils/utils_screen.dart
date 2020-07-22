@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/src/screens/utils/home_routes_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/utils/utils_cards_item.dart';
@@ -20,6 +21,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
   Widget build(BuildContext context) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final HomeRoutesConstant routes = HomeRoutesConstant();
 
     List<UtilsCardsItem> characters = [
       UtilsCardsItem(
@@ -30,7 +32,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
           title: I18n.of(context).utilsApprovals,
           titleWeight: I18n.of(context).utilsRequests,
           textDescription: I18n.of(context).utilsApproveCreditActions,
-          onPressed: () => navigateBloc.add(ButtonPressed(goTo: 5))),
+          onPressed: () =>
+              navigateBloc.add(ButtonPressed(goTo: routes.aprobationScreen))),
       UtilsCardsItem(
         key: 'rules',
         image: 'assets/images/parchment.svg',
@@ -38,7 +41,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsRulesOf,
         titleWeight: I18n.of(context).utilsGroupBk,
         textDescription: I18n.of(context).utilsKnowManageBk,
-        onPressed: () => navigateBloc.add(ButtonPressed(goTo: 8)),
+        onPressed: () => navigateBloc.add(ButtonPressed(goTo: routes.rulesScreen)),
       ),
       UtilsCardsItem(
         key: 'withdrawall',
@@ -47,6 +50,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsWithdrawalOf,
         titleWeight: I18n.of(context).utilsPartners,
         textDescription: I18n.of(context).utilsDeleteDeliverActions,
+        onPressed: () =>
+            navigateBloc.add(ButtonPressed(goTo: routes.addPartnerScreen)),
       ),
       UtilsCardsItem(
         key: 'payment',
@@ -69,7 +74,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
           image: 'assets/images/admin_icon.svg',
           title: I18n.of(context).utilsAssignment,
           titleWeight: I18n.of(context).utilsAdministrator,
-          onPressed: () => navigateBloc.add(ButtonPressed(goTo: 10)))
+          onPressed: () =>
+              navigateBloc.add(ButtonPressed(goTo: routes.administratorAssignmentScreen)))
     ];
     return Scaffold(
         body: AppBarWidget(

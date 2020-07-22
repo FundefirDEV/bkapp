@@ -332,5 +332,18 @@
     "defaultInterest": "Default interest",
     "totalPayments": "Total payments",
     "applicationDate": "Application date"
+  },
+  "addPartner": {
+    "partner": "Partners",
+    "actives": "ACTIVES",
+    "pending": "PENDING",
+    "bottomText": "You can remove a partner",
+    "anyTime": "at any time"
+  },
+  "deletePartnerModal": {
+    "areYouSure": "Are sure you want to ",
+    "deletePartner": "delete this partner?",
+    "delete":"DELETE"
+
   }
 }

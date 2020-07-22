@@ -1,17 +1,18 @@
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
+import 'package:bkapp_flutter/src/widgets/modals/deletePartner/delete_partner_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PartnerCardWidget extends StatelessWidget {
-  const PartnerCardWidget({
-    Key key,
-    @required this.id,
-    @required this.name,
-    @required this.mobile,
-    this.onSave
-  }) : super(key: key);
+  const PartnerCardWidget(
+      {Key key,
+      @required this.id,
+      @required this.name,
+      @required this.mobile,
+      this.onSave})
+      : super(key: key);
 
   final int id;
   final String name;
@@ -41,35 +42,34 @@ class PartnerCardWidget extends StatelessWidget {
                     'assets/images/user_icon_yellow.svg',
                     width: SizeConfig.safeBlockHorizontal * 10,
                   ),
-                  Positioned(
-                    bottom: 21.0,
-                    right: 10.0,
-                    child: _dataPartner()
-                  )
+                  Positioned(bottom: 21.0, right: 10.0, child: _dataPartner())
                 ],
               ),
             ),
           ),
         ),
         Positioned(
-          top: -5.0,
-          right: -9.0,
-          child: RawMaterialButton(
-            onPressed: () async {
-              await partnerDb.deletePartnerById(id);
-              onSave();
-            },
-            elevation: 4.0,
-            constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
-            shape: CircleBorder(),
-            fillColor: Colors.white,
-            child: Icon(
-              Icons.close,
-              size: 17.0,
-              color: Theme.of(context).colorScheme.errorColor
-            ),
-          )
-        ),
+            top: -5.0,
+            right: -9.0,
+            child: RawMaterialButton(
+              onPressed: () => {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) => DeletePartnerModal(
+                          onSave: () async {
+                            await partnerDb.deletePartnerById(id);
+                            onSave();
+                            Navigator.pop(context);
+                          },
+                        )),
+              },
+              elevation: 4.0,
+              constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
+              shape: CircleBorder(),
+              fillColor: Colors.white,
+              child: Icon(Icons.close,
+                  size: 17.0, color: Theme.of(context).colorScheme.errorColor),
+            )),
       ],
     );
   }
@@ -87,20 +87,18 @@ class PartnerCardWidget extends StatelessWidget {
               height: 1,
               fontSize: SizeConfig.safeBlockHorizontal * 5,
               fontWeight: FontWeight.w300,
-              
             ),
           ),
-          Text(mobile,
+          Text(
+            mobile,
             maxLines: 1,
             style: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.4
-            ),
+                fontSize: 12.0,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.4),
           )
         ],
       ),
     );
   }
 }
-

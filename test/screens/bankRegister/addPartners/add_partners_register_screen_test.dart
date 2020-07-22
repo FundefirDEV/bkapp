@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/widgets.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/add_partners_register_screen.dart';

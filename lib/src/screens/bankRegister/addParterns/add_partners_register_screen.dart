@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/widgets/addPartners/partners_structure.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';

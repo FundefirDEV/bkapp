@@ -322,5 +322,17 @@
     "defaultInterest": "Intereses de mora",
     "totalPayments": "Cantidad otorgada",
     "applicationDate": "Fecha de solicitud"
+  },
+  "addPartner": {
+    "partner": "Socios",
+    "actives": "ACTIVOS",
+    "pending": "PENDIENTES",
+    "bottomText": "Podrás agregar o eliminar un socio en",
+    "anyTime": "cualquier momento"
+  },
+  "deletePartnerModal": {
+    "areYouSure": "¿Seguro que quieres",
+    "deletePartner": "eliminar este socio?",
+    "delete":"ELIMINAR"
   }
 }

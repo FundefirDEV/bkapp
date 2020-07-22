@@ -23,3 +23,6 @@ export 'buyShares/confirmationBuyShares/confirmation_buy_shares.dart';
 export 'approvals/approvals_screen.dart';
 export 'creditRequest/widgets/statusCreditRequest/status_credit_request_widget.dart';
 export 'creditRequest/credit_request_screen.dart';
+export 'addPartner/add_partner_screen.dart';
+export 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
+export 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';

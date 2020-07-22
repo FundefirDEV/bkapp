@@ -17,6 +17,7 @@ class CardAdministratorUtils extends StatelessWidget {
       key: Key('material-card-administrator-${adminCharacters.key}'),
       color: Colors.transparent,
       child: InkWell(
+        key: Key('inkwell-${adminCharacters.key}'),
         onTap: adminCharacters.onPressed,
         child: Container(
           key: Key('container-card-administrator-${adminCharacters.key}'),
