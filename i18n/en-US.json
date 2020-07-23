@@ -264,7 +264,9 @@
     "theCode": "the code ",
     "weSendToYour": "we send to \n your ",
     "cellNumber": "cell number",
-    "pinCodeComplete": "Please fill all the cells correctly"
+    "pinCodeComplete": "Please fill all the cells correctly",
+    "errorCodeMessage": "The code entered is not valid",
+    "goodCodeMessage": "Successfully validated code"
   },
   "creditScreen": {
     "tab": {

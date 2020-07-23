@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:logger/logger.dart';
 
@@ -14,9 +15,10 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   ProfileRegisterBloc()
       : _nameBloc = ProfileNameBloc(),
         _emailBloc = ProfileEmailBloc(),
-        _phoneBloc = ProfilePhoneBloc(),
+        _phoneBloc = ProfilePhoneBloc(repository: validationCodeRepository),
         _passwordBloc = ProfilePasswordBloc(),
-        _profilePinCodeVerificationBloc = ProfilePinCodeVerificationBloc() {
+        _profilePinCodeVerificationBloc = ProfilePinCodeVerificationBloc(
+            repository: validationCodeConfirmRepository) {
     addFieldBlocs(fieldBlocs: [inputTest]);
   }
 

@@ -418,6 +418,10 @@ class I18n implements WidgetsLocalizations {
   String get pinCodeVerificationCellNumber => "cell number";
   /// "Please fill all the cells correctly"
   String get pinCodeVerificationPinCodeComplete => "Please fill all the cells correctly";
+  /// "The code entered is not valid"
+  String get pinCodeVerificationErrorCodeMessage => "The code entered is not valid";
+  /// "Successfully validated code"
+  String get pinCodeVerificationGoodCodeMessage => "Successfully validated code";
   /// "Normal"
   String get creditScreenTabTitleOne => "Normal";
   /// "Special"
@@ -1115,6 +1119,12 @@ class _I18n_es_ES extends I18n {
   /// "Por favor llene todas las celdas correctamente"
   @override
   String get pinCodeVerificationPinCodeComplete => "Por favor llene todas las celdas correctamente";
+  /// "El código digitado no es valido"
+  @override
+  String get pinCodeVerificationErrorCodeMessage => "El código digitado no es valido";
+  /// "Código validado satisfactoriamente"
+  @override
+  String get pinCodeVerificationGoodCodeMessage => "Código validado satisfactoriamente";
   /// "Normal"
   @override
   String get creditScreenTabTitleOne => "Normal";

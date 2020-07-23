@@ -30,4 +30,40 @@ class ApiProvider {
 
     return getToken;
   }
+
+  Future<Map<String, dynamic>> postValidationCode(
+      String phone, String email) async {
+    var response;
+    try {
+      final validationCodeUrl = ApiEndpoints.validationCode();
+      final validationCodeResponse = await this
+          .httpClient
+          .post(validationCodeUrl, data: {"phone": phone, "email": email});
+      response = ApiResponses.apiResponse(validationCodeResponse);
+    } on SocketException {
+      throw FetchDataException('No Internet connection');
+    } on NotFoundException {
+      throw FetchDataException('Endpoint not exists');
+    }
+
+    return response;
+  }
+
+  Future<Map<String, dynamic>> postValidationCodeConfirm(
+      String code, String phone, String email) async {
+    var response;
+    try {
+      final validationCodeConfirmUrl = ApiEndpoints.validationConfirmCode();
+      final validationCodeConfirmResponse = await this.httpClient.post(
+          validationCodeConfirmUrl,
+          data: {"code": code, "phone": phone, "email": email});
+      response = ApiResponses.apiResponse(validationCodeConfirmResponse);
+    } on SocketException {
+      throw FetchDataException('No Internet connection');
+    } on NotFoundException {
+      throw FetchDataException('Endpoint not exists');
+    }
+
+    return response;
+  }
 }

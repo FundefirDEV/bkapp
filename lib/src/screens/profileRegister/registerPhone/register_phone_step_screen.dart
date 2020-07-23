@@ -28,7 +28,25 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Material(child: SafeArea(child: _containerInfo()));
+    return Material(
+      child: BlocProvider(
+        create: (context) =>
+            context.bloc<AppBloc>().profileRegisterBloc.phoneBloc,
+        child: Builder(builder: (context) {
+          return FormBlocListener<ProfilePhoneBloc, String, String>(
+              onSubmitting: (context, state) {
+                print('Loading');
+              },
+              onSuccess: (context, state) {
+                print('Succes');
+              },
+              onFailure: (context, state) {
+                print('Error');
+              },
+              child: SafeArea(child: _containerInfo()));
+        }),
+      ),
+    );
   }
 
   @override
@@ -37,6 +55,8 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen>
   }
 
   Widget _containerInfo() {
+    // ignore:close_sinks
+    var registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -58,8 +78,11 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen>
             currentStep: 3,
             numberOfSteps: 5,
             route: registerpinCodeVerification,
-            currentBlocSubmit:
-                context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.submit,
+            currentBlocSubmit: () {
+              registerBloc.phoneBloc.email
+                  .updateValue(registerBloc.emailBloc.email.value);
+              registerBloc.phoneBloc.submit();
+            },
             renderNextWidget: RegisterPinCodeScreenStepArgs(
                 widget.data.tag, widget.data.image),
           ))

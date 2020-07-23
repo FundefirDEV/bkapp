@@ -254,7 +254,9 @@
     "theCode": "el código ",
     "weSendToYour": "que enviamos a \n tu ",
     "cellNumber": "número celular",
-    "pinCodeComplete": "Por favor llene todas las celdas correctamente"
+    "pinCodeComplete": "Por favor llene todas las celdas correctamente",
+    "errorCodeMessage": "El código digitado no es válido",
+    "goodCodeMessage": "Código validado satisfactoriamente"
   },
   "creditScreen": {
     "tab": {
@@ -333,6 +335,6 @@
   "deletePartnerModal": {
     "areYouSure": "¿Seguro que quieres",
     "deletePartner": "eliminar este socio?",
-    "delete":"ELIMINAR"
+    "delete": "ELIMINAR"
   }
 }

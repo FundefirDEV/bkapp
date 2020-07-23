@@ -6,7 +6,7 @@ void main() {
   ProfilePhoneBloc phoneBloc;
 
   setUp(() {
-    phoneBloc = ProfilePhoneBloc();
+    phoneBloc = ProfilePhoneBloc(repository: null);
   });
 
   test('Test name bloc', () {

@@ -35,3 +35,15 @@ final LoginRepository loginRepository = LoginRepository(
     apiProvider: ApiProvider(
   httpClient: _proxyDio(ip: localIp),
 ));
+
+final ValidationCodeRepository validationCodeRepository =
+    ValidationCodeRepository(
+        apiProvider: ApiProvider(
+  httpClient: _proxyDio(ip: localIp),
+));
+
+final ValidationCodeConfirmRepository validationCodeConfirmRepository =
+    ValidationCodeConfirmRepository(
+        apiProvider: ApiProvider(
+  httpClient: _proxyDio(ip: localIp),
+));

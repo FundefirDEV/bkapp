@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pi
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
+import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

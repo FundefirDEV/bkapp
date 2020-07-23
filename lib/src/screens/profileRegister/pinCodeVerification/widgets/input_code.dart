@@ -34,14 +34,13 @@ class _InputCodeState extends State<InputCode> {
   @override
   void dispose() {
     errorController.close();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     //ignore: close_sinks
-    final pinCodeBloc = context.bloc<AppBloc>().profileRegisterBloc.pinCodeBloc;
+    final registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
     SizeConfig().init(context);
     return GestureDetector(
       key: Key('input-code-column-gesture-detector'),
@@ -92,10 +91,14 @@ class _InputCodeState extends State<InputCode> {
                     errorAnimationController: errorController,
                     controller: textEditingController,
                     onCompleted: (v) {
-                      print("Completed");
+                      registerBloc.pinCodeBloc.email
+                          .updateValue(registerBloc.emailBloc.email.value);
+                      registerBloc.pinCodeBloc.phone
+                          .updateValue(registerBloc.phoneBloc.phone.value);
+                      registerBloc.pinCodeBloc.submit();
                     },
                     onChanged: (value) {
-                      pinCodeBloc.pincode.updateValue(value);
+                      registerBloc.pinCodeBloc.pincode.updateValue(value);
                       setState(() {
                         currentText = value;
                       });
