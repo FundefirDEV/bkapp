@@ -42,6 +42,9 @@ class MenuActions extends StatelessWidget {
 
   Widget _menuContent(BuildContext context) {
     HomeRoutesConstant routes = HomeRoutesConstant();
+    // ignore: close_sinks
+    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -65,7 +68,11 @@ class MenuActions extends StatelessWidget {
               width: double.infinity,
               child: ButtonLine(
                 key: Key('meeting-button-line'),
-                onPressed: () {},
+                onPressed: () {
+                  navigateBloc
+                      .add(ButtonPressed(goTo: routes.meetingClosedScreen));
+                  isPressed();
+                },
                 text: I18n.of(context).mainMenuActionsMeeting,
               ),
             ),

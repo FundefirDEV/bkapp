@@ -5,4 +5,5 @@ class HomeRoutesConstant {
   final rulesScreen = 8;
   final administratorAssignmentScreen = 10;
   final addPartnerScreen = 12;
+  final meetingClosedScreen = 13;
 }

@@ -17,7 +17,9 @@ class Router {
         return MaterialPageRoute(builder: (_) => MenuNavigatorScreen());
         break;
       case loginRoute:
-        return MaterialPageRoute(builder: (_) => loginRouteBloc());
+        return MaterialPageRoute(
+            builder: (_) => WillPopScope(
+                child: loginRouteBloc(), onWillPop: () async => false));
         break;
       case introRoute:
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());

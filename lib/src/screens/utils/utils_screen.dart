@@ -44,14 +44,14 @@ class _UtilsScreenState extends State<UtilsScreen> {
         onPressed: () =>
             navigateBloc.add(ButtonPressed(goTo: routes.rulesScreen)),
       ),
-      UtilsCardsItem(
-        key: 'withdrawall',
-        image: 'assets/images/close_avatar.svg',
-        aprobations: false,
-        title: I18n.of(context).utilsWithdrawalOf,
-        titleWeight: I18n.of(context).utilsPartners,
-        textDescription: I18n.of(context).utilsDeleteDeliverActions,
-      ),
+      // UtilsCardsItem(
+      //   key: 'withdrawall',
+      //   image: 'assets/images/close_avatar.svg',
+      //   aprobations: false,
+      //   title: I18n.of(context).utilsWithdrawalOf,
+      //   titleWeight: I18n.of(context).utilsPartners,
+      //   textDescription: I18n.of(context).utilsDeleteDeliverActions,
+      // ),
       UtilsCardsItem(
         key: 'payment',
         image: 'assets/images/profit.svg',

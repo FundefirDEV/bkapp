@@ -168,9 +168,12 @@ void main() {
       await tester.tap(find.byKey(Key('partners-button-line')));
       await tester.pumpAndSettle();
 
+      await tester.tap(find.byKey(Key('option-additional')));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+
       await tester.tap(find.byKey(Key('actions-button-line')));
       await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(AddPartnerScreen), findsOneWidget);
+      expect(find.byType(BuySharesScreen), findsOneWidget);
     });
   });
 }

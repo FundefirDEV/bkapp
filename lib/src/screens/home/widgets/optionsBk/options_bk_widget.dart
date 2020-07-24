@@ -20,6 +20,7 @@ class OptionsBkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeRoutesConstant routes = HomeRoutesConstant();
+    // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
     return Container(
@@ -34,35 +35,43 @@ class OptionsBkWidget extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 52,
                     height: heightCard,
-                    decoration: BoxDecoration(
-                        borderRadius: radiusCard, color: Colors.white),
-                    child: Stack(
-                      children: <Widget>[
-                        new Positioned(
-                            right: 0,
-                            left: 0,
-                            bottom: 0,
-                            child: Container(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: const Radius.circular(10),
-                                    bottomLeft: const Radius.circular(10)),
-                                child: SvgPicture.asset(
-                                    'assets/images/charts_image.svg',
-                                    fit: BoxFit.cover),
-                              ),
-                            )),
-                        Container(
-                            alignment: Alignment.topCenter,
-                            margin: EdgeInsets.only(top: spaceTopTitleCard),
-                            child: Text(I18n.of(context).homeScreenReports,
-                                style: TextStyle(
-                                    letterSpacing: letterSpacingTitle,
-                                    color:
-                                        Theme.of(context).colorScheme.grayColor,
-                                    fontSize: sizeTitleCard,
-                                    fontWeight: FontWeight.w100)))
-                      ],
+                    child: Material(
+                      color: Colors.white,
+                      borderRadius: radiusCard,
+                      child: InkWell(
+                        key: Key('inkwell-redirect-meeting-closed'),
+                        onTap: () => navigateBloc.add(
+                            ButtonPressed(goTo: routes.meetingClosedScreen)),
+                        child: Stack(
+                          children: <Widget>[
+                            new Positioned(
+                                right: 0,
+                                left: 0,
+                                bottom: 0,
+                                child: Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        bottomRight: const Radius.circular(10),
+                                        bottomLeft: const Radius.circular(10)),
+                                    child: SvgPicture.asset(
+                                        'assets/images/charts_image.svg',
+                                        fit: BoxFit.cover),
+                                  ),
+                                )),
+                            Container(
+                                alignment: Alignment.topCenter,
+                                margin: EdgeInsets.only(top: spaceTopTitleCard),
+                                child: Text(I18n.of(context).homeScreenReports,
+                                    style: TextStyle(
+                                        letterSpacing: letterSpacingTitle,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .grayColor,
+                                        fontSize: sizeTitleCard,
+                                        fontWeight: FontWeight.w100)))
+                          ],
+                        ),
+                      ),
                     )),
                 Flexible(
                   child: Container(

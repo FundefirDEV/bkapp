@@ -316,7 +316,7 @@
   "activeCredit": {
     "credits": "Credits",
     "special": "SPECIAL",
-    "normal":"NORMAL",
+    "normal": "NORMAL",
     "installments": "FEE",
     "maximumPaymentDate": "Maximum payment date",
     "amountToBePaid": "Pay",
@@ -345,7 +345,21 @@
   "deletePartnerModal": {
     "areYouSure": "Are sure you want to ",
     "deletePartner": "delete this partner?",
-    "delete":"DELETE"
-
+    "delete": "DELETE"
+  },
+  "meetingClosed": {
+    "meetingClosing": "Meeting closing",
+    "cashBalance": "Cash balance\n",
+    "earningsPerShares": "Earnings\nper shares\n",
+    "expenseFund": "Expense fund\n",
+    "sustainabilityFund": "Sustainability\nfund\n",
+    "closing": "MEETING",
+    "meeting": "CLOSING",
+    "detailClosing": "Detail closing",
+    "sharesPurchased": "shares purchased",
+    "accumulableToCapital": "Accumulable to capital",
+    "creditsAwarded": "credits awarded",
+    "capitalSubscription": "capital subscription",
+    "interestPayment": "interest payment"
   }
 }

@@ -35,7 +35,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w800,
                                 color: Theme.of(context).colorScheme.grayColor),
                           ),
-                          Text(r'$500000',
+                          Text(r'$500.000',
                               style: TextStyle(
                                   letterSpacing: 1.5,
                                   fontSize: 24,

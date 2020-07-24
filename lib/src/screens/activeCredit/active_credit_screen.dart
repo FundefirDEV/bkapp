@@ -17,6 +17,7 @@ class ActiveCreditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
     MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return AppBarWidget(

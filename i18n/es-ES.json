@@ -161,7 +161,7 @@
       "profits": "pago de\n ganancias",
       "meeting": "cierre de reunión",
       "actions": "comprar\n acciones",
-      "partner": "agregar / borrar\n socio"
+      "partner": "agregar / retirar\n socio"
     }
   },
   "homeScreen": {
@@ -336,5 +336,20 @@
     "areYouSure": "¿Seguro que quieres",
     "deletePartner": "eliminar este socio?",
     "delete": "ELIMINAR"
+  },
+  "meetingClosed": {
+    "meetingClosing": "Cierre de reunión",
+    "cashBalance": "Saldo de caja\n",
+    "earningsPerShares": "Ganancia\npor acción\n",
+    "expenseFund": "Fondo de gastos\n",
+    "sustainabilityFund": "Fondo de\nsostenibilidad\n",
+    "closing": "CERRAR",
+    "meeting": "REUNIÓN",
+    "detailClosing": "Detalle del cierre",
+    "sharesPurchased": "acciones compradas",
+    "accumulableToCapital": "Acumulable a capital",
+    "creditsAwarded": "créditos otorgados",
+    "capitalSubscription": "abono a capital",
+    "interestPayment": "abono a intereses"
   }
 }

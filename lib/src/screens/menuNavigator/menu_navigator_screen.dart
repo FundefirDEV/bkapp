@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
+import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/administrator_assignment_screen.dart';
@@ -46,76 +47,80 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-        extendBody: true,
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        bottomNavigationBar: CustomBottomBar(
-          notchedShape: CircularNotchedRectangle(),
-          color: Theme.of(context).colorScheme.grayColor[200],
-          selectedColor: Theme.of(context).colorScheme.primaryColor,
-          onTabSelected: (index) {
-            _myPage.jumpToPage(index);
-            setState(() => currentIndex = index);
-          },
-          items: [
-            BottomBarItem(
-                key: Key('home-bottom-bar-item'),
-                iconData: 'assets/images/home.svg',
-                text: I18n.of(context).mainMenuBarHome.toUpperCase()),
-            BottomBarItem(
-                key: Key('utils-bottom-bar-item'),
-                iconData: 'assets/images/archive.svg',
-                text: I18n.of(context).mainMenuBarUtils.toUpperCase()),
-            BottomBarItem(
-                key: Key('profile-bottom-bar-item'),
-                iconData: 'assets/images/user.svg',
-                text: I18n.of(context).mainMenuBarProfile.toUpperCase())
-          ],
-        ),
-        body: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-                create: (context) => MenuNavigatorBloc(controller: _myPage)),
-            BlocProvider(
-              create: (context) => context.bloc<AppBloc>().buySharesFormBloc,
-            )
-          ],
-          child: Stack(
-            children: <Widget>[
-              PageView(
-                controller: _myPage,
-                children: <Widget>[
-                  HomeScreen(),
-                  UtilsScreen(),
-                  ProfileScreen(),
-                  CreditScreen(oldIndex: currentIndex),
-                  BuySharesScreen(oldIndex: currentIndex),
-                  ApprovalsScreen(oldIndex: currentIndex),
-                  StatusCreditRequestWidget(),
-                  ConfirmationBuyShares(),
-                  RulesScreen(),
-                  RulesEditScreen(),
-                  AdministratorAssignmentScreen(),
-                  ActiveCreditScreen(oldIndex: currentIndex),
-                  AddPartnerScreen(oldIndex: currentIndex)
-                ],
-                physics:
-                    NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
-              ),
-              MenuActions(
-                hasLoaded: hasLoaded,
-                controller: _animateController,
-                isPressed: () => _buttonPressed(),
-              )
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          extendBody: true,
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          bottomNavigationBar: CustomBottomBar(
+            notchedShape: CircularNotchedRectangle(),
+            color: Theme.of(context).colorScheme.grayColor[200],
+            selectedColor: Theme.of(context).colorScheme.primaryColor,
+            onTabSelected: (index) {
+              _myPage.jumpToPage(index);
+              setState(() => currentIndex = index);
+            },
+            items: [
+              BottomBarItem(
+                  key: Key('home-bottom-bar-item'),
+                  iconData: 'assets/images/home.svg',
+                  text: I18n.of(context).mainMenuBarHome.toUpperCase()),
+              BottomBarItem(
+                  key: Key('utils-bottom-bar-item'),
+                  iconData: 'assets/images/archive.svg',
+                  text: I18n.of(context).mainMenuBarUtils.toUpperCase()),
+              BottomBarItem(
+                  key: Key('profile-bottom-bar-item'),
+                  iconData: 'assets/images/user.svg',
+                  text: I18n.of(context).mainMenuBarProfile.toUpperCase())
             ],
           ),
-        ),
-        floatingActionButton: FloatingButton(
-          key: Key('option-additional'),
-          onPressed: () =>
-              _animateController.isAnimating ? null : _buttonPressed(),
-          controller: _animateController,
-        ));
+          body: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                  create: (context) => MenuNavigatorBloc(controller: _myPage)),
+              BlocProvider(
+                create: (context) => context.bloc<AppBloc>().buySharesFormBloc,
+              )
+            ],
+            child: Stack(
+              children: <Widget>[
+                PageView(
+                  controller: _myPage,
+                  children: <Widget>[
+                    HomeScreen(),
+                    UtilsScreen(),
+                    ProfileScreen(),
+                    CreditScreen(oldIndex: currentIndex),
+                    BuySharesScreen(oldIndex: currentIndex),
+                    ApprovalsScreen(oldIndex: currentIndex),
+                    StatusCreditRequestWidget(),
+                    ConfirmationBuyShares(),
+                    RulesScreen(),
+                    RulesEditScreen(),
+                    AdministratorAssignmentScreen(),
+                    ActiveCreditScreen(oldIndex: currentIndex),
+                    AddPartnerScreen(oldIndex: currentIndex),
+                    MeetingClosedScreen(oldIndex: currentIndex)
+                  ],
+                  physics:
+                      NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
+                ),
+                MenuActions(
+                  hasLoaded: hasLoaded,
+                  controller: _animateController,
+                  isPressed: () => _buttonPressed(),
+                )
+              ],
+            ),
+          ),
+          floatingActionButton: FloatingButton(
+            key: Key('option-additional'),
+            onPressed: () =>
+                _animateController.isAnimating ? null : _buttonPressed(),
+            controller: _animateController,
+          )),
+    );
   }
 
   void _buttonPressed() {

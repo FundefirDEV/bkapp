@@ -552,6 +552,32 @@ class I18n implements WidgetsLocalizations {
   String get deletePartnerModalDeletePartner => "delete this partner?";
   /// "DELETE"
   String get deletePartnerModalDelete => "DELETE";
+  /// "Meeting closing"
+  String get meetingClosedMeetingClosing => "Meeting closing";
+  /// "Cash balance\n"
+  String get meetingClosedCashBalance => "Cash balance\n";
+  /// "Earnings\nper shares\n"
+  String get meetingClosedEarningsPerShares => "Earnings\nper shares\n";
+  /// "Expense fund\n"
+  String get meetingClosedExpenseFund => "Expense fund\n";
+  /// "Sustainability\nfund\n"
+  String get meetingClosedSustainabilityFund => "Sustainability\nfund\n";
+  /// "MEETING"
+  String get meetingClosedClosing => "MEETING";
+  /// "CLOSING"
+  String get meetingClosedMeeting => "CLOSING";
+  /// "Detail closing"
+  String get meetingClosedDetailClosing => "Detail closing";
+  /// "shares purchased"
+  String get meetingClosedSharesPurchased => "shares purchased";
+  /// "Accumulable to capital"
+  String get meetingClosedAccumulableToCapital => "Accumulable to capital";
+  /// "credits awarded"
+  String get meetingClosedCreditsAwarded => "credits awarded";
+  /// "capital subscription"
+  String get meetingClosedCapitalSubscription => "capital subscription";
+  /// "interest payment"
+  String get meetingClosedInterestPayment => "interest payment";
 }
 
 class _I18n_en_US extends I18n {
@@ -900,9 +926,9 @@ class _I18n_es_ES extends I18n {
   /// "comprar\n acciones"
   @override
   String get mainMenuActionsActions => "comprar\n acciones";
-  /// "agregar / borrar\n socio"
+  /// "agregar / retirar\n socio"
   @override
-  String get mainMenuActionsPartner => "agregar / borrar\n socio";
+  String get mainMenuActionsPartner => "agregar / retirar\n socio";
   /// "MIS DATOS"
   @override
   String get homeScreenMyData => "MIS DATOS";
@@ -1119,9 +1145,9 @@ class _I18n_es_ES extends I18n {
   /// "Por favor llene todas las celdas correctamente"
   @override
   String get pinCodeVerificationPinCodeComplete => "Por favor llene todas las celdas correctamente";
-  /// "El código digitado no es valido"
+  /// "El código digitado no es válido"
   @override
-  String get pinCodeVerificationErrorCodeMessage => "El código digitado no es valido";
+  String get pinCodeVerificationErrorCodeMessage => "El código digitado no es válido";
   /// "Código validado satisfactoriamente"
   @override
   String get pinCodeVerificationGoodCodeMessage => "Código validado satisfactoriamente";
@@ -1320,6 +1346,45 @@ class _I18n_es_ES extends I18n {
   /// "ELIMINAR"
   @override
   String get deletePartnerModalDelete => "ELIMINAR";
+  /// "Cierre de reunión"
+  @override
+  String get meetingClosedMeetingClosing => "Cierre de reunión";
+  /// "Saldo de caja\n"
+  @override
+  String get meetingClosedCashBalance => "Saldo de caja\n";
+  /// "Ganancia\npor acción\n"
+  @override
+  String get meetingClosedEarningsPerShares => "Ganancia\npor acción\n";
+  /// "Fondo de gastos\n"
+  @override
+  String get meetingClosedExpenseFund => "Fondo de gastos\n";
+  /// "Fondo de\nsostenibilidad\n"
+  @override
+  String get meetingClosedSustainabilityFund => "Fondo de\nsostenibilidad\n";
+  /// "CERRAR"
+  @override
+  String get meetingClosedClosing => "CERRAR";
+  /// "REUNIÓN"
+  @override
+  String get meetingClosedMeeting => "REUNIÓN";
+  /// "Detalle del cierre"
+  @override
+  String get meetingClosedDetailClosing => "Detalle del cierre";
+  /// "acciones compradas"
+  @override
+  String get meetingClosedSharesPurchased => "acciones compradas";
+  /// "Acumulable a capital"
+  @override
+  String get meetingClosedAccumulableToCapital => "Acumulable a capital";
+  /// "créditos otorgados"
+  @override
+  String get meetingClosedCreditsAwarded => "créditos otorgados";
+  /// "abono a capital"
+  @override
+  String get meetingClosedCapitalSubscription => "abono a capital";
+  /// "abono a intereses"
+  @override
+  String get meetingClosedInterestPayment => "abono a intereses";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
