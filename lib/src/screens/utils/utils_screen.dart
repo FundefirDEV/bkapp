@@ -41,7 +41,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsRulesOf,
         titleWeight: I18n.of(context).utilsGroupBk,
         textDescription: I18n.of(context).utilsKnowManageBk,
-        onPressed: () => navigateBloc.add(ButtonPressed(goTo: routes.rulesScreen)),
+        onPressed: () =>
+            navigateBloc.add(ButtonPressed(goTo: routes.rulesScreen)),
       ),
       UtilsCardsItem(
         key: 'withdrawall',
@@ -50,8 +51,6 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsWithdrawalOf,
         titleWeight: I18n.of(context).utilsPartners,
         textDescription: I18n.of(context).utilsDeleteDeliverActions,
-        onPressed: () =>
-            navigateBloc.add(ButtonPressed(goTo: routes.addPartnerScreen)),
       ),
       UtilsCardsItem(
         key: 'payment',
@@ -74,8 +73,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
           image: 'assets/images/admin_icon.svg',
           title: I18n.of(context).utilsAssignment,
           titleWeight: I18n.of(context).utilsAdministrator,
-          onPressed: () =>
-              navigateBloc.add(ButtonPressed(goTo: routes.administratorAssignmentScreen)))
+          onPressed: () => navigateBloc
+              .add(ButtonPressed(goTo: routes.administratorAssignmentScreen)))
     ];
     return Scaffold(
         body: AppBarWidget(

@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/screens/utils/home_routes_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -8,13 +9,13 @@ import '../widgets.dart';
 import 'menu_animation.dart';
 
 class MenuActions extends StatelessWidget {
-  MenuActions({
-    Key key,
-    @required this.hasLoaded,
-    @required this.controller,
-    this.isPressed
-  }) : animation = MenuAnimation(controller),
-       super(key: key);
+  MenuActions(
+      {Key key,
+      @required this.hasLoaded,
+      @required this.controller,
+      this.isPressed})
+      : animation = MenuAnimation(controller),
+        super(key: key);
 
   final bool hasLoaded;
   final AnimationController controller;
@@ -39,9 +40,8 @@ class MenuActions extends StatelessWidget {
     );
   }
 
-  Widget _menuContent(
-    BuildContext context
-  ) {
+  Widget _menuContent(BuildContext context) {
+    HomeRoutesConstant routes = HomeRoutesConstant();
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -53,19 +53,14 @@ class MenuActions extends StatelessWidget {
             Text(
               I18n.of(context).mainMenuActionsTitle.toUpperCase(),
               style: TextStyle(
-                color: Colors.white,
-                fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                fontWeight: FontWeight.w100,
-                letterSpacing: 3.0
-              ),
+                  color: Colors.white,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                  fontWeight: FontWeight.w100,
+                  letterSpacing: 3.0),
             ),
-            SizedBox(
-              height: SizeConfig.blockSizeVertical * 8.0
-            ),
-            _firstColumn(context),
-            SizedBox(
-              height: SizeConfig.blockSizeVertical * 2.7
-            ),
+            SizedBox(height: SizeConfig.blockSizeVertical * 8.0),
+            _firstColumn(context, routes),
+            SizedBox(height: SizeConfig.blockSizeVertical * 2.7),
             Container(
               width: double.infinity,
               child: ButtonLine(
@@ -74,17 +69,15 @@ class MenuActions extends StatelessWidget {
                 text: I18n.of(context).mainMenuActionsMeeting,
               ),
             ),
-            SizedBox(
-              height: SizeConfig.blockSizeVertical * 2.7
-            ),
-            _thirdColumn(context)
+            SizedBox(height: SizeConfig.blockSizeVertical * 2.7),
+            _thirdColumn(context, routes)
           ],
         ),
       ),
     );
   }
 
-  Widget _firstColumn(BuildContext context) {
+  Widget _firstColumn(BuildContext context, HomeRoutesConstant routes) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -97,7 +90,7 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('credit-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: 3));
+              navigateBloc.add(ButtonPressed(goTo: routes.creditScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsCredit,
@@ -116,7 +109,7 @@ class MenuActions extends StatelessWidget {
     );
   }
 
-  Widget _thirdColumn(BuildContext context) {
+  Widget _thirdColumn(BuildContext context, HomeRoutesConstant routes) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -129,7 +122,7 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('actions-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: 4));
+              navigateBloc.add(ButtonPressed(goTo: routes.sharesScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsActions,
@@ -140,7 +133,10 @@ class MenuActions extends StatelessWidget {
           width: SizeConfig.blockSizeHorizontal * 40.0,
           child: ButtonLine(
             key: Key('partners-button-line'),
-            onPressed: () {},
+            onPressed: () {
+              navigateBloc.add(ButtonPressed(goTo: routes.addPartnerScreen));
+              isPressed();
+            },
             text: I18n.of(context).mainMenuActionsPartner,
           ),
         ),

@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/src/screens/addPartner/add_partner_screen.dart';
 import 'package:bkapp_flutter/src/screens/approvals/approvals_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
@@ -117,23 +116,6 @@ void main() {
       await tester.tap(find.byKey(Key('inkwell-rules')));
       await tester.pumpAndSettle();
       expect(find.byType(RulesScreen), findsOneWidget);
-    });
-    testWidgets('Render widget addPartner', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
-      await tester.pumpAndSettle();
-      expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
-      await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
-      await tester.pumpAndSettle();
-      expect(find.byType(UtilsScreen), findsOneWidget);
-      expect(find.byType(UtilCardDescription), findsNWidgets(4));
-      expect(find.byKey(Key('inkwell-withdrawall')), findsOneWidget);
-      await tester.tap(find.byKey(Key('inkwell-withdrawall')));
-      await tester.pumpAndSettle();
-      expect(find.byType(AddPartnerScreen), findsOneWidget);
     });
     testWidgets('Render widget assigment', (WidgetTester tester) async {
       await tester.pumpWidget(baseTester(

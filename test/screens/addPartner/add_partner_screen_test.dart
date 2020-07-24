@@ -1,21 +1,27 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/addPartner/add_partner_screen.dart';
 import 'package:bkapp_flutter/src/screens/addPartner/content/top_container_add_partner_screen.dart';
 import 'package:bkapp_flutter/src/screens/addPartner/content/widgets/bottom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../base_tester.dart';
 
 void main() {
+  Widget addParnerTester({key}) {
+    return BlocProvider(
+        create: (context) => MenuNavigatorBloc(controller: PageController()),
+        child: AddPartnerScreen(key: key, oldIndex: 0));
+  }
+
   group('Add partner', () {
     testWidgets('Find add partner screen', (WidgetTester tester) async {
       final scaffolsKey = Key('scafforld_add_partner_screen');
       final mainColumnKey = Key('column_add_partner_screen');
       final titleKey = Key('title_header_top_partner_screen');
 
-      await tester.pumpWidget(baseTester(
-          child: AddPartnerScreen(
-        oldIndex: null,
-      )));
+      await tester.pumpWidget(
+          baseTester(child: addParnerTester(key: Key('add-partner-tester'))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(scaffolsKey), findsOneWidget);
@@ -47,7 +53,8 @@ void main() {
       expect(find.byKey(pendingKeys), findsOneWidget);
     });
 
-    testWidgets('Find bottom text add patner screen ', (WidgetTester tester) async {
+    testWidgets('Find bottom text add patner screen ',
+        (WidgetTester tester) async {
       final containerKey = Key('container-botom-text-add-partner-screen');
       final textKey = Key('botom-text-add-partner-screen');
 
