@@ -6,7 +6,7 @@ void main() {
   ProfilePinCodeVerificationBloc pincode;
 
   setUp(() {
-    pincode = ProfilePinCodeVerificationBloc();
+    pincode = ProfilePinCodeVerificationBloc(repository: null);
   });
 
   test('Test name bloc', () {

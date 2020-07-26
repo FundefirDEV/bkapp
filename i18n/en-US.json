@@ -233,7 +233,10 @@
     "shares": "Shares",
     "credits": "Credits",
     "payments": "Payments",
-    "noRequest": "No requests"
+    "noRequest": "No requests",
+    "confirmApprove": "Are you sure you want to accept",
+    "declineApprove": "Are you sure you want to reject",
+    "confirmApproveBold": "the application of "
   },
   "approveCreditModal": {
     "approval": "Approvals",

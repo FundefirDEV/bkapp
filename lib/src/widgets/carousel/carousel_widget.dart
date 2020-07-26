@@ -5,11 +5,13 @@ class Carousel extends StatefulWidget {
   final double viewportFraction;
   final List<Widget> children;
   final double heigthContainer;
+  final int currentPage;
 
   Carousel(
       {Key key,
       this.viewportFraction = 0.3,
       this.children,
+      this.currentPage = 1,
       this.heigthContainer = 200})
       : super(key: key);
 
@@ -19,14 +21,13 @@ class Carousel extends StatefulWidget {
 
 class _CarouselState extends State<Carousel> {
   PageController pageController;
-  int currentPage = 1;
 
   @override
   void initState() {
     super.initState();
     pageController = PageController(
         keepPage: false,
-        initialPage: currentPage,
+        initialPage: widget.currentPage,
         viewportFraction: widget.viewportFraction);
   }
 

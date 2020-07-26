@@ -372,6 +372,12 @@ class I18n implements WidgetsLocalizations {
   String get approvalsScreenPayments => "Payments";
   /// "No requests"
   String get approvalsScreenNoRequest => "No requests";
+  /// "Are you sure you want to accept"
+  String get approvalsScreenConfirmApprove => "Are you sure you want to accept";
+  /// "Are you sure you want to reject"
+  String get approvalsScreenDeclineApprove => "Are you sure you want to reject";
+  /// "the application of "
+  String get approvalsScreenConfirmApproveBold => "the application of ";
   /// "Approvals"
   String get approveCreditModalApproval => "Approvals";
   /// "Petitions"
@@ -1100,6 +1106,15 @@ class _I18n_es_ES extends I18n {
   /// "No hay solicitudes"
   @override
   String get approvalsScreenNoRequest => "No hay solicitudes";
+  /// "¿Seguro que quieres aceptar"
+  @override
+  String get approvalsScreenConfirmApprove => "¿Seguro que quieres aceptar";
+  /// "¿Seguro que quieres rechazar"
+  @override
+  String get approvalsScreenDeclineApprove => "¿Seguro que quieres rechazar";
+  /// "la solicitud de "
+  @override
+  String get approvalsScreenConfirmApproveBold => "la solicitud de ";
   /// "El crédito de "
   @override
   String get approvedRejectedModalTheCredit => "El crédito de ";

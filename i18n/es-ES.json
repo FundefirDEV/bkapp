@@ -233,7 +233,10 @@
     "shares": "Acciones",
     "credits": "Créditos",
     "payments": "Pago de cuotas",
-    "noRequest": "No hay solicitudes"
+    "noRequest": "No hay solicitudes",
+    "confirmApprove": "¿Seguro que quieres aceptar",
+    "declineApprove": "¿Seguro que quieres rechazar",
+    "confirmApproveBold": "la solicitud de "
   },
   "approvedRejectedModal": {
     "theCredit": "El crédito de ",
