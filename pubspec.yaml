@@ -22,7 +22,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bk_core:
-    path: ./bk_packages/bk_core
+    # path: /home/familia/projects/fundefir/bk_core
+    git:
+      url: git@github.com:Fundefir-dev/bk_core.git
+      # ref: master
+      ref: v0.3.0
   flutter_svg: ^0.17.4
   flutter_form_bloc: ^0.15.0
   cupertino_icons: ^0.1.2

@@ -7,7 +7,7 @@ import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:bk_core/bk_groups.dart';
+import 'package:bk_core/bk_core.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class HomeTestScreen extends StatefulWidget {
@@ -24,21 +24,22 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
 
   _createCredit() {
     var credit = Credit(
-        amount: 3000,
-        amountOfDues: 3,
+        creditAmount: 3000,
+        installments: 3,
         ordinaryInterestPercentaje: 3,
-        typeOfInterestCalc: TypeOfInterestCalc.CLASSIC);
+        typeOfInterestCalc: TypeOfInterestCalc.CLASSIC,
+        defaultInterestPercentaje: 3);
 
     setState(() {
       _credit = credit;
     });
 
     print('\n============== Classic =====================\n');
-    print('List of capital Dues ${_credit.listOfCapitalDues}');
+    print('List of capital Dues ${_credit.listOfInstallments}');
     print('List of ordinary interest');
 
-    _credit.listOrdinaryInterest.forEach((interest) => print(
-        '${interest.capitalDue} + ${interest.interestCalculate} = ${interest.total}'));
+    _credit.scheduleInstallments.forEach((interest) => print(
+        '${interest.capitalInstallment} + ${interest.interestCalculate} = ${interest.totalPayInstallment}'));
   }
 
   void _goToIntro() {
@@ -80,8 +81,9 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                         child: Column(children: <Widget>[
                           Text('Hola Mundo'),
                           Text(
-                              "Cantidad de cuotas: ${_credit?.amountOfDues?.toString() ?? 0}"),
-                          Text("Monto: ${_credit?.amount?.toString() ?? 0}"),
+                              "Cantidad de cuotas: ${_credit?.installments?.toString() ?? 0}"),
+                          Text(
+                              "Monto: ${_credit?.creditAmount?.toString() ?? 0}"),
                           Text(
                               "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
                           RaisedButton(
