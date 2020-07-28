@@ -23,7 +23,7 @@ class EnvironmentConfig {
   @Deprecated('Prefer "API_URL", the mock url is temporally.')
   static const String API_URL_MOCK = String.fromEnvironment('API_URL_MOCK',
       defaultValue:
-          "https://virtserver.swaggerhub.com/jairoFg12/bk_service/0.0.1");
+          "https://virtserver.swaggerhub.com/fundefir-org/bk_service/1.0.1");
 }
 
 class ApiEndpoints {
