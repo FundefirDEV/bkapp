@@ -30,7 +30,7 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  "10",
+                  "9",
                   key: Key('date-requested-action-text-quantity'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],
@@ -52,7 +52,7 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  '20/07/2020',
+                  '28/07/2020',
                   key: Key('date-requested-action-date'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],

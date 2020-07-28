@@ -177,8 +177,8 @@
     "tips": "TIPS",
     "reports": "REPORTS",
     "partners": "PARTNERS",
-    "box": "BOX",
-    "borrowed": "BORROWED"
+    "box": "CASH BALANCE",
+    "borrowed": "CREDITS GRANTED"
   },
   "profileScreen": {
     "edit": "EDIT",
@@ -354,10 +354,10 @@
     "meetingClosing": "Meeting closing",
     "cashBalance": "Cash balance\n",
     "earningsPerShares": "Earnings\nper shares\n",
-    "expenseFund": "Expense fund\n",
+    "expenseFund": "Bad debt reserve\n",
     "sustainabilityFund": "Sustainability\nfund\n",
-    "closing": "MEETING",
-    "meeting": "CLOSING",
+    "closing": "CHECK",
+    "meeting": "CLOSURES",
     "detailClosing": "Detail closing",
     "sharesPurchased": "shares purchased",
     "accumulableToCapital": "Accumulable to capital",

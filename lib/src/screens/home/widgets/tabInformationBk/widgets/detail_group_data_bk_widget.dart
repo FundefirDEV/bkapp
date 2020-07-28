@@ -102,7 +102,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 0.8),
-                          child: Text(r'50',
+                          child: Text(r'260',
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .colorScheme
@@ -130,7 +130,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 0.8),
-                          child: Text(r'$0',
+                          child: Text(r'$900.000',
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .colorScheme

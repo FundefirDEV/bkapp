@@ -30,7 +30,7 @@ class NumberActions extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(top: 20),
               child: Text(
-                '10',
+                '30',
                 key: Key('number-action-value-text'),
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal * 6,

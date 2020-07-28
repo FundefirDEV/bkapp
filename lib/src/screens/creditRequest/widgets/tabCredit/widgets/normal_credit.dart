@@ -42,7 +42,7 @@ class NormalCredit extends StatelessWidget {
                 Flexible(
                   child: Container(
                     alignment: Alignment.topLeft,
-                    child: Text(r'$500.000',
+                    child: Text(r'$900.000',
                         style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 6,
                             color: Theme.of(context).colorScheme.grayColor[300],
@@ -70,7 +70,7 @@ class NormalCredit extends StatelessWidget {
                 Flexible(
                   child: Container(
                     alignment: Alignment.topLeft,
-                    child: Text(r'5%',
+                    child: Text(r'3%',
                         style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 6,
                             color: Theme.of(context).colorScheme.grayColor[300],

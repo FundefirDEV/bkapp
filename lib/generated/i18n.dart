@@ -282,10 +282,10 @@ class I18n implements WidgetsLocalizations {
   String get homeScreenReports => "REPORTS";
   /// "PARTNERS"
   String get homeScreenPartners => "PARTNERS";
-  /// "BOX"
-  String get homeScreenBox => "BOX";
-  /// "BORROWED"
-  String get homeScreenBorrowed => "BORROWED";
+  /// "CASH BALANCE"
+  String get homeScreenBox => "CASH BALANCE";
+  /// "CREDITS GRANTED"
+  String get homeScreenBorrowed => "CREDITS GRANTED";
   /// "EDIT"
   String get profileScreenEdit => "EDIT";
   /// "Profile"
@@ -564,14 +564,14 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedCashBalance => "Cash balance\n";
   /// "Earnings\nper shares\n"
   String get meetingClosedEarningsPerShares => "Earnings\nper shares\n";
-  /// "Expense fund\n"
-  String get meetingClosedExpenseFund => "Expense fund\n";
+  /// "Bad debt reserve\n"
+  String get meetingClosedExpenseFund => "Bad debt reserve\n";
   /// "Sustainability\nfund\n"
   String get meetingClosedSustainabilityFund => "Sustainability\nfund\n";
-  /// "MEETING"
-  String get meetingClosedClosing => "MEETING";
-  /// "CLOSING"
-  String get meetingClosedMeeting => "CLOSING";
+  /// "CHECK"
+  String get meetingClosedClosing => "CHECK";
+  /// "CLOSURES"
+  String get meetingClosedMeeting => "CLOSURES";
   /// "Detail closing"
   String get meetingClosedDetailClosing => "Detail closing";
   /// "shares purchased"
@@ -974,9 +974,9 @@ class _I18n_es_ES extends I18n {
   /// "CAJA"
   @override
   String get homeScreenBox => "CAJA";
-  /// "PRESTADO"
+  /// "CREDITOS OTORGADOS"
   @override
-  String get homeScreenBorrowed => "PRESTADO";
+  String get homeScreenBorrowed => "CREDITOS OTORGADOS";
   /// "EDITAR"
   @override
   String get profileScreenEdit => "EDITAR";
@@ -1370,18 +1370,18 @@ class _I18n_es_ES extends I18n {
   /// "Ganancia\npor acción\n"
   @override
   String get meetingClosedEarningsPerShares => "Ganancia\npor acción\n";
-  /// "Fondo de gastos\n"
+  /// "Reserva para \nIncobrables\n"
   @override
-  String get meetingClosedExpenseFund => "Fondo de gastos\n";
+  String get meetingClosedExpenseFund => "Reserva para \nIncobrables\n";
   /// "Fondo de\nsostenibilidad\n"
   @override
   String get meetingClosedSustainabilityFund => "Fondo de\nsostenibilidad\n";
-  /// "CERRAR"
+  /// "CONSULTAR"
   @override
-  String get meetingClosedClosing => "CERRAR";
-  /// "REUNIÓN"
+  String get meetingClosedClosing => "CONSULTAR";
+  /// "CIERRES"
   @override
-  String get meetingClosedMeeting => "REUNIÓN";
+  String get meetingClosedMeeting => "CIERRES";
   /// "Detalle del cierre"
   @override
   String get meetingClosedDetailClosing => "Detalle del cierre";

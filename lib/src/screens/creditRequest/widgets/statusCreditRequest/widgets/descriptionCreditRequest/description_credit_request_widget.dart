@@ -63,7 +63,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4),
                   ),
                   Text(
-                    '20/07/2020',
+                    '28/07/2020',
                     key: Key('description-credit-request-date'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],

@@ -178,7 +178,7 @@
     "reports": "REPORTES",
     "partners": "SOCIOS",
     "box": "CAJA",
-    "borrowed": "PRESTADO"
+    "borrowed": "CREDITOS OTORGADOS"
   },
   "profileScreen": {
     "edit": "EDITAR",
@@ -344,10 +344,10 @@
     "meetingClosing": "Cierre de reunión",
     "cashBalance": "Saldo de caja\n",
     "earningsPerShares": "Ganancia\npor acción\n",
-    "expenseFund": "Fondo de gastos\n",
+    "expenseFund": "Reserva para \nIncobrables\n",
     "sustainabilityFund": "Fondo de\nsostenibilidad\n",
-    "closing": "CERRAR",
-    "meeting": "REUNIÓN",
+    "closing": "CONSULTAR",
+    "meeting": "CIERRES",
     "detailClosing": "Detalle del cierre",
     "sharesPurchased": "acciones compradas",
     "accumulableToCapital": "Acumulable a capital",

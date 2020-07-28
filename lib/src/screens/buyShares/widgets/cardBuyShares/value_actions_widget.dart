@@ -54,7 +54,7 @@ class ValueActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  '0',
+                  '9',
                   key: Key('value-actions-number-actios-text'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],
