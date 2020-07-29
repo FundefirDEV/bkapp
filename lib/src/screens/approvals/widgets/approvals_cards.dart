@@ -12,7 +12,7 @@ class ApprovalsCards extends StatefulWidget {
       this.modalConfirm})
       : super(key: key);
 
-  final data;
+  final List data;
   final Widget emptyData;
   final String title;
   final Function modalConfirm;
@@ -46,10 +46,13 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                     for (var i = 0; i < widget.data.length; i++)
                       RequestShareCard(
                         index: i,
-                        partnerName: widget.data[i]["name"],
-                        price: widget.data[i]["price"],
-                        quantity: widget.data[i]["quantity"],
-                        requesType: widget.data[i]["type"],
+                        id: widget.data[i]['id'],
+                        partnerName: widget.data[i]['partnerName'],
+                        amount: widget.data[i]['amount'],
+                        quantity: widget.data[i]['quantity'] != null
+                            ? widget.data[i]['quantity']
+                            : null,
+                        requestDate: widget.data[i]['requestDate'],
                         modalConfirm: widget.modalConfirm,
                       ),
                   ],

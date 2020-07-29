@@ -1,4 +1,5 @@
 export 'app_bloc.dart';
+export 'approvalBloc/approvals_bloc.dart';
 export 'bankRegisterBloc/bank_register_bloc.dart';
 export 'bankRegisterBloc/invite_form_bloc.dart';
 export 'loginFormBloc/login_form_bloc.dart';

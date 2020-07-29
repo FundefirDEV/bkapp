@@ -236,7 +236,11 @@
     "noRequest": "No requests",
     "confirmApprove": "Are you sure you want to accept",
     "declineApprove": "Are you sure you want to reject",
-    "confirmApproveBold": "the application of "
+    "confirmApproveBold": "the application of ",
+    "cashBalance": "Cash Balance",
+    "paymentRequested": "Payment Requested",
+    "creditRequested": "Credit Requested",
+    "actionRequested": "Share instead of action"
   },
   "approveCreditModal": {
     "approval": "Approvals",

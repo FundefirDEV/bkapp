@@ -30,5 +30,13 @@ void main() {
       expect(find.byKey(Key('padding-label-button-buy-shares-form')),
           findsOneWidget);
     });
+
+    testWidgets('Click FlatButton buy shares', (WidgetTester tester) async {
+      await tester.pumpWidget(baseTester(child: BuySharesFormWidget()));
+      await tester.pumpAndSettle();
+      expect(find.byKey(Key('flatbutton-buy-shares-form')), findsOneWidget);
+      await tester.tap(find.byKey(Key('flatbutton-buy-shares-form')));
+      await tester.pumpAndSettle();
+    });
   });
 }

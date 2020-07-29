@@ -236,7 +236,11 @@
     "noRequest": "No hay solicitudes",
     "confirmApprove": "¿Seguro que quieres aceptar",
     "declineApprove": "¿Seguro que quieres rechazar",
-    "confirmApproveBold": "la solicitud de "
+    "confirmApproveBold": "la solicitud de ",
+    "cashBalance": "Saldo de caja",
+    "paymentRequested": "Pagos solicitados",
+    "creditRequested": "Créditos solicitados",
+    "actionRequested": "Acciones solicitadas"
   },
   "approvedRejectedModal": {
     "theCredit": "El crédito de ",

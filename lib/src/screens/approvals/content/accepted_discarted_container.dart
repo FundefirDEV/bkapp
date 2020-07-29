@@ -4,14 +4,16 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 
 class AcceptedDiscarted extends StatelessWidget {
-  const AcceptedDiscarted({Key key}) : super(key: key);
+  const AcceptedDiscarted({Key key, this.data}) : super(key: key);
+
+  final Map data;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Padding(
-      key: Key('Value-approvals-padding'),
-      padding: const EdgeInsets.only(left: 20),
+      key: Key('value-approvals-padding'),
+      padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3.5),
       child: Column(
         key: Key('Accepted-approvals-column-container'),
         mainAxisAlignment: MainAxisAlignment.center,
@@ -19,46 +21,47 @@ class AcceptedDiscarted extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Column(
-              key: Key('Approvals-column-text-value'),
+              key: Key('approvals-column-text-value'),
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  I18n.of(context).approvalsScreenAccepted,
-                  key: Key('Value-acepted-approvals-value-text'),
+                  I18n().approvalsScreenActionRequested,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4),
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12),
                 ),
                 Text(
-                  "2",
-                  key: Key('Accepted-approvals-text-value'),
+                  data['totalRequestShares'].toString(),
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.grayColor[200],
-                      fontSize: SizeConfig.blockSizeHorizontal * 6),
-                ),
+                      color: Theme.of(context).colorScheme.grayColor,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 15),
+                )
               ],
             ),
           ),
           Expanded(
             child: Column(
-              key: Key('Rejected-approvals-column-container'),
+              key: Key('rejected-approvals-column-container'),
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  I18n.of(context).approvalsScreenRejected,
-                  key: Key('Value-rejected-approvals'),
+                  I18n().approvalsScreenPaymentRequested,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4),
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12),
                 ),
                 Text(
-                  '12',
-                  key: Key('Value-rejected-approvals-text'),
+                  data['totalPaymentRequest'].toString(),
+                  textAlign: TextAlign.start,
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.grayColor[200],
-                      fontSize: SizeConfig.blockSizeHorizontal * 6),
+                      color: Theme.of(context).colorScheme.grayColor,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 15),
                 ),
               ],
             ),

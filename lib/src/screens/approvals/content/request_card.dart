@@ -1,25 +1,27 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/screens/approvals/widgets/cards_approvals_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class RequestShareCard extends StatelessWidget {
   final int index;
-  final String requesType;
+  final int id;
   final String partnerName;
-  final String price;
-  final String quantity;
+  final int amount;
+  final int quantity;
+  final String requestDate;
   final Function modalConfirm;
 
   const RequestShareCard(
       {Key key,
-      this.requesType,
+      this.id,
       this.partnerName,
-      this.price,
-      this.quantity,
+      this.amount,
+      this.requestDate,
       this.modalConfirm,
-      this.index})
+      this.index,
+      this.quantity})
       : super(key: key);
 
   @override
@@ -35,7 +37,11 @@ class RequestShareCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: buildText(context),
+              child: CardsApprovalsContent(
+                amount: amount,
+                partnerName: partnerName,
+                quantity: quantity,
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,8 +50,7 @@ class RequestShareCard extends StatelessWidget {
                 Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    key: Key(
-                        'inkwell-approve-modal-request-card-$index-$requesType'),
+                    key: Key('inkwell-approve-modal-request-card-$index'),
                     onTap: () {
                       modalConfirm(
                           context,
@@ -88,47 +93,5 @@ class RequestShareCard extends StatelessWidget {
             ),
           ],
         ));
-  }
-
-  Container buildText(context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      alignment: Alignment.center,
-      child: RichText(
-          textAlign: TextAlign.center,
-          strutStyle: StrutStyle(height: 2),
-          text: TextSpan(
-              text: this.partnerName + '\n',
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.grayColor,
-                  fontSize: SizeConfig.blockSizeHorizontal * 4,
-                  fontWeight: FontWeight.w700),
-              children: <TextSpan>[
-                TextSpan(
-                    text: this.quantity + " ",
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      color: Theme.of(context).colorScheme.grayColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4,
-                      fontWeight: FontWeight.w700,
-                    )),
-                TextSpan(
-                    text: this.requesType + '\n',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      color: Theme.of(context).colorScheme.grayColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4,
-                      fontWeight: FontWeight.w400,
-                    )),
-                TextSpan(
-                    text: this.price + '\n',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      color: Theme.of(context).colorScheme.grayColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4,
-                      fontWeight: FontWeight.w700,
-                    )),
-              ])),
-    );
   }
 }

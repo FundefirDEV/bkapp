@@ -1,10 +1,14 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/approvals/content/card_approvals.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/number_petitions.dart';
 import 'package:bkapp_flutter/src/screens/approvals/widgets/approvals_content.dart';
+import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.dart';
+import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
+import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,34 +24,60 @@ class ApprovalsScreen extends StatefulWidget {
   _ApprovalsScreenState createState() => _ApprovalsScreenState();
 }
 
-class _ApprovalsScreenState extends State<ApprovalsScreen> {
+class _ApprovalsScreenState extends State<ApprovalsScreen>
+    with AfterLayoutMixin<ApprovalsScreen> {
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+        create: (context) => context.bloc<AppBloc>().approvalsBloc,
+        child: ApprovalsBuilder());
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    context.bloc<AppBloc>().approvalsBloc.add(ApprovalsInitialize());
+  }
+}
+
+class ApprovalsBuilder extends StatelessWidget {
+  const ApprovalsBuilder({Key key, this.oldIndex}) : super(key: key);
+
+  final int oldIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
     // ignore: close_sinks
     MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
-    SizeConfig().init(context);
-
-    return AppBarWidget(
-      container: Column(
-        key: Key('Column-appbar-approvals-screen'),
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: TitleHeaderWidget(
-              title: I18n.of(context).approvalsScreenApproval,
-              showArrow: true,
-              oldIndex: widget.oldIndex,
-              navigateBloc: menuNavigatorBloc,
+    return BlocBuilder<ApprovalsBloc, ApprovalsState>(
+      builder: (context, state) {
+        if (state is ApprovalsLoaded) {
+          return AppBarWidget(
+            container: Column(
+              key: Key('column-appbar-approvals-screen'),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: TitleHeaderWidget(
+                    title: I18n.of(context).approvalsScreenApproval,
+                    showArrow: true,
+                    oldIndex: oldIndex,
+                    navigateBloc: menuNavigatorBloc,
+                  ),
+                ),
+                CardInformationBkWidget(
+                    childBlueWidth: 135.0,
+                    childBlue: NumberPetitions(data: state.approvals),
+                    childWhite: AcceptedDiscarted(data: state.approvals)),
+                SizedBox(height: 20.0),
+                ApprovalsContent(
+                    modalConfirm: _showDialog, data: state.approvals),
+              ],
             ),
-          ),
-          CardApprovals(
-              childBlue: NumberPetitions(), childWhite: AcceptedDiscarted()),
-          SizedBox(height: 20.0),
-          ApprovalsContent(
-            modalConfirm: _showDialog,
-          )
-        ],
-      ),
+          );
+        }
+        return EmptyInformation();
+      },
     );
   }
 }

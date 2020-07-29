@@ -47,3 +47,8 @@ final ValidationCodeConfirmRepository validationCodeConfirmRepository =
         apiProvider: ApiProvider(
   httpClient: _proxyDio(ip: localIp),
 ));
+
+final ApprovalsRepository approvalsRepository = ApprovalsRepository(
+    apiProvider: ApiProvider(
+  httpClient: _proxyDio(ip: localIp),
+));

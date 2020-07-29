@@ -41,7 +41,7 @@ class BuySharesFormWidget extends StatelessWidget {
               EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 5),
           child: FlatButton(
               key: Key('flatbutton-buy-shares-form'),
-              onPressed: context.bloc<AppBloc>().buySharesFormBloc.submit,
+              onPressed: (context.bloc<AppBloc>().buySharesFormBloc.submit),
               color: Theme.of(context).colorScheme.primaryColor,
               child: Padding(
                   key: Key('padding-label-button-buy-shares-form'),

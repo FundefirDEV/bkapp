@@ -66,4 +66,19 @@ class ApiProvider {
 
     return response;
   }
+
+  Future<Map<String, dynamic>> getApprovals() async {
+    var response;
+    try {
+      final getApprovals = ApiEndpoints.getApprovals();
+      final getApprovalsResponse = await this.httpClient.get(getApprovals);
+      response = ApiResponses.apiResponse(getApprovalsResponse);
+    } on SocketException {
+      throw FetchDataException('No Internet connection');
+    } on NotFoundException {
+      throw FetchDataException('Endpoint not exists');
+    }
+
+    return response;
+  }
 }
