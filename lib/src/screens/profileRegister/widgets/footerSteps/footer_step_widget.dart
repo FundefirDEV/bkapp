@@ -6,70 +6,54 @@ import 'package:flutter/material.dart';
 class FooterStepWidget extends StatelessWidget {
   final int currentStep;
   final int numberOfSteps;
-  final String route;
-  final Object renderNextWidget;
   final currentBlocSubmit;
 
   const FooterStepWidget(
-    {Key key,
+      {Key key,
       @required this.currentStep,
       @required this.numberOfSteps,
-      @required this.route,
-      this.renderNextWidget,
-      this.currentBlocSubmit
-    }) : super(key: key);
+      this.currentBlocSubmit})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 200,
         alignment: Alignment.bottomCenter,
         child: Row(children: <Widget>[
           Expanded(child: _stepContainer(context)),
           Expanded(
-            child: Container(
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.safeBlockVertical * 3,
-                  vertical: SizeConfig.safeBlockVertical * 6),
-              child: ButtonNextWidget(onTap: () {
-                _nextStepWidget(context);
-              }))
-          )
+              child: Container(
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.safeBlockVertical * 3,
+                      vertical: SizeConfig.safeBlockVertical * 6),
+                  child: ButtonNextWidget(onTap: this.currentBlocSubmit)))
         ]));
-  }
-
-  void _nextStepWidget(BuildContext context) {
-    Navigator.pushNamed(
-      context,
-      this.route,
-      arguments: this.renderNextWidget
-    );
-    this.currentBlocSubmit();
   }
 
   Container _stepContainer(BuildContext context) {
     return Container(
         child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.safeBlockHorizontal * 12
-      ),
+      padding:
+          EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal * 12),
       child: RichText(
         text: TextSpan(
-          text: currentStep.toString(),
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 4,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 2.0,
-            color: Theme.of(context).colorScheme.grayColor,
-          ),
-          children: <TextSpan>[
-            TextSpan(
-              text: '/${numberOfSteps.toString()}',
-              style: TextStyle(
-                fontWeight: FontWeight.w200,
-              ),
-            )
-          ]),
+            text: currentStep.toString(),
+            style: TextStyle(
+              fontSize: SizeConfig.safeBlockHorizontal * 4,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 2.0,
+              color: Theme.of(context).colorScheme.grayColor,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                text: '/${numberOfSteps.toString()}',
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                ),
+              )
+            ]),
       ),
     ));
   }

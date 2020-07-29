@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/screens/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
@@ -33,21 +34,16 @@ class RegisterPhoneFormWidget extends StatelessWidget {
           width: SizeConfig.blockSizeHorizontal * 75,
           height: SizeConfig.blockSizeVertical * 15,
           child: TextFieldBlocBuilder(
-            key: Key('phone-input-field'),
-            textFieldBloc: profile.phoneBloc.phone,
-            inputFormatters: [
-              WhitelistingTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(10),
-              PhoneFormatter()
-            ],
-            errorBuilder: (context, string) {
-              return string.contains('9')
-              ? I18n.of(context).errorGraterThanNine
-              : I18n.of(context).errorRequired;
-            },
-            decoration:
-              InputDecoration(labelText: I18n.of(context).formPhone)
-          ),
+              key: Key('phone-input-field'),
+              textFieldBloc: profile.phoneBloc.phone,
+              inputFormatters: [
+                WhitelistingTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(10),
+                PhoneFormatter()
+              ],
+              errorBuilder: errorHandler,
+              decoration:
+                  InputDecoration(labelText: I18n.of(context).formPhone)),
         ),
       ],
     ));

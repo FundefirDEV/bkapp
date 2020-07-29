@@ -29,6 +29,7 @@ dependencies:
       ref: v0.3.0
   flutter_svg: ^0.17.4
   flutter_form_bloc: ^0.15.0
+  form_bloc: ^0.15.0
   cupertino_icons: ^0.1.2
   animate_do: ^1.7.2
   dio: ^3.0.9

@@ -11,15 +11,14 @@ class SelectCityScreen extends StatefulWidget {
   _SelectCityState createState() => _SelectCityState();
 }
 
-class _SelectCityState
-  extends State<SelectCityScreen>
-  with SingleTickerProviderStateMixin{
+class _SelectCityState extends State<SelectCityScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
 
   @override
   void initState() {
-      super.initState();
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
@@ -28,9 +27,7 @@ class _SelectCityState
       begin: 0.0,
       end: 1.0,
     ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Interval(0.5, 1.0, curve: Curves.easeIn)
-    ));
+        parent: _controller, curve: Interval(0.5, 1.0, curve: Curves.easeIn)));
   }
 
   @override
@@ -43,25 +40,21 @@ class _SelectCityState
   Widget build(BuildContext context) {
     _controller.forward();
     return Container(
-       child: BgBankRegister(
-         child: FadeTransition(
-           opacity: _animation,
-           child: Column(
-             children: <Widget>[
-              Container(
-                child: HeaderSelectCityWidget()
-              ),
+      child: BgBankRegister(
+        child: FadeTransition(
+          opacity: _animation,
+          child: Column(
+            children: <Widget>[
+              Container(child: HeaderSelectCityWidget()),
               Expanded(
                 flex: 2,
                 child: SelectCityStateWidget(),
               ),
-              Container(
-                child: FooterSelectCityWidget()
-              )
+              Container(child: FooterSelectCityWidget())
             ],
-           ),
-         ),
-       ),
+          ),
+        ),
+      ),
     );
   }
 }

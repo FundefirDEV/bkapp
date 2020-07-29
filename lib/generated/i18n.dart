@@ -80,6 +80,8 @@ class I18n implements WidgetsLocalizations {
   String get errorInvalidUser => "Incorrect username or password";
   /// "Enter a valid email address"
   String get errorInvalidEmail => "Enter a valid email address";
+  /// "Passwords do not match"
+  String get errorDifferentPasswords => "Passwords do not match";
   /// "Go to "
   String get loginScreenTextOne => "Go to ";
   /// "your bank"
@@ -676,6 +678,9 @@ class _I18n_es_ES extends I18n {
   /// "Ingrese un correo electrónico válido"
   @override
   String get errorInvalidEmail => "Ingrese un correo electrónico válido";
+  /// "Las constraseñas no coinciden"
+  @override
+  String get errorDifferentPasswords => "Las constraseñas no coinciden";
   /// "Entra a "
   @override
   String get loginScreenTextOne => "Entra a ";

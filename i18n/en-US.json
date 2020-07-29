@@ -27,7 +27,8 @@
     "graterThanNine": "The number should be greater than 9",
     "isEmpty": "there is nothing here!",
     "invalidUser": "Incorrect username or password",
-    "invalidEmail": "Enter a valid email address"
+    "invalidEmail": "Enter a valid email address",
+    "differentPasswords": "Passwords do not match"
   },
   "loginScreen": {
     "textOne": "Go to ",

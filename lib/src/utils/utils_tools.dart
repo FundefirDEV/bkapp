@@ -1,10 +1,10 @@
 import "dart:math" as math;
+import 'package:bkapp_flutter/src/screens/utils/errorHandler/constans_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class UtilsTools {
-  static BuildContext lala;
-
   static double getRadiansFromDegree(double degree) => degree * math.pi / 180;
 
   static String required(dynamic value) {
@@ -12,13 +12,13 @@ class UtilsTools {
         value == false ||
         ((value is Iterable || value is String || value is Map) &&
             value.length == 0)) {
-      return 'Este campo es requerido';
+      return requiredValue;
     }
     return null;
   }
 
   static String minPhoneNumber(String number) {
-    if (number.length < 14) return 'El número debe ser mayor a 9';
+    if (number.length < 14) return incompletePhone;
     return null;
   }
 

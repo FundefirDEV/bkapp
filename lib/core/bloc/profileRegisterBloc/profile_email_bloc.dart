@@ -1,17 +1,14 @@
+import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ProfileEmailBloc extends FormBloc<String, String> {
   final email = TextFieldBloc(validators: [
-    FieldBlocValidators.required,
+    UtilsTools.required,
     FieldBlocValidators.email,
   ]);
 
   ProfileEmailBloc() {
-    addFieldBlocs(
-      fieldBlocs: [
-        email
-      ]
-    );
+    addFieldBlocs(fieldBlocs: [email]);
   }
 
   @override
@@ -21,7 +18,7 @@ class ProfileEmailBloc extends FormBloc<String, String> {
 
       await Future<void>.delayed(Duration(seconds: 1));
       emitSuccess(canSubmitAgain: true);
-    } catch(e) {
+    } catch (e) {
       emitFailure();
     }
   }
@@ -31,4 +28,3 @@ class ProfileEmailBloc extends FormBloc<String, String> {
     return super.close();
   }
 }
-

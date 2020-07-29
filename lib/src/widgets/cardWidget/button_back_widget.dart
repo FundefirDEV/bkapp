@@ -6,15 +6,18 @@ import 'package:flutter/widgets.dart';
 class ButtonBackWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        alignment: Alignment.centerLeft,
-        padding: EdgeInsets.symmetric(
-            vertical: SizeConfig.safeBlockVertical * 2,
-            horizontal: SizeConfig.safeBlockHorizontal * 6),
-        child: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Theme.of(context).colorScheme.grayColor[200],
-          onPressed: () => Navigator.pop(context),
-        ));
+    SizeConfig().init(context);
+    return Material(
+      child: Container(
+          height: 70,
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.safeBlockHorizontal * 6),
+          child: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Theme.of(context).colorScheme.grayColor[200],
+            onPressed: () => Navigator.pop(context),
+          )),
+    );
   }
 }

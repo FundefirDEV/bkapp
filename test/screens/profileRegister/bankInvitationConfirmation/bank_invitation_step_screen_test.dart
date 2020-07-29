@@ -1,12 +1,10 @@
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
-import 'package:bkapp_flutter/src/screens/bankCreated/bank_created_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/gender_image.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import '../../../base_tester.dart';
 
 void main() {
@@ -39,14 +37,6 @@ void main() {
           baseTester(child: ConfirmInvitationBankStepScreen(data: data)));
       await tester.pumpAndSettle();
       expect(find.byType(ButtonNextWidget), findsOneWidget);
-    });
-
-    testWidgets('Other push buttonNextStep', (WidgetTester tester) async {
-      await tester.pumpWidget(
-          baseTester(child: ConfirmInvitationBankStepScreen(data: data)));
-      await tester.pumpAndSettle();
-
-      expect(find.byKey(Key('buttonNextStep')), findsOneWidget);
     });
 
     testWidgets('Bank invitation step screen redirect select country',

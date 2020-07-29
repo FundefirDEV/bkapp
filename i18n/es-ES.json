@@ -27,7 +27,8 @@
     "graterThanNine": "El número debe ser mayor a 9",
     "isEmpty": "¡No hay nada aquí!",
     "invalidUser": "Usuario o contraseña incorrecto",
-    "invalidEmail": "Ingrese un correo electrónico válido"
+    "invalidEmail": "Ingrese un correo electrónico válido",
+    "differentPasswords": "Las contraseñas no coinciden"
   },
   "loginScreen": {
     "textOne": "Entra a ",
