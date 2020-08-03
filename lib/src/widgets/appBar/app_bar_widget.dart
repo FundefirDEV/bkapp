@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -61,7 +62,7 @@ class AppBarWidget extends StatelessWidget {
               type: MaterialType.transparency,
               child: InkWell(
                 onTap: () =>
-                  BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut()),
+                  context.bloc<AppBloc>().authenticationBloc.add(LoggedOut()),
                 child: Container(
                     key: Key('button-logout'),
                     child: SvgPicture.asset('assets/images/icon_exit.svg',

@@ -7,15 +7,13 @@ import 'package:bkapp_flutter/src/screens/screens.dart';
 Widget loginRouteBloc() {
   return MultiBlocProvider(
     providers: [
-      BlocProvider<AuthenticationBloc>(
-        create: (context) => AuthenticationBloc(
-          loginRepository: loginRepository
-        )..add(AppStarted()),
+      BlocProvider(
+        create: (context) => context.bloc<AppBloc>().authenticationBloc,
       ),
       BlocProvider<LoginFormBloc>(
         create: (context) => LoginFormBloc(
           repository: loginRepository,
-          authenticationBloc: context.bloc<AuthenticationBloc>()
+          authenticationBloc: context.bloc<AppBloc>().authenticationBloc
         ),
       )
     ],

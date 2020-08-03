@@ -24,7 +24,9 @@ jobs:
         with:
           flutter-version: "1.17.5"
       - run: flutter pub get
-      - run: flutter test --coverage && flutter pub run remove_from_coverage -f coverage/lcov.info -r 'lib/generated' -r 'lib/src/screens/homeTest'
+      - run: |
+          flutter test --coverage && \
+          remove="flutter pub run remove_from_coverage -f coverage/lcov.info";for line in $(cat .coverage_exclude); do remove="$remove -r '$line' " ; done;echo $remove; eval $remove;
       - uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}

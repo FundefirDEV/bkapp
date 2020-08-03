@@ -4,34 +4,32 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
 import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../base_tester.dart';
 
-class MockClient extends Mock implements HttpClientAdapter {}
-void main() {
+class MockLoginRepository extends Mock implements LoginRepository {}
+class MockApiprovider extends Mock implements ApiProvider {}
 
+void main() {
   LoginFormBloc formBloc;
   AuthenticationBloc authenticationBloc; // REVIEW test the login state
+  LoginRepository mockLoginRepository;
+  http.Client mockClient;
+  ApiProvider apiProvider;
 
-  final Dio tdio = Dio();
-  final mockClient = MockClient();
-  tdio.httpClientAdapter = mockClient;
-  final LoginRepository tapi = LoginRepository.test(
-    apiProvider: ApiProvider(httpClient: tdio)
-  );
-
-  var widgetTester = baseTester(
+  var widgetTester = (repository) => baseTester(
       child: BlocProvider(
         create: (context) => formBloc = LoginFormBloc(
           authenticationBloc: authenticationBloc = AuthenticationBloc(
-            loginRepository: tapi
+            loginRepository: repository
           ),
-          repository: tapi
+          repository: repository
         ),
         child: Builder(
           builder: (context) => LoginScreen(),
@@ -39,8 +37,53 @@ void main() {
     )
   );
 
-  testWidgets('The onSubmitting should fail', (WidgetTester tester) async {
-    await tester.pumpWidget(widgetTester);
+  testWidgets('The onSubmitting should be success', (WidgetTester tester) async {
+    mockClient = MockClient((request) async {
+      final mapJson = {'token':'kaslfjkdsHJHs'};
+      return http.Response(json.encode(mapJson), 200);
+    });
+    apiProvider = ApiProvider(httpClient: mockClient);
+    mockLoginRepository = LoginRepository(
+      apiProvider: apiProvider
+    );
+
+    await tester.pumpWidget(widgetTester(mockLoginRepository));
+    await tester.pumpAndSettle();
+
+    // NOTE username
+    await tester.enterText(
+      find.byKey(Key('input-username')),
+      'email@gmail.com'
+    );
+
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pump();
+
+    // NOTE password
+    await tester.enterText(
+      find.byKey(Key('input-password')),
+      'xxxx'
+    );
+
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pump();
+
+    formBloc.onSubmitting();
+    await tester.pumpAndSettle(Duration(seconds: 3));
+    expect(formBloc.state, isInstanceOf<FormBlocSuccess>());
+  });
+
+  testWidgets('The onSubmitting should be failure', (WidgetTester tester) async {
+    mockClient = MockClient((request) async {
+      final mapJson = {'message':'bad credentials'};
+      return http.Response(json.encode(mapJson),401);
+    });
+    apiProvider = ApiProvider(httpClient: mockClient);
+    mockLoginRepository = LoginRepository(
+      apiProvider: apiProvider
+    );
+
+    await tester.pumpWidget(widgetTester(mockLoginRepository));
     await tester.pumpAndSettle();
 
     // NOTE username
@@ -64,37 +107,6 @@ void main() {
     formBloc.onSubmitting();
     await tester.pumpAndSettle(Duration(seconds: 3));
     expect(formBloc.state, isInstanceOf<FormBlocFailure>());
-  });
-
-
-  test('The onSubmitting should works', () async {
-    formBloc = LoginFormBloc(
-      authenticationBloc: authenticationBloc = AuthenticationBloc(
-        loginRepository: tapi
-      ),
-      repository: tapi
-    );
-
-    final responsepayload = jsonEncode({"response_code": "200"});
-    final httpResponse = ResponseBody.fromString(
-      responsepayload,
-      200,
-      headers: {
-        Headers.contentTypeHeader: [Headers.jsonContentType],
-      },
-    );
-
-    when(mockClient.fetch(any, any, any))
-      .thenAnswer((_) async => httpResponse);
-
-    await tapi.postLogin(
-      username: "test@gmail.com",
-      password: "xxxxx"
-    );
-
-    formBloc.onSubmitting();
-    expect(authenticationBloc.state, isA<AuthenticationUninitialized>());
-    expect(formBloc.state, isA<FormBlocLoaded>());
   });
 
   tearDown(() {

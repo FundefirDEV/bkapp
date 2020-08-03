@@ -1,7 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
-import 'package:dio/dio.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -9,13 +7,8 @@ import 'package:bloc_test/bloc_test.dart';
 class MockLoginRepository extends Mock implements LoginRepository {}
 
 void main() {
-  LoginRepository repository = LoginRepository(
-    apiProvider: ApiProvider(
-      httpClient: new Dio(),
-    )
-  );
   AuthenticationBloc authenticationBloc;
-  MockLoginRepository loginRepository;
+  LoginRepository loginRepository;
 
   setUp(() {
     loginRepository = MockLoginRepository();
@@ -67,7 +60,7 @@ void main() {
     blocTest(
       'Test when the app is initialized from scratch',
       build: () async => AuthenticationBloc(
-          loginRepository: repository
+          loginRepository: loginRepository
       ),
       act: (bloc) async {
         bloc.add(AppStarted());
@@ -79,7 +72,7 @@ void main() {
     blocTest(
       'Test when the user is authenticated',
       build: () async => AuthenticationBloc(
-          loginRepository: repository
+          loginRepository: loginRepository
         ),
       act: (bloc) async => bloc.add(LoggedIn(
         token: token
@@ -93,7 +86,7 @@ void main() {
     blocTest(
       'Test when the user loggedOut from the app',
       build: () async => AuthenticationBloc(
-          loginRepository: repository
+          loginRepository: loginRepository
         ),
       act: (bloc) async => bloc.add(LoggedOut()),
       expect: [

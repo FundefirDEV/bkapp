@@ -1,54 +1,24 @@
-import 'dart:io';
-
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 
 import 'repositories.dart';
 
-String localIp;
-
-// NOTE Connect Dio to proxyman
-Dio _proxyDio({String ip}) {
-  String proxy = Platform.isAndroid ? '$ip:9090' : 'localhost:9090';
-  Dio dio = new Dio();
-
-  if (ip != null) {
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (client) {
-      // Hook into the findProxy callback to set the client's proxy.
-      client.findProxy = (url) {
-        return 'PROXY $proxy';
-      };
-
-      // This is a workaround to allow Proxyman to receive
-      // SSL payloads when your app is running on Android.
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => Platform.isAndroid;
-    };
-  }
-
-  return dio;
-}
+http.Client httpClient = http.Client();
 
 final LoginRepository loginRepository = LoginRepository(
-    apiProvider: ApiProvider(
-  httpClient: _proxyDio(ip: localIp),
-));
+  apiProvider: ApiProvider(httpClient: httpClient)
+);
 
 final ValidationCodeRepository validationCodeRepository =
-    ValidationCodeRepository(
-        apiProvider: ApiProvider(
-  httpClient: _proxyDio(ip: localIp),
-));
+  ValidationCodeRepository(
+    apiProvider: ApiProvider(httpClient: httpClient)
+  );
 
 final ValidationCodeConfirmRepository validationCodeConfirmRepository =
-    ValidationCodeConfirmRepository(
-        apiProvider: ApiProvider(
-  httpClient: _proxyDio(ip: localIp),
-));
+  ValidationCodeConfirmRepository(
+    apiProvider: ApiProvider(httpClient: httpClient)
+  );
 
 final ApprovalsRepository approvalsRepository = ApprovalsRepository(
-    apiProvider: ApiProvider(
-  httpClient: _proxyDio(ip: localIp),
-));
+  apiProvider: ApiProvider(httpClient: httpClient)
+);

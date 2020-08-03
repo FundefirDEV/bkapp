@@ -1,8 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_pin_code_verification_bloc.dart';
-import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/validation_code_confirm_repository.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,23 +8,19 @@ import 'package:mockito/mockito.dart';
 
 import '../../../base_tester.dart';
 
-class MockClient extends Mock implements HttpClientAdapter {}
+class MockValidationConfirmRepo extends Mock implements ValidationCodeConfirmRepository {}
 
 void main() {
   ProfilePinCodeVerificationBloc pinCodeBloc;
   final RegisterPinCodeScreenStepArgs data =
         RegisterPinCodeScreenStepArgs('male', 'assets/images/man.svg');
 
-  final Dio tdio = Dio();
-  final mockClient = MockClient();
-  tdio.httpClientAdapter = mockClient;
-  final ValidationCodeConfirmRepository tapi = ValidationCodeConfirmRepository.test(
-    apiProvider: ApiProvider(httpClient: tdio)
-  );
+  ValidationCodeConfirmRepository mockValidationCodeRepo =
+    MockValidationConfirmRepo();
 
   setUp(() {
     pinCodeBloc = ProfilePinCodeVerificationBloc(
-      repository: tapi
+      repository: mockValidationCodeRepo
     );
   });
 
@@ -56,5 +50,9 @@ void main() {
     pinCodeBloc.onSubmitting();
     await tester.pumpAndSettle(Duration(seconds: 3));
     expect(pinCodeBloc.state, isInstanceOf<FormBlocLoaded>());
+  });
+
+  tearDown(() {
+    pinCodeBloc?.close();
   });
 }

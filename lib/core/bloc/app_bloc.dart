@@ -5,6 +5,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'profileRegisterBloc/profile_register_bloc.dart';
 
 class AppBloc extends FormBloc<String, String> {
+  AuthenticationBloc _authenticationBloc;
   ProfileRegisterBloc _profileRegisterBloc;
   BankRegisterBloc _bankRegisterBloc;
   ProfileEditFormBloc _profileEditFormBloc;
@@ -14,7 +15,10 @@ class AppBloc extends FormBloc<String, String> {
   ApprovalsBloc _approvalsBloc;
 
   AppBloc()
-      : _profileRegisterBloc = ProfileRegisterBloc(),
+      : _authenticationBloc = AuthenticationBloc(
+          loginRepository: loginRepository
+        )..add(AppStarted()),
+        _profileRegisterBloc = ProfileRegisterBloc(),
         _bankRegisterBloc = BankRegisterBloc(),
         _profileEditFormBloc = ProfileEditFormBloc(),
         _buySharesFormBloc = BuySharesFormBloc(),
@@ -22,6 +26,7 @@ class AppBloc extends FormBloc<String, String> {
         _rulesEditFormBloc = RulesEditFormBloc(),
         _approvalsBloc = ApprovalsBloc(repository: approvalsRepository);
 
+  AuthenticationBloc get authenticationBloc => _authenticationBloc;
   ProfileRegisterBloc get profileRegisterBloc => _profileRegisterBloc;
   BankRegisterBloc get bankRegisterBloc => _bankRegisterBloc;
   ProfileEditFormBloc get profileEditFormBloc => _profileEditFormBloc;

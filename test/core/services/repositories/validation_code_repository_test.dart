@@ -1,8 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_phone_bloc.dart';
-import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,21 +8,17 @@ import 'package:mockito/mockito.dart';
 
 import '../../../base_tester.dart';
 
-class MockClient extends Mock implements HttpClientAdapter {}
+class MockValidationCodeRepo extends Mock implements ValidationCodeRepository {}
 
 void main() {
   ProfilePhoneBloc phoneBloc;
   final RegisterPhoneStepArgs data =
       RegisterPhoneStepArgs('male', 'assets/images/man.svg');
 
-  final Dio tdio = Dio();
-  final mockClient = MockClient();
-  tdio.httpClientAdapter = mockClient;
-  final ValidationCodeRepository tapi =
-      ValidationCodeRepository.test(apiProvider: ApiProvider(httpClient: tdio));
+  ValidationCodeRepository mockValidationCodeRepo = MockValidationCodeRepo();
 
   setUp(() {
-    phoneBloc = ProfilePhoneBloc(repository: tapi);
+    phoneBloc = ProfilePhoneBloc(repository: mockValidationCodeRepo);
   });
 
   test('Assert ValidationCode should return an assertion error', () {

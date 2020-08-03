@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -6,9 +7,15 @@ import 'package:bkapp_flutter/src/screens/login/widgets/login_form_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
 
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  Offset position =Offset(20.0, 20.0);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -30,6 +37,12 @@ class LoginScreen extends StatelessWidget {
             child: SafeArea(
               child: _columnContent(context),
             ),
+          ),
+          MenuRequests(
+            position: position,
+            onDragEnd: (details) {
+              setState(() => position = details.offset);
+            }
           )
         ],
       ),

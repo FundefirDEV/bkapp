@@ -1,0 +1,4 @@
+coverage/lcov.info
+lib/generated
+lib/src/screens/homeTest
+lib/src/widgets/menuRequests

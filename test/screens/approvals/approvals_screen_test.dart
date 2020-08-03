@@ -18,7 +18,7 @@ void main() {
   ApprovalsBloc mockApprovalsBloc;
   final testKey = Key('my-id');
 
-  Map reponse = {
+  Map response = {
     "cashBalance": 5000000,
     "totalRequestShares": 2000000,
     "totalCreditRequest": 300000,
@@ -73,7 +73,7 @@ void main() {
 
     testWidgets('Find structure approvals screen', (WidgetTester tester) async {
       when(mockApprovalsBloc.state)
-          .thenReturn(ApprovalsLoaded(approvals: reponse));
+          .thenReturn(ApprovalsLoaded(approvals: response));
       await tester.pumpWidget(baseTester(
           child: MultiBlocProvider(providers: [
         BlocProvider<MenuNavigatorBloc>(

@@ -1,3 +1,4 @@
+import 'package:alice/alice.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
@@ -16,6 +17,8 @@ import 'package:logger/logger.dart';
 import 'core/bloc/app_bloc.dart';
 
 import 'package:sentry/sentry.dart';
+
+import 'core/services/api/http_requests.dart';
 
 final SentryClient sentry = SentryClient(
     dsn: EnvironmentConfig.DSN_SENTRY,
@@ -95,6 +98,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AppBloc(),
       child: MaterialApp(
         title: 'Bk App',
+        navigatorKey: navigationKey,
         theme: ThemeData(
           fontFamily: 'Nunito',
         ),

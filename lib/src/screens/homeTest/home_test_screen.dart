@@ -1,9 +1,7 @@
 import 'dart:ui';
 import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved_credit_modal.dart';
-import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved_shares_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';

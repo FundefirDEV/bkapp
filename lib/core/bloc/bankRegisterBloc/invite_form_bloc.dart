@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/src/utils/utils.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class InviteFormBloc extends FormBloc<String, String> {

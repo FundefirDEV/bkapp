@@ -1,11 +1,13 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/administrator_assignment_screen.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
@@ -25,6 +27,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
     with SingleTickerProviderStateMixin {
   PageController _myPage = PageController(initialPage: 0);
   AnimationController _animateController;
+  Offset position = Offset(20.0, 20.0);
 
   bool hasLoaded = false;
   int currentIndex = 0;
@@ -110,6 +113,12 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   hasLoaded: hasLoaded,
                   controller: _animateController,
                   isPressed: () => _buttonPressed(),
+                ),
+                MenuRequests(
+                  position: position,
+                  onDragEnd: (details) {
+                    setState(() => position = details.offset);
+                  }
                 )
               ],
             ),

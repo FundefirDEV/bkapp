@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/menu_navigator_screen.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -40,6 +41,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(FloatingActionButton), findsOneWidget);
       expect(find.byKey(optionAdditional), findsOneWidget);
+      expect(find.byType(MenuRequests), findsOneWidget);
     });
 
     testWidgets('Render home widget as first screen the menu navigator',
