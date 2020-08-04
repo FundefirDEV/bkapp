@@ -26,7 +26,7 @@ class AcceptedDiscarted extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  I18n().approvalsScreenActionRequested,
+                  I18n.of(context).approvalsScreenActionRequested,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
                       fontWeight: FontWeight.w100,
@@ -49,7 +49,7 @@ class AcceptedDiscarted extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  I18n().approvalsScreenPaymentRequested,
+                  I18n.of(context).approvalsScreenPaymentRequested,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
                       fontWeight: FontWeight.w100,

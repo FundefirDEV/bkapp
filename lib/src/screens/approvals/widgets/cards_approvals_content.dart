@@ -49,7 +49,7 @@ class CardsApprovalsContent extends StatelessWidget {
                             )),
                       if (quantity != null)
                         TextSpan(
-                            text: I18n().approvalsScreenCredits + '\n',
+                            text: I18n.of(context).approvalsScreenShares + '\n',
                             style: TextStyle(
                               fontFamily: 'Nunito',
                               color: Theme.of(context).colorScheme.grayColor,

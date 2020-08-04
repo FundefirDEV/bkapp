@@ -22,7 +22,7 @@ class NumberPetitions extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  I18n().approvalsScreenCashBalance,
+                  I18n.of(context).approvalsScreenCashBalance,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w100,
@@ -44,7 +44,7 @@ class NumberPetitions extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  I18n().approvalsScreenCreditRequested,
+                  I18n.of(context).approvalsScreenCreditRequested,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w100,

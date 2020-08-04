@@ -54,8 +54,8 @@ class RequestShareCard extends StatelessWidget {
                     onTap: () {
                       modalConfirm(
                           context,
-                          I18n().approvalsScreenConfirmApprove,
-                          I18n().approvalsScreenConfirmApproveBold +
+                          I18n.of(context).approvalsScreenConfirmApprove,
+                          I18n.of(context).approvalsScreenConfirmApproveBold +
                               '${this.partnerName}?',
                           true,
                           true,
@@ -73,8 +73,8 @@ class RequestShareCard extends StatelessWidget {
                     onTap: () {
                       modalConfirm(
                           context,
-                          I18n().approvalsScreenDeclineApprove,
-                          I18n().approvalsScreenConfirmApproveBold +
+                          I18n.of(context).approvalsScreenDeclineApprove,
+                          I18n.of(context).approvalsScreenConfirmApproveBold +
                               '${this.partnerName}?',
                           true,
                           false,
