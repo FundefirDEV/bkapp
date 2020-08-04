@@ -4,7 +4,6 @@ import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dar
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/number_petitions.dart';
 import 'package:bkapp_flutter/src/screens/approvals/widgets/approvals_content.dart';
-import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.dart';
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
@@ -78,7 +77,9 @@ class ApprovalsBuilder extends StatelessWidget {
             ),
           );
         }
-        return EmptyInformation();
+        return Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }

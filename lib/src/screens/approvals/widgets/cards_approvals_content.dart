@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CardsApprovalsContent extends StatelessWidget {
   const CardsApprovalsContent(
@@ -13,6 +14,14 @@ class CardsApprovalsContent extends StatelessWidget {
   final int quantity;
   @override
   Widget build(BuildContext context) {
+    final formatConfig =
+        NumberFormat.currency(locale: 'es', decimalDigits: 0, symbol: '');
+
+    final totalQuantity =
+        quantity != null ? formatConfig.format(quantity) : quantity;
+
+    final totalAmount = formatConfig.format(amount);
+
     SizeConfig().init(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -40,7 +49,7 @@ class CardsApprovalsContent extends StatelessWidget {
                     children: <TextSpan>[
                       if (quantity != null)
                         TextSpan(
-                            text: quantity.toString() + ' ',
+                            text: totalQuantity.toString() + ' ',
                             style: TextStyle(
                               fontFamily: 'Nunito',
                               color: Theme.of(context).colorScheme.grayColor,
@@ -57,7 +66,7 @@ class CardsApprovalsContent extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             )),
                       TextSpan(
-                          text: amount.toString() + '\n',
+                          text: totalAmount.toString() + '\n',
                           style: TextStyle(
                             fontFamily: 'Nunito',
                             color: Theme.of(context).colorScheme.grayColor,

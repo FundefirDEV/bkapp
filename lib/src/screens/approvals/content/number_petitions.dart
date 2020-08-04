@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NumberPetitions extends StatelessWidget {
   const NumberPetitions({Key key, this.data}) : super(key: key);
@@ -9,6 +10,12 @@ class NumberPetitions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formatConfig =
+        NumberFormat.currency(locale: 'es', decimalDigits: 0, symbol: '');
+
+    final cashBalance = formatConfig.format(data['cashBalance']);
+    final totalCreditRequest = formatConfig.format(data['totalCreditRequest']);
+
     SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3.5),
@@ -29,7 +36,7 @@ class NumberPetitions extends StatelessWidget {
                       fontSize: 12),
                 ),
                 Text(
-                  data['cashBalance'].toString(),
+                  cashBalance.toString(),
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w100,
@@ -51,7 +58,7 @@ class NumberPetitions extends StatelessWidget {
                       fontSize: 12),
                 ),
                 Text(
-                  data['totalCreditRequest'].toString(),
+                  totalCreditRequest.toString(),
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Colors.white,

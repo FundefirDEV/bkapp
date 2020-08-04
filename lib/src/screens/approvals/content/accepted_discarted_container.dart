@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:intl/intl.dart';
 
 class AcceptedDiscarted extends StatelessWidget {
   const AcceptedDiscarted({Key key, this.data}) : super(key: key);
@@ -11,6 +12,13 @@ class AcceptedDiscarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final formatConfig =
+        NumberFormat.currency(locale: 'es', decimalDigits: 0, symbol: '');
+
+    final totalRequestShares = formatConfig.format(data['totalRequestShares']);
+    final totalPaymentRequest =
+        formatConfig.format(data['totalPaymentRequest']);
+
     return Padding(
       key: Key('value-approvals-padding'),
       padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3.5),
@@ -33,7 +41,7 @@ class AcceptedDiscarted extends StatelessWidget {
                       fontSize: 12),
                 ),
                 Text(
-                  data['totalRequestShares'].toString(),
+                  totalRequestShares.toString(),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
                       fontWeight: FontWeight.w100,
@@ -56,7 +64,7 @@ class AcceptedDiscarted extends StatelessWidget {
                       fontSize: 12),
                 ),
                 Text(
-                  data['totalPaymentRequest'].toString(),
+                  totalPaymentRequest.toString(),
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
