@@ -30,7 +30,9 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => context.bloc<AppBloc>().approvalsBloc,
-        child: ApprovalsBuilder());
+        child: ApprovalsBuilder(
+          oldIndex: widget.oldIndex,
+        ));
   }
 
   @override
@@ -40,7 +42,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
 }
 
 class ApprovalsBuilder extends StatelessWidget {
-  const ApprovalsBuilder({Key key, this.oldIndex}) : super(key: key);
+  const ApprovalsBuilder({Key key, @required this.oldIndex}) : super(key: key);
 
   final int oldIndex;
 

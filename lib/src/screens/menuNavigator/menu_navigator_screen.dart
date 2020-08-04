@@ -1,6 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
@@ -115,11 +114,10 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   isPressed: () => _buttonPressed(),
                 ),
                 MenuRequests(
-                  position: position,
-                  onDragEnd: (details) {
-                    setState(() => position = details.offset);
-                  }
-                )
+                    position: position,
+                    onDragEnd: (details) {
+                      setState(() => position = details.offset);
+                    })
               ],
             ),
           ),
