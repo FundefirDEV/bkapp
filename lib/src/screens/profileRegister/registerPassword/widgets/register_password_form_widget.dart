@@ -1,6 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/utils/errorHandler/error_handler.dart';
+import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

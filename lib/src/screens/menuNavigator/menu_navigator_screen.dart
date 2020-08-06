@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -5,9 +6,7 @@ import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
-import 'package:bkapp_flutter/src/screens/utils/administratorAssignment/administrator_assignment_screen.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/home/home_screen.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -90,20 +89,21 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                 PageView(
                   controller: _myPage,
                   children: <Widget>[
-                    HomeScreen(),
+                    HomeScreen(), // NOTE 0
                     UtilsScreen(),
                     ProfileScreen(),
                     CreditScreen(oldIndex: currentIndex),
-                    BuySharesScreen(oldIndex: currentIndex),
+                    BuySharesScreen(oldIndex: currentIndex), // NOTE 4
                     ApprovalsScreen(oldIndex: currentIndex),
                     StatusCreditRequestWidget(),
-                    ConfirmationBuyShares(),
+                    ConfirmationBuyShares(), // NOTE 7
                     RulesScreen(),
                     RulesEditScreen(),
-                    AdministratorAssignmentScreen(),
+                    AdministratorAssignmentScreen(), // NOTE 10
                     ActiveCreditScreen(oldIndex: currentIndex),
                     AddPartnerScreen(oldIndex: currentIndex),
-                    MeetingClosedScreen(oldIndex: currentIndex)
+                    MeetingClosedScreen(oldIndex: currentIndex),
+                    ProfitPaymentScreen() // NOTE 14
                   ],
                   physics:
                       NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

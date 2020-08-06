@@ -11,7 +11,6 @@ void main() {
 
   test('Test invite form bloc', () {
     inviteFormBloc.onSubmitting();
-    inviteFormBloc.state.toSuccess();
     expect(inviteFormBloc.state, isA<FormBlocLoaded>());
   });
 

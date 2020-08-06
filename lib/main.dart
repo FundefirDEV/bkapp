@@ -1,4 +1,3 @@
-import 'package:alice/alice.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
@@ -52,9 +51,9 @@ class SimpleBlocDelegate extends BlocObserver {
   }
 
   @override
-  void onError(Bloc bloc, Object error, StackTrace stackTrace) {
+  void onError(Cubit cubit, Object error, StackTrace stackTrace) {
     logger.e(error);
-    super.onError(bloc, error, stackTrace);
+    super.onError(cubit, error, stackTrace);
   }
 }
 

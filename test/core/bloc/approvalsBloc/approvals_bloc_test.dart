@@ -34,22 +34,14 @@ void main() {
     });
   });
 
-  test('close does not emit new states in approvals', () {
-    expectLater(
-      approvalsBloc,
-      emitsInOrder([ApprovalsInitial(), emitsDone]),
-    );
-    approvalsBloc.close();
-  });
-
-  blocTest(
+  blocTest<ApprovalsBloc, ApprovalsState>(
     'Test when the user is authenticated',
-    build: () async {
+    build: () {
       when(approvalsRepository.getApprovals())
         .thenAnswer((_) async => mockResponse);
       return ApprovalsBloc(repository: approvalsRepository);
     },
-    act: (bloc) async => bloc.add(ApprovalsInitialize()),
+    act: (bloc) => bloc.add(ApprovalsInitialize()),
     expect: [
       ApprovalsLoading(),
       ApprovalsLoaded(approvals: mockResponse)

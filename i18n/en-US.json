@@ -159,7 +159,7 @@
     "actions": {
       "title": "What will you do?",
       "credit": "credit",
-      "profits": "payment of\n profits",
+      "profits": "profits\n payment",
       "meeting": "start meeting",
       "actions": "buy actions",
       "partner": "add / remove\n partner"
@@ -369,5 +369,11 @@
     "creditsAwarded": "credits awarded",
     "capitalSubscription": "capital subscription",
     "interestPayment": "interest payment"
+  },
+  "profitPayment": {
+    "title": "Profit payment",
+    "history": "Profit history",
+    "selectPartner": "Select partner",
+    "profitRetained": "Profit Retained"
   }
 }

@@ -252,8 +252,8 @@ class I18n implements WidgetsLocalizations {
   String get mainMenuActionsTitle => "What will you do?";
   /// "credit"
   String get mainMenuActionsCredit => "credit";
-  /// "payment of\n profits"
-  String get mainMenuActionsProfits => "payment of\n profits";
+  /// "profits\n payment"
+  String get mainMenuActionsProfits => "profits\n payment";
   /// "start meeting"
   String get mainMenuActionsMeeting => "start meeting";
   /// "buy actions"
@@ -594,6 +594,14 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedCapitalSubscription => "capital subscription";
   /// "interest payment"
   String get meetingClosedInterestPayment => "interest payment";
+  /// "Profit payment"
+  String get profitPaymentTitle => "Profit payment";
+  /// "Profit history"
+  String get profitPaymentHistory => "Profit history";
+  /// "Select partner"
+  String get profitPaymentSelectPartner => "Select partner";
+  /// "Profit Retained"
+  String get profitPaymentProfitRetained => "Profit Retained";
 }
 
 class _I18n_en_US extends I18n {
@@ -678,9 +686,9 @@ class _I18n_es_ES extends I18n {
   /// "Ingrese un correo electrónico válido"
   @override
   String get errorInvalidEmail => "Ingrese un correo electrónico válido";
-  /// "Las constraseñas no coinciden"
+  /// "Las contraseñas no coinciden"
   @override
-  String get errorDifferentPasswords => "Las constraseñas no coinciden";
+  String get errorDifferentPasswords => "Las contraseñas no coinciden";
   /// "Entra a "
   @override
   String get loginScreenTextOne => "Entra a ";
@@ -1425,6 +1433,18 @@ class _I18n_es_ES extends I18n {
   /// "abono a intereses"
   @override
   String get meetingClosedInterestPayment => "abono a intereses";
+  /// "Pago de ganancias"
+  @override
+  String get profitPaymentTitle => "Pago de ganancias";
+  /// "Historico de ganancias"
+  @override
+  String get profitPaymentHistory => "Historico de ganancias";
+  /// "Selecciona un socio"
+  @override
+  String get profitPaymentSelectPartner => "Selecciona un socio";
+  /// "Ganancias acumuladas"
+  @override
+  String get profitPaymentProfitRetained => "Ganancias acumuladas";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

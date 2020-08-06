@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/utils/errorHandler/error_handler.dart';
+import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';

@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/src/screens/utils/errorHandler/constans_error.dart';
+import 'package:bkapp_flutter/src/utils/errorHandler/constans_error.dart';
 import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 

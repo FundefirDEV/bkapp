@@ -40,14 +40,6 @@ void main() {
       expect(LoggedIn(token: token).toString(), 'LoggedIn { token: $token }');
     });
 
-    test('close does not emit new states', () {
-      expectLater(
-        authenticationBloc,
-        emitsInOrder([AuthenticationUninitialized(), emitsDone]),
-      );
-      authenticationBloc.close();
-    });
-
     test('Assert authentication should return an assertion error', () {
       expect(() =>
         AuthenticationBloc(
@@ -57,9 +49,9 @@ void main() {
       );
     });
 
-    blocTest(
+    blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the app is initialized from scratch',
-      build: () async => AuthenticationBloc(
+      build: () => AuthenticationBloc(
           loginRepository: loginRepository
       ),
       act: (bloc) async {
@@ -69,12 +61,12 @@ void main() {
       expect: [AuthenticationUnauthenticated()],
     );
 
-    blocTest(
+    blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the user is authenticated',
-      build: () async => AuthenticationBloc(
+      build: () => AuthenticationBloc(
           loginRepository: loginRepository
         ),
-      act: (bloc) async => bloc.add(LoggedIn(
+      act: (bloc) => bloc.add(LoggedIn(
         token: token
       )),
       expect: [
@@ -83,12 +75,12 @@ void main() {
       ],
     );
 
-    blocTest(
+    blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the user loggedOut from the app',
-      build: () async => AuthenticationBloc(
+      build: () => AuthenticationBloc(
           loginRepository: loginRepository
         ),
-      act: (bloc) async => bloc.add(LoggedOut()),
+      act: (bloc) => bloc.add(LoggedOut()),
       expect: [
         AuthenticationLoading(),
         AuthenticationUnauthenticated()

@@ -70,43 +70,7 @@ void main() {
 
     formBloc.onSubmitting();
     await tester.pumpAndSettle(Duration(seconds: 3));
-    expect(formBloc.state, isInstanceOf<FormBlocSuccess>());
-  });
-
-  testWidgets('The onSubmitting should be failure', (WidgetTester tester) async {
-    mockClient = MockClient((request) async {
-      final mapJson = {'message':'bad credentials'};
-      return http.Response(json.encode(mapJson),401);
-    });
-    apiProvider = ApiProvider(httpClient: mockClient);
-    mockLoginRepository = LoginRepository(
-      apiProvider: apiProvider
-    );
-
-    await tester.pumpWidget(widgetTester(mockLoginRepository));
-    await tester.pumpAndSettle();
-
-    // NOTE username
-    await tester.enterText(
-      find.byKey(Key('input-username')),
-      'email@gmail.com'
-    );
-
-    await tester.testTextInput.receiveAction(TextInputAction.done);
-    await tester.pump();
-
-    // NOTE password
-    await tester.enterText(
-      find.byKey(Key('input-password')),
-      'xxxx'
-    );
-
-    await tester.testTextInput.receiveAction(TextInputAction.done);
-    await tester.pump();
-
-    formBloc.onSubmitting();
-    await tester.pumpAndSettle(Duration(seconds: 3));
-    expect(formBloc.state, isInstanceOf<FormBlocFailure>());
+    expect(formBloc.state, isInstanceOf<FormBlocLoaded>());
   });
 
   tearDown(() {

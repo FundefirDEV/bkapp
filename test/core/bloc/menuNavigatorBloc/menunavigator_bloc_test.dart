@@ -20,14 +20,6 @@ void main() {
     expect(menuBloc.state, MenuNavigatorInitial());
   });
 
-  test('close does not emit new states', () {
-    expectLater(
-      menuBloc,
-      emitsInOrder([MenuNavigatorInitial(), emitsDone]),
-    );
-    menuBloc.close();
-  });
-
   test('test button pressed props', () {
     expect(ButtonPressed(goTo: 3).props, [3]);
   });
@@ -37,21 +29,19 @@ void main() {
   });
 
   group('test menu navigator button', () {
-    blocTest(
+    blocTest<MenuNavigatorBloc, MenuNavigatorState>(
       'test when the button is unpressed',
-      build: () async => menuBloc,
-      act: (bloc) async {
-        bloc.add(ButtonUnpressed());
-      },
-      expect: []
+      build: () => menuBloc,
+      act: (bloc) => bloc.add(ButtonUnpressed()),
+      expect: [MenuNavigatorInitial()]
     );
 
-    blocTest(
+    blocTest<MenuNavigatorBloc, MenuNavigatorState>(
       'test when the button is pressed',
-      build: () async => MenuNavigatorBloc(
+      build: () => MenuNavigatorBloc(
         controller: PageController(initialPage: 0)
       ),
-      act: (bloc) async => bloc.add(ButtonPressed(goTo: 4)),
+      act: (bloc) => bloc.add(ButtonPressed(goTo: 4)),
       expect: [
         MenuNavigatorLoading(),
         MenuNavigatorLoaded()

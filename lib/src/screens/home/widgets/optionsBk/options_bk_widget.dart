@@ -1,7 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/optionsBk/widgets/rotating_options_widget.dart';
-import 'package:bkapp_flutter/src/screens/utils/home_routes_constants.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';

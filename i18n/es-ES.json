@@ -359,5 +359,11 @@
     "creditsAwarded": "créditos otorgados",
     "capitalSubscription": "abono a capital",
     "interestPayment": "abono a intereses"
+  },
+  "profitPayment": {
+    "title": "Pago de ganancias",
+    "history": "Historico de ganancias",
+    "selectPartner": "Selecciona un socio",
+    "profitRetained": "Ganancias acumuladas"
   }
 }
