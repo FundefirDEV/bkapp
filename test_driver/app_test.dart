@@ -1,12 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
+import 'helpers.dart';
+
 void main() {
   FlutterDriver driver;
+  // driver.
 
   group('On boarding', () {
-    final inputUsername = find.byValueKey('input-username');
-    final inputPassword = find.byValueKey('input-password');
+    final inputUsername = findByKey('input-username');
+    final inputPassword = findByKey('input-password');
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
@@ -19,18 +24,20 @@ void main() {
     });
 
     test('Write username', () async {
-      await driver.tap(inputUsername);
-      await driver.enterText('usernametest');
-      await driver.waitFor(find.text('usernametest'));
-
-      expect(find.text('passwordtest'), isNotNull);
+      await type(inputUsername, 'prueba@gmail.com', driver);
+      // await driver.waitFor(find.text('prueba@gmail.com'));
+      // expect(find.text('prueba@gmail.com'), isNotNull);
     });
 
     test('Write password', () async {
-      await driver.tap(inputPassword);
-      await driver.enterText('passwordtest');
-      await driver.waitFor(find.text('passwordtest'));
-      expect(find.text('passwordtest'), isNotNull);
+      await type(inputPassword, '123456', driver);
+      // await driver.waitFor(find.text('123456'));
+      // expect(find.text('123456'), isNotNull);
+    });
+
+    test('login', () async {
+      await tap(findByKey('raisedButton-accept'), driver);
+      sleep(Duration(seconds: 10));
     });
   });
 }
