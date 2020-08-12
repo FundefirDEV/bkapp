@@ -76,4 +76,14 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL_MOCK;
     return "$baseUrl/v3/approvals";
   }
+
+  ///
+  /// Get information bk home
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String getInformationBkHome({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/bank-detail";
+  }
 }

@@ -12,26 +12,24 @@ Widget loginRouteBloc() {
       ),
       BlocProvider<LoginFormBloc>(
         create: (context) => LoginFormBloc(
-          repository: loginRepository,
-          authenticationBloc: context.bloc<AppBloc>().authenticationBloc
-        ),
+            repository: loginRepository,
+            authenticationBloc: context.bloc<AppBloc>().authenticationBloc),
       )
     ],
     child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      builder: (context, state) {
-        if (state is AuthenticationUninitialized) {
-          return SplashPage();
-        }
-        if (state is AuthenticationAuthenticated) {
-          return MenuNavigatorScreen();
-        }
-        if (state is AuthenticationUnauthenticated) {
-          return LoginScreen();
-        }
-        if (state is AuthenticationLoading) {
-          return LoadingIndicatorScreen();
-        }
+        builder: (context, state) {
+      if (state is AuthenticationUninitialized) {
+        return SplashPage();
       }
-    ),
+      if (state is AuthenticationAuthenticated) {
+        return MenuNavigatorScreen(tokenUser: state.token);
+      }
+      if (state is AuthenticationUnauthenticated) {
+        return LoginScreen();
+      }
+      if (state is AuthenticationLoading) {
+        return LoadingIndicatorScreen();
+      }
+    }),
   );
 }

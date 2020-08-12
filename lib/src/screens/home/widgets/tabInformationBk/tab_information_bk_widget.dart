@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/bloc/home/home_bloc.dart';
+import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/widgets/detail_group_data_bk_widget.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/widgets/detail_my_data_bk_widget.dart';
@@ -7,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TabInformationBkWidget extends StatefulWidget {
-  TabInformationBkWidget({Key key}) : super(key: key);
+  final HomeLoaded state;
+  TabInformationBkWidget({Key key, this.state}) : super(key: key);
 
   @override
   _TabInformationBkWidgetState createState() => _TabInformationBkWidgetState();
@@ -25,6 +28,9 @@ class _TabInformationBkWidgetState extends State<TabInformationBkWidget>
 
   @override
   Widget build(BuildContext context) {
+    Personal infoPersonalBk =
+        widget.state?.bkInformation?.personal ?? new Personal();
+    Group infoGroupBk = widget.state?.bkInformation?.group ?? new Group();
     return DefaultTabController(
       length: 2,
       child: Column(
@@ -57,9 +63,10 @@ class _TabInformationBkWidgetState extends State<TabInformationBkWidget>
           ),
           Container(
             height: 180,
-            child: TabBarView(
-                controller: _tabController,
-                children: [DetailMyDataBkWidget(), DetailGroupDataBkWidget()]),
+            child: TabBarView(controller: _tabController, children: [
+              DetailMyDataBkWidget(information: infoPersonalBk),
+              DetailGroupDataBkWidget(information: infoGroupBk)
+            ]),
           ),
         ],
       ),

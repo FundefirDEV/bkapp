@@ -16,7 +16,8 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'widgets/widgets.dart';
 
 class MenuNavigatorScreen extends StatefulWidget {
-  MenuNavigatorScreen({Key key}) : super(key: key);
+  MenuNavigatorScreen({Key key, this.tokenUser}) : super(key: key);
+  final String tokenUser;
   @override
   _MenuNavigatorState createState() => _MenuNavigatorState();
 }
@@ -82,14 +83,16 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   create: (context) => MenuNavigatorBloc(controller: _myPage)),
               BlocProvider(
                 create: (context) => context.bloc<AppBloc>().buySharesFormBloc,
-              )
+              ),
+              BlocProvider(
+                  create: (context) => context.bloc<AppBloc>().homeBloc)
             ],
             child: Stack(
               children: <Widget>[
                 PageView(
                   controller: _myPage,
                   children: <Widget>[
-                    HomeScreen(), // NOTE 0
+                    HomeScreen(tokenUser: widget.tokenUser), // NOTE 0
                     UtilsScreen(),
                     ProfileScreen(),
                     CreditScreen(oldIndex: currentIndex),

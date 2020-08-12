@@ -15,34 +15,38 @@ import '../../../base_tester.dart';
 
 void main() {
   group('Test home bk principal screen', () {
-    final key = Key('home-key');
-    Widget homeTester({key}) {
+    BlocProvider<MenuNavigatorBloc> menuNavigatorBlocProviderTest() {
       return BlocProvider(
-          create: (context) => MenuNavigatorBloc(controller: PageController()),
-          child: HomeScreen(key: key));
+          create: (context) =>
+              MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+          child: MenuNavigatorScreen());
     }
 
     testWidgets('Render home screen', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
-      expect(find.byKey(key), findsOneWidget);
+      expect(find.byType(HomeScreen), findsOneWidget);
     });
 
     testWidgets('Change custom Appbar wigdet', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byType(AppBarWidget), findsOneWidget);
     });
 
     testWidgets('Change tab information bk wigdet',
         (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byType(TabInformationBkWidget), findsOneWidget);
     });
 
     testWidgets('Change click tab GROUP BK', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byType(TabInformationBkWidget), findsOneWidget);
       await tester.pumpAndSettle(Duration(milliseconds: 100));
@@ -53,13 +57,15 @@ void main() {
 
     testWidgets('Render separator line wigdet', (WidgetTester tester) async {
       final lineSeparator = Key('line-separator');
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byKey(lineSeparator), findsOneWidget);
     });
 
     testWidgets('Change options bk wigdet', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: homeTester(key: key)));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byType(OptionsBkWidget), findsOneWidget);
     });
@@ -85,11 +91,8 @@ void main() {
 
     testWidgets('Click partners card MeetingClosed',
         (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+      await tester
+          .pumpWidget(baseTester(child: menuNavigatorBlocProviderTest()));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('home-bottom-bar-item')));

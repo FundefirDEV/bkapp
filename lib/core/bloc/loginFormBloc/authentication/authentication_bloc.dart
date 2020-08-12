@@ -9,13 +9,12 @@ part 'authentication_event.dart';
 part 'authentication_state.dart';
 
 class AuthenticationBloc
-  extends Bloc<AuthenticationEvent, AuthenticationState> {
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   final LoginRepository loginRepository;
 
-  AuthenticationBloc({
-    @required this.loginRepository
-  }) : assert(loginRepository != null),
-       super(AuthenticationUninitialized());
+  AuthenticationBloc({@required this.loginRepository})
+      : assert(loginRepository != null),
+        super(AuthenticationUninitialized());
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -27,7 +26,7 @@ class AuthenticationBloc
 
     if (event is LoggedIn) {
       yield AuthenticationLoading();
-      yield AuthenticationAuthenticated();
+      yield AuthenticationAuthenticated(token: event.token['access_token']);
     }
 
     if (event is LoggedOut) {
