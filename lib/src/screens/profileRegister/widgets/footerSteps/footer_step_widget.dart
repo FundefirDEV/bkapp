@@ -4,16 +4,18 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class FooterStepWidget extends StatelessWidget {
+  const FooterStepWidget({
+    Key key,
+    @required this.currentStep,
+    @required this.numberOfSteps,
+    @required this.isDisabled,
+    this.currentBlocSubmit
+  }) : super(key: key);
+  
   final int currentStep;
   final int numberOfSteps;
-  final currentBlocSubmit;
-
-  const FooterStepWidget(
-      {Key key,
-      @required this.currentStep,
-      @required this.numberOfSteps,
-      this.currentBlocSubmit})
-      : super(key: key);
+  final Function currentBlocSubmit;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,16 @@ class FooterStepWidget extends StatelessWidget {
         child: Row(children: <Widget>[
           Expanded(child: _stepContainer(context)),
           Expanded(
-              child: Container(
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.safeBlockVertical * 3,
-                      vertical: SizeConfig.safeBlockVertical * 6),
-                  child: ButtonNextWidget(onTap: this.currentBlocSubmit)))
+            child: Container(
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.safeBlockVertical * 3,
+                  vertical: SizeConfig.safeBlockVertical * 6),
+              child: isDisabled
+                ? Container()
+                : ButtonNextWidget(onTap: currentBlocSubmit),
+            )
+          )
         ]));
   }
 

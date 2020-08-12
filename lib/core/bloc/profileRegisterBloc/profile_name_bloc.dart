@@ -10,17 +10,7 @@ class ProfileNameBloc extends FormBloc<String, String> {
   }
 
   @override
-  void onSubmitting() async {
-    try {
-      print(firstName.value);
-      print(secondName.value);
-
-      await Future<void>.delayed(Duration(seconds: 1));
-      emitSuccess(canSubmitAgain: true);
-    } catch (e) {
-      emitFailure();
-    }
-  }
+  void onSubmitting() async {}
 
   Future<void> close() {
     firstName.close();

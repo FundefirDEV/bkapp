@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RegisterNameFormWidget extends StatelessWidget {
-  const RegisterNameFormWidget({Key key}) : super(key: key);
+  const RegisterNameFormWidget({Key key, this.isDiabled}) : super(key: key);
+
+  final Function isDiabled;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,14 @@ class RegisterNameFormWidget extends StatelessWidget {
               children: <Widget>[
                 TextFieldBlocBuilder(
                     textFieldBloc: profileRegisterBloc.nameBloc.firstName,
+                    onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
                         labelText: I18n.of(context).formFirstName,
                         prefixIcon: Icon(Icons.person))),
                 TextFieldBlocBuilder(
                     textFieldBloc: profileRegisterBloc.nameBloc.secondName,
+                    onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
                         labelText: I18n.of(context).formSecondName,

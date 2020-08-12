@@ -10,9 +10,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
 class RegisterPhoneFormWidget extends StatelessWidget {
-  final ItemCountry country;
+  const RegisterPhoneFormWidget({
+    Key key,
+    this.country,
+    @required this.isValidating
+  }) : super(key: key);
 
-  const RegisterPhoneFormWidget({Key key, this.country}) : super(key: key);
+  final ItemCountry country;
+  final Function isValidating;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +47,10 @@ class RegisterPhoneFormWidget extends StatelessWidget {
                 PhoneFormatter()
               ],
               errorBuilder: errorHandler,
+              onChanged: (value) {
+                isValidating(value);
+                return value;
+              },
               decoration:
                   InputDecoration(labelText: I18n.of(context).formPhone)),
         ),

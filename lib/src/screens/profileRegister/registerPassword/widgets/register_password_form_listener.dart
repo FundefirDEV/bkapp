@@ -8,10 +8,19 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/fo
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-class RegisterPasswordFormListenerWidget extends StatelessWidget {
+class RegisterPasswordFormListenerWidget extends StatefulWidget {
   final RegisterPasswordStepArgs data;
   const RegisterPasswordFormListenerWidget({Key key, this.data})
       : super(key: key);
+
+  @override
+  _RegisterPasswordFormListenerWidgetState createState() => _RegisterPasswordFormListenerWidgetState();
+}
+
+class _RegisterPasswordFormListenerWidgetState extends State<RegisterPasswordFormListenerWidget> {
+  bool isDisabled = true;
+  String confirmPassword = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,7 @@ class RegisterPasswordFormListenerWidget extends StatelessWidget {
         },
         onSuccess: (context, state) {
           Navigator.pushNamed(context, confirmInvitationBank,
-              arguments: ConfirmInvitationBankStepArgs(data.tag, data.image));
+              arguments: ConfirmInvitationBankStepArgs(widget.data.tag, widget.data.image));
         },
         child: _containerInfo(context));
   }
@@ -37,17 +46,44 @@ class RegisterPasswordFormListenerWidget extends StatelessWidget {
                 margin: EdgeInsets.only(top: 60),
                 child: SingleChildScrollView(
                   child: RegisterPasswordContainerWidget(
-                      tag: data.tag, image: data.image),
+                      tag: widget.data.tag,
+                      image: widget.data.image,
+                      isValidating: _isValidating,
+                      validateSecondPassword: _validateSecondPassword
+                  ),
                 ),
               )),
           FooterStepWidget(
               currentStep: 5,
               numberOfSteps: 5,
+              isDisabled: isDisabled,
               currentBlocSubmit: context
                   .bloc<AppBloc>()
                   .profileRegisterBloc
                   .passwordBloc
                   .submit)
         ]);
+  }
+
+  _changeState(bool validation) {
+    validation
+        ? setState(() => isDisabled = false)
+        : setState(() => isDisabled = true);
+  }
+
+  _validateSecondPassword(String value) {
+    setState(() => password = value);
+    _changeState(
+      confirmPassword.length > 5 &&
+      value == confirmPassword
+    );
+  }
+
+  _isValidating(String value) {
+    setState(() => confirmPassword = value);
+    _changeState(
+      value.length > 5 &&
+      value == password
+    );
   }
 }

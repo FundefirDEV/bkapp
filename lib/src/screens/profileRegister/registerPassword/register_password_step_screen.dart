@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/widgets/register_password_form_listener.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -15,6 +16,8 @@ class RegisterPasswordStepScreen extends StatefulWidget {
 
 class _RegisterPasswordStepScreenState
     extends State<RegisterPasswordStepScreen> {
+  Offset position =Offset(40.0, 40.0);
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -24,7 +27,19 @@ class _RegisterPasswordStepScreenState
       child: Builder(builder: (context) {
         return Material(
             child: SafeArea(
-                child: RegisterPasswordFormListenerWidget(data: widget.data)));
+                child: Stack(
+                  children: <Widget>[
+                    RegisterPasswordFormListenerWidget(data: widget.data),
+                    MenuRequests(
+                      position: position,
+                      onDragEnd: (details) {
+                        setState(() => position = details.offset);
+                      }
+                    )
+                  ],
+                )
+            )
+        );
       }),
     );
   }

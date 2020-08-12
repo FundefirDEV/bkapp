@@ -8,14 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class RegisterEmailContainerWidget extends StatelessWidget {
-  final String tag;
-  final String image;
-
   const RegisterEmailContainerWidget({
     Key key,
     this.tag,
-    this.image
+    this.image,
+    @required this.isValidating
   }) : super(key: key);
+
+  final String tag;
+  final String image;
+  final Function isValidating;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class RegisterEmailContainerWidget extends StatelessWidget {
             vertical: SizeConfig.safeBlockVertical * 2,
           ),
           child: Column(children: <Widget>[
-            RegisterEmailFormWidget()
+            RegisterEmailFormWidget(isValidating: isValidating)
           ])
         )
       ],

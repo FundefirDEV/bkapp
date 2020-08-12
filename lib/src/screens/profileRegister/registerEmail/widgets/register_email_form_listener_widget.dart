@@ -1,5 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_email_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/register_email_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/widgets/register_email_container_widget.dart';
@@ -9,36 +8,49 @@ import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-class RegisterEmailFormListenerWidget extends StatelessWidget {
+class RegisterEmailFormListenerWidget extends StatefulWidget {
   final RegisterEmailStepArgs data;
   const RegisterEmailFormListenerWidget({Key key, this.data}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return FormBlocListener<ProfileEmailBloc, String, String>(
-        onSuccess: (context, state) {
-          Navigator.pushNamed(context, registerPhoneUser,
-              arguments: RegisterPhoneStepArgs(data.tag, data.image));
-        },
-        child: _containerInfo(context));
-  }
+  _RegisterEmailFormListenerWidgetState createState() => _RegisterEmailFormListenerWidgetState();
+}
 
-  Widget _containerInfo(BuildContext context) {
+class _RegisterEmailFormListenerWidgetState
+  extends State<RegisterEmailFormListenerWidget> {
+  bool isDisabled = true;
+  @override
+  Widget build(BuildContext context) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           ButtonBackWidget(),
           Expanded(
-              flex: 2,
-              child: SingleChildScrollView(
-                child: RegisterEmailContainerWidget(
-                    tag: data.tag, image: data.image),
-              )),
+            flex: 2,
+            child: SingleChildScrollView(
+              child: RegisterEmailContainerWidget(
+                tag: widget.data.tag,
+                image: widget.data.image,
+                isValidating: _isValidating,
+              ),
+            )
+          ),
           FooterStepWidget(
-              currentStep: 2,
-              numberOfSteps: 5,
-              currentBlocSubmit:
-                  context.bloc<AppBloc>().profileRegisterBloc.emailBloc.submit)
+            currentStep: 2,
+            numberOfSteps: 5,
+            isDisabled: isDisabled,
+            currentBlocSubmit: () {
+              Navigator.pushNamed(context, registerPhoneUser,
+              arguments: RegisterPhoneStepArgs(widget.data.tag, widget.data.image));
+            }
+          )
         ]);
+  }
+
+  _isValidating(ProfileEmailBloc emailBloc) {
+    FieldBlocValidators.email(emailBloc.email.value) == null &&
+    emailBloc.email.value.length > 5
+      ? setState(() => isDisabled = false)
+      : setState(() => isDisabled = true);
   }
 }

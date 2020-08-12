@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterNameContainerWidget extends StatelessWidget {
+  const RegisterNameContainerWidget({
+    Key key,
+    this.tag,
+    this.image,
+    this.isDiabled
+  }) : super(key: key);
+
   final String tag;
   final String image;
-
-  const RegisterNameContainerWidget({Key key, this.tag, this.image})
-      : super(key: key);
+  final Function isDiabled;
       
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class RegisterNameContainerWidget extends StatelessWidget {
             tag: this.tag,
           ),
         ),
-        Container(child: RegisterNameFormWidget())
+        Container(child: RegisterNameFormWidget(isDiabled: isDiabled,))
       ]),
     );
   }

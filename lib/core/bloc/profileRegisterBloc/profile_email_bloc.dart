@@ -12,16 +12,7 @@ class ProfileEmailBloc extends FormBloc<String, String> {
   }
 
   @override
-  void onSubmitting() async {
-    try {
-      print(email.value);
-
-      await Future<void>.delayed(Duration(seconds: 1));
-      emitSuccess(canSubmitAgain: true);
-    } catch (e) {
-      emitFailure();
-    }
-  }
+  void onSubmitting() async {}
 
   Future<void> close() {
     email?.close();

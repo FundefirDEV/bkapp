@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RegisterEmailFormWidget extends StatelessWidget {
-  const RegisterEmailFormWidget({Key key}) : super(key: key);
+  const RegisterEmailFormWidget({
+    Key key,
+    this.isValidating
+  }) : super(key: key);
+
+  final Function isValidating;
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +23,12 @@ class RegisterEmailFormWidget extends StatelessWidget {
               vertical: SizeConfig.safeBlockVertical * 5,
               horizontal: SizeConfig.safeBlockHorizontal * 6),
           child: TextFieldBlocBuilder(
-              textFieldBloc: profile.emailBloc.email,
-              errorBuilder: errorHandler,
-              decoration:
-                  InputDecoration(labelText: I18n.of(context).formEmail))),
+            key: Key('text-field-email-profile-register'),
+            textFieldBloc: profile.emailBloc.email,
+            errorBuilder: errorHandler,
+            onChanged: (value) => isValidating(profile.emailBloc),
+            decoration:
+                InputDecoration(labelText: I18n.of(context).formEmail))),
     );
   }
 }

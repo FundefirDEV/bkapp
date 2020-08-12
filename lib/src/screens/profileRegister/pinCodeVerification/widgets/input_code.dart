@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,14 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class InputCode extends StatefulWidget {
-  InputCode();
+  InputCode({
+    Key key,
+    @required this.tag,
+    @required this.image
+  }) : super(key: key);
+
+  final String tag;
+  final String image;
 
   @override
   _InputCodeState createState() => _InputCodeState();
@@ -90,12 +99,20 @@ class _InputCodeState extends State<InputCode> {
                     enableActiveFill: true,
                     errorAnimationController: errorController,
                     controller: textEditingController,
-                    onCompleted: (v) {
-                      registerBloc.pinCodeBloc.email
-                          .updateValue(registerBloc.emailBloc.email.value);
-                      registerBloc.pinCodeBloc.phone
-                          .updateValue(registerBloc.phoneBloc.phone.value);
-                      registerBloc.pinCodeBloc.submit();
+                    onCompleted: (v) async {
+                      var request = await registerBloc.pinCodeBloc.makeSubmit(
+                        email: registerBloc.emailBloc.email.value,
+                        phone: registerBloc.phoneBloc.phone.value
+                      );
+                      if (request != 'error')
+                        Navigator.pushNamed(
+                          context,
+                          registerPasswordUser,
+                          arguments: RegisterPasswordStepArgs(
+                            widget.tag,
+                            widget.image
+                          )
+                        );
                     },
                     onChanged: (value) {
                       registerBloc.pinCodeBloc.pincode.updateValue(value);

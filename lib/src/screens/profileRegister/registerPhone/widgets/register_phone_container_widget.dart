@@ -10,14 +10,20 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RegisterPhoneContainerWidget extends StatelessWidget {
+  const RegisterPhoneContainerWidget({
+    Key key,
+    @required this.tag,
+    @required this.image,
+    this.country,
+    this.openModalCountry,
+    @required this.isValidating
+  }) : super(key: key);
+  
   final String tag;
   final String image;
   final ItemCountry country;
   final Function openModalCountry;
-
-  const RegisterPhoneContainerWidget(
-      {Key key, this.tag, this.image, this.country, this.openModalCountry})
-      : super(key: key);
+  final Function isValidating;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +41,10 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
               Material(
                 child: InkWell(
                   key: Key('inkell-register-phone-container'),
-                  child: RegisterPhoneFormWidget(country: country),
+                  child: RegisterPhoneFormWidget(
+                    country: country,
+                    isValidating: isValidating,
+                  ),
                   onTap: this.openModalCountry,
                 ),
               ),
@@ -51,7 +60,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: SizeConfig.safeBlockHorizontal * 4,
                                 letterSpacing: 1,
-                                fontWeight: FontWeight.w200,
+                                fontWeight: FontWeight.w300,
                                 color: Colors.black54,
                               ),
                               children: <TextSpan>[
@@ -64,7 +73,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: SizeConfig.safeBlockHorizontal * 4,
                                   letterSpacing: 1,
-                                  fontWeight: FontWeight.w200,
+                                  fontWeight: FontWeight.w300,
                                   color: Colors.black54,
                                 ))
                           ])),
@@ -74,7 +83,7 @@ class RegisterPhoneContainerWidget extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: SizeConfig.safeBlockHorizontal * 4,
                                 letterSpacing: 1,
-                                fontWeight: FontWeight.w200,
+                                fontWeight: FontWeight.w300,
                                 color: Colors.black54,
                               ),
                               children: <TextSpan>[

@@ -18,7 +18,10 @@ class UserDataHeaderInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Column(
-      children: <Widget>[_headerContainer(context), InputCode()],
+      children: <Widget>[
+        _headerContainer(context),
+        InputCode(image: image, tag: tag,)
+      ],
     );
   }
 
