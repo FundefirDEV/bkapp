@@ -8,7 +8,7 @@ void main() {
   FlutterDriver driver;
   // driver.
 
-  group('Login process', () {
+  group('Login process - validate home elements', () {
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
@@ -19,14 +19,13 @@ void main() {
       }
     });
 
-    test('login form', () async {
+    test('Validate tab my group bk', () async {
       await loginProcess(driver);
+      await tap(findByKey('tab-group-bk'), driver);
+      await driver.waitFor(findByKey('tab-group-bk'));
+
       expect(await driver.getText(findByKey('tab-my-bk-title')), 'MY DATA');
       expect(await driver.getText(findByKey('tab-group-bk-title')), 'GROUP BK');
-    });
-
-    test('Validate tab my group bk', () async {
-      await tap(findByKey('tab-group-bk'), driver);
       expect(await driver.getText(findByKey('group-bk-title-cashbalance')),
           'CASH BALANCE');
       expect(
