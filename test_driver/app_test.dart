@@ -1,18 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 import 'helpers.dart';
+import 'utils/index.dart';
 
 void main() {
   FlutterDriver driver;
   // driver.
 
-  group('On boarding', () {
-    final inputUsername = findByKey('input-username');
-    final inputPassword = findByKey('input-password');
-
+  group('Login process', () {
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
@@ -23,21 +19,20 @@ void main() {
       }
     });
 
-    test('Write username', () async {
-      await type(inputUsername, 'prueba@gmail.com', driver);
-      // await driver.waitFor(find.text('prueba@gmail.com'));
-      // expect(find.text('prueba@gmail.com'), isNotNull);
+    test('login form', () async {
+      await loginProcess(driver);
+      expect(await driver.getText(findByKey('tab-my-bk-title')), 'MY DATA');
+      expect(await driver.getText(findByKey('tab-group-bk-title')), 'GROUP BK');
     });
 
-    test('Write password', () async {
-      await type(inputPassword, '123456', driver);
-      // await driver.waitFor(find.text('123456'));
-      // expect(find.text('123456'), isNotNull);
-    });
-
-    test('login', () async {
-      await tap(findByKey('raisedButton-accept'), driver);
-      sleep(Duration(seconds: 10));
+    test('Validate tab my group bk', () async {
+      await tap(findByKey('tab-group-bk'), driver);
+      expect(await driver.getText(findByKey('group-bk-title-cashbalance')),
+          'CASH BALANCE');
+      expect(
+          await driver.getText(findByKey('group-bk-title-shares')), 'SHARES');
+      expect(await driver.getText(findByKey('group-bk-title-creditsgranted')),
+          'CREDITS GRANTED');
     });
   });
 }

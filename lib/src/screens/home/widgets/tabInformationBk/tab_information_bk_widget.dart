@@ -52,11 +52,13 @@ class _TabInformationBkWidgetState extends State<TabInformationBkWidget>
                   Tab(
                     key: Key('tab-my-bk'),
                     child: Text(I18n.of(context).homeScreenMyData,
+                        key: Key('tab-my-bk-title'),
                         style: TextStyle(height: 1.5)),
                   ),
                   Tab(
                     key: Key('tab-group-bk'),
                     child: Text(I18n.of(context).homeScreenGroupBk,
+                        key: Key('tab-group-bk-title'),
                         style: TextStyle(height: 1.5)),
                   ),
                 ]),

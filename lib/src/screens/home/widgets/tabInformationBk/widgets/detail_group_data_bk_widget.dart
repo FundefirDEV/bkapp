@@ -34,6 +34,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               I18n.of(context).homeScreenBox,
+                              key: Key('group-bk-title-cashbalance'),
                               style: TextStyle(
                                   letterSpacing: 1.5,
                                   fontWeight: FontWeight.w800,
@@ -41,6 +42,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                                       Theme.of(context).colorScheme.grayColor),
                             ),
                             Text(information.cashBalance,
+                                key: Key('group-bk-value-cashbalance'),
                                 style: TextStyle(
                                     letterSpacing: 1.5,
                                     fontSize: 24,
@@ -99,6 +101,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(I18n.of(context).homeScreenShares,
+                              key: Key('group-bk-title-shares'),
                               style: TextStyle(
                                 letterSpacing: 2,
                                 fontSize: 13,
@@ -127,6 +130,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Text(I18n.of(context).homeScreenBorrowed,
+                              key: Key('group-bk-title-creditsgranted'),
                               style: TextStyle(
                                 fontSize: 13,
                                 letterSpacing: 1.5,

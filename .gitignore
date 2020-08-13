@@ -20,7 +20,7 @@
 .classpath
 .project
 .settings/
-.vscode/
+# .vscode/
 
 # Flutter repo-specific
 /bin/cache/
@@ -117,3 +117,5 @@ app.*.symbols
 lib/generated_plugin_registrant.dart
 
 
+ios/Podfile.lock
+ios/Flutter/.last_build_id

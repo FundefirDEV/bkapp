@@ -10,7 +10,6 @@ QA: [![Codemagic build status QA](https://api.codemagic.io/apps/5f03816ef9cfa600
 
 Stage: [![Codemagic build Stage](https://api.codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f064b18d9ccd53cdbc2002a/status_badge.svg)](https://codemagic.io/apps/5f03816ef9cfa6000e6d3b49/5f064b18d9ccd53cdbc2002a/latest_build)
 
-
 ### Cloning
 
 ```sh
@@ -41,13 +40,14 @@ With `fd` commands, run `fd_console project` for view the different options and 
 
 In your PR, you can to add a label
 
-`release:patch`  this is used by deploy bugs.
+`release:patch` this is used by deploy bugs.
 
-`release:patch`  this is used by minor versions.
+`release:patch` this is used by minor versions.
 
-`release:major`  this is used by major versions.
+`release:major` this is used by major versions.
 
 ### Running coverage
+
 ```
 fd_console project coverage
 ```
@@ -105,4 +105,11 @@ If you need to add a new env var, you should be to add in the file `lib/environm
 
 ```
 flutter run --dart-define=SOME_VAR=SOME_VALUE
+```
+
+### Icons
+
+```
+flutter packages pub run flutter_launcher_icons:main
+flutter pub run flutter_launcher_name:main
 ```
