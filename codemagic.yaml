@@ -101,7 +101,7 @@ workflows:
           include: true
           source: true
     scripts:
-      - flutter emulators --launch apple_ios_simulator
+      # - flutter emulators --launch apple_ios_simulator
       - |
         # set up key.properties
         echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
@@ -119,7 +119,7 @@ workflows:
         set -e # exit on first failed commandset
         echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
       - cd . && flutter packages pub get
-      - "cd . && flutter drive --target=test_driver/app.dart "
+      # - "cd . && flutter drive --target=test_driver/app.dart "
       - cd . && flutter build apk --release --split-per-abi --dart-define=API_URL=$API_URL
         --dart-define=ENV=$ENV
       - find . -name "Podfile" -execdir pod install \;
@@ -170,7 +170,7 @@ workflows:
           include: true
           source: true
     scripts:
-      - flutter emulators --launch apple_ios_simulator
+      # - flutter emulators --launch apple_ios_simulator
       - |
         # set up key.properties
         echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
@@ -188,7 +188,7 @@ workflows:
         set -e # exit on first failed commandset
         echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
       - cd . && flutter packages pub get
-      - "cd . && flutter drive --target=test_driver/app.dart "
+      # - "cd . && flutter drive --target=test_driver/app.dart "
       - cd . && flutter build apk --release --split-per-abi --dart-define=API_URL=$API_URL
         --dart-define=ENV=$ENV
       - find . -name "Podfile" -execdir pod install \;
