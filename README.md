@@ -107,9 +107,19 @@ If you need to add a new env var, you should be to add in the file `lib/environm
 flutter run --dart-define=SOME_VAR=SOME_VALUE
 ```
 
-### Icons
+### Icons and name
 
 ```
 flutter packages pub run flutter_launcher_icons:main
 flutter pub run flutter_launcher_name:main
+```
+
+### e2e
+
+Your AWS user with AWS farm devices permissions, and use `region = us-west-2`
+
+```
+pub global activate sylph
+sylph config
+sylph --devices=all
 ```
