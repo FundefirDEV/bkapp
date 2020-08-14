@@ -86,4 +86,14 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/bank-detail";
   }
+
+  ///
+  /// Post register user
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String postRegisterUser({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/register";
+  }
 }

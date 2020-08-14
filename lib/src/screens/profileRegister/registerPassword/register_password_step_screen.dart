@@ -16,30 +16,26 @@ class RegisterPasswordStepScreen extends StatefulWidget {
 
 class _RegisterPasswordStepScreenState
     extends State<RegisterPasswordStepScreen> {
-  Offset position =Offset(40.0, 40.0);
+  Offset position = Offset(40.0, 40.0);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return BlocProvider(
-      create: (context) =>
-          context.bloc<AppBloc>().profileRegisterBloc.passwordBloc,
+      create: (context) => context.bloc<AppBloc>().profileRegisterBloc,
       child: Builder(builder: (context) {
         return Material(
             child: SafeArea(
                 child: Stack(
-                  children: <Widget>[
-                    RegisterPasswordFormListenerWidget(data: widget.data),
-                    MenuRequests(
-                      position: position,
-                      onDragEnd: (details) {
-                        setState(() => position = details.offset);
-                      }
-                    )
-                  ],
-                )
-            )
-        );
+          children: <Widget>[
+            RegisterPasswordFormListenerWidget(data: widget.data),
+            MenuRequests(
+                position: position,
+                onDragEnd: (details) {
+                  setState(() => position = details.offset);
+                })
+          ],
+        )));
       }),
     );
   }

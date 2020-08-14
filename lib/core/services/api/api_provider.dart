@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
@@ -10,6 +11,7 @@ class ApiProvider {
 
   ApiProvider({@required this.httpClient}) : assert(httpClient != null);
 
+// Request: POST
   Future<Map<String, dynamic>> getTokenLogin(
       String username, String password) async {
     final loginUrl = ApiEndpoints.login();
@@ -40,6 +42,24 @@ class ApiProvider {
     return validationCodeConfirmResponse;
   }
 
+  Future<Map<String, dynamic>> postRegisterUser(PartnerModel data) async {
+    final postRegisterUser = ApiEndpoints.postRegisterUser();
+    final validationCodeConfirmResponse = await _httpRequest
+        .post(httpClient: httpClient, url: postRegisterUser, body: {
+      "firstname": data.firstname,
+      "lastname": data.lastname,
+      "gender": data.gender,
+      "country": data.country,
+      "phone": data.phone,
+      "email": data.email,
+      "validationCode": data.validationCode,
+      "password": data.password,
+      "passwordConfirmation": data.passwordConfirmation
+    });
+    return validationCodeConfirmResponse;
+  }
+
+  // Request: GET
   Future<Map<String, dynamic>> getApprovals() async {
     final getApprovals = ApiEndpoints.getApprovals();
     return await _httpRequest.get(httpClient: httpClient, url: getApprovals);

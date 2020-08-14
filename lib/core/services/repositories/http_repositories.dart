@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/home_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
 import 'package:http/http.dart' as http;
 
 import 'repositories.dart';
@@ -21,3 +22,6 @@ final ApprovalsRepository approvalsRepository =
 
 final HomeRepository homeRepository =
     HomeRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final ProfileRegisterRepository profileRegisterRepository =
+    ProfileRegisterRepository(apiProvider: ApiProvider(httpClient: httpClient));

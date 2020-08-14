@@ -7,7 +7,6 @@ export 'loginFormBloc/authentication/authentication_bloc.dart';
 export 'profileRegisterBloc/profile_name_bloc.dart';
 export 'profileRegisterBloc/profile_email_bloc.dart';
 export 'profileRegisterBloc/profile_phone_bloc.dart';
-export 'profileRegisterBloc/profile_password_bloc.dart';
 export 'profileRegisterBloc/profile_pin_code_verification_bloc.dart';
 export 'bankRegisterBloc/select_city_bloc.dart';
 export 'profileEdition/profile_edit_form_Bloc.dart';

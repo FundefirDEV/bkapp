@@ -10,15 +10,15 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RegisterPhoneContainerWidget extends StatelessWidget {
-  const RegisterPhoneContainerWidget({
-    Key key,
-    @required this.tag,
-    @required this.image,
-    this.country,
-    this.openModalCountry,
-    @required this.isValidating
-  }) : super(key: key);
-  
+  const RegisterPhoneContainerWidget(
+      {Key key,
+      @required this.tag,
+      @required this.image,
+      this.country,
+      this.openModalCountry,
+      @required this.isValidating})
+      : super(key: key);
+
   final String tag;
   final String image;
   final ItemCountry country;

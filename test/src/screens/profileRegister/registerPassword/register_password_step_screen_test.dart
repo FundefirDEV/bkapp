@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_password_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/widgets/register_password_form_listener.dart';
@@ -13,11 +13,12 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterPassword extends MockBloc<
-    form_bloc.FormBlocState<String, String>> implements ProfilePasswordBloc {}
+class MockRegisterPassword
+    extends MockBloc<form_bloc.FormBlocState<String, String>>
+    implements ProfileRegisterBloc {}
 
 void main() {
-  ProfilePasswordBloc mockRegisterPassword;
+  ProfileRegisterBloc mockRegisterPassword;
 
   setUp(() {
     mockRegisterPassword = MockRegisterPassword();

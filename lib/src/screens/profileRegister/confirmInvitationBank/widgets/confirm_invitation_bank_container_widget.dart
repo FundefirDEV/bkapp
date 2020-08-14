@@ -45,7 +45,8 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
     );
   }
 
-  Container _headerContainer(BuildContext context, ProfileRegisterBloc profile) {
+  Container _headerContainer(
+      BuildContext context, ProfileRegisterBloc profile) {
     return Container(
       margin:
           EdgeInsets.symmetric(vertical: SizeConfig.safeBlockHorizontal * 8),
@@ -76,40 +77,29 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
         padding: EdgeInsets.only(right: SizeConfig.safeBlockHorizontal * 10),
         child: Column(children: <Widget>[
           Container(
-            alignment: Alignment.topLeft,
-            child: Text(
-              '$firstName $lastName',
-              style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 6,
-                fontWeight: FontWeight.w700,
-                color: Theme.of(context).colorScheme.grayColor
-              )
-            )
-          ),
+              alignment: Alignment.topLeft,
+              child: Text('$firstName $lastName',
+                  style: TextStyle(
+                      fontSize: SizeConfig.safeBlockHorizontal * 6,
+                      fontWeight: FontWeight.w700,
+                      color: Theme.of(context).colorScheme.grayColor))),
           Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.symmetric(
-                vertical: SizeConfig.safeBlockVertical * 0.5),
-            child: Text(
-              '${profile.emailBloc.email.value}',
-              style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 4,
-                  fontWeight: FontWeight.w200,
-                  color: Theme.of(context).colorScheme.grayColor
-                )
-            )
-          ),
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.symmetric(
+                  vertical: SizeConfig.safeBlockVertical * 0.5),
+              child: Text('${profile.emailBloc.email.value}',
+                  style: TextStyle(
+                      fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      fontWeight: FontWeight.w200,
+                      color: Theme.of(context).colorScheme.grayColor))),
           Container(
-            alignment: Alignment.topLeft,
-            child: Text(
-              '${profile.phoneBloc.phone.value}',
-              style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                fontWeight: FontWeight.w200,
-                color: Theme.of(context).colorScheme.grayColor,
-              )
-            )
-          ),
+              alignment: Alignment.topLeft,
+              child: Text('${profile.phoneBloc.phone.value}',
+                  style: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 4,
+                    fontWeight: FontWeight.w200,
+                    color: Theme.of(context).colorScheme.grayColor,
+                  ))),
           Container(
               alignment: Alignment.topLeft,
               margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 1),

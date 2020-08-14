@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_phone_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
@@ -10,7 +9,6 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarouse
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +27,7 @@ class _RegistePhoneFormListenerWidgetState
     extends State<RegisterPhoneFormListenerWidget>
     with AfterLayoutMixin<RegisterPhoneFormListenerWidget> {
   ItemCountry country = ItemCountry(
-    image: 'assets/images/colombia.svg',
-    phoneCode: '+57',
-    name: 'Colombia'
-  );
+      image: 'assets/images/colombia.svg', phoneCode: '+57', name: 'Colombia');
   bool isDisabled = true;
 
   @override
@@ -40,28 +35,28 @@ class _RegistePhoneFormListenerWidgetState
     // ignore:close_sinks
     var registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        ButtonBackWidget(),
-        Expanded(
-          flex: 2,
-          child: SingleChildScrollView(
-            child: RegisterPhoneContainerWidget(
-              key: Key('register-phone-container'),
-              tag: widget.data.tag,
-              image: widget.data.image,
-              country: country,
-              isValidating: _isValidating,
-              openModalCountry: () => showDialog(context),
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          ButtonBackWidget(),
+          Expanded(
+            flex: 2,
+            child: SingleChildScrollView(
+              child: RegisterPhoneContainerWidget(
+                key: Key('register-phone-container'),
+                tag: widget.data.tag,
+                image: widget.data.image,
+                country: country,
+                isValidating: _isValidating,
+                openModalCountry: () => showDialog(context),
+              ),
             ),
           ),
-        ),
-        FooterStepWidget(
-            currentStep: 3,
-            numberOfSteps: 5,
-            isDisabled: isDisabled,
-            currentBlocSubmit: () => nextWidgetTap(registerBloc))
-      ]);
+          FooterStepWidget(
+              currentStep: 3,
+              numberOfSteps: 5,
+              isDisabled: isDisabled,
+              currentBlocSubmit: () => nextWidgetTap(registerBloc))
+        ]);
   }
 
   @override
@@ -75,19 +70,15 @@ class _RegistePhoneFormListenerWidgetState
 
     registerBloc.phoneBloc.submit();
 
-    Navigator.pushNamed(
-      context,
-      registerpinCodeVerification,
-      arguments: RegisterPinCodeScreenStepArgs(
-        widget.data.tag, widget.data.image
-      )
-    );
+    Navigator.pushNamed(context, registerpinCodeVerification,
+        arguments:
+            RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
   }
 
   _isValidating(String phoneBloc) {
     phoneBloc.length > 13
-      ? setState(() => isDisabled = false)
-      : setState(() => isDisabled = true);
+        ? setState(() => isDisabled = false)
+        : setState(() => isDisabled = true);
   }
 
   _receiveCountry(ItemCountry data) {

@@ -18,19 +18,15 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return FormBlocListener<ProfileRegisterBloc, String, String>(
-        onSuccess: (context, state) {
-          Navigator.pushNamed(context, selectAddressRoute);
-        },
-        child: Column(children: <Widget>[
-          HeaderContent(
-            width: SizeConfig.safeBlockHorizontal * 60,
-            firstText: I18n.of(context).confimInvitationBankTitleOne,
-            secondText: I18n.of(context).confimInvitationBankTitleTwo,
-            subtitle: I18n.of(context).confimInvitationBankSubtitle,
-          ),
-          Expanded(child: _containerInfo(context))
-        ]));
+    return Column(children: <Widget>[
+      HeaderContent(
+        width: SizeConfig.safeBlockHorizontal * 60,
+        firstText: I18n.of(context).confimInvitationBankTitleOne,
+        secondText: I18n.of(context).confimInvitationBankTitleTwo,
+        subtitle: I18n.of(context).confimInvitationBankSubtitle,
+      ),
+      Expanded(child: _containerInfo(context))
+    ]);
   }
 
   Widget _containerInfo(BuildContext context) {
@@ -51,8 +47,8 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
                       vertical: SizeConfig.safeBlockVertical * 5),
                   child: ButtonNextWidget(
                       key: Key('btn-rigth-confirm-invitation-bank'),
-                      onTap:
-                          context.bloc<AppBloc>().profileRegisterBloc.submit)))
+                      onTap: () =>
+                          Navigator.pushNamed(context, selectAddressRoute))))
         ]);
   }
 }

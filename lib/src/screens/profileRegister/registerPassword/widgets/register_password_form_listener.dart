@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_password_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
@@ -14,23 +14,26 @@ class RegisterPasswordFormListenerWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  _RegisterPasswordFormListenerWidgetState createState() => _RegisterPasswordFormListenerWidgetState();
+  _RegisterPasswordFormListenerWidgetState createState() =>
+      _RegisterPasswordFormListenerWidgetState();
 }
 
-class _RegisterPasswordFormListenerWidgetState extends State<RegisterPasswordFormListenerWidget> {
+class _RegisterPasswordFormListenerWidgetState
+    extends State<RegisterPasswordFormListenerWidget> {
   bool isDisabled = true;
   String confirmPassword = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
-    return FormBlocListener<ProfilePasswordBloc, String, String>(
+    return FormBlocListener<ProfileRegisterBloc, String, String>(
         onSubmitting: (context, state) {
           CircularProgressIndicator();
         },
         onSuccess: (context, state) {
           Navigator.pushNamed(context, confirmInvitationBank,
-              arguments: ConfirmInvitationBankStepArgs(widget.data.tag, widget.data.image));
+              arguments: ConfirmInvitationBankStepArgs(
+                  widget.data.tag, widget.data.image));
         },
         child: _containerInfo(context));
   }
@@ -49,19 +52,15 @@ class _RegisterPasswordFormListenerWidgetState extends State<RegisterPasswordFor
                       tag: widget.data.tag,
                       image: widget.data.image,
                       isValidating: _isValidating,
-                      validateSecondPassword: _validateSecondPassword
-                  ),
+                      validateSecondPassword: _validateSecondPassword),
                 ),
               )),
           FooterStepWidget(
               currentStep: 5,
               numberOfSteps: 5,
               isDisabled: isDisabled,
-              currentBlocSubmit: context
-                  .bloc<AppBloc>()
-                  .profileRegisterBloc
-                  .passwordBloc
-                  .submit)
+              currentBlocSubmit:
+                  context.bloc<AppBloc>().profileRegisterBloc.submit)
         ]);
   }
 
@@ -73,17 +72,11 @@ class _RegisterPasswordFormListenerWidgetState extends State<RegisterPasswordFor
 
   _validateSecondPassword(String value) {
     setState(() => password = value);
-    _changeState(
-      confirmPassword.length > 5 &&
-      value == confirmPassword
-    );
+    _changeState(confirmPassword.length > 5 && value == confirmPassword);
   }
 
   _isValidating(String value) {
     setState(() => confirmPassword = value);
-    _changeState(
-      value.length > 5 &&
-      value == password
-    );
+    _changeState(value.length > 5 && value == password);
   }
 }

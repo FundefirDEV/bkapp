@@ -1,12 +1,12 @@
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_password_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:test/test.dart';
 
 void main() {
-  ProfilePasswordBloc passwordBloc;
+  ProfileRegisterBloc passwordBloc;
 
   setUp(() {
-    passwordBloc = ProfilePasswordBloc();
+    passwordBloc = ProfileRegisterBloc();
   });
 
   test('Test name bloc', () {
@@ -18,4 +18,3 @@ void main() {
     passwordBloc?.close();
   });
 }
-
