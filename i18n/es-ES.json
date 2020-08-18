@@ -13,6 +13,9 @@
     "add": "AGREGAR",
     "search": "Buscar"
   },
+  "requestError": {
+    "userNotAvailable": "El usuario ya esta en otro bkgrupo"
+  },
   "form": {
     "user": "Usuario",
     "password": "Clave",

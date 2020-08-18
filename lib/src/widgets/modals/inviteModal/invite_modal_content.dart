@@ -1,5 +1,3 @@
-import 'package:bkapp_flutter/core/models/partner_model.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +37,6 @@ class InviteModalContent {
       height: SizeConfig.blockSizeVertical * 6,
       decoration: BoxDecoration(
           color: Colors.yellow[700],
-          border: Border.all(width: 0),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(17), topRight: Radius.circular(17))),
       child: Row(children: <Widget>[
@@ -58,13 +55,10 @@ class InviteModalContent {
     );
   }
 
-  Widget closeContainer(BuildContext context, Function onSave) {
+  Widget closeContainer(BuildContext context) {
     return FlatButton(
       key: Key('close_button_invite_modal'),
-      onPressed: () {
-        Navigator.pop(context);
-        onSave();
-      },
+      onPressed: () => Navigator.pop(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

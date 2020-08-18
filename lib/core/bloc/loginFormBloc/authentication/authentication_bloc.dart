@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';

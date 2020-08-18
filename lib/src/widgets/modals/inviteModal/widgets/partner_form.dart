@@ -20,7 +20,7 @@ class PartnerForm extends StatefulWidget {
 }
 
 class _PartnerFormState extends State<PartnerForm> {
-  int minNameValue = 5;
+  int minNameValue = 1;
   int minPhoneValue = 12;
   bool isDisabled;
 
@@ -33,6 +33,7 @@ class _PartnerFormState extends State<PartnerForm> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      type: MaterialType.transparency,
       child: Container(
           decoration: BoxDecoration(
               color: Colors.white,
@@ -71,7 +72,9 @@ class _PartnerFormState extends State<PartnerForm> {
                             prefixIcon: Icon(Icons.phone))),
                   ],
                 ),
-              ))),
+              )
+          )
+      ),
     );
   }
 

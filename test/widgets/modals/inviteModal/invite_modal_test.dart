@@ -6,7 +6,7 @@ import '../../../base_tester.dart';
 void main() {
 
   Widget inviteTester() {
-    return InviteModal(onSave: () {});
+    return InviteModal();
   }
 
   group('Test invite modal', () {

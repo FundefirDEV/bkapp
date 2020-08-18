@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
-import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 

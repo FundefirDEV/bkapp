@@ -37,17 +37,17 @@ void main() {
       expect(find.byKey(testKey), findsNWidgets(1));
     });
 
-    testWidgets('Know a Bk onPressed push to Home Test',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: IntroRegisterScreen()));
-      await tester.pumpAndSettle();
+    // testWidgets('Know a Bk onPressed push to Home Test',
+    //     (WidgetTester tester) async {
+    //   await tester.pumpWidget(baseTester(child: IntroRegisterScreen()));
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('itemCarousel-known-bk')), findsOneWidget);
+    //   expect(find.byKey(Key('itemCarousel-known-bk')), findsOneWidget);
 
-      await tester.tap(find.byKey(Key('itemCarousel-known-bk')));
-      await tester.pumpAndSettle();
-      expect(find.byType(HomeTestScreen), findsOneWidget);
-    });
+    //   await tester.tap(find.byKey(Key('itemCarousel-known-bk')));
+    //   await tester.pumpAndSettle();
+    //   expect(find.byType(HomeTestScreen), findsOneWidget);
+    // });
 
     testWidgets('Create a Bk onPressed push to Home Test',
         (WidgetTester tester) async {

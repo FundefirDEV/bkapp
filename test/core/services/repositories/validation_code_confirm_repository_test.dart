@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_pin_code_verification_bloc.dart';
-import 'package:bkapp_flutter/core/services/repositories/validation_code_confirm_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/validation_code_confirm_repository.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

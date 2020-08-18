@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/invite_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/partnersBloc/invite_form_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:test/test.dart';
 

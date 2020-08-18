@@ -1,29 +1,35 @@
-import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:easy_permission_validator/easy_permission_validator.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_contact/contacts.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-ContactList pageState;
+import '../../../widgets.dart';
 
 class ContactList extends StatefulWidget {
-  ContactList({Key key}) : super(key: key);
+  ContactList({Key key, this.customContext}) : super(key: key);
+
+  final BuildContext customContext;
 
   @override
   _ContactListState createState() => _ContactListState();
 }
 
 class _ContactListState extends State<ContactList> {
-  List<Contact> _contacts = new List<Contact>();
+  List<Contact> _contactsList = new List<Contact>();
   List<CustomContact> _uiCustomContacts = List<CustomContact>();
   List<CustomContact> _uiFilteredContacts = List<CustomContact>();
   List<CustomContact> _allContacts = List<CustomContact>();
   TextEditingController searchController = new TextEditingController();
+  Offset position = Offset(20.0, 20.0);
 
   bool _isSelectedContactsView = false;
   String floatingButtonLabel;
   Color floatingButtonColor;
   IconData icon;
+  List<CustomContact> _selectedContacts = new List();
 
   @override
   void initState() {
@@ -48,95 +54,158 @@ class _ContactListState extends State<ContactList> {
   @override
   Widget build(BuildContext context) {
     bool isSearching = searchController.text.isNotEmpty;
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            child: TextField(
-              key: Key('textfield_search'),
-              controller: searchController,
-              decoration: InputDecoration(
-                  labelText: I18n.of(context).actionTextSearch,
-                  border: new OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primaryColor)),
-                  prefixIcon: Icon(Icons.search)),
-            ),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-              key: Key('list_view_builder_contacts'),
-              shrinkWrap: true,
-              itemCount: isSearching == true
-                  ? _uiFilteredContacts?.length
-                  : _uiCustomContacts.length,
-              itemBuilder: (BuildContext context, int index) {
-                CustomContact _contact = isSearching == true
-                    ? _uiFilteredContacts[index]
-                    : _uiCustomContacts[index];
-                List<Item> _phoneList = _contact.contact.phones.toList();
-                return _buildListTile(_contact, _phoneList);
-              }),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 22.0),
-          child: RaisedButton(
-            key: Key('raisedButton-accept'),
-            onPressed: () => _submitContacts(context),
-            color: Theme.of(context).colorScheme.primaryColor,
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0)),
-            child: Text(
-              I18n.of(context).actionTextAdd,
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.white,
-                letterSpacing: 3.0,
+    return Stack(
+      children: [
+        Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                child: TextField(
+                  key: Key('textfield_search'),
+                  controller: searchController,
+                  decoration: InputDecoration(
+                      labelText: I18n.of(context).actionTextSearch,
+                      border: new OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color:
+                                  Theme.of(context).colorScheme.primaryColor)),
+                      prefixIcon: Icon(Icons.search)),
+                ),
               ),
             ),
-          ),
+            Expanded(
+              child: ListView.builder(
+                  key: Key('list_view_builder_contacts'),
+                  shrinkWrap: true,
+                  itemCount: isSearching == true
+                      ? _uiFilteredContacts?.length
+                      : _uiCustomContacts.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    CustomContact _contact = isSearching == true
+                        ? _uiFilteredContacts[index]
+                        : _uiCustomContacts[index];
+                    List<Item> _phoneList = _contact.contact.phones.toList();
+                    return _buildListTile(_contact, _phoneList,
+                        BlocProvider.of<PartnerBloc>(context));
+                  }),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 22.0),
+              child: RaisedButton(
+                key: Key('raisedButton-accept'),
+                onPressed: _selectedContacts.length >= 1
+                    ? () => _submitContacts(context)
+                    : () => Navigator.pop(context),
+                color: Theme.of(context).colorScheme.primaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Text(
+                  _selectedContacts.length >= 1
+                      ? I18n.of(context).actionTextAdd
+                      : I18n.of(context).actionTextClose,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.white,
+                    letterSpacing: 3.0,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
+        MenuRequests(
+            position: position,
+            onDragEnd: (details) {
+              setState(() => position = details.offset);
+            })
       ],
     );
   }
 
-  Widget _buildListTile(CustomContact c, List<Item> list) {
-    return ListTile(
-      title: Text(c.contact.displayName),
-      subtitle: list.length > 1 && list[0]?.value != null
-          ? Text(list[0].value)
-          : Text(''),
-      leading: (c.contact.avatar != null && c.contact.avatar.length > 0)
-          ? CircleAvatar(backgroundImage: MemoryImage(c.contact.avatar))
-          : CircleAvatar(child: Text(c.contact.initials())),
-      trailing: Checkbox(
-          value: c.isChecked,
-          onChanged: (bool value) {
-            setState(() => c.isChecked = value);
-          }),
+  Widget _buildListTile(
+      CustomContact c, List<Item> list, PartnerBloc partnerBloc) {
+    return BlocListener<PartnerBloc, PartnerState>(
+      listener: (context, state) {
+        if (
+          state is PartnerUnauthorized
+          && state.phoneNumber == list[0].value
+        ) {
+          c.isChecked = false;
+          setState(() => _selectedContacts.remove(c));
+        }
+      },
+      child: ListTile(
+          title: BlocBuilder<PartnerBloc, PartnerState>(
+            builder: (context, state) {
+              if (state is PartnerUnauthorized &&
+                  state.phoneNumber == list[0].value) {
+                c.isUnAuthorized = true;
+              }
+              if (c.isUnAuthorized) return Text('Ya esta en un bkgrupo');
+              return Text(c.contact.displayName);
+            },
+          ),
+          subtitle: list.length >= 1 && list[0]?.value != null
+              ? Text(list[0].value)
+              : Text(''),
+          leading: (c.contact.avatar != null && c.contact.avatar.length > 0)
+              ? CircleAvatar(backgroundImage: MemoryImage(c.contact.avatar))
+              : CircleAvatar(child: Text(c.contact.initials())),
+          trailing:
+              BlocBuilder<PartnerBloc, PartnerState>(builder: (context, state) {
+            if (state is PartnerUnauthorized &&
+                state.phoneNumber == list[0].value) {
+              c.isUnAuthorized = true;
+            }
+            if (c.isUnAuthorized) return Icon(Icons.close);
+            return Checkbox(
+                value: c.isChecked,
+                onChanged: (bool value) {
+                  if (!c.isChecked) {
+                    partnerBloc.add(JustValidatePartner(
+                        token: context
+                            .bloc<AppBloc>()
+                            .bankRegisterBloc
+                            .token
+                            .value,
+                        name: c.contact.displayName,
+                        phoneNumber: list[0]?.value));
+                    setState(() => _selectedContacts.add(c));
+                  } else {
+                    setState(() => _selectedContacts.remove(c));
+                  }
+                  setState(() => c.isChecked = value);
+                });
+          })),
     );
   }
 
   refreshContacts() async {
-    await Permission.contacts.request();
-    if (await Permission.contacts.status.isGranted) {
-      Iterable<Contact> contacts = await ContactsService.getContacts();
-      _populateContacts(contacts);
+    final permissionValidator = EasyPermissionValidator(
+      context: context,
+      appName: 'Bkapp',
+    );
+    var result = await permissionValidator.contacts();
+    if (result) {
+      _populateContacts();
     } else {
       Navigator.pop(context);
     }
   }
 
-  _populateContacts(Iterable<Contact> contacts) {
-    _contacts = contacts.where((item) => item.displayName != null).toList();
-    _contacts.sort((a, b) => a.displayName.compareTo(b.displayName));
+  _populateContacts({Stream<Contact> contacts}) async {
+    await Contacts.streamContacts(
+            withThumbnails: false, sortBy: ContactSortOrder.firstName())
+        .forEach((contact) {
+      _contactsList.add(contact);
+    });
 
-    _allContacts =
-        _contacts.map((contact) => CustomContact(contact: contact)).toList();
+    _allContacts = _contactsList
+        .map((contact) => CustomContact(contact: contact))
+        .toList();
     setState(() => _uiCustomContacts = _allContacts);
   }
 
@@ -145,12 +214,15 @@ class _ContactListState extends State<ContactList> {
       if (!_isSelectedContactsView) {
         _uiCustomContacts =
             _allContacts.where((contact) => contact.isChecked == true).toList();
-        var contactSelected = _uiCustomContacts
-            .map((e) => {
-                  'name': e.contact.displayName,
-                  'phone': e.contact.phones.elementAt(0).value
-                })
-            .toList();
+        var contactSelected = _uiCustomContacts.map((e) {
+          BlocProvider.of<PartnerBloc>(context).add(AddPartnerToDb(
+              name: e.contact.displayName,
+              phoneNumber: e.contact.phones.elementAt(0).value));
+          return {
+            'name': e.contact.displayName,
+            'phone': e.contact.phones.elementAt(0).value
+          };
+        }).toList();
         _isSelectedContactsView = true;
         Navigator.pop(context, contactSelected);
       } else {
@@ -164,6 +236,8 @@ class _ContactListState extends State<ContactList> {
 class CustomContact {
   final Contact contact;
   bool isChecked;
+  bool isUnAuthorized;
 
-  CustomContact({this.contact, this.isChecked: false});
+  CustomContact(
+      {this.contact, this.isChecked: false, this.isUnAuthorized: false});
 }

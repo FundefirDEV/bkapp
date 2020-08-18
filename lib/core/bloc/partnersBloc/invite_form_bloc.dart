@@ -1,7 +1,10 @@
+import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class InviteFormBloc extends FormBloc<String, String> {
+  final PartnerRepository partnerRepository;
 
   final name = TextFieldBloc(
     validators: [UtilsTools.required]
@@ -13,7 +16,7 @@ class InviteFormBloc extends FormBloc<String, String> {
     ]
   );
 
-  InviteFormBloc() {
+  InviteFormBloc({@required this.partnerRepository}) {
     addFieldBlocs(
       fieldBlocs: [
         name,

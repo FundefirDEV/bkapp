@@ -9,7 +9,9 @@ class ApiResponses {
       case 200:
         // NOTE Watch the states in the console
         // print(response.body.toString());
-        return json.decode(response.body);
+        if (response.body.isNotEmpty) {
+          return json.decode(response.body);
+        }
         break;
       case 400:
         throw BadRequestException(response.body.toString());

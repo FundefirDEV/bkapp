@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:logger/logger.dart';
 
@@ -22,7 +23,7 @@ class BankRegisterBloc extends FormBloc<String, String> {
 
   BankRegisterBloc({@required this.repository})
       : _selectPlace = SelectCityBloc(),
-        _inviteForm = InviteFormBloc() {
+        _inviteForm = InviteFormBloc(partnerRepository: partnerRepository) {
     addFieldBlocs(fieldBlocs: [name]);
   }
 

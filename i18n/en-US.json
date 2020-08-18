@@ -13,6 +13,9 @@
     "add": "ADD",
     "search": "Search"
   },
+  "requestError": {
+    "userNotAvailable": "The user is not available"
+  },
   "form": {
     "user": "User",
     "password": "Password",

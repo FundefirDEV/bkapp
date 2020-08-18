@@ -56,6 +56,8 @@ class I18n implements WidgetsLocalizations {
   String get actionTextAdd => "ADD";
   /// "Search"
   String get actionTextSearch => "Search";
+  /// "The user is not available"
+  String get requestErrorUserNotAvailable => "The user is not available";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -650,6 +652,9 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
+  /// "El usuario ya esta en otro bkgrupo"
+  @override
+  String get requestErrorUserNotAvailable => "El usuario ya esta en otro bkgrupo";
   /// "Usuario"
   @override
   String get formUser => "Usuario";

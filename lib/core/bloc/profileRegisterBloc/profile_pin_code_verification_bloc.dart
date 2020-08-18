@@ -1,6 +1,4 @@
-import 'package:bkapp_flutter/core/services/repositories/validation_code_confirm_repository.dart';
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/screens.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/validation_code_confirm_repository.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

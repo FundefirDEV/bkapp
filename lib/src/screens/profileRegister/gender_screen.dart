@@ -24,6 +24,7 @@ class GenderScreen extends StatelessWidget {
                 secondText: I18n.of(context).genderScreenTextSecond,
                 secondFontWeight: FontWeight.w300,
                 subtitle: I18n.of(context).genderScreenTextSubtitle,
+                removePaddingTop: true
               ),
               Expanded(
                 key: Key('main-expanded-gender-screen'),

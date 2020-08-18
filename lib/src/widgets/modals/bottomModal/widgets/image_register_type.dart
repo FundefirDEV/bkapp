@@ -12,17 +12,17 @@ class ImageRegisterType extends StatelessWidget {
       key: Key('row_register_modal'),
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        FlatButton(
-          key: Key('register_button1'),
-          onPressed: () => {Navigator.pop(context)},
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                SvgPicture.asset('assets/images/google_logo.svg'),
-                Text(I18n.of(context).introRegisterModalGmail,
-                    textAlign: TextAlign.justify)
-              ]),
-        ),
+        // FlatButton(
+        //   key: Key('register_button1'),
+        //   onPressed: () => {Navigator.pop(context)},
+        //   child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //       children: <Widget>[
+        //         SvgPicture.asset('assets/images/google_logo.svg'),
+        //         Text(I18n.of(context).introRegisterModalGmail,
+        //             textAlign: TextAlign.justify)
+        //       ]),
+        // ),
         FlatButton(
           key: Key('register_button2'),
           onPressed: () => {_prevStepWidget(context)},

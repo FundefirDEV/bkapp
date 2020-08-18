@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/repositories/approvals_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/approvals_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

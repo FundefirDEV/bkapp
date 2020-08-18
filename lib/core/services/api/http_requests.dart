@@ -35,24 +35,27 @@ class HttpRequests {
     return response;
   }
 
-  Future<dynamic> get(
-      {@required String url,
-      @required http.Client httpClient,
-      String token}) async {
+  Future<dynamic> get({
+    @required http.Client httpClient,
+    @required String url,
+    String token,
+    String param
+  }) async {
     var response;
     try {
-      final request = await httpClient.get(url, headers: {
-        "Accept": "application/json",
-        "content-type": "application/json",
-        "Authorization": 'Bearer $token',
-      }).interceptWithAlice(alice);
+      final request = await httpClient.get(
+        param != null ? '$url/$param' : url,
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json",
+          "Authorization": 'Bearer $token',
+        }
+      ).interceptWithAlice(alice);
       response = ApiResponses.apiResponse(request);
     } on SocketException {
       throw FetchDataException('No Internet connection');
     } on NotFoundException {
       throw FetchDataException('Endpoint not exists');
-    } finally {
-      httpClient.close();
     }
     return response;
   }

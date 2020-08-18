@@ -14,6 +14,7 @@ class AppBloc extends FormBloc<String, String> {
   RulesEditFormBloc _rulesEditFormBloc;
   ApprovalsBloc _approvalsBloc;
   HomeBloc _homeBloc;
+  PartnerBloc _partnerBloc;
 
   AppBloc()
       : _authenticationBloc =
@@ -28,7 +29,8 @@ class AppBloc extends FormBloc<String, String> {
         _creditFormBloc = CreditFormBloc(),
         _rulesEditFormBloc = RulesEditFormBloc(),
         _approvalsBloc = ApprovalsBloc(repository: approvalsRepository),
-        _homeBloc = HomeBloc(repository: homeRepository);
+        _homeBloc = HomeBloc(repository: homeRepository),
+        _partnerBloc = PartnerBloc(partnerRepository: partnerRepository);
 
   AuthenticationBloc get authenticationBloc => _authenticationBloc;
   ProfileRegisterBloc get profileRegisterBloc => _profileRegisterBloc;
@@ -39,6 +41,7 @@ class AppBloc extends FormBloc<String, String> {
   RulesEditFormBloc get rulesEditFormBloc => _rulesEditFormBloc;
   ApprovalsBloc get approvalsBloc => _approvalsBloc;
   HomeBloc get homeBloc => _homeBloc;
+  PartnerBloc get partnerBloc => _partnerBloc;
 
   @override
   void onSubmitting() {}

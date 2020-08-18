@@ -1,10 +1,17 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/partnersBloc/bloc/partner_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
+import 'package:bkapp_flutter/src/utils/errorRequestHandler/error_request_handler.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import './widgets/widgets.dart';
 
@@ -55,63 +62,84 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return Align(
-      key: Key('Align-partner-structure'),
-      alignment: Alignment.center,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 30.0),
-        child: FutureBuilder<List<PartnerModel>>(
-            future: partnerDb.getAllParters(),
-            builder: (context, snapshot) {
-              return Column(
-                key: Key('column-partner-structure'),
-                children: <Widget>[
-                  if (widget.isRegister) ...[
-                    Text(
-                        I18n.of(context)
-                            .bankRegisterAddPartnersTitle
-                            .toUpperCase(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 10.18,
-                        ))
-                  ],
-                  Expanded(
-                    key: Key('expanded-partner-structure'),
-                    child: Scrollbar(
-                      child: Padding(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.blockSizeVertical * 2),
-                          child: _loadPartnersSelected(snapshot)),
-                    ),
-                  ),
-                  if (widget.isRegister) ...[
-                    Padding(
-                        key: Key('padding-minimum-allowed'),
-                        padding: EdgeInsets.symmetric(
-                            vertical: SizeConfig.blockSizeVertical * 3),
-                        child: PartnersAllowed())
-                  ],
-                  if (widget.showButton) ...[
-                    ButtonLineRoundedWidget(
-                      color: widget.colorButton,
-                      onPressed: () => showDialog(
-                          context: context,
-                          builder: (context) => InviteModal(
-                              onSave: () => loadPartners(),
-                              partners:
-                                  snapshot.hasData ? snapshot.data.length : 0)),
-                      firstText:
-                          I18n.of(context).bankRegisterAddPartnersButtonAdd,
-                      secondText:
-                          I18n.of(context).bankRegisterAddPartnersButtonPartner,
-                    )
-                  ]
-                ],
-              );
-            }),
+    return BlocProvider<PartnerBloc>(
+      create: (context) => PartnerBloc(partnerRepository: partnerRepository),
+      child: BlocListener<PartnerBloc, PartnerState>(
+        listener: (context, state) {
+          if (state is PartnerUnauthorized) {
+            _showDialog(context, state.error);
+          }
+          if (state is PartnerAddedToDb) {
+            loadPartners();
+          }
+        },
+        child: Builder(
+          builder: (contextA) {
+            return Align(
+              key: Key('Align-partner-structure'),
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 30.0),
+                child: FutureBuilder<List<PartnerModel>>(
+                    future: partnerDb.getAllParters(),
+                    builder: (context, snapshot) {
+                      return Column(
+                        key: Key('column-partner-structure'),
+                        children: <Widget>[
+                          if (widget.isRegister) ...[
+                            Text(
+                                I18n.of(context)
+                                    .bankRegisterAddPartnersTitle
+                                    .toUpperCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 4,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 10.18,
+                                ))
+                          ],
+                          Expanded(
+                            key: Key('expanded-partner-structure'),
+                            child: Scrollbar(
+                              child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 2),
+                                  child: _loadPartnersSelected(snapshot)),
+                            ),
+                          ),
+                          if (widget.isRegister) ...[
+                            Padding(
+                                key: Key('padding-minimum-allowed'),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: SizeConfig.blockSizeVertical * 3),
+                                child: PartnersAllowed())
+                          ],
+                          if (widget.showButton) ...[
+                            ButtonLineRoundedWidget(
+                              color: widget.colorButton,
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (context) => BlocProvider.value(
+                                  value: BlocProvider.of<PartnerBloc>(contextA),
+                                  child: InviteModal(
+                                      partners:
+                                        snapshot.hasData ? snapshot.data.length : 0
+                                  ),
+                                )
+                              ),
+                              firstText:
+                                  I18n.of(context).bankRegisterAddPartnersButtonAdd,
+                              secondText:
+                                  I18n.of(context).bankRegisterAddPartnersButtonPartner,
+                            )
+                          ]
+                        ],
+                      );
+                    }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -146,5 +174,26 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
             fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
       ));
     }
+  }
+
+  void _showDialog(BuildContext context, String error) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return BottomModal(
+          width: SizeConfig.blockSizeHorizontal * 100,
+          height: SizeConfig.blockSizeVertical * 45,
+          child: ImageBottomModal(
+            modalHeight: 45.0,
+            image: 'assets/images/sad_bot.svg',
+            title: errorRequestHandler(context, error),
+            isBtnAccept: false,
+            titleCloseButton: I18n.of(context).actionTextClose,
+            onPressCancel: () => Navigator.pop(context),
+          )
+        );
+      }
+    );
   }
 }

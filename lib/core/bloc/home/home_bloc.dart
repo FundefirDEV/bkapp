@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
-import 'package:bkapp_flutter/core/services/repositories/home_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/home_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';

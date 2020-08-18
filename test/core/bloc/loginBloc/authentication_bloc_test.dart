@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -71,7 +71,7 @@ void main() {
       )),
       expect: [
         AuthenticationLoading(),
-        AuthenticationAuthenticated()
+        AuthenticationAuthenticated(token: token[token])
       ],
     );
 

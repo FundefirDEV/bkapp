@@ -1,11 +1,11 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/footer_intro.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/introCarousel/intro_carousel.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/widgets/bgOval/bg_oval.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/register_modal.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/size_config.dart';
@@ -33,14 +33,14 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     List<ItemCarousel> characters = [
-      ItemCarousel(
-          key: Key('itemCarousel-known-bk'),
-          text1: I18n.of(context).introScreenHowDoesA,
-          text2: I18n.of(context).introScreenQuestionGroupBk,
-          image: 'assets/images/robot_read.svg',
-          iconText: I18n.of(context).introScreenEducativeMedia,
-          icon: 'assets/images/icon_media.svg',
-          onPressed: () => Navigator.pushNamed(context, testRoute)),
+      // ItemCarousel(
+      //     key: Key('itemCarousel-known-bk'),
+      //     text1: I18n.of(context).introScreenHowDoesA,
+      //     text2: I18n.of(context).introScreenQuestionGroupBk,
+      //     image: 'assets/images/robot_read.svg',
+      //     iconText: I18n.of(context).introScreenEducativeMedia,
+      //     icon: 'assets/images/icon_media.svg',
+      //     onPressed: () => Navigator.pushNamed(context, testRoute)),
       ItemCarousel(
           key: Key('itemCarousel-create-bk'),
           text1: I18n.of(context).introScreenRegister,
@@ -68,6 +68,7 @@ class _IntroRegisterScreenState extends State<IntroRegisterScreen> {
                     secondText: I18n.of(context).introScreenGrupoBk,
                     subtitle: I18n.of(context).introScreenSelectOption,
                     subtitleWith: SizeConfig.safeBlockHorizontal * 50,
+                    removePaddingTop: true
                   )),
                   Expanded(
                     child: PageView(

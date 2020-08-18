@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
-import 'package:bkapp_flutter/core/services/repositories/login_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
 import 'package:bkapp_flutter/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

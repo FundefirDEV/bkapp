@@ -25,7 +25,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('row_register_modal')), findsOneWidget);
-      expect(find.byKey(Key('register_button1')), findsOneWidget);
+      // expect(find.byKey(Key('register_button1')), findsOneWidget);
       expect(find.byKey(Key('register_button2')), findsOneWidget);
     });
 
@@ -42,16 +42,16 @@ void main() {
       expect(find.byType(GenderScreen), findsOneWidget);
     });
 
-    testWidgets('Correct tab by pressing google register',
-        (WidgetTester tester) async {
-      final testKey = Key('my-id');
-      await tester
-          .pumpWidget(baseTester(child: ImageRegisterType(key: testKey)));
-      await tester.pumpAndSettle();
+    // testWidgets('Correct tab by pressing google register',
+    //     (WidgetTester tester) async {
+    //   final testKey = Key('my-id');
+    //   await tester
+    //       .pumpWidget(baseTester(child: ImageRegisterType(key: testKey)));
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('register_button1')), findsOneWidget);
-      await tester.tap(find.byKey(Key('register_button1')));
-      await tester.pumpAndSettle();
-    });
+    //   expect(find.byKey(Key('register_button1')), findsOneWidget);
+    //   await tester.tap(find.byKey(Key('register_button1')));
+    //   await tester.pumpAndSettle();
+    // });
   });
 }

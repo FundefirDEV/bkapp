@@ -76,6 +76,17 @@ class ApiProvider {
     return await _httpRequest.get(httpClient: httpClient, url: getApprovals);
   }
 
+  Future getPartnerValidation(
+    String phoneNumber, String token) async {
+    final getPartnerValidation = ApiEndpoints.getPartnerValidation();
+    return await _httpRequest.get(
+      httpClient: httpClient,
+      url: getPartnerValidation,
+      param: phoneNumber,
+      token: token
+    );
+  }
+
   Future<Map<String, dynamic>> getInformationBkHome(String token) async {
     final getInformationBkHome = ApiEndpoints.getInformationBkHome();
     return await _httpRequest.get(

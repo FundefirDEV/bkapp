@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
@@ -14,14 +13,14 @@ import 'widgets/partner_form.dart';
 //NOTE HOW TO CALL IT:
 // showDialog(context: context, builder: (BuildContext context) => InviteModal()),
 class InviteModal extends StatefulWidget {
-  InviteModal({
-    Key key,
-    @required this.onSave,
-    this.partners
-  }) : super(key: key);
+  InviteModal(
+      {Key key,
+      this.partners,
+      this.partnerBloc})
+      : super(key: key);
 
-  final Function onSave;
   final int partners;
+  final PartnerBloc partnerBloc;
 
   @override
   _InviteModalState createState() => _InviteModalState();
@@ -65,23 +64,11 @@ class _InviteModalState extends State<InviteModal> {
             key: Key('column_invite_modal'),
             children: <Widget>[
               content.contactButton(
-                context: context,
-                onPressed: () async {
-                  List<Map> result = await _showDialog(context);
-                  if (result != null) {
-                    for (var partner in result) {
-                      await partnerDb.addPartnerToDatabase(
-                        PartnerModel(
-                          firstname: partner['name'],
-                          phone: partner['phone']
-                        )
-                      );
-                    }
-                    Navigator.pop(context);
-                    widget.onSave();
-                  }
-                }
-              ),
+                  context: context,
+                  onPressed: () async {
+                    List<Map> result = await _showDialog(context);
+                    if (result != null) Navigator.pop(context);
+                  }),
               Container(
                 margin: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 2,
@@ -97,12 +84,13 @@ class _InviteModalState extends State<InviteModal> {
                     content.titleContainer(context),
                     PartnerForm(
                       bankBloc: bankBloc,
-                      addPartner: () => _addPartnerForm(context, bankBloc.inviteForm),
+                      addPartner: () =>
+                        _addPartnerForm(context, bankBloc),
                     )
                   ],
                 ),
               ),
-              content.closeContainer(context, widget.onSave),
+              content.closeContainer(context),
               SizedBox(height: SizeConfig.blockSizeVertical * 5),
               content.partnersText(context, widget.partners)
             ],
@@ -112,16 +100,16 @@ class _InviteModalState extends State<InviteModal> {
     );
   }
 
-  _addPartnerForm(BuildContext context, InviteFormBloc inviteBloc) async {
-    await partnerDb.addPartnerToDatabase(
-      PartnerModel(
-        firstname: inviteBloc.name.value,
-        phone: inviteBloc.cellPhone.value
+  _addPartnerForm(BuildContext context, BankRegisterBloc bankBloc) async {
+    BlocProvider.of<PartnerBloc>(context).add(
+      AddAndVerifyPartner(
+        token: bankBloc.token.value,
+        name: bankBloc.inviteForm.name.value,
+        phoneNumber: bankBloc.inviteForm.cellPhone.value
       )
     );
-    inviteBloc.submit();
+    bankBloc.inviteForm.submit();
     Navigator.pop(context);
-    widget.onSave();
   }
 
   Future _showDialog(BuildContext context) {
@@ -129,11 +117,14 @@ class _InviteModalState extends State<InviteModal> {
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
-      builder: (context) {
-        return BottomModal(
-          width: SizeConfig.blockSizeHorizontal * 100,
-          height: SizeConfig.blockSizeVertical * 90,
-          child: ContactList()
+      builder: (_) {
+        return BlocProvider.value(
+          value: BlocProvider.of<PartnerBloc>(context),
+          child: BottomModal(
+            width: SizeConfig.blockSizeHorizontal * 100,
+            height: SizeConfig.blockSizeVertical * 90,
+            child: ContactList()
+          ),
         );
       }
     );

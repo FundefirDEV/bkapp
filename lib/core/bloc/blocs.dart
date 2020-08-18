@@ -1,7 +1,9 @@
 export 'app_bloc.dart';
 export 'approvalBloc/approvals_bloc.dart';
 export 'bankRegisterBloc/bank_register_bloc.dart';
-export 'bankRegisterBloc/invite_form_bloc.dart';
+export 'home/home_bloc.dart';
+export 'partnersBloc/invite_form_bloc.dart';
+export 'partnersBloc/bloc/partner_bloc.dart';
 export 'loginFormBloc/login_form_bloc.dart';
 export 'loginFormBloc/authentication/authentication_bloc.dart';
 export 'profileRegisterBloc/profile_name_bloc.dart';

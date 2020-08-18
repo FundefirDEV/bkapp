@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/textGreeting/text_greeting_widget.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HeaderContent extends StatelessWidget {
@@ -11,6 +12,7 @@ class HeaderContent extends StatelessWidget {
   final FontWeight secondFontWeight;
   final String subtitle;
   final double subtitleWith;
+  final bool removePaddingTop;
 
   const HeaderContent(
       {Key key,
@@ -21,7 +23,9 @@ class HeaderContent extends StatelessWidget {
       this.secondText,
       this.secondFontWeight,
       this.subtitle,
-      this.subtitleWith})
+      this.subtitleWith,
+      this.removePaddingTop = false
+    })
       : super(key: key);
 
   @override
@@ -29,10 +33,11 @@ class HeaderContent extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       width: SizeConfig.safeBlockHorizontal * 100,
-      padding: EdgeInsets.only(top: this.paddingTop),
+      padding: EdgeInsets.only(top: removePaddingTop ? 0 : this.paddingTop),
       alignment: Alignment.center,
       child: Column(
         children: <Widget>[
+          if (removePaddingTop) ButtonBackWidget(),
           TextGreetingWidget(
             width: this.width,
             firstText: this.firstText,

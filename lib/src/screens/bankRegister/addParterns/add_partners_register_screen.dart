@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/widgets/addPartners/partners_structure.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -20,6 +21,7 @@ class _AddPartnersRegisterScreenState
 
   AnimationController _controller;
   Animation _animation;
+  Offset position = Offset(20.0, 20.0);
 
   @override
   void initState() {
@@ -48,30 +50,40 @@ class _AddPartnersRegisterScreenState
     SizeConfig().init(context);
     _controller.forward();
 
-    return Container(
-      key: Key('container-bk-partner-screen'),
-       child: BgBankRegister(
-        child: Column(
-          key: Key('column-bk-partner-screen'),
-          children: <Widget>[
-            TitleBkWidget(
-              firstText: I18n.of(context).bankRegisterAddPartnersFirstTitle,
-              secondText: I18n.of(context).bankRegisterAddPartnersSecondText
+    return Stack(
+      children: [
+        Container(
+          key: Key('container-bk-partner-screen'),
+          child: BgBankRegister(
+            child: Column(
+              key: Key('column-bk-partner-screen'),
+              children: <Widget>[
+                TitleBkWidget(
+                  firstText: I18n.of(context).bankRegisterAddPartnersFirstTitle,
+                  secondText: I18n.of(context).bankRegisterAddPartnersSecondText
+                ),
+                Expanded(
+                  key: Key('expanded-bk-partner-screen'),
+                  flex: 2,
+                  child: FadeTransition(
+                    opacity: _animation,
+                    child: PartnersStructureWidget(
+                      onSave: (data) => print(data),
+                    )
+                  )
+                ),
+                FooterBkWidget()
+              ],
             ),
-            Expanded(
-              key: Key('expanded-bk-partner-screen'),
-              flex: 2,
-              child: FadeTransition(
-                opacity: _animation,
-                child: PartnersStructureWidget(
-                  onSave: (data) => print(data),
-                )
-              )
-            ),
-            FooterBkWidget()
-          ],
+          ),
         ),
-       ),
+        MenuRequests(
+          position: position,
+          onDragEnd: (details) {
+            setState(() => position = details.offset);
+          }
+        )
+      ],
     );
   }
 }

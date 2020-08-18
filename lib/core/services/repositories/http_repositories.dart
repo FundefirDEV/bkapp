@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
-import 'package:bkapp_flutter/core/services/repositories/home_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +15,9 @@ final ValidationCodeRepository validationCodeRepository =
 final ValidationCodeConfirmRepository validationCodeConfirmRepository =
     ValidationCodeConfirmRepository(
         apiProvider: ApiProvider(httpClient: httpClient));
+
+final PartnerRepository partnerRepository =
+  PartnerRepository(apiProvider: ApiProvider(httpClient: httpClient));
 
 final ApprovalsRepository approvalsRepository =
     ApprovalsRepository(apiProvider: ApiProvider(httpClient: httpClient));
