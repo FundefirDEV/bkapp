@@ -6,6 +6,7 @@ import 'package:bkapp_flutter/src/screens/profileRegister/registerName/widgets/r
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../register_name_step_screen.dart';
@@ -15,25 +16,29 @@ class RegisterNameFormListenerWidget extends StatefulWidget {
   const RegisterNameFormListenerWidget({Key key, this.data}) : super(key: key);
 
   @override
-  _RegisterNameFormListenerWidgetState createState() => _RegisterNameFormListenerWidgetState();
+  _RegisterNameFormListenerWidgetState createState() =>
+      _RegisterNameFormListenerWidgetState();
 }
 
-class _RegisterNameFormListenerWidgetState extends State<RegisterNameFormListenerWidget> {
+class _RegisterNameFormListenerWidgetState
+    extends State<RegisterNameFormListenerWidget> {
   bool isDisabled = true;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Column(
       children: <Widget>[
+        ButtonBackWidget(),
         HeaderContent(
           width: SizeConfig.safeBlockHorizontal * 60,
+          paddingTop: 20,
           firstText: I18n.of(context).registerNameTitle,
           firstFontWeight: FontWeight.w300,
         ),
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
               Expanded(
                   flex: 2,
                   child: SingleChildScrollView(
@@ -48,26 +53,17 @@ class _RegisterNameFormListenerWidgetState extends State<RegisterNameFormListene
                   numberOfSteps: 5,
                   isDisabled: isDisabled,
                   currentBlocSubmit: () {
-                    Navigator.pushNamed(
-                      context,
-                      registerEmailUser,
-                      arguments: RegisterEmailStepArgs(
-                        widget.data.tag,
-                        widget.data.image
-                      )
-                    );
-                  }
-              )
-            ]
-          )
-        )
+                    Navigator.pushNamed(context, registerEmailUser,
+                        arguments: RegisterEmailStepArgs(
+                            widget.data.tag, widget.data.image));
+                  })
+            ]))
       ],
     );
   }
 
   _isValidating(ProfileNameBloc nameBloc) {
-    nameBloc.firstName.value.length > 1 &&
-    nameBloc.secondName.value.length > 1
+    nameBloc.firstName.value.length > 1 && nameBloc.secondName.value.length > 1
         ? setState(() => isDisabled = false)
         : setState(() => isDisabled = true);
   }

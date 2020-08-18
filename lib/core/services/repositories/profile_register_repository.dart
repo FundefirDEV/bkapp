@@ -14,4 +14,11 @@ class ProfileRegisterRepository {
     final Map informationBkHome = await apiProvider.postRegisterUser(data);
     return informationBkHome;
   }
+
+  Future<Map<String, dynamic>> registerBank(
+      int city, String nameBank, List<Object> partner, String token) async {
+    final Map informationBkHome =
+        await apiProvider.postNewBank(city, nameBank, partner, token);
+    return informationBkHome;
+  }
 }

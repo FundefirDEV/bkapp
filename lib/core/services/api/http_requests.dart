@@ -18,16 +18,17 @@ class HttpRequests {
   Future<dynamic> post(
       {@required http.Client httpClient,
       @required String url,
-      dynamic body}) async {
+      dynamic body,
+      String token}) async {
     var response;
     try {
-      final loginResponse = await httpClient.post(url,
-          body: jsonEncode(body),
-          headers: {
-            "Accept": "application/json",
-            "content-type": "application/json"
-          }).interceptWithAlice(alice, body: body);
-      response = ApiResponses.apiResponse(loginResponse);
+      final request =
+          await httpClient.post(url, body: jsonEncode(body), headers: {
+        "Accept": "application/json",
+        "content-type": "application/json",
+        "Authorization": 'Bearer $token',
+      }).interceptWithAlice(alice, body: body);
+      response = ApiResponses.apiResponse(request);
     } on NotFoundException {
       throw FetchDataException('Endpoint not exists');
     }
@@ -40,12 +41,12 @@ class HttpRequests {
       String token}) async {
     var response;
     try {
-      final loginResponse = await httpClient.get(url, headers: {
+      final request = await httpClient.get(url, headers: {
         "Accept": "application/json",
         "content-type": "application/json",
         "Authorization": 'Bearer $token',
       }).interceptWithAlice(alice);
-      response = ApiResponses.apiResponse(loginResponse);
+      response = ApiResponses.apiResponse(request);
     } on SocketException {
       throw FetchDataException('No Internet connection');
     } on NotFoundException {

@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_gender_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
@@ -27,13 +28,15 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
     };
   }
 
+  ProfileGenderBloc _genderBloc;
   ProfileNameBloc _nameBloc;
   ProfileEmailBloc _emailBloc;
   ProfilePhoneBloc _phoneBloc;
   ProfilePinCodeVerificationBloc _profilePinCodeVerificationBloc;
 
   ProfileRegisterBloc({@required this.repository})
-      : _nameBloc = ProfileNameBloc(),
+      : _genderBloc = ProfileGenderBloc(),
+        _nameBloc = ProfileNameBloc(),
         _emailBloc = ProfileEmailBloc(),
         _phoneBloc = ProfilePhoneBloc(repository: validationCodeRepository),
         _profilePinCodeVerificationBloc = ProfilePinCodeVerificationBloc(
@@ -44,6 +47,7 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
       ..subscribeToFieldBlocs([password]);
   }
 
+  ProfileGenderBloc get genderBloc => _genderBloc;
   ProfileNameBloc get nameBloc => _nameBloc;
   ProfileEmailBloc get emailBloc => _emailBloc;
   ProfilePhoneBloc get phoneBloc => _phoneBloc;
@@ -60,13 +64,13 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
     methodCount: 0,
   ));
 
-  @override
-  void onSubmitting() async {
+  Future makeSubmit() async {
     try {
       print(password.value);
       print(passwordConfirm.value);
 
       logger.v({
+        'gender': '${_genderBloc.gender.value[0].toUpperCase()}',
         'firstValue': '${_nameBloc.firstName.value}',
         'email': '${_emailBloc.email.value}',
         'phone': '${_phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), '')}',
@@ -81,17 +85,19 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
           validationCode: _profilePinCodeVerificationBloc.pincode.value,
           firstname: _nameBloc.firstName.value,
           lastname: _nameBloc.secondName.value,
-          gender: 'M',
+          gender: _genderBloc.gender.value[0].toUpperCase(),
           country: 1,
           phone: _phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), ''),
           email: _emailBloc.email.value));
-
-      await Future<void>.delayed(Duration(seconds: 1));
-      emitSuccess(canSubmitAgain: true);
+      print('Token usuario nuevo: ' + response['access_token']);
+      return response['access_token'];
     } catch (e) {
-      emitFailure();
+      return 'error';
     }
   }
+
+  @override
+  void onSubmitting() async {}
 
   Future<void> close() {
     password?.close();

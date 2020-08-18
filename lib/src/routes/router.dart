@@ -25,9 +25,10 @@ class Router {
         return MaterialPageRoute(builder: (_) => IntroRegisterScreen());
         break;
       case bankCreatedRoute:
+        final BankCreatedScreenArgs data = settings.arguments;
         return PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 350),
-            pageBuilder: (context, _, __) => BankCreatedScreen());
+            pageBuilder: (context, _, __) => BankCreatedScreen(data: data));
         break;
       case registerNameUser:
         final RegisterNameStepArgs data = settings.arguments;

@@ -1,9 +1,13 @@
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class SelectCityBloc extends FormBloc<String, String> {
-
   final selectState = SelectFieldBloc(
-    items: ['Select your state', 'Cundinamarca', 'Valle del Cauca', 'Magdalena'],
+    items: [
+      'Select your state',
+      'Cundinamarca',
+      'Valle del Cauca',
+      'Magdalena'
+    ],
   );
 
   final selectCity = SelectFieldBloc(
@@ -17,13 +21,8 @@ class SelectCityBloc extends FormBloc<String, String> {
     emitLoaded();
   }
 
-  SelectCityBloc(): super(isLoading: true) {
-    addFieldBlocs(
-      fieldBlocs: [
-        selectState,
-        selectCity
-      ]
-    );
+  SelectCityBloc() : super(isLoading: true) {
+    addFieldBlocs(fieldBlocs: [selectState, selectCity]);
   }
 
   @override

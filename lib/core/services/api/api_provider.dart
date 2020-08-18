@@ -59,6 +59,17 @@ class ApiProvider {
     return validationCodeConfirmResponse;
   }
 
+  Future<Map<String, dynamic>> postNewBank(
+      int city, String nameBank, List<Object> partners, String token) async {
+    final postRegisterUser = ApiEndpoints.postNewBank();
+    final validationCodeConfirmResponse = await _httpRequest.post(
+        httpClient: httpClient,
+        url: postRegisterUser,
+        body: {"city": 1, "name": nameBank, "partners": partners},
+        token: token);
+    return validationCodeConfirmResponse;
+  }
+
   // Request: GET
   Future<Map<String, dynamic>> getApprovals() async {
     final getApprovals = ApiEndpoints.getApprovals();

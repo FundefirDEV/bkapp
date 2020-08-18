@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class HeaderContent extends StatelessWidget {
   final double width;
+  final double paddingTop;
   final String firstText;
   final FontWeight firstFontWeight;
   final String secondText;
@@ -14,6 +15,7 @@ class HeaderContent extends StatelessWidget {
   const HeaderContent(
       {Key key,
       @required this.width,
+      this.paddingTop = 85,
       @required this.firstText,
       this.firstFontWeight,
       this.secondText,
@@ -27,7 +29,7 @@ class HeaderContent extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       width: SizeConfig.safeBlockHorizontal * 100,
-      padding: EdgeInsets.only(top: 85),
+      padding: EdgeInsets.only(top: this.paddingTop),
       alignment: Alignment.center,
       child: Column(
         children: <Widget>[

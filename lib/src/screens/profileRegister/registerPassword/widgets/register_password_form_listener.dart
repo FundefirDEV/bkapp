@@ -39,6 +39,8 @@ class _RegisterPasswordFormListenerWidgetState
   }
 
   Widget _containerInfo(BuildContext context) {
+    // ignore: close_sinks
+    final _bankRegisterBloc = context.bloc<AppBloc>().bankRegisterBloc;
     return Column(
         key: Key('column-register-password'),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,8 +61,17 @@ class _RegisterPasswordFormListenerWidgetState
               currentStep: 5,
               numberOfSteps: 5,
               isDisabled: isDisabled,
-              currentBlocSubmit:
-                  context.bloc<AppBloc>().profileRegisterBloc.submit)
+              currentBlocSubmit: () async {
+                var result = await context
+                    .bloc<AppBloc>()
+                    .profileRegisterBloc
+                    .makeSubmit();
+                if (result != 'error')
+                  _bankRegisterBloc.token.updateValue(result);
+                Navigator.pushNamed(context, confirmInvitationBank,
+                    arguments: ConfirmInvitationBankStepArgs(
+                        widget.data.tag, widget.data.image));
+              })
         ]);
   }
 

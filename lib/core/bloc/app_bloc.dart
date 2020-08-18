@@ -2,7 +2,6 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/home/home_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class AppBloc extends FormBloc<String, String> {
@@ -22,7 +21,8 @@ class AppBloc extends FormBloc<String, String> {
               ..add(AppStarted()),
         _profileRegisterBloc =
             ProfileRegisterBloc(repository: profileRegisterRepository),
-        _bankRegisterBloc = BankRegisterBloc(),
+        _bankRegisterBloc =
+            BankRegisterBloc(repository: profileRegisterRepository),
         _profileEditFormBloc = ProfileEditFormBloc(),
         _buySharesFormBloc = BuySharesFormBloc(),
         _creditFormBloc = CreditFormBloc(),

@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Offset position =Offset(20.0, 20.0);
+  Offset position = Offset(20.0, 20.0);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -39,11 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           MenuRequests(
-            position: position,
-            onDragEnd: (details) {
-              setState(() => position = details.offset);
-            }
-          )
+              position: position,
+              onDragEnd: (details) {
+                setState(() => position = details.offset);
+              })
         ],
       ),
     );

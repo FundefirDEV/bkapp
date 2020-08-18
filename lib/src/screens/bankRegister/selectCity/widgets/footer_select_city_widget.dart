@@ -2,6 +2,8 @@ import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class FooterSelectCityWidget extends StatelessWidget {
   const FooterSelectCityWidget({Key key}) : super(key: key);
@@ -9,6 +11,7 @@ class FooterSelectCityWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    BankRegisterBloc bankBloc = context.bloc<AppBloc>().bankRegisterBloc;
     return Container(
       key: Key('footer-select-city-container'),
       alignment: Alignment.bottomCenter,
@@ -19,9 +22,8 @@ class FooterSelectCityWidget extends StatelessWidget {
           Container(
             key: Key('footer-select-city-text-container'),
             margin: EdgeInsets.only(
-              left: SizeConfig.blockSizeHorizontal * 16,
-              right: SizeConfig.blockSizeHorizontal * 6
-            ),
+                left: SizeConfig.blockSizeHorizontal * 16,
+                right: SizeConfig.blockSizeHorizontal * 6),
             child: RichText(
               text: TextSpan(
                 children: [
@@ -47,7 +49,7 @@ class FooterSelectCityWidget extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               key: Key('inkwell-select-city-redirect'),
-              onTap: () => _nextStepWidget(context),
+              onTap: () => _nextStepWidget(context, bankBloc),
               child: Container(
                 key: Key('footer-select-city-image-container'),
                 margin: EdgeInsets.only(left: 10.0),
@@ -60,7 +62,7 @@ class FooterSelectCityWidget extends StatelessWidget {
     );
   }
 
-  void _nextStepWidget(BuildContext context) {
+  void _nextStepWidget(BuildContext context, BankRegisterBloc bankBloc) {
     Navigator.pushNamed(context, addPartnersRegisterRoute);
   }
 }
