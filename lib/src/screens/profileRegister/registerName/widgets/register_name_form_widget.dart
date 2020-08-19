@@ -25,14 +25,20 @@ class RegisterNameFormWidget extends StatelessWidget {
               children: <Widget>[
                 TextFieldBlocBuilder(
                     textFieldBloc: profileRegisterBloc.nameBloc.firstName,
-                    onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
+                    key: Key('input-register-first-name'),
+                    onTap: () => isDiabled(profileRegisterBloc.nameBloc),
+                    onChanged: (value) =>
+                        isDiabled(profileRegisterBloc.nameBloc),
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
                         labelText: I18n.of(context).formFirstName,
                         prefixIcon: Icon(Icons.person))),
                 TextFieldBlocBuilder(
                     textFieldBloc: profileRegisterBloc.nameBloc.secondName,
-                    onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
+                    key: Key('input-register-second-name'),
+                    onTap: () => isDiabled(profileRegisterBloc.nameBloc),
+                    onChanged: (value) =>
+                        isDiabled(profileRegisterBloc.nameBloc),
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
                         labelText: I18n.of(context).formSecondName,

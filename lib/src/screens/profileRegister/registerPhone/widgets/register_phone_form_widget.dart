@@ -10,11 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
 class RegisterPhoneFormWidget extends StatelessWidget {
-  const RegisterPhoneFormWidget({
-    Key key,
-    this.country,
-    @required this.isValidating
-  }) : super(key: key);
+  const RegisterPhoneFormWidget(
+      {Key key, this.country, @required this.isValidating})
+      : super(key: key);
 
   final ItemCountry country;
   final Function isValidating;

@@ -33,7 +33,8 @@ class ButtonLineRoundedWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
               side: color == Colors.transparent
                   ? BorderSide(color: Colors.white, style: BorderStyle.solid)
-                  : BorderSide(color: Colors.transparent, style: BorderStyle.solid),
+                  : BorderSide(
+                      color: Colors.transparent, style: BorderStyle.solid),
               borderRadius: BorderRadius.circular(30.0)),
         ),
       ),

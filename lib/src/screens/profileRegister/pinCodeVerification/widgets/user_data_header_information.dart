@@ -20,7 +20,10 @@ class UserDataHeaderInformation extends StatelessWidget {
     return Column(
       children: <Widget>[
         _headerContainer(context),
-        InputCode(image: image, tag: tag,)
+        InputCode(
+          image: image,
+          tag: tag,
+        )
       ],
     );
   }

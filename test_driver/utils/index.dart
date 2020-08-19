@@ -16,3 +16,8 @@ loginProcess(FlutterDriver driver) async {
   await tap(findByKey('raisedButton-accept'), driver);
   await driver.waitFor(findByKey('tab-my-bk'));
 }
+
+logoutProcess(FlutterDriver driver) async {
+  await tap(findByKey('button-logout'), driver);
+  await driver.waitFor(findByKey('input-username'));
+}

@@ -4,9 +4,8 @@ import 'package:test/test.dart';
 import 'helpers.dart';
 import 'utils/index.dart';
 
-void main() {
+void main() async {
   FlutterDriver driver;
-  // driver.
 
   group('Login process - validate home elements', () {
     setUpAll(() async {
@@ -32,6 +31,7 @@ void main() {
           await driver.getText(findByKey('group-bk-title-shares')), 'SHARES');
       expect(await driver.getText(findByKey('group-bk-title-creditsgranted')),
           'CREDITS GRANTED');
+      await logoutProcess(driver);
     });
   });
 }

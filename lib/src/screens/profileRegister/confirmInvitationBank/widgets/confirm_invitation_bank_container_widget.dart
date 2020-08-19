@@ -27,6 +27,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
             ),
             child: RichText(
                 textAlign: TextAlign.center,
+                key: Key('register-profile-created-message-confirmation'),
                 text: TextSpan(
                     text: I18n.of(context).confimInvitationBankDescription,
                     style: TextStyle(
@@ -79,6 +80,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
           Container(
               alignment: Alignment.topLeft,
               child: Text('$firstName $lastName',
+                  key: Key('register-profile-created-fullname'),
                   style: TextStyle(
                       fontSize: SizeConfig.safeBlockHorizontal * 6,
                       fontWeight: FontWeight.w700,
@@ -88,6 +90,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   vertical: SizeConfig.safeBlockVertical * 0.5),
               child: Text('${profile.emailBloc.email.value}',
+                  key: Key('register-profile-created-email'),
                   style: TextStyle(
                       fontSize: SizeConfig.safeBlockHorizontal * 4,
                       fontWeight: FontWeight.w200,
@@ -95,6 +98,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
           Container(
               alignment: Alignment.topLeft,
               child: Text('${profile.phoneBloc.phone.value}',
+                  key: Key('register-profile-created-phone'),
                   style: TextStyle(
                     fontSize: SizeConfig.safeBlockHorizontal * 4,
                     fontWeight: FontWeight.w200,

@@ -11,16 +11,16 @@ class TextGreetingWidget extends StatelessWidget {
   final String subtitle;
   final double subtitleWith;
 
-  const TextGreetingWidget({
-    Key key,
-    @required this.width,
-    @required this.firstText,
-    this.firstFontWeight,
-    this.secondText,
-    this.secondFontWeight,
-    this.subtitle,
-    this.subtitleWith
-  }) : super(key: key);
+  const TextGreetingWidget(
+      {Key key,
+      @required this.width,
+      @required this.firstText,
+      this.firstFontWeight,
+      this.secondText,
+      this.secondFontWeight,
+      this.subtitle,
+      this.subtitleWith})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,7 @@ class TextGreetingWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _title(context),
-          if (this.subtitle != null) ...[
-            _subtitle(context)
-          ]
+          if (this.subtitle != null) ...[_subtitle(context)]
         ],
       ),
     );
@@ -41,26 +39,22 @@ class TextGreetingWidget extends StatelessWidget {
   Widget _title(context) {
     return RichText(
       textAlign: TextAlign.center,
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: this.firstText,
-            style: TextStyle(
+      text: TextSpan(children: [
+        TextSpan(
+          text: this.firstText,
+          style: TextStyle(
               color: Theme.of(context).colorScheme.grayColor,
               fontSize: SizeConfig.safeBlockHorizontal * 5.8,
-              fontWeight: this.firstFontWeight ?? FontWeight.w200
-            ),
-          ),
-          TextSpan(
-            text: this.secondText,
-            style: TextStyle(
+              fontWeight: this.firstFontWeight ?? FontWeight.w200),
+        ),
+        TextSpan(
+          text: this.secondText,
+          style: TextStyle(
               color: Theme.of(context).colorScheme.grayColor,
               fontSize: SizeConfig.safeBlockHorizontal * 5.8,
-              fontWeight: this.secondFontWeight ?? FontWeight.w700
-            ),
-          ),
-        ]
-      ),
+              fontWeight: this.secondFontWeight ?? FontWeight.w700),
+        ),
+      ]),
     );
   }
 
@@ -69,15 +63,13 @@ class TextGreetingWidget extends StatelessWidget {
       width: this.subtitleWith,
       child: Padding(
         padding: const EdgeInsets.only(top: 5.0),
-        child: Text(
-          this.subtitle,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.grayColor,
-            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-            fontWeight: FontWeight.w100
-          )
-        ),
+        child: Text(this.subtitle,
+            key: Key('register-profile-created-subtitle'),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.grayColor,
+                fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                fontWeight: FontWeight.w100)),
       ),
     );
   }

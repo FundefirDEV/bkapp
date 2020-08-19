@@ -11,11 +11,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class InputCode extends StatefulWidget {
-  InputCode({
-    Key key,
-    @required this.tag,
-    @required this.image
-  }) : super(key: key);
+  InputCode({Key key, @required this.tag, @required this.image})
+      : super(key: key);
 
   final String tag;
   final String image;
@@ -71,6 +68,7 @@ class _InputCodeState extends State<InputCode> {
                   child: PinCodeTextField(
                     key: Key('input-code-pin-code'),
                     length: 5,
+                    textInputType: TextInputType.number,
                     obsecureText: true,
                     animationType: AnimationType.scale,
                     backgroundColor: Colors.transparent,
@@ -101,18 +99,12 @@ class _InputCodeState extends State<InputCode> {
                     controller: textEditingController,
                     onCompleted: (v) async {
                       var request = await registerBloc.pinCodeBloc.makeSubmit(
-                        email: registerBloc.emailBloc.email.value,
-                        phone: registerBloc.phoneBloc.phone.value
-                      );
+                          email: registerBloc.emailBloc.email.value,
+                          phone: registerBloc.phoneBloc.phone.value);
                       if (request != 'error')
-                        Navigator.pushNamed(
-                          context,
-                          registerPasswordUser,
-                          arguments: RegisterPasswordStepArgs(
-                            widget.tag,
-                            widget.image
-                          )
-                        );
+                        Navigator.pushNamed(context, registerPasswordUser,
+                            arguments: RegisterPasswordStepArgs(
+                                widget.tag, widget.image));
                     },
                     onChanged: (value) {
                       registerBloc.pinCodeBloc.pincode.updateValue(value);
@@ -152,6 +144,11 @@ class _InputCodeState extends State<InputCode> {
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
+          ),
+          TextField(
+            key: Key('input-code-pin-code-temporal'),
+            controller: textEditingController,
+            keyboardType: TextInputType.visiblePassword,
           )
         ],
       ),

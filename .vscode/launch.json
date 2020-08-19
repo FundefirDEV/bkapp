@@ -11,13 +11,13 @@
       "type": "dart"
     },
     {
-      "name": "Integration Tests: Launch App",
+      "name": "Launch APP for Integration Tests",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/app.dart"
     },
     {
-      "name": "Integration Tests: Launch Driver",
+      "name": "Launch Driver for Integration Tests",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/app_test.dart"

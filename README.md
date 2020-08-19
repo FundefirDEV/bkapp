@@ -123,3 +123,10 @@ pub global activate sylph
 sylph config
 sylph --devices=all
 ```
+
+### Regression test
+
+```sh
+flutter drive --target=test_driver/app.dart --driver=test_driver/register_test.dart
+flutter drive --target=test_driver/app.dart --driver=test_driver/app_test.dart
+```

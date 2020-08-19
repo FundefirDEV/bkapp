@@ -28,6 +28,7 @@ class RegisterPasswordFormWidget extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 TextFieldBlocBuilder(
+                    key: Key('input-register-password'),
                     textFieldBloc: profilePassword.password,
                     suffixButton: SuffixButton.obscureText,
                     errorBuilder: errorHandler,
@@ -36,6 +37,7 @@ class RegisterPasswordFormWidget extends StatelessWidget {
                         labelText: I18n.of(context).formPassword,
                         prefixIcon: Icon(Icons.person))),
                 TextFieldBlocBuilder(
+                    key: Key('input-register-password-confirmation'),
                     textFieldBloc: profilePassword.passwordConfirm,
                     suffixButton: SuffixButton.obscureText,
                     errorBuilder: errorHandler,
