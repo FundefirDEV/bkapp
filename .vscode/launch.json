@@ -17,10 +17,22 @@
       "program": "test_driver/app.dart"
     },
     {
-      "name": "Launch Driver for Integration Tests",
+      "name": "Launch Driver Login",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/app_test.dart"
+    },
+    {
+      "name": "Launch Driver Register",
+      "request": "launch",
+      "type": "dart",
+      "program": "test_driver/register_test.dart"
+    },
+    {
+      "name": "Launch Driver Profile",
+      "request": "launch",
+      "type": "dart",
+      "program": "test_driver/profile_test.dart"
     }
   ]
 }
