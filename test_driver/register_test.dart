@@ -90,12 +90,12 @@ Future _enterPinDataCode(FlutterDriver driver) async {
 Future _selectCountryAndSetPhone(FlutterDriver driver) async {
   await driver.waitFor(findByKey('country1'));
   await tap(findByKey('country1'), driver);
-  await type(findByKey('phone-input-field'), '(317) 656-9802', driver);
+  await type(findByKey('phone-input-field'), '(317) 656-9888', driver);
 }
 
 Future _fillEmail(FlutterDriver driver) async {
   await type(findByKey('text-field-email-profile-register'),
-      'juanita@gmail.com', driver);
+      'juanita12@gmail.com', driver);
   await tap(findByKey('text-field-email-profile-register'), driver);
   await tap(findByKey('text-field-email-profile-register'), driver);
 }

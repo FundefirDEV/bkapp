@@ -92,7 +92,7 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
       print('Token usuario nuevo: ' + response['access_token']);
       return response['access_token'];
     } catch (e) {
-      return 'error';
+      throw Exception(e.toString());
     }
   }
 

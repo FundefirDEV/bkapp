@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
@@ -62,17 +63,37 @@ class _RegisterPasswordFormListenerWidgetState
               numberOfSteps: 5,
               isDisabled: isDisabled,
               currentBlocSubmit: () async {
-                var result = await context
-                    .bloc<AppBloc>()
-                    .profileRegisterBloc
-                    .makeSubmit();
-                if (result != 'error')
+                try {
+                  var result = await context
+                      .bloc<AppBloc>()
+                      .profileRegisterBloc
+                      .makeSubmit();
                   _bankRegisterBloc.token.updateValue(result);
-                Navigator.pushNamed(context, confirmInvitationBank,
-                    arguments: ConfirmInvitationBankStepArgs(
-                        widget.data.tag, widget.data.image));
+                  Navigator.pushNamed(context, confirmInvitationBank,
+                      arguments: ConfirmInvitationBankStepArgs(
+                          widget.data.tag, widget.data.image));
+                } catch (e) {
+                  _showMaterialDialog(e.toString());
+                }
               })
         ]);
+  }
+
+  _showMaterialDialog(String error) {
+    showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              title: new Text(I18n.of(context).requestErrorUserNotAvailable),
+              content: new Text(error),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text(I18n.of(context).actionTextClose),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
   }
 
   _changeState(bool validation) {
