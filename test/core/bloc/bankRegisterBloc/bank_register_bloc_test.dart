@@ -6,7 +6,7 @@ void main() {
   BankRegisterBloc bankRegisterBloc;
 
   setUp(() {
-    bankRegisterBloc = BankRegisterBloc();
+    bankRegisterBloc = BankRegisterBloc(repository: null);
   });
 
   test('Test number action bloc', () {

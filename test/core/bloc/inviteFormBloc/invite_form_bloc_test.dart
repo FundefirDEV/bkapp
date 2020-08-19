@@ -6,7 +6,7 @@ void main() {
   InviteFormBloc inviteFormBloc;
 
   setUp(() {
-    inviteFormBloc = InviteFormBloc();
+    inviteFormBloc = InviteFormBloc(partnerRepository: null);
   });
 
   test('Test invite form bloc', () {

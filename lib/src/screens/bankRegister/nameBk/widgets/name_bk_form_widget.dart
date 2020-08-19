@@ -13,33 +13,30 @@ class NameBkFormWidget extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Theme(
-      key: Key('theme-input-namebk'),
-      data: Theme.of(context).copyWith(
-      textTheme: Theme.of(context).textTheme.copyWith(
-          // FIXME this subhead has to be replaced
-          subhead: Theme.of(context).textTheme.subhead.copyWith(
-            color: Colors.white,
-            fontSize: SizeConfig.blockSizeHorizontal * 10,
-            fontWeight: FontWeight.w100
-          ),
+        key: Key('theme-input-namebk'),
+        data: Theme.of(context).copyWith(
+          textTheme: Theme.of(context).textTheme.copyWith(
+                subtitle1: Theme.of(context).textTheme.subtitle1.copyWith(
+                    color: Colors.white,
+                    fontSize: SizeConfig.blockSizeHorizontal * 10,
+                    fontWeight: FontWeight.w100),
+              ),
         ),
-      ),
         child: TextFieldBlocBuilder(
-          key: Key('input-namebk'),
-          maxLengthEnforced: false,
-          textFieldBloc: context.bloc<AppBloc>().bankRegisterBloc.name,
-          textAlign: TextAlign.center,
-          cursorColor: Colors.white,
-          padding: EdgeInsets.all(0),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.all(0),
-            hintText: I18n.of(context).bankNameWriteHere,
-            hintStyle: TextStyle(
-              color: Colors.white,
-            ),
-          )
-        ),
+            key: Key('input-namebk'),
+            maxLengthEnforced: false,
+            textFieldBloc: context.bloc<AppBloc>().bankRegisterBloc.name,
+            textAlign: TextAlign.center,
+            cursorColor: Colors.white,
+            padding: EdgeInsets.all(0),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.all(0),
+              hintText: I18n.of(context).bankNameWriteHere,
+              hintStyle: TextStyle(
+                color: Colors.white,
+              ),
+            )),
       ),
     );
   }

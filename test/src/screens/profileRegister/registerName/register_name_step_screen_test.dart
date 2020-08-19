@@ -11,15 +11,16 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterName extends MockBloc<
-    form_bloc.FormBlocState<String, String>> implements ProfileNameBloc {}
+class MockRegisterName extends MockBloc<form_bloc.FormBlocState<String, String>>
+    implements ProfileNameBloc {}
 
 void main() {
-  ProfileNameBloc mockRegisterName;
+  // ProfileNameBloc mockRegisterName;
 
-  setUp(() {
-    mockRegisterName = MockRegisterName();
-  });
+  // setUp(() {
+  //   mockRegisterName = MockRegisterName();
+  // });
+
   group('Test Register Name Step', () {
     final RegisterNameStepArgs data =
         RegisterNameStepArgs('male', 'assets/images/man.svg');

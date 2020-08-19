@@ -2,7 +2,7 @@ import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/footerName
 import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/select_name_bk_widget.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/nameBk/widgets/title_name_bk_widget.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/bg_bank_register.dart';
-import 'package:bkapp_flutter/src/widgets/widgets.dart';
+// import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class NameBkScreen extends StatefulWidget {

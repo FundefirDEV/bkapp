@@ -16,19 +16,17 @@ class MockLoginRepository extends Mock implements LoginRepository {}
 void main() {
   LoginRepository repository = MockLoginRepository();
   var baseWidget;
-  baseLoginWidget({ key }) {
-      return baseTester(
+  baseLoginWidget({key}) {
+    return baseTester(
         child: BlocProvider(
-          create: (context) => LoginFormBloc(
-              authenticationBloc:
-                  AuthenticationBloc(loginRepository: repository),
-              repository: repository),
-          child: Builder(
-            builder: (context) => LoginScreen(key: key),
-          )
-        )
-      );
-    };
+            create: (context) => LoginFormBloc(
+                authenticationBloc:
+                    AuthenticationBloc(loginRepository: repository),
+                repository: repository),
+            child: Builder(
+              builder: (context) => LoginScreen(key: key),
+            )));
+  }
 
   setUp(() {
     baseWidget = baseTester(

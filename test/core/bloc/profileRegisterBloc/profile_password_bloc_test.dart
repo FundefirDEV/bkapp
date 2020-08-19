@@ -6,7 +6,7 @@ void main() {
   ProfileRegisterBloc passwordBloc;
 
   setUp(() {
-    passwordBloc = ProfileRegisterBloc();
+    passwordBloc = ProfileRegisterBloc(repository: null);
   });
 
   test('Test name bloc', () {

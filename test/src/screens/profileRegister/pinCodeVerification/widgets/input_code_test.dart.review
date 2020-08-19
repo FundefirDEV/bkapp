@@ -8,14 +8,16 @@ import '../../../../../base_tester.dart';
 void main() {
   group('Test InputCode  screen', () {
     testWidgets('Render InputCode', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: InputCode()));
+      await tester.pumpWidget(baseTester(
+          child: InputCode(image: 'assets/images/user.svg', tag: 'test')));
       await tester.pumpAndSettle();
 
       expect(find.byType(InputCode), findsOneWidget);
     });
 
     testWidgets('tab focus', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: InputCode()));
+      await tester.pumpWidget(baseTester(
+          child: InputCode(image: 'assets/images/user.svg', tag: 'test')));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('input-code-column-gesture-detector')),
@@ -26,7 +28,8 @@ void main() {
     });
 
     testWidgets('InputCode render structure', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: InputCode()));
+      await tester.pumpWidget(baseTester(
+          child: InputCode(image: 'assets/images/user.svg', tag: 'test')));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('input-code-column')), findsOneWidget);

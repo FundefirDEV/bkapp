@@ -11,6 +11,7 @@ import '../../../base_tester.dart';
 class MockValidationCodeRepo extends Mock implements ValidationCodeRepository {}
 
 void main() {
+  // ignore: close_sinks
   ProfilePhoneBloc phoneBloc;
   final RegisterPhoneStepArgs data =
       RegisterPhoneStepArgs('male', 'assets/images/man.svg');

@@ -11,15 +11,17 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterPhone extends MockBloc<
-    form_bloc.FormBlocState<String, String>> implements ProfilePhoneBloc {}
+class MockRegisterPhone
+    extends MockBloc<form_bloc.FormBlocState<String, String>>
+    implements ProfilePhoneBloc {}
 
 void main() {
-  ProfilePhoneBloc mockRegisterPhone;
+  // ProfilePhoneBloc mockRegisterPhone;
 
-  setUp(() {
-    mockRegisterPhone = MockRegisterPhone();
-  });
+  // setUp(() {
+  //   mockRegisterPhone = MockRegisterPhone();
+  // });
+
   group('Test Register Phone Step', () {
     final RegisterPhoneStepArgs data =
         RegisterPhoneStepArgs('male', 'assets/images/man.svg');

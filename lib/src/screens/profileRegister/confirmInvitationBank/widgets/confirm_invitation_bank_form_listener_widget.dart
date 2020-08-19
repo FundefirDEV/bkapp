@@ -1,5 +1,3 @@
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
@@ -8,7 +6,6 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
   final ConfirmInvitationBankStepArgs data;

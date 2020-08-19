@@ -22,6 +22,7 @@ class StatusCreditRequestWidget extends StatefulWidget {
 class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return AppBarWidget(

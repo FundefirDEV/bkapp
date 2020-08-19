@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/src/screens/homeTest/home_test_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/intro_register_screen.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/items_carousel.dart';
 import 'package:bkapp_flutter/src/screens/introRegister/widgets/footer_intro.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
+// import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/partner_repository.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
@@ -13,7 +13,7 @@ part 'partner_event.dart';
 part 'partner_state.dart';
 
 class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
-  PartnerBloc({ @required this.partnerRepository }) : super(PartnerInitial());
+  PartnerBloc({@required this.partnerRepository}) : super(PartnerInitial());
   final PartnerRepository partnerRepository;
 
   PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
@@ -37,22 +37,14 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
     yield PartnerLoading();
     try {
       await partnerRepository.getPartnerValidation(
-        event.token,
-        UtilsTools.removePhoneFormatter(event.phoneNumber)
-      );
+          event.token, UtilsTools.removePhoneFormatter(event.phoneNumber));
       yield PartnerVerified(phoneNumber: event.phoneNumber);
       await partnerDb.addPartnerToDatabase(
-          PartnerModel(
-            firstname: event.name,
-            phone: event.phoneNumber
-          )
-        );
+          PartnerModel(firstname: event.name, phone: event.phoneNumber));
       yield PartnerAddedToDb();
-    } catch(e) {
+    } catch (e) {
       yield PartnerUnauthorized(
-        phoneNumber: event.phoneNumber,
-        error: e.message
-      );
+          phoneNumber: event.phoneNumber, error: e.message);
     }
   }
 
@@ -60,25 +52,17 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
     yield PartnerLoading();
     try {
       await partnerRepository.getPartnerValidation(
-        event.token,
-        UtilsTools.removePhoneFormatter(event.phoneNumber)
-      );
+          event.token, UtilsTools.removePhoneFormatter(event.phoneNumber));
       yield PartnerVerified(phoneNumber: event.phoneNumber);
-    } catch(e) {
-        yield PartnerUnauthorized(
-          phoneNumber: event.phoneNumber,
-          error: e.message
-        );
-      }
+    } catch (e) {
+      yield PartnerUnauthorized(
+          phoneNumber: event.phoneNumber, error: e.message);
+    }
   }
 
   Stream<PartnerState> _addToDb(AddPartnerToDb event) async* {
     await partnerDb.addPartnerToDatabase(
-        PartnerModel(
-          firstname: event.name,
-          phone: event.phoneNumber
-        )
-      );
+        PartnerModel(firstname: event.name, phone: event.phoneNumber));
     yield PartnerAddedToDb();
   }
 }

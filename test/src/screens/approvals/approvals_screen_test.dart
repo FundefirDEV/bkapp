@@ -16,6 +16,7 @@ class MockApprovalsBloc extends MockBloc<ApprovalsState>
     implements ApprovalsBloc {}
 
 void main() {
+  // ignore: close_sinks
   ApprovalsBloc mockApprovalsBloc;
   final testKey = Key('my-id');
 

@@ -11,16 +11,16 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterPhone extends MockBloc<
-        form_bloc.FormBlocState<String, String>>
+class MockRegisterPhone
+    extends MockBloc<form_bloc.FormBlocState<String, String>>
     implements ProfilePinCodeVerificationBloc {}
 
 void main() {
-  ProfilePinCodeVerificationBloc mockRegisterPinCode;
+  // ProfilePinCodeVerificationBloc mockRegisterPinCode;
 
-  setUp(() {
-    mockRegisterPinCode = MockRegisterPhone();
-  });
+  // setUp(() {
+  //   mockRegisterPinCode = MockRegisterPhone();
+  // });
 
   group('Test PinCodeStepScreen  screen', () {
     final testKey = Key('my-id');
@@ -95,7 +95,9 @@ void main() {
       )));
       await tester.pumpAndSettle();
 
-      await tester.enterText(find.byType(TextFormField), '12345');
+      // await tester.enterText(find.byType(TextFormField), '12345');
+      await tester.enterText(
+          find.byKey(Key('input-code-pin-code-temporal')), '12345');
       await tester.pumpAndSettle(Duration(seconds: 1));
 
       expect(find.text('12345'), findsOneWidget);

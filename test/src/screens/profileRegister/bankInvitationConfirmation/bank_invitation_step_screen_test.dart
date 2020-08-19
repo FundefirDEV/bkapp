@@ -9,10 +9,11 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../base_tester.dart';
 
 void main() {
+  // ignore: close_sinks
   ProfileRegisterBloc profileRegisterBloc;
 
   setUp(() {
-    profileRegisterBloc = ProfileRegisterBloc();
+    profileRegisterBloc = ProfileRegisterBloc(repository: null);
   });
   group('Test Bank invitation confirmation Step', () {
     final ConfirmInvitationBankStepArgs data =

@@ -30,6 +30,7 @@ Widget loginRouteBloc() {
       if (state is AuthenticationLoading) {
         return LoadingIndicatorScreen();
       }
+      return null;
     }),
   );
 }

@@ -10,15 +10,17 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterEmail extends MockBloc<
-    form_bloc.FormBlocState<String, String>> implements ProfileEmailBloc {}
+class MockRegisterEmail
+    extends MockBloc<form_bloc.FormBlocState<String, String>>
+    implements ProfileEmailBloc {}
 
 void main() {
-  ProfileEmailBloc mockRegisterEmail;
+  // ProfileEmailBloc mockRegisterEmail;
 
-  setUp(() {
-    mockRegisterEmail = MockRegisterEmail();
-  });
+  // setUp(() {
+  //   mockRegisterEmail = MockRegisterEmail();
+  // });
+
   group('Test Register Email Step', () {
     final RegisterEmailStepArgs data =
         RegisterEmailStepArgs('male', 'assets/images/man.svg');
