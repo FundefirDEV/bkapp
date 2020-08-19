@@ -10,8 +10,9 @@ import 'list_partners.dart';
 import 'widgets/switchAdmin/switch_admin_widget.dart';
 
 class AdministratorAssignmentScreen extends StatefulWidget {
-  AdministratorAssignmentScreen({Key key}) : super(key: key);
-
+  AdministratorAssignmentScreen({Key key, @required this.userName})
+      : super(key: key);
+  final String userName;
   @override
   _AdministratorAssignmentScreenState createState() =>
       _AdministratorAssignmentScreenState();
@@ -35,23 +36,24 @@ class _AdministratorAssignmentScreenState
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
     return AppBarWidget(
+        userName: widget.userName,
         container: Column(
-      key: Key('column_administrator_assignmen_screen'),
-      children: <Widget>[
-        TitleHeaderWidget(
-          title: I18n.of(context).administratorAssignmentTitle,
-          navigateBloc: navigateBloc,
-          oldIndex: 1,
-        ),
-        for (var i = 0; i < listPartners.length; i++)
-          SwitchAdmin(
-            customKey: Key('switch_admin_$i'),
-            partnerName: listPartners[i].name,
-            isAdmin: listPartners[i].isAdmin,
-            callback: _showDialog,
-          )
-      ],
-    ));
+          key: Key('column_administrator_assignmen_screen'),
+          children: <Widget>[
+            TitleHeaderWidget(
+              title: I18n.of(context).administratorAssignmentTitle,
+              navigateBloc: navigateBloc,
+              oldIndex: 1,
+            ),
+            for (var i = 0; i < listPartners.length; i++)
+              SwitchAdmin(
+                customKey: Key('switch_admin_$i'),
+                partnerName: listPartners[i].name,
+                isAdmin: listPartners[i].isAdmin,
+                callback: _showDialog,
+              )
+          ],
+        ));
   }
 
   void _showDialog(context, value) {

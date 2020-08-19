@@ -12,8 +12,9 @@ import 'widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class StatusCreditRequestWidget extends StatefulWidget {
-  StatusCreditRequestWidget({Key key}) : super(key: key);
-
+  StatusCreditRequestWidget({Key key, @required this.userName})
+      : super(key: key);
+  final String userName;
   @override
   _StatusCreditRequestWidgetState createState() =>
       _StatusCreditRequestWidgetState();
@@ -26,6 +27,7 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return AppBarWidget(
+      userName: widget.userName,
       container: Column(
         key: Key('status-credit_request-widget-column'),
         children: <Widget>[

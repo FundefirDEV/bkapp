@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
@@ -26,7 +27,10 @@ class AuthenticationBloc
 
     if (event is LoggedIn) {
       yield AuthenticationLoading();
-      yield AuthenticationAuthenticated(token: event.token['access_token']);
+      yield AuthenticationAuthenticated(
+          token: event.tokenInformation['access_token'],
+          userName: UtilsTools.titleCase(
+              '${event.tokenInformation['firstname']} ${event.tokenInformation['lastname']}'));
     }
 
     if (event is LoggedOut) {

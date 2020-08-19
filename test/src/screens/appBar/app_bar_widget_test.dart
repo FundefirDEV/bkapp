@@ -12,6 +12,7 @@ void main() {
       await tester.pumpWidget(baseTester(
           child: AppBarWidget(
         key: key,
+        userName: 'Usuario',
         container: Container(
           child: Text('Prueba'),
         ),
@@ -24,6 +25,7 @@ void main() {
       await tester.pumpWidget(baseTester(
           child: AppBarWidget(
         key: key,
+        userName: 'Usuario',
         container: Container(
           child: Text('Prueba'),
         ),
@@ -37,6 +39,7 @@ void main() {
       await tester.pumpWidget(baseTester(
           child: AppBarWidget(
         key: key,
+        userName: 'Usuario',
         container: Container(
           child: Text('Prueba'),
         ),
@@ -50,6 +53,7 @@ void main() {
       await tester.pumpWidget(baseTester(
           child: AppBarWidget(
         key: key,
+        userName: 'Usuario',
         container: Container(
           child: Text('Prueba'),
         ),
@@ -63,6 +67,7 @@ void main() {
       await tester.pumpWidget(baseTester(
           child: AppBarWidget(
         key: key,
+        userName: 'Usuario',
         container: Container(
           child: Text('Prueba'),
         ),

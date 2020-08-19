@@ -15,10 +15,11 @@ import 'content/accepted_discarted_container.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ApprovalsScreen extends StatefulWidget {
-  ApprovalsScreen({Key key, @required this.oldIndex}) : super(key: key);
+  ApprovalsScreen({Key key, @required this.oldIndex, @required this.userName})
+      : super(key: key);
 
   final int oldIndex;
-
+  final String userName;
   @override
   _ApprovalsScreenState createState() => _ApprovalsScreenState();
 }
@@ -30,8 +31,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
     return BlocProvider(
         create: (context) => context.bloc<AppBloc>().approvalsBloc,
         child: ApprovalsBuilder(
-          oldIndex: widget.oldIndex,
-        ));
+            oldIndex: widget.oldIndex, userName: widget.userName));
   }
 
   @override
@@ -41,10 +41,12 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
 }
 
 class ApprovalsBuilder extends StatelessWidget {
-  const ApprovalsBuilder({Key key, @required this.oldIndex}) : super(key: key);
+  const ApprovalsBuilder(
+      {Key key, @required this.oldIndex, @required this.userName})
+      : super(key: key);
 
   final int oldIndex;
-
+  final String userName;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -54,6 +56,7 @@ class ApprovalsBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is ApprovalsLoaded) {
           return AppBarWidget(
+            userName: this.userName,
             container: Column(
               key: Key('column-appbar-approvals-screen'),
               children: <Widget>[

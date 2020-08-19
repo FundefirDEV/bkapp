@@ -17,10 +17,8 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController()),
-              child: CreditScreen(
-                key: key,
-                oldIndex: 0,
-              ))));
+              child:
+                  CreditScreen(key: key, oldIndex: 0, userName: 'Usuario'))));
       await tester.pumpAndSettle();
       expect(find.byKey(key), findsOneWidget);
     });
@@ -33,6 +31,7 @@ void main() {
               child: CreditScreen(
                 key: key,
                 oldIndex: 0,
+                userName: 'Usuario',
               ))));
       await tester.pumpAndSettle();
 
@@ -47,10 +46,8 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController()),
-              child: CreditScreen(
-                key: key,
-                oldIndex: 0,
-              ))));
+              child:
+                  CreditScreen(key: key, oldIndex: 0, userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.drag(find.byType(AppBarWidget), const Offset(0.0, -600.0));

@@ -21,10 +21,10 @@ class LoginFormBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     try {
-      final token = await repository.postLogin(
+      final tokenInformation = await repository.postLogin(
           username: username.value, password: password.value);
 
-      authenticationBloc.add(LoggedIn(token: token));
+      authenticationBloc.add(LoggedIn(tokenInformation: tokenInformation));
       emitSuccess(canSubmitAgain: true);
       clear();
     } catch (e) {

@@ -14,20 +14,22 @@ void main() {
   group('Test menu navigator screen', () {
     final keyMenu = Key('menu-key');
     testWidgets('Render Menu navigator', (WidgetTester tester) async {
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(baseTester(
+          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
       await tester.pumpAndSettle();
       expect(find.byKey(keyMenu), findsOneWidget);
     });
 
     testWidgets('Find custom bottom bar', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: MenuNavigatorScreen()));
+      await tester.pumpWidget(
+          baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
       await tester.pumpAndSettle();
       expect(find.byType(CustomBottomBar), findsOneWidget);
     });
 
     testWidgets('Find three barItems', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: MenuNavigatorScreen()));
+      await tester.pumpWidget(
+          baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
       await tester.pumpAndSettle();
       final customBottomBar =
           tester.widget<CustomBottomBar>(find.byType(CustomBottomBar));
@@ -36,8 +38,8 @@ void main() {
 
     testWidgets('Find option additional menu', (WidgetTester tester) async {
       final optionAdditional = Key('option-additional');
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(baseTester(
+          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
       await tester.pumpAndSettle();
       expect(find.byType(FloatingActionButton), findsOneWidget);
       expect(find.byKey(optionAdditional), findsOneWidget);
@@ -46,15 +48,15 @@ void main() {
 
     testWidgets('Render home widget as first screen the menu navigator',
         (WidgetTester tester) async {
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(baseTester(
+          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
       await tester.pumpAndSettle();
       expect(find.byType(HomeScreen), findsOneWidget);
     });
 
     testWidgets('Change click option menu Utils', (WidgetTester tester) async {
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(baseTester(
+          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
       await tester.pumpAndSettle(Duration(milliseconds: 100));
@@ -63,8 +65,8 @@ void main() {
     });
 
     testWidgets('redirect jump to home', (WidgetTester tester) async {
-      await tester
-          .pumpWidget(baseTester(child: MenuNavigatorScreen(key: keyMenu)));
+      await tester.pumpWidget(baseTester(
+          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
@@ -78,7 +80,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
@@ -92,7 +94,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));
@@ -105,7 +107,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));
@@ -122,7 +124,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));
@@ -138,7 +140,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));
@@ -155,7 +157,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('option-additional')));

@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key, this.tokenUser}) : super(key: key);
+  HomeScreen({Key key, this.tokenUser, this.userName}) : super(key: key);
   final String tokenUser;
-
+  final String userName;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen>
     with AfterLayoutMixin<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return HomeBuilder();
+    return HomeBuilder(userName: widget.userName);
   }
 
   @override
@@ -34,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen>
 }
 
 class HomeBuilder extends StatelessWidget {
-  HomeBuilder({Key key}) : super(key: key);
-
+  HomeBuilder({Key key, this.userName}) : super(key: key);
+  final String userName;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -44,7 +44,9 @@ class HomeBuilder extends StatelessWidget {
       final dataState = state is HomeLoaded ? state : null;
 
       return Scaffold(
-          body: AppBarWidget(container: _containerMyData(context, dataState)));
+          body: AppBarWidget(
+              container: _containerMyData(context, dataState),
+              userName: this.userName));
     });
   }
 

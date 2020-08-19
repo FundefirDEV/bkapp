@@ -11,9 +11,11 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class ActiveCreditScreen extends StatelessWidget {
+  ActiveCreditScreen(
+      {Key key, @required this.oldIndex, @required this.userName})
+      : super(key: key);
   final int oldIndex;
-
-  ActiveCreditScreen({Key key, @required this.oldIndex}) : super(key: key);
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class ActiveCreditScreen extends StatelessWidget {
     SizeConfig().init(context);
     return AppBarWidget(
         key: Key('active-credit-screen'),
+        userName: this.userName,
         container: Column(
           children: <Widget>[
             TitleHeaderWidget(

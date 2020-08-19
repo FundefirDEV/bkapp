@@ -14,7 +14,7 @@ void main() {
   Widget meetingClosedTester({key}) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: MeetingClosedScreen(key: key, oldIndex: 0));
+        child: MeetingClosedScreen(key: key, oldIndex: 0, userName: 'Usuario'));
   }
 
   group('Test meeting closed screen', () {

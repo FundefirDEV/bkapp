@@ -16,11 +16,10 @@ void main() {
       final testKey = Key('my-id');
       await tester.pumpWidget(baseTester(
           child: BlocProvider(
-            create: (context) => MenuNavigatorBloc(controller: PageController()),
-            child: ConfirmationBuyShares(key: testKey)
-          )
-        )
-      );
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController()),
+              child:
+                  ConfirmationBuyShares(key: testKey, userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -28,8 +27,12 @@ void main() {
 
     testWidgets('Render TitleBuyShareWidget', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester
-          .pumpWidget(baseTester(child: TitleBuyShareWidget(key: testKey, navigateBloc: MenuNavigatorBloc(controller: PageController()), oldIndex: 0,)));
+      await tester.pumpWidget(baseTester(
+          child: TitleBuyShareWidget(
+        key: testKey,
+        navigateBloc: MenuNavigatorBloc(controller: PageController()),
+        oldIndex: 0,
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -37,11 +40,11 @@ void main() {
 
     testWidgets('Render CardBuyShares', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester.pumpWidget(
-        baseTester(
-          child: CardInformationBkWidget(key: testKey, childBlueWidth: 100,)
-        )
-      );
+      await tester.pumpWidget(baseTester(
+          child: CardInformationBkWidget(
+        key: testKey,
+        childBlueWidth: 100,
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -58,11 +61,10 @@ void main() {
     testWidgets('ConfirmationBuyShares render structure',
         (WidgetTester tester) async {
       await tester.pumpWidget(baseTester(
-        child: BlocProvider(
-          create: (context) => MenuNavigatorBloc(controller: PageController()),
-          child: ConfirmationBuyShares()
-        )
-      ));
+          child: BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController()),
+              child: ConfirmationBuyShares(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('material-confirmation-buy-share-screen')),

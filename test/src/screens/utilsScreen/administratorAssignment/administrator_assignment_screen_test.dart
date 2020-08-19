@@ -15,7 +15,7 @@ void main() {
   Widget administratorAssignmentScreen(Key key) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: AdministratorAssignmentScreen(key: key));
+        child: AdministratorAssignmentScreen(key: key, userName: 'Usuario'));
   }
 
   group('Test AdministratorAssignmentScreen', () {
@@ -38,6 +38,7 @@ void main() {
           child: AppBarWidget(
         key: testKey,
         container: container,
+        userName: 'Usuario',
       )));
       await tester.pumpAndSettle();
 
@@ -74,8 +75,7 @@ void main() {
           findsOneWidget);
     });
 
-    testWidgets('modal accept works correctly',
-        (WidgetTester tester) async {
+    testWidgets('modal accept works correctly', (WidgetTester tester) async {
       await tester.pumpWidget(baseTester(
           child: administratorAssignmentScreen(
         testKey,
@@ -86,13 +86,13 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(ImageBottomModal), findsOneWidget);
-      await tester.tap(find.byKey(Key('flat_button_image_botton_modal_accept')));
+      await tester
+          .tap(find.byKey(Key('flat_button_image_botton_modal_accept')));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('switch_admin_1')), findsOneWidget);
     });
 
-    testWidgets('modal cancel works correctly',
-        (WidgetTester tester) async {
+    testWidgets('modal cancel works correctly', (WidgetTester tester) async {
       await tester.pumpWidget(baseTester(
           child: administratorAssignmentScreen(
         testKey,

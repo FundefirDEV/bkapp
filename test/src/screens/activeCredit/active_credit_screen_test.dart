@@ -19,7 +19,7 @@ void main() {
   Widget activeCreditTester({key}) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: ActiveCreditScreen(key: key, oldIndex: 0));
+        child: ActiveCreditScreen(key: key, oldIndex: 0, userName: 'Usuario'));
   }
 
   group('Test Active Credit screen', () {

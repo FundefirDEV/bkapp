@@ -11,8 +11,8 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ConfirmationBuyShares extends StatefulWidget {
-  ConfirmationBuyShares({Key key}) : super(key: key);
-
+  ConfirmationBuyShares({Key key, @required this.userName}) : super(key: key);
+  final String userName;
   @override
   _ConfirmationBuySharesState createState() => _ConfirmationBuySharesState();
 }
@@ -26,10 +26,12 @@ class _ConfirmationBuySharesState extends State<ConfirmationBuyShares> {
       color: Theme.of(context).colorScheme.grayColor[50],
       child: AppBarWidget(
         key: Key('appbar-confirmation-buy-share-screen'),
+        userName: widget.userName,
         container: Column(
           key: Key('column-confirmation-buy-share-screen'),
           children: <Widget>[
-            TitleBuyShareWidget(oldIndex: 0, navigateBloc: context.bloc<MenuNavigatorBloc>()),
+            TitleBuyShareWidget(
+                oldIndex: 0, navigateBloc: context.bloc<MenuNavigatorBloc>()),
             CardInformationBkWidget(
               childBlue: StatusTextBuyShares(),
               childWhite: DateRequestedActions(),

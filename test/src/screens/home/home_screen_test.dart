@@ -19,7 +19,7 @@ void main() {
       return BlocProvider(
           create: (context) =>
               MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-          child: MenuNavigatorScreen());
+          child: MenuNavigatorScreen(userName: 'Usuario'));
     }
 
     testWidgets('Render home screen', (WidgetTester tester) async {
@@ -74,7 +74,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('home-bottom-bar-item')));

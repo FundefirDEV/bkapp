@@ -13,7 +13,7 @@ void main() {
     Widget administratorAssignmentScreen(Key key) {
       return BlocProvider(
           create: (context) => MenuNavigatorBloc(controller: PageController()),
-          child: AdministratorAssignmentScreen(key: key));
+          child: AdministratorAssignmentScreen(key: key, userName: 'Usuario'));
     }
 
     final testKey = Key('my-id');

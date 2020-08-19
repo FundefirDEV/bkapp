@@ -13,9 +13,11 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class MeetingClosedScreen extends StatelessWidget {
+  const MeetingClosedScreen(
+      {Key key, @required this.oldIndex, @required this.userName})
+      : super(key: key);
   final int oldIndex;
-  const MeetingClosedScreen({Key key, this.oldIndex}) : super(key: key);
-
+  final String userName;
   @override
   Widget build(BuildContext context) {
     List listDetailMeetingClosed = jsonDecode(
@@ -30,6 +32,7 @@ class MeetingClosedScreen extends StatelessWidget {
     return Container(
       child: AppBarWidget(
         key: Key('app-bar-widget-meeting-closed'),
+        userName: this.userName,
         container: Column(children: <Widget>[
           TitleHeaderWidget(
             title: I18n.of(context).meetingClosedMeetingClosing,

@@ -59,7 +59,7 @@ void main() {
   Widget approvalTester(Key key) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: ApprovalsScreen(key: key, oldIndex: 0));
+        child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario'));
   }
 
   group('Test approvals_screen', () {
@@ -79,12 +79,15 @@ void main() {
       when(mockApprovalsBloc.state)
           .thenReturn(ApprovalsLoaded(approvals: response));
       await tester.pumpWidget(baseTester(
-          child: MultiBlocProvider(providers: [
-        BlocProvider<MenuNavigatorBloc>(
-            create: (context) =>
-                MenuNavigatorBloc(controller: PageController())),
-        BlocProvider.value(value: mockApprovalsBloc)
-      ], child: ApprovalsBuilder(key: testKey, oldIndex: 0))));
+          child: MultiBlocProvider(
+              providers: [
+            BlocProvider<MenuNavigatorBloc>(
+                create: (context) =>
+                    MenuNavigatorBloc(controller: PageController())),
+            BlocProvider.value(value: mockApprovalsBloc)
+          ],
+              child: ApprovalsBuilder(
+                  key: testKey, oldIndex: 0, userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       expect(find.byType(AppBarWidget), findsOneWidget);

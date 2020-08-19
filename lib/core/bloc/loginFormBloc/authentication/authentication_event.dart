@@ -10,15 +10,15 @@ abstract class AuthenticationEvent extends Equatable {
 class AppStarted extends AuthenticationEvent {}
 
 class LoggedIn extends AuthenticationEvent {
-  final Map<String, dynamic> token;
+  final Map<String, dynamic> tokenInformation;
 
-  LoggedIn({@required this.token});
-
-  @override
-  List<Object> get props => [token];
+  LoggedIn({@required this.tokenInformation});
 
   @override
-  String toString() => 'LoggedIn { token: $token }';
+  List<Object> get props => [tokenInformation];
+
+  @override
+  String toString() => 'LoggedIn { token-information: $tokenInformation }';
 }
 
 class LoggedOut extends AuthenticationEvent {}

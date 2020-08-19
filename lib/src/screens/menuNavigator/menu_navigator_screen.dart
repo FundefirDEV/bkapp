@@ -16,8 +16,10 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'widgets/widgets.dart';
 
 class MenuNavigatorScreen extends StatefulWidget {
-  MenuNavigatorScreen({Key key, this.tokenUser}) : super(key: key);
+  MenuNavigatorScreen({Key key, this.tokenUser, this.userName})
+      : super(key: key);
   final String tokenUser;
+  final String userName;
   @override
   _MenuNavigatorState createState() => _MenuNavigatorState();
 }
@@ -92,21 +94,31 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                 PageView(
                   controller: _myPage,
                   children: <Widget>[
-                    HomeScreen(tokenUser: widget.tokenUser), // NOTE 0
-                    UtilsScreen(),
+                    HomeScreen(
+                        tokenUser: widget.tokenUser,
+                        userName: widget.userName), // NOTE 0
+                    UtilsScreen(userName: widget.userName),
                     ProfileScreen(),
-                    CreditScreen(oldIndex: currentIndex),
-                    BuySharesScreen(oldIndex: currentIndex), // NOTE 4
-                    ApprovalsScreen(oldIndex: currentIndex),
-                    StatusCreditRequestWidget(),
-                    ConfirmationBuyShares(), // NOTE 7
+                    CreditScreen(
+                        oldIndex: currentIndex, userName: widget.userName),
+                    BuySharesScreen(
+                        oldIndex: currentIndex,
+                        userName: widget.userName), // NOTE 4
+                    ApprovalsScreen(
+                        oldIndex: currentIndex, userName: widget.userName),
+                    StatusCreditRequestWidget(userName: widget.userName),
+                    ConfirmationBuyShares(userName: widget.userName), // NOTE 7
                     RulesScreen(),
                     RulesEditScreen(),
-                    AdministratorAssignmentScreen(), // NOTE 10
-                    ActiveCreditScreen(oldIndex: currentIndex),
-                    AddPartnerScreen(oldIndex: currentIndex),
-                    MeetingClosedScreen(oldIndex: currentIndex),
-                    ProfitPaymentScreen() // NOTE 14
+                    AdministratorAssignmentScreen(
+                        userName: widget.userName), // NOTE 10
+                    ActiveCreditScreen(
+                        oldIndex: currentIndex, userName: widget.userName),
+                    AddPartnerScreen(
+                        oldIndex: currentIndex, userName: widget.userName),
+                    MeetingClosedScreen(
+                        oldIndex: currentIndex, userName: widget.userName),
+                    ProfitPaymentScreen(userName: widget.userName) // NOTE 14
                   ],
                   physics:
                       NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

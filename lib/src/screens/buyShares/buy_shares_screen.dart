@@ -14,9 +14,10 @@ import 'widgets/cardBuyShares/shares_buy_text_widget.dart';
 import 'widgets/cardBuyShares/value_actions_widget.dart';
 
 class BuySharesScreen extends StatefulWidget {
-  BuySharesScreen({Key key, @required this.oldIndex}) : super(key: key);
-
+  BuySharesScreen({Key key, @required this.oldIndex, this.userName})
+      : super(key: key);
   final int oldIndex;
+  final String userName;
 
   @override
   _BuySharesScreenState createState() => _BuySharesScreenState();
@@ -33,6 +34,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
       color: Theme.of(context).colorScheme.grayColor[50],
       child: AppBarWidget(
           key: Key('appbar-buy-share-screen'),
+          userName: widget.userName,
           container: Container(
             child: Builder(
                 key: Key('builder-buy-share-screen'),

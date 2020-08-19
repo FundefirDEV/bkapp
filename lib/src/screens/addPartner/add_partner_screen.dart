@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 import 'content/widgets/bottom_text.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-
 class AddPartnerScreen extends StatefulWidget {
+  AddPartnerScreen({Key key, @required this.oldIndex, @required this.userName})
+      : super(key: key);
   final oldIndex;
-
-  AddPartnerScreen({Key key, @required this.oldIndex}) : super(key: key);
+  final String userName;
 
   @override
   _AddPartnerScreenState createState() => _AddPartnerScreenState();
@@ -21,26 +21,26 @@ class AddPartnerScreen extends StatefulWidget {
 class _AddPartnerScreenState extends State<AddPartnerScreen> {
   @override
   Widget build(BuildContext context) {
-    
     // ignore: close_sinks
     final menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
-    
+
     SizeConfig().init(context);
     return Scaffold(
         key: Key('scafforld_add_partner_screen'),
         body: AppBarWidget(
+            userName: widget.userName,
             container: Column(
-          key: Key('column_add_partner_screen'),
-          children: <Widget>[
-            TitleHeaderWidget(
-              key: Key('title_header_top_partner_screen'),
-              title: I18n.of(context).addPartnerPartner,
-              navigateBloc: menuNavigatorBloc,
-              oldIndex: widget.oldIndex,
-            ),
-            TopContainerAddPartnerScreen(),
-            BottomText()
-          ],
-        )));
+              key: Key('column_add_partner_screen'),
+              children: <Widget>[
+                TitleHeaderWidget(
+                  key: Key('title_header_top_partner_screen'),
+                  title: I18n.of(context).addPartnerPartner,
+                  navigateBloc: menuNavigatorBloc,
+                  oldIndex: widget.oldIndex,
+                ),
+                TopContainerAddPartnerScreen(),
+                BottomText()
+              ],
+            )));
   }
 }

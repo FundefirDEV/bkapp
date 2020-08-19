@@ -18,7 +18,7 @@ void main() {
   Widget statusCreditTester({key}) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: StatusCreditRequestWidget(key: key));
+        child: StatusCreditRequestWidget(key: key, userName: 'Usuario'));
   }
 
   group('Test StatusCreditRequestWidget  Widget', () {
@@ -105,7 +105,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(Key('option-additional')));
       await tester.pumpAndSettle(const Duration(seconds: 2));

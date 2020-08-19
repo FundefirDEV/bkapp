@@ -25,7 +25,7 @@ void main() {
           create: (context) => BuySharesFormBloc(),
         )
       ],
-      child: BuySharesScreen(key: key, oldIndex: 0)
+      child: BuySharesScreen(key: key, oldIndex: 0, userName: 'Usuario')
     );
   }
   group('Test BuySharesScreen  Widget', () {

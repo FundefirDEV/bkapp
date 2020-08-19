@@ -21,7 +21,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: UtilsScreen(key: testKey))));
+              child: UtilsScreen(key: testKey, userName: 'Usuario'))));
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -74,7 +74,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: UtilsScreen())));
+              child: UtilsScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('safearea-util-screen')), findsOneWidget);
@@ -85,9 +85,9 @@ void main() {
       await tester.runAsync(() async {
         await tester.pumpWidget(baseTester(
             child: BlocProvider(
-                create: (context) =>
-                    MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-                child: MenuNavigatorScreen())));
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
         await tester.pumpAndSettle();
         expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
         await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
@@ -98,7 +98,6 @@ void main() {
         await tester.tap(find.byKey(Key('inkwell-aprobation')));
         await tester.pump();
         expect(find.byType(ApprovalsScreen), findsOneWidget);
-
       });
     });
     testWidgets('Render widget rules', (WidgetTester tester) async {
@@ -106,7 +105,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
@@ -123,7 +122,7 @@ void main() {
           child: BlocProvider(
               create: (context) =>
                   MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen())));
+              child: MenuNavigatorScreen(userName: 'Usuario'))));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
       await tester.tap(find.byKey(Key('utils-bottom-bar-item')));

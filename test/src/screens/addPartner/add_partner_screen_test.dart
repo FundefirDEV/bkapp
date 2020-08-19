@@ -12,7 +12,11 @@ void main() {
   Widget addParnerTester({key}) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: AddPartnerScreen(key: key, oldIndex: 0));
+        child: AddPartnerScreen(
+          key: key,
+          oldIndex: 0,
+          userName: 'Usuario',
+        ));
   }
 
   group('Add partner', () {

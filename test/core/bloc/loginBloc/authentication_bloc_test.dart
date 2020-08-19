@@ -12,9 +12,7 @@ void main() {
 
   setUp(() {
     loginRepository = MockLoginRepository();
-    authenticationBloc = AuthenticationBloc(
-      loginRepository: loginRepository
-    );
+    authenticationBloc = AuthenticationBloc(loginRepository: loginRepository);
   });
 
   tearDown(() {
@@ -22,38 +20,35 @@ void main() {
   });
 
   final Map<String, dynamic> token = {
-    'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-    'expiration': 15671231232
+    'access_token':
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+    'expiration': 15671231232,
+    'firstname': 'Marcos',
+    'lastname': 'Nope'
   };
 
   group('Test LoginBloc and AuthenticationBloc', () {
-
     test('initial state is correct', () {
       expect(authenticationBloc.state, AuthenticationUninitialized());
     });
 
     test('test login props', () {
-      expect(LoggedIn(token: token).props, [token]);
+      expect(LoggedIn(tokenInformation: token).props, [token]);
     });
 
     test('test login props like string', () {
-      expect(LoggedIn(token: token).toString(), 'LoggedIn { token: $token }');
+      expect(LoggedIn(tokenInformation: token).toString(),
+          'LoggedIn { token-information: $token }');
     });
 
     test('Assert authentication should return an assertion error', () {
-      expect(() =>
-        AuthenticationBloc(
-          loginRepository: null
-        ),
-        throwsA(isA<AssertionError>())
-      );
+      expect(() => AuthenticationBloc(loginRepository: null),
+          throwsA(isA<AssertionError>()));
     });
 
     blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the app is initialized from scratch',
-      build: () => AuthenticationBloc(
-          loginRepository: loginRepository
-      ),
+      build: () => AuthenticationBloc(loginRepository: loginRepository),
       act: (bloc) async {
         bloc.add(AppStarted());
         await Future.delayed(Duration(milliseconds: 10));
@@ -63,28 +58,21 @@ void main() {
 
     blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the user is authenticated',
-      build: () => AuthenticationBloc(
-          loginRepository: loginRepository
-        ),
-      act: (bloc) => bloc.add(LoggedIn(
-        token: token
-      )),
+      build: () => AuthenticationBloc(loginRepository: loginRepository),
+      act: (bloc) => bloc.add(LoggedIn(tokenInformation: token)),
       expect: [
         AuthenticationLoading(),
-        AuthenticationAuthenticated(token: token[token])
+        AuthenticationAuthenticated(
+            token: token['access_token'],
+            userName: '${token['firstname']} ${token['lastname']}')
       ],
     );
 
     blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the user loggedOut from the app',
-      build: () => AuthenticationBloc(
-          loginRepository: loginRepository
-        ),
+      build: () => AuthenticationBloc(loginRepository: loginRepository),
       act: (bloc) => bloc.add(LoggedOut()),
-      expect: [
-        AuthenticationLoading(),
-        AuthenticationUnauthenticated()
-      ],
+      expect: [AuthenticationLoading(), AuthenticationUnauthenticated()],
     );
   });
 }

@@ -7,8 +7,9 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppBarWidget extends StatelessWidget {
+  AppBarWidget({Key key, this.container, this.userName}) : super(key: key);
   final Widget container;
-  AppBarWidget({Key key, this.container}) : super(key: key);
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class AppBarWidget extends StatelessWidget {
                     fit: BoxFit.cover)),
             Container(
                 key: Key('text-name'),
-                child: Text('Enrique Angrisano',
+                child: Text(this.userName,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
@@ -62,7 +63,7 @@ class AppBarWidget extends StatelessWidget {
               type: MaterialType.transparency,
               child: InkWell(
                 onTap: () =>
-                  context.bloc<AppBloc>().authenticationBloc.add(LoggedOut()),
+                    context.bloc<AppBloc>().authenticationBloc.add(LoggedOut()),
                 child: Container(
                     key: Key('button-logout'),
                     child: SvgPicture.asset('assets/images/icon_exit.svg',

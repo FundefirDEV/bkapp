@@ -22,7 +22,8 @@ Widget loginRouteBloc() {
         return SplashPage();
       }
       if (state is AuthenticationAuthenticated) {
-        return MenuNavigatorScreen(tokenUser: state.token);
+        return MenuNavigatorScreen(
+            tokenUser: state.token, userName: state.userName);
       }
       if (state is AuthenticationUnauthenticated) {
         return LoginScreen();

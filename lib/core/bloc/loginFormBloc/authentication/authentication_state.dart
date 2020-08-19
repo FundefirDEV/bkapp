@@ -12,10 +12,15 @@ class AuthenticationUninitialized extends AuthenticationState {}
 class AuthenticationLoading extends AuthenticationState {}
 
 class AuthenticationAuthenticated extends AuthenticationState {
+  AuthenticationAuthenticated({@required this.token, @required this.userName});
   final String token;
-  AuthenticationAuthenticated({@required this.token});
+  final String userName;
+
   @override
-  List<Object> get props => [token];
+  List<Object> get props => [token, userName];
+
+  @override
+  String toString() => 'AuthenticationAuthenticated { token: $token }';
 }
 
 class AuthenticationUnauthenticated extends AuthenticationState {}
