@@ -61,10 +61,10 @@ class GenderButtonsWidget extends StatelessWidget {
                 onTap: () => _selectGender(context, 'female', registerBloc)),
           ),
           FadeInUp(
-            key: Key('genderImage-other'),
             duration: Duration(milliseconds: 500),
             delay: const Duration(milliseconds: 400),
             child: GenderImage(
+                key: Key('genderImage-other'),
                 tag: 'other',
                 width: SizeConfig.safeBlockHorizontal * 30,
                 genderTitle: I18n.of(context).genderScreenOther.toUpperCase(),
