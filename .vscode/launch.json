@@ -17,19 +17,19 @@
       "program": "test_driver/app.dart"
     },
     {
-      "name": "Launch Driver Login",
+      "name": "Login: Launch Driver",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/app_test.dart"
     },
     {
-      "name": "Launch Driver Register",
+      "name": "Register: Launch Driver",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/register_test.dart"
     },
     {
-      "name": "Launch Driver Profile",
+      "name": "Profile: Launch Driver",
       "request": "launch",
       "type": "dart",
       "program": "test_driver/profile_test.dart"

@@ -4,13 +4,18 @@ import 'package:flutter_driver/flutter_driver.dart';
 
 import '../helpers.dart';
 
-loginProcess(FlutterDriver driver) async {
+loginProcess(FlutterDriver driver, {String password, String username}) async {
   final inputUsername = findByKey('input-username');
   final inputPassword = findByKey('input-password');
-  final userName = Platform.environment['USER_NAME'] ?? 'prueba@gmail.com';
-  final userPassword = Platform.environment['USER_PASSWORD'] ?? '123456';
-  print(userName);
-  await type(inputUsername, userName, driver);
+  final userNameData = username == null
+      ? Platform.environment['USER_NAME'] ?? 'prueba@gmail.com'
+      : username;
+  final userPassword = password == null
+      ? Platform.environment['USER_PASSWORD'] ?? '123456'
+      : password;
+  print(userNameData);
+  print(userPassword);
+  await type(inputUsername, userNameData, driver);
   await type(inputPassword, userPassword, driver);
 
   await tap(findByKey('raisedButton-accept'), driver);
