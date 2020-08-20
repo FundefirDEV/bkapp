@@ -10,7 +10,7 @@ class CardsApprovalsContent extends StatelessWidget {
       : super(key: key);
 
   final String partnerName;
-  final int amount;
+  final double amount;
   final int quantity;
   @override
   Widget build(BuildContext context) {

@@ -2,13 +2,24 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DateRequestedActions extends StatelessWidget {
-  const DateRequestedActions({Key key}) : super(key: key);
+  const DateRequestedActions({Key key, this.data}) : super(key: key);
+
+  final Map data;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    DateTime date;
+    try {
+      date = data['myRequest']['sharesRequest'][0]['requestDate'] != ''
+          ? DateTime.parse(data['myRequest']['sharesRequest'][0]['requestDate'])
+          : DateTime.now();
+    } catch (e) {
+      date = DateTime.now();
+    }
     return Padding(
       key: Key('date-requested-action-padding'),
       padding: const EdgeInsets.only(left: 20),
@@ -30,7 +41,7 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  "9",
+                  data['myRequest']['sharesRequest'][0]['quantity'].toString(),
                   key: Key('date-requested-action-text-quantity'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],
@@ -52,7 +63,7 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  '28/07/2020',
+                  DateFormat("dd-MM-yyyy").format(date).toString(),
                   key: Key('date-requested-action-date'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],

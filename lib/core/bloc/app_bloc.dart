@@ -25,7 +25,7 @@ class AppBloc extends FormBloc<String, String> {
         _bankRegisterBloc =
             BankRegisterBloc(repository: profileRegisterRepository),
         _profileEditFormBloc = ProfileEditFormBloc(),
-        _buySharesFormBloc = BuySharesFormBloc(),
+        _buySharesFormBloc = BuySharesFormBloc(repository: shareRepository),
         _creditFormBloc = CreditFormBloc(),
         _rulesEditFormBloc = RulesEditFormBloc(),
         _approvalsBloc = ApprovalsBloc(repository: approvalsRepository),

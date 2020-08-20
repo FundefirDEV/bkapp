@@ -46,12 +46,13 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                     for (var i = 0; i < widget.data.length; i++)
                       RequestShareCard(
                         index: i,
-                        id: widget.data[i]['id'],
+                        id: int.parse(widget.data[i]['id'].toString()),
                         partnerName: widget.data[i]['partnerName'],
-                        amount: widget.data[i]['amount'],
+                        amount:
+                            double.parse(widget.data[i]['amount'].toString()),
                         quantity: widget.data[i]['quantity'] != null
-                            ? widget.data[i]['quantity']
-                            : null,
+                            ? int.parse(widget.data[i]['quantity'].toString())
+                            : 0,
                         requestDate: widget.data[i]['requestDate'],
                         modalConfirm: widget.modalConfirm,
                       ),

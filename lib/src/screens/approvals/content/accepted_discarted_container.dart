@@ -16,8 +16,8 @@ class AcceptedDiscarted extends StatelessWidget {
         NumberFormat.currency(locale: 'es', decimalDigits: 0, symbol: '');
 
     final totalRequestShares = formatConfig.format(data['totalRequestShares']);
-    final totalPaymentRequest =
-        formatConfig.format(data['totalPaymentRequest']);
+    final totalPaymentRequest = data['totalPaymentRequest'] != null ?
+        formatConfig.format(data['totalPaymentRequest']) : '0';
 
     return Padding(
       key: Key('value-approvals-padding'),

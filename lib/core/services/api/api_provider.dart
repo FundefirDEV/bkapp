@@ -70,10 +70,10 @@ class ApiProvider {
     return validationCodeConfirmResponse;
   }
 
-  // Request: GET
-  Future<Map<String, dynamic>> getApprovals() async {
+  Future<Map<String, dynamic>> getApprovals(String token) async {
     final getApprovals = ApiEndpoints.getApprovals();
-    return await _httpRequest.get(httpClient: httpClient, url: getApprovals);
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getApprovals, token: token);
   }
 
   Future getPartnerValidation(
@@ -91,5 +91,19 @@ class ApiProvider {
     final getInformationBkHome = ApiEndpoints.getInformationBkHome();
     return await _httpRequest.get(
         httpClient: httpClient, url: getInformationBkHome, token: token);
+  }
+
+  Future<Map<String, dynamic>> postMyShares(
+      String typeRequest, int quantity, double amount, String token) async {
+    final postMySharesUrl = ApiEndpoints.postRequestBuyShare();
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: postMySharesUrl,
+        body: {
+          "typeRequest": typeRequest,
+          "quantity": quantity,
+          "amount": amount
+        },
+        token: token);
   }
 }

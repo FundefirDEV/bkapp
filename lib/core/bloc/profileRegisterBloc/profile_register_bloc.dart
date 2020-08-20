@@ -2,7 +2,7 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_gender_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
 import 'package:bkapp_flutter/src/utils/errorHandler/constans_error.dart';
 import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter/material.dart';

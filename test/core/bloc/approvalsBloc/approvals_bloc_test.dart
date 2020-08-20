@@ -8,7 +8,7 @@ class MockApprovalsRepository extends Mock implements ApprovalsRepository {}
 
 void main() {
   ApprovalsBloc approvalsBloc;
-  ApprovalsRepository approvalsRepository;
+  MockApprovalsRepository approvalsRepository;
   var mockResponse = {
     "cashBalance": 5000000,
     "totalRequestShares": 2000000,
@@ -37,14 +37,11 @@ void main() {
   blocTest<ApprovalsBloc, ApprovalsState>(
     'Test when the user is authenticated',
     build: () {
-      when(approvalsRepository.getApprovals())
-        .thenAnswer((_) async => mockResponse);
+      when(approvalsRepository.getApprovals('xxxxxx'))
+          .thenAnswer((_) async => mockResponse);
       return ApprovalsBloc(repository: approvalsRepository);
     },
-    act: (bloc) => bloc.add(ApprovalsInitialize()),
-    expect: [
-      ApprovalsLoading(),
-      ApprovalsLoaded(approvals: mockResponse)
-    ],
+    act: (bloc) => bloc.add(ApprovalsInitialize(token: 'xxxxxx')),
+    expect: [ApprovalsLoading(), ApprovalsLoaded(approvals: mockResponse)],
   );
 }

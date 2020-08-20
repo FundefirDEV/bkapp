@@ -18,7 +18,7 @@ workflows:
         CM_KEYSTORE_PASSWORD: Encrypted(Z0FBQUFBQmZOTlAtdzJoOUlXM1BsWXlVYnRZeEdPRmEzb0pHUjk3RmtScDNaRDhlYVdydlJyX2x3MlhnaTVCVHR1MjBtRzR3T1VpOVhmZzktTnplSmFzaE5Oak8zQm1aTjRsTmFSejN5dFZFNU11UkdWR3hBUVU9)
         CM_KEY_ALIAS_PASSWORD: Encrypted(Z0FBQUFBQmZOTlAtRXZMdk9vcGdrdHJRUDJQXzZUV0pZdXBrbWJrbmVqbVFsNWhhcDBqcElMWDZTN1FWT3ZUTXphanBEcml0a2pTQ092eHcwU1ZDSzVYbVhCVlo3a0lOaUdUSHNrS3gydmRQdXZQYTB5bktkd3c9)
         CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmZOTlAtdTBqLW1GbV9DVXNDV0QtV1N0a0xMejUzSTJ4UU5MUXppTnE4X3lHTjUzemNQU19YM0J5dGZEMVRnQldoTnFyZmh5R2xObHMxS1FmMVUxRllaTWZzTXc9PQ==)
-      flutter: 1.20.1
+      flutter: 1.17.5
       xcode: latest
       cocoapods: default
     triggering:

@@ -7,4 +7,13 @@ abstract class ApprovalsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ApprovalsInitialize extends ApprovalsEvent {}
+class ApprovalsInitialize extends ApprovalsEvent {
+  final String token;
+  ApprovalsInitialize({this.token});
+
+  @override
+  List<Object> get props => [token];
+
+  @override
+  String toString() => 'ApprovalsInitialize { token: $token }';
+}

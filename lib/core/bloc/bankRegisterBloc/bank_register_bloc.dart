@@ -1,5 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/repositories/profile_register_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';

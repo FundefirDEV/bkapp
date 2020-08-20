@@ -1,12 +1,17 @@
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class BuySharesFormWidget extends StatelessWidget {
-  const BuySharesFormWidget({Key key}) : super(key: key);
+  const BuySharesFormWidget({Key key, this.token, this.buySharesBloc})
+      : super(key: key);
+
+  final String token;
+  final BuySharesFormBloc buySharesBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +28,13 @@ class BuySharesFormWidget extends StatelessWidget {
             color: Colors.transparent,
             child: TextFieldBlocBuilder(
                 key: Key('buy-shares-form-numberactions'),
-                textFieldBloc:
-                    context.bloc<AppBloc>().buySharesFormBloc.numberactions,
+                textFieldBloc: buySharesBloc?.numberactions,
                 errorBuilder: (context, string) =>
                     I18n.of(context).errorRequired,
+                inputFormatters: [
+                  WhitelistingTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(10)
+                ],
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0),
                   labelText: I18n.of(context).buySharesNumberActions,
@@ -41,7 +49,10 @@ class BuySharesFormWidget extends StatelessWidget {
               EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 5),
           child: FlatButton(
               key: Key('flatbutton-buy-shares-form'),
-              onPressed: (context.bloc<AppBloc>().buySharesFormBloc.submit),
+              onPressed: () {
+                buySharesBloc.token.updateInitialValue(token);
+                buySharesBloc.submit();
+              },
               color: Theme.of(context).colorScheme.primaryColor,
               child: Padding(
                   key: Key('padding-label-button-buy-shares-form'),

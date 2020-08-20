@@ -1,3 +1,6 @@
+import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
@@ -84,7 +87,12 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
               BlocProvider(
                   create: (context) => MenuNavigatorBloc(controller: _myPage)),
               BlocProvider(
-                create: (context) => context.bloc<AppBloc>().buySharesFormBloc,
+                create: (context) =>
+                    BuySharesFormBloc(repository: shareRepository),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    ApprovalsBloc(repository: approvalsRepository),
               ),
               BlocProvider(
                   create: (context) => context.bloc<AppBloc>().homeBloc)
@@ -103,11 +111,17 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         oldIndex: currentIndex, userName: widget.userName),
                     BuySharesScreen(
                         oldIndex: currentIndex,
-                        userName: widget.userName), // NOTE 4
+                        userName: widget.userName,
+                        tokenUser: widget.tokenUser), // NOTE 4
                     ApprovalsScreen(
-                        oldIndex: currentIndex, userName: widget.userName),
+                        oldIndex: currentIndex,
+                        userName: widget.userName,
+                        tokenUser: widget.tokenUser),
                     StatusCreditRequestWidget(userName: widget.userName),
-                    ConfirmationBuyShares(userName: widget.userName), // NOTE 7
+                    ConfirmationBuyShares(
+                        userName: widget.userName,
+                        tokenUser: widget.tokenUser), // NOTE 7
+
                     RulesScreen(),
                     RulesEditScreen(),
                     AdministratorAssignmentScreen(

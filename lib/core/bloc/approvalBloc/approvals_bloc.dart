@@ -19,11 +19,11 @@ class ApprovalsBloc extends Bloc<ApprovalsEvent, ApprovalsState> {
   ) async* {
     if (event is ApprovalsInitialize) {
       yield ApprovalsLoading();
-
       try {
-        final response = await repository.getApprovals();
+        final response = await repository.getApprovals(event.token);
         yield ApprovalsLoaded(approvals: response);
       } catch (e) {
+        print(e);
         yield ApprovalsFailure();
       }
     }

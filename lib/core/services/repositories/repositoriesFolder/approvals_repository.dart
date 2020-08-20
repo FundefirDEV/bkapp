@@ -9,8 +9,8 @@ class ApprovalsRepository {
 
   ApprovalsRepository.test({@required this.apiProvider});
 
-  Future<Map<String, dynamic>> getApprovals() async {
-    final Map getAllApprovals = await apiProvider.getApprovals();
+  Future<Map<String, dynamic>> getApprovals(String token) async {
+    final Map getAllApprovals = await apiProvider.getApprovals(token);
     return getAllApprovals;
   }
 }

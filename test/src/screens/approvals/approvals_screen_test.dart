@@ -55,11 +55,15 @@ void main() {
   setUp(() {
     mockApprovalsBloc = MockApprovalsBloc();
   });
-
+//  child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario')),
   Widget approvalTester(Key key) {
-    return BlocProvider(
-        create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario'));
+    return MultiBlocProvider(providers: [
+      BlocProvider(
+          create: (context) => MenuNavigatorBloc(controller: PageController())),
+      BlocProvider(
+        create: (context) => ApprovalsBloc(repository: null),
+      )
+    ], child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario'));
   }
 
   group('Test approvals_screen', () {
@@ -86,7 +90,7 @@ void main() {
                     MenuNavigatorBloc(controller: PageController())),
             BlocProvider.value(value: mockApprovalsBloc)
           ],
-              child: ApprovalsBuilder(
+              child: ApprovalsScreen(
                   key: testKey, oldIndex: 0, userName: 'Usuario'))));
       await tester.pumpAndSettle();
 

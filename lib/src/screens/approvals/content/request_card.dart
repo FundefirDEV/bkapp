@@ -8,7 +8,7 @@ class RequestShareCard extends StatelessWidget {
   final int index;
   final int id;
   final String partnerName;
-  final int amount;
+  final double amount;
   final int quantity;
   final String requestDate;
   final Function modalConfirm;

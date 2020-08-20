@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/buy_shares_form_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,14 @@ void main() {
     });
 
     testWidgets('Click FlatButton buy shares', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: BuySharesFormWidget()));
+      // ignore: close_sinks
+      BuySharesFormBloc bloc = BuySharesFormBloc(repository: null);
+
+      await tester.pumpWidget(baseTester(
+          child: BuySharesFormWidget(
+        token: 'xxxxxx',
+        buySharesBloc: bloc,
+      )));
       await tester.pumpAndSettle();
       expect(find.byKey(Key('flatbutton-buy-shares-form')), findsOneWidget);
       await tester.tap(find.byKey(Key('flatbutton-buy-shares-form')));

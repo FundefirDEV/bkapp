@@ -6,7 +6,7 @@ void main() {
   BuySharesFormBloc buySharesBloc;
 
   setUp(() {
-    buySharesBloc = BuySharesFormBloc();
+    buySharesBloc = BuySharesFormBloc(repository: null);
   });
 
   test('Test number action bloc', () {

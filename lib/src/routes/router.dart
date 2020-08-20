@@ -103,17 +103,30 @@ class Router {
             pageBuilder: (context, _, __) => ProfileEditScreen());
         break;
       case buySharesScreenRoute:
-        return MaterialPageRoute(builder: (_) => BuySharesScreen(oldIndex: 0));
+        return MaterialPageRoute(
+            builder: (_) => BuySharesScreen(
+                  oldIndex: 0,
+                  tokenUser: null,
+                  userName: null,
+                ));
         break;
       case confirmationBuySharesRoute:
-        return MaterialPageRoute(builder: (_) => ConfirmationBuyShares());
+        return MaterialPageRoute(
+            builder: (_) => ConfirmationBuyShares(
+                  tokenUser: null,
+                  userName: null,
+                ));
       case approvalsScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => ApprovalsScreen(oldIndex: 1));
+            pageBuilder: (context, _, __) =>
+                ApprovalsScreen(oldIndex: 1, tokenUser: null, userName: null));
         break;
       case creditStatusScreenRoute:
-        return MaterialPageRoute(builder: (_) => StatusCreditRequestWidget());
+        return MaterialPageRoute(
+            builder: (_) => StatusCreditRequestWidget(
+                  userName: null,
+                ));
         break;
       case creditRoute:
         return MaterialPageRoute(builder: (_) => CreditScreen(oldIndex: 0));
