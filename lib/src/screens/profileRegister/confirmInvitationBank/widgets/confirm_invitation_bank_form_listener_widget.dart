@@ -44,8 +44,12 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
                       vertical: SizeConfig.safeBlockVertical * 5),
                   child: ButtonNextWidget(
                       key: Key('btn-rigth-confirm-invitation-bank'),
-                      onTap: () =>
-                          Navigator.pushNamed(context, selectAddressRoute))))
+                      onTap: () => {
+                            if (data.isInivted)
+                              {Navigator.pushNamed(context, loginRoute)}
+                            else
+                              {Navigator.pushNamed(context, selectAddressRoute)}
+                          })))
         ]);
   }
 }

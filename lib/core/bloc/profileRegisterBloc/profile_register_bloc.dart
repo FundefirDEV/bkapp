@@ -89,8 +89,13 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
           country: 1,
           phone: _phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), ''),
           email: _emailBloc.email.value));
-      print('Token usuario nuevo: ' + response['access_token']);
-      return response['access_token'];
+
+      final newUser = new RegisterUserModel(
+          token: response['access_token'],
+          isInvited: response['partner_id'] != null);
+      print('Token usuario nuevo: ' + newUser.token);
+      print('Es invitado?: ' + newUser.isInvited.toString());
+      return newUser;
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -104,4 +109,10 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
     passwordConfirm?.close();
     return super.close();
   }
+}
+
+class RegisterUserModel {
+  RegisterUserModel({this.token, this.isInvited});
+  final String token;
+  final bool isInvited;
 }

@@ -17,7 +17,7 @@ void main() {
   });
   group('Test Bank invitation confirmation Step', () {
     final ConfirmInvitationBankStepArgs data =
-        ConfirmInvitationBankStepArgs('male', 'assets/images/man.svg');
+        ConfirmInvitationBankStepArgs('male', 'assets/images/man.svg', false);
     testWidgets('Find RegisterPasswordStepScreen widget',
         (WidgetTester tester) async {
       final testKey = Key('my-id');

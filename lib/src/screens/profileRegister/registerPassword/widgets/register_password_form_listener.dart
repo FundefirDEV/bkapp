@@ -31,11 +31,6 @@ class _RegisterPasswordFormListenerWidgetState
         onSubmitting: (context, state) {
           CircularProgressIndicator();
         },
-        onSuccess: (context, state) {
-          Navigator.pushNamed(context, confirmInvitationBank,
-              arguments: ConfirmInvitationBankStepArgs(
-                  widget.data.tag, widget.data.image));
-        },
         child: _containerInfo(context));
   }
 
@@ -64,14 +59,14 @@ class _RegisterPasswordFormListenerWidgetState
               isDisabled: isDisabled,
               currentBlocSubmit: () async {
                 try {
-                  var result = await context
+                  RegisterUserModel result = await context
                       .bloc<AppBloc>()
                       .profileRegisterBloc
                       .makeSubmit();
-                  _bankRegisterBloc.token.updateValue(result);
+                  _bankRegisterBloc.token.updateValue(result.token);
                   Navigator.pushNamed(context, confirmInvitationBank,
-                      arguments: ConfirmInvitationBankStepArgs(
-                          widget.data.tag, widget.data.image));
+                      arguments: ConfirmInvitationBankStepArgs(widget.data.tag,
+                          widget.data.image, result.isInvited));
                 } catch (e) {
                   _showMaterialDialog(e.toString());
                 }

@@ -32,6 +32,7 @@ class _ConfirmInvitationBankStepScreenState
 class ConfirmInvitationBankStepArgs {
   final String tag;
   final String image;
+  final bool isInivted;
 
-  ConfirmInvitationBankStepArgs(this.tag, this.image);
+  ConfirmInvitationBankStepArgs(this.tag, this.image, this.isInivted);
 }
