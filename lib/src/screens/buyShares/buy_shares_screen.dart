@@ -1,16 +1,14 @@
-import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/buyShares/widgets/titleBuyShares/title_buy_share_widget.dart';
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter/material.dart';
 
 import 'widgets/cardBuyShares/buy_shares_form_widget.dart';
 import 'widgets/cardBuyShares/number_actions_widget.dart';
@@ -37,8 +35,8 @@ class _BuySharesScreenState extends State<BuySharesScreen>
   @override
   void afterFirstLayout(BuildContext context) {
     context
-        .bloc<ApprovalsBloc>()
-        .add(ApprovalsInitialize(token: widget.tokenUser));
+        .bloc<BuySharesBloc>()
+        .add(BuySharesInitialize(token: widget.tokenUser));
   }
 
   @override
@@ -46,10 +44,10 @@ class _BuySharesScreenState extends State<BuySharesScreen>
     // ignore: close_sinks
     MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
-    return BlocBuilder<ApprovalsBloc, ApprovalsState>(
+    return BlocBuilder<BuySharesBloc, BuySharesState>(
         builder: (context, state) {
-      if (state is ApprovalsLoaded) {
-        if (state.approvals['myRequest']['sharesRequest'].length <= 0) {
+      if (state is BuySharesLoaded) {
+        if (state.infoShares.approvals.myRequest.sharesRequest.length == 0) {
           return Builder(
             key: Key('builder-buy-share-screen'),
             builder: (context) {
@@ -77,16 +75,21 @@ class _BuySharesScreenState extends State<BuySharesScreen>
                         child: Column(
                           key: Key('column-buy-share-screen'),
                           children: <Widget>[
-                            TitleBuyShareWidget(
-                              oldIndex: widget.oldIndex,
-                              navigateBloc: menuNavigatorBloc,
-                            ),
+                            TitleHeaderWidget(
+                                title: I18n.of(context).buySharesActions,
+                                navigateBloc: context.bloc<MenuNavigatorBloc>(),
+                                oldIndex: 0),
                             CardInformationBkWidget(
-                                childBlue: NumberActions(),
-                                childWhite: ValueActions()),
+                                childBlue: NumberActions(
+                                    myShares: state.infoShares.shares),
+                                childWhite: ValueActions(
+                                    valueShare: state.infoShares.shareValue,
+                                    sharesAvailable: state.infoShares
+                                        .maxQuantitySharesForBuyByPartner)),
                             SharesBuyText(textBuyShares: true),
                             BuySharesFormWidget(
                                 token: widget.tokenUser,
+                                valueShareRuleBank: state.infoShares.shareValue,
                                 buySharesBloc:
                                     context.bloc<BuySharesFormBloc>())
                           ],
@@ -100,7 +103,7 @@ class _BuySharesScreenState extends State<BuySharesScreen>
           context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: 7));
         }
       }
-      if (state is ApprovalsFailure) {
+      if (state is BuySharesFailure) {
         return Text('Se ha presentado un error, intenta nuevamente');
       }
       return Center(

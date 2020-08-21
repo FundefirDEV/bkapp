@@ -3,9 +3,9 @@ import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart'
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/buy_shares_screen.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/shares_buy_text_widget.dart';
-import 'package:bkapp_flutter/src/screens/buyShares/widgets/titleBuyShares/title_buy_share_widget.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -24,7 +24,8 @@ void main() {
             create: (context) => BuySharesFormBloc(repository: null),
           ),
           BlocProvider(
-            create: (context) => ApprovalsBloc(repository: null),
+            create: (context) =>
+                BuySharesBloc(repoHome: null, repoApproval: null),
           )
         ],
         child: BuySharesScreen(
@@ -47,7 +48,8 @@ void main() {
     testWidgets('Render TitleBuyShareWidget', (WidgetTester tester) async {
       final testKey = Key('my-id');
       await tester.pumpWidget(baseTester(
-          child: TitleBuyShareWidget(
+          child: TitleHeaderWidget(
+              title: 'Title',
               key: testKey,
               oldIndex: 0,
               navigateBloc: MenuNavigatorBloc(controller: PageController()))));

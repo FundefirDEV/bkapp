@@ -21,8 +21,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield HomeLoading();
 
       try {
-        final response = await repository.getHome(event.token);
-        BankInfo bankInfo = bankInfoFromJson(response);
+        final response = await repository.detailBank(event.token);
+        BankInfoModel bankInfo = bankInfoFromJson(response);
 
         yield HomeLoaded(bkInformation: bankInfo);
       } catch (e) {

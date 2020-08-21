@@ -8,7 +8,7 @@ class HomeRepository {
 
   HomeRepository.test({@required this.apiProvider});
 
-  Future<Map<String, dynamic>> getHome(String token) async {
+  Future<Map<String, dynamic>> detailBank(String token) async {
     final Map informationBkHome = await apiProvider.getInformationBkHome(token);
     return informationBkHome;
   }

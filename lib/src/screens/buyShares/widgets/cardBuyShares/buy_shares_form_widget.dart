@@ -7,10 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class BuySharesFormWidget extends StatelessWidget {
-  const BuySharesFormWidget({Key key, this.token, this.buySharesBloc})
+  const BuySharesFormWidget(
+      {Key key, this.token, this.buySharesBloc, this.valueShareRuleBank})
       : super(key: key);
 
   final String token;
+  final String valueShareRuleBank;
   final BuySharesFormBloc buySharesBloc;
 
   @override
@@ -51,6 +53,8 @@ class BuySharesFormWidget extends StatelessWidget {
               key: Key('flatbutton-buy-shares-form'),
               onPressed: () {
                 buySharesBloc.token.updateInitialValue(token);
+                buySharesBloc.valueShareRuleBank
+                    .updateInitialValue(valueShareRuleBank);
                 buySharesBloc.submit();
               },
               color: Theme.of(context).colorScheme.primaryColor,

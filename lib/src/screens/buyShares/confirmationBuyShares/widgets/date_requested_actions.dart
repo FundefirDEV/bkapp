@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -7,15 +8,15 @@ import 'package:intl/intl.dart';
 class DateRequestedActions extends StatelessWidget {
   const DateRequestedActions({Key key, this.data}) : super(key: key);
 
-  final Map data;
+  final ApprovalsModel data;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     DateTime date;
     try {
-      date = data['myRequest']['sharesRequest'][0]['requestDate'] != ''
-          ? DateTime.parse(data['myRequest']['sharesRequest'][0]['requestDate'])
+      date = data.myRequest.sharesRequest.length > 0
+          ? DateTime.parse(data.myRequest.sharesRequest[0].requestDate)
           : DateTime.now();
     } catch (e) {
       date = DateTime.now();
@@ -41,7 +42,7 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  data['myRequest']['sharesRequest'][0]['quantity'].toString(),
+                  data.myRequest.sharesRequest[0].quantity.toString(),
                   key: Key('date-requested-action-text-quantity'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],

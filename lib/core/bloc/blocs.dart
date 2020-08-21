@@ -15,3 +15,5 @@ export 'profileEdition/profile_edit_form_Bloc.dart';
 export 'buySharesBloc/buy_shares_form_bloc.dart';
 export 'creditBloc/credit_form_bloc.dart';
 export 'rulesEdition/rules_edit_form_bloc.dart';
+export 'buySharesBloc/bloc/buy_shares_bloc.dart';
+export 'menuNavigatorBloc/menunavigator_bloc.dart';

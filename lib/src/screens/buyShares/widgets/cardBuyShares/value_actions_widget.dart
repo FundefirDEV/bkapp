@@ -4,8 +4,11 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 
 class ValueActions extends StatelessWidget {
-  const ValueActions({Key key}) : super(key: key);
-
+  const ValueActions(
+      {Key key, @required this.valueShare, @required this.sharesAvailable})
+      : super(key: key);
+  final String valueShare;
+  final String sharesAvailable;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -31,7 +34,7 @@ class ValueActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  "\$ 10.000",
+                  "$valueShare",
                   key: Key('value-actions-text-value'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],
@@ -54,7 +57,7 @@ class ValueActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  '9',
+                  '$sharesAvailable',
                   key: Key('value-actions-number-actios-text'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],

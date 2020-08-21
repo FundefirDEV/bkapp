@@ -6,30 +6,30 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-BankInfo bankInfoFromJson(Map<String, dynamic> data) => BankInfo.fromJson(data);
+BankInfoModel bankInfoFromJson(Map<String, dynamic> data) =>
+    BankInfoModel.fromJson(data);
 
-String bankInfoToJson(BankInfo data) => json.encode(data.toJson());
+String bankInfoToJson(BankInfoModel data) => json.encode(data.toJson());
 
 final formatConfig =
     NumberFormat.currency(locale: 'en_US', decimalDigits: 0, symbol: r'$');
 
-class BankInfo {
-  BankInfo({
-    this.personal,
-    this.group,
-  });
+class BankInfoModel {
+  BankInfoModel({this.personal, this.group, this.rules});
 
   Personal personal;
   Group group;
+  Rules rules;
 
-  factory BankInfo.fromJson(Map<String, dynamic> json) => BankInfo(
-        personal: Personal.fromJson(json["person"]),
-        group: Group.fromJson(json["group"]),
-      );
+  factory BankInfoModel.fromJson(Map<String, dynamic> json) => BankInfoModel(
+      personal: Personal.fromJson(json["person"]),
+      group: Group.fromJson(json["group"]),
+      rules: Rules.fromJson(json["rules"]));
 
   Map<String, dynamic> toJson() => {
         "person": personal.toJson(),
         "group": group.toJson(),
+        "rules": rules.toJson(),
       };
 }
 
@@ -78,5 +78,25 @@ class Personal {
         "earnings": earnings,
         "activeCredit": activeCredit,
         "shares": shares,
+      };
+}
+
+class Rules {
+  Rules(
+      {this.shareValue = r'$0',
+      this.maxQuantitySharesForBuyByPartner = 'Sin límites'});
+
+  String shareValue;
+  String maxQuantitySharesForBuyByPartner;
+
+  factory Rules.fromJson(Map<String, dynamic> json) => Rules(
+      shareValue: formatConfig.format(json["shareValue"]) ?? r'$0',
+      maxQuantitySharesForBuyByPartner:
+          json["maxQuantitySharesForBuyByPartner"]?.toString() ??
+              'Sin límites');
+
+  Map<String, dynamic> toJson() => {
+        "shareValue": shareValue,
+        "maxQuantitySharesForBuyByPartner": maxQuantitySharesForBuyByPartner
       };
 }

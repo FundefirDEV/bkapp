@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NumberActions extends StatelessWidget {
-  const NumberActions({Key key}) : super(key: key);
-
+  const NumberActions({Key key, @required this.myShares}) : super(key: key);
+  final String myShares;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -30,7 +30,7 @@ class NumberActions extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(top: 20),
               child: Text(
-                '30',
+                this.myShares,
                 key: Key('number-action-value-text'),
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal * 6,

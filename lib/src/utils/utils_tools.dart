@@ -26,6 +26,10 @@ class UtilsTools {
     return '$number'.replaceAll(new RegExp(r'[() -]'), '');
   }
 
+  static String removeMoneyFormatter(String number) {
+    return '$number'.replaceAll(new RegExp(r'[$ ,]'), '');
+  }
+
   static String titleCase(String text) {
     if (text.length <= 1) return text.toUpperCase();
     text = text.toLowerCase();

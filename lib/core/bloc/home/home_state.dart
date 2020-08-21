@@ -12,7 +12,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
-  final BankInfo bkInformation;
+  final BankInfoModel bkInformation;
 
   HomeLoaded({@required this.bkInformation});
 

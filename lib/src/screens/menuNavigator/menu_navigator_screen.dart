@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
@@ -95,6 +96,11 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     ApprovalsBloc(repository: approvalsRepository),
               ),
               BlocProvider(
+                create: (context) => BuySharesBloc(
+                    repoApproval: approvalsRepository,
+                    repoHome: homeRepository),
+              ),
+              BlocProvider(
                   create: (context) => context.bloc<AppBloc>().homeBloc)
             ],
             child: Stack(
@@ -121,7 +127,6 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     ConfirmationBuyShares(
                         userName: widget.userName,
                         tokenUser: widget.tokenUser), // NOTE 7
-
                     RulesScreen(),
                     RulesEditScreen(),
                     AdministratorAssignmentScreen(
