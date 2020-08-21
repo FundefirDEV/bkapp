@@ -37,6 +37,7 @@ class NumberPetitions extends StatelessWidget {
                 ),
                 Text(
                   cashBalance.toString(),
+                  key: Key('approval-card-cash-balance-bank-value'),
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w100,
@@ -59,6 +60,7 @@ class NumberPetitions extends StatelessWidget {
                 ),
                 Text(
                   totalCreditRequest.toString(),
+                  key: Key('approval-card-credit-request-bank-value'),
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Colors.white,

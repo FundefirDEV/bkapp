@@ -16,8 +16,9 @@ class AcceptedDiscarted extends StatelessWidget {
         NumberFormat.currency(locale: 'es', decimalDigits: 0, symbol: '');
 
     final totalRequestShares = formatConfig.format(data['totalRequestShares']);
-    final totalPaymentRequest = data['totalPaymentRequest'] != null ?
-        formatConfig.format(data['totalPaymentRequest']) : '0';
+    final totalPaymentRequest = data['totalPaymentRequest'] != null
+        ? formatConfig.format(data['totalPaymentRequest'])
+        : '0';
 
     return Padding(
       key: Key('value-approvals-padding'),
@@ -42,6 +43,7 @@ class AcceptedDiscarted extends StatelessWidget {
                 ),
                 Text(
                   totalRequestShares.toString(),
+                  key: Key('approval-card-share-request-bank-value'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
                       fontWeight: FontWeight.w100,
@@ -65,6 +67,7 @@ class AcceptedDiscarted extends StatelessWidget {
                 ),
                 Text(
                   totalPaymentRequest.toString(),
+                  key: Key('approval-card-payment-request-bank-value'),
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,

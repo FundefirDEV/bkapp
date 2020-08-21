@@ -9,14 +9,23 @@ void main() {
   group('Test ValueActions  Widget', () {
     testWidgets('Render ValueActions', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester.pumpWidget(baseTester(child: ValueActions(key: testKey)));
+      await tester.pumpWidget(baseTester(
+          child: ValueActions(
+        key: testKey,
+        valueShare: null,
+        sharesAvailable: null,
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
     });
 
     testWidgets('ValueActions render structure', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: ValueActions()));
+      await tester.pumpWidget(baseTester(
+          child: ValueActions(
+        valueShare: null,
+        sharesAvailable: null,
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('value-actions-padding')), findsOneWidget);

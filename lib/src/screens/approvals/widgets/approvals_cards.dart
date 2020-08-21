@@ -46,6 +46,7 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                     for (var i = 0; i < widget.data.length; i++)
                       RequestShareCard(
                         index: i,
+                        key: Key('request-share-card-$i'),
                         id: int.parse(widget.data[i]['id'].toString()),
                         partnerName: widget.data[i]['partnerName'],
                         amount:

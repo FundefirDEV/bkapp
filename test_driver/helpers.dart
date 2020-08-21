@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_driver/flutter_driver.dart';
 
 SerializableFinder findByKey(String key) {
@@ -13,4 +15,8 @@ Future<void> type(
   await tap(element, driver);
   await driver.enterText(text);
   await driver.waitFor(find.text(text));
+}
+
+delay({int time: 1}) {
+  sleep(Duration(seconds: time));
 }
