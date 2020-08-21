@@ -98,7 +98,8 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     repoHome: homeRepository),
               ),
               BlocProvider(
-                  create: (context) => context.bloc<AppBloc>().homeBloc),
+                create: (context) => HomeBloc(repository: homeRepository)
+              ),
               BlocProvider(
                 create: (context) =>
                     CreditFormBloc(creditRepository: creditRepository),

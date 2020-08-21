@@ -50,6 +50,7 @@ class RequestShareCard extends StatelessWidget {
                     amount: amount,
                     partnerName: partnerName,
                     quantity: quantity,
+                    type: type,
                   ),
                 ),
                 Row(

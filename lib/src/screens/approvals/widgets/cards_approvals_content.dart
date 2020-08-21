@@ -6,12 +6,13 @@ import 'package:intl/intl.dart';
 
 class CardsApprovalsContent extends StatelessWidget {
   const CardsApprovalsContent(
-      {Key key, this.partnerName, this.amount, this.quantity})
+      {Key key, this.partnerName, this.amount, this.quantity, this.type})
       : super(key: key);
 
   final String partnerName;
   final double amount;
   final int quantity;
+  final String type;
   @override
   Widget build(BuildContext context) {
     final formatConfig =
@@ -47,7 +48,7 @@ class CardsApprovalsContent extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4,
                         fontWeight: FontWeight.w700),
                     children: <TextSpan>[
-                      if (quantity != null)
+                      if (type != 'credit')
                         TextSpan(
                             text: totalQuantity.toString() + ' ',
                             style: TextStyle(
@@ -56,7 +57,7 @@ class CardsApprovalsContent extends StatelessWidget {
                               fontSize: SizeConfig.blockSizeHorizontal * 4,
                               fontWeight: FontWeight.w700,
                             )),
-                      if (quantity != null)
+                      if (type != 'credit')
                         TextSpan(
                             text: I18n.of(context).approvalsScreenShares + '\n',
                             style: TextStyle(
@@ -66,7 +67,7 @@ class CardsApprovalsContent extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             )),
                       TextSpan(
-                          text: totalAmount.toString() + '\n',
+                          text: '\$' + totalAmount.toString() + '\n',
                           style: TextStyle(
                             fontFamily: 'Nunito',
                             color: Theme.of(context).colorScheme.grayColor,
