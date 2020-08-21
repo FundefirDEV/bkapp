@@ -1,10 +1,7 @@
-import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/buySharesBloc/buy_shares_form_bloc.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
@@ -101,7 +98,14 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     repoHome: homeRepository),
               ),
               BlocProvider(
-                  create: (context) => context.bloc<AppBloc>().homeBloc)
+                  create: (context) => context.bloc<AppBloc>().homeBloc),
+              BlocProvider(
+                create: (context) =>
+                  CreditFormBloc(creditRepository: creditRepository),
+              ),
+              BlocProvider(
+                create: (context) => ApprovalsBloc(repository: approvalsRepository)
+              )
             ],
             child: Stack(
               children: <Widget>[
@@ -114,7 +118,10 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     UtilsScreen(userName: widget.userName),
                     ProfileScreen(),
                     CreditScreen(
-                        oldIndex: currentIndex, userName: widget.userName),
+                      oldIndex: currentIndex,
+                      tokenUser: widget.tokenUser,
+                      userName: widget.userName
+                    ),
                     BuySharesScreen(
                         oldIndex: currentIndex,
                         userName: widget.userName,

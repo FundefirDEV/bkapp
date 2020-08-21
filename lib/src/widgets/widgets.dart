@@ -11,5 +11,6 @@ export 'infiniteCarousel/infitite_carousel.dart';
 export 'lineSeparator/line_separator_widget.dart';
 export 'menuRequests/menu_requests.dart';
 export 'modals/bottomModal/bottom_modal.dart';
+export 'modals/ImageBottomModal/Image_bottom_modal.dart';
 export 'textGreeting/text_greeting_widget.dart';
 export 'titleHeader/title_header_widget.dart';

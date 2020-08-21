@@ -13,11 +13,12 @@ class ApprovalsLoading extends ApprovalsState {}
 
 class ApprovalsLoaded extends ApprovalsState {
   final Map approvals;
+  final ApprovalsModel approvalsModel;
 
-  ApprovalsLoaded({@required this.approvals});
+  ApprovalsLoaded({@required this.approvals, this.approvalsModel});
 
   @override
-  List<Object> get props => [approvals];
+  List<Object> get props => [approvals, approvalsModel];
 }
 
 class ApprovalsFailure extends ApprovalsState {}

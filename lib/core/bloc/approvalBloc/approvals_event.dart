@@ -9,7 +9,7 @@ abstract class ApprovalsEvent extends Equatable {
 
 class ApprovalsInitialize extends ApprovalsEvent {
   final String token;
-  ApprovalsInitialize({this.token});
+  ApprovalsInitialize({ @required this.token });
 
   @override
   List<Object> get props => [token];

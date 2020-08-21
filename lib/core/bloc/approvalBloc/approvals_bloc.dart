@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -21,7 +22,11 @@ class ApprovalsBloc extends Bloc<ApprovalsEvent, ApprovalsState> {
       yield ApprovalsLoading();
       try {
         final response = await repository.getApprovals(event.token);
-        yield ApprovalsLoaded(approvals: response);
+        ApprovalsModel approvalsModel = approvalsModelFromJson(response);
+        yield ApprovalsLoaded(
+          approvals: response,
+          approvalsModel: approvalsModel
+        );
       } catch (e) {
         print(e);
         yield ApprovalsFailure();

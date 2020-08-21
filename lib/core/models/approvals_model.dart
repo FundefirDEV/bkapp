@@ -61,24 +61,26 @@ class ApprovalsModel {
         "myRequest": myRequest.toJson(),
       };
 }
-
 class Request {
   Request({
     this.id,
     this.partnerName,
     this.amount,
+    this.installments,
     this.requestDate,
     this.quantity,
   });
   int id;
   String partnerName;
   String amount;
+  String installments;
   String requestDate;
   String quantity;
   factory Request.fromJson(Map<String, dynamic> json) => Request(
         id: json["id"] ?? 0,
         partnerName: json["partnerName"] ?? null,
         amount: formatConfig.format(json["amount"]) ?? r'$0',
+        installments: json["installments"].toString() ?? '0',
         requestDate: json["requestDate"] ?? null,
         quantity: json["quantity"]?.toString() ?? '0',
       );
@@ -86,11 +88,11 @@ class Request {
         "id": id,
         "partnerName": partnerName,
         "amount": amount,
+        "installments": installments,
         "requestDate": requestDate,
         "quantity": quantity,
       };
 }
-
 class MyRequest {
   MyRequest({
     this.sharesRequest,

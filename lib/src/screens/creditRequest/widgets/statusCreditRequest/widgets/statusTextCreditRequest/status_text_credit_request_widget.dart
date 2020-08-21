@@ -3,7 +3,12 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 
 class StatusTextCreditRequest extends StatelessWidget {
-  const StatusTextCreditRequest({Key key}) : super(key: key);
+  const StatusTextCreditRequest({
+    Key key,
+    @required this.installments
+  }) : super(key: key);
+
+  final String installments;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,7 @@ class StatusTextCreditRequest extends StatelessWidget {
                             letterSpacing: 2,
                             fontSize: SizeConfig.blockSizeHorizontal * 4)),
                     TextSpan(
-                        text: '3',
+                        text: installments ?? '0',
                         style: TextStyle(
                             letterSpacing: 2,
                             fontSize: SizeConfig.blockSizeHorizontal * 4)),

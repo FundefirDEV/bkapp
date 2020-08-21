@@ -1,7 +1,7 @@
 coverage:
   status:
     project: # settings affecting project coverage
-      enabled: yes
+      enabled: no
       target: auto # auto % coverage target
       threshold: 10% # allow for 5% reduction of coverage without failing
 

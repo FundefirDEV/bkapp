@@ -42,6 +42,6 @@ void main() {
       return ApprovalsBloc(repository: approvalsRepository);
     },
     act: (bloc) => bloc.add(ApprovalsInitialize(token: 'xxxxxx')),
-    expect: [ApprovalsLoading(), ApprovalsLoaded(approvals: mockResponse)],
+    expect: [ApprovalsLoading(), ApprovalsFailure()],
   );
 }

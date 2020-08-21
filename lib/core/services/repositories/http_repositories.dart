@@ -30,3 +30,6 @@ final ProfileRegisterRepository profileRegisterRepository =
 
 final ShareRepository shareRepository =
     ShareRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final CreditRepository creditRepository =
+    CreditRepository(apiProvider: ApiProvider(httpClient: httpClient));

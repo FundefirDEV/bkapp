@@ -1,17 +1,24 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 //NOTE HOW TO CALL IT:
 // showModalBottomSheet(context: context, builder: (BuildContext context) => PreApprovedCreditModal()),
 class PreApprovedCreditModal extends StatelessWidget {
-  PreApprovedCreditModal({this.navigateBloc});
+  PreApprovedCreditModal({
+    Key key,
+    @required this.navigateBloc,
+    @required this.tokenUser
+  }) : super(key: key);
 
   final MenuNavigatorBloc navigateBloc;
+  final String tokenUser;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,8 @@ class PreApprovedCreditModal extends StatelessWidget {
           key: Key('FlatButton_credit_modal'),
           onPressed: () {
             Navigator.pop(context);
-            navigateBloc.add(ButtonPressed(goTo: 6));
+            BlocProvider.of<ApprovalsBloc>(context)
+              .add(ApprovalsInitialize(token: tokenUser));
           },
           child: Text( I18n.of(context).actionTextClose,
             style: TextStyle(

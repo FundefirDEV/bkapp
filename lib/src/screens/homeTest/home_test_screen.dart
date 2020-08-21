@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved_credit_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -84,15 +83,15 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                               "Monto: ${_credit?.creditAmount?.toString() ?? 0}"),
                           Text(
                               "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
-                          RaisedButton(
-                            onPressed: () => showModalBottomSheet(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    PreApprovedCreditModal()),
-                            color: Colors.red,
-                            child: Text('Invite Modal',
-                                style: TextStyle(fontSize: 20)),
-                          ),
+                          // RaisedButton(
+                          //   onPressed: () => showModalBottomSheet(
+                          //       context: context,
+                          //       builder: (BuildContext context) =>
+                          //           PreApprovedCreditModal()),
+                          //   color: Colors.red,
+                          //   child: Text('Invite Modal',
+                          //       style: TextStyle(fontSize: 20)),
+                          // ),
                           RaisedButton(
                             onPressed: _createCredit,
                             color: Colors.amber,

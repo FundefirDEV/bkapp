@@ -56,6 +56,8 @@ class I18n implements WidgetsLocalizations {
   String get actionTextAdd => "ADD";
   /// "Search"
   String get actionTextSearch => "Search";
+  /// "There has been an error!, try again"
+  String get requestErrorDefault => "There has been an error!, try again";
   /// "The user is not available"
   String get requestErrorUserNotAvailable => "The user is not available";
   /// "User"
@@ -652,6 +654,9 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
+  /// "¡Ha habido un problema!, intenta de nuevo"
+  @override
+  String get requestErrorDefault => "¡Ha habido un problema!, intenta de nuevo";
   /// "El usuario ya esta en otro bkgrupo"
   @override
   String get requestErrorUserNotAvailable => "El usuario ya esta en otro bkgrupo";

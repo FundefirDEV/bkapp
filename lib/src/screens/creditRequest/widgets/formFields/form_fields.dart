@@ -1,16 +1,18 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class FormFields extends StatelessWidget {
-  const FormFields({Key key}) : super(key: key);
+  const FormFields({Key key, this.creditFormBloc}) : super(key: key);
+
+  final CreditFormBloc creditFormBloc;
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    CreditFormBloc creditFormBloc = context.bloc<AppBloc>().creditFormBloc;
     SizeConfig().init(context);
     return Container(
       key: Key('credit-form-container'),
@@ -28,7 +30,11 @@ class FormFields extends StatelessWidget {
               labelStyle: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 4),
               suffixIcon: Icon(Icons.attach_money)
-            )
+            ),
+            inputFormatters: [
+              WhitelistingTextInputFormatter.digitsOnly,
+              CurrencyInputFormatter()
+            ],
           ),
           TextFieldBlocBuilder(
             key: Key('buy-shares-form-numberactiosdsns'),
@@ -55,8 +61,7 @@ class FormFields extends StatelessWidget {
           ),
           TextFieldBlocBuilder(
             key: Key('buy-shares-form-numberactssiossdsddsns'),
-            textFieldBloc:
-                context.bloc<AppBloc>().buySharesFormBloc.numberactions,
+            textFieldBloc: creditFormBloc.creditDetail,
             errorBuilder: (context, string) =>
                 I18n.of(context).errorRequired,
             decoration: InputDecoration(

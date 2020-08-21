@@ -106,4 +106,16 @@ class ApiProvider {
         },
         token: token);
   }
+
+  Future<Map<String, dynamic>> postCreditRequest(
+    String token, Map creditRequest
+  ) async {
+    final postCreditRequest = ApiEndpoints.postCreditRequest();
+    return await _httpRequest.post(
+      httpClient: httpClient,
+      url: postCreditRequest,
+      body: creditRequest,
+      token: token
+    );
+  }
 }

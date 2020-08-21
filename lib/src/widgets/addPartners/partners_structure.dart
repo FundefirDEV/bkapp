@@ -3,9 +3,7 @@ import 'package:bkapp_flutter/core/bloc/partnersBloc/bloc/partner_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
-import 'package:bkapp_flutter/src/utils/errorRequestHandler/error_request_handler.dart';
-import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
-import 'package:bkapp_flutter/src/widgets/widgets.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
@@ -67,7 +65,7 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
       child: BlocListener<PartnerBloc, PartnerState>(
         listener: (context, state) {
           if (state is PartnerUnauthorized) {
-            _showDialog(context, state.error);
+            UtilsTools.showErrorDialog(context, state.error);
           }
           if (state is PartnerAddedToDb) {
             loadPartners();
@@ -174,26 +172,5 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
             fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
       ));
     }
-  }
-
-  void _showDialog(BuildContext context, String error) {
-    showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return BottomModal(
-          width: SizeConfig.blockSizeHorizontal * 100,
-          height: SizeConfig.blockSizeVertical * 45,
-          child: ImageBottomModal(
-            modalHeight: 45.0,
-            image: 'assets/images/sad_bot.svg',
-            title: errorRequestHandler(context, error),
-            isBtnAccept: false,
-            titleCloseButton: I18n.of(context).actionTextClose,
-            onPressCancel: () => Navigator.pop(context),
-          )
-        );
-      }
-    );
   }
 }

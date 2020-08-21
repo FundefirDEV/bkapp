@@ -11,7 +11,11 @@ void main() {
         (WidgetTester tester) async {
       final testKey = Key('my-id');
       await tester.pumpWidget(
-          baseTester(child: DescriptionCreditRequestWidget(key: testKey)));
+          baseTester(child: DescriptionCreditRequestWidget(
+            key: testKey,
+            valueRequested: '\$500.000',
+            dateRequested: '2020/02/02'
+          )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
@@ -19,7 +23,10 @@ void main() {
     testWidgets('DescriptionCreditRequestWidget render structure',
         (WidgetTester tester) async {
       await tester
-          .pumpWidget(baseTester(child: DescriptionCreditRequestWidget()));
+          .pumpWidget(baseTester(child: DescriptionCreditRequestWidget(
+            valueRequested: '\$500.000',
+            dateRequested: '2020/02/02'
+          )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('description-credit-request-container')),

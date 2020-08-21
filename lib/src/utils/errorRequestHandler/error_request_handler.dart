@@ -7,6 +7,6 @@ String errorRequestHandler(context, String string) {
     case userNotAvailable:
       return I18n.of(context).requestErrorUserNotAvailable;
     default:
-      return string;
+      return I18n.of(context).requestErrorDefault;
   }
 }

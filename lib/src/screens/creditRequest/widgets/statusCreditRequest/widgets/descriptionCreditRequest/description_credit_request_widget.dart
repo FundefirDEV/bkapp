@@ -4,7 +4,14 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionCreditRequestWidget extends StatelessWidget {
-  const DescriptionCreditRequestWidget({Key key}) : super(key: key);
+  const DescriptionCreditRequestWidget({
+    Key key,
+    @required this.valueRequested,
+    @required this.dateRequested
+  }) : super(key: key);
+
+  final String valueRequested;
+  final String dateRequested;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4),
                   ),
                   Text(
-                    "\$ 300.000",
+                    valueRequested,
                     key: Key('description-credit-request-text-value'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],
@@ -63,7 +70,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4),
                   ),
                   Text(
-                    '28/07/2020',
+                    dateRequested,
                     key: Key('description-credit-request-date'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],

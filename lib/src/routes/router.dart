@@ -128,8 +128,6 @@ class Router {
                   userName: null,
                 ));
         break;
-      case creditRoute:
-        return MaterialPageRoute(builder: (_) => CreditScreen(oldIndex: 0));
       case rulesScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),

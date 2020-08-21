@@ -1,9 +1,23 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/widgets/modals/preApprovedRequest/pre_approved_credit_modal.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../base_tester.dart';
 
+class NavigateMockBloc extends MockBloc implements MenuNavigatorBloc {}
+
 void main() {
+  MenuNavigatorBloc navigateMockBloc;
+
+  setUp(() {
+    navigateMockBloc = NavigateMockBloc();
+  });
+
+  tearDown(() {
+    navigateMockBloc?.close();
+  });
+
   group('Test pre approved credit modal', () {
     testWidgets('Find credit modal', (WidgetTester tester) async {
       final keyMainContainer = Key('Main_container_credit_modal');
@@ -13,7 +27,10 @@ void main() {
       final keyButton = Key('FlatButton_credit_modal');
       final keyText = Key('RichText_credit_modal');
 
-      await tester.pumpWidget(baseTester(child: PreApprovedCreditModal()));
+      await tester.pumpWidget(baseTester(child: PreApprovedCreditModal(
+        tokenUser: 'xxxx',
+        navigateBloc: navigateMockBloc,
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(keyMainContainer), findsOneWidget);
