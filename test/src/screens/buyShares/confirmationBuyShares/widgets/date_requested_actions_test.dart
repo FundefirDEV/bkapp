@@ -17,7 +17,7 @@ Request request = new Request(
     partnerName: "Javier Reyes",
     amount: '50000',
     quantity: '5',
-    requestDate: "2020/03/20");
+    requestDate: DateTime.now().toString());
 
 void main() {
   group('Test DateRequestedActions  Widget', () {

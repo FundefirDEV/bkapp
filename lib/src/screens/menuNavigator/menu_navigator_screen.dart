@@ -101,11 +101,11 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                   create: (context) => context.bloc<AppBloc>().homeBloc),
               BlocProvider(
                 create: (context) =>
-                  CreditFormBloc(creditRepository: creditRepository),
+                    CreditFormBloc(creditRepository: creditRepository),
               ),
               BlocProvider(
-                create: (context) => ApprovalsBloc(repository: approvalsRepository)
-              )
+                  create: (context) =>
+                      ApprovalsBloc(repository: approvalsRepository))
             ],
             child: Stack(
               children: <Widget>[
@@ -118,10 +118,9 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     UtilsScreen(userName: widget.userName),
                     ProfileScreen(),
                     CreditScreen(
-                      oldIndex: currentIndex,
-                      tokenUser: widget.tokenUser,
-                      userName: widget.userName
-                    ),
+                        oldIndex: currentIndex,
+                        tokenUser: widget.tokenUser,
+                        userName: widget.userName),
                     BuySharesScreen(
                         oldIndex: currentIndex,
                         userName: widget.userName,
@@ -132,8 +131,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         tokenUser: widget.tokenUser),
                     StatusCreditRequestWidget(userName: widget.userName),
                     ConfirmationBuyShares(
-                        userName: widget.userName,
-                        tokenUser: widget.tokenUser), // NOTE 7
+                        userName: widget.userName, approvals: null), // NOTE 7
                     RulesScreen(),
                     RulesEditScreen(),
                     AdministratorAssignmentScreen(

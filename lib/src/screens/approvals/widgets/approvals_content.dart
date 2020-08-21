@@ -4,12 +4,11 @@ import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.da
 import 'package:flutter/material.dart';
 
 class ApprovalsContent extends StatelessWidget {
-  const ApprovalsContent(
-      {Key key, @required this.modalConfirm, @required this.data})
+  const ApprovalsContent({Key key, @required this.data, @required this.token})
       : super(key: key);
 
-  final Function modalConfirm;
   final Map data;
+  final String token;
 
   @override
   Widget build(BuildContext context) {
@@ -19,23 +18,23 @@ class ApprovalsContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           ApprovalsCards(
-            title: I18n.of(context).approvalsScreenShares,
-            data: data['sharesRequest'],
-            emptyData: EmptyInformation(),
-            modalConfirm: modalConfirm,
-          ),
+              title: I18n.of(context).approvalsScreenShares,
+              data: data['sharesRequest'],
+              emptyData: EmptyInformation(),
+              token: token,
+              type: 'share'),
           ApprovalsCards(
-            title: I18n.of(context).approvalsScreenCredits,
-            data: data['creditRequest'],
-            emptyData: EmptyInformation(),
-            modalConfirm: modalConfirm,
-          ),
+              title: I18n.of(context).approvalsScreenCredits,
+              data: data['creditRequest'],
+              emptyData: EmptyInformation(),
+              token: token,
+              type: 'credit'),
           ApprovalsCards(
-            title: I18n.of(context).approvalsScreenPayments,
-            data: data['paymentInstallmentRequest'],
-            emptyData: EmptyInformation(),
-            modalConfirm: modalConfirm,
-          ),
+              title: I18n.of(context).approvalsScreenPayments,
+              data: data['paymentInstallmentRequest'],
+              emptyData: EmptyInformation(),
+              token: token,
+              type: 'paymentInstallment'),
         ],
       ),
     );

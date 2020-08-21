@@ -14,13 +14,9 @@ class DateRequestedActions extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     DateTime date;
-    try {
-      date = data.myRequest.sharesRequest.length > 0
-          ? DateTime.parse(data.myRequest.sharesRequest[0].requestDate)
-          : DateTime.now();
-    } catch (e) {
-      date = DateTime.now();
-    }
+
+    date = DateTime.parse(data.myRequest.sharesRequest[0].requestDate);
+
     return Padding(
       key: Key('date-requested-action-padding'),
       padding: const EdgeInsets.only(left: 20),
@@ -42,7 +38,9 @@ class DateRequestedActions extends StatelessWidget {
                       fontSize: SizeConfig.blockSizeHorizontal * 4),
                 ),
                 Text(
-                  data.myRequest.sharesRequest[0].quantity.toString(),
+                  data.myRequest.sharesRequest.length > 0
+                      ? data.myRequest.sharesRequest[0].quantity.toString()
+                      : '',
                   key: Key('date-requested-action-text-quantity'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor[200],

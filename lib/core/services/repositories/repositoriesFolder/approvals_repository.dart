@@ -13,4 +13,19 @@ class ApprovalsRepository {
     final Map getAllApprovals = await apiProvider.getApprovals(token);
     return getAllApprovals;
   }
+
+  Future<Map<String, dynamic>> postApprovals(
+      String requestType,
+      int idRequest,
+      String approvalStatus,
+      String token
+    ) async {
+    final Map postApprovals = await apiProvider.postApprovals(
+      requestType,
+      idRequest,
+      approvalStatus,
+      token
+    );
+    return postApprovals;
+  }
 }

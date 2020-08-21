@@ -5,6 +5,7 @@
   "firstText": "Has presionado el boton varias veces",
   "goToLogin": "Ir a login",
   "splashScreen": "Splash Screen",
+  "errorPage": "An error has occurred \ntry again",
   "actionText": {
     "enter": "INGRESAR",
     "imNew": "SOY NUEVO",

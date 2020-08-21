@@ -28,7 +28,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
           key: 'aprobation',
           image: 'assets/images/check.svg',
           aprobations: true,
-          number: "4 ",
+          number: " ",
           title: I18n.of(context).utilsApprovals,
           titleWeight: I18n.of(context).utilsRequests,
           textDescription: I18n.of(context).utilsApproveCreditActions,

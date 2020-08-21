@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
@@ -145,11 +146,12 @@ class _InputCodeState extends State<InputCode> {
               ],
             ),
           ),
-          TextField(
-            key: Key('input-code-pin-code-temporal'),
-            controller: textEditingController,
-            keyboardType: TextInputType.visiblePassword,
-          )
+          if (EnvironmentConfig.ENV == 'DEV')
+            TextField(
+              key: Key('input-code-pin-code-temporal'),
+              controller: textEditingController,
+              keyboardType: TextInputType.visiblePassword,
+            )
         ],
       ),
     );

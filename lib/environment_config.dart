@@ -3,7 +3,7 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bkservice.fundefir-dev.com");
+      defaultValue: "https://bkservicestage.fundefir-dev.com");
 
   ///
   /// Environment PROD; QA; STAGE or DEV
@@ -128,5 +128,14 @@ class ApiEndpoints {
   static String postCreditRequest({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/request";
+  }
+
+  /// Post buy Approvals
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String postApprovals({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/approvals";
   }
 }

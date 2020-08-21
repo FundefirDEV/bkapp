@@ -76,15 +76,13 @@ class ApiProvider {
         httpClient: httpClient, url: getApprovals, token: token);
   }
 
-  Future getPartnerValidation(
-    String phoneNumber, String token) async {
+  Future getPartnerValidation(String phoneNumber, String token) async {
     final getPartnerValidation = ApiEndpoints.getPartnerValidation();
     return await _httpRequest.get(
-      httpClient: httpClient,
-      url: getPartnerValidation,
-      param: phoneNumber,
-      token: token
-    );
+        httpClient: httpClient,
+        url: getPartnerValidation,
+        param: phoneNumber,
+        token: token);
   }
 
   Future<Map<String, dynamic>> getInformationBkHome(String token) async {
@@ -108,14 +106,26 @@ class ApiProvider {
   }
 
   Future<Map<String, dynamic>> postCreditRequest(
-    String token, Map creditRequest
-  ) async {
+      String token, Map creditRequest) async {
     final postCreditRequest = ApiEndpoints.postCreditRequest();
     return await _httpRequest.post(
-      httpClient: httpClient,
-      url: postCreditRequest,
-      body: creditRequest,
-      token: token
-    );
+        httpClient: httpClient,
+        url: postCreditRequest,
+        body: creditRequest,
+        token: token);
+  }
+
+  Future<Map<String, dynamic>> postApprovals(String requestType, int idRequest,
+      String approvalStatus, String token) async {
+    final postMySharesUrl = ApiEndpoints.postApprovals();
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: postMySharesUrl,
+        body: {
+          "requestType": requestType,
+          "idRequest": idRequest,
+          "approval_status": approvalStatus
+        },
+        token: token);
   }
 }

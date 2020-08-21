@@ -6,7 +6,7 @@ import 'package:bkapp_flutter/src/screens/approvals/widgets/approvals_content.da
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
-import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
+import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'content/accepted_discarted_container.dart';
@@ -64,27 +64,13 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
                     childWhite: AcceptedDiscarted(data: state.approvals)),
                 SizedBox(height: 20.0),
                 ApprovalsContent(
-                    modalConfirm: _showDialog, data: state.approvals),
+                    data: state.approvals, token: widget.tokenUser),
               ],
             ),
           );
         }
         if (state is ApprovalsFailure) {
-          return AppBarWidget(
-            container: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
-                  child: TitleHeaderWidget(
-                    title: I18n.of(context).approvalsScreenApproval,
-                    showArrow: true,
-                    oldIndex: widget.oldIndex,
-                    navigateBloc: menuNavigatorBloc,
-                  ),
-                ),
-              ],
-            ),
-          );
+          return ErrorPage();
         }
         return Center(
           child: CircularProgressIndicator(),
@@ -92,25 +78,4 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
       },
     );
   }
-}
-
-void _showDialog(context, title, titleBold, isBold, isImageBg, image) {
-  showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return ImageBottomModal(
-          modalHeight: 45.0,
-          image: image,
-          isImageBg: isImageBg,
-          title: title,
-          titleBold: titleBold,
-          isBold: isBold,
-          isBtnAccept: true,
-          titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
-          titleCloseButton: I18n.of(context).administratorAssignmentClose,
-          onPressAccept: () => {Navigator.pop(context)},
-          onPressCancel: () => {Navigator.pop(context)},
-        );
-      });
 }

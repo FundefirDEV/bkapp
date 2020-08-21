@@ -110,12 +110,6 @@ class Router {
                   userName: null,
                 ));
         break;
-      case confirmationBuySharesRoute:
-        return MaterialPageRoute(
-            builder: (_) => ConfirmationBuyShares(
-                  tokenUser: null,
-                  userName: null,
-                ));
       case approvalsScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),

@@ -4,12 +4,14 @@ import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
+import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
+import '../screens.dart';
 import 'widgets/cardBuyShares/buy_shares_form_widget.dart';
 import 'widgets/cardBuyShares/number_actions_widget.dart';
 import 'widgets/cardBuyShares/shares_buy_text_widget.dart';
@@ -30,13 +32,13 @@ class BuySharesScreen extends StatefulWidget {
   _BuySharesScreenState createState() => _BuySharesScreenState();
 }
 
-class _BuySharesScreenState extends State<BuySharesScreen>
-    with AfterLayoutMixin<BuySharesScreen> {
+class _BuySharesScreenState extends State<BuySharesScreen> {
   @override
-  void afterFirstLayout(BuildContext context) {
+  void initState() {
     context
         .bloc<BuySharesBloc>()
         .add(BuySharesInitialize(token: widget.tokenUser));
+    super.initState();
   }
 
   @override
@@ -47,7 +49,10 @@ class _BuySharesScreenState extends State<BuySharesScreen>
     return BlocBuilder<BuySharesBloc, BuySharesState>(
         builder: (context, state) {
       if (state is BuySharesLoaded) {
-        if (state.infoShares.approvals.myRequest.sharesRequest.length == 0) {
+        if (state.infoShares.approvals.myRequest.sharesRequest.length > 0) {
+          return ConfirmationBuyShares(
+              approvals: state.infoShares.approvals, userName: widget.userName);
+        } else {
           return Builder(
             key: Key('builder-buy-share-screen'),
             builder: (context) {
@@ -67,7 +72,11 @@ class _BuySharesScreenState extends State<BuySharesScreen>
                           print('Loading');
                         },
                         onSuccess: (context, state) {
-                          _showDialog(context, menuNavigatorBloc);
+                          _showDialog(context, () {
+                            context.bloc<BuySharesBloc>().add(
+                                BuySharesInitialize(token: widget.tokenUser));
+                            Navigator.pop(context);
+                          });
                         },
                         onFailure: (context, state) {
                           print('Failure');
@@ -99,12 +108,10 @@ class _BuySharesScreenState extends State<BuySharesScreen>
               );
             },
           );
-        } else {
-          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: 7));
         }
       }
       if (state is BuySharesFailure) {
-        return Text('Se ha presentado un error, intenta nuevamente');
+        return ErrorPage();
       }
       return Center(
         child: CircularProgressIndicator(),
@@ -113,11 +120,11 @@ class _BuySharesScreenState extends State<BuySharesScreen>
   }
 }
 
-void _showDialog(context, menuNavigatorBloc) {
+void _showDialog(context, onPress) {
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) {
+      builder: (_) {
         return ImageBottomModal(
             modalHeight: 45.0,
             image: 'assets/images/salo_pre_approved_modal.svg',
@@ -127,9 +134,6 @@ void _showDialog(context, menuNavigatorBloc) {
             isBold: true,
             isBtnAccept: false,
             titleCloseButton: I18n.of(context).administratorAssignmentClose,
-            onPressCancel: () {
-              menuNavigatorBloc.add(ButtonPressed(goTo: 7));
-              Navigator.pop(context);
-            });
+            onPressCancel: onPress);
       });
 }

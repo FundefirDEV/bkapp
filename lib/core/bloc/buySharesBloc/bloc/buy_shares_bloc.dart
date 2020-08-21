@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/core/models/shares_info_model.dart';

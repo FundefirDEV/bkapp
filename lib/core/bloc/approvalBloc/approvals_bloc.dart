@@ -28,7 +28,17 @@ class ApprovalsBloc extends Bloc<ApprovalsEvent, ApprovalsState> {
           approvalsModel: approvalsModel
         );
       } catch (e) {
-        print(e);
+        yield ApprovalsFailure();
+      }
+    }
+    if (event is ApprovalsPost) {
+      yield ApprovalsLoading();
+      try {
+        final response = await repository.postApprovals(event.requestType,
+            event.idRequest, event.approvalStatus, event.token);
+        yield ApprovalsPostLoaded(approvals: response);
+        add(ApprovalsInitialize(token: event.token));
+      } catch (e) {
         yield ApprovalsFailure();
       }
     }

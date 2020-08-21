@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/confirmationBuyShares/confirmation_buy_shares.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/widgets/cardBuyShares/shares_buy_text_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
@@ -13,6 +14,23 @@ import '../../../../base_tester.dart';
 
 void main() {
   Widget confirmationBuySharesTester({key}) {
+    ApprovalsModel approvals = new ApprovalsModel(
+        myRequest: new MyRequest(
+            sharesRequest: List<Request>(),
+            creditRequest: List<Request>(),
+            paymentInstallmentRequest: List<Request>()));
+
+    Request request = new Request(
+        id: 1,
+        partnerName: "Javier Reyes",
+        amount: '50000',
+        quantity: '5',
+        requestDate: DateTime.now().toString());
+
+    approvals.myRequest.sharesRequest.add(request);
+    approvals.myRequest.creditRequest.add(request);
+    approvals.myRequest.paymentInstallmentRequest.add(request);
+
     return MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -26,13 +44,14 @@ void main() {
         child: ConfirmationBuyShares(
           key: key,
           userName: 'Usuario',
-          tokenUser: 'xxxxxx',
+          approvals: approvals,
         ));
   }
 
   group('Test ConfirmationBuyShares  Widget', () {
     testWidgets('Render ConfirmationBuyShares', (WidgetTester tester) async {
       final testKey = Key('my-id');
+
       await tester.pumpWidget(
           baseTester(child: confirmationBuySharesTester(key: testKey)));
       await tester.pumpAndSettle();
