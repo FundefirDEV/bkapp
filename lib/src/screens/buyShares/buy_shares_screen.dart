@@ -43,8 +43,6 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return BlocBuilder<BuySharesBloc, BuySharesState>(
         builder: (context, state) {

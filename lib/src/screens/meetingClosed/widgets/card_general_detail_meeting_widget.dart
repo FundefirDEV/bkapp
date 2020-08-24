@@ -5,7 +5,18 @@ import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_
 import 'package:flutter/material.dart';
 
 class CardGeneralDetailMeetingWidget extends StatelessWidget {
-  const CardGeneralDetailMeetingWidget({Key key}) : super(key: key);
+  const CardGeneralDetailMeetingWidget(
+      {Key key,
+      this.cashBalance = r'$0',
+      this.badDebtReserve = r'$0',
+      this.earningByShare = r'$0',
+      this.fundReserve = r'$0'})
+      : super(key: key);
+
+  final String cashBalance;
+  final String badDebtReserve;
+  final String earningByShare;
+  final String fundReserve;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +49,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
                     children: [
                       TextSpan(text: I18n.of(context).meetingClosedCashBalance),
                       TextSpan(
-                          text: r'$116.000',
+                          text: this.cashBalance,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w200)),
                     ])),
@@ -58,7 +69,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
                           text:
                               I18n.of(context).meetingClosedEarningsPerShares),
                       TextSpan(
-                          text: '53.33',
+                          text: this.earningByShare,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w200)),
                     ])),
@@ -86,7 +97,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
                     children: [
                       TextSpan(text: I18n.of(context).meetingClosedExpenseFund),
                       TextSpan(
-                          text: r'$11.000',
+                          text: this.badDebtReserve,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w200)),
                     ])),
@@ -107,7 +118,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
                                 text: I18n.of(context)
                                     .meetingClosedSustainabilityFund),
                             TextSpan(
-                                text: r'$10.000',
+                                text: this.fundReserve,
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w200)),
                           ]))))

@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:bkapp_flutter/core/bloc/meetingBloc/bloc/meeting_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/card_general_detail_meeting_widget.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/carousel_cards_detail_widget.dart';
+import 'package:bkapp_flutter/src/utils/after_layaut.dart';
+import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
@@ -12,12 +15,24 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
-class MeetingClosedScreen extends StatelessWidget {
-  const MeetingClosedScreen(
-      {Key key, @required this.oldIndex, @required this.userName})
-      : super(key: key);
-  final int oldIndex;
+class MeetingClosedScreen extends StatefulWidget {
+  MeetingClosedScreen({Key key, this.tokenUser, this.oldIndex, this.userName}) : super(key: key);
+  final String tokenUser;
   final String userName;
+  final int oldIndex;
+
+  @override
+  _MeetingClosedState createState() => _MeetingClosedState();
+}
+
+class _MeetingClosedState extends State<MeetingClosedScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<MeetingBloc>(context)
+        .add(MeetingInitialize(token: widget.tokenUser));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     List listDetailMeetingClosed = jsonDecode(
@@ -29,25 +44,38 @@ class MeetingClosedScreen extends StatelessWidget {
     // ignore: close_sinks
     MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
-    return Container(
-      child: AppBarWidget(
-        key: Key('app-bar-widget-meeting-closed'),
-        userName: this.userName,
-        container: Column(children: <Widget>[
-          TitleHeaderWidget(
-            title: I18n.of(context).meetingClosedMeetingClosing,
-            oldIndex: oldIndex,
-            navigateBloc: menuNavigatorBloc,
+    return BlocBuilder<MeetingBloc, MeetingState>(builder: (context, state) {
+      if (state is MeetingLoaded) {
+        final infoMeeting = state.infoMeeting;
+        return Container(
+          child: AppBarWidget(
+            key: Key('app-bar-widget-meeting-closed'),
+            userName: widget.userName,
+            container: Column(children: <Widget>[
+              TitleHeaderWidget(
+                title: I18n.of(context).meetingClosedMeetingClosing,
+                oldIndex: widget.oldIndex,
+                navigateBloc: menuNavigatorBloc,
+              ),
+              CardGeneralDetailMeetingWidget(
+                  cashBalance: infoMeeting.cashBalance,
+                  badDebtReserve: infoMeeting.badDebtReserve,
+                  earningByShare: infoMeeting.earningByShare,
+                  fundReserve: infoMeeting.fundReserve),
+              _buttonPayFee(context),
+              LineSeparatorWidget(),
+              _subtitleDetailClosing(context),
+              CarouselCardsDetailWidget(
+                  listDetailMeetingClosed: listDetailMeetingClosed)
+            ]),
           ),
-          CardGeneralDetailMeetingWidget(),
-          _buttonPayFee(context),
-          LineSeparatorWidget(),
-          _subtitleDetailClosing(context),
-          CarouselCardsDetailWidget(
-              listDetailMeetingClosed: listDetailMeetingClosed)
-        ]),
-      ),
-    );
+        );
+      }
+      if (state is MeetingFailure) {
+        return ErrorPage();
+      }
+      return Center(child: CircularProgressIndicator());
+    });
   }
 
   Container _subtitleDetailClosing(BuildContext context) {

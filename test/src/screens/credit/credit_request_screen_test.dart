@@ -14,44 +14,39 @@ import 'package:mockito/mockito.dart';
 import '../../../base_tester.dart';
 
 class ApprovalsRepoMock extends Mock implements ApprovalsRepository {}
+
 class CreditRepoMock extends Mock implements CreditRepository {}
 
 void main() {
   ApprovalsRepository approvalsRepoMock = ApprovalsRepoMock();
   CreditRepository creditRepoMock = CreditRepoMock();
 
-  baseWidgetTest({ Key customKey }) {
+  baseWidgetTest({Key customKey}) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              MenuNavigatorBloc(controller: PageController()
-          )
-        ),
-        BlocProvider(
-          create: (context) =>
-            ApprovalsBloc(repository: approvalsRepoMock)
-        ),
-        BlocProvider(
-          create: (context) =>
-            CreditFormBloc(creditRepository: creditRepoMock)
-        )
-      ],
-      child: CreditScreen(
-        key: customKey,
-        oldIndex: 0,
-        tokenUser: 'xxx',
-        userName: 'Usuario'
-      )
-    );
+        providers: [
+          BlocProvider(
+              create: (context) =>
+                  MenuNavigatorBloc(controller: PageController())),
+          BlocProvider(
+              create: (context) =>
+                  ApprovalsBloc(repository: approvalsRepoMock)),
+          BlocProvider(
+              create: (context) =>
+                  CreditFormBloc(creditRepository: creditRepoMock))
+        ],
+        child: CreditScreen(
+            key: customKey,
+            oldIndex: 0,
+            tokenUser: 'xxx',
+            userName: 'Usuario'));
   }
+
   group('Test credit screen', () {
     final key = Key('credit-key');
     testWidgets('Render credit screen', (WidgetTester tester) async {
       await tester.runAsync(() async {
-        await tester.pumpWidget(baseTester(
-          child: baseWidgetTest(customKey: key)
-        ));
+        await tester
+            .pumpWidget(baseTester(child: baseWidgetTest(customKey: key)));
         await tester.pump();
         expect(find.byKey(key), findsOneWidget);
       });
@@ -59,9 +54,8 @@ void main() {
 
     testWidgets('Render main structure', (WidgetTester tester) async {
       await tester.runAsync(() async {
-        await tester.pumpWidget(baseTester(
-          child: baseWidgetTest(customKey: key)
-        ));
+        await tester
+            .pumpWidget(baseTester(child: baseWidgetTest(customKey: key)));
         await tester.pump();
 
         expect(find.byType(AppBarWidget), findsNothing);

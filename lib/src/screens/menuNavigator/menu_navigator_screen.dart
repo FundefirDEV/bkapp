@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
@@ -98,15 +97,17 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     repoHome: homeRepository),
               ),
               BlocProvider(
-                create: (context) => HomeBloc(repository: homeRepository)
-              ),
+                  create: (context) => HomeBloc(repository: homeRepository)),
               BlocProvider(
                 create: (context) =>
                     CreditFormBloc(creditRepository: creditRepository),
               ),
               BlocProvider(
                   create: (context) =>
-                      ApprovalsBloc(repository: approvalsRepository))
+                      ApprovalsBloc(repository: approvalsRepository)),
+              BlocProvider(
+                  create: (context) =>
+                      MeetingBloc(repository: meetingRepository))
             ],
             child: Stack(
               children: <Widget>[
@@ -142,7 +143,9 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     AddPartnerScreen(
                         oldIndex: currentIndex, userName: widget.userName),
                     MeetingClosedScreen(
-                        oldIndex: currentIndex, userName: widget.userName),
+                        oldIndex: currentIndex,
+                        userName: widget.userName,
+                        tokenUser: widget.tokenUser),
                     ProfitPaymentScreen(userName: widget.userName) // NOTE 14
                   ],
                   physics:

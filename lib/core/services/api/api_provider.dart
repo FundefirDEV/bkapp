@@ -128,4 +128,10 @@ class ApiProvider {
         },
         token: token);
   }
+
+  Future<Map<String, dynamic>> getMeeting(String token) async {
+    final getMeeting = ApiEndpoints.getMeeting();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getMeeting, token: token);
+  }
 }

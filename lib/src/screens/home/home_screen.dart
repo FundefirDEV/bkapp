@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/home/home_bloc.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/optionsBk/options_bk_widget.dart';
 import 'package:bkapp_flutter/src/screens/home/widgets/tabInformationBk/tab_information_bk_widget.dart';
@@ -26,11 +25,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void afterFirstLayout(BuildContext context) {
-    BlocProvider.of<HomeBloc>(context).add(HomeInitialize(token: widget.tokenUser));
-    // context
-    //     .bloc<AppBloc>()
-    //     .homeBloc
-    //     .add(HomeInitialize(token: widget.tokenUser));
+    BlocProvider.of<HomeBloc>(context)
+        .add(HomeInitialize(token: widget.tokenUser));
   }
 }
 

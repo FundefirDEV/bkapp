@@ -18,3 +18,4 @@ export 'profileEdition/profile_edit_form_Bloc.dart';
 export 'rulesEdition/rules_edit_form_bloc.dart';
 export 'buySharesBloc/bloc/buy_shares_bloc.dart';
 export 'menuNavigatorBloc/menunavigator_bloc.dart';
+export 'meetingBloc/bloc/meeting_bloc.dart';

@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/meeting_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,3 +34,6 @@ final ShareRepository shareRepository =
 
 final CreditRepository creditRepository =
     CreditRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final MeetingRepository meetingRepository =
+    MeetingRepository(apiProvider: ApiProvider(httpClient: httpClient));
