@@ -1,10 +1,14 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class CreditsRulesContainer extends StatelessWidget {
-  const CreditsRulesContainer({Key key}) : super(key: key);
+  const CreditsRulesContainer({Key key, this.bankRules}) : super(key: key);
+
+  final BankRulesModel bankRules;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +22,7 @@ class CreditsRulesContainer extends StatelessWidget {
                   fontSize: 12),
               children: <TextSpan>[
             TextSpan(
-                text: '1.000.000', // variable
+                text: bankRules.creditMaxValue.toString(), // variable
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))
@@ -27,7 +31,7 @@ class CreditsRulesContainer extends StatelessWidget {
     );
   }
 
-  Container duesContainer(context) {
+  Container duesContainer(context, BankRulesModel bankRules) {
     return Container(
       key: Key('container_dues_rules'),
       margin: EdgeInsets.only(top: 10),
@@ -39,7 +43,7 @@ class CreditsRulesContainer extends StatelessWidget {
                   fontSize: 12),
               children: <TextSpan>[
             TextSpan(
-                text: '3', // variable
+                text: bankRules.creditMaxInstallments.toString(), // variable
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))

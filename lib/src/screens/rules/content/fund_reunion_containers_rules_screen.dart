@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/reunion_rules_container.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -6,7 +7,10 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'fund_container_rules_screen.dart';
 
 class FundReunionContainersRulesScreen extends StatelessWidget {
-  const FundReunionContainersRulesScreen({Key key}) : super(key: key);
+  const FundReunionContainersRulesScreen({Key key, this.bankRules})
+      : super(key: key);
+
+  final BankRulesModel bankRules;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class FundReunionContainersRulesScreen extends StatelessWidget {
       children: <Widget>[
         Container(
           key: Key('main_container_funds_reunion_container'),
-          height: SizeConfig.blockSizeVertical * 18,
+          height: 130.0,
           width: SizeConfig.blockSizeHorizontal * 40,
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 2,
@@ -40,9 +44,9 @@ class FundReunionContainersRulesScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: SizeConfig.blockSizeVertical * 2),
               Container(
-               key: Key('funds_container_rules_screen'),
+                key: Key('funds_container_rules_screen'),
                 child: Row(
-                  key: Key('funds_row_rules_screen'),
+                    key: Key('funds_row_rules_screen'),
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(width: SizeConfig.blockSizeHorizontal * 3),
@@ -61,8 +65,8 @@ class FundReunionContainersRulesScreen extends StatelessWidget {
                               fontSize: 14))
                     ]),
               ),
-              FundRulesContainer(),
-              FundRulesContainer().incobrableContainer(context),
+              FundRulesContainer(bankRules: bankRules),
+              FundRulesContainer().incobrableContainer(context, bankRules),
             ],
           ),
         ),

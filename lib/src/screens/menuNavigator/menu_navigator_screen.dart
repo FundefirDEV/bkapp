@@ -107,7 +107,11 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                       ApprovalsBloc(repository: approvalsRepository)),
               BlocProvider(
                   create: (context) =>
-                      MeetingBloc(repository: meetingRepository))
+                      MeetingBloc(repository: meetingRepository)),
+              BlocProvider(
+                create: (context) =>
+                    BankRulesBloc(repository: bankRulesRepository),
+              ),
             ],
             child: Stack(
               children: <Widget>[
@@ -134,7 +138,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                     StatusCreditRequestWidget(userName: widget.userName),
                     ConfirmationBuyShares(
                         userName: widget.userName, approvals: null), // NOTE 7
-                    RulesScreen(),
+                    RulesScreen(tokenUser: widget.tokenUser),
                     RulesEditScreen(),
                     AdministratorAssignmentScreen(
                         userName: widget.userName), // NOTE 10

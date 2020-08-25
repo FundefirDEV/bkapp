@@ -9,15 +9,21 @@ void main() {
   group('Test StatusTextCreditRequest  Widget', () {
     testWidgets('Render StatusTextCreditRequest', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester
-          .pumpWidget(baseTester(child: StatusTextCreditRequest(key: testKey)));
+      await tester.pumpWidget(baseTester(
+          child: StatusTextCreditRequest(
+        key: testKey,
+        installments: '',
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);
     });
     testWidgets('StatusTextCreditRequest render structure',
         (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: StatusTextCreditRequest()));
+      await tester.pumpWidget(baseTester(
+          child: StatusTextCreditRequest(
+        installments: '',
+      )));
       await tester.pumpAndSettle();
 
       expect(find.byKey(Key('status-text-credit-request-container')),

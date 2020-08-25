@@ -78,8 +78,8 @@ class TopContainerRulesSceen extends StatelessWidget {
                 bottom: SizeConfig.safeBlockHorizontal * 5,
               ),
               child: Container(
-                height: SizeConfig.blockSizeVertical * 40,
-                width: SizeConfig.blockSizeHorizontal * 30,
+                  height: SizeConfig.blockSizeVertical * 40,
+                  width: SizeConfig.blockSizeHorizontal * 30,
                   child: SvgPicture.asset(
                     'assets/images/logo_rules_screen.svg',
                   ))),
@@ -134,7 +134,7 @@ class TopContainerRulesSceen extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: '12/10/2020',
+              text: '\n12/10/2020',
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,

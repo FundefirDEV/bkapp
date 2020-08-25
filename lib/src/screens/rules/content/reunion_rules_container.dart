@@ -13,7 +13,7 @@ class ReunionRulesContainer extends StatelessWidget {
 
     return Container(
       key: Key('container_reunion_rules'),
-      height: SizeConfig.blockSizeVertical * 18,
+      height: 130.0,
       width: SizeConfig.blockSizeHorizontal * 40,
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 2,
@@ -43,7 +43,7 @@ Column interestColumn(context) {
     children: <Widget>[
       SizedBox(height: SizeConfig.blockSizeVertical * 2),
       Container(
-       key: Key('top_container_reunion_rules'),
+        key: Key('top_container_reunion_rules'),
         child: Row(children: <Widget>[
           SizedBox(width: SizeConfig.blockSizeHorizontal * 3),
           Icon(Icons.people_outline,
@@ -57,7 +57,7 @@ Column interestColumn(context) {
         //alignment: Alignment(-0.8, -1.0),
       ),
       Container(
-       key: Key('middle_container_reunion_rules'),
+        key: Key('middle_container_reunion_rules'),
         margin: EdgeInsets.only(top: 10),
         child: RichText(
             textAlign: TextAlign.left,
@@ -76,7 +76,7 @@ Column interestColumn(context) {
         alignment: Alignment(-0.8, -1.0),
       ),
       Container(
-       key: Key('bottom_container_reunion_rules'),
+        key: Key('bottom_container_reunion_rules'),
         margin: EdgeInsets.only(top: 10),
         child: RichText(
             textAlign: TextAlign.left,

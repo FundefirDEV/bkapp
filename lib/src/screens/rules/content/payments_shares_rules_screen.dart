@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/shares_containe_rules_screen.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/types_payments_container_rules_screen.dart';
@@ -6,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class PaymentSharesContainerRulesScreen extends StatelessWidget {
-  const PaymentSharesContainerRulesScreen({Key key}) : super(key: key);
+  const PaymentSharesContainerRulesScreen({Key key, this.bankRules})
+      : super(key: key);
+
+  final BankRulesModel bankRules;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class PaymentSharesContainerRulesScreen extends StatelessWidget {
       children: <Widget>[
         Container(
           key: Key('main_container_payments_shares_container'),
-          height: SizeConfig.blockSizeVertical * 12,
+          height: 90.0,
           width: SizeConfig.blockSizeHorizontal * 40,
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 2,
@@ -42,7 +46,7 @@ class PaymentSharesContainerRulesScreen extends StatelessWidget {
               Container(
                 key: Key('payment_container_rules_screen'),
                 child: Row(
-                    key : Key('payment_row_rules_screen'),
+                    key: Key('payment_row_rules_screen'),
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(width: SizeConfig.blockSizeHorizontal * 3),
@@ -65,7 +69,7 @@ class PaymentSharesContainerRulesScreen extends StatelessWidget {
             ],
           ),
         ),
-        SharesRulesContainer(),
+        SharesRulesContainer(bankRules: bankRules),
       ],
     );
   }

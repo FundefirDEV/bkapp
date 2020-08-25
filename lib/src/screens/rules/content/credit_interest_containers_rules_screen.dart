@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,10 @@ import 'credits_rules_container.dart';
 import 'interest_rules_container.dart';
 
 class CreditInterestContainerRulesScreen extends StatelessWidget {
-  const CreditInterestContainerRulesScreen({Key key}) : super(key: key);
+  const CreditInterestContainerRulesScreen({Key key, this.bankRules})
+      : super(key: key);
+
+  final BankRulesModel bankRules;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class CreditInterestContainerRulesScreen extends StatelessWidget {
       children: <Widget>[
         Container(
           key: Key('main_credit_container_rules_screen'),
-          height: SizeConfig.blockSizeVertical * 18,
+          height: 130.0,
           width: SizeConfig.blockSizeHorizontal * 40,
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 4,
@@ -62,12 +66,12 @@ class CreditInterestContainerRulesScreen extends StatelessWidget {
                               fontSize: 14))
                     ]),
               ),
-              CreditsRulesContainer(),
-              CreditsRulesContainer().duesContainer(context),
+              CreditsRulesContainer(bankRules: bankRules),
+              CreditsRulesContainer().duesContainer(context, bankRules),
             ],
           ),
         ),
-        InterestRulesContainer(),
+        InterestRulesContainer(bankRules: bankRules),
       ],
     );
   }

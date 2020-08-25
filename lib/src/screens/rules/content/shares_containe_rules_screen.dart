@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class SharesRulesContainer extends StatelessWidget {
-  const SharesRulesContainer({Key key}) : super(key: key);
+  const SharesRulesContainer({Key key, this.bankRules}) : super(key: key);
+
+  final BankRulesModel bankRules;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class SharesRulesContainer extends StatelessWidget {
 
     return Container(
       key: Key('container_shares_rules'),
-      height: SizeConfig.blockSizeVertical * 12,
+      height: 90.0,
       width: SizeConfig.blockSizeHorizontal * 40,
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 2,
@@ -32,12 +35,12 @@ class SharesRulesContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: sharesColumn(context),
+      child: sharesColumn(context, bankRules),
     );
   }
 }
 
-Column sharesColumn(context) {
+Column sharesColumn(context, BankRulesModel bankRules) {
   return Column(
     key: Key('column_shares_rules'),
     children: <Widget>[
@@ -68,7 +71,7 @@ Column sharesColumn(context) {
                     fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                      text: '10.000',
+                      text: bankRules.shareValue,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.grayColor[200],
                           fontSize: 12))

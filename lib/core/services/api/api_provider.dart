@@ -134,4 +134,10 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: getMeeting, token: token);
   }
+
+  Future<Map<String, dynamic>> getBankRules(String token) async {
+    final getBankRules = ApiEndpoints.getBankRules();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getBankRules, token: token);
+  }
 }

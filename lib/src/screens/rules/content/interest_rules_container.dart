@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class InterestRulesContainer extends StatelessWidget {
-  const InterestRulesContainer({Key key}) : super(key: key);
+  const InterestRulesContainer({Key key, this.bankRules}) : super(key: key);
+
+  final BankRulesModel bankRules;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class InterestRulesContainer extends StatelessWidget {
 
     return Container(
       key: Key('container_interest_rules'),
-      height: SizeConfig.blockSizeVertical * 18,
+      height: 130.0,
       width: SizeConfig.blockSizeHorizontal * 40,
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 4,
@@ -32,12 +35,12 @@ class InterestRulesContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: interestColumn(context),
+      child: interestColumn(context, bankRules),
     );
   }
 }
 
-Column interestColumn(context) {
+Column interestColumn(context, BankRulesModel bankRules) {
   return Column(
     key: Key('column_interest_rules'),
     children: <Widget>[
@@ -68,7 +71,7 @@ Column interestColumn(context) {
                     fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                      text: '5%',
+                      text: '${bankRules.ordinaryInterestPercentage} %',
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.grayColor[200],
                           fontSize: 12))
@@ -87,7 +90,7 @@ Column interestColumn(context) {
                     fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                      text: '5%',
+                      text: '${bankRules.defaultRatePercentage} %',
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.grayColor[200],
                           fontSize: 12))
