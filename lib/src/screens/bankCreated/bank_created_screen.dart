@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -12,6 +13,8 @@ class BankCreatedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
+    ActivePartnersDbProvider activePartnersDb = ActivePartnersDbProvider.db;
     return Material(
         child: SafeArea(
             child: Column(
@@ -28,7 +31,12 @@ class BankCreatedScreen extends StatelessWidget {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
             ButtonNextWidget(
-                onTap: () => Navigator.pushNamed(context, loginRoute)),
+                onTap: () async {
+                  await partnerDb.deleteAllPartners();
+                  await activePartnersDb.deleteAllPartners();
+                  Navigator.pushNamed(context, loginRoute);
+                }
+            ),
           ]),
         )
       ],
