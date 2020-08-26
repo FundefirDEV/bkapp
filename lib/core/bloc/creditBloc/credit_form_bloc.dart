@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/creditBloc/data_use_credit.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/credit_repository.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/foundation.dart';
@@ -6,37 +7,26 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 class CreditFormBloc extends FormBloc<String, String> {
   final CreditRepository creditRepository;
 
-  final specialPerson = SelectFieldBloc(
-    items: ['Opción 1', 'Opción 2']
-  );
+  final specialPerson = SelectFieldBloc(items: ['Opción 1', 'Opción 2']);
 
   final specialInterest = TextFieldBloc();
 
-  final valueCredit = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
-  );
+  final valueCredit = TextFieldBloc(validators: [FieldBlocValidators.required]);
 
-  final installments = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
-  );
+  final installments =
+      TextFieldBloc(validators: [FieldBlocValidators.required]);
 
-  final creditUse = SelectFieldBloc(
-    items: [
-      'Generación de ingresos',
-      'Fortalecimiento familiar',
-      'Consumo'
-    ],
-  );
+  final creditUse = SelectFieldBloc(items: ['']);
 
-  final paymentMethods = TextFieldBloc(
-    validators: [FieldBlocValidators.required]
-  );
+  final creditDetail = SelectFieldBloc(items: ['']);
 
-  final creditDetail = TextFieldBloc();
+  final paymentMethods =
+      TextFieldBloc(validators: [FieldBlocValidators.required]);
 
   final tokenProfile = TextFieldBloc();
 
   CreditFormBloc({@required this.creditRepository}) {
+    creditUse.updateItems(itemsCreditUse);
     addFieldBlocs(fieldBlocs: [
       specialPerson,
       specialInterest,
@@ -44,27 +34,39 @@ class CreditFormBloc extends FormBloc<String, String> {
       installments,
       creditUse,
       paymentMethods,
-      tokenProfile,
-      creditDetail
+      tokenProfile
     ]);
+    creditUse.onValueChanges(onData: (previous, current) async* {
+      removeFieldBlocs(fieldBlocs: [creditDetail]);
+      switch (itemsCreditUse.indexOf(current.value)) {
+        case 0:
+          creditDetail.updateItems(useCreditOption0);
+          break;
+        case 1:
+          creditDetail.updateItems(useCreditOption1);
+          break;
+        case 2:
+          creditDetail.updateItems(useCreditOption2);
+          break;
+        default:
+          break;
+      }
+      addFieldBlocs(fieldBlocs: [creditDetail]);
+    });
   }
 
   @override
   void onSubmitting() async {
     try {
-      await creditRepository.postCreditRequest(
-        tokenProfile.value,
-        {
-          "typeRequest": "credit",
-          "quantity": int.parse(installments.value),
-          "amount": double.parse(
-            UtilsTools.removeCurrencyFormatter(valueCredit.value)
-          )
-        }
-      );
+      await creditRepository.postCreditRequest(tokenProfile.value, {
+        "typeRequest": "credit",
+        "quantity": int.parse(installments.value),
+        "amount":
+            double.parse(UtilsTools.removeCurrencyFormatter(valueCredit.value))
+      });
       emitSuccess(canSubmitAgain: true);
       clear();
-    } catch(e) {
+    } catch (e) {
       emitFailure(failureResponse: e.message);
     }
   }

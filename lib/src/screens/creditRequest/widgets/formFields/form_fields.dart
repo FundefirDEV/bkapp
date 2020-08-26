@@ -22,56 +22,46 @@ class FormFields extends StatelessWidget {
           TextFieldBlocBuilder(
             key: Key('credit-form-request-value'),
             textFieldBloc: creditFormBloc.valueCredit,
-            errorBuilder: (context, string) =>
-                I18n.of(context).errorRequired,
+            errorBuilder: (context, string) => I18n.of(context).errorRequired,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(0),
-              labelText: I18n.of(context).creditScreenValueToRequest,
-              labelStyle: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4),
-              suffixIcon: Icon(Icons.attach_money)
-            ),
+                contentPadding: EdgeInsets.all(0),
+                labelText: I18n.of(context).creditScreenValueToRequest,
+                labelStyle:
+                    TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
+                suffixIcon: Icon(Icons.attach_money)),
             inputFormatters: [
               WhitelistingTextInputFormatter.digitsOnly,
               CurrencyInputFormatter()
             ],
           ),
           TextFieldBlocBuilder(
-            key: Key('buy-shares-form-numberactiosdsns'),
-            textFieldBloc: creditFormBloc.installments,
-            errorBuilder: (context, string) =>
-                I18n.of(context).errorRequired,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(0),
-              labelText: I18n.of(context).creditScreenNumberOfFees,
-              labelStyle: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4),
-              suffixIcon: Icon(Icons.filter_3)
-            )
-          ),
+              key: Key('buy-shares-form-numberactiosdsns'),
+              textFieldBloc: creditFormBloc.installments,
+              errorBuilder: (context, string) => I18n.of(context).errorRequired,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(0),
+                  labelText: I18n.of(context).creditScreenNumberOfFees,
+                  labelStyle:
+                      TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
+                  suffixIcon: Icon(Icons.filter_3))),
           DropdownFieldBlocBuilder<String>(
-            key: Key('list-state-kgh'),
-            showEmptyItem: false,
-            selectFieldBloc: creditFormBloc.creditUse,
-            decoration: InputDecoration(
-              labelText: I18n.of(context).creditScreenUseOfCredit,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-            ),
-            itemBuilder: (context, value) => value,
-          ),
-          TextFieldBlocBuilder(
-            key: Key('buy-shares-form-numberactssiossdsddsns'),
-            textFieldBloc: creditFormBloc.creditDetail,
-            errorBuilder: (context, string) =>
-                I18n.of(context).errorRequired,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(0),
-              labelText: I18n.of(context).creditScreenDetail,
-              labelStyle: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4),
-              suffixIcon: Icon(Icons.text_format)
-            )
-          ),
+              key: Key('list-state-kgh'),
+              showEmptyItem: false,
+              selectFieldBloc: creditFormBloc.creditUse,
+              decoration: InputDecoration(
+                labelText: I18n.of(context).creditScreenUseOfCredit,
+                suffixIcon: Icon(Icons.keyboard_arrow_down),
+              ),
+              itemBuilder: (context, value) => value),
+          DropdownFieldBlocBuilder<String>(
+              key: Key('list-detail-credit'),
+              showEmptyItem: false,
+              selectFieldBloc: creditFormBloc.creditDetail,
+              decoration: InputDecoration(
+                labelText: I18n.of(context).creditScreenDetail,
+                suffixIcon: Icon(Icons.keyboard_arrow_down),
+              ),
+              itemBuilder: (context, value) => value)
         ],
       ),
     );

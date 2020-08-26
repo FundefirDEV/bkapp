@@ -93,7 +93,7 @@ void main() {
         await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
         await tester.pump();
         expect(find.byType(UtilsScreen), findsOneWidget);
-        expect(find.byType(UtilCardDescription), findsNWidgets(3));
+        expect(find.byType(UtilCardDescription), findsNWidgets(2));
         expect(find.byKey(Key('inkwell-aprobation')), findsOneWidget);
         await tester.tap(find.byKey(Key('inkwell-aprobation')));
         await tester.pump();
@@ -111,7 +111,7 @@ void main() {
       await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
       await tester.pumpAndSettle();
       expect(find.byType(UtilsScreen), findsOneWidget);
-      expect(find.byType(UtilCardDescription), findsNWidgets(3));
+      expect(find.byType(UtilCardDescription), findsNWidgets(2));
       expect(find.byKey(Key('inkwell-rules')), findsOneWidget);
       await tester.tap(find.byKey(Key('inkwell-rules')));
       await tester.pumpAndSettle();
