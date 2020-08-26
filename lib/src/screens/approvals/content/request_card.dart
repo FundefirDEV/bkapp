@@ -17,6 +17,7 @@ class RequestShareCard extends StatelessWidget {
   final String requestDate;
   final String token;
   final String type;
+  final String role;
 
   const RequestShareCard(
       {Key key,
@@ -27,7 +28,8 @@ class RequestShareCard extends StatelessWidget {
       this.index,
       this.quantity,
       this.token,
-      this.type})
+      this.type,
+      this.role})
       : super(key: key);
 
   @override
@@ -53,70 +55,72 @@ class RequestShareCard extends StatelessWidget {
                     type: type,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        key: Key('inkwell-approve-modal-request-card-$index'),
-                        onTap: () {
-                          _showDialog(
-                              context,
-                              I18n.of(context).approvalsScreenConfirmApprove,
-                              I18n.of(context)
-                                      .approvalsScreenConfirmApproveBold +
-                                  '${this.partnerName}?',
-                              true,
-                              true,
-                              'assets/images/salo_pre_approved_modal.svg', () {
-                            Navigator.pop(context);
-                            context.bloc<ApprovalsBloc>().add(ApprovalsPost(
-                                token: token,
-                                approvalStatus: 'approve',
-                                idRequest: id,
-                                requestType: type));
-                          });
-                        },
-                        child: SvgPicture.asset(
-                          'assets/images/approve.svg',
-                          height: SizeConfig.blockSizeVertical * 6,
+                if (role == 'admin')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          key: Key('inkwell-approve-modal-request-card-$index'),
+                          onTap: () {
+                            _showDialog(
+                                context,
+                                I18n.of(context).approvalsScreenConfirmApprove,
+                                I18n.of(context)
+                                        .approvalsScreenConfirmApproveBold +
+                                    '${this.partnerName}?',
+                                true,
+                                true,
+                                'assets/images/salo_pre_approved_modal.svg',
+                                () {
+                              Navigator.pop(context);
+                              context.bloc<ApprovalsBloc>().add(ApprovalsPost(
+                                  token: token,
+                                  approvalStatus: 'approve',
+                                  idRequest: id,
+                                  requestType: type));
+                            });
+                          },
+                          child: SvgPicture.asset(
+                            'assets/images/approve.svg',
+                            height: SizeConfig.blockSizeVertical * 6,
+                          ),
                         ),
                       ),
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          _showDialog(
-                              context,
-                              I18n.of(context).approvalsScreenDeclineApprove,
-                              I18n.of(context)
-                                      .approvalsScreenConfirmApproveBold +
-                                  '${this.partnerName}?',
-                              true,
-                              false,
-                              'assets/images/sad_bot.svg', () {
-                            Navigator.pop(context);
-                            context.bloc<ApprovalsBloc>().add(ApprovalsPost(
-                                token: token,
-                                approvalStatus: 'rejected',
-                                idRequest: id,
-                                requestType: type));
-                          });
-                        },
-                        child: Container(
-                            height: 35,
-                            width: 50,
-                            child: SvgPicture.asset(
-                              'assets/images/reject.svg',
-                              fit: BoxFit.none,
-                            )),
-                      ),
-                    )
-                  ],
-                ),
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            _showDialog(
+                                context,
+                                I18n.of(context).approvalsScreenDeclineApprove,
+                                I18n.of(context)
+                                        .approvalsScreenConfirmApproveBold +
+                                    '${this.partnerName}?',
+                                true,
+                                false,
+                                'assets/images/sad_bot.svg', () {
+                              Navigator.pop(context);
+                              context.bloc<ApprovalsBloc>().add(ApprovalsPost(
+                                  token: token,
+                                  approvalStatus: 'rejected',
+                                  idRequest: id,
+                                  requestType: type));
+                            });
+                          },
+                          child: Container(
+                              height: 35,
+                              width: 50,
+                              child: SvgPicture.asset(
+                                'assets/images/reject.svg',
+                                fit: BoxFit.none,
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
               ],
             ));
       }

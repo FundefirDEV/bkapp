@@ -34,7 +34,8 @@ class AuthenticationBloc
       yield AuthenticationAuthenticated(
           token: event.tokenInformation['access_token'],
           userName: UtilsTools.titleCase(
-              '${event.tokenInformation['firstname']} ${event.tokenInformation['lastname']}'));
+              '${event.tokenInformation['firstname']} ${event.tokenInformation['lastname']}'),
+          role: event.tokenInformation['role']);
     }
 
     if (event is LoggedOut) {

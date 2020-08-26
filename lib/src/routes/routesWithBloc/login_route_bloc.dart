@@ -23,7 +23,10 @@ Widget loginRouteBloc() {
       }
       if (state is AuthenticationAuthenticated) {
         return MenuNavigatorScreen(
-            tokenUser: state.token, userName: state.userName);
+          tokenUser: state.token,
+          userName: state.userName,
+          role: state.role,
+        );
       }
       if (state is AuthenticationUnauthenticated) {
         return LoginScreen();

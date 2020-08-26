@@ -10,7 +10,8 @@ class ApprovalsCards extends StatefulWidget {
       @required this.emptyData,
       this.title,
       @required this.token,
-      this.type})
+      this.type,
+      this.role})
       : super(key: key);
 
   final List data;
@@ -18,6 +19,7 @@ class ApprovalsCards extends StatefulWidget {
   final String title;
   final String token;
   final String type;
+  final String role;
 
   @override
   _ApprovalsCardsState createState() => _ApprovalsCardsState();
@@ -47,18 +49,20 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                   children: <Widget>[
                     for (var i = 0; i < widget.data.length; i++)
                       RequestShareCard(
-                          index: i,
-                          key: Key('request-share-card-$i'),
-                          id: int.parse(widget.data[i]['id'].toString()),
-                          partnerName: widget.data[i]['partnerName'],
-                          amount:
-                              double.parse(widget.data[i]['amount'].toString()),
-                          quantity: widget.data[i]['quantity'] != null
-                              ? int.parse(widget.data[i]['quantity'].toString())
-                              : 0,
-                          requestDate: widget.data[i]['requestDate'],
-                          token: widget.token,
-                          type: widget.type),
+                        index: i,
+                        key: Key('request-share-card-$i'),
+                        id: int.parse(widget.data[i]['id'].toString()),
+                        partnerName: widget.data[i]['partnerName'],
+                        amount:
+                            double.parse(widget.data[i]['amount'].toString()),
+                        quantity: widget.data[i]['quantity'] != null
+                            ? int.parse(widget.data[i]['quantity'].toString())
+                            : 0,
+                        requestDate: widget.data[i]['requestDate'],
+                        token: widget.token,
+                        type: widget.type,
+                        role: widget.role,
+                      ),
                   ],
                 )
               : widget.emptyData,

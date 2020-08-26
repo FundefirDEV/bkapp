@@ -17,12 +17,14 @@ class ApprovalsScreen extends StatefulWidget {
       {Key key,
       @required this.oldIndex,
       @required this.userName,
-      this.tokenUser})
+      this.tokenUser,
+      this.role})
       : super(key: key);
 
   final int oldIndex;
   final String userName;
   final String tokenUser;
+  final String role;
 
   @override
   _ApprovalsScreenState createState() => _ApprovalsScreenState();
@@ -64,7 +66,9 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
                     childWhite: AcceptedDiscarted(data: state.approvals)),
                 SizedBox(height: 20.0),
                 ApprovalsContent(
-                    data: state.approvals, token: widget.tokenUser),
+                    data: state.approvals,
+                    token: widget.tokenUser,
+                    role: widget.role),
               ],
             ),
           );

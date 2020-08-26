@@ -4,11 +4,13 @@ import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.da
 import 'package:flutter/material.dart';
 
 class ApprovalsContent extends StatelessWidget {
-  const ApprovalsContent({Key key, @required this.data, @required this.token})
+  const ApprovalsContent(
+      {Key key, @required this.data, @required this.token, this.role})
       : super(key: key);
 
   final Map data;
   final String token;
+  final String role;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +24,22 @@ class ApprovalsContent extends StatelessWidget {
               data: data['sharesRequest'],
               emptyData: EmptyInformation(),
               token: token,
-              type: 'share'),
+              type: 'share',
+              role: role),
           ApprovalsCards(
               title: I18n.of(context).approvalsScreenCredits,
               data: data['creditRequest'],
               emptyData: EmptyInformation(),
               token: token,
-              type: 'credit'),
+              type: 'credit',
+              role: role),
           ApprovalsCards(
               title: I18n.of(context).approvalsScreenPayments,
               data: data['paymentInstallmentRequest'],
               emptyData: EmptyInformation(),
               token: token,
-              type: 'paymentInstallment'),
+              type: 'paymentInstallment',
+              role: role),
         ],
       ),
     );
