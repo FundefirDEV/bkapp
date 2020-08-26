@@ -9,7 +9,6 @@ import '../../../base_tester.dart';
 void main() {
   group('Profile screen', () {
     testWidgets('Top container profile screen', (WidgetTester tester) async {
-      final scaffolsKey = Key('Scaffold_profile_screen');
       final topContainerKey = Key('Top_container_profile_Screen');
       final topContainerInformationKey =
           Key('Top_container_information_profile_Screen');
@@ -17,18 +16,14 @@ void main() {
       final saloButtonKey = Key('Salo_button_container_profile_Screen');
       final exitButtonKey = Key('Exit_button_container_profile_Screen');
       final rowTopContainerKey = Key('row_top_container_profile_Screen');
-      final rowTextTopContainerKey =
-          Key('Text_column_top_container_profile_sreen');
       final editButtonKey = Key('Edit_button_profile_screen');
 
       await tester.pumpWidget(baseTester(child: ProfileScreen()));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(scaffolsKey), findsOneWidget);
       expect(find.byKey(profilePictureKey), findsOneWidget);
       expect(find.byKey(saloButtonKey), findsOneWidget);
       expect(find.byKey(exitButtonKey), findsOneWidget);
-      expect(find.byKey(rowTextTopContainerKey), findsOneWidget);
       expect(find.byKey(editButtonKey), findsOneWidget);
       expect(find.byKey(topContainerKey), findsNWidgets(2));
       expect(find.byKey(topContainerInformationKey), findsNWidgets(2));
@@ -74,7 +69,7 @@ void main() {
       final creditsKey = Key('Credits_bottom_container_profile_screen');
       final actionsKey = Key('Actions_bottom_container_profile_screen');
       final ritchText = Key('RichText_bottom_container_profile_screen');
-          Key('Internal_container_gain_button_profile_screen');
+      Key('Internal_container_gain_button_profile_screen');
       Key('Internal_container_gain_button_profile_screen');
 
       await tester.pumpWidget(baseTester(child: ProfileScreen()));

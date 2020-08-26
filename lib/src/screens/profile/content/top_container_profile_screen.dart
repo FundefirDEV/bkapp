@@ -29,28 +29,26 @@ class TopContainerProfileScreen {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            content.saloAndArrow(),
-            TitleHeaderWidget(
-              title: I18n.of(context).profileScreenProfile,
-              showArrow: false,
-            ),
-            topContainerInformation(),
-            Container(
-                height: SizeConfig.safeBlockVertical * 4,
-                child: FlatButton(
-                    key: Key('Edit_button_profile_screen'),
-                    onPressed: () =>
-                        Navigator.pushNamed(context, profileEditScreen),
-                    child: Text(
-                      I18n.of(context).profileScreenEdit,
-                      style: TextStyle(color: Colors.white),
-                    )))
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          content.saloAndArrow(),
+          TitleHeaderWidget(
+            title: I18n.of(context).profileScreenProfile,
+            showArrow: false,
+          ),
+          topContainerInformation(),
+          Container(
+              height: SizeConfig.safeBlockVertical * 4,
+              child: FlatButton(
+                  key: Key('Edit_button_profile_screen'),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, profileEditScreen),
+                  child: Text(
+                    I18n.of(context).profileScreenEdit,
+                    style: TextStyle(color: Colors.white),
+                  )))
+        ],
       ),
     );
   }
@@ -58,73 +56,63 @@ class TopContainerProfileScreen {
   Container topContainerInformation() {
     return Container(
       key: Key('Top_container_information_profile_Screen'),
-      height: SizeConfig.safeBlockVertical * 17,
       child: Row(
         key: Key('row_top_container_profile_Screen'),
         children: <Widget>[
           Container(
               key: Key('Top_container_information_profile_Screen'),
-              margin: EdgeInsets.only(
-                left: SizeConfig.safeBlockHorizontal * 15,
-                right: SizeConfig.safeBlockHorizontal * 4,
-                bottom: SizeConfig.safeBlockHorizontal * 5,
-              ),
+              width: SizeConfig.blockSizeHorizontal * 35,
               child: SvgPicture.asset('assets/images/woman_profile.svg',
+                  height: SizeConfig.blockSizeVertical * 13,
+                  fit: BoxFit.contain,
                   key: Key('Profile_picture'))),
-          Column(
-            key: Key('Text_column_top_container_profile_sreen'),
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    RichText(
-                      textAlign: TextAlign.left,
-                      text: TextSpan(
-                          text: 'Maria Antnieta' '\n',
+          Container(
+            width: SizeConfig.blockSizeHorizontal * 65,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                      text: 'Denis Antnieta' '\n',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Rodriguez Gonzales' '\n',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Colors.white,
                           ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Rodriguez Gonzales' '\n',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'correo.test.email@gmail.com' '\n',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                              ),
-                            )
-                          ]),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SvgPicture.asset(
-                          'assets/images/colombia_profile.svg',
-                          height: 30.0,
                         ),
-                        Text(
-                          '3138129220',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal * 15,
+                        TextSpan(
+                          text: 'correo.test.email@gmail.com',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
                         )
-                      ],
+                      ]),
+                ),
+                Row(
+                  children: <Widget>[
+                    SvgPicture.asset(
+                      'assets/images/colombia_profile.svg',
+                      height: 30.0,
                     ),
+                    Text(
+                      '3138129220',
+                      style: TextStyle(color: Colors.white),
+                    )
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

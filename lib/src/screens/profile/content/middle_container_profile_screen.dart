@@ -16,7 +16,7 @@ class MiddleContainerProfileScreen {
       children: <Widget>[
         Container(
           key: Key('Id_container_profile_screen'),
-          height: SizeConfig.blockSizeVertical * 17,
+          height: 130.0,
           width: SizeConfig.blockSizeHorizontal * 40,
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 4,

@@ -11,10 +11,10 @@ class ScholarshipContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-  
+
     return Container(
       key: Key('Scholarship_container_profile_screen'),
-      height: SizeConfig.blockSizeVertical * 17,
+      height: 130.0,
       width: SizeConfig.blockSizeHorizontal * 40,
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 4,
@@ -39,52 +39,52 @@ class ScholarshipContainer extends StatelessWidget {
 }
 
 Column scholarshipColumn(context) {
-    return Column(
-      children: <Widget>[
-        SizedBox(height: SizeConfig.blockSizeVertical * 2),
-        Container(
-          key: Key('Collage_image_container_profile_screen'),
-          child: SvgPicture.asset('assets/images/collage.svg'),
-          alignment: Alignment(-0.8, -1.0),
-        ),
-        Container(
-          key: Key('Scholarship_container_profile_screen'),
-          margin: EdgeInsets.only(top: 10),
-          child: RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(
-                  text: I18n.of(context).profileScreenScholarship + '\n',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.grayColor[300],
-                      fontSize: 12),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Profesional',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.grayColor[200],
-                            fontSize: 12))
-                  ])),
-          alignment: Alignment(-0.7, -1.0),
-        ),
-        Container(
-          key: Key('Profession_container_profile_screen'),
-          margin: EdgeInsets.only(top: 10),
-          child: RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(
-                  text: I18n.of(context).profileScreenProfession + '\n',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.grayColor[300],
-                      fontSize: 12),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Abogado',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.grayColor[200],
-                            fontSize: 12))
-                  ])),
-          alignment: Alignment(-0.7, -1.0),
-        ),
-      ],
-    );
-  }
+  return Column(
+    children: <Widget>[
+      SizedBox(height: SizeConfig.blockSizeVertical * 2),
+      Container(
+        key: Key('Collage_image_container_profile_screen'),
+        child: SvgPicture.asset('assets/images/collage.svg'),
+        alignment: Alignment(-0.8, -1.0),
+      ),
+      Container(
+        key: Key('Scholarship_container_profile_screen'),
+        margin: EdgeInsets.only(top: 10),
+        child: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+                text: I18n.of(context).profileScreenScholarship + '\n',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.grayColor[300],
+                    fontSize: 12),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Profesional',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.grayColor[200],
+                          fontSize: 12))
+                ])),
+        alignment: Alignment(-0.7, -1.0),
+      ),
+      Container(
+        key: Key('Profession_container_profile_screen'),
+        margin: EdgeInsets.only(top: 10),
+        child: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+                text: I18n.of(context).profileScreenProfession + '\n',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.grayColor[300],
+                    fontSize: 12),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Abogado',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.grayColor[200],
+                          fontSize: 12))
+                ])),
+        alignment: Alignment(-0.7, -1.0),
+      ),
+    ],
+  );
+}

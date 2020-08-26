@@ -18,23 +18,23 @@ class ProfileScreen extends StatelessWidget {
     GainButtonProfileScreen gainButton = new GainButtonProfileScreen();
     BottomContainersProfileScreen bottomContainers =
         new BottomContainersProfileScreen();
-    return Scaffold(
-      key: Key('Scaffold_profile_screen'),
-      body: SafeArea(
+    return Material(
+      color: Theme.of(context).colorScheme.grayColor[100],
+      child: SafeArea(
         child: Column(children: <Widget>[
-          Container(
-              color: Theme.of(context).colorScheme.grayColor[100],
-              child: topContainer.topContainer(context)),
-          Container(
-            height: SizeConfig.safeBlockVertical * 60,
-            width: SizeConfig.safeBlockHorizontal * 100,
-            color: Theme.of(context).colorScheme.grayColor[100],
-            child: Column(
-              children: <Widget>[
-                middleContainers.middleContainers(context),
-                gainButton.gainContainerButton(context),
-                bottomContainers.bottomContainers(context),
-              ],
+          Container(child: topContainer.topContainer(context)),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 0),
+                child: Column(
+                  children: <Widget>[
+                    middleContainers.middleContainers(context),
+                    gainButton.gainContainerButton(context),
+                    bottomContainers.bottomContainers(context),
+                  ],
+                ),
+              ),
             ),
           )
         ]),
