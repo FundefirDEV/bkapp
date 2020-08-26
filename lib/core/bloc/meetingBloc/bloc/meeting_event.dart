@@ -17,3 +17,14 @@ class MeetingInitialize extends MeetingEvent {
   @override
   String toString() => 'MeetingInitialize { token: $token }';
 }
+
+class MeetingClosed extends MeetingEvent {
+  MeetingClosed({@required this.token});
+
+  final String token;
+  @override
+  List<Object> get props => [token];
+
+  @override
+  String toString() => 'MeetingClosed { token: $token }';
+}

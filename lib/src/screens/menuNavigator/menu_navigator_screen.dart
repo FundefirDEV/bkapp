@@ -131,7 +131,9 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             userName: widget.userName,
                             tokenUser: widget.tokenUser),
                         MeetingClosedScreen(
-                            oldIndex: currentIndex, userName: widget.userName),
+                            oldIndex: currentIndex,
+                            userName: widget.userName,
+                            tokenUser: widget.tokenUser),
                         ProfitPaymentScreen(
                             userName: widget.userName) // NOTE 14
                       ],

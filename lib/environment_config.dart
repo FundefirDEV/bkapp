@@ -4,8 +4,8 @@ class EnvironmentConfig {
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
       defaultValue: "https://bkservice.fundefir-dev.com");
-      // https://bkservicestage.fundefir-dev.com
-      // https://bkservice.fundefir-dev.com
+  // https://bkservicestage.fundefir-dev.com
+  // https://bkservice.fundefir-dev.com
 
   ///
   /// Environment PROD; QA; STAGE or DEV
@@ -126,6 +126,7 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/request";
   }
+
   // REVIEW unificar con postRequestBuyShares
   static String postCreditRequest({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
@@ -175,5 +176,14 @@ class ApiEndpoints {
   static String postInvitePartner({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/partners";
+  }
+
+  /// POST meeting closed
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String postMeetingClosed({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/meeting/close";
   }
 }

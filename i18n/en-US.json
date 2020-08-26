@@ -373,7 +373,9 @@
     "accumulableToCapital": "Accumulable to capital",
     "creditsAwarded": "credits awarded",
     "capitalSubscription": "capital subscription",
-    "interestPayment": "interest payment"
+    "interestPayment": "interest payment",
+    "questionMeetingClosed1": "Am I sure you want to",
+    "questionMeetingClosed2": "close the meeting?"
   },
   "profitPayment": {
     "title": "Profit payment",

@@ -11,7 +11,7 @@ class SelectCityBloc extends FormBloc<String, String> {
   );
 
   final selectCity = SelectFieldBloc(
-    items: ['Select your city', 'Bogotá DC', 'Cali', 'Barranquilla'],
+    items: ['Select your city', 'Bogotá DC', 'Madrid', 'Soacha'],
   );
 
   @override

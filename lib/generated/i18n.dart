@@ -600,6 +600,10 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedCapitalSubscription => "capital subscription";
   /// "interest payment"
   String get meetingClosedInterestPayment => "interest payment";
+  /// "Am I sure you want to"
+  String get meetingClosedQuestionMeetingClosed1 => "Am I sure you want to";
+  /// "close the meeting?"
+  String get meetingClosedQuestionMeetingClosed2 => "close the meeting?";
   /// "Profit payment"
   String get profitPaymentTitle => "Profit payment";
   /// "Profit history"
@@ -1424,12 +1428,12 @@ class _I18n_es_ES extends I18n {
   /// "Fondo de\nsostenibilidad\n"
   @override
   String get meetingClosedSustainabilityFund => "Fondo de\nsostenibilidad\n";
-  /// "CONSULTAR"
+  /// "CIERRE DE"
   @override
-  String get meetingClosedClosing => "CONSULTAR";
-  /// "CIERRES"
+  String get meetingClosedClosing => "CIERRE DE";
+  /// "REUNIÓN"
   @override
-  String get meetingClosedMeeting => "CIERRES";
+  String get meetingClosedMeeting => "REUNIÓN";
   /// "Detalle del cierre"
   @override
   String get meetingClosedDetailClosing => "Detalle del cierre";
@@ -1448,6 +1452,12 @@ class _I18n_es_ES extends I18n {
   /// "abono a intereses"
   @override
   String get meetingClosedInterestPayment => "abono a intereses";
+  /// "¿Segúro que quieres hacer el"
+  @override
+  String get meetingClosedQuestionMeetingClosed1 => "¿Segúro que quieres hacer el";
+  /// "cierre de la reunión?"
+  @override
+  String get meetingClosedQuestionMeetingClosed2 => "cierre de la reunión?";
   /// "Pago de ganancias"
   @override
   String get profitPaymentTitle => "Pago de ganancias";

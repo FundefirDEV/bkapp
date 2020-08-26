@@ -356,14 +356,16 @@
     "earningsPerShares": "Ganancia\npor acción\n",
     "expenseFund": "Reserva para \nIncobrables\n",
     "sustainabilityFund": "Fondo de\nsostenibilidad\n",
-    "closing": "CONSULTAR",
-    "meeting": "CIERRES",
+    "closing": "CIERRE DE",
+    "meeting": "REUNIÓN",
     "detailClosing": "Detalle del cierre",
     "sharesPurchased": "acciones compradas",
     "accumulableToCapital": "Acumulable a capital",
     "creditsAwarded": "créditos otorgados",
     "capitalSubscription": "abono a capital",
-    "interestPayment": "abono a intereses"
+    "interestPayment": "abono a intereses",
+    "questionMeetingClosed1": "¿Segúro que quieres hacer el",
+    "questionMeetingClosed2": "cierre de la reunión?"
   },
   "profitPayment": {
     "title": "Pago de ganancias",

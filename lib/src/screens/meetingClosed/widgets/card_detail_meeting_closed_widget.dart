@@ -77,7 +77,7 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
                                   letterSpacing: 2,
                                   fontWeight: FontWeight.w200),
                               children: [
-                                TextSpan(text: r'$' + value),
+                                TextSpan(text: value),
                                 TextSpan(
                                     text: descriptionValue.length > 0
                                         ? '\n$descriptionValue'

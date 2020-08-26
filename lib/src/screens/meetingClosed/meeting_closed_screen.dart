@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:bkapp_flutter/core/bloc/meetingBloc/bloc/meeting_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -11,11 +9,13 @@ import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class MeetingClosedScreen extends StatefulWidget {
-  MeetingClosedScreen({Key key, this.tokenUser, this.oldIndex, this.userName}) : super(key: key);
+  MeetingClosedScreen({Key key, this.tokenUser, this.oldIndex, this.userName})
+      : super(key: key);
   final String tokenUser;
   final String userName;
   final int oldIndex;
@@ -34,12 +34,6 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List listDetailMeetingClosed = jsonDecode(
-        '[{"title": "15", "subTitle": "${I18n.of(context).meetingClosedSharesPurchased}", "image": "shares_bought", "value": "1.000.000", "descriptionValue": "${I18n.of(context).meetingClosedAccumulableToCapital}"},' +
-            '{"title": "2", "subTitle": "${I18n.of(context).meetingClosedCreditsAwarded}", "image": "credit_given", "value": "1.000.000", "descriptionValue": ""},' +
-            '{"title": "", "subTitle": "${I18n.of(context).meetingClosedCapitalSubscription}", "image": "capital_icon", "value": "500.000", "descriptionValue": ""},' +
-            '{"title": "", "subTitle": "${I18n.of(context).meetingClosedInterestPayment}", "image": "oridinary_interest", "value": "1.000", "descriptionValue": ""}]');
-
     // ignore: close_sinks
     MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
@@ -64,8 +58,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
               _buttonPayFee(context),
               LineSeparatorWidget(),
               _subtitleDetailClosing(context),
-              CarouselCardsDetailWidget(
-                  listDetailMeetingClosed: listDetailMeetingClosed)
+              CarouselCardsDetailWidget(infoMeeting: infoMeeting)
             ]),
           ),
         );
@@ -93,7 +86,20 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
       padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
       child: RaisedButton(
           key: Key('raisedButton-pay-fee'),
-          onPressed: () => {},
+          onPressed: () {
+            _showDialog(
+                context,
+                I18n.of(context).meetingClosedQuestionMeetingClosed1,
+                I18n.of(context).meetingClosedQuestionMeetingClosed2,
+                true,
+                true,
+                'assets/images/salo_pre_approved_modal.svg', () {
+              Navigator.pop(context);
+              context
+                  .bloc<MeetingBloc>()
+                  .add(MeetingClosed(token: widget.tokenUser));
+            });
+          },
           color: Theme.of(context).colorScheme.primaryColor,
           padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
           elevation: 0,
@@ -114,4 +120,26 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
                   ]))),
     );
   }
+}
+
+void _showDialog(
+    context, title, titleBold, isBold, isImageBg, image, Function function) {
+  showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: image,
+          isImageBg: isImageBg,
+          title: title,
+          titleBold: titleBold,
+          isBold: isBold,
+          isBtnAccept: true,
+          titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressAccept: function,
+          onPressCancel: () => {Navigator.pop(context)},
+        );
+      });
 }

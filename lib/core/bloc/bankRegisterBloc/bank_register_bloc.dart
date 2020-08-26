@@ -10,8 +10,8 @@ class BankRegisterBloc extends FormBloc<String, String> {
   static List<String> items = [
     'Select your city',
     'Bogotá DC',
-    'Cali',
-    'Barranquilla'
+    'Madrid',
+    'Soacha'
   ];
   final ProfileRegisterRepository repository;
 
