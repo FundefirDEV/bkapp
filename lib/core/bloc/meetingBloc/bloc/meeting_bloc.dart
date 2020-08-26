@@ -5,7 +5,6 @@ import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/meet
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 
 part 'meeting_event.dart';
 part 'meeting_state.dart';

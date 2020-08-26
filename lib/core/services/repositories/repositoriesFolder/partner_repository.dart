@@ -16,4 +16,17 @@ class PartnerRepository {
       await apiProvider.getPartnerValidation(token, phoneNumber);
     return validatePhoneNumber;
   }
+
+  Future<List<dynamic>> getPartners(String token) async {
+    final List<dynamic> partners = await apiProvider.getPartners(token);
+    return partners;
+  }
+
+  Future<Map<String, dynamic>> postInvitePartner(
+    String token, List<Map<String, String>> partners
+  ) async {
+    final Map<String, dynamic> invitePartner =
+      await apiProvider.postInvitePartner(token, partners);
+    return invitePartner;
+  }
 }

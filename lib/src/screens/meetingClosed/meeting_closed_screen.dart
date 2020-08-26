@@ -5,7 +5,6 @@ import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dar
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/card_general_detail_meeting_widget.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/carousel_cards_detail_widget.dart';
-import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';

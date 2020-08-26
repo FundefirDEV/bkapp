@@ -5,9 +5,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class PartnerDatabaseProvider {
-  PartnerDatabaseProvider._();
-  static final PartnerDatabaseProvider db = PartnerDatabaseProvider._();
+class ActivePartnersDbProvider {
+  ActivePartnersDbProvider._();
+  static final ActivePartnersDbProvider db = ActivePartnersDbProvider._();
   Database _database;
 
   Future<Database> get database async {
@@ -18,10 +18,10 @@ class PartnerDatabaseProvider {
 
   Future<Database> getDatabaseInstance() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = join(directory.path, "partner.db");
-    return await openDatabase(path, version: 2,
+    String path = join(directory.path, "activepartners.db");
+    return await openDatabase(path, version: 1,
       onCreate: (Database db, int version) async {
-        await db.execute("CREATE TABLE Partner ("
+        await db.execute("CREATE TABLE ActivePartners ("
           "id integer primary key AUTOINCREMENT,"
           "firstname TEXT,"
           "lastname TEXT,"
@@ -42,7 +42,7 @@ class PartnerDatabaseProvider {
   addPartnerToDatabase(PartnerModel partner) async {
     final db = await database;
     var raw = await db.insert(
-      "Partner",
+      "ActivePartners",
       partner.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace
     );
@@ -52,7 +52,7 @@ class PartnerDatabaseProvider {
   updatePartner(PartnerModel partner) async {
     final db = await database;
     var response = await db.update(
-      "Partner",
+      "ActivePartners",
       partner.toJson(),
       where: "id = ?",
       whereArgs: [partner.id]
@@ -62,18 +62,18 @@ class PartnerDatabaseProvider {
 
   deletePartnerById(int id) async {
     final db = await database;
-    return await db.rawDelete("DELETE FROM Partner WHERE id = $id");
+    return await db.rawDelete("DELETE FROM ActivePartners WHERE id = $id");
   }
 
   deleteAllPartners() async {
     final db = await database;
-    db.delete("Partner");
+    db.delete("ActivePartners");
   }
 
   Future<PartnerModel> getPartnerById(int id) async {
     final db = await database;
     var response = await db.query(
-      'Partner',
+      'ActivePartners',
       where: "id = ?",
       whereArgs: [id]
     );
@@ -84,7 +84,7 @@ class PartnerDatabaseProvider {
 
   Future<List<PartnerModel>> getAllParters() async {
     final db = await database;
-    var response = await db.query("Partner");
+    var response = await db.query("ActivePartners");
     List<PartnerModel> list = response.map(
       (prop) => PartnerModel.fromJson(prop)
     ).toList();

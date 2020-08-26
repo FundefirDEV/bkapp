@@ -3,7 +3,9 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bkservicestage.fundefir-dev.com");
+      defaultValue: "https://bkservice.fundefir-dev.com");
+      // https://bkservicestage.fundefir-dev.com
+      // https://bkservice.fundefir-dev.com
 
   ///
   /// Environment PROD; QA; STAGE or DEV
@@ -124,7 +126,7 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/request";
   }
-
+  // REVIEW unificar con postRequestBuyShares
   static String postCreditRequest({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/request";
@@ -155,5 +157,23 @@ class ApiEndpoints {
   static String getBankRules({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/bank-rules";
+  }
+
+  /// GET partners info
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String getPartners({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/partners";
+  }
+
+  /// POST invite partner
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String postInvitePartner({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/partners";
   }
 }

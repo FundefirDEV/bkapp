@@ -11,7 +11,7 @@ import 'content/top_container_rules_screen.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RulesScreen extends StatefulWidget {
-  RulesScreen({Key key, this.tokenUser}) : super(key: key);
+  RulesScreen({Key key, @required this.tokenUser}) : super(key: key);
   final String tokenUser;
   @override
   _RulesScreenState createState() => _RulesScreenState();

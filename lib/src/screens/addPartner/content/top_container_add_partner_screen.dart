@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/customTabIndicator/custom_tab_indicator_widget.dart';
@@ -6,7 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TopContainerAddPartnerScreen extends StatefulWidget {
-  TopContainerAddPartnerScreen({Key key}) : super(key: key);
+  TopContainerAddPartnerScreen({
+    Key key,
+    this.tokenUser
+  }) : super(key: key);
+
+  final String tokenUser;
 
   @override
   _TopContainerAddPartnerScreenState createState() =>
@@ -17,10 +23,14 @@ class _TopContainerAddPartnerScreenState
     extends State<TopContainerAddPartnerScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+  PartnerDatabaseProvider pendingPartnersDb;
+  ActivePartnersDbProvider activePartnersDb;
 
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+    pendingPartnersDb = PartnerDatabaseProvider.db;
+    activePartnersDb = ActivePartnersDbProvider.db;
     super.initState();
   }
 
@@ -36,8 +46,7 @@ class _TopContainerAddPartnerScreenState
             type: MaterialType.transparency,
             child: Container(
               key: Key('top_container_partner_screen'),
-              padding: EdgeInsets.symmetric(
-                  vertical: SizeConfig.blockSizeVertical * 2),
+              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
               child: TabBar(
                   controller: _tabController,
                   isScrollable: true,
@@ -71,11 +80,16 @@ class _TopContainerAddPartnerScreenState
                 showButton: false,
                 onSave: (data) => print(data),
                 isRegister: false,
+                gridViewWidth: 0.0,
+                partnerDb: activePartnersDb,
               ),
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
                 onSave: (data) => print(data),
                 isRegister: false,
+                gridViewWidth: 0.0,
+                tokenUser: widget.tokenUser,
+                partnerDb: pendingPartnersDb,
               )
             ]),
           ),

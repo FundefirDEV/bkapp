@@ -122,11 +122,6 @@ class Router {
                   userName: null,
                 ));
         break;
-      case rulesScreen:
-        return PageRouteBuilder(
-            transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => RulesScreen());
-        break;
       case rulesEditScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),

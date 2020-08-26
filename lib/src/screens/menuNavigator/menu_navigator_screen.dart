@@ -1,6 +1,6 @@
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/meeting_closed_screen.dart';
@@ -13,6 +13,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import 'bloc_providers.dart';
 import 'widgets/widgets.dart';
 
 class MenuNavigatorScreen extends StatefulWidget {
@@ -29,6 +30,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
   PageController _myPage = PageController(initialPage: 0);
   AnimationController _animateController;
   Offset position = Offset(20.0, 20.0);
+  ActivePartnersDbProvider partnerDb;
 
   bool hasLoaded = false;
   int currentIndex = 0;
@@ -39,6 +41,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
         AnimationController(vsync: this, duration: Duration(milliseconds: 380));
 
     _animateController.addListener(() => setState(() {}));
+    partnerDb = ActivePartnersDbProvider.db;
     super.initState();
   }
 
@@ -54,126 +57,101 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-          extendBody: true,
-          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-          bottomNavigationBar: CustomBottomBar(
-            notchedShape: CircularNotchedRectangle(),
-            color: Theme.of(context).colorScheme.grayColor[200],
-            selectedColor: Theme.of(context).colorScheme.primaryColor,
-            onTabSelected: (index) {
-              _myPage.jumpToPage(index);
-              setState(() => currentIndex = index);
-            },
-            items: [
-              BottomBarItem(
-                  key: Key('home-bottom-bar-item'),
-                  iconData: 'assets/images/home.svg',
-                  text: I18n.of(context).mainMenuBarHome.toUpperCase()),
-              BottomBarItem(
-                  key: Key('utils-bottom-bar-item'),
-                  iconData: 'assets/images/archive.svg',
-                  text: I18n.of(context).mainMenuBarUtils.toUpperCase()),
-              BottomBarItem(
-                  key: Key('profile-bottom-bar-item'),
-                  iconData: 'assets/images/user.svg',
-                  text: I18n.of(context).mainMenuBarProfile.toUpperCase())
-            ],
-          ),
-          body: MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                  create: (context) => MenuNavigatorBloc(controller: _myPage)),
-              BlocProvider(
-                create: (context) =>
-                    BuySharesFormBloc(repository: shareRepository),
-              ),
-              BlocProvider(
-                create: (context) =>
-                    ApprovalsBloc(repository: approvalsRepository),
-              ),
-              BlocProvider(
-                create: (context) => BuySharesBloc(
-                    repoApproval: approvalsRepository,
-                    repoHome: homeRepository),
-              ),
-              BlocProvider(
-                  create: (context) => HomeBloc(repository: homeRepository)),
-              BlocProvider(
-                create: (context) =>
-                    CreditFormBloc(creditRepository: creditRepository),
-              ),
-              BlocProvider(
-                  create: (context) =>
-                      ApprovalsBloc(repository: approvalsRepository)),
-              BlocProvider(
-                  create: (context) =>
-                      MeetingBloc(repository: meetingRepository)),
-              BlocProvider(
-                create: (context) =>
-                    BankRulesBloc(repository: bankRulesRepository),
-              ),
-            ],
-            child: Stack(
-              children: <Widget>[
-                PageView(
-                  controller: _myPage,
-                  children: <Widget>[
-                    HomeScreen(
-                        tokenUser: widget.tokenUser,
-                        userName: widget.userName), // NOTE 0
-                    UtilsScreen(userName: widget.userName),
-                    ProfileScreen(),
-                    CreditScreen(
-                        oldIndex: currentIndex,
-                        tokenUser: widget.tokenUser,
-                        userName: widget.userName),
-                    BuySharesScreen(
-                        oldIndex: currentIndex,
-                        userName: widget.userName,
-                        tokenUser: widget.tokenUser), // NOTE 4
-                    ApprovalsScreen(
-                        oldIndex: currentIndex,
-                        userName: widget.userName,
-                        tokenUser: widget.tokenUser),
-                    StatusCreditRequestWidget(userName: widget.userName),
-                    ConfirmationBuyShares(
-                        userName: widget.userName, approvals: null), // NOTE 7
-                    RulesScreen(tokenUser: widget.tokenUser),
-                    RulesEditScreen(),
-                    AdministratorAssignmentScreen(
-                        userName: widget.userName), // NOTE 10
-                    ActiveCreditScreen(
-                        oldIndex: currentIndex, userName: widget.userName),
-                    AddPartnerScreen(
-                        oldIndex: currentIndex, userName: widget.userName),
-                    MeetingClosedScreen(
-                        oldIndex: currentIndex,
-                        userName: widget.userName,
-                        tokenUser: widget.tokenUser),
-                    ProfitPaymentScreen(userName: widget.userName) // NOTE 14
-                  ],
-                  physics:
-                      NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
-                ),
-                MenuActions(
-                  hasLoaded: hasLoaded,
-                  controller: _animateController,
-                  isPressed: () => _buttonPressed(),
-                ),
-                MenuRequests(
-                    position: position,
-                    onDragEnd: (details) {
-                      setState(() => position = details.offset);
-                    })
-              ],
+        extendBody: true,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        bottomNavigationBar: CustomBottomBar(
+          notchedShape: CircularNotchedRectangle(),
+          color: Theme.of(context).colorScheme.grayColor[200],
+          selectedColor: Theme.of(context).colorScheme.primaryColor,
+          onTabSelected: (index) {
+            _myPage.jumpToPage(index);
+            setState(() => currentIndex = index);
+          },
+          items: [
+            BottomBarItem(
+                key: Key('home-bottom-bar-item'),
+                iconData: 'assets/images/home.svg',
+                text: I18n.of(context).mainMenuBarHome.toUpperCase()),
+            BottomBarItem(
+                key: Key('utils-bottom-bar-item'),
+                iconData: 'assets/images/archive.svg',
+                text: I18n.of(context).mainMenuBarUtils.toUpperCase()),
+            BottomBarItem(
+                key: Key('profile-bottom-bar-item'),
+                iconData: 'assets/images/user.svg',
+                text: I18n.of(context).mainMenuBarProfile.toUpperCase())
+          ],
+        ),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => MenuNavigatorBloc(controller: _myPage)
             ),
-          ),
-          floatingActionButton: FloatingButton(
-            key: Key('option-additional'),
-            onPressed: () =>
-                _animateController.isAnimating ? null : _buttonPressed(),
-            controller: _animateController,
-          )),
+            ...blocProviders
+          ],
+          child: Stack(
+            children: <Widget>[
+              PageView(
+                controller: _myPage,
+                children: <Widget>[
+                  HomeScreen(
+                      tokenUser: widget.tokenUser,
+                      userName: widget.userName), // NOTE 0
+                  UtilsScreen(userName: widget.userName),
+                  ProfileScreen(),
+                  CreditScreen(
+                      oldIndex: currentIndex,
+                      tokenUser: widget.tokenUser,
+                      userName: widget.userName),
+                  BuySharesScreen(
+                      oldIndex: currentIndex,
+                      userName: widget.userName,
+                      tokenUser: widget.tokenUser), // NOTE 4
+                  ApprovalsScreen(
+                      oldIndex: currentIndex,
+                      userName: widget.userName,
+                      tokenUser: widget.tokenUser),
+                  StatusCreditRequestWidget(userName: widget.userName),
+                  ConfirmationBuyShares(
+                      userName: widget.userName, approvals: null), // NOTE 7
+                  RulesScreen(tokenUser: widget.tokenUser,),
+                  RulesEditScreen(),
+                  AdministratorAssignmentScreen(
+                      userName: widget.userName), // NOTE 10
+                  ActiveCreditScreen(
+                      oldIndex: currentIndex, userName: widget.userName),
+                  AddPartnerScreen(
+                    oldIndex: currentIndex,
+                    userName: widget.userName,
+                    tokenUser: widget.tokenUser
+                  ),
+                  MeetingClosedScreen(
+                      oldIndex: currentIndex, userName: widget.userName),
+                  ProfitPaymentScreen(userName: widget.userName) // NOTE 14
+                ],
+                physics:
+                    NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
+              ),
+              MenuActions(
+                hasLoaded: hasLoaded,
+                controller: _animateController,
+                isPressed: () => _buttonPressed(),
+              ),
+              MenuRequests(
+                position: position,
+                onDragEnd: (details) {
+                  setState(() => position = details.offset);
+                })
+            ],
+          )
+        ),
+        floatingActionButton: FloatingButton(
+          key: Key('option-additional'),
+          onPressed: () =>
+              _animateController.isAnimating ? null : _buttonPressed(),
+          controller: _animateController,
+        )
+      )
     );
   }
 

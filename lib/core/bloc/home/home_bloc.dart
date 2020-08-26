@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
+import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/home_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/partner_repository.dart';
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +13,15 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({@required this.repository}) : super(HomeInitial());
-  final HomeRepository repository;
+  HomeBloc({
+    @required this.homeRepository,
+    @required this.partnerRepository
+  }) : super(HomeInitial());
+  final HomeRepository homeRepository;
+  final PartnerRepository partnerRepository;
+
+  PartnerDatabaseProvider pendingPartnerDb = PartnerDatabaseProvider.db;
+  ActivePartnersDbProvider activePartnersDb = ActivePartnersDbProvider.db;
 
   @override
   Stream<HomeState> mapEventToState(
@@ -21,11 +31,48 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield HomeLoading();
 
       try {
-        final response = await repository.detailBank(event.token);
+        final response = await homeRepository.detailBank(event.token);
         BankInfoModel bankInfo = bankInfoFromJson(response);
+
+        var getPartnersFromDb = await activePartnersDb.getAllParters();
+        yield* _savePartnersIntoDb(event, getPartnersFromDb);
 
         yield HomeLoaded(bkInformation: bankInfo);
       } catch (e) {
+        yield HomeFailure();
+      }
+    }
+  }
+
+  Stream<HomeState> _savePartnersIntoDb(
+    HomeInitialize event,
+    List<PartnerModel> getPartnersFromDb
+  ) async* {
+    if (getPartnersFromDb.length == 0) {
+      try {
+        final partnerResponse = await partnerRepository.getPartners(event.token);
+        for (var partner in partnerResponse) {
+          if (!partner["isActive"]) {
+            pendingPartnerDb.addPartnerToDatabase(
+              PartnerModel(
+                firstname: partner["name"],
+                phone: partner["phone"],
+                isActive: 0,
+                role: partner["role"]
+              )
+            );
+          } else {
+            activePartnersDb.addPartnerToDatabase(
+              PartnerModel(
+                firstname: partner["name"],
+                phone: partner["phone"],
+                isActive: 1,
+                role: partner["role"]
+              )
+            );
+          }
+        }
+      } catch(e) {
         yield HomeFailure();
       }
     }

@@ -72,7 +72,7 @@ void main() {
       'Test when the user loggedOut from the app',
       build: () => AuthenticationBloc(loginRepository: loginRepository),
       act: (bloc) => bloc.add(LoggedOut()),
-      expect: [AuthenticationLoading(), AuthenticationUnauthenticated()],
+      expect: [AuthenticationLoading()],
     );
   });
 }

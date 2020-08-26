@@ -9,10 +9,15 @@ import 'content/widgets/bottom_text.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class AddPartnerScreen extends StatefulWidget {
-  AddPartnerScreen({Key key, @required this.oldIndex, @required this.userName})
-      : super(key: key);
+  AddPartnerScreen({
+    Key key,
+    @required this.oldIndex,
+    @required this.userName,
+    @required this.tokenUser
+  }) : super(key: key);
   final oldIndex;
   final String userName;
+  final String tokenUser;
 
   @override
   _AddPartnerScreenState createState() => _AddPartnerScreenState();
@@ -38,7 +43,9 @@ class _AddPartnerScreenState extends State<AddPartnerScreen> {
                   navigateBloc: menuNavigatorBloc,
                   oldIndex: widget.oldIndex,
                 ),
-                TopContainerAddPartnerScreen(),
+                TopContainerAddPartnerScreen(
+                  tokenUser: widget.tokenUser,
+                ),
                 BottomText()
               ],
             )));

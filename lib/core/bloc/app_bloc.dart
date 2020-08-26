@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/home/home_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -13,7 +12,6 @@ class AppBloc extends FormBloc<String, String> {
   CreditFormBloc _creditFormBloc;
   RulesEditFormBloc _rulesEditFormBloc;
   ApprovalsBloc _approvalsBloc;
-  HomeBloc _homeBloc;
   PartnerBloc _partnerBloc;
   BankRulesBloc _bankRulesBloc;
 
@@ -30,7 +28,6 @@ class AppBloc extends FormBloc<String, String> {
         _creditFormBloc = CreditFormBloc(creditRepository: creditRepository),
         _rulesEditFormBloc = RulesEditFormBloc(),
         _approvalsBloc = ApprovalsBloc(repository: approvalsRepository),
-        _homeBloc = HomeBloc(repository: homeRepository),
         _partnerBloc = PartnerBloc(partnerRepository: partnerRepository),
         _bankRulesBloc = BankRulesBloc(repository: bankRulesRepository);
 
@@ -42,7 +39,6 @@ class AppBloc extends FormBloc<String, String> {
   CreditFormBloc get creditFormBloc => _creditFormBloc;
   RulesEditFormBloc get rulesEditFormBloc => _rulesEditFormBloc;
   ApprovalsBloc get approvalsBloc => _approvalsBloc;
-  HomeBloc get homeBloc => _homeBloc;
   PartnerBloc get partnerBloc => _partnerBloc;
   BankRulesBloc get bankRulesBloc => _bankRulesBloc;
 

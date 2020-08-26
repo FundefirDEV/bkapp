@@ -16,7 +16,7 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
   PartnerBloc({@required this.partnerRepository}) : super(PartnerInitial());
   final PartnerRepository partnerRepository;
 
-  PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
+  PartnerDatabaseProvider pendingPartnerDb = PartnerDatabaseProvider.db;
 
   @override
   Stream<PartnerState> mapEventToState(
@@ -39,9 +39,13 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
       await partnerRepository.getPartnerValidation(
           event.token, UtilsTools.removePhoneFormatter(event.phoneNumber));
       yield PartnerVerified(phoneNumber: event.phoneNumber);
-      await partnerDb.addPartnerToDatabase(
+      await pendingPartnerDb.addPartnerToDatabase(
           PartnerModel(firstname: event.name, phone: event.phoneNumber));
       yield PartnerAddedToDb();
+
+      if (!event.isRegister) {
+        yield* _addToBack(event);
+      }
     } catch (e) {
       yield PartnerUnauthorized(
           phoneNumber: event.phoneNumber, error: e.message);
@@ -61,8 +65,30 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
   }
 
   Stream<PartnerState> _addToDb(AddPartnerToDb event) async* {
-    await partnerDb.addPartnerToDatabase(
+    await pendingPartnerDb.addPartnerToDatabase(
         PartnerModel(firstname: event.name, phone: event.phoneNumber));
     yield PartnerAddedToDb();
+    if (!event.isRegister) {
+        yield* _addToBack(event);
+      }
+  }
+
+  Stream<PartnerState> _addToBack(dynamic event) async* {
+    try {
+      await partnerRepository.postInvitePartner(
+        event.token,
+        [
+          {
+            "name": event.name,
+            "phone": UtilsTools.removePhoneFormatter(event.phoneNumber)
+          }
+        ]
+      );
+      yield PartnerAddedToBack();
+    } catch(e) {
+      PartnerFailureToBack(
+        phoneNumber: event.phoneNumber, error: e.message
+      );
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
@@ -13,14 +14,16 @@ import 'widgets/partner_form.dart';
 //NOTE HOW TO CALL IT:
 // showDialog(context: context, builder: (BuildContext context) => InviteModal()),
 class InviteModal extends StatefulWidget {
-  InviteModal(
-      {Key key,
-      this.partners,
-      this.partnerBloc})
-      : super(key: key);
+  InviteModal({
+    Key key,
+    this.partners,
+    this.isRegister,
+    this.tokenUser
+  }) : super(key: key);
 
   final int partners;
-  final PartnerBloc partnerBloc;
+  final bool isRegister;
+  final String tokenUser;
 
   @override
   _InviteModalState createState() => _InviteModalState();
@@ -49,66 +52,74 @@ class _InviteModalState extends State<InviteModal> {
     return BackdropFilter(
       key: Key('filter_invite_modal'),
       filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
-      child: Dialog(
-        key: Key('dialog_invite_modal'),
-        elevation: 100,
-        backgroundColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12),
-          topRight: Radius.circular(12),
-        )),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            key: Key('column_invite_modal'),
-            children: <Widget>[
-              content.contactButton(
-                  context: context,
-                  onPressed: () async {
-                    List<Map> result = await _showDialog(context);
-                    if (result != null) Navigator.pop(context);
-                  }),
-              Container(
-                margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 2,
-                    bottom: SizeConfig.blockSizeVertical * 2),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                )),
-                alignment: Alignment.topCenter,
+      child: BlocProvider(
+        create: (context) => InviteFormBloc(partnerRepository: partnerRepository),
+        child: Builder(
+          builder: (context) {
+            return Dialog(
+              key: Key('dialog_invite_modal'),
+              elevation: 100,
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              )),
+              child: SingleChildScrollView(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  key: Key('column_invite_modal'),
                   children: <Widget>[
-                    content.titleContainer(context),
-                    PartnerForm(
-                      bankBloc: bankBloc,
-                      addPartner: () =>
-                        _addPartnerForm(context, bankBloc),
-                    )
+                    content.contactButton(
+                        context: context,
+                        onPressed: () async {
+                          List<Map> result = await _showDialog(context);
+                          if (result != null) Navigator.pop(context);
+                        }),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 2,
+                          bottom: SizeConfig.blockSizeVertical * 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      )),
+                      alignment: Alignment.topCenter,
+                      child: Column(
+                        children: <Widget>[
+                          content.titleContainer(context),
+                          PartnerForm(
+                            inviteBloc: BlocProvider.of<InviteFormBloc>(context),
+                            addPartner: () =>
+                              _addPartnerForm(context, BlocProvider.of<InviteFormBloc>(context)),
+                          )
+                        ],
+                      ),
+                    ),
+                    content.closeContainer(context),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 5),
+                    content.partnersText(context, widget.partners)
                   ],
                 ),
               ),
-              content.closeContainer(context),
-              SizedBox(height: SizeConfig.blockSizeVertical * 5),
-              content.partnersText(context, widget.partners)
-            ],
-          ),
-        ),
-      ),
+            );
+          },
+        )
+      )
     );
   }
 
-  _addPartnerForm(BuildContext context, BankRegisterBloc bankBloc) async {
+  _addPartnerForm(BuildContext context, InviteFormBloc inviteBloc) async {
     BlocProvider.of<PartnerBloc>(context).add(
       AddAndVerifyPartner(
-        token: bankBloc.token.value,
-        name: bankBloc.inviteForm.name.value,
-        phoneNumber: bankBloc.inviteForm.cellPhone.value
+        token: widget.tokenUser,
+        name: inviteBloc.name.value,
+        phoneNumber: inviteBloc.cellPhone.value,
+        isRegister: widget.isRegister
       )
     );
-    bankBloc.inviteForm.submit();
+    inviteBloc.submit();
     Navigator.pop(context);
   }
 
@@ -123,7 +134,10 @@ class _InviteModalState extends State<InviteModal> {
           child: BottomModal(
             width: SizeConfig.blockSizeHorizontal * 100,
             height: SizeConfig.blockSizeVertical * 90,
-            child: ContactList()
+            child: ContactList(
+              isRegister: widget.isRegister,
+              tokenUser: widget.tokenUser
+            )
           ),
         );
       }

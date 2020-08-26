@@ -2,7 +2,6 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/partnersBloc/bloc/partner_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -14,18 +13,24 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import './widgets/widgets.dart';
 
 class PartnersStructureWidget extends StatefulWidget {
-  const PartnersStructureWidget(
-      {Key key,
-      @required this.onSave,
-      this.isRegister: true,
-      this.colorButton: Colors.transparent,
-      this.showButton: true})
-      : super(key: key);
+  const PartnersStructureWidget({
+    Key key,
+    @required this.onSave,
+    this.isRegister: true,
+    this.colorButton: Colors.transparent,
+    this.showButton: true,
+    this.tokenUser,
+    @required this.partnerDb,
+    this.gridViewWidth = 25.0
+  }) : super(key: key);
 
   final Function onSave;
   final bool isRegister;
   final Color colorButton;
   final bool showButton;
+  final String tokenUser;
+  final dynamic partnerDb;
+  final double gridViewWidth;
 
   @override
   _PartnersStructureWidgetState createState() =>
@@ -34,17 +39,15 @@ class PartnersStructureWidget extends StatefulWidget {
 
 class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
   List<PartnerModel> partners = List<PartnerModel>();
-  PartnerDatabaseProvider partnerDb;
 
   @override
   void initState() {
     super.initState();
-    partnerDb = PartnerDatabaseProvider.db;
     loadPartners();
   }
 
   void loadPartners() async {
-    var getPartners = await partnerDb.getAllParters();
+    var getPartners = await widget.partnerDb.getAllParters();
 
     if (widget.onSave != null) widget.onSave(getPartners);
     if (getPartners.length > 0) {
@@ -79,7 +82,7 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 30.0),
                 child: FutureBuilder<List<PartnerModel>>(
-                    future: partnerDb.getAllParters(),
+                    future: widget.partnerDb.getAllParters(),
                     builder: (context, snapshot) {
                       return Column(
                         key: Key('column-partner-structure'),
@@ -102,7 +105,10 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
                               child: Padding(
                                   padding: EdgeInsets.only(
                                       top: SizeConfig.blockSizeVertical * 2),
-                                  child: _loadPartnersSelected(snapshot)),
+                                  child: _loadPartnersSelected(
+                                    snapshot,
+                                    widget.gridViewWidth
+                                  )),
                             ),
                           ),
                           if (widget.isRegister) ...[
@@ -121,7 +127,9 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
                                   value: BlocProvider.of<PartnerBloc>(contextA),
                                   child: InviteModal(
                                       partners:
-                                        snapshot.hasData ? snapshot.data.length : 0
+                                        snapshot.hasData ? snapshot.data.length : 0,
+                                      isRegister: widget.isRegister,
+                                      tokenUser: widget.tokenUser
                                   ),
                                 )
                               ),
@@ -142,12 +150,18 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
     );
   }
 
-  Widget _loadPartnersSelected(AsyncSnapshot<List<PartnerModel>> snapshot) {
+  Widget _loadPartnersSelected(
+    AsyncSnapshot<List<PartnerModel>> snapshot,
+    double gridViewWidth
+  ) {
     if (snapshot.hasData && partners.length > 0) {
       return GridView.builder(
           key: Key('gridview-partner-structure'),
           primary: false,
-          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 25.0),
+          padding: EdgeInsets.symmetric(
+            vertical: 0.0,
+            horizontal: gridViewWidth
+          ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 0.0,

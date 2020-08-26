@@ -9,9 +9,16 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import '../../../widgets.dart';
 
 class ContactList extends StatefulWidget {
-  ContactList({Key key, this.customContext}) : super(key: key);
+  ContactList({
+    Key key,
+    this.customContext,
+    this.isRegister,
+    this.tokenUser
+  }) : super(key: key);
 
   final BuildContext customContext;
+  final bool isRegister;
+  final String tokenUser;
 
   @override
   _ContactListState createState() => _ContactListState();
@@ -166,11 +173,7 @@ class _ContactListState extends State<ContactList> {
                 onChanged: (bool value) {
                   if (!c.isChecked) {
                     partnerBloc.add(JustValidatePartner(
-                        token: context
-                            .bloc<AppBloc>()
-                            .bankRegisterBloc
-                            .token
-                            .value,
+                        token: widget.tokenUser,
                         name: c.contact.displayName,
                         phoneNumber: list[0]?.value));
                     setState(() => _selectedContacts.add(c));
@@ -216,8 +219,11 @@ class _ContactListState extends State<ContactList> {
             _allContacts.where((contact) => contact.isChecked == true).toList();
         var contactSelected = _uiCustomContacts.map((e) {
           BlocProvider.of<PartnerBloc>(context).add(AddPartnerToDb(
-              name: e.contact.displayName,
-              phoneNumber: e.contact.phones.elementAt(0).value));
+            token: widget.tokenUser,
+            name: e.contact.displayName,
+            phoneNumber: e.contact.phones.elementAt(0).value,
+            isRegister: widget.isRegister
+          ));
           return {
             'name': e.contact.displayName,
             'phone': e.contact.phones.elementAt(0).value

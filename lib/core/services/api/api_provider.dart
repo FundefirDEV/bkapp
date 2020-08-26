@@ -140,4 +140,23 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: getBankRules, token: token);
   }
+
+  Future<List<dynamic>> getPartners(String token) async {
+    final getPartnersUrl = ApiEndpoints.getPartners();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
+  }
+
+  Future<Map<String, dynamic>> postInvitePartner(
+    String token,
+    List<Map<String, dynamic>> partners
+  ) async {
+    final postInvitePartner = ApiEndpoints.postInvitePartner();
+    return await _httpRequest.post(
+      httpClient: httpClient,
+      url: postInvitePartner,
+      token: token,
+      body: {"partners": partners}
+    );
+  }
 }

@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/partners_structure.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/bg_bank_register.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import 'widgets/widgets.dart';
 
@@ -22,6 +25,7 @@ class _AddPartnersRegisterScreenState
   AnimationController _controller;
   Animation _animation;
   Offset position = Offset(20.0, 20.0);
+  PartnerDatabaseProvider pendingPartnersDb;
 
   @override
   void initState() {
@@ -37,6 +41,7 @@ class _AddPartnersRegisterScreenState
       parent: _controller,
       curve: Interval(0.2, 1.0, curve: Curves.easeIn)
     ));
+    pendingPartnersDb = PartnerDatabaseProvider.db;
   }
 
   @override
@@ -68,7 +73,10 @@ class _AddPartnersRegisterScreenState
                   child: FadeTransition(
                     opacity: _animation,
                     child: PartnersStructureWidget(
+                      tokenUser: context.bloc<AppBloc>()
+                        .bankRegisterBloc.token.value,
                       onSave: (data) => print(data),
+                      partnerDb: pendingPartnersDb
                     )
                   )
                 ),

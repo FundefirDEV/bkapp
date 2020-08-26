@@ -55,13 +55,15 @@ void main() {
     });
 
     testWidgets('Change click option menu Utils', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
-      await tester.pumpAndSettle(Duration(milliseconds: 100));
-      await tester.pumpAndSettle();
-      expect(find.byType(UtilsScreen), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
+        await tester.pump();
+        await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
+        await tester.pump(Duration(milliseconds: 100));
+        await tester.pump();
+        expect(find.byType(UtilsScreen), findsOneWidget);
+      });
     });
 
     testWidgets('redirect jump to home', (WidgetTester tester) async {

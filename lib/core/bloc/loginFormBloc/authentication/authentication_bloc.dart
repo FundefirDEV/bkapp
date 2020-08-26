@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/login_repository.dart';
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -11,11 +12,14 @@ part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final LoginRepository loginRepository;
 
   AuthenticationBloc({@required this.loginRepository})
       : assert(loginRepository != null),
         super(AuthenticationUninitialized());
+
+  final LoginRepository loginRepository;
+  PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
+  ActivePartnersDbProvider activePartnersDb = ActivePartnersDbProvider.db;
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -35,6 +39,8 @@ class AuthenticationBloc
 
     if (event is LoggedOut) {
       yield AuthenticationLoading();
+      await partnerDb.deleteAllPartners();
+      await activePartnersDb.deleteAllPartners();
       yield AuthenticationUnauthenticated();
     }
   }

@@ -19,6 +19,8 @@ class PartnerModel {
   String validationCode;
   String password;
   String passwordConfirmation;
+  int isActive;
+  String role;
 
   PartnerModel({
     this.id,
@@ -31,6 +33,8 @@ class PartnerModel {
     this.validationCode,
     this.password,
     this.passwordConfirmation,
+    this.isActive,
+    this.role
   });
 
   factory PartnerModel.fromJson(Map<String, dynamic> json) => PartnerModel(
@@ -44,6 +48,8 @@ class PartnerModel {
     validationCode: json["validationCode"] != null ? json["validationCode"] : null,
     password: json["password"] != null ? json["password"] : null,
     passwordConfirmation: json["passwordConfirmation"] != null ? json["passwordConfirmation"] : null,
+    isActive: json["isActive"] != null ? json["isActive"] : null,
+    role: json["role"] != null ? json["role"] : null
   );
 
   Map<String, dynamic> toJson() => {
@@ -57,5 +63,7 @@ class PartnerModel {
     "validationCode": validationCode != null ? validationCode : null,
     "password": password != null ? password : null,
     "passwordConfirmation": passwordConfirmation != null ? passwordConfirmation : null,
+    "isActive": isActive != null ? isActive : null,
+    "role": role != null ? role : null,
     };
 }

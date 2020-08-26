@@ -88,7 +88,7 @@ void main() {
                 create: (context) => MenuNavigatorBloc(
                     controller: PageController(initialPage: 0)),
                 child: MenuNavigatorScreen(userName: 'Usuario'))));
-        await tester.pumpAndSettle();
+        await tester.pump();
         expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
         await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
         await tester.pump();

@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/bank_register_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/partnersBloc/invite_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
@@ -9,10 +9,10 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class PartnerForm extends StatefulWidget {
   const PartnerForm(
-      {Key key, @required this.bankBloc, @required this.addPartner})
+      {Key key, @required this.inviteBloc, @required this.addPartner})
       : super(key: key);
 
-  final BankRegisterBloc bankBloc;
+  final InviteFormBloc inviteBloc;
   final Function addPartner;
 
   @override
@@ -49,8 +49,8 @@ class _PartnerFormState extends State<PartnerForm> {
                   children: <Widget>[
                     TextFieldBlocBuilder(
                         key: Key('input_name_invite_modal'),
-                        textFieldBloc: widget.bankBloc.inviteForm.name,
-                        onChanged: (value) => _isEmpty(widget.bankBloc),
+                        textFieldBloc: widget.inviteBloc.name,
+                        onChanged: (value) => _isEmpty(widget.inviteBloc),
                         errorBuilder: (context, string) =>
                             I18n.of(context).errorRequired,
                         decoration: InputDecoration(
@@ -58,8 +58,8 @@ class _PartnerFormState extends State<PartnerForm> {
                             prefixIcon: Icon(Icons.account_circle))),
                     TextFieldBlocBuilder(
                         key: Key('input_phone_invite_modal'),
-                        textFieldBloc: widget.bankBloc.inviteForm.cellPhone,
-                        onChanged: (value) => _isEmpty(widget.bankBloc),
+                        textFieldBloc: widget.inviteBloc.cellPhone,
+                        onChanged: (value) => _isEmpty(widget.inviteBloc),
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           WhitelistingTextInputFormatter.digitsOnly,
@@ -78,9 +78,9 @@ class _PartnerFormState extends State<PartnerForm> {
     );
   }
 
-  _isEmpty(BankRegisterBloc bankBloc) {
-    bankBloc.inviteForm.name.value.length > minNameValue &&
-            bankBloc.inviteForm.cellPhone.value.length > minPhoneValue
+  _isEmpty(InviteFormBloc inviteBloc) {
+    inviteBloc.name.value.length > minNameValue &&
+            inviteBloc.cellPhone.value.length > minPhoneValue
         ? setState(() => isDisabled = false)
         : setState(() => isDisabled = true);
   }

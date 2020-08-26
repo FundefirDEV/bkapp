@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void afterFirstLayout(BuildContext context) {
     BlocProvider.of<HomeBloc>(context)
-        .add(HomeInitialize(token: widget.tokenUser));
+      .add(HomeInitialize(token: widget.tokenUser));
   }
 }
 

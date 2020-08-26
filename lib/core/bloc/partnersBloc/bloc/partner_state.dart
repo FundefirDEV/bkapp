@@ -35,3 +35,17 @@ class PartnerUnauthorized extends PartnerState {
 }
 
 class PartnerAddedToDb extends PartnerState {}
+
+class PartnerAddedToBack extends PartnerState {}
+
+class PartnerFailureToBack extends PartnerState {
+  PartnerFailureToBack({ @required this.phoneNumber, @required this.error });
+  final String phoneNumber;
+  final String error;
+
+  @override
+  List<Object> get props => [phoneNumber, error];
+
+  @override
+  String toString() => 'PartnerFailureToBack { phoneNumber: $phoneNumber }';
+}

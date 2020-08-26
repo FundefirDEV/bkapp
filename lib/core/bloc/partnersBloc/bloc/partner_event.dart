@@ -9,14 +9,18 @@ abstract class PartnerEvent extends Equatable {
 
 class AddAndVerifyPartner extends PartnerEvent {
   AddAndVerifyPartner({
-    @required this.token, this.name, @required this.phoneNumber
+    @required this.token,
+    this.name,
+    @required this.phoneNumber,
+    this.isRegister
   });
   final String token;
   final String name;
   final String phoneNumber;
+  final bool isRegister;
 
   @override
-  List<Object> get props => [token, name, phoneNumber];
+  List<Object> get props => [token, name, phoneNumber, isRegister];
 }
 
 class JustValidatePartner extends PartnerEvent {
@@ -32,10 +36,17 @@ class JustValidatePartner extends PartnerEvent {
 }
 
 class AddPartnerToDb extends PartnerEvent {
-  AddPartnerToDb({@required this.name, @required this.phoneNumber });
+  AddPartnerToDb({
+    @required this.name,
+    @required this.phoneNumber,
+    this.isRegister,
+    this.token
+  });
   final String name;
   final String phoneNumber;
+  final bool isRegister;
+  final String token;
 
   @override
-  List<Object> get props => [name, phoneNumber];
+  List<Object> get props => [name, phoneNumber, isRegister, token];
 }
