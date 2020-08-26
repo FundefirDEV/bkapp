@@ -42,12 +42,11 @@ class InviteModalContent {
       child: Row(children: <Widget>[
         SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
         SvgPicture.asset('assets/images/user_icon.svg'),
-        SizedBox(width: SizeConfig.safeBlockHorizontal * 15),
         Text(
           I18n.of(context).inviteModalPartner,
           style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: SizeConfig.safeBlockHorizontal * 4,
               letterSpacing: 10.0,
               fontWeight: FontWeight.w700),
         ),
