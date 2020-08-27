@@ -7,7 +7,6 @@ class ApprovalsCards extends StatefulWidget {
   ApprovalsCards(
       {Key key,
       @required this.data,
-      @required this.emptyData,
       this.title,
       @required this.token,
       this.type,
@@ -15,7 +14,6 @@ class ApprovalsCards extends StatefulWidget {
       : super(key: key);
 
   final List data;
-  final Widget emptyData;
   final String title;
   final String token;
   final String type;
@@ -31,18 +29,18 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            widget.title,
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-          SizedBox(height: 20.0),
-          widget.data.length > 0
-              ? Carousel(
+      child: widget.data.length > 0
+          ? Column(
+              children: <Widget>[
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Carousel(
                   heigthContainer: SizeConfig.blockSizeVertical * 25,
                   viewportFraction: SizeConfig.blockSizeHorizontal * 0.15,
                   currentPage: 0,
@@ -65,9 +63,9 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                       ),
                   ],
                 )
-              : widget.emptyData,
-        ],
-      ),
+              ],
+            )
+          : null,
     );
   }
 }

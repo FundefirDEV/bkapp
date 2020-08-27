@@ -16,32 +16,33 @@ class ApprovalsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: Key('main-container-scroolable-approvals-screen'),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          ApprovalsCards(
-              title: I18n.of(context).approvalsScreenShares,
-              data: data['sharesRequest'],
-              emptyData: EmptyInformation(),
-              token: token,
-              type: 'share',
-              role: role),
-          ApprovalsCards(
-              title: I18n.of(context).approvalsScreenCredits,
-              data: data['creditRequest'],
-              emptyData: EmptyInformation(),
-              token: token,
-              type: 'credit',
-              role: role),
-          ApprovalsCards(
-              title: I18n.of(context).approvalsScreenPayments,
-              data: data['paymentInstallmentRequest'],
-              emptyData: EmptyInformation(),
-              token: token,
-              type: 'paymentInstallment',
-              role: role),
-        ],
-      ),
+      child: data['sharesRequest'].length > 0 ||
+              data['creditRequest'].length > 0 ||
+              data['paymentInstallmentRequest'].length > 0
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                ApprovalsCards(
+                    title: I18n.of(context).approvalsScreenShares,
+                    data: data['sharesRequest'],
+                    token: token,
+                    type: 'share',
+                    role: role),
+                ApprovalsCards(
+                    title: I18n.of(context).approvalsScreenCredits,
+                    data: data['creditRequest'],
+                    token: token,
+                    type: 'credit',
+                    role: role),
+                ApprovalsCards(
+                    title: I18n.of(context).approvalsScreenPayments,
+                    data: data['paymentInstallmentRequest'],
+                    token: token,
+                    type: 'paymentInstallment',
+                    role: role),
+              ],
+            )
+          : EmptyInformation(),
     );
   }
 }
