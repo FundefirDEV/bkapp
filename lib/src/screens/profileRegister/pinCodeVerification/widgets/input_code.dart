@@ -41,6 +41,7 @@ class _InputCodeState extends State<InputCode> {
   @override
   void dispose() {
     errorController.close();
+    textEditingController.dispose();
     super.dispose();
   }
 
@@ -98,6 +99,7 @@ class _InputCodeState extends State<InputCode> {
                     enableActiveFill: true,
                     errorAnimationController: errorController,
                     controller: textEditingController,
+                    autoDisposeControllers: false,
                     onCompleted: (v) async {
                       var request = await registerBloc.pinCodeBloc.makeSubmit(
                           email: registerBloc.emailBloc.email.value,

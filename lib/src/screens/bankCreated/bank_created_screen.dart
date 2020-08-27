@@ -1,11 +1,13 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class BankCreatedScreen extends StatelessWidget {
   final BankCreatedScreenArgs data;
@@ -34,6 +36,7 @@ class BankCreatedScreen extends StatelessWidget {
                 onTap: () async {
                   await partnerDb.deleteAllPartners();
                   await activePartnersDb.deleteAllPartners();
+                  _clearInputs(context);
                   Navigator.pushNamed(context, loginRoute);
                 }
             ),
@@ -77,6 +80,14 @@ class BankCreatedScreen extends StatelessWidget {
             )
           ]),
     );
+  }
+
+  void _clearInputs(BuildContext context) {
+    context.bloc<AppBloc>().profileRegisterBloc.nameBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.emailBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.password.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.passwordConfirm.clear();
   }
 }
 
