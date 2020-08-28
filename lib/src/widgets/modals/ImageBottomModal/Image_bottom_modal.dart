@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/widgets/button_image_botton_modal_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/widgets/title_image_bottom_modal_widget.dart';
@@ -18,7 +20,8 @@ class ImageBottomModal extends StatelessWidget {
       @required this.image,
       this.isImageBg: false,
       this.onPressAccept,
-      this.onPressCancel})
+      this.onPressCancel,
+      this.technicalData})
       : super(key: key);
 
   final double modalHeight;
@@ -32,6 +35,7 @@ class ImageBottomModal extends StatelessWidget {
   final String image;
   final Function onPressAccept;
   final Function onPressCancel;
+  final String technicalData;
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +65,26 @@ class ImageBottomModal extends StatelessWidget {
                       titleAcceptButton: titleAcceptButton,
                       titleCloseButton: titleCloseButton,
                       onPressAccept: onPressAccept,
-                      onPressCancel: onPressCancel)
+                      onPressCancel: onPressCancel),
+                  Center(
+                      child: Text(
+                    buildTechnicalData(),
+                    style: TextStyle(fontSize: 10),
+                  ))
                 ],
               )
             ],
           ),
         ));
+  }
+
+  String buildTechnicalData() {
+    var error = '';
+    try {
+      error = jsonDecode(technicalData)['error'];
+    } catch (e) {
+      error = technicalData == null ? '' : technicalData;
+    }
+    return error;
   }
 }

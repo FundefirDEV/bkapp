@@ -54,44 +54,40 @@ class UtilsTools {
   static void showErrorDialog(BuildContext context, String error) {
     SizeConfig().init(context);
     showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return BottomModal(
-          width: SizeConfig.blockSizeHorizontal * 100,
-          height: SizeConfig.blockSizeVertical * 45,
-          child: ImageBottomModal(
-            modalHeight: 45.0,
-            image: 'assets/images/sad_bot.svg',
-            title: errorRequestHandler(context, error),
-            isBold: true,
-            isBtnAccept: false,
-            titleCloseButton: I18n.of(context).actionTextClose,
-            onPressCancel: () => Navigator.pop(context),
-          )
-        );
-      }
-    );
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return BottomModal(
+              width: SizeConfig.blockSizeHorizontal * 100,
+              height: SizeConfig.blockSizeVertical * 45,
+              child: ImageBottomModal(
+                  modalHeight: 45.0,
+                  image: 'assets/images/sad_bot.svg',
+                  title: errorRequestHandler(context, error),
+                  isBold: true,
+                  isBtnAccept: false,
+                  titleCloseButton: I18n.of(context).actionTextClose,
+                  onPressCancel: () => Navigator.pop(context),
+                  technicalData: error));
+        });
   }
 }
 
 class CurrencyInputFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
-      if (newValue.selection.baseOffset == 0) {
-          print(true);
-          return newValue;
-      }
-      int value = int.parse(newValue.text);
-      final formatter = NumberFormat.currency(
-        locale: "en",
-        decimalDigits: 0,
-        symbol: ''
-      );
-      String newText = formatter.format(value);
-      return newValue.copyWith(
-          text: newText,
-          selection: new TextSelection.collapsed(offset: newText.length));
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.selection.baseOffset == 0) {
+      print(true);
+      return newValue;
+    }
+    int value = int.parse(newValue.text);
+    final formatter =
+        NumberFormat.currency(locale: "en", decimalDigits: 0, symbol: '');
+    String newText = formatter.format(value);
+    return newValue.copyWith(
+        text: newText,
+        selection: new TextSelection.collapsed(offset: newText.length));
   }
 }
 

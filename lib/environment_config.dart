@@ -6,6 +6,7 @@ class EnvironmentConfig {
       defaultValue: "https://bkservice.fundefir-dev.com");
   // https://bkservicestage.fundefir-dev.com
   // https://bkservice.fundefir-dev.com
+  // http://192.168.0.19:8888
 
   ///
   /// Environment PROD; QA; STAGE or DEV
