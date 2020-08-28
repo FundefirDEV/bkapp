@@ -30,6 +30,7 @@ class BuySharesFormWidget extends StatelessWidget {
             color: Colors.transparent,
             child: TextFieldBlocBuilder(
                 key: Key('buy-shares-form-numberactions'),
+                keyboardType: TextInputType.number,
                 textFieldBloc: buySharesBloc?.numberactions,
                 errorBuilder: (context, string) =>
                     I18n.of(context).errorRequired,

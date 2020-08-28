@@ -23,6 +23,7 @@ class FormFields extends StatelessWidget {
             key: Key('credit-form-request-value'),
             textFieldBloc: creditFormBloc.valueCredit,
             errorBuilder: (context, string) => I18n.of(context).errorRequired,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(0),
                 labelText: I18n.of(context).creditScreenValueToRequest,
@@ -38,6 +39,7 @@ class FormFields extends StatelessWidget {
               key: Key('buy-shares-form-numberactiosdsns'),
               textFieldBloc: creditFormBloc.installments,
               errorBuilder: (context, string) => I18n.of(context).errorRequired,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0),
                   labelText: I18n.of(context).creditScreenNumberOfFees,
