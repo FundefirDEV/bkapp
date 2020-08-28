@@ -57,10 +57,12 @@ class SimpleBlocDelegate extends BlocObserver {
   }
 }
 
-void main() async {
+void main({Locale localeDefault}) async {
   try {
     Bloc.observer = SimpleBlocDelegate();
-    runApp(MyApp());
+    runApp(MyApp(
+      localeDefault: localeDefault,
+    ));
   } catch (error, stackTrace) {
     await sendError(error, stackTrace);
   }
@@ -89,6 +91,9 @@ void setOrientation(context) {
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({this.localeDefault});
+  Locale localeDefault;
+
   @override
   Widget build(BuildContext context) {
     setOrientation(context);
@@ -109,8 +114,19 @@ class MyApp extends StatelessWidget {
           DefaultCupertinoLocalizations.delegate
         ],
         supportedLocales: i18n.supportedLocales,
+        // localeResolutionCallback:
+        //     i18n.resolution(fallback: new Locale("es", "ES")),
         localeResolutionCallback:
-            i18n.resolution(fallback: new Locale("es", "ES")),
+            (Locale locale, Iterable<Locale> supportedLocales) {
+          if (localeDefault != null) return localeDefault;
+          for (final supportedLocale in supportedLocales) {
+            if (locale.languageCode == supportedLocale.languageCode) {
+              return supportedLocale;
+            }
+          }
+
+          return supportedLocales.first;
+        },
         onGenerateRoute: Router.generateRoute,
         initialRoute: loginRoute,
       ),

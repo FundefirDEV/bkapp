@@ -10,12 +10,12 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class CreditRequestStructure extends StatelessWidget {
-  const CreditRequestStructure({
-    Key key,
-    @required this.oldIndex,
-    @required this.tokenUser,
-    this.userName
-  }) : super(key: key);
+  const CreditRequestStructure(
+      {Key key,
+      @required this.oldIndex,
+      @required this.tokenUser,
+      this.userName})
+      : super(key: key);
 
   final int oldIndex;
   final String tokenUser;
@@ -43,81 +43,80 @@ class CreditRequestStructure extends StatelessWidget {
             UtilsTools.showErrorDialog(context, state.failureResponse);
           },
           child: AppBarWidget(
-            userName: userName,
-            container: Column(
-            children: <Widget>[
-              TitleHeaderWidget(
-                title: 'Créditos',
-                oldIndex: oldIndex,
-                navigateBloc: menuNavigatorBloc,
-              ),
-              // TabCreditTypeWidget(),
-              LineSeparatorWidget(),
-              Container(
-                margin:
-                    EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 2),
-                child: Text(I18n.of(context).creditScreenCreditRequest,
-                    style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 5,
-                        color: Theme.of(context).colorScheme.grayColor[300],
-                        fontWeight: FontWeight.w100)),
-              ),
-              FormFields(creditFormBloc: creditFormBloc),
-              Container(
-                margin: EdgeInsets.symmetric(
-                  vertical: SizeConfig.blockSizeVertical * 3
-                ),
-                child: Text(I18n.of(context).creditScreenWayToPay,
-                    style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                        color: Theme.of(context).colorScheme.grayColor[300],
-                        fontWeight: FontWeight.w100)),
-              ),
-              SelectedPayInstallmentsWidget(
-                onTabSelected: (item) => creditFormBloc.paymentMethods.updateValue(item),
-                items: [
-                  CardSelected(
-                    key: Key('selected-card-pay'),
-                    text: I18n.of(context).creditScreenAdvances,
-                    img: 'assets/images/money_tiket.svg',
+              userName: userName,
+              container: Column(
+                children: <Widget>[
+                  TitleHeaderWidget(
+                    title: 'Créditos',
+                    oldIndex: oldIndex,
+                    navigateBloc: menuNavigatorBloc,
                   ),
-                  CardSelected(
-                    key: Key('selected-card-pay-installment'),
-                    text: I18n.of(context).creditScreenInstallments,
-                    img: 'assets/images/calendar.svg',
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 35.0),
-                child: RaisedButton(
-                  key: Key('raisedButton-accept'),
-                  onPressed: () {
-                    context.bloc<CreditFormBloc>()
-                      .tokenProfile.updateValue(tokenUser);
-                    creditFormBloc.submit();
-                  },
-                  color: Theme.of(context).colorScheme.primaryColor,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 12.0
+                  // TabCreditTypeWidget(),
+                  LineSeparatorWidget(),
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                        vertical: SizeConfig.blockSizeVertical * 2),
+                    child: Text(I18n.of(context).creditScreenCreditRequest,
+                        style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal * 5,
+                            color: Theme.of(context).colorScheme.grayColor[300],
+                            fontWeight: FontWeight.w100)),
                   ),
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)
+                  FormFields(creditFormBloc: creditFormBloc),
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                        vertical: SizeConfig.blockSizeVertical * 3),
+                    child: Text(I18n.of(context).creditScreenWayToPay,
+                        style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                            color: Theme.of(context).colorScheme.grayColor[300],
+                            fontWeight: FontWeight.w100)),
                   ),
-                  child: Text(
-                    I18n.of(context).actionTextRequest,
-                    style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 4,
-                      color: Colors.white,
-                      letterSpacing: 3.0,
+                  SelectedPayInstallmentsWidget(
+                    onTabSelected: (item) =>
+                        creditFormBloc.paymentMethods.updateValue(item),
+                    items: [
+                      CardSelected(
+                        key: Key('selected-card-pay-advanced'),
+                        text: I18n.of(context).creditScreenAdvances,
+                        img: 'assets/images/money_tiket.svg',
+                      ),
+                      CardSelected(
+                        key: Key('selected-card-pay-installment'),
+                        text: I18n.of(context).creditScreenInstallments,
+                        img: 'assets/images/calendar.svg',
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0, bottom: 35.0),
+                    child: RaisedButton(
+                      key: Key('raisedButton-accept-credit-request'),
+                      onPressed: () {
+                        context
+                            .bloc<CreditFormBloc>()
+                            .tokenProfile
+                            .updateValue(tokenUser);
+                        creditFormBloc.submit();
+                      },
+                      color: Theme.of(context).colorScheme.primaryColor,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 12.0),
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                      child: Text(
+                        I18n.of(context).actionTextRequest,
+                        style: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          color: Colors.white,
+                          letterSpacing: 3.0,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
-          )),
+                ],
+              )),
         );
       },
     );
@@ -125,21 +124,20 @@ class CreditRequestStructure extends StatelessWidget {
 
   void _showDialog(BuildContext context, menuNavigatorBloc) {
     showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (_) {
-        return BlocProvider.value(
-          value: BlocProvider.of<ApprovalsBloc>(context),
-          child: BottomModal(
-            width: SizeConfig.blockSizeHorizontal * 100,
-            height: SizeConfig.blockSizeVertical * 45,
-            child: PreApprovedCreditModal(
-              navigateBloc: menuNavigatorBloc,
-              tokenUser: tokenUser,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (_) {
+          return BlocProvider.value(
+            value: BlocProvider.of<ApprovalsBloc>(context),
+            child: BottomModal(
+              width: SizeConfig.blockSizeHorizontal * 100,
+              height: SizeConfig.blockSizeVertical * 45,
+              child: PreApprovedCreditModal(
+                navigateBloc: menuNavigatorBloc,
+                tokenUser: tokenUser,
+              ),
             ),
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 }

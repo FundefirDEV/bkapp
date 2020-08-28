@@ -39,6 +39,12 @@
       "request": "launch",
       "type": "dart",
       "program": "test_driver/register_buy_shares_test.dart"
+    },
+    {
+      "name": "Buy credit: Launch Driver",
+      "request": "launch",
+      "type": "dart",
+      "program": "test_driver/register_buy_shares_credits_test.dart"
     }
   ]
 }
