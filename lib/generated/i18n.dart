@@ -260,8 +260,8 @@ class I18n implements WidgetsLocalizations {
   String get mainMenuActionsCredit => "credit";
   /// "profits\n payment"
   String get mainMenuActionsProfits => "profits\n payment";
-  /// "start meeting"
-  String get mainMenuActionsMeeting => "start meeting";
+  /// "close meeting"
+  String get mainMenuActionsMeeting => "close meeting";
   /// "buy actions"
   String get mainMenuActionsActions => "buy actions";
   /// "add / remove\n partner"
