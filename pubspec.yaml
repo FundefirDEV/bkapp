@@ -1,7 +1,7 @@
 name: bkapp_flutter
 description: A new way for saving money in communities.
 
-version: 1.0.3+5
+version: 1.0.4+6
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
