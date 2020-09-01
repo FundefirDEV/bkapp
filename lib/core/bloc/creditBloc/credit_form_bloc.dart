@@ -4,6 +4,8 @@ import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import 'requestHandler/request_credit_handler.dart';
+
 class CreditFormBloc extends FormBloc<String, String> {
   final CreditRepository creditRepository;
 
@@ -62,7 +64,10 @@ class CreditFormBloc extends FormBloc<String, String> {
         "typeRequest": "credit",
         "quantity": int.parse(installments.value),
         "amount":
-            double.parse(UtilsTools.removeCurrencyFormatter(valueCredit.value))
+            double.parse(UtilsTools.removeCurrencyFormatter(valueCredit.value)),
+        "creditUse": requestCreditHandler(creditUse.value),
+        "detail": creditDetail.value,
+        "paymentType": requestCreditHandler(paymentMethods.value)
       });
       emitSuccess(canSubmitAgain: true);
       clear();
