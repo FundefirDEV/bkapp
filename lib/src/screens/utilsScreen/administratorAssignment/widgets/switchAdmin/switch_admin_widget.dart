@@ -1,15 +1,26 @@
+import 'package:bkapp_flutter/core/bloc/administratorAsignmentBloc/administrator_asignment_bloc.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SwitchAdmin extends StatefulWidget {
   SwitchAdmin(
-      {Key key, this.partnerName, this.isAdmin, this.callback, this.customKey})
+      {Key key,
+      this.partnerName,
+      this.isAdmin,
+      this.customKey,
+      this.bloc,
+      this.token,
+      this.phone})
       : super(key: key);
   final Key customKey;
   final String partnerName;
+  final String phone;
   final bool isAdmin;
-  final Function callback;
+  final String token;
+  final bloc;
   @override
   SwitchAdminState createState() => SwitchAdminState();
 }
@@ -42,7 +53,14 @@ class SwitchAdminState extends State<SwitchAdmin> {
               value: stateSwitchAdmin,
               onChanged: (value) {
                 setState(() => stateSwitchAdmin = value);
-                widget.callback(context, value);
+                _showDialog(context, value, () {
+                  Navigator.pop(context);
+                  widget.bloc.add(AdministratorAsignmentPost(
+                      token: widget.token,
+                      name: widget.partnerName,
+                      phone: widget.phone,
+                      partnerType: value == true ? "admin" : "partner"));
+                });
               },
             ),
           ),
@@ -57,5 +75,31 @@ class SwitchAdminState extends State<SwitchAdmin> {
             ))
       ],
     );
+  }
+
+  void _showDialog(context, value, Function function) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return ImageBottomModal(
+            modalHeight: 50.0,
+            image: 'assets/images/salo_pre_approved_modal.svg',
+            isImageBg: true,
+            title: value
+                ? I18n.of(context).administratorAssignmentTitleModalAssign
+                : I18n.of(context).administratorAssignmentTitleModalRemove,
+            titleBold: '',
+            isBold: false,
+            isBtnAccept: true,
+            titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressAccept: function,
+            onPressCancel: () {
+              setState(() => stateSwitchAdmin = !value);
+              Navigator.pop(context);
+            },
+          );
+        });
   }
 }

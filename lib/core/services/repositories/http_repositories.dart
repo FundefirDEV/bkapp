@@ -41,3 +41,6 @@ final MeetingRepository meetingRepository =
 
 final BankRulesRepository bankRulesRepository =
     BankRulesRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final AdministratorRepository administratorRepository =
+    AdministratorRepository(apiProvider: ApiProvider(httpClient: httpClient));

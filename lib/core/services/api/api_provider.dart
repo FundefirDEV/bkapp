@@ -147,6 +147,12 @@ class ApiProvider {
         httpClient: httpClient, url: getPartnersUrl, token: token);
   }
 
+  Future<List<dynamic>> getPartnersAdministrator(String token) async {
+    final getPartnersUrl = ApiEndpoints.getPartners();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
+  }
+
   Future<Map<String, dynamic>> postInvitePartner(
       String token, List<Map<String, dynamic>> partners) async {
     final postInvitePartner = ApiEndpoints.postInvitePartner();
@@ -161,5 +167,16 @@ class ApiProvider {
     final postInvitePartner = ApiEndpoints.postMeetingClosed();
     return await _httpRequest.get(
         httpClient: httpClient, url: postInvitePartner, token: token);
+  }
+
+  Future<Map<String, dynamic>> postAdmin(
+      String token, String name, String phone, String partnerType) async {
+    final postAdmin = ApiEndpoints.postAdmin();
+    return await _httpRequest
+        .post(httpClient: httpClient, url: postAdmin, token: token, body: {
+      "partners": [
+        {"name": name, "phone": phone, "partnerType": partnerType}
+      ]
+    });
   }
 }
