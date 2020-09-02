@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/detail_credit_widget.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/fee_next_card_widget.dart';
@@ -15,11 +16,35 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../../../base_tester.dart';
 
+const mockData = {
+  "activeCredits": [
+    {
+      "id": 10,
+      "amount": 450000.1,
+      "installments": 2,
+      "scheduleInstallment": [
+        {
+          "numberInstallment": 1,
+          "capital": 225000,
+          "interestCalculate": 13500,
+          "ordinaryInterestPercentage": 3,
+          "totalPayment": 238500
+        }
+      ]
+    }
+  ]
+};
+
 void main() {
   Widget activeCreditTester({key}) {
     return BlocProvider(
         create: (context) => MenuNavigatorBloc(controller: PageController()),
-        child: ActiveCreditScreen(key: key, oldIndex: 0, userName: 'Usuario'));
+        child: ActiveCreditScreen(
+          key: key,
+          oldIndex: 0,
+          userName: 'Usuario',
+          data: myBankModelFromJson(mockData).activeCredits,
+        ));
   }
 
   group('Test Active Credit screen', () {

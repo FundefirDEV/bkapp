@@ -1,9 +1,13 @@
+import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class FeeDetailWidget extends StatelessWidget {
-  FeeDetailWidget({Key key}) : super(key: key);
+  FeeDetailWidget({Key key, @required this.installment}) : super(key: key);
+
+  final ScheduleInstallment installment;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -25,7 +29,7 @@ class FeeDetailWidget extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                       child: Text(I18n.of(context).activeCreditAmountToBePaid)),
-                  Text(r'$115.000',
+                  Text(installment?.totalPayment,
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,
@@ -60,7 +64,7 @@ class FeeDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(child: Text(I18n.of(context).activeCreditCapital)),
-                  Text(r'$100.000',
+                  Text(installment?.capital,
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,
@@ -74,7 +78,7 @@ class FeeDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(child: Text(I18n.of(context).activeCreditInterest)),
-                  Text(r'15.000',
+                  Text(installment?.interestCalculate,
                       style: TextStyle(
                           letterSpacing: 1,
                           fontSize: 15,

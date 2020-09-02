@@ -1,10 +1,16 @@
+import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class DetailCreditWidget extends StatelessWidget {
-  DetailCreditWidget({Key key}) : super(key: key);
+  DetailCreditWidget({
+    Key key,
+    @required this.activeCredits
+  }) : super(key: key);
+
+  final ActiveCredit activeCredits;
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +68,17 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditCreditAwarded),
-                          Text(r'$300.000',
+                          Text(activeCredits?.amount ?? r'$0',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
-                    Expanded(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                          Text(I18n.of(context).activeCreditOrdinaryInterest),
-                          Text(r'$45.000',
-                              style: TextStyle(fontWeight: FontWeight.w700))
-                        ])),
+                    // Expanded(
+                    //     child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: <Widget>[
+                    //       Text(I18n.of(context).activeCreditOrdinaryInterest),
+                    //       Text(r'$45.000',
+                    //           style: TextStyle(fontWeight: FontWeight.w700))
+                    //     ])),
                     Expanded(
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,14 +87,14 @@ class DetailCreditWidget extends StatelessWidget {
                           Text(r'$0.000',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
-                    Expanded(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                          Text(I18n.of(context).activeCreditTotalCredit),
-                          Text(r'$345.000',
-                              style: TextStyle(fontWeight: FontWeight.w700))
-                        ])),
+                    // Expanded(
+                    //     child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: <Widget>[
+                    //       Text(I18n.of(context).activeCreditTotalCredit),
+                    //       Text(r'$345.000',
+                    //           style: TextStyle(fontWeight: FontWeight.w700))
+                    //     ])),
                     Expanded(
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

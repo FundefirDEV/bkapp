@@ -126,7 +126,9 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             userName: widget.userName,
                             tokenUser: widget.tokenUser), // NOTE 10
                         ActiveCreditScreen(
-                            oldIndex: currentIndex, userName: widget.userName),
+                          oldIndex: currentIndex,
+                          userName: widget.userName
+                        ),
                         AddPartnerScreen(
                             oldIndex: currentIndex,
                             userName: widget.userName,

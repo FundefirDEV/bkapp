@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/index.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -11,11 +12,16 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class ActiveCreditScreen extends StatelessWidget {
-  ActiveCreditScreen(
-      {Key key, @required this.oldIndex, @required this.userName})
-      : super(key: key);
+  ActiveCreditScreen({
+    Key key,
+    @required this.oldIndex,
+    @required this.userName,
+    @required this.data
+  }) : super(key: key);
+
   final int oldIndex;
   final String userName;
+  final List<ActiveCredit> data;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +40,23 @@ class ActiveCreditScreen extends StatelessWidget {
             ),
             _subtitle(context),
             CardInformationBkWidget(
-                childBlueWidth: 120,
-                childBlue: FeeNumberWidget(),
-                childWhite: FeeDetailWidget()),
+              childBlueWidth: 120,
+              childBlue: FeeNumberWidget(
+                installment: data[0].scheduleInstallment[0]
+              ),
+              childWhite: FeeDetailWidget(
+                installment: data[0].scheduleInstallment[0],
+              )
+            ),
             _buttonPayFee(context),
             LineSeparatorWidget(),
             _subtitleFeePending(context),
-            FeeCarrouselWidget(),
-            DetailCreditWidget()
+            FeeCarrouselWidget(
+              installments: data[0].scheduleInstallment,
+            ),
+            DetailCreditWidget(
+              activeCredits: data[0],
+            )
           ],
         ));
   }

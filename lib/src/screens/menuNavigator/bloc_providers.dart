@@ -31,4 +31,7 @@ List<dynamic> blocProviders = [
     create: (context) =>
         AdministratorAsignmentBloc(repository: administratorRepository),
   ),
+  BlocProvider(
+    create: (context) => MyBankBloc(repository: myBankRepository),
+  )
 ];

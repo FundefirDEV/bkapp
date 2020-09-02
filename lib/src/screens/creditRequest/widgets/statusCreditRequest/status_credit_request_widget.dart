@@ -66,20 +66,7 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
               dateRequested: DateFormat("dd-MM-yyyy").format(date).toString()
             ),
           ),
-          TextImageCreditStatusWidget(),
-          Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: SizeConfig.blockSizeVertical * 3),
-              key: Key('close_container_invite_modal'),
-              child: FlatButton(
-                  key: Key('flat_button_credit_active'),
-                  onPressed: () {
-                    navigateBloc.add(ButtonPressed(goTo: 11));
-                  },
-                  child: Text(
-                    'VIEW CREDIT',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
-                  )))
+          TextImageCreditStatusWidget()
         ],
       ),
     );

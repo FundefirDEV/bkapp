@@ -8,9 +8,12 @@ class FeeNextCardWidget extends StatelessWidget {
   final String valueFee;
   final String paymentDate;
 
-  const FeeNextCardWidget(
-      {Key key, this.valueFee, this.paymentDate, this.feeNumber})
-      : super(key: key);
+  const FeeNextCardWidget({
+    Key key,
+    this.valueFee,
+    this.paymentDate,
+    this.feeNumber
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +61,9 @@ class FeeNextCardWidget extends StatelessWidget {
                         text:
                             '${I18n.of(context).activeCreditInstallmentsNumber}${this.feeNumber}\n'),
                     TextSpan(
-                        text: r'$' + this.valueFee + ' COP',
+                        text: this.valueFee,
                         style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.9,
                             fontWeight: FontWeight.w100)),
                   ]),
             ),
@@ -79,7 +82,7 @@ class FeeNextCardWidget extends StatelessWidget {
                     TextSpan(
                         text: this.paymentDate,
                         style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.9,
                             fontWeight: FontWeight.w100)),
                   ]),
             ),

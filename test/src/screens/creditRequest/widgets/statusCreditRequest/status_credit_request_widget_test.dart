@@ -97,7 +97,7 @@ void main() {
           .pumpWidget(baseTester(child: statusCreditTester(key: testKey)));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('close_container_invite_modal')), findsOneWidget);
+      expect(find.byKey(Key('close_container_invite_modal')), findsNothing);
     });
 
     // NOTE solve this test

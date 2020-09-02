@@ -8,6 +8,7 @@ export 'home/home_bloc.dart';
 export 'loginFormBloc/login_form_bloc.dart';
 export 'loginFormBloc/authentication/authentication_bloc.dart';
 export 'menuNavigatorBloc/menunavigator_bloc.dart';
+export 'bankBloc/myBank/mybank_bloc.dart';
 export 'partnersBloc/invite_form_bloc.dart';
 export 'partnersBloc/bloc/partner_bloc.dart';
 export 'profileRegisterBloc/profile_name_bloc.dart';

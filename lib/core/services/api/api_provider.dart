@@ -179,4 +179,13 @@ class ApiProvider {
       ]
     });
   }
+
+  Future<Map<String, dynamic>> getMyBankInfo(String token) async {
+    final bankInfoUrl = ApiEndpoints.getMyBankInfo();
+    return await _httpRequest.get(
+      httpClient: httpClient,
+      url: bankInfoUrl,
+      token: token
+    );
+  }
 }
