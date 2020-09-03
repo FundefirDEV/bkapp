@@ -46,4 +46,7 @@ final AdministratorRepository administratorRepository =
     AdministratorRepository(apiProvider: ApiProvider(httpClient: httpClient));
 
 final MyBankRepository myBankRepository =
-  MyBankRepository(apiProvider: ApiProvider(httpClient: httpClient));
+    MyBankRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final LocationRepository locationRepository =
+    LocationRepository(apiProvider: ApiProvider(httpClient: httpClient));

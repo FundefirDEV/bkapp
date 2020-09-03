@@ -21,10 +21,7 @@ class _CountryCarouselState extends State<CountryCarousel> {
   void initState() {
     super.initState();
     pageController = PageController(
-      keepPage: false,
-      initialPage: currentPage,
-      viewportFraction: 0.3
-    );
+        keepPage: false, initialPage: currentPage, viewportFraction: 0.3);
   }
 
   @override
@@ -44,29 +41,28 @@ class _CountryCarouselState extends State<CountryCarousel> {
   animateItemBuilder(int index) {
     List<ItemCountry> country = [
       ItemCountry(
-        phoneCode: '+54',
-        name:'Argentina',
-        image: 'assets/images/argentina.svg'
-      ),
+          phoneCode: '+54',
+          name: 'Argentina',
+          image: 'assets/images/argentina.svg',
+          iso: 'AR'),
       ItemCountry(
-        phoneCode: '+57',
-        name:'Colombia',
-        image: 'assets/images/colombia.svg'
-      ),
+          phoneCode: '+57',
+          name: 'Colombia',
+          image: 'assets/images/colombia.svg',
+          iso: 'CO'),
       ItemCountry(
-        phoneCode: '+51',
-        name:'Perú',
-        image: 'assets/images/peru.svg'
-      )
+          phoneCode: '+51',
+          name: 'Perú',
+          image: 'assets/images/peru.svg',
+          iso: 'PE')
     ];
 
-    double obtainValueOfCurve(PageController pageController)
-    {
+    double obtainValueOfCurve(PageController pageController) {
       double value = 1;
-      if(pageController.position.haveDimensions){
+      if (pageController.position.haveDimensions) {
         value = pageController.page - index;
         return (1 - (value.abs() * 0.7)).clamp(0.0, 1.0);
-      } else{
+      } else {
         return value;
       }
     }
@@ -79,10 +75,9 @@ class _CountryCarouselState extends State<CountryCarousel> {
           key: Key('center-content-country-carousel'),
           child: Container(
             child: SizedBox(
-              height: Curves.easeOut.transform(value) * (SizeConfig.blockSizeVertical * 12),
-              child: Container(
-                child: child
-              ),
+              height: Curves.easeOut.transform(value) *
+                  (SizeConfig.blockSizeVertical * 12),
+              child: Container(child: child),
             ),
           ),
         );

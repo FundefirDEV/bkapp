@@ -22,7 +22,7 @@ class BankRegisterBloc extends FormBloc<String, String> {
   final token = TextFieldBloc();
 
   BankRegisterBloc({@required this.repository})
-      : _selectPlace = SelectCityBloc(),
+      : _selectPlace = SelectCityBloc(repository: locationRepository),
         _inviteForm = InviteFormBloc(partnerRepository: partnerRepository) {
     addFieldBlocs(fieldBlocs: [name]);
   }

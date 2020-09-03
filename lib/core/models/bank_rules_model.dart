@@ -13,7 +13,7 @@ final formatConfig =
 class BankRulesModel {
   double ordinaryInterestPercentage;
   double defaultRatePercentage;
-  String creditMaxInstallments;
+  int creditMaxInstallments;
   String creditMaxValue;
   String shareValue;
   double expenseFundPercentage;
@@ -31,8 +31,7 @@ class BankRulesModel {
   factory BankRulesModel.fromJson(Map<String, dynamic> json) => BankRulesModel(
       ordinaryInterestPercentage: json["ordinaryInterestPercentage"] ?? 0.0,
       defaultRatePercentage: json["defaultRatePercentage"] ?? 0.0,
-      creditMaxInstallments:
-          formatConfig.format(json["creditMaxInstallments"]) ?? 0,
+      creditMaxInstallments: json["creditMaxInstallments"] ?? 0,
       creditMaxValue: formatConfig.format(json["creditMaxValue"]) ?? 0.0,
       shareValue: formatConfig.format(json["shareValue"]) ?? 0.0,
       expenseFundPercentage: json["expenseFundPercentage"] ?? 0.0,

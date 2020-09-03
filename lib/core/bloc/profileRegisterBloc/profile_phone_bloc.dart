@@ -12,6 +12,7 @@ class ProfilePhoneBloc extends FormBloc<String, String> {
   ]);
 
   final email = TextFieldBloc();
+  final countryCode = TextFieldBloc();
 
   ProfilePhoneBloc({@required this.repository}) {
     addFieldBlocs(fieldBlocs: [phone, email]);
@@ -36,6 +37,7 @@ class ProfilePhoneBloc extends FormBloc<String, String> {
 
   Future<void> close() {
     phone?.close();
+    countryCode?.close();
     email?.close();
     return super.close();
   }

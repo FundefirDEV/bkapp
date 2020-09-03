@@ -186,6 +186,10 @@ class I18n implements WidgetsLocalizations {
   String get inviteModalPartners => " partners";
   /// "Enter your state and city"
   String get selectCityEnterSateCity => "Enter your state and city";
+  /// "Select state"
+  String get selectCitySelectState => "Select state";
+  /// "Select city"
+  String get selectCitySelectCity => "Select city";
   /// "CITY"
   String get selectCityCity => "CITY";
   /// "STATE"
@@ -855,6 +859,12 @@ class _I18n_es_ES extends I18n {
   /// "Coloca tu estado y ciudad"
   @override
   String get selectCityEnterSateCity => "Coloca tu estado y ciudad";
+  /// "Selecciona tu estado"
+  @override
+  String get selectCitySelectState => "Selecciona tu estado";
+  /// "Selecciona tu ciudad"
+  @override
+  String get selectCitySelectCity => "Selecciona tu ciudad";
   /// "CIUDAD"
   @override
   String get selectCityCity => "CIUDAD";

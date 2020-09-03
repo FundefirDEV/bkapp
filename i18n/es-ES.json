@@ -113,6 +113,8 @@
   },
   "selectCity": {
     "enterSateCity": "Coloca tu estado y ciudad",
+    "selectState": "Selecciona tu estado",
+    "selectCity": "Selecciona tu ciudad",
     "city": "CIUDAD",
     "State": "ESTADO"
   },

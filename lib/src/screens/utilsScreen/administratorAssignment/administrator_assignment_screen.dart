@@ -12,10 +12,11 @@ import 'widgets/switchAdmin/switch_admin_widget.dart';
 
 class AdministratorAssignmentScreen extends StatefulWidget {
   AdministratorAssignmentScreen(
-      {Key key, @required this.userName, this.tokenUser})
+      {Key key, @required this.userName, this.tokenUser, this.role})
       : super(key: key);
   final String userName;
   final String tokenUser;
+  final String role;
   @override
   _AdministratorAssignmentScreenState createState() =>
       _AdministratorAssignmentScreenState();
@@ -59,7 +60,8 @@ class _AdministratorAssignmentScreenState
                           ? true
                           : false,
                       token: widget.tokenUser,
-                      bloc: context.bloc<AdministratorAsignmentBloc>())
+                      bloc: context.bloc<AdministratorAsignmentBloc>(),
+                      role: widget.role)
               ],
             ));
       }

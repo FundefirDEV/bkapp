@@ -37,6 +37,8 @@ class SelectCityStateWidget extends StatelessWidget {
                 showEmptyItem: false,
                 selectFieldBloc: bankBloc.selectPlace.selectState,
                 decoration: InputDecoration(
+                    labelText: I18n.of(context).selectCitySelectState,
+                    labelStyle: TextStyle(color: Colors.white),
                     border: InputBorder.none,
                     suffixIcon:
                         Icon(Icons.keyboard_arrow_down, color: Colors.white),
@@ -80,6 +82,8 @@ class SelectCityStateWidget extends StatelessWidget {
                 showEmptyItem: false,
                 selectFieldBloc: bankBloc.selectPlace.selectCity,
                 decoration: InputDecoration(
+                    labelText: I18n.of(context).selectCitySelectCity,
+                    labelStyle: TextStyle(color: Colors.white),
                     border: InputBorder.none,
                     suffixIcon:
                         Icon(Icons.keyboard_arrow_down, color: Colors.white),

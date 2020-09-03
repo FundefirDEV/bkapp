@@ -124,7 +124,8 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         RulesEditScreen(),
                         AdministratorAssignmentScreen(
                             userName: widget.userName,
-                            tokenUser: widget.tokenUser), // NOTE 10
+                            tokenUser: widget.tokenUser,
+                            role: widget.role), // NOTE 10
                         ActiveCreditScreen(
                           oldIndex: currentIndex,
                           userName: widget.userName

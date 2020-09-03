@@ -82,10 +82,13 @@ class _RegistePhoneFormListenerWidgetState
   }
 
   _receiveCountry(ItemCountry data) {
+    // ignore: close_sinks
+    final bloc = context.bloc<AppBloc>().profileRegisterBloc.phoneBloc;
     setState(() {
       country = data;
     });
-    print(data.name);
+    bloc.countryCode.updateValue(data.iso);
+    bloc.countryCode.value;
   }
 
   @visibleForTesting

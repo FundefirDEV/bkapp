@@ -1,8 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/widgets/footer_select_city_widget.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/widgets/select_city_state_widget.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/selectCity/widgets/header_select_city_widget.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/bg_bank_register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class SelectCityScreen extends StatefulWidget {
   SelectCityScreen({Key key}) : super(key: key);
@@ -18,6 +21,12 @@ class _SelectCityState extends State<SelectCityScreen>
 
   @override
   void initState() {
+    // ignore: close_sinks
+    final bloc = BlocProvider.of<AppBloc>(context).bankRegisterBloc.selectPlace;
+    final token = context.bloc<AppBloc>().bankRegisterBloc.token.value;
+    final countryCode =
+        context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.countryCode.value;
+    bloc.getLocation(token, countryCode);
     super.initState();
     _controller = AnimationController(
       vsync: this,

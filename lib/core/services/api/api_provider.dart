@@ -183,9 +183,12 @@ class ApiProvider {
   Future<Map<String, dynamic>> getMyBankInfo(String token) async {
     final bankInfoUrl = ApiEndpoints.getMyBankInfo();
     return await _httpRequest.get(
-      httpClient: httpClient,
-      url: bankInfoUrl,
-      token: token
-    );
+        httpClient: httpClient, url: bankInfoUrl, token: token);
+  }
+
+  Future<List<dynamic>> getLocation(String token) async {
+    final getPartnersUrl = ApiEndpoints.getLocation();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
   }
 }

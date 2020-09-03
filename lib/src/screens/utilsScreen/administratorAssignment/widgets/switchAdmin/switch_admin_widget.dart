@@ -13,13 +13,15 @@ class SwitchAdmin extends StatefulWidget {
       this.customKey,
       this.bloc,
       this.token,
-      this.phone})
+      this.phone,
+      this.role})
       : super(key: key);
   final Key customKey;
   final String partnerName;
   final String phone;
   final bool isAdmin;
   final String token;
+  final String role;
   final bloc;
   @override
   SwitchAdminState createState() => SwitchAdminState();
@@ -36,6 +38,9 @@ class SwitchAdminState extends State<SwitchAdmin> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    bool isAdmin = widget.role != 'admin';
+    Color thumbColor = isAdmin ? Colors.grey.shade400 : null;
+    Color trackColor = isAdmin ? Colors.white30 : null;
     return Row(
       key: Key('row_switch_admin'),
       mainAxisAlignment: MainAxisAlignment.center,
@@ -51,16 +56,22 @@ class SwitchAdminState extends State<SwitchAdmin> {
               key: widget.customKey,
               dragStartBehavior: DragStartBehavior.down,
               value: stateSwitchAdmin,
+              inactiveThumbColor: thumbColor,
+              inactiveTrackColor: trackColor,
+              activeTrackColor: trackColor,
+              activeColor: thumbColor,
               onChanged: (value) {
-                setState(() => stateSwitchAdmin = value);
-                _showDialog(context, value, () {
-                  Navigator.pop(context);
-                  widget.bloc.add(AdministratorAsignmentPost(
-                      token: widget.token,
-                      name: widget.partnerName,
-                      phone: widget.phone,
-                      partnerType: value == true ? "admin" : "partner"));
-                });
+                if (!isAdmin) {
+                  setState(() => stateSwitchAdmin = value);
+                  _showDialog(context, value, () {
+                    Navigator.pop(context);
+                    widget.bloc.add(AdministratorAsignmentPost(
+                        token: widget.token,
+                        name: widget.partnerName,
+                        phone: widget.phone,
+                        partnerType: value == true ? "admin" : "partner"));
+                  });
+                }
               },
             ),
           ),
