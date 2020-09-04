@@ -76,7 +76,7 @@ flutter_launcher_name:
 flutter_icons:
   ios: true
   android: true
-  image_path_ios: "assets/launcher/icon.png"
-  image_path_android: "assets/launcher/icon.png"
+  image_path_ios: "assets/launcher/bkapp-icon.png"
+  image_path_android: "assets/launcher/bkapp-icon.png"
   adaptive_icon_background: "assets/launcher/splash.png"
   adaptive_icon_foreground: "assets/launcher/splash.png"
