@@ -95,9 +95,9 @@ flutter run --dart-define=SOME_VAR=SOME_VALUE
 
 ### Icons and name
 
-```
-flutter packages pub run flutter_launcher_icons:main
-flutter pub run flutter_launcher_name:main
+```sh
+flutter packages pub run flutter_launcher_icons:main # Regenerate icons
+flutter pub run flutter_launcher_name:main # Change name of app
 ```
 
 ### e2e
