@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bkapp_flutter/core/services/api/responses.dart';
+import 'package:bkapp_flutter/environment_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/widgets.dart';
 
@@ -10,7 +11,12 @@ import 'package:alice/core/alice_http_extensions.dart';
 
 import 'custom_exceptions.dart';
 
-Alice alice = Alice(showNotification: true, navigatorKey: navigationKey);
+Alice alice = Alice(
+    showNotification:
+        EnvironmentConfig.ENV == 'QA' || EnvironmentConfig.ENV == 'DEV'
+            ? true
+            : false,
+    navigatorKey: navigationKey);
 
 GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
