@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/confirmInvitationBank/widgets/confirm_invitation_bank_container_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_next_widget.dart';
-import 'package:flutter/material.dart';
 
 class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
   final ConfirmInvitationBankStepArgs data;
@@ -44,12 +46,25 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
                       vertical: SizeConfig.safeBlockVertical * 5),
                   child: ButtonNextWidget(
                       key: Key('btn-rigth-confirm-invitation-bank'),
-                      onTap: () => {
-                            if (data.isInivted)
-                              {Navigator.pushNamed(context, loginRoute)}
-                            else
-                              {Navigator.pushNamed(context, selectAddressRoute)}
-                          })))
+                      onTap: () {
+                        if (data.isInivted) {
+                          _clearInputs(context);
+                          Navigator.pushNamed(context, loginRoute);
+                        } else {
+                          Navigator.pushNamed(context, selectAddressRoute);
+                        }
+                      }
+                  )
+              )
+          )
         ]);
+  }
+
+  void _clearInputs(BuildContext context) {
+    context.bloc<AppBloc>().profileRegisterBloc.nameBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.emailBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.password.clear();
+    context.bloc<AppBloc>().profileRegisterBloc.passwordConfirm.clear();
   }
 }
