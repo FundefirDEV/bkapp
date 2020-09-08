@@ -54,5 +54,5 @@ void main() async {
     delay(time: 5);
 
     expect(true, true);
-  }, timeout: Timeout(Duration(seconds: 60)));
+  }, timeout: Timeout(Duration(seconds: 70)));
 }

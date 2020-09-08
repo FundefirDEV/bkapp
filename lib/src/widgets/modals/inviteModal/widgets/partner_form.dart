@@ -50,6 +50,7 @@ class _PartnerFormState extends State<PartnerForm> {
                     TextFieldBlocBuilder(
                         key: Key('input_name_invite_modal'),
                         textFieldBloc: widget.inviteBloc.name,
+                        onTap: () => _isEmpty(widget.inviteBloc),
                         onChanged: (value) => _isEmpty(widget.inviteBloc),
                         errorBuilder: (context, string) =>
                             I18n.of(context).errorRequired,
@@ -59,6 +60,7 @@ class _PartnerFormState extends State<PartnerForm> {
                     TextFieldBlocBuilder(
                         key: Key('input_phone_invite_modal'),
                         textFieldBloc: widget.inviteBloc.cellPhone,
+                        onTap: () => _isEmpty(widget.inviteBloc),
                         onChanged: (value) => _isEmpty(widget.inviteBloc),
                         keyboardType: TextInputType.number,
                         inputFormatters: [

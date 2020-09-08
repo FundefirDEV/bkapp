@@ -120,6 +120,7 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
                           ],
                           if (widget.showButton) ...[
                             ButtonLineRoundedWidget(
+                              key: Key('add-partner-button'),
                               color: widget.colorButton,
                               onPressed: () => showDialog(
                                 context: context,
