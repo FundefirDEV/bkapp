@@ -100,7 +100,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             tokenUser: widget.tokenUser,
                             userName: widget.userName), // NOTE 0
                         UtilsScreen(userName: widget.userName),
-                        ProfileScreen(),
+                        ProfileScreen(tokenUser: widget.tokenUser),
                         CreditScreen(
                             oldIndex: currentIndex,
                             tokenUser: widget.tokenUser,
@@ -127,9 +127,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             tokenUser: widget.tokenUser,
                             role: widget.role), // NOTE 10
                         ActiveCreditScreen(
-                          oldIndex: currentIndex,
-                          userName: widget.userName
-                        ),
+                            oldIndex: currentIndex, userName: widget.userName),
                         AddPartnerScreen(
                             oldIndex: currentIndex,
                             userName: widget.userName,

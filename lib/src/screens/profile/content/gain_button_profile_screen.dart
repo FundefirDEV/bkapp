@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class GainButtonProfileScreen {
-  Container gainContainerButton(context) {
+  Container gainContainerButton(context, ProfileModel data) {
     return Container(
       key: Key('Container_gain_button_profile_screen'),
       height: SizeConfig.blockSizeVertical * 10,
@@ -32,7 +33,7 @@ class GainButtonProfileScreen {
                 child: RichText(
                     textAlign: TextAlign.left,
                     text: TextSpan(
-                        text: '\$' + '1.000.000' + '\n',
+                        text: data.earnings + '\n',
                         style: TextStyle(
                           fontSize: 21,
                           fontWeight: FontWeight.w400,

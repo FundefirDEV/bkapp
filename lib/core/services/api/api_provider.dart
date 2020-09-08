@@ -191,4 +191,10 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: getPartnersUrl, token: token);
   }
+
+  Future<Map<String, dynamic>> getProfile(String token) async {
+    final getPartnersUrl = ApiEndpoints.getProfile();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
+  }
 }

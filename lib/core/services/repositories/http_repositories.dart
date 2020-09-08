@@ -50,3 +50,6 @@ final MyBankRepository myBankRepository =
 
 final LocationRepository locationRepository =
     LocationRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final ProfileRepository profileRepository =
+    ProfileRepository(apiProvider: ApiProvider(httpClient: httpClient));

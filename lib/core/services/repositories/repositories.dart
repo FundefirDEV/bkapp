@@ -10,3 +10,4 @@ export 'repositoriesFolder/profile_register_repository.dart';
 export 'repositoriesFolder/shares_repository.dart';
 export 'repositoriesFolder/administrator_repository.dart';
 export 'repositoriesFolder/location_repository.dart';
+export 'repositoriesFolder/profile_repository.dart';

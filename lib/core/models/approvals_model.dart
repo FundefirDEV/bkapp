@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final approvalsModel = approvalsModelFromJson(jsonString);
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
@@ -61,6 +58,7 @@ class ApprovalsModel {
         "myRequest": myRequest.toJson(),
       };
 }
+
 class Request {
   Request({
     this.id,
@@ -93,6 +91,7 @@ class Request {
         "quantity": quantity,
       };
 }
+
 class MyRequest {
   MyRequest({
     this.sharesRequest,

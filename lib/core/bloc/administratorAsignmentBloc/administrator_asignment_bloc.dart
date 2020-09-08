@@ -23,8 +23,10 @@ class AdministratorAsignmentBloc
       try {
         final response = await repository.getPartners(event.token);
         List<dynamic> administratorModel = administratorModelFromJson(response);
+        List<dynamic> administratorModelActive =
+            administratorModel.where((p) => p.isActive == true).toList();
         yield AdministratorAsignmentLoaded(
-            partner: response, administratorModel: administratorModel);
+            partner: response, administratorModel: administratorModelActive);
       } catch (e) {
         print(e);
         yield AdministratorAsignmentFailure();

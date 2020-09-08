@@ -1312,9 +1312,9 @@ class _I18n_es_ES extends I18n {
   /// "Valor por acción"
   @override
   String get rulesScreenSharesValue => "Valor por acción";
-  /// "Reserva de gatos"
+  /// "Reserva de gastos"
   @override
-  String get rulesScreenExpenseReserve => "Reserva de gatos";
+  String get rulesScreenExpenseReserve => "Reserva de gastos";
   /// "Fondo incobrable"
   @override
   String get rulesScreenIncobrableFund => "Fondo incobrable";

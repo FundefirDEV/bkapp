@@ -1,12 +1,11 @@
-
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
-
-class IdentificationContainer{
-  Container identificationContainer(context) {
+class IdentificationContainer {
+  Container identificationContainer(context, ProfileModel data) {
     return Container(
       key: Key('Identification_container_profile_screen'),
       margin: EdgeInsets.only(top: 10),
@@ -18,7 +17,7 @@ class IdentificationContainer{
                   fontSize: 12),
               children: <TextSpan>[
             TextSpan(
-                text: '1039102910', // cedula variable
+                text: data.documentNumber, // cedula variable
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))
@@ -27,7 +26,7 @@ class IdentificationContainer{
     );
   }
 
-  Container birthDateContainer(context) {
+  Container birthDateContainer(context, ProfileModel data) {
     return Container(
       key: Key('BirthDate_container_profile_screen'),
       margin: EdgeInsets.only(top: 10),
@@ -40,7 +39,7 @@ class IdentificationContainer{
                   fontSize: 12),
               children: <TextSpan>[
             TextSpan(
-                text: '1996 / 12 / 10', // fecha nacimiento variable
+                text: data.birthDate, // fecha nacimiento variable
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))

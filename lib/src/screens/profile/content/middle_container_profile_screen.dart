@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/src/screens/profile/content/identification_container.dart';
 import 'package:bkapp_flutter/src/screens/profile/content/scholarshipContainer.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -7,9 +8,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class MiddleContainerProfileScreen {
-  ScholarshipContainer scholarContainer = ScholarshipContainer();
   IdentificationContainer identificationContainer = IdentificationContainer();
-  Row middleContainers(context) {
+  Row middleContainers(context, ProfileModel data) {
     return Row(
       key: Key('Row_middle_containers_profile_screen'),
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,12 +43,12 @@ class MiddleContainerProfileScreen {
                 child: SvgPicture.asset('assets/images/user_icon_profile.svg'),
                 alignment: Alignment(-0.8, -1.0),
               ),
-              identificationContainer.identificationContainer(context),
-              identificationContainer.birthDateContainer(context),
+              identificationContainer.identificationContainer(context, data),
+              identificationContainer.birthDateContainer(context, data),
             ],
           ),
         ),
-        scholarContainer,
+        ScholarshipContainer(data: data),
       ],
     );
   }

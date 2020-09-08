@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,8 +7,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class ScholarshipContainer extends StatelessWidget {
-  const ScholarshipContainer({Key key}) : super(key: key);
-
+  const ScholarshipContainer({Key key, this.data}) : super(key: key);
+  final ProfileModel data;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -33,12 +34,12 @@ class ScholarshipContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: scholarshipColumn(context),
+      child: scholarshipColumn(context, data),
     );
   }
 }
 
-Column scholarshipColumn(context) {
+Column scholarshipColumn(context, ProfileModel data) {
   return Column(
     children: <Widget>[
       SizedBox(height: SizeConfig.blockSizeVertical * 2),
@@ -59,7 +60,7 @@ Column scholarshipColumn(context) {
                     fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Profesional',
+                      text: data.scholarship,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.grayColor[200],
                           fontSize: 12))
@@ -78,7 +79,7 @@ Column scholarshipColumn(context) {
                     fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Abogado',
+                      text: data.profession,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.grayColor[200],
                           fontSize: 12))
