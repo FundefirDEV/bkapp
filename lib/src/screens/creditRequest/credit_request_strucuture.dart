@@ -31,7 +31,7 @@ class CreditRequestStructure extends StatelessWidget {
       builder: (context) {
         // ignore: close_sinks
         CreditFormBloc creditFormBloc = context.bloc<CreditFormBloc>();
-        return FormBlocListener<CreditFormBloc, String, String>(
+        return FormBlocListener<CreditFormBloc, dynamic, dynamic>(
           key: Key('bloc-listener-buy-share-screen'),
           onSubmitting: (context, state) {
             print('Loading');

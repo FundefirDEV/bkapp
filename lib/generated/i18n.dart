@@ -610,12 +610,20 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedQuestionMeetingClosed2 => "close the meeting?";
   /// "Profit payment"
   String get profitPaymentTitle => "Profit payment";
-  /// "Profit history"
-  String get profitPaymentHistory => "Profit history";
+  /// "Profit "
+  String get profitPaymentHistory => "Profit ";
+  /// "history"
+  String get profitPaymentProfits => "history";
   /// "Select partner"
   String get profitPaymentSelectPartner => "Select partner";
   /// "Profit Retained"
   String get profitPaymentProfitRetained => "Profit Retained";
+  /// "pending receivable"
+  String get profitPaymentPendingReceivable => "pending receivable";
+  /// "Convert to actions"
+  String get profitPaymentConvertToActions => "Convert to actions";
+  /// "Pay"
+  String get profitPaymentPay => "Pay";
 }
 
 class _I18n_en_US extends I18n {
@@ -1471,15 +1479,27 @@ class _I18n_es_ES extends I18n {
   /// "Pago de ganancias"
   @override
   String get profitPaymentTitle => "Pago de ganancias";
-  /// "Historico de ganancias"
+  /// "Histórico de "
   @override
-  String get profitPaymentHistory => "Historico de ganancias";
+  String get profitPaymentHistory => "Histórico de ";
+  /// "ganancias"
+  @override
+  String get profitPaymentProfits => "ganancias";
   /// "Selecciona un socio"
   @override
   String get profitPaymentSelectPartner => "Selecciona un socio";
   /// "Ganancias acumuladas"
   @override
   String get profitPaymentProfitRetained => "Ganancias acumuladas";
+  /// "pendientes por cobrar"
+  @override
+  String get profitPaymentPendingReceivable => "pendientes por cobrar";
+  /// "Convertir en acciones"
+  @override
+  String get profitPaymentConvertToActions => "Convertir en acciones";
+  /// "Pagar"
+  @override
+  String get profitPaymentPay => "Pagar";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

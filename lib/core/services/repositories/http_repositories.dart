@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/meeting_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profit_payment_repository.dart';
 import 'package:http/http.dart' as http;
 
 import 'repositories.dart';
@@ -53,3 +54,5 @@ final LocationRepository locationRepository =
 
 final ProfileRepository profileRepository =
     ProfileRepository(apiProvider: ApiProvider(httpClient: httpClient));
+final ProfitPaymentRepository profitPaymentRepository =
+    ProfitPaymentRepository(apiProvider: ApiProvider(httpClient: httpClient));

@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/credit_request_screen.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/widgets/widgets.dart';
@@ -14,7 +13,9 @@ import 'package:mockito/mockito.dart';
 import '../../../base_tester.dart';
 
 class ApprovalsRepoMock extends Mock implements ApprovalsRepository {}
+
 class CreditRepoMock extends Mock implements CreditRepository {}
+
 class MyBankRepoMock extends Mock implements MyBankRepository {}
 
 void main() {
@@ -35,8 +36,7 @@ void main() {
               create: (context) =>
                   CreditFormBloc(creditRepository: creditRepoMock)),
           BlocProvider(
-              create: (context) =>
-                  MyBankBloc(repository: myBankRepoMock))
+              create: (context) => MyBankBloc(repository: myBankRepoMock))
         ],
         child: CreditScreen(
             key: customKey,

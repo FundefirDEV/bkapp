@@ -21,3 +21,4 @@ export 'buySharesBloc/bloc/buy_shares_bloc.dart';
 export 'menuNavigatorBloc/menunavigator_bloc.dart';
 export 'meetingBloc/bloc/meeting_bloc.dart';
 export 'bankRulesbloc/bank_rules_bloc.dart';
+export 'profitPayment/bloc/profit_payment_bloc.dart';

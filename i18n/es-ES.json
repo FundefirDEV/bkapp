@@ -371,8 +371,12 @@
   },
   "profitPayment": {
     "title": "Pago de ganancias",
-    "history": "Historico de ganancias",
+    "history": "Histórico de ",
+    "profits": "ganancias",
     "selectPartner": "Selecciona un socio",
-    "profitRetained": "Ganancias acumuladas"
+    "profitRetained": "Ganancias acumuladas",
+    "pendingReceivable": "pendientes por cobrar",
+    "convertToActions": "Convertir en acciones",
+    "pay": "Pagar"
   }
 }

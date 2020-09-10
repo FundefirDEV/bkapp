@@ -14,3 +14,5 @@ export 'modals/bottomModal/bottom_modal.dart';
 export 'modals/ImageBottomModal/Image_bottom_modal.dart';
 export 'textGreeting/text_greeting_widget.dart';
 export 'titleHeader/title_header_widget.dart';
+export 'accordion/accordion.dart';
+export 'errorPage/error_page.dart';

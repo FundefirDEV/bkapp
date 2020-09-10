@@ -381,8 +381,12 @@
   },
   "profitPayment": {
     "title": "Profit payment",
-    "history": "Profit history",
+    "history": "Profit ",
+    "profits": "history",
     "selectPartner": "Select partner",
-    "profitRetained": "Profit Retained"
+    "profitRetained": "Profit Retained",
+    "pendingReceivable": "pending receivable",
+    "convertToActions": "Convert to actions",
+    "pay": "Pay"
   }
 }

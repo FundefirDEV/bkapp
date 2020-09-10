@@ -90,6 +90,7 @@ void setOrientation(context) {
   }
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({this.localeDefault});
   Locale localeDefault;
