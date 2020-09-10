@@ -15,37 +15,30 @@ class RegisterNameFormWidget extends StatelessWidget {
     //ignore: close_sinks
     final profileRegisterBloc = context.bloc<AppBloc>().profileRegisterBloc;
 
-    return Material(
-      type: MaterialType.transparency,
-      child: Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockVertical * 6),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                TextFieldBlocBuilder(
-                    textFieldBloc: profileRegisterBloc.nameBloc.firstName,
-                    key: Key('input-register-first-name'),
-                    onTap: () => isDiabled(profileRegisterBloc.nameBloc),
-                    onChanged: (value) =>
-                        isDiabled(profileRegisterBloc.nameBloc),
-                    errorBuilder: errorHandler,
-                    decoration: InputDecoration(
-                        labelText: I18n.of(context).formFirstName,
-                        prefixIcon: Icon(Icons.person))),
-                TextFieldBlocBuilder(
-                    textFieldBloc: profileRegisterBloc.nameBloc.secondName,
-                    key: Key('input-register-second-name'),
-                    onTap: () => isDiabled(profileRegisterBloc.nameBloc),
-                    onChanged: (value) =>
-                        isDiabled(profileRegisterBloc.nameBloc),
-                    errorBuilder: errorHandler,
-                    decoration: InputDecoration(
-                        labelText: I18n.of(context).formSecondName,
-                        prefixIcon: Icon(Icons.person))),
-              ],
-            ),
-          )),
-    );
+    return Container(
+        padding:
+            EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockVertical * 6),
+        child: Column(
+          children: <Widget>[
+            TextFieldBlocBuilder(
+                textFieldBloc: profileRegisterBloc.nameBloc.firstName,
+                key: Key('input-register-first-name'),
+                onTap: () => isDiabled(profileRegisterBloc.nameBloc),
+                onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
+                errorBuilder: errorHandler,
+                decoration: InputDecoration(
+                    labelText: I18n.of(context).formFirstName,
+                    prefixIcon: Icon(Icons.person))),
+            TextFieldBlocBuilder(
+                textFieldBloc: profileRegisterBloc.nameBloc.secondName,
+                key: Key('input-register-second-name'),
+                onTap: () => isDiabled(profileRegisterBloc.nameBloc),
+                onChanged: (value) => isDiabled(profileRegisterBloc.nameBloc),
+                errorBuilder: errorHandler,
+                decoration: InputDecoration(
+                    labelText: I18n.of(context).formSecondName,
+                    prefixIcon: Icon(Icons.person))),
+          ],
+        ));
   }
 }

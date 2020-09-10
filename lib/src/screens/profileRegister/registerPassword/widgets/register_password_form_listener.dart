@@ -41,18 +41,11 @@ class _RegisterPasswordFormListenerWidgetState
         key: Key('column-register-password'),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(
-              flex: 2,
-              child: Container(
-                margin: EdgeInsets.only(top: 60),
-                child: SingleChildScrollView(
-                  child: RegisterPasswordContainerWidget(
-                      tag: widget.data.tag,
-                      image: widget.data.image,
-                      isValidating: _isValidating,
-                      validateSecondPassword: _validateSecondPassword),
-                ),
-              )),
+          RegisterPasswordContainerWidget(
+              tag: widget.data.tag,
+              image: widget.data.image,
+              isValidating: _isValidating,
+              validateSecondPassword: _validateSecondPassword),
           FooterStepWidget(
               currentStep: 5,
               numberOfSteps: 5,

@@ -20,34 +20,30 @@ class RegisterPasswordFormWidget extends StatelessWidget {
     //ignore: close_sinks
     final profilePassword = context.bloc<AppBloc>().profileRegisterBloc;
 
-    return Material(
-      child: Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockVertical * 6),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                TextFieldBlocBuilder(
-                    key: Key('input-register-password'),
-                    textFieldBloc: profilePassword.password,
-                    suffixButton: SuffixButton.obscureText,
-                    errorBuilder: errorHandler,
-                    onChanged: (value) => isValidating(value),
-                    decoration: InputDecoration(
-                        labelText: I18n.of(context).formPassword,
-                        prefixIcon: Icon(Icons.person))),
-                TextFieldBlocBuilder(
-                    key: Key('input-register-password-confirmation'),
-                    textFieldBloc: profilePassword.passwordConfirm,
-                    suffixButton: SuffixButton.obscureText,
-                    errorBuilder: errorHandler,
-                    onChanged: (value) => validateSecondPassword(value),
-                    decoration: InputDecoration(
-                        labelText: I18n.of(context).formConfirmPassword,
-                        prefixIcon: Icon(Icons.person))),
-              ],
-            ),
-          )),
-    );
+    return Container(
+        padding:
+            EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockVertical * 6),
+        child: Column(
+          children: <Widget>[
+            TextFieldBlocBuilder(
+                key: Key('input-register-password'),
+                textFieldBloc: profilePassword.password,
+                suffixButton: SuffixButton.obscureText,
+                errorBuilder: errorHandler,
+                onChanged: (value) => isValidating(value),
+                decoration: InputDecoration(
+                    labelText: I18n.of(context).formPassword,
+                    prefixIcon: Icon(Icons.person))),
+            TextFieldBlocBuilder(
+                key: Key('input-register-password-confirmation'),
+                textFieldBloc: profilePassword.passwordConfirm,
+                suffixButton: SuffixButton.obscureText,
+                errorBuilder: errorHandler,
+                onChanged: (value) => validateSecondPassword(value),
+                decoration: InputDecoration(
+                    labelText: I18n.of(context).formConfirmPassword,
+                    prefixIcon: Icon(Icons.person))),
+          ],
+        ));
   }
 }

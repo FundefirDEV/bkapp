@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/profileRegister/registerEmail/widgets/register_email_form_listener_widget.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
@@ -21,9 +22,20 @@ class _RegisterEmailStepScreenState extends State<RegisterEmailStepScreen> {
         create: (context) =>
             context.bloc<AppBloc>().profileRegisterBloc.emailBloc,
         child: Builder(builder: (context) {
-          return Material(
-              child: SafeArea(
-                  child: RegisterEmailFormListenerWidget(data: widget.data)));
+          return Scaffold(
+            body: SafeArea(
+                child: Container(
+              child: Column(
+                children: [
+                  ButtonBackWidget(),
+                  Expanded(
+                      child: SingleChildScrollView(
+                          child: RegisterEmailFormListenerWidget(
+                              data: widget.data))),
+                ],
+              ),
+            )),
+          );
         }));
   }
 }

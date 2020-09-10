@@ -26,40 +26,28 @@ class _RegisterNameFormListenerWidgetState
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Column(
-      children: <Widget>[
-        ButtonBackWidget(),
-        HeaderContent(
-          width: SizeConfig.safeBlockHorizontal * 60,
-          paddingTop: 20,
-          firstText: I18n.of(context).registerNameTitle,
-          firstFontWeight: FontWeight.w300,
-        ),
-        Expanded(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-              Expanded(
-                  flex: 2,
-                  child: SingleChildScrollView(
-                    child: RegisterNameContainerWidget(
-                      tag: widget.data.tag,
-                      image: widget.data.image,
-                      isDiabled: _isValidating,
-                    ),
-                  )),
-              FooterStepWidget(
-                  currentStep: 1,
-                  numberOfSteps: 5,
-                  isDisabled: isDisabled,
-                  currentBlocSubmit: () {
-                    Navigator.pushNamed(context, registerEmailUser,
-                        arguments: RegisterEmailStepArgs(
-                            widget.data.tag, widget.data.image));
-                  })
-            ]))
-      ],
-    );
+    return Column(children: [
+      HeaderContent(
+        width: SizeConfig.safeBlockHorizontal * 60,
+        paddingTop: 10,
+        firstText: I18n.of(context).registerNameTitle,
+        firstFontWeight: FontWeight.w300,
+      ),
+      RegisterNameContainerWidget(
+        tag: widget.data.tag,
+        image: widget.data.image,
+        isDiabled: _isValidating,
+      ),
+      FooterStepWidget(
+          currentStep: 1,
+          numberOfSteps: 5,
+          isDisabled: isDisabled,
+          currentBlocSubmit: () {
+            Navigator.pushNamed(context, registerEmailUser,
+                arguments:
+                    RegisterEmailStepArgs(widget.data.tag, widget.data.image));
+          })
+    ]);
   }
 
   _isValidating(ProfileNameBloc nameBloc) {

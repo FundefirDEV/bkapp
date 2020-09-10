@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_form_listener_widget.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -21,9 +22,17 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> {
       create: (context) =>
           context.bloc<AppBloc>().profileRegisterBloc.phoneBloc,
       child: Builder(builder: (context) {
-        return Material(
-          child: SafeArea(
-              child: RegisterPhoneFormListenerWidget(data: widget.data)),
+        return Scaffold(
+          body: SafeArea(
+              child: Column(
+            children: [
+              ButtonBackWidget(),
+              Expanded(
+                  child: SingleChildScrollView(
+                      child:
+                          RegisterPhoneFormListenerWidget(data: widget.data))),
+            ],
+          )),
         );
       }),
     );

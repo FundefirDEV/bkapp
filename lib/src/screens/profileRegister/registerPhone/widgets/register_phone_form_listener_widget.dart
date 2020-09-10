@@ -37,19 +37,13 @@ class _RegistePhoneFormListenerWidgetState
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          ButtonBackWidget(),
-          Expanded(
-            flex: 2,
-            child: SingleChildScrollView(
-              child: RegisterPhoneContainerWidget(
-                key: Key('register-phone-container'),
-                tag: widget.data.tag,
-                image: widget.data.image,
-                country: country,
-                isValidating: _isValidating,
-                openModalCountry: () => showDialog(context),
-              ),
-            ),
+          RegisterPhoneContainerWidget(
+            key: Key('register-phone-container'),
+            tag: widget.data.tag,
+            image: widget.data.image,
+            country: country,
+            isValidating: _isValidating,
+            openModalCountry: () => showDialog(context),
           ),
           FooterStepWidget(
               currentStep: 3,

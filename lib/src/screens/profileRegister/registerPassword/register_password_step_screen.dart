@@ -22,22 +22,20 @@ class _RegisterPasswordStepScreenState
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return BlocProvider(
-      create: (context) => context.bloc<AppBloc>().profileRegisterBloc,
-      child: Builder(builder: (context) {
-        return Material(
-            child: SafeArea(
-                child: Stack(
-          children: <Widget>[
-            RegisterPasswordFormListenerWidget(data: widget.data),
+        create: (context) => context.bloc<AppBloc>().profileRegisterBloc,
+        child: Builder(builder: (context) {
+          return Scaffold(
+              body: SafeArea(
+                  child: Stack(children: [
+            SingleChildScrollView(
+                child: RegisterPasswordFormListenerWidget(data: widget.data)),
             MenuRequests(
                 position: position,
                 onDragEnd: (details) {
                   setState(() => position = details.offset);
                 })
-          ],
-        )));
-      }),
-    );
+          ])));
+        }));
   }
 }
 

@@ -14,19 +14,17 @@ class RegisterEmailFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //ignore: close_sinks
     final profile = context.bloc<AppBloc>().profileRegisterBloc;
-    return Material(
-      child: Container(
-          padding: EdgeInsets.symmetric(
-              vertical: SizeConfig.safeBlockVertical * 5,
-              horizontal: SizeConfig.safeBlockHorizontal * 6),
-          child: TextFieldBlocBuilder(
-              key: Key('text-field-email-profile-register'),
-              textFieldBloc: profile.emailBloc.email,
-              errorBuilder: errorHandler,
-              onTap: () => isValidating(profile.emailBloc),
-              onChanged: (value) => isValidating(profile.emailBloc),
-              decoration:
-                  InputDecoration(labelText: I18n.of(context).formEmail))),
-    );
+    return Container(
+        padding: EdgeInsets.symmetric(
+            vertical: SizeConfig.safeBlockVertical * 5,
+            horizontal: SizeConfig.safeBlockHorizontal * 6),
+        child: TextFieldBlocBuilder(
+            key: Key('text-field-email-profile-register'),
+            textFieldBloc: profile.emailBloc.email,
+            errorBuilder: errorHandler,
+            onTap: () => isValidating(profile.emailBloc),
+            onChanged: (value) => isValidating(profile.emailBloc),
+            decoration:
+                InputDecoration(labelText: I18n.of(context).formEmail)));
   }
 }

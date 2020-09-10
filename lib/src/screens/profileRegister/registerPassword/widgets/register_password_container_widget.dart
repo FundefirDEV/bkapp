@@ -8,13 +8,13 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_svg/svg.dart';
 
 class RegisterPasswordContainerWidget extends StatelessWidget {
-  const RegisterPasswordContainerWidget({
-    Key key,
-    this.tag,
-    this.image,
-    this.isValidating,
-    this.validateSecondPassword
-  }) : super(key: key);
+  const RegisterPasswordContainerWidget(
+      {Key key,
+      this.tag,
+      this.image,
+      this.isValidating,
+      this.validateSecondPassword})
+      : super(key: key);
 
   final String tag;
   final String image;
@@ -27,11 +27,10 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
       children: <Widget>[
         _headerContainer(context),
         Container(
-          child: RegisterPasswordFormWidget(
-            isValidating: isValidating,
-            validateSecondPassword: validateSecondPassword,
-          )
-        )
+            child: RegisterPasswordFormWidget(
+          isValidating: isValidating,
+          validateSecondPassword: validateSecondPassword,
+        ))
       ],
     );
   }
@@ -42,6 +41,7 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
         children: <Widget>[
           Container(
               alignment: Alignment.topRight,
+              margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4),
               padding: EdgeInsets.symmetric(
                   horizontal: SizeConfig.safeBlockHorizontal * 5,
                   vertical: SizeConfig.safeBlockVertical * 2),
