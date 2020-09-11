@@ -73,10 +73,12 @@ class CreditRequestStructure extends StatelessWidget {
                             fontWeight: FontWeight.w100)),
                   ),
                   SelectedPayInstallmentsWidget(
+                    key: Key('select-type-of-payment'),
                     onTabSelected: (item) =>
                         creditFormBloc.paymentMethods.updateValue(item),
                     items: [
                       CardSelected(
+                        
                         key: Key('selected-card-pay-advanced'),
                         text: I18n.of(context).creditScreenAdvances,
                         img: 'assets/images/money_tiket.svg',

@@ -6,7 +6,6 @@ import 'package:bkapp_flutter/src/screens/profileRegister/registerName/widgets/r
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/header_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../register_name_step_screen.dart';

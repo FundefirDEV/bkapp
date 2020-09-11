@@ -31,7 +31,7 @@ void main() async {
     final name = "BRTX ${mockName()} $three";
     final namePerson = Utils.getNameByGender(gender);
     final secondName = mockName('male');
-    final email = 'brtx_${namePerson.toLowerCase()}_$one@gmail.com';
+    final email = 'brtx_${namePerson.toLowerCase()}_$one-$three@gmail.com';
     final quantityShareRequested = '10';
     final amountCreditRequested = '50000';
     final installmentCreditRequested = '3';
@@ -50,9 +50,23 @@ void main() async {
     delay();
     await createCreditRequest(
         driver, amountCreditRequested, installmentCreditRequested);
+    await goToApprovals(driver);
+
+    await acceptCreditRequest(driver);
+
+    await validateCashBalanceCard(driver);
+    delay(time: 2);
+
     await logoutProcess(driver);
-    delay(time: 5);
+    delay(time: 2);
 
     expect(true, true);
   }, timeout: Timeout(Duration(seconds: 70)));
+}
+
+Future validateCashBalanceCard(FlutterDriver driver) async {
+  expect(
+      await driver
+          .getText(findByKey('approval-card-cash-balance-bank-value')),
+      contains('50.000'));
 }

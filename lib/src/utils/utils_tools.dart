@@ -1,4 +1,5 @@
 import "dart:math" as math;
+import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -77,6 +78,10 @@ class CurrencyInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
+    if (EnvironmentConfig.ENV == 'DEV') {
+      // TODO: 🙏 Please add a ENV for Regressive Test
+      return newValue;
+    }
     if (newValue.selection.baseOffset == 0) {
       print(true);
       return newValue;
