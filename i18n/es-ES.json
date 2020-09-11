@@ -347,6 +347,20 @@
     "bottomText": "Podrás agregar o eliminar un socio en",
     "anyTime": "cualquier momento"
   },
+  "partnerRemoval": {
+    "title": "Retirar socio",
+    "modalRemoval": {
+      "title1": "¿Seguro que quires retirar",
+      "title2": "todas las ganancias?"
+    },
+    "removal": "RETIRAR",
+    "addShares": "Acciones a retirar",
+    "youHaveADebt": "Al parecer tienes una deuda pendiente",
+    "payDebt": "PAGAR DEUDA",
+    "profits": "GANANCIAS",
+    "shares": "ACCIONES",
+    "infoText": "Podrás retirar todas las gancias o solo las acciones que necesites"
+  },
   "deletePartnerModal": {
     "areYouSure": "¿Seguro que quieres",
     "deletePartner": "eliminar este socio?",

@@ -3,6 +3,7 @@ export 'login/splash_screen.dart';
 export 'login/login_indicator_screen.dart';
 export 'introRegister/intro_register_screen.dart';
 export 'menuNavigator/menu_navigator_screen.dart';
+export 'partnerRemoval/partner_removal_screen.dart';
 export 'profileRegister/confirmInvitationBank/confirm_invitation_bank_step_screen.dart';
 export 'profileRegister/gender_screen.dart';
 export 'profileRegister/registerEmail/register_email_step_screen.dart';

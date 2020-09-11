@@ -572,6 +572,26 @@ class I18n implements WidgetsLocalizations {
   String get addPartnerBottomText => "You can remove a partner";
   /// "at any time"
   String get addPartnerAnyTime => "at any time";
+  /// "Partner removal"
+  String get partnerRemovalTitle => "Partner removal";
+  /// "Are you sure to withdraw"
+  String get partnerRemovalModalRemovalTitle1 => "Are you sure to withdraw";
+  /// "the whole profits?"
+  String get partnerRemovalModalRemovalTitle2 => "the whole profits?";
+  /// "WITHDRAW"
+  String get partnerRemovalRemoval => "WITHDRAW";
+  /// "Acciones a retirar"
+  String get partnerRemovalAddShares => "Acciones a retirar";
+  /// "You have a pending debt"
+  String get partnerRemovalYouHaveADebt => "You have a pending debt";
+  /// "PAY DEBT"
+  String get partnerRemovalPayDebt => "PAY DEBT";
+  /// "PROFITS"
+  String get partnerRemovalProfits => "PROFITS";
+  /// "SHARES"
+  String get partnerRemovalShares => "SHARES";
+  /// "You could withdraw the whole profits or just the shares you want to"
+  String get partnerRemovalInfoText => "You could withdraw the whole profits or just the shares you want to";
   /// "Are sure you want to "
   String get deletePartnerModalAreYouSure => "Are sure you want to ";
   /// "delete this partner?"
@@ -1422,6 +1442,36 @@ class _I18n_es_ES extends I18n {
   /// "cualquier momento"
   @override
   String get addPartnerAnyTime => "cualquier momento";
+  /// "Retirar socio"
+  @override
+  String get partnerRemovalTitle => "Retirar socio";
+  /// "¿Seguro que quires retirar"
+  @override
+  String get partnerRemovalModalRemovalTitle1 => "¿Seguro que quires retirar";
+  /// "todas las ganancias?"
+  @override
+  String get partnerRemovalModalRemovalTitle2 => "todas las ganancias?";
+  /// "RETIRAR"
+  @override
+  String get partnerRemovalRemoval => "RETIRAR";
+  /// "Acciones a retirar"
+  @override
+  String get partnerRemovalAddShares => "Acciones a retirar";
+  /// "Al parecer tienes una deuda pendiente"
+  @override
+  String get partnerRemovalYouHaveADebt => "Al parecer tienes una deuda pendiente";
+  /// "PAGAR DEUDA"
+  @override
+  String get partnerRemovalPayDebt => "PAGAR DEUDA";
+  /// "GANANCIAS"
+  @override
+  String get partnerRemovalProfits => "GANANCIAS";
+  /// "ACCIONES"
+  @override
+  String get partnerRemovalShares => "ACCIONES";
+  /// "Podrás retirar todas las gancias o solo las acciones que necesites"
+  @override
+  String get partnerRemovalInfoText => "Podrás retirar todas las gancias o solo las acciones que necesites";
   /// "¿Seguro que quieres"
   @override
   String get deletePartnerModalAreYouSure => "¿Seguro que quieres";

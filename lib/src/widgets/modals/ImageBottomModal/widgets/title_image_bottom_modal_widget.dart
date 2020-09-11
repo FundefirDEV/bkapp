@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TitleImageBottomModalWidget extends StatelessWidget {
   const TitleImageBottomModalWidget(
@@ -17,7 +18,9 @@ class TitleImageBottomModalWidget extends StatelessWidget {
         text: isBold == true
             ? TextSpan(
                 text: title + '\n',
-                style: DefaultTextStyle.of(context).style,
+                style: TextStyle(
+                    fontSize: 17.0,
+                    color: Theme.of(context).colorScheme.grayColor),
                 children: <TextSpan>[
                   TextSpan(
                       text: titleBold,

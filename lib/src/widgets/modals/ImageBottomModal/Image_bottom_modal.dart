@@ -21,7 +21,8 @@ class ImageBottomModal extends StatelessWidget {
       this.isImageBg: false,
       this.onPressAccept,
       this.onPressCancel,
-      this.technicalData})
+      this.technicalData,
+      this.buttonsFontSize: 11.0})
       : super(key: key);
 
   final double modalHeight;
@@ -36,6 +37,7 @@ class ImageBottomModal extends StatelessWidget {
   final Function onPressAccept;
   final Function onPressCancel;
   final String technicalData;
+  final double buttonsFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +63,13 @@ class ImageBottomModal extends StatelessWidget {
                   ),
                   SvgPicture.asset(image),
                   ButtonImageBottonModalWidget(
-                      isBtnAcept: isBtnAccept,
-                      titleAcceptButton: titleAcceptButton,
-                      titleCloseButton: titleCloseButton,
-                      onPressAccept: onPressAccept,
-                      onPressCancel: onPressCancel),
+                    isBtnAcept: isBtnAccept,
+                    titleAcceptButton: titleAcceptButton,
+                    titleCloseButton: titleCloseButton,
+                    onPressAccept: onPressAccept,
+                    onPressCancel: onPressCancel,
+                    fontSize: buttonsFontSize,
+                  ),
                   Center(
                       child: Text(
                     buildTechnicalData(),

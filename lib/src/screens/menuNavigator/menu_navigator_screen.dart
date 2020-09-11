@@ -138,7 +138,11 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             tokenUser: widget.tokenUser),
                         ProfitPaymentScreen(
                             userName: widget.userName,
-                            tokenUser: widget.tokenUser) // NOTE 14
+                            tokenUser: widget.tokenUser), // NOTE 14
+                        PartnerRemovalScreen(
+                          oldIndex: currentIndex,
+                          userName: widget.userName,
+                        ),
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

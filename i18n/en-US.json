@@ -357,6 +357,20 @@
     "bottomText": "You can remove a partner",
     "anyTime": "at any time"
   },
+  "partnerRemoval": {
+    "title": "Partner removal",
+    "modalRemoval": {
+      "title1": "Are you sure to withdraw",
+      "title2": "the whole profits?"
+    },
+    "removal": "WITHDRAW",
+    "addShares": "Acciones a retirar",
+    "youHaveADebt": "You have a pending debt",
+    "payDebt": "PAY DEBT",
+    "profits": "PROFITS",
+    "shares": "SHARES",
+    "infoText": "You could withdraw the whole profits or just the shares you want to"
+  },
   "deletePartnerModal": {
     "areYouSure": "Are sure you want to ",
     "deletePartner": "delete this partner?",
