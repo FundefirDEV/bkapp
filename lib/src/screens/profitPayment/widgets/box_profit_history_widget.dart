@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/form_list_partner_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -6,11 +5,9 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class BoxProfitHistoyWidget extends StatelessWidget {
-  BoxProfitHistoyWidget(
-      {@required this.historyEarnings, @required this.profitPaymentFormBloc});
+  BoxProfitHistoyWidget({@required this.historyEarnings});
 
   final String historyEarnings;
-  final ProfitPaymentFormBloc profitPaymentFormBloc;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -27,32 +24,31 @@ class BoxProfitHistoyWidget extends StatelessWidget {
                       topRight: Radius.circular(10)),
                   color: Theme.of(context).colorScheme.primaryColor[100]),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    this.historyEarnings,
-                    style: TextStyle(
-                        fontFamily: 'nunito',
-                        color: Colors.white,
-                        fontSize: SizeConfig.blockSizeHorizontal * 6,
-                        fontWeight: FontWeight.w100,
-                        letterSpacing: 2),
-                  ),
-                  RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                              fontFamily: 'nunito',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w100),
-                          children: [
-                        TextSpan(text: I18n.of(context).profitPaymentHistory),
-                        TextSpan(
-                            text: I18n.of(context).profitPaymentProfits,
-                            style: TextStyle(fontWeight: FontWeight.bold))
-                      ])),
-                ],
-              )),
-          FormListPartnerWidget(profitPaymentFormBloc: profitPaymentFormBloc)
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      this.historyEarnings,
+                      style: TextStyle(
+                          fontFamily: 'nunito',
+                          color: Colors.white,
+                          fontSize: SizeConfig.blockSizeHorizontal * 6,
+                          fontWeight: FontWeight.w100,
+                          letterSpacing: 2),
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                                fontFamily: 'nunito',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w100),
+                            children: [
+                          TextSpan(text: I18n.of(context).profitPaymentHistory),
+                          TextSpan(
+                              text: I18n.of(context).profitPaymentProfits,
+                              style: TextStyle(fontWeight: FontWeight.bold))
+                        ]))
+                  ])),
+          FormListPartnerWidget()
         ]));
   }
 }

@@ -7,14 +7,14 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class FormListPartnerWidget extends StatelessWidget {
-  const FormListPartnerWidget({Key key, @required this.profitPaymentFormBloc})
-      : super(key: key);
-
-  final ProfitPaymentFormBloc profitPaymentFormBloc;
+  const FormListPartnerWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    // ignore: close_sinks
+    ProfitPaymentFormBloc profitPaymentFormBloc =
+        context.bloc<ProfitPaymentFormBloc>();
     return Container(
       width: SizeConfig.blockSizeHorizontal * 100,
       alignment: Alignment.center,

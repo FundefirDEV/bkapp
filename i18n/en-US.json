@@ -401,6 +401,13 @@
     "profitRetained": "Profit Retained",
     "pendingReceivable": "pending receivable",
     "convertToActions": "Convert to actions",
-    "pay": "Pay"
+    "pay": "Pay",
+    "paid": "PAID",
+    "shares": "SHARES",
+    "profitsModal": "PROFITS",
+    "convert": "CONVERT",
+    "close": "CLOSE",
+    "sharesToWithdraw": "Shares\nto withdraw",
+    "remainderOfMoney": "Remainder\nof money"
   }
 }

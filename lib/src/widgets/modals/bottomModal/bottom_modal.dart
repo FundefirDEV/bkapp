@@ -4,10 +4,8 @@ class BottomModal extends StatelessWidget {
   final Widget child;
   final double height;
   final double width;
-  final EdgeInsetsGeometry modalPadding;
 
-  const BottomModal(
-      {Key key, this.child, this.height, this.width, this.modalPadding})
+  const BottomModal({Key key, this.child, this.height, this.width})
       : super(key: key);
 
   @override
@@ -17,7 +15,6 @@ class BottomModal extends StatelessWidget {
         width: this.width,
         height: this.height,
         child: Container(
-          padding: modalPadding,
           decoration: BoxDecoration(
               color: Theme.of(context).canvasColor,
               borderRadius: BorderRadius.only(

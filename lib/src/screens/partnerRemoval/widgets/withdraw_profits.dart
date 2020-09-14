@@ -39,6 +39,7 @@ class WithdrawProfits extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   void _withDrawProfitsModal(context, onPress) {
     showModalBottomSheet(
         backgroundColor: Colors.transparent,
@@ -67,7 +68,6 @@ class WithdrawProfits extends StatelessWidget {
         builder: (_) {
           return BottomModal(
             height: 300.0,
-            modalPadding: EdgeInsets.only(top: 10.0, bottom: 13.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

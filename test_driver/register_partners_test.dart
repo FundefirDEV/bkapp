@@ -2,7 +2,6 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'package:mock_data/mock_data.dart';
 import 'utils/operations/commons.dart';
-import 'utils/operations/credit.dart';
 import 'utils/operations/share.dart';
 
 import 'helpers.dart';
@@ -136,29 +135,11 @@ void main() async {
       delay(time: 1);
       await _appovePartnerShareRequest(driver);
     }
-    //  expect(
-    //     await driver.getText(findByKey('approval-card-cash-balance-bank-value')),
-    //     //(partners.length +1) * 10000 * quantityShareRequested
-    //     contains('1.900.000'));
-    await logoutProcess(driver);
-
-    for (int i = 0; i < partners.length; i++) {
-      await loginProcess(driver,
-          username: partners[i]['email'], password: '123456');
-      await createCreditRequest(driver, '50000', '3');
-      await goToApprovals(driver);
-      delay(time: 2);
-      await logoutProcess(driver);
-    }
-    await loginProcess(driver, username: email, password: '123456');
-    await goToApprovals(driver);
-    for (int i = 0; i < partners.length; i++) {
-      delay(time: 2);
-
-      await acceptCreditRequest(driver);
-      delay(time: 2);
-    }
-    delay(time: 2);
+    expect(
+        await driver
+            .getText(findByKey('approval-card-cash-balance-bank-value')),
+        //(partners.length +1) * 10000 * quantityShareRequested
+        contains('1.900.000'));
     await logoutProcess(driver);
 
     expect(true, true);

@@ -391,6 +391,13 @@
     "profitRetained": "Ganancias acumuladas",
     "pendingReceivable": "pendientes por cobrar",
     "convertToActions": "Convertir en acciones",
-    "pay": "Pagar"
+    "pay": "Pagar",
+    "paid": "PAGADO",
+    "shares": "ACCIONES",
+    "profitsModal": "GANANCIAS",
+    "convert": "CONVERTIR",
+    "close": "CERRAR",
+    "sharesToWithdraw": "Acciones\na retirar",
+    "remainderOfMoney": "Remanente\nde dinero"
   }
 }

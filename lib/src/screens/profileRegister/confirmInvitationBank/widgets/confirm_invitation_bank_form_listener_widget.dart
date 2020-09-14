@@ -53,10 +53,7 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
                         } else {
                           Navigator.pushNamed(context, selectAddressRoute);
                         }
-                      }
-                  )
-              )
-          )
+                      })))
         ]);
   }
 

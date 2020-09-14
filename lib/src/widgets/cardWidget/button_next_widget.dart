@@ -16,32 +16,30 @@ class ButtonNextWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Hero(
       tag: 'bg-next-register',
-      child: Material(
-        child: InkWell(
-          key: Key('buttonNextStep'),
-          borderRadius: BorderRadius.circular(100),
-          onTap: this.onTap,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockVertical * 3,
-              vertical: SizeConfig.safeBlockVertical * 3),
+      child: Container(
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(colors: [
+              Theme.of(context).colorScheme.primaryColor[50],
+              Theme.of(context).colorScheme.primaryColor[100]
+            ], stops: [
+              0,
+              1
+            ], begin: Alignment(-1.00, 0.00), end: Alignment(1.00, -0.00))),
+        child: Material(
+          child: InkWell(
+            key: Key('buttonNextStep'),
+            borderRadius: BorderRadius.circular(100),
+            onTap: this.onTap,
             child: Container(
-              alignment: Alignment.center,
-              width: SizeConfig.safeBlockHorizontal * 20,
-              height: SizeConfig.safeBlockVertical * 20,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                      colors: [
-                        Theme.of(context).colorScheme.primaryColor[50],
-                        Theme.of(context).colorScheme.primaryColor[100]
-                      ],
-                      stops: [0, 1],
-                      begin: Alignment(-1.00, 0.00),
-                      end: Alignment(1.00, -0.00))),
-              child: SvgPicture.asset('assets/images/path.svg'),
-            ),
+                width: 85.0,
+                height: 85.0,
+                child: SvgPicture.asset(
+                  'assets/images/path.svg',
+                  fit: BoxFit.scaleDown,
+                )),
           ),
+          color: Colors.transparent,
         ),
       ),
     );

@@ -50,7 +50,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
       BuildContext context, ProfileRegisterBloc profile) {
     return Container(
       margin:
-          EdgeInsets.symmetric(vertical: SizeConfig.safeBlockHorizontal * 8),
+          EdgeInsets.symmetric(vertical: SizeConfig.safeBlockHorizontal * 2),
       child: Row(
         children: <Widget>[
           Container(

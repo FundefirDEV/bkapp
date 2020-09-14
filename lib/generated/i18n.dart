@@ -644,6 +644,20 @@ class I18n implements WidgetsLocalizations {
   String get profitPaymentConvertToActions => "Convert to actions";
   /// "Pay"
   String get profitPaymentPay => "Pay";
+  /// "PAID"
+  String get profitPaymentPaid => "PAID";
+  /// "SHARES"
+  String get profitPaymentShares => "SHARES";
+  /// "PROFITS"
+  String get profitPaymentProfitsModal => "PROFITS";
+  /// "CONVERT"
+  String get profitPaymentConvert => "CONVERT";
+  /// "CLOSE"
+  String get profitPaymentClose => "CLOSE";
+  /// "Shares\nto withdraw"
+  String get profitPaymentSharesToWithdraw => "Shares\nto withdraw";
+  /// "Remainder\nof money"
+  String get profitPaymentRemainderOfMoney => "Remainder\nof money";
 }
 
 class _I18n_en_US extends I18n {
@@ -1550,6 +1564,27 @@ class _I18n_es_ES extends I18n {
   /// "Pagar"
   @override
   String get profitPaymentPay => "Pagar";
+  /// "PAGADO"
+  @override
+  String get profitPaymentPaid => "PAGADO";
+  /// "ACCIONES"
+  @override
+  String get profitPaymentShares => "ACCIONES";
+  /// "GANANCIAS"
+  @override
+  String get profitPaymentProfitsModal => "GANANCIAS";
+  /// "CONVERTIR"
+  @override
+  String get profitPaymentConvert => "CONVERTIR";
+  /// "CERRAR"
+  @override
+  String get profitPaymentClose => "CERRAR";
+  /// "Acciones\na retirar"
+  @override
+  String get profitPaymentSharesToWithdraw => "Acciones\na retirar";
+  /// "Remanente\nde dinero"
+  @override
+  String get profitPaymentRemainderOfMoney => "Remanente\nde dinero";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

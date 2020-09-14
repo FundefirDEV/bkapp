@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -98,7 +99,8 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
                   fontSize: SizeConfig.blockSizeHorizontal * 4,
                   color: Theme.of(context).colorScheme.grayColor,
                   fontWeight: FontWeight.bold)),
-          Text(widget.profitDetail.earningsMonth ?? 'PAGADO')
+          Text(widget.profitDetail.earningsMonth ??
+              I18n.of(context).profitPaymentPaid)
         ]));
   }
 }
