@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +10,8 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 //NOTE HOW TO CALL IT:
 // showModalBottomSheet(context: context, builder: (BuildContext context) => PreApprovedCreditModal()),
 class PreApprovedCreditModal extends StatelessWidget {
-  PreApprovedCreditModal({
-    Key key,
-    @required this.navigateBloc,
-    @required this.tokenUser
-  }) : super(key: key);
+  PreApprovedCreditModal({Key key, @required this.tokenUser}) : super(key: key);
 
-  final MenuNavigatorBloc navigateBloc;
   final String tokenUser;
 
   @override
@@ -73,9 +67,10 @@ class PreApprovedCreditModal extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
             BlocProvider.of<ApprovalsBloc>(context)
-              .add(ApprovalsInitialize(token: tokenUser));
+                .add(ApprovalsInitialize(token: tokenUser));
           },
-          child: Text( I18n.of(context).actionTextClose,
+          child: Text(
+            I18n.of(context).actionTextClose,
             style: TextStyle(
               color: Theme.of(context).colorScheme.grayColor,
               fontSize: 11,
@@ -100,7 +95,8 @@ class PreApprovedCreditModal extends StatelessWidget {
             ),
             children: <TextSpan>[
               TextSpan(
-                  text: I18n.of(context).preApprovedCreditModalPreApproved + '\n',
+                  text:
+                      I18n.of(context).preApprovedCreditModalPreApproved + '\n',
                   style: TextStyle(
                     fontFamily: 'Nunito',
                     color: Colors.black,

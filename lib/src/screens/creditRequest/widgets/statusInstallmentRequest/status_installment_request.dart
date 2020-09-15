@@ -13,25 +13,25 @@ import 'package:bkapp_flutter/src/screens/creditRequest/widgets/textInfoRequestW
 import 'package:bkapp_flutter/src/screens/creditRequest/widgets/textInfoRequestWidgets/descriptionCreditRequest/text_image_credit_status_widget.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-class StatusCreditRequestWidget extends StatefulWidget {
-  StatusCreditRequestWidget(
-      {Key key, @required this.userName, this.myCreditRequest})
+class StatusInstallmentRequest extends StatefulWidget {
+  StatusInstallmentRequest(
+      {Key key, @required this.userName, this.myInstallmentRequest})
       : super(key: key);
 
   final String userName;
-  final Request myCreditRequest;
+  final Request myInstallmentRequest;
 
   @override
-  _StatusCreditRequestWidgetState createState() =>
-      _StatusCreditRequestWidgetState();
+  _StatusInstallmentRequestState createState() =>
+      _StatusInstallmentRequestState();
 }
 
-class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
+class _StatusInstallmentRequestState extends State<StatusInstallmentRequest> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
-    String dateExist = widget.myCreditRequest?.requestDate ?? '';
+    String dateExist = widget.myInstallmentRequest?.requestDate ?? '';
     DateTime date =
         dateExist != '' ? DateTime.parse(dateExist) : DateTime.now();
 
@@ -56,13 +56,16 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
             ),
           ),
           CardInformationBkWidget(
+            childBlueWidth: 130.0,
             childBlue: StatusTextCreditRequest(
-              installments: widget.myCreditRequest?.installments ?? '0',
+              bottomText: I18n.of(context).preApproveInstallmentFee,
+              installments: '1',
             ),
             childWhite: DescriptionCreditRequestWidget(
-                valueRequested: widget.myCreditRequest?.amount ?? '\$0',
+                valueRequested: widget.myInstallmentRequest?.amount ?? '\$0',
                 dateRequested:
-                    DateFormat("dd-MM-yyyy").format(date).toString()),
+                    DateFormat("dd / MMM / yyyy").format(date).toString(),
+                topText: I18n.of(context).preApproveInstallmentPaymentValue),
           ),
           TextImageCreditStatusWidget()
         ],

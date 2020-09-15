@@ -36,7 +36,11 @@ void main() {
               create: (context) =>
                   CreditFormBloc(creditRepository: creditRepoMock)),
           BlocProvider(
-              create: (context) => MyBankBloc(repository: myBankRepoMock))
+              create: (context) => MyBankBloc(repository: myBankRepoMock)),
+          BlocProvider(
+            create: (context) =>
+                InstallmentsPaymentBloc(creditRepository: creditRepoMock),
+          )
         ],
         child: CreditScreen(
             key: customKey,

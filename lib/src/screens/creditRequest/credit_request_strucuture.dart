@@ -135,7 +135,6 @@ class CreditRequestStructure extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 100,
               height: SizeConfig.blockSizeVertical * 45,
               child: PreApprovedCreditModal(
-                navigateBloc: menuNavigatorBloc,
                 tokenUser: tokenUser,
               ),
             ),

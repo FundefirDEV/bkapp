@@ -4,14 +4,16 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionCreditRequestWidget extends StatelessWidget {
-  const DescriptionCreditRequestWidget({
-    Key key,
-    @required this.valueRequested,
-    @required this.dateRequested
-  }) : super(key: key);
+  const DescriptionCreditRequestWidget(
+      {Key key,
+      @required this.valueRequested,
+      @required this.dateRequested,
+      this.topText})
+      : super(key: key);
 
   final String valueRequested;
   final String dateRequested;
+  final String topText;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    I18n.of(context).statusCreditValueRequested,
+                    topText != null
+                        ? topText
+                        : I18n.of(context).statusCreditValueRequested,
                     key: Key('description-credit-request-text-status-request'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor,
@@ -60,6 +64,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
               key: Key('description-credit-request-container-date'),
               alignment: Alignment.topLeft,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 key: Key('description-credit-request-column-date'),
                 children: <Widget>[
                   Text(
@@ -74,7 +79,7 @@ class DescriptionCreditRequestWidget extends StatelessWidget {
                     key: Key('description-credit-request-date'),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.grayColor[200],
-                        fontSize: SizeConfig.blockSizeHorizontal * 5,
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                         letterSpacing: 1),
                   ),
                 ],

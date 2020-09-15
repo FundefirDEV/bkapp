@@ -3,12 +3,10 @@ import 'package:bkapp_flutter/src/screens/activeCredit/widgets/fee_next_card_wid
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/carousel/carousel_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FeeCarrouselWidget extends StatelessWidget {
-  FeeCarrouselWidget({
-    Key key,
-    @required this.installments
-  }) : super(key: key);
+  FeeCarrouselWidget({Key key, @required this.installments}) : super(key: key);
 
   final List<ScheduleInstallment> installments;
 
@@ -20,13 +18,16 @@ class FeeCarrouselWidget extends StatelessWidget {
     return Carousel(
         viewportFraction: 0.6,
         heigthContainer: 180,
-        children: <Widget>[
-          for (var i = 0; i < installmentList.length; i++)
-            FeeNextCardWidget(
-              feeNumber: installmentList[i].numberInstallment.toString(),
-              paymentDate: '28 / 05 / 2020',
-              valueFee: installmentList[i].totalPayment
-            )
-        ]);
+        currentPage: installmentList.length >= 1 ? 1 : 0,
+        children: installmentList.map((item) {
+          DateTime date = item?.datePayment != ''
+              ? DateTime.parse(item?.datePayment)
+              : DateTime.now();
+
+          return FeeNextCardWidget(
+              feeNumber: item.numberInstallment.toString(),
+              paymentDate: DateFormat("MMM dd, yyyy").format(date).toString(),
+              valueFee: item.totalPayment);
+        }).toList());
   }
 }

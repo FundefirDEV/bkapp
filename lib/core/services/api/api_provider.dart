@@ -197,4 +197,14 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: getPartnersUrl, token: token);
   }
+
+  Future<Map<String, dynamic>> postInstallmentPayment(
+      String token, Map<String, dynamic> bodyRequest) async {
+    final postInvitePartner = ApiEndpoints.postCreditRequest();
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: postInvitePartner,
+        token: token,
+        body: bodyRequest);
+  }
 }

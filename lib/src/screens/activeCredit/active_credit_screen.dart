@@ -1,8 +1,10 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/index.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
@@ -13,12 +15,17 @@ import 'package:flutter/material.dart';
 
 class ActiveCreditScreen extends StatelessWidget {
   ActiveCreditScreen(
-      {Key key, @required this.oldIndex, @required this.userName, this.data})
+      {Key key,
+      @required this.oldIndex,
+      @required this.userName,
+      this.data,
+      @required this.token})
       : super(key: key);
 
   final int oldIndex;
   final String userName;
-  final List<ActiveCredit> data;
+  final ActiveCredit data;
+  final String token;
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +45,19 @@ class ActiveCreditScreen extends StatelessWidget {
             _subtitle(context),
             CardInformationBkWidget(
                 childBlueWidth: 120,
-                childBlue: FeeNumberWidget(
-                    installment: data[0].scheduleInstallment[0]),
+                childBlue:
+                    FeeNumberWidget(installment: data.scheduleInstallment[0]),
                 childWhite: FeeDetailWidget(
-                  installment: data[0].scheduleInstallment[0],
+                  installment: data.scheduleInstallment[0],
                 )),
             _buttonPayFee(context),
             LineSeparatorWidget(),
             _subtitleFeePending(context),
             FeeCarrouselWidget(
-              installments: data[0].scheduleInstallment,
+              installments: data.scheduleInstallment,
             ),
             DetailCreditWidget(
-              activeCredits: data[0],
+              activeCredits: data,
             )
           ],
         ));
@@ -68,11 +75,20 @@ class ActiveCreditScreen extends StatelessWidget {
   }
 
   Padding _buttonPayFee(BuildContext context) {
+    double totalPayment = double.parse(UtilsTools.removeMoneyFormatter(
+        data?.scheduleInstallment[0]?.totalPayment));
+
     return Padding(
       padding: const EdgeInsets.only(top: 35.0, bottom: 10.0),
       child: RaisedButton(
           key: Key('raisedButton-pay-fee'),
-          onPressed: () => {},
+          onPressed: () => BlocProvider.of<InstallmentsPaymentBloc>(context)
+                  .add(PayInstallment(token: token, installmentRequest: {
+                "typeRequest": "installmentPayment",
+                "idCredit": data?.id,
+                "idRequestPayment": data?.scheduleInstallment[0]?.id,
+                "amount": totalPayment
+              })),
           color: Theme.of(context).colorScheme.primaryColor,
           padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
           elevation: 0,

@@ -27,10 +27,8 @@ void main() {
       final keyButton = Key('FlatButton_credit_modal');
       final keyText = Key('RichText_credit_modal');
 
-      await tester.pumpWidget(baseTester(child: PreApprovedCreditModal(
-        tokenUser: 'xxxx',
-        navigateBloc: navigateMockBloc,
-      )));
+      await tester.pumpWidget(
+          baseTester(child: PreApprovedCreditModal(tokenUser: 'xxxx')));
       await tester.pumpAndSettle();
 
       expect(find.byKey(keyMainContainer), findsOneWidget);

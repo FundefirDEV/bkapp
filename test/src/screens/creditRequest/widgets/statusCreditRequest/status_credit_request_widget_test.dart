@@ -1,6 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/statusTextCreditRequest/status_text_credit_request_widget.dart';
-import 'package:bkapp_flutter/src/screens/creditRequest/widgets/statusCreditRequest/widgets/textImageCreditStatus/text_image_credit_status_widget.dart';
+import 'package:bkapp_flutter/src/screens/creditRequest/widgets/textInfoRequestWidgets/descriptionCreditRequest/status_text_credit_request_widget.dart';
+import 'package:bkapp_flutter/src/screens/creditRequest/widgets/textInfoRequestWidgets/descriptionCreditRequest/text_image_credit_status_widget.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
@@ -57,10 +57,10 @@ void main() {
 
     testWidgets('Render StatusTextCreditRequest', (WidgetTester tester) async {
       final testKey = Key('my-id');
-      await tester
-          .pumpWidget(baseTester(child: StatusTextCreditRequest(
-            key: testKey,
-            installments: '0',
+      await tester.pumpWidget(baseTester(
+          child: StatusTextCreditRequest(
+        key: testKey,
+        installments: '0',
       )));
       await tester.pumpAndSettle();
 

@@ -212,6 +212,14 @@
     "preApproved": "pre-aprobada",
     "yourPosition": "Tu posición de solicitud es: "
   },
+  "preApproveInstallment": {
+    "fee": "CUOTA #",
+    "paymentValue": "Valor a pagar",
+    "modal": {
+      "paymentRequest": "Solicitud de pago cuota",
+      "preApprove": "pre-aprobada"
+    }
+  },
   "preApprovedSharesModal": {
     "Sharesrequest": "Compra de acciones"
   },

@@ -2,18 +2,20 @@ import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FeeNumberWidget extends StatelessWidget {
-  FeeNumberWidget({
-    Key key,
-    @required this.installment
-  }) : super(key: key);
+  FeeNumberWidget({Key key, @required this.installment}) : super(key: key);
 
   final ScheduleInstallment installment;
 
   @override
   Widget build(BuildContext context) {
+    DateTime date = installment?.datePayment != ''
+        ? DateTime.parse(installment?.datePayment)
+        : DateTime.now();
     SizeConfig().init(context);
+
     return Container(
       margin: EdgeInsets.symmetric(
           vertical: SizeConfig.safeBlockVertical * 4,
@@ -44,8 +46,8 @@ class FeeNumberWidget extends StatelessWidget {
                           fontSize: 12.5,
                           fontWeight: FontWeight.w700)),
                 ),
-                Text('28 / 10 / 2020',
-                    style: TextStyle(color: Colors.white, fontSize: 12))
+                Text(DateFormat("MMM dd, yyyy").format(date).toString(),
+                    style: TextStyle(color: Colors.white, fontSize: 14))
               ]))
         ],
       ),

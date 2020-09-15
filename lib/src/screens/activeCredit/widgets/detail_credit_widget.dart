@@ -3,17 +3,22 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DetailCreditWidget extends StatelessWidget {
-  DetailCreditWidget({
-    Key key,
-    @required this.activeCredits
-  }) : super(key: key);
+  DetailCreditWidget({Key key, @required this.activeCredits}) : super(key: key);
 
   final ActiveCredit activeCredits;
 
   @override
   Widget build(BuildContext context) {
+    DateTime approvalDate = activeCredits?.approvalDate != ''
+        ? DateTime.parse(activeCredits?.approvalDate)
+        : DateTime.now();
+    DateTime dueDate = activeCredits?.dueDate != 'null'
+        ? DateTime.parse(activeCredits?.dueDate)
+        : DateTime.now();
+
     SizeConfig().init(context);
     return Container(
       width: SizeConfig.blockSizeHorizontal * 100,
@@ -100,7 +105,10 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditApplicationDate),
-                          Text('Ago 28, 2020',
+                          Text(
+                              DateFormat("MMM dd, yyyy")
+                                  .format(approvalDate)
+                                  .toString(),
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                     Expanded(
@@ -108,7 +116,10 @@ class DetailCreditWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                           Text(I18n.of(context).activeCreditDueDate),
-                          Text('Oct 28, 2020',
+                          Text(
+                              DateFormat("MMM dd, yyyy")
+                                  .format(dueDate)
+                                  .toString(),
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
                   ],

@@ -212,6 +212,14 @@
     "preApproved": "pre-approved",
     "yourPosition": "Your request position is: "
   },
+  "preApproveInstallment": {
+    "fee": "FEE #",
+    "paymentValue": "Payment value",
+    "modal": {
+      "paymentRequest": "Payment installment request",
+      "preApprove": "pre-approved"
+    }
+  },
   "preApprovedSharesModal": {
     "Sharesrequest": "Request of shares"
   },

@@ -334,6 +334,14 @@ class I18n implements WidgetsLocalizations {
   String get preApprovedCreditModalPreApproved => "pre-approved";
   /// "Your request position is: "
   String get preApprovedCreditModalYourPosition => "Your request position is: ";
+  /// "FEE #"
+  String get preApproveInstallmentFee => "FEE #";
+  /// "Payment value"
+  String get preApproveInstallmentPaymentValue => "Payment value";
+  /// "Payment installment request"
+  String get preApproveInstallmentModalPaymentRequest => "Payment installment request";
+  /// "pre-approved"
+  String get preApproveInstallmentModalPreApprove => "pre-approved";
   /// "Request of shares"
   String get preApprovedSharesModalSharesrequest => "Request of shares";
   /// "Actions"
@@ -1123,6 +1131,18 @@ class _I18n_es_ES extends I18n {
   /// "Tu posición de solicitud es: "
   @override
   String get preApprovedCreditModalYourPosition => "Tu posición de solicitud es: ";
+  /// "CUOTA #"
+  @override
+  String get preApproveInstallmentFee => "CUOTA #";
+  /// "Valor a pagar"
+  @override
+  String get preApproveInstallmentPaymentValue => "Valor a pagar";
+  /// "Solicitud de pago cuota"
+  @override
+  String get preApproveInstallmentModalPaymentRequest => "Solicitud de pago cuota";
+  /// "pre-aprobada"
+  @override
+  String get preApproveInstallmentModalPreApprove => "pre-aprobada";
   /// "Compra de acciones"
   @override
   String get preApprovedSharesModalSharesrequest => "Compra de acciones";

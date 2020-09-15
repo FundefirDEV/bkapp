@@ -3,12 +3,12 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 
 class StatusTextCreditRequest extends StatelessWidget {
-  const StatusTextCreditRequest({
-    Key key,
-    @required this.installments
-  }) : super(key: key);
+  const StatusTextCreditRequest(
+      {Key key, @required this.installments, this.bottomText})
+      : super(key: key);
 
   final String installments;
+  final String bottomText;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class StatusTextCreditRequest extends StatelessWidget {
                         text: 'PENDIENTE',
                         style: TextStyle(
                             letterSpacing: 2,
-                            fontSize: SizeConfig.blockSizeHorizontal * 2.5)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 3)),
                   ],
                 ),
               ),
@@ -61,7 +61,9 @@ class StatusTextCreditRequest extends StatelessWidget {
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                        text: I18n.of(context).statusCreditDues + '\n',
+                        text: bottomText != null
+                            ? bottomText
+                            : I18n.of(context).statusCreditDues + '\n',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2,
@@ -70,7 +72,10 @@ class StatusTextCreditRequest extends StatelessWidget {
                         text: installments ?? '0',
                         style: TextStyle(
                             letterSpacing: 2,
-                            fontSize: SizeConfig.blockSizeHorizontal * 4)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 4,
+                            fontWeight: bottomText != null
+                                ? FontWeight.bold
+                                : FontWeight.w100)),
                   ],
                 ),
               ),

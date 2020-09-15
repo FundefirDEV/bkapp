@@ -4,6 +4,7 @@ export 'bankRegisterBloc/bank_register_bloc.dart';
 export 'bankRegisterBloc/select_city_bloc.dart';
 export 'buySharesBloc/buy_shares_form_bloc.dart';
 export 'creditBloc/credit_form_bloc.dart';
+export 'creditBloc/installmentBloc/installments_payment_bloc.dart';
 export 'home/home_bloc.dart';
 export 'loginFormBloc/login_form_bloc.dart';
 export 'loginFormBloc/authentication/authentication_bloc.dart';

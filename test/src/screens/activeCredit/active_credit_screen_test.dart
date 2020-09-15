@@ -22,13 +22,18 @@ const mockData = {
       "id": 10,
       "amount": 450000.1,
       "installments": 2,
+      "approvalDate": "2020-04-04",
+      "dueDate": "2020-04-04",
       "scheduleInstallment": [
         {
+          "id": 0,
           "numberInstallment": 1,
           "capital": 225000,
           "interestCalculate": 13500,
           "ordinaryInterestPercentage": 3,
-          "totalPayment": 238500
+          "totalPayment": 238500,
+          "isPaidOrdinaryInterestAdvance": false,
+          "datePayment": "2020-04-04"
         }
       ]
     }
@@ -43,7 +48,8 @@ void main() {
           key: key,
           oldIndex: 0,
           userName: 'Usuario',
-          data: myBankModelFromJson(mockData).activeCredits,
+          token: "xxxxx",
+          data: myBankModelFromJson(mockData).activeCredits[0],
         ));
   }
 
