@@ -38,7 +38,7 @@ class ApprovalsContent extends StatelessWidget {
                     title: I18n.of(context).approvalsScreenPayments,
                     data: data['paymentInstallmentRequest'],
                     token: token,
-                    type: 'paymentInstallment',
+                    type: 'installmentPayment',
                     role: role),
               ],
             )

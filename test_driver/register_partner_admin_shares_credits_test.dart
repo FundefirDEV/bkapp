@@ -187,8 +187,25 @@ void main() async {
       delay(time: 2);
     }
     await validateCashBalance(driver, '150.000');
+    await createPaymentRequest(driver);
+    await goToApprovals(driver);
+
+    delay(time: 3);
+    // acceptCreditRequest(driver);
+    // delay(time: 10);
+
     await logoutProcess(driver);
 
     expect(true, true);
-  }, timeout: Timeout(Duration(seconds: 200)));
+  }, timeout: Timeout(Duration(seconds: 230)));
+}
+
+Future createPaymentRequest(FlutterDriver driver) async {
+  await tapButtonCredit(driver);
+  delay(time: 2);
+  await tap(findByKey('raisedButton-pay-fee'), driver);
+  delay(time: 2);
+
+  await tap(findByKey('flat_button_image_botton_modal_close'), driver);
+  delay(time: 5);
 }
