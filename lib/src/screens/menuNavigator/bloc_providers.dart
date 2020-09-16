@@ -47,4 +47,5 @@ List<dynamic> blocProviders = [
   BlocProvider(
       create: (context) =>
           InstallmentsPaymentBloc(creditRepository: creditRepository)),
+  BlocProvider(create: (context) => ExemptionsFormBloc())
 ];

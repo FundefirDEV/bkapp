@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
+import 'package:bkapp_flutter/src/screens/exemptions/exemptions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -146,6 +147,11 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                           oldIndex: currentIndex,
                           userName: widget.userName,
                         ),
+                        ExemptionsSreen(
+                          oldIndex: currentIndex,
+                          userName: widget.userName,
+                          tokenUser: widget.tokenUser,
+                        )
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

@@ -23,3 +23,4 @@ export 'menuNavigatorBloc/menunavigator_bloc.dart';
 export 'meetingBloc/bloc/meeting_bloc.dart';
 export 'bankRulesbloc/bank_rules_bloc.dart';
 export 'profitPayment/bloc/profit_payment_bloc.dart';
+export 'exemptionsFormBloc/exemptions_form_bloc.dart';

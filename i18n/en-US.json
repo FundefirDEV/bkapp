@@ -417,5 +417,22 @@
     "close": "CLOSE",
     "sharesToWithdraw": "Shares\nto withdraw",
     "remainderOfMoney": "Remainder\nof money"
+  },
+  "exemptions": {
+    "creditRequest": "Credit request",
+    "selectPartner": "Select partner",
+    "totalInterest": "Total interest",
+    "ordinaryInterests": "Ordinary interests",
+    "defaultInterest": "Default interest",
+    "pendingPayment": "Pending payment",
+    "share": "Share",
+    "totalPay": "Total pay",
+    "exonerate": "EXONERATE",
+    "allDefaultInterest": "All",
+    "default": " default interest",
+    "interests": "Interests",
+    "ordinary": "ordinary",
+    "sureExonerate": "Are you sure you want to exonerate",
+    "questionsOrdinaryInterest": "ordinary interest?"
   }
 }

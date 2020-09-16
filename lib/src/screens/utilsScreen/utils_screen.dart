@@ -55,11 +55,12 @@ class _UtilsScreenState extends State<UtilsScreen> {
     ];
     List<UtilsCardsAdministratorItem> adminCharacters = [
       UtilsCardsAdministratorItem(
-        key: 'exemptions',
-        image: 'assets/images/admin_icon.svg',
-        title: '',
-        titleWeight: I18n.of(context).utilsExemptions,
-      ),
+          key: 'exemptions',
+          image: 'assets/images/admin_icon.svg',
+          title: '',
+          titleWeight: I18n.of(context).utilsExemptions,
+          onPressed: () =>
+              navigateBloc.add(ButtonPressed(goTo: routes.exeptionsScreen))),
       UtilsCardsAdministratorItem(
           key: 'assign-admin',
           image: 'assets/images/admin_icon.svg',

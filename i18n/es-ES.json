@@ -407,5 +407,22 @@
     "close": "CERRAR",
     "sharesToWithdraw": "Acciones\na retirar",
     "remainderOfMoney": "Remanente\nde dinero"
+  },
+  "exemptions": {
+    "creditRequest": "Crédito solicitado",
+    "selectPartner": "Selecciona un socio",
+    "totalInterest": "Intereses totales",
+    "ordinaryInterests": "Intereses ordinarios",
+    "defaultInterest": "Intereses de mora",
+    "pendingPayment": "Cuotas pendientes",
+    "share": "Cuota",
+    "totalPay": "Total a pagar",
+    "exonerate": "EXONERAR",
+    "allDefaultInterest": "Todos los intereses",
+    "default": " de mora",
+    "interests": "Intereses",
+    "ordinary": "ordinarios",
+    "sureExonerate": "¿Seguro que quieres exonerar",
+    "questionsOrdinaryInterest": "los intereses ordinarios?"
   }
 }

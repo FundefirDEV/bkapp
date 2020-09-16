@@ -666,6 +666,36 @@ class I18n implements WidgetsLocalizations {
   String get profitPaymentSharesToWithdraw => "Shares\nto withdraw";
   /// "Remainder\nof money"
   String get profitPaymentRemainderOfMoney => "Remainder\nof money";
+  /// "Credit request"
+  String get exemptionsCreditRequest => "Credit request";
+  /// "Select partner"
+  String get exemptionsSelectPartner => "Select partner";
+  /// "Total interest"
+  String get exemptionsTotalInterest => "Total interest";
+  /// "Ordinary interests"
+  String get exemptionsOrdinaryInterests => "Ordinary interests";
+  /// "Default interest"
+  String get exemptionsDefaultInterest => "Default interest";
+  /// "Pending payment"
+  String get exemptionsPendingPayment => "Pending payment";
+  /// "Share"
+  String get exemptionsShare => "Share";
+  /// "Total pay"
+  String get exemptionsTotalPay => "Total pay";
+  /// "EXONERATE"
+  String get exemptionsExonerate => "EXONERATE";
+  /// "All"
+  String get exemptionsAllDefaultInterest => "All";
+  /// " default interest"
+  String get exemptionsDefault => " default interest";
+  /// "Interests"
+  String get exemptionsInterests => "Interests";
+  /// "ordinary"
+  String get exemptionsOrdinary => "ordinary";
+  /// "Are you sure you want to exonerate"
+  String get exemptionsSureExonerate => "Are you sure you want to exonerate";
+  /// "ordinary interest?"
+  String get exemptionsQuestionsOrdinaryInterest => "ordinary interest?";
 }
 
 class _I18n_en_US extends I18n {
@@ -1605,6 +1635,51 @@ class _I18n_es_ES extends I18n {
   /// "Remanente\nde dinero"
   @override
   String get profitPaymentRemainderOfMoney => "Remanente\nde dinero";
+  /// "Crédito solicitado"
+  @override
+  String get exemptionsCreditRequest => "Crédito solicitado";
+  /// "Selecciona un socio"
+  @override
+  String get exemptionsSelectPartner => "Selecciona un socio";
+  /// "Intereses totales"
+  @override
+  String get exemptionsTotalInterest => "Intereses totales";
+  /// "Intereses ordinarios"
+  @override
+  String get exemptionsOrdinaryInterests => "Intereses ordinarios";
+  /// "Intereses de mora"
+  @override
+  String get exemptionsDefaultInterest => "Intereses de mora";
+  /// "Cuotas pendientes"
+  @override
+  String get exemptionsPendingPayment => "Cuotas pendientes";
+  /// "Cuota"
+  @override
+  String get exemptionsShare => "Cuota";
+  /// "Total a pagar"
+  @override
+  String get exemptionsTotalPay => "Total a pagar";
+  /// "EXONERAR"
+  @override
+  String get exemptionsExonerate => "EXONERAR";
+  /// "Todos los intereses"
+  @override
+  String get exemptionsAllDefaultInterest => "Todos los intereses";
+  /// " de mora"
+  @override
+  String get exemptionsDefault => " de mora";
+  /// "Intereses"
+  @override
+  String get exemptionsInterests => "Intereses";
+  /// "ordinarios"
+  @override
+  String get exemptionsOrdinary => "ordinarios";
+  /// "¿Seguro que quieres exonerar"
+  @override
+  String get exemptionsSureExonerate => "¿Seguro que quieres exonerar";
+  /// "los intereses ordinarios?"
+  @override
+  String get exemptionsQuestionsOrdinaryInterest => "los intereses ordinarios?";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

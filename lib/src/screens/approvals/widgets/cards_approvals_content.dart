@@ -23,6 +23,8 @@ class CardsApprovalsContent extends StatelessWidget {
 
     final totalAmount = formatConfig.format(amount);
 
+    final bool isCredit = type == 'share';
+
     SizeConfig().init(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -50,7 +52,7 @@ class CardsApprovalsContent extends StatelessWidget {
                         fontSize: SizeConfig.blockSizeHorizontal * 4,
                         fontWeight: FontWeight.w700),
                     children: <TextSpan>[
-                      if (type != 'credit')
+                      if (isCredit)
                         TextSpan(
                             text: totalQuantity.toString() + ' ',
                             style: TextStyle(
@@ -59,7 +61,7 @@ class CardsApprovalsContent extends StatelessWidget {
                               fontSize: SizeConfig.blockSizeHorizontal * 4,
                               fontWeight: FontWeight.w700,
                             )),
-                      if (type != 'credit')
+                      if (isCredit)
                         TextSpan(
                             text: I18n.of(context).approvalsScreenShares + '\n',
                             style: TextStyle(
