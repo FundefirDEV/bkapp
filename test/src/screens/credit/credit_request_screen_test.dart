@@ -44,8 +44,9 @@ void main() {
                   myBankRepository: myBankRepoMock,
                   rulesRepository: bankRulesRepoMock)),
           BlocProvider(
-            create: (context) =>
-                InstallmentsPaymentBloc(creditRepository: creditRepoMock),
+            create: (context) => InstallmentsPaymentBloc(
+                creditRepository: creditRepoMock,
+                myBankRepository: myBankRepoMock),
           )
         ],
         child: CreditScreen(
