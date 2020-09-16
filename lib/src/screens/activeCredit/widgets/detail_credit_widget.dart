@@ -17,7 +17,7 @@ class DetailCreditWidget extends StatelessWidget {
         : DateTime.now();
     DateTime dueDate = activeCredits?.dueDate != 'null'
         ? DateTime.parse(activeCredits?.dueDate)
-        : DateTime.now();
+        : DateTime.parse(activeCredits?.scheduleInstallment[0]?.datePayment);
 
     SizeConfig().init(context);
     return Container(

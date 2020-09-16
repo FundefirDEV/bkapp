@@ -1,15 +1,18 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NumberActions extends StatelessWidget {
-  const NumberActions({Key key}) : super(key: key);
+  const NumberActions({Key key, @required this.homeState}) : super(key: key);
+  final HomeLoaded homeState;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final String actions = I18n.of(context).buySharesActions.toUpperCase();
+
     return Padding(
       padding: const EdgeInsets.only(left: 14.5),
       child: Column(
@@ -30,7 +33,9 @@ class NumberActions extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(top: 20),
               child: Text(
-                '30',
+                homeState is HomeLoaded
+                    ? homeState.bkInformation.personal.shares
+                    : '0',
                 key: Key('number-action-value-text'),
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal * 6,

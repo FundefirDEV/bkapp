@@ -138,7 +138,6 @@ void main() async {
     expect(
         await driver
             .getText(findByKey('approval-card-cash-balance-bank-value')),
-        //(partners.length +1) * 10000 * quantityShareRequested
         contains('1.900.000'));
     await logoutProcess(driver);
 

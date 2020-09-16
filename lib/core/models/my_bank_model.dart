@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:bkapp_flutter/core/models/bank_rules_model.dart';
 import 'package:intl/intl.dart';
 
 MyBankModel myBankModelFromJson(Map<String, dynamic> data) =>
@@ -15,23 +16,28 @@ final formatConfig =
     NumberFormat.currency(locale: 'en_US', decimalDigits: 0, symbol: r'$');
 
 class MyBankModel {
-  MyBankModel({
-    this.activeCredits,
-  });
+  MyBankModel({this.activeCredits, this.bankRulesModel});
 
   List<ActiveCredit> activeCredits;
+  BankRulesModel bankRulesModel;
 
   factory MyBankModel.fromJson(Map<String, dynamic> json) => MyBankModel(
         activeCredits: json["activeCredits"] == null
             ? []
             : List<ActiveCredit>.from(
                 json["activeCredits"].map((x) => ActiveCredit.fromJson(x))),
+        bankRulesModel: json["bankRulesModel"] != null
+            ? BankRulesModel.fromJson(json["bankRulesModel"])
+            : new BankRulesModel(),
       );
 
   Map<String, dynamic> toJson() => {
         "activeCredits": activeCredits == null
             ? []
             : List<dynamic>.from(activeCredits.map((x) => x.toJson())),
+        "bankRulesModel": bankRulesModel == null
+            ? new BankRulesModel()
+            : bankRulesModel.toJson()
       };
 }
 

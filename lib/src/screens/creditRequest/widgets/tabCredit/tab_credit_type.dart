@@ -19,7 +19,7 @@ class _TabCreditTypeWidget extends State<TabCreditTypeWidget>
 
   @override
   void initState() {
-    _tabController = new TabController(length: 2, vsync: this);
+    _tabController = new TabController(length: 1, vsync: this);
     super.initState();
   }
 
@@ -27,7 +27,7 @@ class _TabCreditTypeWidget extends State<TabCreditTypeWidget>
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return DefaultTabController(
-      length: 2,
+      length: 1,
       child: Column(
         children: <Widget>[
           Container(
@@ -47,24 +47,23 @@ class _TabCreditTypeWidget extends State<TabCreditTypeWidget>
                   Tab(
                     key: Key('tab-my-bk'),
                     child: Text(
-                      I18n.of(context).creditScreenTabTitleOne.toUpperCase(),
-                      style: TextStyle(height: 1.5)),
+                        I18n.of(context).creditScreenTabTitleOne.toUpperCase(),
+                        style: TextStyle(height: 1.5)),
                   ),
-                  Tab(
-                    key: Key('tab-group-bk'),
-                    child: Text(
-                      I18n.of(context).creditScreenTabTitleTwo.toUpperCase(),
-                      style: TextStyle(height: 1.5)),
-                  ),
+                  // TODO This tab will be activated when special credit exists
+                  // Tab(
+                  //   key: Key('tab-group-bk'),
+                  //   child: Text(
+                  //     I18n.of(context).creditScreenTabTitleTwo.toUpperCase(),
+                  //     style: TextStyle(height: 1.5)),
+                  // ),
                 ]),
           ),
           Container(
             height: 180,
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                NormalCredit(),
-                SpecialCredit()
+            child: TabBarView(controller: _tabController, children: [
+              NormalCredit(),
+              // SpecialCredit()
             ]),
           ),
         ],

@@ -51,7 +51,7 @@ class CreditRequestStructure extends StatelessWidget {
                     oldIndex: oldIndex,
                     navigateBloc: menuNavigatorBloc,
                   ),
-                  // TabCreditTypeWidget(),
+                  TabCreditTypeWidget(),
                   LineSeparatorWidget(),
                   Container(
                     margin: EdgeInsets.symmetric(
@@ -78,7 +78,6 @@ class CreditRequestStructure extends StatelessWidget {
                         creditFormBloc.paymentMethods.updateValue(item),
                     items: [
                       CardSelected(
-                        
                         key: Key('selected-card-pay-advanced'),
                         text: I18n.of(context).creditScreenAdvances,
                         img: 'assets/images/money_tiket.svg',
