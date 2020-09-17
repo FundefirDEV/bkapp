@@ -77,6 +77,10 @@ class _CreditScreenState extends State<CreditScreen> {
 
   _renderScreens(List<Request> myCreditRequest,
       List<ActiveCredit> activeCredits, List<Request> myPaymentInstallment) {
+    final installments = activeCredits.length > 0
+        ? activeCredits[0].scheduleInstallment
+        : new List();
+
     if (myCreditRequest.length > 0 && activeCredits.length == 0) {
       return StatusCreditRequestWidget(
         userName: widget.userName,
@@ -87,7 +91,7 @@ class _CreditScreenState extends State<CreditScreen> {
         userName: widget.userName,
         myInstallmentRequest: myPaymentInstallment[0],
       );
-    } else if (activeCredits.length > 0) {
+    } else if (activeCredits.length > 0 && installments.length > 0) {
       return ActiveCreditScreen(
         oldIndex: widget.oldIndex,
         userName: widget.userName,
