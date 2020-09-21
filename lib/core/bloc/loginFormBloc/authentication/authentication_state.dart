@@ -26,3 +26,5 @@ class AuthenticationAuthenticated extends AuthenticationState {
 }
 
 class AuthenticationUnauthenticated extends AuthenticationState {}
+
+class AuthenticationUnauthenticatedFailed extends AuthenticationState {}

@@ -12,7 +12,6 @@ part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-
   AuthenticationBloc({@required this.loginRepository})
       : assert(loginRepository != null),
         super(AuthenticationUninitialized());
@@ -40,9 +39,13 @@ class AuthenticationBloc
 
     if (event is LoggedOut) {
       yield AuthenticationLoading();
-      await partnerDb.deleteAllPartners();
-      await activePartnersDb.deleteAllPartners();
-      yield AuthenticationUnauthenticated();
+      try {
+        await partnerDb.deleteAllPartners();
+        await activePartnersDb.deleteAllPartners();
+        yield AuthenticationUnauthenticated();
+      } catch (e) {
+        AuthenticationUnauthenticatedFailed();
+      }
     }
   }
 }
