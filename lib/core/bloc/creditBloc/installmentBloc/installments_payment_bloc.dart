@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/credit_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/my_bank_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -23,19 +22,18 @@ class InstallmentsPaymentBloc
   Stream<InstallmentsPaymentState> mapEventToState(
     InstallmentspaymentEvent event,
   ) async* {
-    if (event is PayInstallment) {
-      yield InstallmentLoading();
-      try {
-        await creditRepository.postInstallmentPaid(
-            event.token, event.installmentRequest);
+    if (event is PayInstallment) yield* _payInstallment(event);
+  }
 
-        final response = await myBankRepository.getMyBankInfo(event.token);
-        MyBankModel myBankModel = myBankModelFromJson(response);
-        yield InstallmentPaid(
-            myBankInfo: myBankModel.activeCredits[0].scheduleInstallment);
-      } catch (e) {
-        yield InstallmentFailed();
-      }
+  Stream<InstallmentsPaymentState> _payInstallment(
+      PayInstallment event) async* {
+    yield InstallmentLoading();
+    try {
+      await creditRepository.postInstallmentPaid(
+          event.token, event.installmentRequest);
+      yield InstallmentPaid();
+    } catch (e) {
+      yield InstallmentFailed();
     }
   }
 }

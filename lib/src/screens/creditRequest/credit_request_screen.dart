@@ -88,9 +88,9 @@ class _CreditScreenState extends State<CreditScreen> {
       );
     } else if (myPaymentInstallment.length > 0) {
       return StatusInstallmentRequest(
-        userName: widget.userName,
-        myInstallmentRequest: myPaymentInstallment[0],
-      );
+          userName: widget.userName,
+          myInstallmentRequest: myPaymentInstallment[0],
+          scheduleInstallment: activeCredits[0].scheduleInstallment[0]);
     } else if (activeCredits.length > 0 && installments.length > 0) {
       return ActiveCreditScreen(
         oldIndex: widget.oldIndex,

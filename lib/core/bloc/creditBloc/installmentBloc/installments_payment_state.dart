@@ -11,12 +11,6 @@ class InstallmentInitialize extends InstallmentsPaymentState {}
 
 class InstallmentLoading extends InstallmentsPaymentState {}
 
-class InstallmentPaid extends InstallmentsPaymentState {
-  InstallmentPaid({@required this.myBankInfo});
-  final List<ScheduleInstallment> myBankInfo;
-
-  @override
-  List<Object> get props => [myBankInfo];
-}
+class InstallmentPaid extends InstallmentsPaymentState {}
 
 class InstallmentFailed extends InstallmentsPaymentState {}

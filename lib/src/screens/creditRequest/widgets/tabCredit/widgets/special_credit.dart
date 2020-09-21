@@ -19,39 +19,35 @@ class SpecialCredit extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: CardInformationBkWidget(
-        childBlue: NumberActions(),
+        childBlue: NumberActions(homeState: null),
         childBlueWidth: SizeConfig.blockSizeHorizontal * 30,
         childWhite: Container(
           padding: EdgeInsets.symmetric(
-            vertical: SizeConfig.safeBlockVertical * 2,
-            horizontal: SizeConfig.safeBlockHorizontal * 8
-          ),
+              vertical: SizeConfig.safeBlockVertical * 2,
+              horizontal: SizeConfig.safeBlockHorizontal * 8),
           child: Column(
             children: <Widget>[
               Expanded(
                 child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: DropdownFieldBlocBuilder(
-                    key: Key('dropdown-field-special-credit'),
-                    selectFieldBloc: creditFormBloc.specialPerson,
-                    decoration: InputDecoration(
-                      labelText: I18n.of(context).creditScreenPerson
-                    ),
-                    itemBuilder: (context, value) => value,
-                  )
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: DropdownFieldBlocBuilder(
+                      key: Key('dropdown-field-special-credit'),
+                      selectFieldBloc: creditFormBloc.specialPerson,
+                      decoration: InputDecoration(
+                          labelText: I18n.of(context).creditScreenPerson),
+                      itemBuilder: (context, value) => value,
+                    )),
               ),
               Expanded(
                 child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: TextFieldBlocBuilder(
-                    key: Key('textfield-field-special-credit'),
-                    textFieldBloc: creditFormBloc.specialInterest,
-                    decoration: InputDecoration(
-                      labelText: I18n.of(context).creditScreenCurrentInterest
-                    ),
-                  )
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: TextFieldBlocBuilder(
+                      key: Key('textfield-field-special-credit'),
+                      textFieldBloc: creditFormBloc.specialInterest,
+                      decoration: InputDecoration(
+                          labelText:
+                              I18n.of(context).creditScreenCurrentInterest),
+                    )),
               ),
             ],
           ),
