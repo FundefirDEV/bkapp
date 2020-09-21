@@ -14,8 +14,8 @@ class CarouselCardsDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List listDetailMeetingClosed = jsonDecode(
         '[{"title": "${infoMeeting.totalShares}", "subTitle": "${I18n.of(context).meetingClosedSharesPurchased}", "image": "shares_bought", "value": "${infoMeeting.capitalAcumulable}", "descriptionValue": "${I18n.of(context).meetingClosedAccumulableToCapital}"},' +
-            '{"title": "0", "subTitle": "${I18n.of(context).meetingClosedCreditsAwarded}", "image": "credit_given", "value": "${infoMeeting.totalCredit}", "descriptionValue": ""},' +
-            '{"title": "", "subTitle": "${I18n.of(context).meetingClosedCapitalSubscription}", "image": "capital_icon", "value": "0", "descriptionValue": ""},' +
+            '{"title": "${infoMeeting.creditsQuantity}", "subTitle": "${I18n.of(context).meetingClosedCreditsAwarded}", "image": "credit_given", "value": "${infoMeeting.totalCredit}", "descriptionValue": ""},' +
+            '{"title": "", "subTitle": "${I18n.of(context).meetingClosedCapitalSubscription}", "image": "capital_icon", "value": "${infoMeeting.capitalBalance}", "descriptionValue": ""},' +
             '{"title": "", "subTitle": "${I18n.of(context).meetingClosedInterestPayment}", "image": "oridinary_interest", "value": "${infoMeeting.totalOrdinaryInterest}", "descriptionValue": ""}]');
 
     return Container(

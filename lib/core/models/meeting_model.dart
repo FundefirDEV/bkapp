@@ -24,7 +24,9 @@ class MeetingModel {
       this.capitalAcumulable,
       this.totalDefaultInterest,
       this.totalOrdinaryInterest,
-      this.totalCredit});
+      this.totalCredit,
+      this.capitalBalance,
+      this.creditsQuantity});
 
   String cashBalance;
   String fundReserve;
@@ -35,6 +37,8 @@ class MeetingModel {
   String totalDefaultInterest;
   String totalOrdinaryInterest;
   String totalCredit;
+  String capitalBalance;
+  String creditsQuantity;
 
   factory MeetingModel.fromJson(Map<String, dynamic> json) => MeetingModel(
       cashBalance: formatConfig.format(json["cashBalance"]) ?? null,
@@ -48,7 +52,13 @@ class MeetingModel {
           formatConfig.format(json["totalDefaultInterest"]) ?? null,
       totalOrdinaryInterest:
           formatConfig.format(json["totalOrdinaryInterest"]) ?? null,
-      totalCredit: formatConfig.format(json["totalCredit"]) ?? null);
+      totalCredit: formatConfig.format(json["totalCredit"]) ?? null,
+      capitalBalance: json["capitalBalance"] != null
+          ? formatConfig.format(json["capitalBalance"])
+          : r'$0',
+      creditsQuantity: json["creditsQuantity"] != null
+          ? json["creditsQuantity"].toString()
+          : '0');
 
   Map<String, dynamic> toJson() => {
         "cashBalance": cashBalance,
@@ -59,6 +69,8 @@ class MeetingModel {
         "capitalAcumulable": capitalAcumulable,
         "totalDefaultInterest": totalDefaultInterest,
         "totalOrdinaryInterest": totalOrdinaryInterest,
-        "totalCredit": totalCredit
+        "totalCredit": totalCredit,
+        "capitalBalance": capitalBalance,
+        "creditsQuantity": creditsQuantity
       };
 }
