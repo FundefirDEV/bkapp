@@ -1,5 +1,5 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/meetingBloc/bloc/meeting_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/card_general_detail_meeting_widget.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/carousel_cards_detail_widget.dart';
@@ -34,8 +34,6 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return BlocBuilder<MeetingBloc, MeetingState>(builder: (context, state) {
       if (state is MeetingLoaded) {
@@ -46,10 +44,9 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
             userName: widget.userName,
             container: Column(children: <Widget>[
               TitleHeaderWidget(
-                title: I18n.of(context).meetingClosedMeetingClosing,
-                oldIndex: widget.oldIndex,
-                navigateBloc: menuNavigatorBloc,
-              ),
+                  title: I18n.of(context).meetingClosedMeetingClosing,
+                  oldIndex: widget.oldIndex,
+                  menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
               CardGeneralDetailMeetingWidget(
                   cashBalance: infoMeeting.cashBalance,
                   badDebtReserve: infoMeeting.badDebtReserve,

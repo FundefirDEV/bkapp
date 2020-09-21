@@ -52,7 +52,7 @@ void main() {
               title: 'Title',
               key: testKey,
               oldIndex: 0,
-              navigateBloc: MenuNavigatorBloc(controller: PageController()))));
+              menuNavigatorBloc: null)));
       await tester.pumpAndSettle();
 
       expect(find.byKey(testKey), findsOneWidget);

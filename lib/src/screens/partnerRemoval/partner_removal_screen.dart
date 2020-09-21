@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-
 import 'widgets/widgets.dart';
 
 class PartnerRemovalScreen extends StatefulWidget {
@@ -23,17 +22,14 @@ class PartnerRemovalScreen extends StatefulWidget {
 class _PartnerRemovalScreenState extends State<PartnerRemovalScreen> {
   @override
   Widget build(BuildContext context) {
-    //ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     return AppBarWidget(
       userName: widget.userName,
       container: Column(
         children: [
           TitleHeaderWidget(
-            title: I18n.of(context).partnerRemovalTitle,
-            oldIndex: widget.oldIndex,
-            navigateBloc: menuNavigatorBloc,
-          ),
+              title: I18n.of(context).partnerRemovalTitle,
+              oldIndex: widget.oldIndex,
+              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: Text('David Cuevas',

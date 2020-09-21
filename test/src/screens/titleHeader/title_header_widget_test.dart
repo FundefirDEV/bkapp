@@ -10,12 +10,12 @@ import '../../../base_tester.dart';
 void main() {
   Widget titleWidget(Key key) {
     return BlocProvider(
-      create: (context) => MenuNavigatorBloc(
-        controller: PageController()
-      ),
-      child: TitleHeaderWidget(key: key, title: 'Titulo')
+      create: (context) => MenuNavigatorBloc(controller: PageController()),
+      child:
+          TitleHeaderWidget(key: key, title: 'Titulo', menuNavigatorBloc: null),
     );
   }
+
   group('Test TitleHeaderUtilsWidget Widget', () {
     testWidgets('Find TitleHeaderUtilsWidget widget',
         (WidgetTester tester) async {

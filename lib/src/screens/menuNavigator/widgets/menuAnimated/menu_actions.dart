@@ -41,7 +41,6 @@ class MenuActions extends StatelessWidget {
   }
 
   Widget _menuContent(BuildContext context) {
-    HomeRoutesConstant routes = HomeRoutesConstant();
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -62,29 +61,29 @@ class MenuActions extends StatelessWidget {
                   letterSpacing: 3.0),
             ),
             SizedBox(height: SizeConfig.blockSizeVertical * 8.0),
-            _firstColumn(context, routes),
+            _firstColumn(context),
             SizedBox(height: SizeConfig.blockSizeVertical * 2.7),
             Container(
               width: double.infinity,
               child: ButtonLine(
                 key: Key('meeting-button-line'),
                 onPressed: () {
-                  navigateBloc
-                      .add(ButtonPressed(goTo: routes.meetingClosedScreen));
+                  navigateBloc.add(ButtonPressed(
+                      goTo: HomeRoutesConstant.meetingClosedScreen));
                   isPressed();
                 },
                 text: I18n.of(context).mainMenuActionsMeeting,
               ),
             ),
             SizedBox(height: SizeConfig.blockSizeVertical * 2.7),
-            _thirdColumn(context, routes)
+            _thirdColumn(context)
           ],
         ),
       ),
     );
   }
 
-  Widget _firstColumn(BuildContext context, HomeRoutesConstant routes) {
+  Widget _firstColumn(BuildContext context) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -97,7 +96,8 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('credit-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: routes.creditScreen));
+              navigateBloc
+                  .add(ButtonPressed(goTo: HomeRoutesConstant.creditScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsCredit,
@@ -109,7 +109,8 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('profits-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: routes.profitPaymentScreen));
+              navigateBloc.add(
+                  ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsProfits,
@@ -119,7 +120,7 @@ class MenuActions extends StatelessWidget {
     );
   }
 
-  Widget _thirdColumn(BuildContext context, HomeRoutesConstant routes) {
+  Widget _thirdColumn(BuildContext context) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -132,7 +133,8 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('actions-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: routes.sharesScreen));
+              navigateBloc
+                  .add(ButtonPressed(goTo: HomeRoutesConstant.sharesScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsActions,
@@ -144,7 +146,8 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('partners-button-line'),
             onPressed: () {
-              navigateBloc.add(ButtonPressed(goTo: routes.addPartnerScreen));
+              navigateBloc.add(
+                  ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsPartner,

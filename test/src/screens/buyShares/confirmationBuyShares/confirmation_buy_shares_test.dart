@@ -65,8 +65,8 @@ void main() {
           child: TitleHeaderWidget(
         title: 'Title',
         key: testKey,
-        navigateBloc: MenuNavigatorBloc(controller: PageController()),
         oldIndex: 0,
+        menuNavigatorBloc: null,
       )));
       await tester.pumpAndSettle();
 

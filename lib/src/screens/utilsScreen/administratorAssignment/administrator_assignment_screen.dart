@@ -1,11 +1,12 @@
 import 'package:bkapp_flutter/core/bloc/administratorAsignmentBloc/administrator_asignment_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/switchAdmin/switch_admin_widget.dart';
@@ -35,8 +36,6 @@ class _AdministratorAssignmentScreenState
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
     return BlocBuilder<AdministratorAsignmentBloc, AdministratorAsignmentState>(
         builder: (context, state) {
       if (state is AdministratorAsignmentLoaded) {
@@ -46,10 +45,9 @@ class _AdministratorAssignmentScreenState
               key: Key('column_administrator_assignmen_screen'),
               children: <Widget>[
                 TitleHeaderWidget(
-                  title: I18n.of(context).administratorAssignmentTitle,
-                  navigateBloc: navigateBloc,
-                  oldIndex: 1,
-                ),
+                    title: I18n.of(context).administratorAssignmentTitle,
+                    oldIndex: HomeRoutesConstant.utilsScreen,
+                    menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
                 for (var i = 0; i < state.administratorModel.length; i++)
                   SwitchAdmin(
                       customKey: Key('switch_admin_$i'),

@@ -1,8 +1,8 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/widgets/index.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
@@ -29,8 +29,6 @@ class ActiveCreditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     SizeConfig().init(context);
     return AppBarWidget(
         key: Key('active-credit-screen'),
@@ -38,10 +36,9 @@ class ActiveCreditScreen extends StatelessWidget {
         container: Column(
           children: <Widget>[
             TitleHeaderWidget(
-              title: I18n.of(context).activeCreditCredits,
-              oldIndex: oldIndex,
-              navigateBloc: menuNavigatorBloc,
-            ),
+                title: I18n.of(context).activeCreditCredits,
+                oldIndex: HomeRoutesConstant.homeScreen,
+                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
             _subtitle(context),
             CardInformationBkWidget(
                 childBlueWidth: 120,

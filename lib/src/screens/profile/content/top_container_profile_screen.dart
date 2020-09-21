@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
@@ -37,9 +38,7 @@ class TopContainerProfileScreen {
         children: <Widget>[
           content.saloAndArrow(),
           TitleHeaderWidget(
-            title: I18n.of(context).profileScreenProfile,
-            showArrow: false,
-          ),
+              title: I18n.of(context).profileScreenProfile, showArrow: false),
           topContainerInformation(data),
           Container(
               height: SizeConfig.safeBlockVertical * 4,

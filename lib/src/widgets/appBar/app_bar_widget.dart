@@ -17,7 +17,7 @@ class AppBarWidget extends StatelessWidget {
     return Material(
         type: MaterialType.transparency,
         child: Container(
-            color: Theme.of(context).colorScheme.grayColor[100],
+            color: Theme.of(context).colorScheme.grayColor[50],
             child: Stack(children: <Widget>[
               new Positioned(
                   top: 0,

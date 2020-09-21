@@ -424,5 +424,10 @@
     "ordinary": "ordinarios",
     "sureExonerate": "¿Seguro que quieres exonerar",
     "questionsOrdinaryInterest": "los intereses ordinarios?"
+  },
+  "timeLineShares": {
+    "title": "Mis Acciones",
+    "titleBox": "ACCIONES",
+    "amount": "Cantidad"
   }
 }

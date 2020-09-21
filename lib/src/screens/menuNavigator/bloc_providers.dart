@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/bloc/administratorAsignmentBloc/administrator
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/timeLineShares/bloc/time_line_shares_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
@@ -50,5 +51,6 @@ List<dynamic> blocProviders = [
       create: (context) => InstallmentsPaymentBloc(
           creditRepository: creditRepository,
           myBankRepository: myBankRepository)),
-  BlocProvider(create: (context) => ExemptionsFormBloc())
+  BlocProvider(create: (context) => ExemptionsFormBloc()),
+  BlocProvider(create: (context) => TimeLineSharesBloc())
 ];

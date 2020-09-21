@@ -1,6 +1,7 @@
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
@@ -29,8 +30,6 @@ class StatusCreditRequestWidget extends StatefulWidget {
 class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
     String dateExist = widget.myCreditRequest?.requestDate ?? '';
     DateTime date =
         dateExist != '' ? DateTime.parse(dateExist) : DateTime.now();
@@ -42,10 +41,9 @@ class _StatusCreditRequestWidgetState extends State<StatusCreditRequestWidget> {
         key: Key('status-credit_request-widget-column'),
         children: <Widget>[
           TitleHeaderWidget(
-            title: I18n.of(context).approvalsScreenCredits,
-            oldIndex: 0,
-            navigateBloc: navigateBloc,
-          ),
+              title: I18n.of(context).approvalsScreenCredits,
+              oldIndex: HomeRoutesConstant.homeScreen,
+              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
           Container(
             key: Key('status-credit_request-widget-container-text'),
             margin: EdgeInsets.only(bottom: 10),

@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -98,7 +99,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                     Expanded(
                       child: FlatButton(
                         onPressed: () {
-                          navigateBloc.add(ButtonPressed(goTo: 11));
+                          // navigateBloc.add(ButtonPressed(goTo: 11));
                         },
                         child: Container(
                             child: Column(
@@ -142,47 +143,53 @@ class DetailMyDataBkWidget extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                          padding: EdgeInsets.only(
-                              left: SizeConfig.safeBlockHorizontal * 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              RichText(
-                                  text: TextSpan(
-                                      text: I18n.of(context).homeScreenMy,
+                      child: FlatButton(
+                        onPressed: () {
+                          navigateBloc.add(ButtonPressed(
+                              goTo: HomeRoutesConstant.timeLineMyShares));
+                        },
+                        child: Container(
+                            padding: EdgeInsets.only(
+                                left: SizeConfig.safeBlockHorizontal * 5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                RichText(
+                                    text: TextSpan(
+                                        text: I18n.of(context).homeScreenMy,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          letterSpacing: 1.5,
+                                          fontWeight: FontWeight.w200,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .grayColor,
+                                        ),
+                                        children: <TextSpan>[
+                                      TextSpan(
+                                        text:
+                                            ' ${I18n.of(context).homeScreenShares}',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      )
+                                    ])),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: SizeConfig.safeBlockVertical * 0.8),
+                                  child: Text(information.shares,
                                       style: TextStyle(
-                                        fontSize: 13,
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w200,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .grayColor,
-                                      ),
-                                      children: <TextSpan>[
-                                    TextSpan(
-                                      text:
-                                          ' ${I18n.of(context).homeScreenShares}',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    )
-                                  ])),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    top: SizeConfig.safeBlockVertical * 0.8),
-                                child: Text(information.shares,
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .grayColor[200],
-                                        letterSpacing: 1.5,
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w100)),
-                              )
-                            ],
-                          )),
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .grayColor[200],
+                                          letterSpacing: 1.5,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w100)),
+                                )
+                              ],
+                            )),
+                      ),
                     ),
                   ],
                 )),

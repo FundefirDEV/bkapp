@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/buttons_pay_and_convert_earnings_widget.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -8,6 +9,7 @@ import 'accordion_detail_profit_widget.dart';
 import 'box_profit_history_widget.dart';
 import 'package:flutter/material.dart';
 import 'subtitle_accumulated_earnings_widget.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ContainerProfitPaymentWidget extends StatelessWidget {
   const ContainerProfitPaymentWidget(
@@ -32,9 +34,9 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           TitleHeaderWidget(
-            title: I18n.of(context).profitPaymentTitle,
-            showArrow: false,
-          ),
+              title: I18n.of(context).profitPaymentTitle,
+              showArrow: false,
+              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
           BoxProfitHistoyWidget(historyEarnings: historyProfit),
           LineSeparatorWidget(),
           if (showAccordionDetail)

@@ -8,19 +8,19 @@ class TitleHeaderWidget extends StatelessWidget {
       {Key key,
       this.title,
       this.oldIndex,
-      this.navigateBloc,
-      this.showArrow: true})
+      this.showArrow: true,
+      this.menuNavigatorBloc})
       : super(key: key);
 
   final String title;
-  final oldIndex;
-  final MenuNavigatorBloc navigateBloc;
+  final int oldIndex;
   final bool showArrow;
-
+  final MenuNavigatorBloc menuNavigatorBloc;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
+    // ignore: close_sinks
+    // MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     return Container(
       key: Key('title-container'),
       margin:
@@ -37,7 +37,7 @@ class TitleHeaderWidget extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     oldIndex != null
-                        ? navigateBloc.add(ButtonPressed(goTo: oldIndex))
+                        ? menuNavigatorBloc.add(ButtonPressed(goTo: oldIndex))
                         : Navigator.pop(context);
                   },
                   child: Container(

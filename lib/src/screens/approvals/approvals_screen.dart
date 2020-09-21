@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/approvals/content/number_petitions.dart';
 import 'package:bkapp_flutter/src/screens/approvals/widgets/approvals_content.dart';
@@ -41,8 +40,6 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
     return BlocBuilder<ApprovalsBloc, ApprovalsState>(
       builder: (context, state) {
         if (state is ApprovalsLoaded) {
@@ -54,11 +51,10 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: TitleHeaderWidget(
-                    title: I18n.of(context).approvalsScreenApproval,
-                    showArrow: true,
-                    oldIndex: widget.oldIndex,
-                    navigateBloc: menuNavigatorBloc,
-                  ),
+                      title: I18n.of(context).approvalsScreenApproval,
+                      showArrow: true,
+                      oldIndex: widget.oldIndex,
+                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
                 ),
                 CardInformationBkWidget(
                     childBlueWidth: 135.0,

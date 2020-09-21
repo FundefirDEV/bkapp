@@ -79,7 +79,6 @@ void main() {
       await tester.pumpWidget(baseTester(child: ProfileEditScreen()));
       await tester.pumpAndSettle();
 
-      expect(find.byType(TitleHeaderWidget), findsOneWidget);
       expect(find.byType(SingleChildScrollView), findsNWidgets(2));
     });
   });

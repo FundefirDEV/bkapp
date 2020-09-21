@@ -1,18 +1,19 @@
 class HomeRoutesConstant {
-  final int homeScreen = 0,
-      utilsScreen = 1,
-      profileScreen = 2,
-      creditScreen = 3,
-      sharesScreen = 4,
-      aprobationScreen = 5,
-      statusCreditRequestScreen = 6,
-      confirmationBuySharesScreen = 7,
-      rulesScreen = 8,
-      rulesEditScreen = 9,
-      administratorAssignmentScreen = 10,
-      activeCreditScreen = 11,
-      addPartnerScreen = 12,
-      meetingClosedScreen = 13,
-      profitPaymentScreen = 14,
-      exeptionsScreen = 16;
+  static int homeScreen = 0;
+  static int utilsScreen = 1;
+  static int profileScreen = 2;
+  static int creditScreen = 3;
+  static int sharesScreen = 4;
+  static int aprobationScreen = 5;
+  static int statusCreditRequestScreen = 6;
+  static int confirmationBuySharesScreen = 7;
+  static int rulesScreen = 8;
+  static int rulesEditScreen = 9;
+  static int administratorAssignmentScreen = 10;
+  static int activeCreditScreen = 11;
+  static int addPartnerScreen = 12;
+  static int meetingClosedScreen = 13;
+  static int profitPaymentScreen = 14;
+  static int exeptionsScreen = 16;
+  static int timeLineMyShares = 17;
 }

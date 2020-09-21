@@ -1,12 +1,14 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/top_container_content_rules_screen.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class TopContainerRulesSceen extends StatelessWidget {
   const TopContainerRulesSceen({Key key, this.navigateBloc}) : super(key: key);
@@ -40,10 +42,9 @@ class TopContainerRulesSceen extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: SizeConfig.safeBlockVertical * 3.5),
             child: TitleHeaderWidget(
-              title: I18n.of(context).rulesScreenBkRules,
-              oldIndex: 1,
-              navigateBloc: navigateBloc,
-            ),
+                title: I18n.of(context).rulesScreenBkRules,
+                oldIndex: HomeRoutesConstant.utilsScreen,
+                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 1.3,

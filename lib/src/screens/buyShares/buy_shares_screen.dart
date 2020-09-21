@@ -83,8 +83,9 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           children: <Widget>[
                             TitleHeaderWidget(
                                 title: I18n.of(context).buySharesActions,
-                                navigateBloc: context.bloc<MenuNavigatorBloc>(),
-                                oldIndex: 0),
+                                oldIndex: 0,
+                                menuNavigatorBloc:
+                                    context.bloc<MenuNavigatorBloc>()),
                             CardInformationBkWidget(
                                 childBlue: NumberActions(
                                     myShares: state.infoShares.shares),

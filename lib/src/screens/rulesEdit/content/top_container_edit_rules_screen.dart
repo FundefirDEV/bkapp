@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/top_container_content_rules_screen.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class TopContainerEditRulesScreen extends StatelessWidget {
   const TopContainerEditRulesScreen({Key key, this.navigateBloc})
@@ -42,10 +44,9 @@ class TopContainerEditRulesScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: SizeConfig.safeBlockVertical * 3.5),
             child: TitleHeaderWidget(
-              title: I18n.of(context).rulesScreenBkRules,
-              oldIndex: 8,
-              navigateBloc: navigateBloc,
-            ),
+                title: I18n.of(context).rulesScreenBkRules,
+                oldIndex: 8,
+                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
           ),
           topContainerInformation(),
           Container(

@@ -6,9 +6,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+
 class TopContainerEditProfileScreen {
   Container topContainer(context) {
-  TopContainerContentProfileScreen content = TopContainerContentProfileScreen();
+    TopContainerContentProfileScreen content =
+        TopContainerContentProfileScreen();
     return Container(
       key: Key('Top_container_profile_edit_Screen'),
       height: SizeConfig.safeBlockVertical * 37,
@@ -33,13 +35,12 @@ class TopContainerEditProfileScreen {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             content.saloAndArrow(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: TitleHeaderWidget(
-                title: I18n.of(context).profileEditScreenTitle,
-                showArrow: true,
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            //   child: TitleHeaderWidget(
+            //       title: I18n.of(context).profileEditScreenTitle,
+            //       menuNavigatorBloc: null),
+            // ),
             topContainerInformation(),
             Container(
                 height: SizeConfig.safeBlockVertical * 4,

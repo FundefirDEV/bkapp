@@ -21,7 +21,6 @@ class _UtilsScreenState extends State<UtilsScreen> {
   Widget build(BuildContext context) {
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
-    final HomeRoutesConstant routes = HomeRoutesConstant();
 
     List<UtilsCardsItem> characters = [
       UtilsCardsItem(
@@ -32,8 +31,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
           title: I18n.of(context).utilsApprovals,
           titleWeight: I18n.of(context).utilsRequests,
           textDescription: I18n.of(context).utilsApproveCreditActions,
-          onPressed: () =>
-              navigateBloc.add(ButtonPressed(goTo: routes.aprobationScreen))),
+          onPressed: () => navigateBloc
+              .add(ButtonPressed(goTo: HomeRoutesConstant.aprobationScreen))),
       UtilsCardsItem(
         key: 'rules',
         image: 'assets/images/parchment.svg',
@@ -41,8 +40,8 @@ class _UtilsScreenState extends State<UtilsScreen> {
         title: I18n.of(context).utilsRulesOf,
         titleWeight: I18n.of(context).utilsGroupBk,
         textDescription: I18n.of(context).utilsKnowManageBk,
-        onPressed: () =>
-            navigateBloc.add(ButtonPressed(goTo: routes.rulesScreen)),
+        onPressed: () => navigateBloc
+            .add(ButtonPressed(goTo: HomeRoutesConstant.rulesScreen)),
       ),
       // UtilsCardsItem(
       //   key: 'payment',
@@ -59,15 +58,15 @@ class _UtilsScreenState extends State<UtilsScreen> {
           image: 'assets/images/admin_icon.svg',
           title: '',
           titleWeight: I18n.of(context).utilsExemptions,
-          onPressed: () =>
-              navigateBloc.add(ButtonPressed(goTo: routes.exeptionsScreen))),
+          onPressed: () => navigateBloc
+              .add(ButtonPressed(goTo: HomeRoutesConstant.exeptionsScreen))),
       UtilsCardsAdministratorItem(
           key: 'assign-admin',
           image: 'assets/images/admin_icon.svg',
           title: I18n.of(context).utilsAssignment,
           titleWeight: I18n.of(context).utilsAdministrator,
-          onPressed: () => navigateBloc
-              .add(ButtonPressed(goTo: routes.administratorAssignmentScreen)))
+          onPressed: () => navigateBloc.add(ButtonPressed(
+              goTo: HomeRoutesConstant.administratorAssignmentScreen)))
     ];
     return Scaffold(
         body: AppBarWidget(
@@ -78,9 +77,9 @@ class _UtilsScreenState extends State<UtilsScreen> {
                 key: Key('column-util-screen'),
                 children: <Widget>[
                   TitleHeaderWidget(
-                    title: I18n.of(context).utilsUtils,
-                    showArrow: false,
-                  ),
+                      title: I18n.of(context).utilsUtils,
+                      showArrow: false,
+                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
                   for (var i = 0; i < characters.length; i++)
                     UtilCardDescription(characters: characters[i]),
                   Row(

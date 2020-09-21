@@ -19,7 +19,6 @@ class OptionsBkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeRoutesConstant routes = HomeRoutesConstant();
     // ignore: close_sinks
     final navigateBloc = context.bloc<MenuNavigatorBloc>();
 
@@ -40,8 +39,8 @@ class OptionsBkWidget extends StatelessWidget {
                       borderRadius: radiusCard,
                       child: InkWell(
                         key: Key('inkwell-redirect-meeting-closed'),
-                        onTap: () => navigateBloc.add(
-                            ButtonPressed(goTo: routes.meetingClosedScreen)),
+                        onTap: () => navigateBloc.add(ButtonPressed(
+                            goTo: HomeRoutesConstant.meetingClosedScreen)),
                         child: Stack(
                           children: <Widget>[
                             new Positioned(
@@ -84,8 +83,8 @@ class OptionsBkWidget extends StatelessWidget {
                       borderRadius: radiusCard,
                       child: InkWell(
                         key: Key('inkwell-redirect-add-partner'),
-                        onTap: () => navigateBloc
-                            .add(ButtonPressed(goTo: routes.addPartnerScreen)),
+                        onTap: () => navigateBloc.add(ButtonPressed(
+                            goTo: HomeRoutesConstant.addPartnerScreen)),
                         child: Stack(
                           children: <Widget>[
                             new Positioned(

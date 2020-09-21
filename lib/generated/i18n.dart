@@ -696,6 +696,12 @@ class I18n implements WidgetsLocalizations {
   String get exemptionsSureExonerate => "Are you sure you want to exonerate";
   /// "ordinary interest?"
   String get exemptionsQuestionsOrdinaryInterest => "ordinary interest?";
+  /// "My Shares"
+  String get timeLineSharesTitle => "My Shares";
+  /// "SHARES"
+  String get timeLineSharesTitleBox => "SHARES";
+  /// "Amount"
+  String get timeLineSharesAmount => "Amount";
 }
 
 class _I18n_en_US extends I18n {
@@ -1680,6 +1686,15 @@ class _I18n_es_ES extends I18n {
   /// "los intereses ordinarios?"
   @override
   String get exemptionsQuestionsOrdinaryInterest => "los intereses ordinarios?";
+  /// "Mis Acciones"
+  @override
+  String get timeLineSharesTitle => "Mis Acciones";
+  /// "ACCIONES"
+  @override
+  String get timeLineSharesTitleBox => "ACCIONES";
+  /// "Cantidad"
+  @override
+  String get timeLineSharesAmount => "Cantidad";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

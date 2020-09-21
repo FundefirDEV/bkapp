@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/approvals_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/buyShares/confirmationBuyShares/widgets/date_requested_actions.dart';
@@ -33,8 +33,8 @@ class ConfirmationBuyShares extends StatelessWidget {
           children: <Widget>[
             TitleHeaderWidget(
                 title: I18n.of(context).buySharesActions,
-                navigateBloc: context.bloc<MenuNavigatorBloc>(),
-                oldIndex: 0),
+                oldIndex: 0,
+                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: CardInformationBkWidget(
