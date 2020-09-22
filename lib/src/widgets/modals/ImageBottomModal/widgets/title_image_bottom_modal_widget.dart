@@ -19,7 +19,7 @@ class TitleImageBottomModalWidget extends StatelessWidget {
             ? TextSpan(
                 text: title + '\n',
                 style: TextStyle(
-                    fontSize: 17.0,
+                    fontSize: 15.0,
                     color: Theme.of(context).colorScheme.grayColor),
                 children: <TextSpan>[
                   TextSpan(

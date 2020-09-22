@@ -1,7 +1,10 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/bloc/profit_payment_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/container_profit_payment_widget.dart';
+import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -10,19 +13,29 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ProfitPaymentScreen extends StatefulWidget {
   ProfitPaymentScreen(
-      {Key key, @required this.userName, @required this.tokenUser})
+      {Key key,
+      @required this.userName,
+      @required this.tokenUser,
+      this.oldIndex})
       : super(key: key);
   final String userName;
   final String tokenUser;
+  final int oldIndex;
 
   @override
   _ProfitPaymentScreenState createState() => _ProfitPaymentScreenState();
 }
 
-class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
+class _ProfitPaymentScreenState extends State<ProfitPaymentScreen>
+    with AfterLayoutMixin<ProfitPaymentScreen> {
   String historyProfit = r'$0';
   ProfitPartnerModel profitPartner;
   List<String> selectedYearProfitPayment;
+  @override
+  void afterFirstLayout(BuildContext context) {
+    _showDialog(context, context.bloc<MenuNavigatorBloc>(), widget.oldIndex);
+  }
+
   @override
   void initState() {
     BlocProvider.of<ProfitPaymentBloc>(context)
@@ -91,4 +104,27 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
       });
     });
   }
+}
+
+void _showDialog(context, menuNavigatorBloc, oldIndex) {
+  showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (_) {
+        return ImageBottomModal(
+            modalHeight: 45.0,
+            image: 'assets/images/sad_bot.svg',
+            isImageBg: false,
+            title: I18n.of(context).modalTextsYourBkGroup,
+            titleBold: I18n.of(context).modalTextsIsEnabled,
+            isBold: true,
+            isBtnAccept: false,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressCancel: () {
+              menuNavigatorBloc.add(ButtonPressed(goTo: oldIndex));
+              Navigator.pop(context);
+            });
+      });
 }

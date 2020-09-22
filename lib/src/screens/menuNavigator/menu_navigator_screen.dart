@@ -142,6 +142,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             userName: widget.userName,
                             tokenUser: widget.tokenUser),
                         ProfitPaymentScreen(
+                            oldIndex: currentIndex,
                             userName: widget.userName,
                             tokenUser: widget.tokenUser), // NOTE 14
                         PartnerRemovalScreen(

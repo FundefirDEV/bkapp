@@ -58,6 +58,10 @@ class I18n implements WidgetsLocalizations {
   String get actionTextAdd => "ADD";
   /// "Search"
   String get actionTextSearch => "Search";
+  /// "Your BkGroup has not reached the goals"
+  String get modalTextsYourBkGroup => "Your BkGroup has not reached the goals";
+  /// "for getting enable this function"
+  String get modalTextsIsEnabled => "for getting enable this function";
   /// "There has been an error!, try again"
   String get requestErrorDefault => "There has been an error!, try again";
   /// "The user is not available"
@@ -753,6 +757,12 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
+  /// "su grupoBk no ha alcanzado las metas"
+  @override
+  String get modalTextsYourBkGroup => "su grupoBk no ha alcanzado las metas";
+  /// "para tener disponible esta función"
+  @override
+  String get modalTextsIsEnabled => "para tener disponible esta función";
   /// "¡Ha habido un problema!, intenta de nuevo"
   @override
   String get requestErrorDefault => "¡Ha habido un problema!, intenta de nuevo";

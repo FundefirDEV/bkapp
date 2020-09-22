@@ -14,6 +14,10 @@
     "add": "ADD",
     "search": "Search"
   },
+  "modalTexts": {
+    "yourBkGroup": "Your BkGroup has not reached the goals",
+    "isEnabled": "for getting enable this function"
+  },
   "requestError": {
     "default": "There has been an error!, try again",
     "userNotAvailable": "The user is not available"

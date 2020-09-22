@@ -14,6 +14,10 @@
     "add": "AGREGAR",
     "search": "Buscar"
   },
+  "modalTexts": {
+    "yourBkGroup": "su grupoBk no ha alcanzado las metas",
+    "isEnabled": "para tener disponible esta función"
+  },
   "requestError": {
     "default": "¡Ha habido un problema!, intenta de nuevo",
     "userNotAvailable": "El usuario ya esta en otro bkgrupo"
