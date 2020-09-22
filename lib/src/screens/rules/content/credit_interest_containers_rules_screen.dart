@@ -41,6 +41,7 @@ class CreditInterestContainerRulesScreen extends StatelessWidget {
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             key: Key('column_credit_container_rules_screen'),
             children: <Widget>[
               SizedBox(height: SizeConfig.blockSizeVertical * 2),

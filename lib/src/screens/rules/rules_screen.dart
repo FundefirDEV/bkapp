@@ -43,8 +43,8 @@ class _RulesScreenState extends State<RulesScreen> {
                   key: Key('top_main_container_rules_screen'),
                   color: Theme.of(context).colorScheme.grayColor[100],
                   child: TopContainerRulesSceen(
-                    navigateBloc: navigateBloc,
-                  )),
+                      navigateBloc: navigateBloc,
+                      bankRules: state.bankRulesModel)),
               // Text(state.bankRulesModel.badDebtReservePercentage.toString()),
               Expanded(
                 child: Container(

@@ -16,6 +16,8 @@ class BankRulesModel {
   int creditMaxInstallments;
   String creditMaxValue;
   String shareValue;
+  String bankName;
+  String creationDate;
   double expenseFundPercentage;
   double badDebtReservePercentage;
 
@@ -25,6 +27,8 @@ class BankRulesModel {
       this.creditMaxInstallments,
       this.creditMaxValue,
       this.shareValue,
+      this.bankName,
+      this.creationDate,
       this.expenseFundPercentage,
       this.badDebtReservePercentage});
 
@@ -35,7 +39,9 @@ class BankRulesModel {
       creditMaxValue: formatConfig.format(json["creditMaxValue"]) ?? 0.0,
       shareValue: formatConfig.format(json["shareValue"]) ?? 0.0,
       expenseFundPercentage: json["expenseFundPercentage"] ?? 0.0,
-      badDebtReservePercentage: json["badDebtReservePercentage"] ?? 0.0);
+      badDebtReservePercentage: json["badDebtReservePercentage"] ?? 0.0,
+      bankName: json["bankName"] ?? '',
+      creationDate: json["creationDate"] ?? '');
 
   Map<String, dynamic> toJson() => {
         "ordinaryInterestPercentage": ordinaryInterestPercentage,
@@ -45,5 +51,7 @@ class BankRulesModel {
         "shareValue": shareValue,
         "expenseFundPercentage": expenseFundPercentage,
         "badDebtReservePercentage": badDebtReservePercentage,
+        "bankName": bankName,
+        "creationDate": creationDate,
       };
 }

@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/top_container_content_rules_screen.dart';
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
@@ -11,9 +12,12 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class TopContainerRulesSceen extends StatelessWidget {
-  const TopContainerRulesSceen({Key key, this.navigateBloc}) : super(key: key);
+  const TopContainerRulesSceen({Key key, this.navigateBloc, this.bankRules})
+      : super(key: key);
   // ignore: close_sinks
   final navigateBloc;
+  final BankRulesModel bankRules;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -50,15 +54,15 @@ class TopContainerRulesSceen extends StatelessWidget {
             height: SizeConfig.blockSizeVertical * 1.3,
           ),
           topContainerInformation(context),
-          Container(
-              height: SizeConfig.safeBlockVertical * 4,
-              child: FlatButton(
-                  key: Key('edit_button_rules_screen'),
-                  onPressed: () => navigateBloc.add(ButtonPressed(goTo: 9)),
-                  child: Text(
-                    I18n.of(context).profileScreenEdit,
-                    style: TextStyle(color: Colors.white),
-                  )))
+          // Container(
+          //     height: SizeConfig.safeBlockVertical * 4,
+          //     child: FlatButton(
+          //         key: Key('edit_button_rules_screen'),
+          //         onPressed: () => navigateBloc.add(ButtonPressed(goTo: 9)),
+          //         child: Text(
+          //           I18n.of(context).profileScreenEdit,
+          //           style: TextStyle(color: Colors.white),
+          //         )))
         ],
       ),
     );
@@ -91,18 +95,18 @@ class TopContainerRulesSceen extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
                 child: Column(
                   children: <Widget>[
-                    richTextBuild(context),
+                    richTextBuild(context, bankRules),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        SvgPicture.asset('assets/images/colombia_profile.svg'),
-                        Text(
-                          'Bogotá',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal * 15,
-                        )
+                        // SvgPicture.asset('assets/images/colombia_profile.svg'),
+                        // Text(
+                        //   'Bogotá',
+                        //   style: TextStyle(color: Colors.white),
+                        // ),
+                        // SizedBox(
+                        //   width: SizeConfig.safeBlockHorizontal * 15,
+                        // )
                       ],
                     ),
                   ],
@@ -115,11 +119,16 @@ class TopContainerRulesSceen extends StatelessWidget {
     );
   }
 
-  RichText richTextBuild(context) {
+  RichText richTextBuild(context, BankRulesModel bankRules) {
+    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    final date = bankRules.creationDate != null
+        ? formatter.format(DateTime.parse(bankRules.creationDate))
+        : '';
     return RichText(
       textAlign: TextAlign.left,
+      strutStyle: StrutStyle(height: 1.5),
       text: TextSpan(
-          text: 'Fundefir BK' '\n',
+          text: bankRules.bankName + '\n',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w400,
@@ -127,7 +136,7 @@ class TopContainerRulesSceen extends StatelessWidget {
           ),
           children: <TextSpan>[
             TextSpan(
-              text: I18n.of(context).rulesScreenCreationDate,
+              text: I18n.of(context).rulesScreenCreationDate + '\n',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -135,7 +144,7 @@ class TopContainerRulesSceen extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: '\n12/10/2020',
+              text: date.toString(),
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,

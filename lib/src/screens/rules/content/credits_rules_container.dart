@@ -12,6 +12,7 @@ class CreditsRulesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 10),
       key: Key('container-credits-rules'),
       margin: EdgeInsets.only(top: 10),
       child: RichText(
@@ -27,13 +28,13 @@ class CreditsRulesContainer extends StatelessWidget {
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))
           ])),
-      alignment: Alignment(-0.7, -1.0),
     );
   }
 
   Container duesContainer(context, BankRulesModel bankRules) {
     return Container(
       key: Key('container_dues_rules'),
+      padding: EdgeInsets.only(left: 10),
       margin: EdgeInsets.only(top: 10),
       child: RichText(
           text: TextSpan(
@@ -48,7 +49,6 @@ class CreditsRulesContainer extends StatelessWidget {
                     color: Theme.of(context).colorScheme.grayColor[200],
                     fontSize: 12))
           ])),
-      alignment: Alignment(-0.6, -1.0),
     );
   }
 }
