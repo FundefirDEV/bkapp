@@ -1,5 +1,7 @@
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/widgets/modals/deletePartner/delete_partner_bottom_modal.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -52,17 +54,7 @@ class PartnerCardWidget extends StatelessWidget {
             top: -5.0,
             right: -9.0,
             child: RawMaterialButton(
-              onPressed: () => {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) => DeletePartnerModal(
-                          onSave: () async {
-                            await partnerDb.deletePartnerById(id);
-                            onSave();
-                            Navigator.pop(context);
-                          },
-                        )),
-              },
+              onPressed: () => _showModalBankNotAllowed(context),
               elevation: 4.0,
               constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
               shape: CircleBorder(),
@@ -100,5 +92,26 @@ class PartnerCardWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _showModalBankNotAllowed(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (context) {
+          return ImageBottomModal(
+            modalHeight: 40.0,
+            image: 'assets/images/sad_bot.svg',
+            title: I18n.of(context).modalTextsYourBkGroup,
+            titleBold: I18n.of(context).modalTextsIsEnabled,
+            isBold: true,
+            isBtnAccept: false,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressCancel: () => Navigator.pop(context),
+            buttonsFontSize: 14.0,
+          );
+        });
   }
 }

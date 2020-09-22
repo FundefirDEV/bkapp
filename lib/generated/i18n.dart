@@ -757,9 +757,9 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
-  /// "su grupoBk no ha alcanzado las metas"
+  /// "Su grupoBk no ha alcanzado las metas"
   @override
-  String get modalTextsYourBkGroup => "su grupoBk no ha alcanzado las metas";
+  String get modalTextsYourBkGroup => "Su grupoBk no ha alcanzado las metas";
   /// "para tener disponible esta función"
   @override
   String get modalTextsIsEnabled => "para tener disponible esta función";
