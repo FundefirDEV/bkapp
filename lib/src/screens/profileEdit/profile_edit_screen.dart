@@ -1,13 +1,8 @@
-import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profileEdit/content/profile_edit_text_fields.dart';
 import 'package:bkapp_flutter/src/screens/profileEdit/content/update_button_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'content/top_container_edit_profile_screen.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   ProfileEditScreen({Key key}) : super(key: key);

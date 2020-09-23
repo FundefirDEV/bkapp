@@ -143,7 +143,7 @@ workflows:
         echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
       - cd . && flutter packages pub get
       - cd . && flutter build apk --release --split-per-abi --dart-define=API_URL=$API_URL
-        --dart-define=ENV=$ENV --build-name=1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER
+        --dart-define=ENV=$ENV --build-name=alpha-1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER
         + 100))
       - find . -name "Podfile" -execdir pod install \;
       - keychain initialize
@@ -151,7 +151,7 @@ workflows:
         --create
       - keychain add-certificates
       - cd . && flutter build ios --release --dart-define=API_URL=$API_URL --dart-define=ENV=$ENV
-        --build-name=1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100)) --no-codesign
+        --build-name=alpha-1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100)) --no-codesign
       - xcode-project use-profiles
       - cd . && xcode-project build-ipa --workspace "ios/Runner.xcworkspace" --scheme
         "Runner"
@@ -225,7 +225,7 @@ workflows:
         echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
       - cd . && flutter packages pub get
       - cd . && flutter build apk --release --split-per-abi --dart-define=API_URL=$API_URL
-        --dart-define=ENV=$ENV --build-name=1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER
+        --dart-define=ENV=$ENV --build-name=beta-1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER
         + 100))
       - find . -name "Podfile" -execdir pod install \;
       - keychain initialize
@@ -233,7 +233,7 @@ workflows:
         --create
       - keychain add-certificates
       - cd . && flutter build ios --release --dart-define=API_URL=$API_URL --dart-define=ENV=$ENV
-        --build-name=1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100)) --no-codesign
+        --build-name=beta-1.1.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100)) --no-codesign
       - xcode-project use-profiles
       - cd . && xcode-project build-ipa --workspace "ios/Runner.xcworkspace" --scheme
         "Runner"

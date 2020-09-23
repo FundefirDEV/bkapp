@@ -1,11 +1,14 @@
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/login/widgets/login_form_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_version/get_version.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -16,6 +19,75 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Offset position = Offset(20.0, 20.0);
+  String _platformVersion = 'Unknown';
+  String _projectVersion = '';
+  String _projectCode = '';
+  // ignore: unused_field
+  String _projectAppID = '';
+  // ignore: unused_field
+  String _projectName = '';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      platformVersion = await GetVersion.platformVersion;
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    String projectVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      projectVersion = await GetVersion.projectVersion;
+    } on PlatformException {
+      projectVersion = 'Failed to get project version.';
+    }
+
+    String projectCode;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      projectCode = await GetVersion.projectCode;
+    } on PlatformException {
+      projectCode = 'Failed to get build number.';
+    }
+
+    String projectAppID;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      projectAppID = await GetVersion.appID;
+    } on PlatformException {
+      projectAppID = 'Failed to get app ID.';
+    }
+
+    String projectName;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      projectName = await GetVersion.appName;
+    } on PlatformException {
+      projectName = 'Failed to get app name.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+      _projectVersion = projectVersion;
+      _projectCode = projectCode;
+      _projectAppID = projectAppID;
+      _projectName = projectName;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -72,9 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         Text(
-          EnvironmentConfig.ENV,
-          style: TextStyle(color: Colors.white, fontSize: 10),
-        )
+          "${EnvironmentConfig.ENV} $_projectVersion + $_projectCode ($_platformVersion)",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+          ),
+        ),
       ],
     );
   }

@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/src/screens/profileEdit/profile_edit_screen.dart';
-import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

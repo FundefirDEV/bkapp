@@ -1,7 +1,10 @@
+import 'dart:io' show Platform;
+
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -60,6 +63,7 @@ class SimpleBlocDelegate extends BlocObserver {
 void main({Locale localeDefault}) async {
   try {
     Bloc.observer = SimpleBlocDelegate();
+    if (!kIsWeb) _setTargetPlatformForDesktop();
     runApp(MyApp(
       localeDefault: localeDefault,
     ));
@@ -132,5 +136,17 @@ class MyApp extends StatelessWidget {
         initialRoute: loginRoute,
       ),
     );
+  }
+}
+
+void _setTargetPlatformForDesktop() {
+  TargetPlatform targetPlatform;
+  if (Platform.isMacOS) {
+    targetPlatform = TargetPlatform.iOS;
+  } else if (Platform.isLinux || Platform.isWindows) {
+    targetPlatform = TargetPlatform.android;
+  }
+  if (targetPlatform != null) {
+    debugDefaultTargetPlatformOverride = targetPlatform;
   }
 }

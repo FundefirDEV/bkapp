@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profile/content/top_container_content_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
