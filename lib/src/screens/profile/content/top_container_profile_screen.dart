@@ -39,16 +39,16 @@ class TopContainerProfileScreen {
           TitleHeaderWidget(
               title: I18n.of(context).profileScreenProfile, showArrow: false),
           topContainerInformation(data),
-          Container(
-              height: SizeConfig.safeBlockVertical * 4,
-              child: FlatButton(
-                  key: Key('Edit_button_profile_screen'),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, profileEditScreen),
-                  child: Text(
-                    I18n.of(context).profileScreenEdit,
-                    style: TextStyle(color: Colors.white),
-                  )))
+          // Container(
+          //     height: SizeConfig.safeBlockVertical * 4,
+          //     child: FlatButton(
+          //         key: Key('Edit_button_profile_screen'),
+          //         onPressed: () =>
+          //             Navigator.pushNamed(context, profileEditScreen),
+          //         child: Text(
+          //           I18n.of(context).profileScreenEdit,
+          //           style: TextStyle(color: Colors.white),
+          //         )))
         ],
       ),
     );

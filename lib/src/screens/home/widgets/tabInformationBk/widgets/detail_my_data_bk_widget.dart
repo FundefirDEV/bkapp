@@ -145,8 +145,8 @@ class DetailMyDataBkWidget extends StatelessWidget {
                     Expanded(
                       child: FlatButton(
                         onPressed: () {
-                          navigateBloc.add(ButtonPressed(
-                              goTo: HomeRoutesConstant.timeLineMyShares));
+                          // navigateBloc.add(ButtonPressed(
+                          //     goTo: HomeRoutesConstant.timeLineMyShares));
                         },
                         child: Container(
                             padding: EdgeInsets.only(

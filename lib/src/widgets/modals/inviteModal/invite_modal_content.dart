@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class InviteModalContent {
-
-  Container contactButton({
-    @required BuildContext context,
-    @required onPressed
-  }) {
+  Container contactButton(
+      {@required BuildContext context, @required onPressed}) {
     return Container(
       key: Key('close_container_invite_modal'),
       child: FlatButton(
@@ -20,10 +17,7 @@ class InviteModalContent {
             Icon(Icons.add, color: Colors.white),
             Text(
               I18n.of(context).inviteModalFromMyContacts,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.0
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
           ],
         ),
@@ -56,26 +50,22 @@ class InviteModalContent {
 
   Widget closeContainer(BuildContext context) {
     return FlatButton(
-      key: Key('close_button_invite_modal'),
-      onPressed: () => Navigator.pop(context),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(Icons.close, color: Colors.white, size: 18.0),
-          Text(
-            I18n.of(context).actionTextClose,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14.0,
-              letterSpacing: 3.0
+        key: Key('close_button_invite_modal'),
+        onPressed: () => Navigator.pop(context),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.close, color: Colors.white, size: 18.0),
+            Text(
+              I18n.of(context).actionTextClose,
+              style: TextStyle(
+                  color: Colors.white, fontSize: 14.0, letterSpacing: 3.0),
             ),
-          ),
-        ],
-      )
-    );
+          ],
+        ));
   }
 
-Widget partnersText(BuildContext context, int partners) {
+  Widget partnersText(BuildContext context, int partners) {
     return RichText(
         text: TextSpan(children: [
       TextSpan(
