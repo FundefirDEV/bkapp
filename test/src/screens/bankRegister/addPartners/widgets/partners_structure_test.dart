@@ -1,6 +1,5 @@
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
-import 'package:bkapp_flutter/src/widgets/modals/inviteModal/contacts/contact_list.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
