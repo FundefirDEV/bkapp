@@ -162,6 +162,7 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
                     ),
                     MenuActions(
+                      oldIndex: currentIndex,
                       hasLoaded: hasLoaded,
                       controller: _animateController,
                       isPressed: () => _buttonPressed(),

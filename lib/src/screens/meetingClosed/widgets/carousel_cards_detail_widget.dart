@@ -23,6 +23,7 @@ class CarouselCardsDetailWidget extends StatelessWidget {
       child: Carousel(
         viewportFraction: 0.9,
         heigthContainer: 165,
+        currentPage: 0,
         children: <Widget>[
           for (var i = 0; i < listDetailMeetingClosed.length; i++)
             CardDetailMeetingClosedWidget(

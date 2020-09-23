@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -13,10 +14,12 @@ class MenuActions extends StatelessWidget {
       {Key key,
       @required this.hasLoaded,
       @required this.controller,
-      this.isPressed})
+      this.isPressed,
+      this.oldIndex})
       : animation = MenuAnimation(controller),
         super(key: key);
 
+  final int oldIndex;
   final bool hasLoaded;
   final AnimationController controller;
   final MenuAnimation animation;
@@ -109,8 +112,9 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('profits-button-line'),
             onPressed: () {
-              navigateBloc.add(
-                  ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
+              _showDialog(context, context.bloc<MenuNavigatorBloc>(), oldIndex);
+              // navigateBloc.add(
+              //     ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsProfits,
@@ -156,4 +160,27 @@ class MenuActions extends StatelessWidget {
       ],
     );
   }
+}
+
+void _showDialog(context, menuNavigatorBloc, oldIndex) {
+  showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (_) {
+        return ImageBottomModal(
+            modalHeight: 45.0,
+            image: 'assets/images/sad_bot.svg',
+            isImageBg: false,
+            title: I18n.of(context).modalTextsYourBkGroup,
+            titleBold: I18n.of(context).modalTextsIsEnabled,
+            isBold: true,
+            isBtnAccept: false,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressCancel: () {
+              menuNavigatorBloc.add(ButtonPressed(goTo: oldIndex));
+              Navigator.pop(context);
+            });
+      });
 }
