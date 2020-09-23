@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
@@ -27,10 +28,14 @@ class _LoginScreenState extends State<LoginScreen> {
   // ignore: unused_field
   String _projectName = '';
 
+  PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
+  ActivePartnersDbProvider activePartnersDb = ActivePartnersDbProvider.db;
+
   @override
   void initState() {
     super.initState();
     initPlatformState();
+    _deleteDataBase();
   }
 
   Future<void> initPlatformState() async {
@@ -181,5 +186,14 @@ class _LoginScreenState extends State<LoginScreen> {
         )
       ],
     );
+  }
+
+  void _deleteDataBase() async {
+    try {
+      await partnerDb.deleteAllPartners();
+      await activePartnersDb.deleteAllPartners();
+    } catch (e) {
+      print('error: $e');
+    }
   }
 }
