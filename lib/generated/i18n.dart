@@ -44,8 +44,8 @@ class I18n implements WidgetsLocalizations {
   String get goToLogin => "Go to login";
   /// "Splash Screen"
   String get splashScreen => "Splash Screen";
-  /// "Se ha presentado un error \nintenta nuevamente"
-  String get errorPage => "Se ha presentado un error \nintenta nuevamente";
+  /// "An error has occurred \ntry again"
+  String get errorPage => "An error has occurred \ntry again";
   /// "ENTER"
   String get actionTextEnter => "ENTER";
   /// "I'M NEW"
@@ -736,9 +736,9 @@ class _I18n_es_ES extends I18n {
   /// "Splash Screen"
   @override
   String get splashScreen => "Splash Screen";
-  /// "An error has occurred \ntry again"
+  /// "Un error ha ocurrido \nintenta de nuevo"
   @override
-  String get errorPage => "An error has occurred \ntry again";
+  String get errorPage => "Un error ha ocurrido \nintenta de nuevo";
   /// "INGRESAR"
   @override
   String get actionTextEnter => "INGRESAR";

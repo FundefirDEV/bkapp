@@ -5,7 +5,7 @@
   "firstText": "You have pushed the button this many times:",
   "goToLogin": "Go to login",
   "splashScreen": "Splash Screen",
-  "errorPage": "Se ha presentado un error \nintenta nuevamente",
+  "errorPage": "An error has occurred \ntry again",
   "actionText": {
     "enter": "ENTER",
     "imNew": "I'M NEW",

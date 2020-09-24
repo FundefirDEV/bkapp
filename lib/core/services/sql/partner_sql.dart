@@ -20,8 +20,8 @@ class PartnerDatabaseProvider {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, "partner.db");
     return await openDatabase(path, version: 2,
-      onCreate: (Database db, int version) async {
-        await db.execute("CREATE TABLE Partner ("
+        onCreate: (Database db, int version) async {
+      await db.execute("CREATE TABLE IF NOT EXISTS Partner ("
           "id integer primary key AUTOINCREMENT,"
           "firstname TEXT,"
           "lastname TEXT,"
@@ -34,29 +34,21 @@ class PartnerDatabaseProvider {
           "passwordConfirmation TEXT,"
           "isActive INTEGER,"
           "role TEXT"
-        ")");
-      }
-    );
+          ")");
+    });
   }
 
   addPartnerToDatabase(PartnerModel partner) async {
     final db = await database;
-    var raw = await db.insert(
-      "Partner",
-      partner.toJson(),
-      conflictAlgorithm: ConflictAlgorithm.replace
-    );
+    var raw = await db.insert("Partner", partner.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
     return raw;
   }
 
   updatePartner(PartnerModel partner) async {
     final db = await database;
-    var response = await db.update(
-      "Partner",
-      partner.toJson(),
-      where: "id = ?",
-      whereArgs: [partner.id]
-    );
+    var response = await db.update("Partner", partner.toJson(),
+        where: "id = ?", whereArgs: [partner.id]);
     return response;
   }
 
@@ -72,22 +64,15 @@ class PartnerDatabaseProvider {
 
   Future<PartnerModel> getPartnerById(int id) async {
     final db = await database;
-    var response = await db.query(
-      'Partner',
-      where: "id = ?",
-      whereArgs: [id]
-    );
-    return response.isNotEmpty
-      ? PartnerModel.fromJson(response.first)
-      : null;
+    var response = await db.query('Partner', where: "id = ?", whereArgs: [id]);
+    return response.isNotEmpty ? PartnerModel.fromJson(response.first) : null;
   }
 
   Future<List<PartnerModel>> getAllParters() async {
     final db = await database;
     var response = await db.query("Partner");
-    List<PartnerModel> list = response.map(
-      (prop) => PartnerModel.fromJson(prop)
-    ).toList();
+    List<PartnerModel> list =
+        response.map((prop) => PartnerModel.fromJson(prop)).toList();
     return list;
   }
 
