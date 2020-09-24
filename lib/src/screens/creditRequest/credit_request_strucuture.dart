@@ -50,7 +50,7 @@ class CreditRequestStructure extends StatelessWidget {
                       title: 'Créditos',
                       oldIndex: oldIndex,
                       menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
-                  // TabCreditTypeWidget(),
+                  TabCreditTypeWidget(),
                   LineSeparatorWidget(),
                   Container(
                     margin: EdgeInsets.symmetric(
