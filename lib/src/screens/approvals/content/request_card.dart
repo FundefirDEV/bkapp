@@ -84,7 +84,7 @@ class RequestShareCard extends StatelessWidget {
                         },
                         child: SvgPicture.asset(
                           'assets/images/approve.svg',
-                          height: SizeConfig.blockSizeVertical * 6,
+                          height: 35,
                         ),
                       ),
                     ),

@@ -34,14 +34,13 @@ class CardsApprovalsContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           partnerName != ''
-              ? Expanded(
-                  child: Text(
-                    partnerName,
-                    style: TextStyle(fontWeight: FontWeight.w700),
-                    textAlign: TextAlign.center,
-                  ),
+              ? Text(
+                  partnerName,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,
                 )
               : SizedBox(height: 15),
+          SizedBox(height: 5),
           Expanded(
             child: RichText(
                 textAlign: TextAlign.center,
