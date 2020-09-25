@@ -1,6 +1,5 @@
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profile/content/top_container_content_profile_screen.dart';
 import 'package:bkapp_flutter/src/screens/profile/imageCountry/image_country.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';

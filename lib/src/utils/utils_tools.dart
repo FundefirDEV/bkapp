@@ -37,15 +37,20 @@ class UtilsTools {
   }
 
   static String titleCase(String text) {
-    if (text.length <= 1) return text.toUpperCase();
-    text = text.toLowerCase();
-    var words = text.split(' ');
-    var capitalized = words.map((word) {
-      var first = word.substring(0, 1).toUpperCase();
-      var rest = word.substring(1);
-      return '$first$rest';
-    });
-    return capitalized.join(' ');
+    try {
+      if (text.length <= 1) return text.toUpperCase();
+      text = text.toLowerCase();
+      var words = text.split(' ');
+      var capitalized = words.map((word) {
+        var first = word.substring(0, 1).toUpperCase();
+        var rest = word.substring(1);
+        return '$first$rest';
+      });
+      return capitalized.join(' ');
+    } catch (e) {
+      // TODO:Fix the formatter
+      return text;
+    }
   }
 
   static String removeCurrencyFormatter(String number) {

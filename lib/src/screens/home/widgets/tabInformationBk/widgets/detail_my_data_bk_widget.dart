@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

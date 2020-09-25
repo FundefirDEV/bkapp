@@ -116,6 +116,7 @@ class _InviteModalState extends State<InviteModal> {
     Navigator.pop(context);
   }
 
+  // ignore: unused_element
   Future _showDialog(BuildContext context) {
     return showModalBottomSheet(
         backgroundColor: Colors.transparent,
