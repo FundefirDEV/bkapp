@@ -3,7 +3,7 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bkservice.fundefir-dev.com");
+      defaultValue: "https://bkservicestage.fundefir-dev.com");
   // https://bkservicestage.fundefir-dev.com
   // https://bkservice.fundefir-dev.com
   // http://192.168.0.19:8888

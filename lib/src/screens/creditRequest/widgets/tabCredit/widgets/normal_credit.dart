@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/bankBloc/myBank/mybank_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -18,17 +19,18 @@ class NormalCredit extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     MyBankState bankState = BlocProvider.of<MyBankBloc>(context).state;
-    HomeState homeState = BlocProvider.of<HomeBloc>(context).state;
 
-    String currentShares =
-        homeState is HomeLoaded ? homeState.bkInformation.personal.shares : '0';
+    int currentShares = 0;
+    int currentCashBalance = 0;
+    BankInfoModel bankInfo = new BankInfoModel();
+    if (bankState is MyBankLoaded) {
+      bankInfo = bankState.bankInfoModel;
+      currentShares = int.parse(bankInfo.personal.shares);
+      currentCashBalance = int.parse(
+          UtilsTools.removeMoneyFormatter(bankInfo.group.cashBalance));
+    }
 
-    int currentCashBalance = homeState is HomeLoaded
-        ? int.parse(UtilsTools.removeMoneyFormatter(
-            homeState.bkInformation.group.cashBalance))
-        : 0.0;
-
-    final maximumRequestFormula = int.parse(currentShares) * 10000 * 5;
+    final maximumRequestFormula = currentShares * 10000 * 5;
     final maximumRequest = maximumRequestFormula > currentCashBalance
         ? currentCashBalance
         : maximumRequestFormula;
@@ -36,7 +38,7 @@ class NormalCredit extends StatelessWidget {
         NumberFormat.currency(locale: 'en_US', decimalDigits: 0, symbol: r'$');
 
     return CardInformationBkWidget(
-      childBlue: NumberActions(homeState: homeState),
+      childBlue: NumberActions(bankInfoModel: bankInfo),
       childBlueWidth: SizeConfig.blockSizeHorizontal * 30,
       childWhite: Container(
         padding: EdgeInsets.symmetric(

@@ -1,12 +1,13 @@
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NumberActions extends StatelessWidget {
-  const NumberActions({Key key, @required this.homeState}) : super(key: key);
-  final HomeLoaded homeState;
+  const NumberActions({Key key, @required this.bankInfoModel})
+      : super(key: key);
+  final BankInfoModel bankInfoModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,7 @@ class NumberActions extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(top: 20),
               child: Text(
-                homeState is HomeLoaded
-                    ? homeState.bkInformation.personal.shares
-                    : '0',
+                bankInfoModel.personal.shares,
                 key: Key('number-action-value-text'),
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal * 6,
