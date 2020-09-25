@@ -31,7 +31,7 @@ class MyBankBloc extends Bloc<MyBankEvent, MyBankState> {
           ..bankRulesModel = bankRulesFromJson(rules);
         yield MyBankLoaded(data: myBankModel);
       } catch (e) {
-        yield MyBankFailure();
+        yield MyBankFailure(error: e.toString());
       }
     }
   }

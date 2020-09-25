@@ -242,12 +242,12 @@ class I18n implements WidgetsLocalizations {
   String get utilsPaymentOf => "Payment of";
   /// "Profits"
   String get utilsProfits => "Profits";
-  /// "Approve credits\nand actions"
-  String get utilsApproveCreditActions => "Approve credits\nand actions";
+  /// "Approve credits\nand shares"
+  String get utilsApproveCreditActions => "Approve credits\nand shares";
   /// "Know how to\nmanage your banko"
   String get utilsKnowManageBk => "Know how to\nmanage your banko";
-  /// "Delete and\ndeliver actions"
-  String get utilsDeleteDeliverActions => "Delete and\ndeliver actions";
+  /// "Delete and\ndeliver shares"
+  String get utilsDeleteDeliverActions => "Delete and\ndeliver shares";
   /// "Know your\nearnings for the year"
   String get utilsKnowEarningsYear => "Know your\nearnings for the year";
   /// "Exemptions"
@@ -270,8 +270,8 @@ class I18n implements WidgetsLocalizations {
   String get mainMenuActionsProfits => "profits\n payment";
   /// "close meeting"
   String get mainMenuActionsMeeting => "close meeting";
-  /// "buy actions"
-  String get mainMenuActionsActions => "buy actions";
+  /// "buy shares"
+  String get mainMenuActionsActions => "buy shares";
   /// "add / remove\n partner"
   String get mainMenuActionsPartner => "add / remove\n partner";
   /// "MY DATA"
@@ -348,14 +348,14 @@ class I18n implements WidgetsLocalizations {
   String get preApproveInstallmentModalPreApprove => "pre-approved";
   /// "Request of shares"
   String get preApprovedSharesModalSharesrequest => "Request of shares";
-  /// "Actions"
-  String get buySharesActions => "Actions";
+  /// "Shares"
+  String get buySharesActions => "Shares";
   /// "MY"
   String get buySharesMy => "MY";
   /// "Share Value"
   String get buySharesShareValue => "Share Value";
-  /// "Actions Available"
-  String get buySharesActionsAvailable => "Actions Available";
+  /// "Shares Available"
+  String get buySharesActionsAvailable => "Shares Available";
   /// "How many"
   String get buySharesHowMany => "How many";
   /// "you want"
@@ -370,12 +370,12 @@ class I18n implements WidgetsLocalizations {
   String get buySharesForHim => "for him";
   /// "administrator"
   String get buySharesAdministrator => "administrator";
-  /// "Number of actions"
-  String get buySharesNumberActions => "Number of actions";
+  /// "Number of shares"
+  String get buySharesNumberActions => "Number of shares";
   /// "BUY"
   String get buySharesBuy => "BUY";
-  /// "Requested actions"
-  String get buySharesRequestedActions => "Requested actions";
+  /// "Requested shares"
+  String get buySharesRequestedActions => "Requested shares";
   /// "Application date"
   String get buySharesApplicationDate => "Application date";
   /// "Status"
@@ -408,8 +408,8 @@ class I18n implements WidgetsLocalizations {
   String get approvalsScreenPaymentRequested => "Payment Requested";
   /// "Credit Requested"
   String get approvalsScreenCreditRequested => "Credit Requested";
-  /// "Share instead of action"
-  String get approvalsScreenActionRequested => "Share instead of action";
+  /// "Share instead of share"
+  String get approvalsScreenActionRequested => "Share instead of share";
   /// "Approvals"
   String get approveCreditModalApproval => "Approvals";
   /// "Petitions"
@@ -652,8 +652,8 @@ class I18n implements WidgetsLocalizations {
   String get profitPaymentProfitRetained => "Profit Retained";
   /// "pending receivable"
   String get profitPaymentPendingReceivable => "pending receivable";
-  /// "Convert to actions"
-  String get profitPaymentConvertToActions => "Convert to actions";
+  /// "Convert to shares"
+  String get profitPaymentConvertToActions => "Convert to shares";
   /// "Pay"
   String get profitPaymentPay => "Pay";
   /// "PAID"

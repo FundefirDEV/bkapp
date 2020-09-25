@@ -69,7 +69,7 @@ class _RulesScreenState extends State<RulesScreen> {
         );
       }
       if (state is BankRulesFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(
         child: CircularProgressIndicator(),

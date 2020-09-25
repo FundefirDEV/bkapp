@@ -43,7 +43,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
     return BlocBuilder<ProfitPaymentBloc, ProfitPaymentState>(
         builder: (context, state) {
       if (state is ProfitPaymentFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       if (state is ProfitPaymentLoading) {
         return Center(

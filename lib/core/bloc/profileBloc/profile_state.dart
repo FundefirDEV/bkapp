@@ -20,4 +20,10 @@ class ProfileLoaded extends ProfileState {
   List<Object> get props => [profileModel];
 }
 
-class ProfileFailure extends ProfileState {}
+class ProfileFailure extends ProfileState {
+  ProfileFailure({this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}

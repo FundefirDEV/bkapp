@@ -48,7 +48,7 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
       }
     } catch (e) {
       yield PartnerUnauthorized(
-          phoneNumber: event.phoneNumber, error: e.message);
+          phoneNumber: event.phoneNumber, error: e.toString());
     }
   }
 
@@ -60,7 +60,7 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
       yield PartnerVerified(phoneNumber: event.phoneNumber);
     } catch (e) {
       yield PartnerUnauthorized(
-          phoneNumber: event.phoneNumber, error: e.message);
+          phoneNumber: event.phoneNumber, error: e.toString());
     }
   }
 
@@ -69,26 +69,21 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
         PartnerModel(firstname: event.name, phone: event.phoneNumber));
     yield PartnerAddedToDb();
     if (!event.isRegister) {
-        yield* _addToBack(event);
-      }
+      yield* _addToBack(event);
+    }
   }
 
   Stream<PartnerState> _addToBack(dynamic event) async* {
     try {
-      await partnerRepository.postInvitePartner(
-        event.token,
-        [
-          {
-            "name": event.name,
-            "phone": UtilsTools.removePhoneFormatter(event.phoneNumber)
-          }
-        ]
-      );
+      await partnerRepository.postInvitePartner(event.token, [
+        {
+          "name": event.name,
+          "phone": UtilsTools.removePhoneFormatter(event.phoneNumber)
+        }
+      ]);
       yield PartnerAddedToBack();
-    } catch(e) {
-      PartnerFailureToBack(
-        phoneNumber: event.phoneNumber, error: e.message
-      );
+    } catch (e) {
+      PartnerFailureToBack(phoneNumber: event.phoneNumber, error: e.toString());
     }
   }
 }

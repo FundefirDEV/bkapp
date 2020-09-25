@@ -23,7 +23,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
         final infoMeeting = MeetingModel.fromJson(response);
         yield MeetingLoaded(infoMeeting: infoMeeting);
       } catch (e) {
-        yield MeetingFailure();
+        yield MeetingFailure(error: e.toString());
       }
     }
     if (event is MeetingClosed) {
@@ -33,7 +33,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
         final infoMeeting = MeetingModel.fromJson(response);
         yield MeetingLoaded(infoMeeting: infoMeeting);
       } catch (e) {
-        yield MeetingFailure();
+        yield MeetingFailure(error: e.toString());
       }
     }
   }

@@ -24,11 +24,9 @@ class ApprovalsBloc extends Bloc<ApprovalsEvent, ApprovalsState> {
         final response = await repository.getApprovals(event.token);
         ApprovalsModel approvalsModel = approvalsModelFromJson(response);
         yield ApprovalsLoaded(
-          approvals: response,
-          approvalsModel: approvalsModel
-        );
+            approvals: response, approvalsModel: approvalsModel);
       } catch (e) {
-        yield ApprovalsFailure();
+        yield ApprovalsFailure(error: e.toString());
       }
     }
     if (event is ApprovalsPost) {
@@ -39,7 +37,7 @@ class ApprovalsBloc extends Bloc<ApprovalsEvent, ApprovalsState> {
         yield ApprovalsPostLoaded(approvals: response);
         add(ApprovalsInitialize(token: event.token));
       } catch (e) {
-        yield ApprovalsFailure();
+        yield ApprovalsFailure(error: e.toString());
       }
     }
   }

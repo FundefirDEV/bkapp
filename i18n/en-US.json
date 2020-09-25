@@ -153,9 +153,9 @@
     "partners": "Partners",
     "paymentOf": "Payment of",
     "profits": "Profits",
-    "approveCreditActions": "Approve credits\nand actions",
+    "approveCreditActions": "Approve credits\nand shares",
     "KnowManageBk": "Know how to\nmanage your banko",
-    "DeleteDeliverActions": "Delete and\ndeliver actions",
+    "DeleteDeliverActions": "Delete and\ndeliver shares",
     "KnowEarningsYear": "Know your\nearnings for the year",
     "exemptions": "Exemptions",
     "assignment": "Assignment",
@@ -172,7 +172,7 @@
       "credit": "credit",
       "profits": "profits\n payment",
       "meeting": "close meeting",
-      "actions": "buy actions",
+      "actions": "buy shares",
       "partner": "add / remove\n partner"
     }
   },
@@ -228,10 +228,10 @@
     "Sharesrequest": "Request of shares"
   },
   "buyShares": {
-    "actions": "Actions",
+    "actions": "Shares",
     "my": "MY",
     "shareValue": "Share Value",
-    "actionsAvailable": "Actions Available",
+    "actionsAvailable": "Shares Available",
     "howMany": "How many",
     "youWant": "you want",
     "toBuy": "to buy?",
@@ -239,9 +239,9 @@
     "approved": "approved",
     "forHim": "for him",
     "administrator": "administrator",
-    "numberActions": "Number of actions",
+    "numberActions": "Number of shares",
     "buy": "BUY",
-    "requestedActions": "Requested actions",
+    "requestedActions": "Requested shares",
     "applicationDate": "Application date",
     "status": "Status"
   },
@@ -260,7 +260,7 @@
     "cashBalance": "Cash Balance",
     "paymentRequested": "Payment Requested",
     "creditRequested": "Credit Requested",
-    "actionRequested": "Share instead of action"
+    "actionRequested": "Share instead of share"
   },
   "approveCreditModal": {
     "approval": "Approvals",
@@ -412,7 +412,7 @@
     "selectPartner": "Select partner",
     "profitRetained": "Profit Retained",
     "pendingReceivable": "pending receivable",
-    "convertToActions": "Convert to actions",
+    "convertToActions": "Convert to shares",
     "pay": "Pay",
     "paid": "PAID",
     "shares": "SHARES",

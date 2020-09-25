@@ -72,7 +72,7 @@ flutter:
           weight: 700
 
 flutter_launcher_name:
-  name: "Bk App (EN PRUEBAS)"
+  name: "BkApp"
 
 flutter_icons:
   ios: true

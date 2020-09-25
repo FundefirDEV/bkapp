@@ -39,7 +39,7 @@ class BuySharesBloc extends Bloc<BuySharesEvent, BuySharesState> {
         yield BuySharesLoaded(infoShares: sharesInfo);
       } catch (e) {
         print(e);
-        yield BuySharesFailure();
+        yield BuySharesFailure(error: e.toString());
       }
     }
   }

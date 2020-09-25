@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_widget.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
@@ -76,7 +77,8 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           });
                         },
                         onFailure: (context, state) {
-                          print('Failure');
+                          UtilsTools.showErrorDialog(
+                              context, state.failureResponse);
                         },
                         child: Column(
                           key: Key('column-buy-share-screen'),
@@ -109,7 +111,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
         }
       }
       if (state is BuySharesFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(
         child: CircularProgressIndicator(),

@@ -30,7 +30,7 @@ class TimeLineSharesBloc
         model.dates.add(date);
         yield TimeLineSharesLoaded(timeLineShares: model);
       } catch (e) {
-        yield TimeLineSharesFailure();
+        yield TimeLineSharesFailure(error: e.toString());
       }
     }
   }

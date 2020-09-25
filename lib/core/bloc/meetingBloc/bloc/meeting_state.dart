@@ -19,4 +19,10 @@ class MeetingLoaded extends MeetingState {
   List<Object> get props => [infoMeeting];
 }
 
-class MeetingFailure extends MeetingState {}
+class MeetingFailure extends MeetingState {
+  MeetingFailure({@required this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}

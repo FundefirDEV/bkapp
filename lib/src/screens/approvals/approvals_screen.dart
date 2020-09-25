@@ -70,7 +70,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
           );
         }
         if (state is ApprovalsFailure) {
-          return ErrorPage();
+          return ErrorPage(errorMessage: state.error);
         }
         return Center(
           child: CircularProgressIndicator(),

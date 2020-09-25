@@ -27,7 +27,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
             historyEarnings: r'$10.540.200', partners: partners);
       } catch (e) {
         print(e);
-        yield ProfitPaymentFailure();
+        yield ProfitPaymentFailure(error: e.toString());
       }
     }
     if (event is ProfitPaymentPartnerSelected) {
@@ -59,7 +59,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
         yield ProfitPaymentDetail(profitPartner: profitPartner);
       } catch (e) {
         print(e);
-        yield ProfitPaymentFailure();
+        yield ProfitPaymentFailure(error: e.toString());
       }
     }
     if (event is TurnIntoShares) {

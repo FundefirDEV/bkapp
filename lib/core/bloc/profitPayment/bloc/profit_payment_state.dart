@@ -26,4 +26,9 @@ class ProfitPaymentDetail extends ProfitPaymentState {
   List<Object> get props => [profitPartner];
 }
 
-class ProfitPaymentFailure extends ProfitPaymentState {}
+class ProfitPaymentFailure extends ProfitPaymentState {
+  ProfitPaymentFailure({this.error});
+  final String error;
+  @override
+  List<Object> get props => [error];
+}

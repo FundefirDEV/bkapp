@@ -49,6 +49,9 @@ class _CreditScreenState extends State<CreditScreen> {
       builder: (contextA) {
         return BlocBuilder<ApprovalsBloc, ApprovalsState>(
           builder: (context, state) {
+            if (state is ApprovalsFailure) {
+              return ErrorPage(errorMessage: state.error);
+            }
             return BlocBuilder<MyBankBloc, MyBankState>(
               builder: (context, stateBank) {
                 if (state is ApprovalsLoaded && stateBank is MyBankLoaded) {
@@ -63,6 +66,9 @@ class _CreditScreenState extends State<CreditScreen> {
 
                   return _renderScreens(
                       myCreditRequest, activeCredits, myPaymentInstallment);
+                }
+                if (stateBank is MyBankFailure) {
+                  return ErrorPage(errorMessage: stateBank.error);
                 }
                 return Center(
                   child: CircularProgressIndicator(),

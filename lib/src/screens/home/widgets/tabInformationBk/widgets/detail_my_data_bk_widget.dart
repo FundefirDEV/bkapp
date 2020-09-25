@@ -1,10 +1,14 @@
+// ignore: unused_import
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+// ignore: unused_import
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+// ignore: unused_import
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class DetailMyDataBkWidget extends StatelessWidget {
@@ -13,8 +17,6 @@ class DetailMyDataBkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 1.5),
       child: Column(
@@ -98,7 +100,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                     Expanded(
                       child: FlatButton(
                         onPressed: () {
-                          // navigateBloc.add(ButtonPressed(goTo: 11));
+                          // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: HomeRoutesConstant.activeCreditScreen));
                         },
                         child: Container(
                             child: Column(
@@ -144,7 +146,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                     Expanded(
                       child: FlatButton(
                         onPressed: () {
-                          // navigateBloc.add(ButtonPressed(
+                          // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
                           //     goTo: HomeRoutesConstant.timeLineMyShares));
                         },
                         child: Container(

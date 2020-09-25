@@ -29,7 +29,7 @@ class AdministratorAsignmentBloc
             partner: response, administratorModel: administratorModelActive);
       } catch (e) {
         print(e);
-        yield AdministratorAsignmentFailure();
+        yield AdministratorAsignmentFailure(error: e.toString());
       }
     }
     if (event is AdministratorAsignmentPost) {
@@ -39,7 +39,7 @@ class AdministratorAsignmentBloc
             event.token, event.name, event.phone, event.partnerType);
         add(AdministratorAsignmentInitialize(token: event.token));
       } catch (e) {
-        yield AdministratorAsignmentFailure();
+        yield AdministratorAsignmentFailure(error: e.toString());
       }
     }
   }

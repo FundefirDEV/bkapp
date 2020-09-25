@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
       }
       if (state is ProfileFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(
         child: CircularProgressIndicator(),

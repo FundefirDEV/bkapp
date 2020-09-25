@@ -20,4 +20,11 @@ class BuySharesLoaded extends BuySharesState {
   List<Object> get props => [infoShares];
 }
 
-class BuySharesFailure extends BuySharesState {}
+class BuySharesFailure extends BuySharesState {
+  final String error;
+
+  BuySharesFailure({@required this.error});
+
+  @override
+  List<Object> get props => [error];
+}

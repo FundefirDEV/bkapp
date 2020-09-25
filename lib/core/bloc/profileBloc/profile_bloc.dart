@@ -24,7 +24,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         ProfileModel profileModel = profileModelFromJson(response);
         yield ProfileLoaded(profileModel: profileModel);
       } catch (e) {
-        yield ProfileFailure();
+        yield ProfileFailure(error: e.toString());
       }
     }
   }

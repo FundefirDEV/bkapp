@@ -2,7 +2,7 @@ part of 'mybank_bloc.dart';
 
 abstract class MyBankState extends Equatable {
   const MyBankState();
-  
+
   @override
   List<Object> get props => [];
 }
@@ -19,4 +19,10 @@ class MyBankLoaded extends MyBankState {
   List<Object> get props => [data];
 }
 
-class MyBankFailure extends MyBankState {}
+class MyBankFailure extends MyBankState {
+  MyBankFailure({@required this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}

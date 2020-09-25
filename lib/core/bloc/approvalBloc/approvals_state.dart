@@ -21,7 +21,6 @@ class ApprovalsLoaded extends ApprovalsState {
   List<Object> get props => [approvals, approvalsModel];
 }
 
-
 class ApprovalsPostLoaded extends ApprovalsState {
   final Map approvals;
 
@@ -31,4 +30,11 @@ class ApprovalsPostLoaded extends ApprovalsState {
   List<Object> get props => [approvals];
 }
 
-class ApprovalsFailure extends ApprovalsState {}
+class ApprovalsFailure extends ApprovalsState {
+  final String error;
+
+  ApprovalsFailure({@required this.error});
+
+  @override
+  List<Object> get props => [error];
+}

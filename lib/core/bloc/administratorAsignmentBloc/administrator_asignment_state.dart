@@ -22,4 +22,10 @@ class AdministratorAsignmentLoaded extends AdministratorAsignmentState {
   List<Object> get props => [partner, administratorModel];
 }
 
-class AdministratorAsignmentFailure extends AdministratorAsignmentState {}
+class AdministratorAsignmentFailure extends AdministratorAsignmentState {
+  AdministratorAsignmentFailure({@required this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}

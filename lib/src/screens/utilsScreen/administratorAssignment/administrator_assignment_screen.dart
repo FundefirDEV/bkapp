@@ -64,7 +64,7 @@ class _AdministratorAssignmentScreenState
             ));
       }
       if (state is AdministratorAsignmentFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(
         child: CircularProgressIndicator(),

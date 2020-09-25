@@ -24,7 +24,7 @@ class BankRulesBloc extends Bloc<BankRulesEvent, BankRulesState> {
         yield BankRulesLoaded(
             bankRules: response, bankRulesModel: approvalsModel);
       } catch (e) {
-        yield BankRulesFailure();
+        yield BankRulesFailure(error: e.toString());
       }
     }
   }

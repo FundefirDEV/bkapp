@@ -61,7 +61,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
         );
       }
       if (state is MeetingFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(child: CircularProgressIndicator());
     });

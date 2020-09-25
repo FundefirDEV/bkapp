@@ -19,4 +19,10 @@ class TimeLineSharesLoaded extends TimeLineSharesState {
   List<Object> get props => [timeLineShares];
 }
 
-class TimeLineSharesFailure extends TimeLineSharesState {}
+class TimeLineSharesFailure extends TimeLineSharesState {
+  TimeLineSharesFailure({this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}

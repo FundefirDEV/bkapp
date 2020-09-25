@@ -65,7 +65,7 @@ class _TimeLineMySharesScreenState extends State<TimeLineMySharesScreen> {
         );
       }
       if (state is TimeLineSharesFailure) {
-        return ErrorPage();
+        return ErrorPage(errorMessage: state.error);
       }
       return Center(
         child: CircularProgressIndicator(),

@@ -21,4 +21,10 @@ class BankRulesLoaded extends BankRulesState {
   List<Object> get props => [bankRules];
 }
 
-class BankRulesFailure extends BankRulesState {}
+class BankRulesFailure extends BankRulesState {
+  BankRulesFailure({this.error});
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+}
