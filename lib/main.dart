@@ -1,4 +1,5 @@
-import 'dart:io' show Platform;
+import 'dart:io'
+    show HttpClient, HttpOverrides, Platform, SecurityContext, X509Certificate;
 
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
@@ -25,6 +26,17 @@ import 'core/services/api/http_requests.dart';
 final SentryClient sentry = SentryClient(
     dsn: EnvironmentConfig.DSN_SENTRY,
     environmentAttributes: Event(environment: EnvironmentConfig.ENV));
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) {
+        print('Acepting bad certificate for $host');
+        return true;
+      };
+  }
+}
 
 class SimpleBlocDelegate extends BlocObserver {
   var logger = Logger(
@@ -62,6 +74,7 @@ class SimpleBlocDelegate extends BlocObserver {
 
 void main({Locale localeDefault}) async {
   try {
+    HttpOverrides.global = new MyHttpOverrides();
     Bloc.observer = SimpleBlocDelegate();
     if (!kIsWeb) _setTargetPlatformForDesktop();
     runApp(MyApp(
