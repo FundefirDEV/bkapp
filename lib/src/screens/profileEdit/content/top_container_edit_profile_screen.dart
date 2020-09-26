@@ -8,8 +8,6 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TopContainerEditProfileScreen {
   Container topContainer(context) {
-    TopContainerContentProfileScreen content =
-        TopContainerContentProfileScreen();
     return Container(
       key: Key('Top_container_profile_edit_Screen'),
       height: SizeConfig.safeBlockVertical * 37,
@@ -33,7 +31,7 @@ class TopContainerEditProfileScreen {
           key: Key('Top_container_column_profile_edit_Screen'),
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            content.saloAndArrow(),
+            TopContainerProfile(),
             // Padding(
             //   padding: const EdgeInsets.symmetric(horizontal: 30.0),
             //   child: TitleHeaderWidget(

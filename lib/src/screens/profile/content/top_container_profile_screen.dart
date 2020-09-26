@@ -11,7 +11,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TopContainerProfileScreen {
-  TopContainerContentProfileScreen content = TopContainerContentProfileScreen();
   Container topContainer(context, ProfileModel data) {
     return Container(
       key: Key('Top_container_profile_Screen'),
@@ -34,7 +33,7 @@ class TopContainerProfileScreen {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          content.saloAndArrow(),
+          TopContainerProfile(),
           TitleHeaderWidget(
               title: I18n.of(context).profileScreenProfile, showArrow: false),
           topContainerInformation(data),

@@ -1,9 +1,15 @@
-import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/loginFormBloc/authentication/authentication_bloc.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-class TopContainerContentProfileScreen {
-  Container saloAndArrow() {
+class TopContainerProfile extends StatelessWidget {
+  const TopContainerProfile({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       key: Key('Top_container_profile_Screen'),
       child: Row(
@@ -15,10 +21,13 @@ class TopContainerContentProfileScreen {
                 onTap: () => {},
                 child: SvgPicture.asset('assets/images/salo_bot.svg')),
           ),
-          SizedBox(width: SizeConfig.safeBlockHorizontal * 61,),
+          SizedBox(
+            width: SizeConfig.safeBlockHorizontal * 61,
+          ),
           InkWell(
               key: Key('Exit_button_container_profile_Screen'),
-              onTap: () => {},
+              onTap: () =>
+                  context.bloc<AppBloc>().authenticationBloc.add(LoggedOut()),
               child: SvgPicture.asset('assets/images/icon_exit.svg')),
         ],
       ),
