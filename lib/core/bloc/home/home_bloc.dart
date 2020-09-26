@@ -37,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         yield HomeLoaded(bkInformation: bankInfo);
       } catch (e) {
-        yield HomeFailure();
+        yield HomeFailure(error: e.toString());
       }
     }
   }
@@ -66,7 +66,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
         }
       } catch (e) {
-        yield HomeFailure();
+        yield HomeFailure(error: e.toString());
       }
     }
   }
