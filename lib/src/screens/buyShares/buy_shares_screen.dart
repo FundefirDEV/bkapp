@@ -67,12 +67,10 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           FormBlocListener<BuySharesFormBloc, String, String>(
                         key: Key('bloc-listener-buy-share-screen'),
                         onSubmitting: (context, state) {
-                          print('Submiting');
-                        },
-                        onLoading: (context, state) {
-                          CircularProgressIndicator();
+                          _showLoading(context);
                         },
                         onSuccess: (context, state) {
+                          Navigator.pop(context);
                           _showDialog(context, () {
                             context.bloc<BuySharesBloc>().add(
                                 BuySharesInitialize(token: widget.tokenUser));
@@ -80,6 +78,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           });
                         },
                         onFailure: (context, state) {
+                          Navigator.pop(context);
                           UtilsTools.showErrorDialog(
                               context, state.failureResponse);
                         },
@@ -121,6 +120,20 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
       );
     });
   }
+}
+
+void _showLoading(context) {
+  showModalBottomSheet(
+      enableDrag: false,
+      isDismissible: false,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return Container(
+            height: SizeConfig.blockSizeVertical * 100,
+            child: Center(child: CircularProgressIndicator()));
+      });
 }
 
 void _showDialog(context, onPress) {

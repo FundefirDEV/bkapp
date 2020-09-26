@@ -281,7 +281,7 @@
     "theCode": "el código ",
     "weSendToYour": "que enviamos a \n tu ",
     "cellNumber": "número celular",
-    "pinCodeComplete": "Por favor llene todas las celdas correctamente",
+    "pinCodeComplete": "Por favor ingrese el código correcto",
     "errorCodeMessage": "El código digitado no es válido",
     "goodCodeMessage": "Código validado satisfactoriamente"
   },
@@ -299,7 +299,7 @@
     "numberOfFees": "Número de cuotas",
     "UseOfCredit": "Uso del crédito",
     "Detail": "Detalle",
-    "wayToPay": "Forma de pago",
+    "wayToPay": "Rormas de pago del interes ordinarios",
     "advances": "Por Adelantado",
     "installments": "Cuotas"
   },

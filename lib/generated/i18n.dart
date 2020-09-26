@@ -454,8 +454,8 @@ class I18n implements WidgetsLocalizations {
   String get pinCodeVerificationWeSendToYour => "we send to \n your ";
   /// "cell number"
   String get pinCodeVerificationCellNumber => "cell number";
-  /// "Please fill all the cells correctly"
-  String get pinCodeVerificationPinCodeComplete => "Please fill all the cells correctly";
+  /// "Please enter correct code"
+  String get pinCodeVerificationPinCodeComplete => "Please enter correct code";
   /// "The code entered is not valid"
   String get pinCodeVerificationErrorCodeMessage => "The code entered is not valid";
   /// "Successfully validated code"
@@ -482,8 +482,8 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenUseOfCredit => "Credit use";
   /// "Detail"
   String get creditScreenDetail => "Detail";
-  /// "Way to pay"
-  String get creditScreenWayToPay => "Way to pay";
+  /// "Types of ordinary interest payment"
+  String get creditScreenWayToPay => "Types of ordinary interest payment";
   /// "Advance"
   String get creditScreenAdvances => "Advance";
   /// "Installments"
@@ -1327,9 +1327,9 @@ class _I18n_es_ES extends I18n {
   /// "número celular"
   @override
   String get pinCodeVerificationCellNumber => "número celular";
-  /// "Por favor llene todas las celdas correctamente"
+  /// "Por favor ingrese el código correcto"
   @override
-  String get pinCodeVerificationPinCodeComplete => "Por favor llene todas las celdas correctamente";
+  String get pinCodeVerificationPinCodeComplete => "Por favor ingrese el código correcto";
   /// "El código digitado no es válido"
   @override
   String get pinCodeVerificationErrorCodeMessage => "El código digitado no es válido";
@@ -1369,9 +1369,9 @@ class _I18n_es_ES extends I18n {
   /// "Detalle"
   @override
   String get creditScreenDetail => "Detalle";
-  /// "Forma de pago"
+  /// "Rormas de pago del interes ordinarios"
   @override
-  String get creditScreenWayToPay => "Forma de pago";
+  String get creditScreenWayToPay => "Rormas de pago del interes ordinarios";
   /// "Por Adelantado"
   @override
   String get creditScreenAdvances => "Por Adelantado";

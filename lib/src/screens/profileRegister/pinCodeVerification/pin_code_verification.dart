@@ -1,6 +1,9 @@
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/widgets/pin_code_form_listener_widget.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
+import 'package:bkapp_flutter/src/widgets/menuRequests/menu_requests.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +14,45 @@ class PinCodeStepScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    Offset position = Offset(40.0, 40.0);
+    bool isDisabled = true;
     return BlocProvider(
       create: (context) =>
           context.bloc<AppBloc>().profileRegisterBloc.pinCodeBloc,
       child: Builder(builder: (context) {
         return Material(
-          child: SafeArea(child: PinCodeFormListenerWidget(data: data)),
+          child: SafeArea(
+              child: Column(
+            children: [
+              MenuRequests(
+                  position: position,
+                  onDragEnd: (details) {
+                    position = details.offset;
+                  }),
+              ButtonBackWidget(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      PinCodeFormListenerWidget(data: data),
+                    ],
+                  ),
+                ),
+                flex: 3,
+              ),
+              Expanded(
+                child: FooterStepWidget(
+                    currentStep: 4,
+                    numberOfSteps: 5,
+                    isDisabled: isDisabled,
+                    currentBlocSubmit: context
+                        .bloc<AppBloc>()
+                        .profileRegisterBloc
+                        .pinCodeBloc
+                        .submit),
+              )
+            ],
+          )),
         );
       }),
     );

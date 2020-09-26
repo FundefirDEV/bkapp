@@ -30,6 +30,7 @@ class _InputCodeState extends State<InputCode> {
 
   bool hasError = false;
   String currentText = "";
+  String errorText = "";
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -93,7 +94,8 @@ class _InputCodeState extends State<InputCode> {
                       borderRadius: BorderRadius.circular(5),
                       fieldHeight: SizeConfig.blockSizeVertical * 7,
                       fieldWidth: SizeConfig.blockSizeHorizontal * 12,
-                      activeFillColor: hasError ? Colors.orange : Colors.white,
+                      activeFillColor:
+                          hasError ? Colors.red[100] : Colors.white,
                     ),
                     animationDuration: Duration(milliseconds: 300),
                     enableActiveFill: true,
@@ -104,15 +106,18 @@ class _InputCodeState extends State<InputCode> {
                       var request = await registerBloc.pinCodeBloc.makeSubmit(
                           email: registerBloc.emailBloc.email.value,
                           phone: registerBloc.phoneBloc.phone.value);
-                      if (request != 'error')
-                        Navigator.pushNamed(context, registerPasswordUser,
-                            arguments: RegisterPasswordStepArgs(
-                                widget.tag, widget.image));
+                      request != 'error'
+                          ? Navigator.pushNamed(context, registerPasswordUser,
+                              arguments: RegisterPasswordStepArgs(
+                                  widget.tag, widget.image))
+                          : setState(() {
+                              hasError = true;
+                            });
                     },
                     onChanged: (value) {
                       registerBloc.pinCodeBloc.pincode.updateValue(value);
                       setState(() {
-                        currentText = value;
+                        hasError = false;
                       });
                     },
                   )),
@@ -130,22 +135,25 @@ class _InputCodeState extends State<InputCode> {
                   color: Colors.red, fontSize: 12, fontWeight: FontWeight.w400),
             ),
           ),
-          RichText(
-            key: Key('input-code-rich-text'),
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              text: I18n.of(context).pinCodeVerificationPut,
-              style: DefaultTextStyle.of(context).style,
-              children: <TextSpan>[
-                TextSpan(
-                    text: I18n.of(context).pinCodeVerificationTheCode,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(
-                    text: I18n.of(context).pinCodeVerificationWeSendToYour),
-                TextSpan(
-                    text: I18n.of(context).pinCodeVerificationCellNumber,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: RichText(
+              key: Key('input-code-rich-text'),
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: I18n.of(context).pinCodeVerificationPut,
+                style: DefaultTextStyle.of(context).style,
+                children: <TextSpan>[
+                  TextSpan(
+                      text: I18n.of(context).pinCodeVerificationTheCode,
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(
+                      text: I18n.of(context).pinCodeVerificationWeSendToYour),
+                  TextSpan(
+                      text: I18n.of(context).pinCodeVerificationCellNumber,
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
             ),
           ),
           if (EnvironmentConfig.ENV == 'DEV')

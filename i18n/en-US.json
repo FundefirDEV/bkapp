@@ -291,7 +291,7 @@
     "theCode": "the code ",
     "weSendToYour": "we send to \n your ",
     "cellNumber": "cell number",
-    "pinCodeComplete": "Please fill all the cells correctly",
+    "pinCodeComplete": "Please enter correct code",
     "errorCodeMessage": "The code entered is not valid",
     "goodCodeMessage": "Successfully validated code"
   },
@@ -309,7 +309,7 @@
     "numberOfFees": "Number of fees",
     "UseOfCredit": "Credit use",
     "Detail": "Detail",
-    "wayToPay": "Way to pay",
+    "wayToPay": "Types of ordinary interest payment",
     "advances": "Advance",
     "installments": "Installments"
   },
