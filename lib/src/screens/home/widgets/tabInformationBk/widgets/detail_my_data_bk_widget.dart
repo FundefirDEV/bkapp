@@ -45,7 +45,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                       color: Colors.white,
                                       letterSpacing: 1.5,
                                       fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
+                                          SizeConfig.safeBlockHorizontal * 5.5,
                                       fontWeight: FontWeight.w100)),
                               Container(
                                 margin: EdgeInsets.symmetric(
@@ -57,7 +57,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize:
                                             SizeConfig.safeBlockHorizontal *
-                                                3.5,
+                                                3.7,
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w200,
                                         color: Colors.white,
@@ -136,7 +136,8 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                           .colorScheme
                                           .grayColor[200],
                                       letterSpacing: 1.5,
-                                      fontSize: 24,
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical * 3.4,
                                       fontWeight: FontWeight.w100)),
                             )
                           ],
@@ -185,7 +186,9 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                               .colorScheme
                                               .grayColor[200],
                                           letterSpacing: 1.5,
-                                          fontSize: 24,
+                                          fontSize:
+                                              SizeConfig.safeBlockVertical *
+                                                  3.4,
                                           fontWeight: FontWeight.w100)),
                                 )
                               ],
