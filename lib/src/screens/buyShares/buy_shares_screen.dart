@@ -67,7 +67,10 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           FormBlocListener<BuySharesFormBloc, String, String>(
                         key: Key('bloc-listener-buy-share-screen'),
                         onSubmitting: (context, state) {
-                          print('Loading');
+                          print('Submiting');
+                        },
+                        onLoading: (context, state) {
+                          CircularProgressIndicator();
                         },
                         onSuccess: (context, state) {
                           _showDialog(context, () {

@@ -14,44 +14,54 @@ void main() {
   group('Test menu navigator screen', () {
     final keyMenu = Key('menu-key');
     testWidgets('Render Menu navigator', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      expect(find.byKey(keyMenu), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
+        await tester.pump();
+        expect(find.byKey(keyMenu), findsOneWidget);
+      });
     });
 
     testWidgets('Find custom bottom bar', (WidgetTester tester) async {
-      await tester.pumpWidget(
-          baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      expect(find.byType(CustomBottomBar), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+            baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
+        await tester.pump();
+        expect(find.byType(CustomBottomBar), findsOneWidget);
+      });
     });
 
     testWidgets('Find three barItems', (WidgetTester tester) async {
-      await tester.pumpWidget(
-          baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      final customBottomBar =
-          tester.widget<CustomBottomBar>(find.byType(CustomBottomBar));
-      expect(customBottomBar.items.length, equals(3));
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+            baseTester(child: MenuNavigatorScreen(userName: 'Usuario')));
+        await tester.pump();
+        final customBottomBar =
+            tester.widget<CustomBottomBar>(find.byType(CustomBottomBar));
+        expect(customBottomBar.items.length, equals(3));
+      });
     });
 
     testWidgets('Find option additional menu', (WidgetTester tester) async {
-      final optionAdditional = Key('option-additional');
-      await tester.pumpWidget(baseTester(
-          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      expect(find.byType(FloatingActionButton), findsOneWidget);
-      expect(find.byKey(optionAdditional), findsOneWidget);
-      expect(find.byType(MenuRequests), findsOneWidget);
+      await tester.runAsync(() async {
+        final optionAdditional = Key('option-additional');
+        await tester.pumpWidget(baseTester(
+            child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
+        await tester.pump();
+        expect(find.byType(FloatingActionButton), findsOneWidget);
+        expect(find.byKey(optionAdditional), findsOneWidget);
+        expect(find.byType(MenuRequests), findsOneWidget);
+      });
     });
 
     testWidgets('Render home widget as first screen the menu navigator',
         (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
-      await tester.pumpAndSettle();
-      expect(find.byType(HomeScreen), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
+        await tester.pump();
+        expect(find.byType(HomeScreen), findsOneWidget);
+      });
     });
 
     testWidgets('Change click option menu Utils', (WidgetTester tester) async {
@@ -67,51 +77,57 @@ void main() {
     });
 
     testWidgets('redirect jump to home', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: MenuNavigatorScreen(key: keyMenu, userName: 'Usuario')));
+        await tester.pump();
 
-      expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
-      await tester.tap(find.byKey(Key('home-bottom-bar-item')));
-      await tester.pumpAndSettle(Duration(seconds: 3));
-      expect(find.byType(HomeScreen), findsOneWidget);
+        expect(find.byKey(Key('home-bottom-bar-item')), findsOneWidget);
+        await tester.tap(find.byKey(Key('home-bottom-bar-item')));
+        await tester.pump(Duration(seconds: 3));
+        expect(find.byType(HomeScreen), findsOneWidget);
+      });
     });
 
     testWidgets('redirect to profile', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
 
-      expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
-      await tester.tap(find.byKey(Key('profile-bottom-bar-item')));
-      await tester.pumpAndSettle(Duration(seconds: 3));
-      expect(find.byType(ProfileScreen), findsOneWidget);
+        expect(find.byKey(Key('profile-bottom-bar-item')), findsOneWidget);
+        await tester.tap(find.byKey(Key('profile-bottom-bar-item')));
+        await tester.pump(Duration(seconds: 3));
+        expect(find.byType(ProfileScreen), findsOneWidget);
+      });
     });
 
     testWidgets('Open actions menu animated', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
 
-      await tester.tap(find.byKey(Key('option-additional')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(MenuActions), findsOneWidget);
+        await tester.tap(find.byKey(Key('option-additional')));
+        await tester.pump(const Duration(seconds: 2));
+        expect(find.byType(MenuActions), findsOneWidget);
+      });
     });
 
     testWidgets('Go to credit screen', (WidgetTester tester) async {
       await tester.runAsync(() async {
         await tester.pumpWidget(baseTester(
             child: BlocProvider(
-                create: (context) =>
-                    MenuNavigatorBloc(controller: PageController(initialPage: 0)),
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
                 child: MenuNavigatorScreen(userName: 'Usuario'))));
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         await tester.tap(find.byKey(Key('option-additional')));
         await tester.pump(const Duration(seconds: 2));
@@ -124,64 +140,59 @@ void main() {
     });
 
     testWidgets('Go to actions screen', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
 
-      await tester.tap(find.byKey(Key('option-additional')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+        await tester.tap(find.byKey(Key('option-additional')));
+        await tester.pump(const Duration(seconds: 2));
 
-      expect(find.byKey(Key('actions-button-line')), findsOneWidget);
-      await tester.tap(find.byKey(Key('actions-button-line')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(BuySharesScreen), findsOneWidget);
+        expect(find.byKey(Key('actions-button-line')), findsOneWidget);
+        await tester.tap(find.byKey(Key('actions-button-line')));
+        await tester.pump(const Duration(seconds: 2));
+        expect(find.byType(BuySharesScreen), findsOneWidget);
+      });
     });
+
     testWidgets('Go to partners screen', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
 
-      await tester.tap(find.byKey(Key('option-additional')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+        await tester.tap(find.byKey(Key('option-additional')));
+        await tester.pump(const Duration(seconds: 2));
 
-      expect(find.byKey(Key('partners-button-line')), findsOneWidget);
-      await tester.tap(find.byKey(Key('partners-button-line')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(AddPartnerScreen), findsOneWidget);
+        expect(find.byKey(Key('partners-button-line')), findsOneWidget);
+        await tester.tap(find.byKey(Key('partners-button-line')));
+        await tester.pump(const Duration(seconds: 2));
+        expect(find.byType(AddPartnerScreen), findsOneWidget);
+      });
     });
 
     testWidgets('Test action buttons', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
 
-      await tester.tap(find.byKey(Key('option-additional')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+        await tester.tap(find.byKey(Key('option-additional')));
+        await tester.pump(const Duration(seconds: 2));
 
-      await tester.tap(find.byKey(Key('meeting-button-line')));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.byKey(Key('profits-button-line')));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.byKey(Key('partners-button-line')));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.byKey(Key('option-additional')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-
-      await tester.tap(find.byKey(Key('actions-button-line')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-      expect(find.byType(BuySharesScreen), findsOneWidget);
+        await tester.tap(find.byKey(Key('actions-button-line')));
+        await tester.pump(const Duration(seconds: 2));
+        expect(find.byType(BuySharesScreen), findsOneWidget);
+      });
     });
   });
 }

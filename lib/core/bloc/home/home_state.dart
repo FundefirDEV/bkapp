@@ -20,4 +20,11 @@ class HomeLoaded extends HomeState {
   List<Object> get props => [bkInformation];
 }
 
-class HomeFailure extends HomeState {}
+class HomeFailure extends HomeState {
+  final String error;
+
+  HomeFailure({@required this.error});
+
+  @override
+  List<Object> get props => [error];
+}

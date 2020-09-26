@@ -129,6 +129,8 @@ class _CreditScreenState extends State<CreditScreen> {
               onPressCancel: () {
                 BlocProvider.of<ApprovalsBloc>(context)
                     .add(ApprovalsInitialize(token: widget.tokenUser));
+                BlocProvider.of<MyBankBloc>(context)
+                    .add(GetMyBankInfo(token: widget.tokenUser));
                 Navigator.pop(context);
               });
         });

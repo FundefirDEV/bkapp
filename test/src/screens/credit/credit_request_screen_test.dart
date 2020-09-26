@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/credit_request_screen.dart';
@@ -21,11 +22,14 @@ class MyBankRepoMock extends Mock implements MyBankRepository {}
 
 class BankRulesRepoMock extends Mock implements BankRulesRepository {}
 
+class HomeRepoMock extends Mock implements HomeRepository {}
+
 void main() {
   ApprovalsRepository approvalsRepoMock = ApprovalsRepoMock();
   CreditRepository creditRepoMock = CreditRepoMock();
   MyBankRepository myBankRepoMock = MyBankRepoMock();
   BankRulesRepository bankRulesRepoMock = BankRulesRepoMock();
+  HomeRepository homeRepoMock = HomeRepoMock();
 
   baseWidgetTest({Key customKey}) {
     return MultiBlocProvider(
@@ -41,6 +45,7 @@ void main() {
                   CreditFormBloc(creditRepository: creditRepoMock)),
           BlocProvider(
               create: (context) => MyBankBloc(
+                  homeRepository: homeRepoMock,
                   myBankRepository: myBankRepoMock,
                   rulesRepository: bankRulesRepoMock)),
           BlocProvider(

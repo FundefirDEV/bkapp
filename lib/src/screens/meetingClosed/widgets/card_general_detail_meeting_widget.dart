@@ -69,7 +69,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
                           text:
                               I18n.of(context).meetingClosedEarningsPerShares),
                       TextSpan(
-                          text: this.earningByShare,
+                          text: earningByShare,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w200)),
                     ])),

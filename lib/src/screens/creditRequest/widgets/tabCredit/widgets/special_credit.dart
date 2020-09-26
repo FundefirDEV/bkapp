@@ -19,7 +19,8 @@ class SpecialCredit extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: CardInformationBkWidget(
-        childBlue: NumberActions(homeState: null),
+        // ignore: missing_required_param
+        childBlue: NumberActions(),
         childBlueWidth: SizeConfig.blockSizeHorizontal * 30,
         childWhite: Container(
           padding: EdgeInsets.symmetric(

@@ -14,10 +14,12 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
 class MeetingClosedScreen extends StatefulWidget {
-  MeetingClosedScreen({Key key, this.tokenUser, this.oldIndex, this.userName})
+  MeetingClosedScreen(
+      {Key key, this.tokenUser, this.oldIndex, this.userName, this.role})
       : super(key: key);
   final String tokenUser;
   final String userName;
+  final String role;
   final int oldIndex;
 
   @override
@@ -35,6 +37,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    bool isAdmin = widget.role == 'admin';
     return BlocBuilder<MeetingBloc, MeetingState>(builder: (context, state) {
       if (state is MeetingLoaded) {
         final infoMeeting = state.infoMeeting;
@@ -52,7 +55,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
                   badDebtReserve: infoMeeting.badDebtReserve,
                   earningByShare: infoMeeting.earningByShare,
                   fundReserve: infoMeeting.fundReserve),
-              _buttonPayFee(context),
+              if (isAdmin) _buttonPayFee(context),
               LineSeparatorWidget(),
               _subtitleDetailClosing(context),
               CarouselCardsDetailWidget(infoMeeting: infoMeeting)

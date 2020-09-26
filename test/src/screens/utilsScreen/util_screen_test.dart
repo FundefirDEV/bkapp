@@ -101,38 +101,42 @@ void main() {
       });
     });
     testWidgets('Render widget rules', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
-      expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
-      await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
-      await tester.pumpAndSettle();
-      expect(find.byType(UtilsScreen), findsOneWidget);
-      expect(find.byType(UtilCardDescription), findsNWidgets(2));
-      expect(find.byKey(Key('inkwell-rules')), findsOneWidget);
-      await tester.tap(find.byKey(Key('inkwell-rules')));
-      await tester.pumpAndSettle();
-      expect(find.byType(RulesScreen), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
+        expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
+        await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
+        await tester.pump();
+        expect(find.byType(UtilsScreen), findsOneWidget);
+        expect(find.byType(UtilCardDescription), findsNWidgets(2));
+        expect(find.byKey(Key('inkwell-rules')), findsOneWidget);
+        await tester.tap(find.byKey(Key('inkwell-rules')));
+        await tester.pump();
+        expect(find.byType(RulesScreen), findsOneWidget);
+      });
     });
     testWidgets('Render widget assigment', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(
-          child: BlocProvider(
-              create: (context) =>
-                  MenuNavigatorBloc(controller: PageController(initialPage: 0)),
-              child: MenuNavigatorScreen(userName: 'Usuario'))));
-      await tester.pumpAndSettle();
-      expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
-      await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
-      await tester.pumpAndSettle();
-      expect(find.byType(UtilsScreen), findsOneWidget);
-      expect(find.byType(CardAdministratorUtils), findsNWidgets(2));
-      expect(find.byKey(Key('inkwell-assign-admin')), findsOneWidget);
-      await tester.tap(find.byKey(Key('inkwell-assign-admin')));
-      await tester.pumpAndSettle();
-      expect(find.byType(AdministratorAssignmentScreen), findsOneWidget);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(baseTester(
+            child: BlocProvider(
+                create: (context) => MenuNavigatorBloc(
+                    controller: PageController(initialPage: 0)),
+                child: MenuNavigatorScreen(userName: 'Usuario'))));
+        await tester.pump();
+        expect(find.byKey(Key('utils-bottom-bar-item')), findsOneWidget);
+        await tester.tap(find.byKey(Key('utils-bottom-bar-item')));
+        await tester.pump();
+        expect(find.byType(UtilsScreen), findsOneWidget);
+        expect(find.byType(CardAdministratorUtils), findsNWidgets(2));
+        expect(find.byKey(Key('inkwell-assign-admin')), findsOneWidget);
+        await tester.tap(find.byKey(Key('inkwell-assign-admin')));
+        await tester.pump();
+        expect(find.byType(AdministratorAssignmentScreen), findsOneWidget);
+      });
     });
   });
 }

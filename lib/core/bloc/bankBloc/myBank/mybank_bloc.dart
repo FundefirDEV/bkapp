@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/models/my_bank_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
@@ -12,10 +13,14 @@ part 'mybank_event.dart';
 part 'mybank_state.dart';
 
 class MyBankBloc extends Bloc<MyBankEvent, MyBankState> {
-  MyBankBloc({@required this.myBankRepository, @required this.rulesRepository})
-      : super(MyBankInitial());
+  MyBankBloc({
+    @required this.myBankRepository,
+    @required this.rulesRepository,
+    @required this.homeRepository,
+  }) : super(MyBankInitial());
   final MyBankRepository myBankRepository;
   final BankRulesRepository rulesRepository;
+  final HomeRepository homeRepository;
 
   @override
   Stream<MyBankState> mapEventToState(
@@ -26,10 +31,14 @@ class MyBankBloc extends Bloc<MyBankEvent, MyBankState> {
       try {
         final response = await myBankRepository.getMyBankInfo(event.token);
         final rules = await rulesRepository.getBankRules(event.token);
+        final bankInformation = await homeRepository.detailBank(event.token);
 
         MyBankModel myBankModel = myBankModelFromJson(response)
           ..bankRulesModel = bankRulesFromJson(rules);
-        yield MyBankLoaded(data: myBankModel);
+
+        BankInfoModel bankInfoModel = bankInfoFromJson(bankInformation);
+
+        yield MyBankLoaded(data: myBankModel, bankInfoModel: bankInfoModel);
       } catch (e) {
         yield MyBankFailure(error: e.toString());
       }
