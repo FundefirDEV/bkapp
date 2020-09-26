@@ -12,11 +12,15 @@ class MeetingInitial extends MeetingState {}
 class MeetingLoading extends MeetingState {}
 
 class MeetingLoaded extends MeetingState {
-  MeetingLoaded({@required this.infoMeeting});
+  MeetingLoaded({
+    @required this.infoMeeting,
+    @required this.isClosedMeeting,
+  });
   final MeetingModel infoMeeting;
+  final bool isClosedMeeting;
 
   @override
-  List<Object> get props => [infoMeeting];
+  List<Object> get props => [infoMeeting, isClosedMeeting];
 }
 
 class MeetingFailure extends MeetingState {

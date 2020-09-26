@@ -299,7 +299,7 @@
     "numberOfFees": "Número de cuotas",
     "UseOfCredit": "Uso del crédito",
     "Detail": "Detalle",
-    "wayToPay": "Rormas de pago del interes ordinarios",
+    "wayToPay": "Formas de pago del interes ordinarios",
     "advances": "Por Adelantado",
     "installments": "Cuotas"
   },
@@ -393,7 +393,8 @@
     "capitalSubscription": "abono a capital",
     "interestPayment": "abono a intereses",
     "questionMeetingClosed1": "¿Segúro que quieres hacer el",
-    "questionMeetingClosed2": "cierre de la reunión?"
+    "questionMeetingClosed2": "cierre de la reunión?",
+    "closeMeeting": "El cierre de reunión ha sido existoso"
   },
   "profitPayment": {
     "title": "Pago de ganancias",

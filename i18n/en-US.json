@@ -403,7 +403,8 @@
     "capitalSubscription": "capital subscription",
     "interestPayment": "interest payment",
     "questionMeetingClosed1": "Am I sure you want to",
-    "questionMeetingClosed2": "close the meeting?"
+    "questionMeetingClosed2": "close the meeting?",
+    "closeMeeting": "The close meeting has been successful"
   },
   "profitPayment": {
     "title": "Profit payment",

@@ -21,7 +21,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       try {
         final response = await repository.infoMeeting(event.token);
         final infoMeeting = MeetingModel.fromJson(response);
-        yield MeetingLoaded(infoMeeting: infoMeeting);
+        yield MeetingLoaded(infoMeeting: infoMeeting, isClosedMeeting: false);
       } catch (e) {
         yield MeetingFailure(error: e.toString());
       }
@@ -31,7 +31,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       try {
         final response = await repository.generateMeetingClosed(event.token);
         final infoMeeting = MeetingModel.fromJson(response);
-        yield MeetingLoaded(infoMeeting: infoMeeting);
+        yield MeetingLoaded(infoMeeting: infoMeeting, isClosedMeeting: true);
       } catch (e) {
         yield MeetingFailure(error: e.toString());
       }

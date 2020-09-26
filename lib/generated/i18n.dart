@@ -640,6 +640,8 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedQuestionMeetingClosed1 => "Am I sure you want to";
   /// "close the meeting?"
   String get meetingClosedQuestionMeetingClosed2 => "close the meeting?";
+  /// "The close meeting has been successful"
+  String get meetingClosedCloseMeeting => "The close meeting has been successful";
   /// "Profit payment"
   String get profitPaymentTitle => "Profit payment";
   /// "Profit "
@@ -1369,9 +1371,9 @@ class _I18n_es_ES extends I18n {
   /// "Detalle"
   @override
   String get creditScreenDetail => "Detalle";
-  /// "Rormas de pago del interes ordinarios"
+  /// "Formas de pago del interes ordinarios"
   @override
-  String get creditScreenWayToPay => "Rormas de pago del interes ordinarios";
+  String get creditScreenWayToPay => "Formas de pago del interes ordinarios";
   /// "Por Adelantado"
   @override
   String get creditScreenAdvances => "Por Adelantado";
@@ -1606,6 +1608,9 @@ class _I18n_es_ES extends I18n {
   /// "cierre de la reunión?"
   @override
   String get meetingClosedQuestionMeetingClosed2 => "cierre de la reunión?";
+  /// "El cierre de reunión ha sido existoso"
+  @override
+  String get meetingClosedCloseMeeting => "El cierre de reunión ha sido existoso";
   /// "Pago de ganancias"
   @override
   String get profitPaymentTitle => "Pago de ganancias";
