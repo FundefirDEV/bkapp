@@ -45,7 +45,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                       color: Colors.white,
                                       letterSpacing: 1.5,
                                       fontSize:
-                                          SizeConfig.safeBlockHorizontal * 5.5,
+                                          SizeConfig.safeBlockHorizontal * 4,
                                       fontWeight: FontWeight.w100)),
                               Container(
                                 margin: EdgeInsets.symmetric(
@@ -99,60 +99,68 @@ class DetailMyDataBkWidget extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: FlatButton(
+                        padding: EdgeInsets.all(0),
                         onPressed: () {
                           // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: HomeRoutesConstant.activeCreditScreen));
                         },
                         child: Container(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            RichText(
-                                text: TextSpan(
-                                    text: I18n.of(context).homeScreenMe,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.w200,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .grayColor,
-                                    ),
-                                    children: <TextSpan>[
-                                  TextSpan(
-                                    text:
-                                        ' ${I18n.of(context).homeScreenCredit}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                            width: SizeConfig.blockSizeHorizontal * 50,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RichText(
+                                      text: TextSpan(
+                                          text: I18n.of(context).homeScreenMe,
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            letterSpacing: 1.5,
+                                            fontWeight: FontWeight.w200,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .grayColor,
+                                          ),
+                                          children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              ' ${I18n.of(context).homeScreenCredit}',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        )
+                                      ])),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top:
+                                            SizeConfig.safeBlockVertical * 0.8),
+                                    child: Text(information.activeCredit,
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .grayColor[200],
+                                            letterSpacing: 1.5,
+                                            fontSize:
+                                                SizeConfig.safeBlockVertical *
+                                                    2,
+                                            fontWeight: FontWeight.w100)),
                                   )
-                                ])),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: SizeConfig.safeBlockVertical * 0.8),
-                              child: Text(information.activeCredit,
-                                  style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .grayColor[200],
-                                      letterSpacing: 1.5,
-                                      fontSize:
-                                          SizeConfig.safeBlockVertical * 3.4,
-                                      fontWeight: FontWeight.w100)),
-                            )
-                          ],
-                        )),
+                                ],
+                              ),
+                            )),
                       ),
                     ),
                     Expanded(
                       child: FlatButton(
+                        padding: EdgeInsets.all(0),
                         onPressed: () {
                           // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
                           //     goTo: HomeRoutesConstant.timeLineMyShares));
                         },
                         child: Container(
-                            padding: EdgeInsets.only(
-                                left: SizeConfig.safeBlockHorizontal * 5),
+                            width: SizeConfig.blockSizeHorizontal * 50,
+                            margin: EdgeInsets.only(left: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -187,8 +195,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                               .grayColor[200],
                                           letterSpacing: 1.5,
                                           fontSize:
-                                              SizeConfig.safeBlockVertical *
-                                                  3.4,
+                                              SizeConfig.safeBlockVertical * 2,
                                           fontWeight: FontWeight.w100)),
                                 )
                               ],
