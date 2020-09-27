@@ -47,7 +47,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                                 style: TextStyle(
                                     letterSpacing: 1.5,
                                     fontSize:
-                                        SizeConfig.safeBlockHorizontal * 5,
+                                        SizeConfig.safeBlockHorizontal * 4,
                                     color: Theme.of(context)
                                         .colorScheme
                                         .grayColor[200],
@@ -86,8 +86,6 @@ class DetailGroupDataBkWidget extends StatelessWidget {
           ),
           Flexible(
             child: Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.safeBlockVertical * 3),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -98,63 +96,76 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Container(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(I18n.of(context).homeScreenShares,
-                              key: Key('group-bk-title-shares'),
-                              style: TextStyle(
-                                letterSpacing: 2,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                fontWeight: FontWeight.w800,
-                                color: Theme.of(context).colorScheme.grayColor,
-                              )),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 0.8),
-                            child: Text(information.shares,
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .grayColor[200],
-                                    letterSpacing: 1.5,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 5,
-                                    fontWeight: FontWeight.w100)),
-                          )
-                        ],
-                      )),
+                          width: SizeConfig.blockSizeHorizontal * 50,
+                          child: Container(
+                            margin: EdgeInsets.only(left: 20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(I18n.of(context).homeScreenShares,
+                                    key: Key('group-bk-title-shares'),
+                                    style: TextStyle(
+                                      letterSpacing: 2,
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 3,
+                                      fontWeight: FontWeight.w800,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .grayColor,
+                                    )),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 0.8),
+                                  child: Text(information.shares,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .grayColor[200],
+                                          letterSpacing: 1.5,
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  3,
+                                          fontWeight: FontWeight.w100)),
+                                )
+                              ],
+                            ),
+                          )),
                     ),
                     Expanded(
                       child: Container(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(I18n.of(context).homeScreenBorrowed,
-                              key: Key('group-bk-title-creditsgranted'),
-                              style: TextStyle(
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                letterSpacing: 1.5,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.red,
-                              )),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 0.8),
-                            child: Text(information.activeCredits,
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .grayColor[200],
-                                    letterSpacing: 1.5,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 5,
-                                    fontWeight: FontWeight.w100)),
-                          )
-                        ],
-                      )),
+                          width: SizeConfig.blockSizeHorizontal * 50,
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(I18n.of(context).homeScreenBorrowed,
+                                    key: Key('group-bk-title-creditsgranted'),
+                                    style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 3,
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.red,
+                                    )),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 0.8),
+                                  child: Text(information.activeCredits,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .grayColor[200],
+                                          letterSpacing: 1.5,
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  3,
+                                          fontWeight: FontWeight.w100)),
+                                )
+                              ],
+                            ),
+                          )),
                     )
                   ],
                 )),

@@ -56,8 +56,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                       text: I18n.of(context).homeScreenMy,
                                       style: TextStyle(
                                         fontSize:
-                                            SizeConfig.safeBlockHorizontal *
-                                                3.7,
+                                            SizeConfig.safeBlockHorizontal * 4,
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w200,
                                         color: Colors.white,
@@ -115,7 +114,9 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                       text: TextSpan(
                                           text: I18n.of(context).homeScreenMe,
                                           style: TextStyle(
-                                            fontSize: 13,
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    3,
                                             letterSpacing: 1.5,
                                             fontWeight: FontWeight.w200,
                                             color: Theme.of(context)
@@ -169,7 +170,9 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                     text: TextSpan(
                                         text: I18n.of(context).homeScreenMy,
                                         style: TextStyle(
-                                          fontSize: 13,
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  3,
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w200,
                                           color: Theme.of(context)
