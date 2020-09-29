@@ -1,5 +1,9 @@
+import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.dart';
+import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buySharesModal/buy_shares_modal_content.dart';
+import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/creditAwardedModal/credit_awarded_modal_content.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -36,11 +40,14 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
               blurRadius: 12,
               spreadRadius: 0)
         ]),
-        child: Column(
-          children: <Widget>[
-            _titleCard(context),
-            _containerCard(context),
-          ],
+        child: InkWell(
+          onTap: () => _showDialog(context, image),
+          child: Column(
+            children: <Widget>[
+              _titleCard(context),
+              _containerCard(context),
+            ],
+          ),
         ));
   }
 
@@ -134,5 +141,31 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  void _showDialog(context, type) {
+    SizeConfig().init(context);
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        isScrollControlled: true,
+        builder: (context) {
+          return BottomModal(
+              height: SizeConfig.blockSizeVertical * 85,
+              child: SingleChildScrollView(child: modalContent(type)));
+        });
+  }
+
+  StatelessWidget modalContent(type) {
+    switch (type) {
+      case 'shares_bought':
+        return BuyShareModalContent(image: type);
+        break;
+      case 'credit_given':
+        return CreditAwardedModalContent(image: type);
+        break;
+      default:
+        return EmptyInformation();
+    }
   }
 }

@@ -394,7 +394,18 @@
     "interestPayment": "abono a intereses",
     "questionMeetingClosed1": "¿Segúro que quieres hacer el",
     "questionMeetingClosed2": "cierre de la reunión?",
-    "closeMeeting": "El cierre de reunión ha sido existoso"
+    "closeMeeting": "El cierre de reunión ha sido existoso",
+    "purchasedShares": "Acciones compradas",
+    "box": "CAJA ",
+    "previous": "ANTERIOR",
+    "purchased": "ACCIONES",
+    "shares": "COMPRADAS",
+    "current": "ACTUAL",
+    "name": "Nombre",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "interest": "Interés",
+    "borrowed": "PRESTADO"
   },
   "profitPayment": {
     "title": "Pago de ganancias",

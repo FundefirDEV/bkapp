@@ -404,7 +404,18 @@
     "interestPayment": "interest payment",
     "questionMeetingClosed1": "Am I sure you want to",
     "questionMeetingClosed2": "close the meeting?",
-    "closeMeeting": "The close meeting has been successful"
+    "closeMeeting": "The close meeting has been successful",
+    "purchasedShares": "Purchased Shares",
+    "box": "BOX ",
+    "previous": "PREVIOUS",
+    "purchased": "PURCHASED",
+    "shares": "SHARES",
+    "current": "CURRENT",
+    "name": "Name",
+    "quantity": "Quantity",
+    "total": "Total",
+    "interest": "Interest",
+    "borrowed": "BORROWED"
   },
   "profitPayment": {
     "title": "Profit payment",
