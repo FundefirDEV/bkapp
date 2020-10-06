@@ -22,6 +22,9 @@ const mockData = {
       "id": 10,
       "amount": 450000.1,
       "installments": 2,
+      "totalCredit": 30050.0,
+      "totalInterest": 20000.0,
+      "isAdvanceCredit": false,
       "approvalDate": "2020-04-04",
       "dueDate": "2020-04-04",
       "scheduleInstallment": [

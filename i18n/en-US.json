@@ -360,7 +360,10 @@
     "ordinaryInterest": "Ordinary interest",
     "defaultInterest": "Default interest",
     "totalPayments": "Total payments",
-    "applicationDate": "Application date"
+    "applicationDate": "Application date",
+    "paymentInterestsMethod": "Payment interests",
+    "advance": "Advance",
+    "installment": "Installments"
   },
   "addPartner": {
     "partner": "Partners",

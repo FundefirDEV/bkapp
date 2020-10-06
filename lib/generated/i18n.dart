@@ -574,6 +574,12 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditTotalPayments => "Total payments";
   /// "Application date"
   String get activeCreditApplicationDate => "Application date";
+  /// "Payment interests"
+  String get activeCreditPaymentInterestsMethod => "Payment interests";
+  /// "Advance"
+  String get activeCreditAdvance => "Advance";
+  /// "Installments"
+  String get activeCreditInstallment => "Installments";
   /// "Partners"
   String get addPartnerPartner => "Partners";
   /// "ACTIVES"
@@ -1531,6 +1537,15 @@ class _I18n_es_ES extends I18n {
   /// "Fecha de solicitud"
   @override
   String get activeCreditApplicationDate => "Fecha de solicitud";
+  /// "Pago de intereses"
+  @override
+  String get activeCreditPaymentInterestsMethod => "Pago de intereses";
+  /// "Adelantado"
+  @override
+  String get activeCreditAdvance => "Adelantado";
+  /// "Cuotas"
+  @override
+  String get activeCreditInstallment => "Cuotas";
   /// "Socios"
   @override
   String get addPartnerPartner => "Socios";

@@ -350,7 +350,10 @@
     "ordinaryInterest": "Intereses Ordinarios",
     "defaultInterest": "Intereses de mora",
     "totalPayments": "Cantidad otorgada",
-    "applicationDate": "Fecha de solicitud"
+    "applicationDate": "Fecha de solicitud",
+    "paymentInterestsMethod": "Pago de intereses",
+    "advance": "Adelantado",
+    "installment": "Cuotas"
   },
   "addPartner": {
     "partner": "Socios",
