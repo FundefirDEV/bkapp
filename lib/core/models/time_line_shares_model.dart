@@ -4,47 +4,51 @@
 
 import 'dart:convert';
 
-TimeLineShares timeLineFromJson(Map<String, dynamic> data) =>
-    TimeLineShares.fromJson(data);
+import 'package:intl/intl.dart';
 
-String welcomeToJson(TimeLineShares data) => json.encode(data.toJson());
+// TimeLineShares.fromJson(data);
+
+String timeLineSharesToJson(TimeLineShares data) => json.encode(data.toJson());
 
 class TimeLineShares {
   TimeLineShares({
+    this.totalShares,
     this.shares,
-    this.dates,
   });
 
-  String shares;
-  List<Date> dates;
+  String totalShares;
+  List<Date> shares;
 
   factory TimeLineShares.fromJson(Map<String, dynamic> json) => TimeLineShares(
-        shares: json["shares"],
-        dates: List<Date>.from(json["dates"].map((x) => Date.fromJson(x))),
+        totalShares: json["totalShares"]?.toString() ?? '0',
+        shares: List<Date>.from(json["shares"].map((x) => Date.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "shares": shares,
-        "dates": List<dynamic>.from(dates.map((x) => x.toJson())),
+        "totalShares": totalShares,
+        "shares": List<dynamic>.from(shares.map((x) => x.toJson())),
       };
 }
 
 class Date {
   Date({
     this.date,
-    this.shares,
+    this.quantity,
   });
 
   String date;
-  String shares;
+  String quantity;
 
   factory Date.fromJson(Map<String, dynamic> json) => Date(
-        date: json["date"],
-        shares: json["shares"],
+        date: DateFormat("MMM dd, yyyy")
+                .format(DateTime.parse(json["date"]))
+                .toString() ??
+            '',
+        quantity: json["quantity"]?.toString() ?? '0',
       );
 
   Map<String, dynamic> toJson() => {
         "date": date,
-        "shares": shares,
+        "quantity": quantity,
       };
 }

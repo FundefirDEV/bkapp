@@ -53,5 +53,6 @@ List<dynamic> blocProviders = [
           creditRepository: creditRepository,
           myBankRepository: myBankRepository)),
   BlocProvider(create: (context) => ExemptionsFormBloc()),
-  BlocProvider(create: (context) => TimeLineSharesBloc())
+  BlocProvider(
+      create: (context) => TimeLineSharesBloc(homeRepository: homeRepository))
 ];

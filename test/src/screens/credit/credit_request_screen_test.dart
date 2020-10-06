@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/approvalBloc/approvals_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
 import 'package:bkapp_flutter/src/screens/creditRequest/credit_request_screen.dart';

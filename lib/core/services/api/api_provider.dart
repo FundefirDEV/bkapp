@@ -207,4 +207,10 @@ class ApiProvider {
         token: token,
         body: bodyRequest);
   }
+
+  Future<Map<String, dynamic>> myShares(String token) async {
+    final getMySharesUrl = ApiEndpoints.getMyShares();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getMySharesUrl, token: token);
+  }
 }
