@@ -53,7 +53,7 @@ class AppBarWidget extends StatelessWidget {
                     fit: BoxFit.cover)),
             Container(
                 key: Key('text-name'),
-                child: Text(this.userName,
+                child: Text(this.userName ?? '',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,

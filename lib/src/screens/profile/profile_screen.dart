@@ -1,13 +1,13 @@
+import 'package:bkapp_flutter/src/screens/profile/widgets/cards_information_profile.dart';
+import 'package:bkapp_flutter/src/screens/profile/widgets/detail_bk_profile_widget.dart';
+import 'package:bkapp_flutter/src/screens/profile/widgets/app_bar_profile_widget.dart';
+import 'package:bkapp_flutter/src/screens/profile/widgets/box_my_earnings_widget.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
-import 'package:bkapp_flutter/src/screens/profile/content/bottom_containers_profile_screen.dart';
-import 'package:bkapp_flutter/src/screens/profile/content/gain_button_profile_screen.dart';
-import 'package:bkapp_flutter/src/screens/profile/content/middle_container_profile_screen.dart';
-import 'package:bkapp_flutter/src/screens/profile/content/top_container_profile_screen.dart';
-import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
-import 'package:flutter/material.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key key, this.tokenUser}) : super(key: key);
@@ -27,42 +27,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    TopContainerProfileScreen topContainer = new TopContainerProfileScreen();
-    MiddleContainerProfileScreen middleContainers =
-        new MiddleContainerProfileScreen();
-    GainButtonProfileScreen gainButton = new GainButtonProfileScreen();
-    BottomContainersProfileScreen bottomContainers =
-        new BottomContainersProfileScreen();
 
     return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
       if (state is ProfileLoaded) {
-        return Material(
-          color: Theme.of(context).colorScheme.grayColor[100],
-          child: SafeArea(
-            child: Column(children: <Widget>[
-              Container(
-                  child:
-                      topContainer.topContainer(context, state.profileModel)),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 0),
-                    child: Column(
-                      children: <Widget>[
-                        middleContainers.middleContainers(
-                            context, state.profileModel),
-                        gainButton.gainContainerButton(
-                            context, state.profileModel),
-                        bottomContainers.bottomContainers(
-                            context, state.profileModel),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ]),
-          ),
-        );
+        return AppBarProfileWidget(
+            profile: state.profileModel,
+            container: Column(children: [
+              CardsInformationProfile(profile: state.profileModel),
+              BoxMyEarningsWidget(profile: state.profileModel),
+              DetailBkProfileWidget(profile: state.profileModel)
+            ]));
       }
       if (state is ProfileFailure) {
         return ErrorPage(errorMessage: state.error);
