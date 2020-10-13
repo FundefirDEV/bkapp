@@ -1,11 +1,14 @@
 import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buySharesModal/buy_shares_modal_content.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/creditAwardedModal/credit_awarded_modal_content.dart';
+import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/interestPaymentModal/interest_payment_modal.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'modals/capitalSubscriptionModal/capital_subscription_modal_content.dart';
 
 class CardDetailMeetingClosedWidget extends StatelessWidget {
   final String title;
@@ -163,6 +166,12 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
         break;
       case 'credit_given':
         return CreditAwardedModalContent(image: type);
+        break;
+      case 'capital_icon':
+        return CapitalSubscriptionModalContent(image: type);
+        break;
+      case 'oridinary_interest':
+        return InterestPaymentModal(image: type);
         break;
       default:
         return EmptyInformation();

@@ -642,6 +642,8 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedCapitalSubscription => "capital subscription";
   /// "interest payment"
   String get meetingClosedInterestPayment => "interest payment";
+  /// "interest payment \nordinary"
+  String get meetingClosedInterestPaymentOrdynary => "interest payment \nordinary";
   /// "Am I sure you want to"
   String get meetingClosedQuestionMeetingClosed1 => "Am I sure you want to";
   /// "close the meeting?"
@@ -670,6 +672,18 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedInterest => "Interest";
   /// "BORROWED"
   String get meetingClosedBorrowed => "BORROWED";
+  /// "PAYMENT"
+  String get meetingClosedPayIn => "PAYMENT";
+  /// "OF FEES"
+  String get meetingClosedFees => "OF FEES";
+  /// "PAYMENT"
+  String get meetingClosedPayFor => "PAYMENT";
+  /// "ADVANCE"
+  String get meetingClosedAdvance => "ADVANCE";
+  /// "INTEREST"
+  String get meetingClosedInterests => "INTEREST";
+  /// "DEFAULT"
+  String get meetingClosedDefault => "DEFAULT";
   /// "Profit payment"
   String get profitPaymentTitle => "Profit payment";
   /// "Profit "
@@ -1639,6 +1653,9 @@ class _I18n_es_ES extends I18n {
   /// "abono a intereses"
   @override
   String get meetingClosedInterestPayment => "abono a intereses";
+  /// "abono a intereses \nordinarios"
+  @override
+  String get meetingClosedInterestPaymentOrdynary => "abono a intereses \nordinarios";
   /// "¿Segúro que quieres hacer el"
   @override
   String get meetingClosedQuestionMeetingClosed1 => "¿Segúro que quieres hacer el";
@@ -1681,6 +1698,24 @@ class _I18n_es_ES extends I18n {
   /// "PRESTADO"
   @override
   String get meetingClosedBorrowed => "PRESTADO";
+  /// "PAGOS EN"
+  @override
+  String get meetingClosedPayIn => "PAGOS EN";
+  /// "LAS CUOTAS"
+  @override
+  String get meetingClosedFees => "LAS CUOTAS";
+  /// "PAGOS POR"
+  @override
+  String get meetingClosedPayFor => "PAGOS POR";
+  /// "ADELANTADO"
+  @override
+  String get meetingClosedAdvance => "ADELANTADO";
+  /// "INTERESES"
+  @override
+  String get meetingClosedInterests => "INTERESES";
+  /// "DE MORA"
+  @override
+  String get meetingClosedDefault => "DE MORA";
   /// "Pago de ganancias"
   @override
   String get profitPaymentTitle => "Pago de ganancias";

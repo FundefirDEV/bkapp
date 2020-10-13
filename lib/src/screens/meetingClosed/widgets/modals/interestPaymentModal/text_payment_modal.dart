@@ -3,8 +3,8 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
-class TextSharesModal extends StatelessWidget {
-  const TextSharesModal({Key key}) : super(key: key);
+class TextPaymentModal extends StatelessWidget {
+  const TextPaymentModal({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,13 @@ class TextSharesModal extends StatelessWidget {
                   child: RichText(
                     textAlign: TextAlign.start,
                     text: TextSpan(
-                      text: I18n.of(context)
-                          .meetingClosedCashBalance
-                          .toUpperCase(),
+                      text: I18n.of(context).meetingClosedPayIn + '\n',
                       style: TextStyle(
                           letterSpacing: 2,
                           color: Theme.of(context).colorScheme.grayColor),
                       children: <TextSpan>[
                         TextSpan(
-                            text: I18n.of(context).meetingClosedPrevious,
+                            text: I18n.of(context).meetingClosedFees,
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -39,7 +37,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$4.000.000',
+                      r'$10.000',
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -57,13 +55,13 @@ class TextSharesModal extends StatelessWidget {
                   child: RichText(
                     textAlign: TextAlign.start,
                     text: TextSpan(
-                      text: I18n.of(context).meetingClosedPurchased + '\n',
+                      text: I18n.of(context).meetingClosedPayFor + '\n',
                       style: TextStyle(
                           letterSpacing: 2,
                           color: Theme.of(context).colorScheme.grayColor),
                       children: <TextSpan>[
                         TextSpan(
-                            text: I18n.of(context).meetingClosedShares,
+                            text: I18n.of(context).meetingClosedAdvance,
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -72,7 +70,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      '12',
+                      r'$5.000',
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -90,15 +88,13 @@ class TextSharesModal extends StatelessWidget {
                   child: RichText(
                     textAlign: TextAlign.start,
                     text: TextSpan(
-                      text: I18n.of(context)
-                          .meetingClosedCashBalance
-                          .toUpperCase(),
+                      text: I18n.of(context).meetingClosedInterests + '\n',
                       style: TextStyle(
                           letterSpacing: 2,
                           color: Theme.of(context).colorScheme.grayColor),
                       children: <TextSpan>[
                         TextSpan(
-                            text: I18n.of(context).meetingClosedCurrent,
+                            text: I18n.of(context).meetingClosedDefault,
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -107,7 +103,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$4.000.000',
+                      r'$20.000',
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,

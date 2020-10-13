@@ -405,6 +405,7 @@
     "creditsAwarded": "credits awarded",
     "capitalSubscription": "capital subscription",
     "interestPayment": "interest payment",
+    "interestPaymentOrdynary": "interest payment \nordinary",
     "questionMeetingClosed1": "Am I sure you want to",
     "questionMeetingClosed2": "close the meeting?",
     "closeMeeting": "The close meeting has been successful",
@@ -418,7 +419,13 @@
     "quantity": "Quantity",
     "total": "Total",
     "interest": "Interest",
-    "borrowed": "BORROWED"
+    "borrowed": "BORROWED",
+    "payIn": "PAYMENT",
+    "fees": "OF FEES",
+    "payFor": "PAYMENT",
+    "advance": "ADVANCE",
+    "interests": "INTEREST",
+    "default": "DEFAULT"
   },
   "profitPayment": {
     "title": "Profit payment",

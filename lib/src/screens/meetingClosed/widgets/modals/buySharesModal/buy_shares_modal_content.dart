@@ -4,6 +4,7 @@ import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buyShares
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/widgets/accordion_modals_meeting.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buySharesModal/text_shares_modal.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/title_modals_meeting.dart';
+import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter/material.dart';
 
 class BuyShareModalContent extends StatelessWidget {
@@ -24,7 +25,8 @@ class BuyShareModalContent extends StatelessWidget {
         children: [
           TitleModalsMeeting(
             image: image,
-            title: I18n.of(context).meetingClosedPurchasedShares,
+            title: UtilsTools.titleCase(
+                I18n.of(context).meetingClosedPurchasedShares),
           ),
           TextSharesModal(),
           AccordionModalsMeeting(

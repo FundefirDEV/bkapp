@@ -395,6 +395,7 @@
     "creditsAwarded": "créditos otorgados",
     "capitalSubscription": "abono a capital",
     "interestPayment": "abono a intereses",
+    "interestPaymentOrdynary": "abono a intereses \nordinarios",
     "questionMeetingClosed1": "¿Segúro que quieres hacer el",
     "questionMeetingClosed2": "cierre de la reunión?",
     "closeMeeting": "El cierre de reunión ha sido existoso",
@@ -408,7 +409,13 @@
     "quantity": "Cantidad",
     "total": "Total",
     "interest": "Interés",
-    "borrowed": "PRESTADO"
+    "borrowed": "PRESTADO",
+    "payIn": "PAGOS EN",
+    "fees": "LAS CUOTAS",
+    "payFor": "PAGOS POR",
+    "advance": "ADELANTADO",
+    "interests": "INTERESES",
+    "default": "DE MORA"
   },
   "profitPayment": {
     "title": "Pago de ganancias",

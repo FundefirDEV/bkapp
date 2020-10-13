@@ -24,11 +24,11 @@ class PinCodeStepScreen extends StatelessWidget {
           child: SafeArea(
               child: Column(
             children: [
-              MenuRequests(
-                  position: position,
-                  onDragEnd: (details) {
-                    position = details.offset;
-                  }),
+              // MenuRequests(
+              //     position: position,
+              //     onDragEnd: (details) {
+              //       position = details.offset;
+              //     }),
               ButtonBackWidget(),
               Expanded(
                 child: SingleChildScrollView(
