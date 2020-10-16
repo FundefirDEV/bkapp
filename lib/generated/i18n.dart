@@ -750,6 +750,10 @@ class I18n implements WidgetsLocalizations {
   String get timeLineSharesTitleBox => "SHARES";
   /// "Amount"
   String get timeLineSharesAmount => "Amount";
+  /// "My Credits"
+  String get timeLineCreditsTitle => "My Credits";
+  /// "Current"
+  String get timeLineCreditsCurrent => "Current";
 }
 
 class _I18n_en_US extends I18n {
@@ -1815,6 +1819,12 @@ class _I18n_es_ES extends I18n {
   /// "Cantidad"
   @override
   String get timeLineSharesAmount => "Cantidad";
+  /// "Mis Créditos"
+  @override
+  String get timeLineCreditsTitle => "Mis Créditos";
+  /// "Vigente"
+  @override
+  String get timeLineCreditsCurrent => "Vigente";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

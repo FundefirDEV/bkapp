@@ -100,7 +100,8 @@ class DetailMyDataBkWidget extends StatelessWidget {
                       child: FlatButton(
                         padding: EdgeInsets.all(0),
                         onPressed: () {
-                          // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: HomeRoutesConstant.activeCreditScreen));
+                          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
+                              goTo: HomeRoutesConstant.timeLineMyCredit));
                         },
                         child: Container(
                             width: SizeConfig.blockSizeHorizontal * 50,

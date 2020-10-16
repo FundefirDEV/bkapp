@@ -17,4 +17,9 @@ class HomeRepository {
     final mySharesBk = await apiProvider.myShares(token);
     return mySharesBk;
   }
+
+  Future<Map<String, dynamic>> myCredits(String token) async {
+    final myCreditsBk = await apiProvider.myCredits(token);
+    return myCreditsBk;
+  }
 }

@@ -465,5 +465,9 @@
     "title": "My Shares",
     "titleBox": "SHARES",
     "amount": "Amount"
+  },
+  "timeLineCredits": {
+    "title": "My Credits",
+    "current": "Current"
   }
 }

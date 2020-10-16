@@ -455,5 +455,9 @@
     "title": "Mis Acciones",
     "titleBox": "ACCIONES",
     "amount": "Cantidad"
+  },
+  "timeLineCredits": {
+    "title": "Mis Créditos",
+    "current": "Vigente"
   }
 }
