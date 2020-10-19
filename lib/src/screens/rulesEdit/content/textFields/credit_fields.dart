@@ -24,7 +24,7 @@ class CreditFields extends StatelessWidget {
                     context.bloc<AppBloc>().rulesEditFormBloc.maxCreditAmount,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
+                  FilteringTextInputFormatter.digitsOnly
                 ],
                 style: TextStyle(fontSize: 12),
                 decoration: InputDecoration(
@@ -42,7 +42,7 @@ class CreditFields extends StatelessWidget {
                     context.bloc<AppBloc>().rulesEditFormBloc.maxDues,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
+                  FilteringTextInputFormatter.digitsOnly
                 ],
                 style: TextStyle(
                   fontSize: 12,

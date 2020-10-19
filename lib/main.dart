@@ -1,19 +1,19 @@
 import 'dart:io'
     show HttpClient, HttpOverrides, Platform, SecurityContext, X509Certificate;
 
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:bkapp_flutter/src/routes/router.dart';
+import 'package:bkapp_flutter/src/routes/router.dart' as Routes;
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:logger/logger.dart';
 
@@ -145,7 +145,7 @@ class MyApp extends StatelessWidget {
 
           return supportedLocales.first;
         },
-        onGenerateRoute: Router.generateRoute,
+        onGenerateRoute: Routes.Router.generateRoute,
         initialRoute: loginRoute,
       ),
     );

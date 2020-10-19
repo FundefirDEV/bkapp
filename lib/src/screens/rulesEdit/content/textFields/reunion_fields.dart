@@ -24,11 +24,13 @@ class ReunionFields extends StatelessWidget {
                     context.bloc<AppBloc>().rulesEditFormBloc.reunionWeek,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
+                  FilteringTextInputFormatter.digitsOnly
                 ],
                 style: TextStyle(fontSize: 12),
                 decoration: InputDecoration(
-                    labelText: I18n.of(context).rulesScreenWeek + " " + I18n.of(context).rulesScreenReunion,
+                    labelText: I18n.of(context).rulesScreenWeek +
+                        " " +
+                        I18n.of(context).rulesScreenReunion,
                     labelStyle:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
               )),
@@ -40,14 +42,16 @@ class ReunionFields extends StatelessWidget {
                     context.bloc<AppBloc>().rulesEditFormBloc.reunionDay,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
+                  FilteringTextInputFormatter.digitsOnly
                 ],
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),
                 decoration: InputDecoration(
-                    labelText: I18n.of(context).rulesScreenDay + " " + I18n.of(context).rulesScreenReunion,
+                    labelText: I18n.of(context).rulesScreenDay +
+                        " " +
+                        I18n.of(context).rulesScreenReunion,
                     labelStyle:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
               ))

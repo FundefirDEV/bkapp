@@ -41,7 +41,7 @@ class RegisterPhoneFormWidget extends StatelessWidget {
               keyboardType: TextInputType.number,
               textFieldBloc: profile.phoneBloc.phone,
               inputFormatters: [
-                WhitelistingTextInputFormatter.digitsOnly,
+                FilteringTextInputFormatter.digitsOnly,
                 LengthLimitingTextInputFormatter(10),
                 PhoneFormatter()
               ],

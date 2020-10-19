@@ -9,12 +9,8 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import '../../../widgets.dart';
 
 class ContactList extends StatefulWidget {
-  ContactList({
-    Key key,
-    this.customContext,
-    this.isRegister,
-    this.tokenUser
-  }) : super(key: key);
+  ContactList({Key key, this.customContext, this.isRegister, this.tokenUser})
+      : super(key: key);
 
   final BuildContext customContext;
   final bool isRegister;
@@ -136,10 +132,8 @@ class _ContactListState extends State<ContactList> {
       CustomContact c, List<Item> list, PartnerBloc partnerBloc) {
     return BlocListener<PartnerBloc, PartnerState>(
       listener: (context, state) {
-        if (
-          state is PartnerUnauthorized
-          && state.phoneNumber == list[0].value
-        ) {
+        if (state is PartnerUnauthorized &&
+            state.phoneNumber == list[0].value) {
           c.isChecked = false;
           setState(() => _selectedContacts.remove(c));
         }
@@ -199,7 +193,7 @@ class _ContactListState extends State<ContactList> {
     }
   }
 
-  _populateContacts({Stream<Contact> contacts}) async {
+  _populateContacts() async {
     await Contacts.streamContacts(
             withThumbnails: false, sortBy: ContactSortOrder.firstName())
         .forEach((contact) {
@@ -219,11 +213,10 @@ class _ContactListState extends State<ContactList> {
             _allContacts.where((contact) => contact.isChecked == true).toList();
         var contactSelected = _uiCustomContacts.map((e) {
           BlocProvider.of<PartnerBloc>(context).add(AddPartnerToDb(
-            token: widget.tokenUser,
-            name: e.contact.displayName,
-            phoneNumber: e.contact.phones.elementAt(0).value,
-            isRegister: widget.isRegister
-          ));
+              token: widget.tokenUser,
+              name: e.contact.displayName,
+              phoneNumber: e.contact.phones.elementAt(0).value,
+              isRegister: widget.isRegister));
           return {
             'name': e.contact.displayName,
             'phone': e.contact.phones.elementAt(0).value

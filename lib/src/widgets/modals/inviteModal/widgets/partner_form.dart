@@ -64,7 +64,7 @@ class _PartnerFormState extends State<PartnerForm> {
                         onChanged: (value) => _isEmpty(widget.inviteBloc),
                         keyboardType: TextInputType.number,
                         inputFormatters: [
-                          WhitelistingTextInputFormatter.digitsOnly,
+                          FilteringTextInputFormatter.digitsOnly,
                           LengthLimitingTextInputFormatter(10),
                           PhoneFormatter()
                         ],
@@ -74,9 +74,7 @@ class _PartnerFormState extends State<PartnerForm> {
                             prefixIcon: Icon(Icons.phone))),
                   ],
                 ),
-              )
-          )
-      ),
+              ))),
     );
   }
 
