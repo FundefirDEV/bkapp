@@ -17,4 +17,5 @@ class HomeRoutesConstant {
   static int exeptionsScreen = 16;
   static int timeLineMyShares = 17;
   static int timeLineMyCredit = 18;
+  static int reportsScreen = 19;
 }

@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/screens/exemptions/exemptions_screen.dart';
 import 'package:bkapp_flutter/src/screens/timeLineMyCredit/time_line_my_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/timeLineMyShares/time_line_my_shares_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';
@@ -161,7 +161,8 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             tokenUser: widget.tokenUser),
                         TimeLineMyCreditScreen(
                             userName: widget.userName,
-                            tokenUser: widget.tokenUser)
+                            tokenUser: widget.tokenUser),
+                        ReportsScreen(userName: widget.userName) // NOTE 19
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

@@ -14,6 +14,7 @@ export 'menuRequests/menu_requests.dart';
 export 'modals/bottomModal/bottom_modal.dart';
 export 'modals/ImageBottomModal/Image_bottom_modal.dart';
 export 'multipleButtons/multiple_buttons.dart';
+export 'multipleTabs/multiple_tabs.dart';
 export 'textGreeting/text_greeting_widget.dart';
 export 'titleHeader/title_header_widget.dart';
 export 'accordion/accordion.dart';
