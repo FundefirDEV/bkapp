@@ -471,5 +471,19 @@
   "timeLineCredits": {
     "title": "My Credits",
     "current": "Current"
+  },
+  "reportsScreen": {
+    "title": "Reports",
+    "chart": {
+      "title": "Group's shares",
+      "total": "Total:",
+      "axisTitle": "# SHARES"
+    },
+    "tabs": {
+      "shares": "SHARES",
+      "credits": "CREDITS",
+      "installments": "INSTALLMENTS",
+      "profits": "PROFITS"
+    }
   }
 }

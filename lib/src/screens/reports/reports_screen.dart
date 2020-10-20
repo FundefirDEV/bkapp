@@ -1,5 +1,9 @@
+import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/widgets.dart';
 
 class ReportsScreen extends StatelessWidget {
   const ReportsScreen({Key key, @required this.userName}) : super(key: key);
@@ -7,6 +11,14 @@ class ReportsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    List<String> tabList = [
+      I18n.of(context).reportsScreenTabsShares,
+      I18n.of(context).reportsScreenTabsCredits,
+      I18n.of(context).reportsScreenTabsInstallments,
+      I18n.of(context).reportsScreenTabsProfits
+    ];
+
     return Scaffold(
       body: AppBarWidget(
         userName: userName,
@@ -14,10 +26,13 @@ class ReportsScreen extends StatelessWidget {
           child: Column(
             children: [
               MultipleTabs(
-                tabsText: ['ACCIONES', 'CRÉDITOS'],
+                tabContentSize: SizeConfig.blockSizeVertical * 40,
+                tabsText: tabList,
                 tabsContent: [
-                  Center(child: Text('Acciones')),
-                  Center(child: Text('Créditos'))
+                  Center(child: Chart()),
+                  Center(child: Text('Créditos')),
+                  Center(child: Text('Cuotas')),
+                  Center(child: Text('Ganancias'))
                 ],
               )
             ],

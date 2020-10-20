@@ -461,5 +461,19 @@
   "timeLineCredits": {
     "title": "Mis Créditos",
     "current": "Vigente"
+  },
+  "reportsScreen": {
+    "title": "Reportes",
+    "chart": {
+      "title": "Acciones del grupo",
+      "total": "Total:",
+      "axisTitle": "# ACCIONES"
+    },
+    "tabs": {
+      "shares": "ACCIONES",
+      "credits": "CRÉDITOS",
+      "installments": "CUOTAS",
+      "profits": "GANANCIAS"
+    }
   }
 }

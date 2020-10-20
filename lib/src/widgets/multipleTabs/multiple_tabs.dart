@@ -5,11 +5,15 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class MultipleTabs extends StatefulWidget {
   const MultipleTabs(
-      {Key key, @required this.tabsText, @required this.tabsContent})
+      {Key key,
+      @required this.tabsText,
+      @required this.tabsContent,
+      @required this.tabContentSize})
       : super(key: key);
 
   final List<String> tabsText;
   final List<Widget> tabsContent;
+  final double tabContentSize;
 
   @override
   _MultipleTabsState createState() => _MultipleTabsState();
@@ -53,7 +57,7 @@ class _MultipleTabsState extends State<MultipleTabs>
                       .toList()),
             ),
             Container(
-              height: 180,
+              height: widget.tabContentSize,
               child: TabBarView(
                 controller: _tabController,
                 children: widget.tabsContent,

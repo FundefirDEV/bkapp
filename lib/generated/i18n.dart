@@ -758,6 +758,22 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsTitle => "My Credits";
   /// "Current"
   String get timeLineCreditsCurrent => "Current";
+  /// "Reports"
+  String get reportsScreenTitle => "Reports";
+  /// "Group's shares"
+  String get reportsScreenChartTitle => "Group's shares";
+  /// "Total:"
+  String get reportsScreenChartTotal => "Total:";
+  /// "# SHARES"
+  String get reportsScreenChartAxisTitle => "# SHARES";
+  /// "SHARES"
+  String get reportsScreenTabsShares => "SHARES";
+  /// "CREDITS"
+  String get reportsScreenTabsCredits => "CREDITS";
+  /// "INSTALLMENTS"
+  String get reportsScreenTabsInstallments => "INSTALLMENTS";
+  /// "PROFITS"
+  String get reportsScreenTabsProfits => "PROFITS";
 }
 
 class _I18n_en_US extends I18n {
@@ -1835,6 +1851,30 @@ class _I18n_es_ES extends I18n {
   /// "Vigente"
   @override
   String get timeLineCreditsCurrent => "Vigente";
+  /// "Reportes"
+  @override
+  String get reportsScreenTitle => "Reportes";
+  /// "Acciones del grupo"
+  @override
+  String get reportsScreenChartTitle => "Acciones del grupo";
+  /// "Total:"
+  @override
+  String get reportsScreenChartTotal => "Total:";
+  /// "# ACCIONES"
+  @override
+  String get reportsScreenChartAxisTitle => "# ACCIONES";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenTabsShares => "ACCIONES";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenTabsCredits => "CRÉDITOS";
+  /// "CUOTAS"
+  @override
+  String get reportsScreenTabsInstallments => "CUOTAS";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenTabsProfits => "GANANCIAS";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
