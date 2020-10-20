@@ -21,12 +21,12 @@ class ProfilePhoneBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     try {
-      print(phone.value);
-      print(email.value);
       var formatPhone = UtilsTools.removePhoneFormatter(phone.value);
 
       await repository.postValidationCode(
-          phone: formatPhone, email: email.value);
+          phone: formatPhone,
+          email: email.value,
+          countryCode: countryCode.value);
 
       await Future<void>.delayed(Duration(seconds: 1));
       emitSuccess(canSubmitAgain: true);

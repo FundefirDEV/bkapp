@@ -90,7 +90,9 @@
     "textTwo": "your password ",
     "textThree": "we ",
     "textFour": "need your ",
-    "textFive": "cell number"
+    "textFive": "cell number",
+    "succesCode":"Check your inbox, if you didn’t",
+    "succesCodeBold":"receive the code, please\ncheck the email."
   },
   "confimInvitationBank": {
     "titleOne": "VERY ",

@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
@@ -9,6 +10,7 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/countryCarouse
 import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/footer_step_widget.dart';
 import 'package:bkapp_flutter/src/utils/after_layaut.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -48,7 +50,9 @@ class _RegistePhoneFormListenerWidgetState
               currentStep: 3,
               numberOfSteps: 5,
               isDisabled: isDisabled,
-              currentBlocSubmit: () => nextWidgetTap(registerBloc))
+              // currentBlocSubmit: () => nextWidgetTap(registerBloc)
+              currentBlocSubmit: () =>
+                  _showConfirmDialog(context, registerBloc))
         ]);
   }
 
@@ -66,6 +70,29 @@ class _RegistePhoneFormListenerWidgetState
     Navigator.pushNamed(context, registerpinCodeVerification,
         arguments:
             RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
+  }
+
+  void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (_) {
+          return ImageBottomModal(
+              modalHeight: 47.0,
+              image: 'assets/images/salo_pre_approved_modal.svg',
+              isImageBg: true,
+              title: I18n.of(context).registerPhoneSuccesCode,
+              titleBold: I18n.of(context).registerPhoneSuccesCodeBold,
+              isBold: true,
+              isBtnAccept: false,
+              titleCloseButton: I18n.of(context).administratorAssignmentClose,
+              onPressCancel: () {
+                Navigator.pop(context);
+                nextWidgetTap(registerBloc);
+              });
+        });
   }
 
   _isValidating(String phoneBloc) {

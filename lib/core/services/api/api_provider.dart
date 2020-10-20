@@ -23,12 +23,12 @@ class ApiProvider {
   }
 
   Future<Map<String, dynamic>> postValidationCode(
-      String phone, String email) async {
+      String phone, String email, String countryCode) async {
     final validationCodeUrl = ApiEndpoints.validationCode();
     final validationCodeResponse = await _httpRequest.post(
         httpClient: httpClient,
         url: validationCodeUrl,
-        body: {"phone": phone, "email": email});
+        body: {"phone": phone, "email": email, "countryCode": countryCode});
     return validationCodeResponse;
   }
 

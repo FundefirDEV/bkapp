@@ -158,6 +158,10 @@ class I18n implements WidgetsLocalizations {
   String get registerPhoneTextFour => "need your ";
   /// "cell number"
   String get registerPhoneTextFive => "cell number";
+  /// "Check your inbox, if you didn’t"
+  String get registerPhoneSuccesCode => "Check your inbox, if you didn’t";
+  /// "receive the code, please\ncheck the email."
+  String get registerPhoneSuccesCodeBold => "receive the code, please\ncheck the email.";
   /// "VERY "
   String get confimInvitationBankTitleOne => "VERY ";
   /// "GOOD!"
@@ -955,6 +959,12 @@ class _I18n_es_ES extends I18n {
   /// "número celular"
   @override
   String get registerPhoneTextFive => "número celular";
+  /// "Verifica tu bandeja de entrada si no recibiste"
+  @override
+  String get registerPhoneSuccesCode => "Verifica tu bandeja de entrada si no recibiste";
+  /// "el código, valida el correo\nelectrónico digitado."
+  @override
+  String get registerPhoneSuccesCodeBold => "el código, valida el correo\nelectrónico digitado.";
   /// "¡MUY "
   @override
   String get confimInvitationBankTitleOne => "¡MUY ";

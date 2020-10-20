@@ -90,7 +90,9 @@
     "textTwo": "tu clave ",
     "textThree": "necesitamos",
     "textFour": "tu ",
-    "textFive": "número celular"
+    "textFive": "número celular",
+    "succesCode":"Verifica tu bandeja de entrada si no recibiste",
+    "succesCodeBold":"el código, valida el correo\nelectrónico digitado."
   },
   "confimInvitationBank": {
     "titleOne": "¡MUY ",
