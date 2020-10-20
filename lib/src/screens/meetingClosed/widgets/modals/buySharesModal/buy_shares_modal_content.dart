@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/shares_current_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/button_close_modal_meeting.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buySharesModal/table_shares_modal_content.dart';
@@ -8,16 +9,13 @@ import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter/material.dart';
 
 class BuyShareModalContent extends StatelessWidget {
-  const BuyShareModalContent({Key key, this.image}) : super(key: key);
+  const BuyShareModalContent({Key key, this.image, this.sharesCurrent})
+      : super(key: key);
 
   final String image;
-
+  final SharesCurrentModel sharesCurrent;
   @override
   Widget build(BuildContext context) {
-    final data = [
-      {"name": "Javier", "quantity": "20", "total": r"$40.000.000"},
-      {"name": "Marcos", "quantity": "30", "total": r"$70.000.00"}
-    ];
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 30),
       child: Column(
@@ -28,10 +26,15 @@ class BuyShareModalContent extends StatelessWidget {
             title: UtilsTools.titleCase(
                 I18n.of(context).meetingClosedPurchasedShares),
           ),
-          TextSharesModal(),
+          TextSharesModal(
+              newCashBalance: sharesCurrent.newCashBalance,
+              lastCashBalance: sharesCurrent.lastCashBalance,
+              payShares: sharesCurrent.totalSharesMeeting),
           AccordionModalsMeeting(
             titleAccordion: I18n.of(context).meetingClosedPurchasedShares,
-            children: [TableSharesModalContent(data: data)],
+            children: [
+              TableSharesModalContent(data: sharesCurrent.sharesByPartners)
+            ],
           ),
           ButtonCloseModalMeeting()
         ],

@@ -4,8 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TextSharesModal extends StatelessWidget {
-  const TextSharesModal({Key key}) : super(key: key);
-
+  const TextSharesModal(
+      {Key key,
+      @required this.newCashBalance,
+      @required this.lastCashBalance,
+      @required this.payShares})
+      : super(key: key);
+  final String newCashBalance;
+  final String lastCashBalance;
+  final String payShares;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -39,7 +46,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$4.000.000',
+                      lastCashBalance,
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -72,7 +79,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      '12',
+                      payShares,
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -107,7 +114,7 @@ class TextSharesModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$4.000.000',
+                      newCashBalance,
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,

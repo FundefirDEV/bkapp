@@ -1,11 +1,12 @@
+import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TableModalCreditAwarded extends StatelessWidget {
-  const TableModalCreditAwarded({Key key, this.data}) : super(key: key);
-  final data;
-
+  const TableModalCreditAwarded({Key key, this.listCreditsThisMeeting})
+      : super(key: key);
+  final List<CreditsThisMeeting> listCreditsThisMeeting;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +60,7 @@ class TableModalCreditAwarded extends StatelessWidget {
                                   .primaryColor[100]))),
                 )),
               ]),
-          for (var i = 0; i < data.length; i++)
+          for (var item in listCreditsThisMeeting)
             TableRow(
                 decoration: BoxDecoration(
                     border: Border(
@@ -74,7 +75,7 @@ class TableModalCreditAwarded extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['name'],
+                        item.partnerName,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -84,7 +85,7 @@ class TableModalCreditAwarded extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['quantity'],
+                        item.interest,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -94,7 +95,7 @@ class TableModalCreditAwarded extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['interest'],
+                        item.quantity,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),

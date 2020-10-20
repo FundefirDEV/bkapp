@@ -1,10 +1,12 @@
+import 'package:bkapp_flutter/core/models/shares_current_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TableSharesModalContent extends StatelessWidget {
-  const TableSharesModalContent({Key key, this.data}) : super(key: key);
-  final data;
+  const TableSharesModalContent({Key key, @required this.data})
+      : super(key: key);
+  final List<SharesByPartner> data;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class TableSharesModalContent extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['name'],
+                        data[i].partnerName,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -84,7 +86,7 @@ class TableSharesModalContent extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['quantity'],
+                        data[i].sharesQuantity,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -94,7 +96,7 @@ class TableSharesModalContent extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['total'],
+                        data[i].sharesAmmount,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),

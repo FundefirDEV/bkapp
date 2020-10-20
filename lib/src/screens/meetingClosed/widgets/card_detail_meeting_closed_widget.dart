@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
+import 'package:bkapp_flutter/core/models/shares_current_model.dart';
 import 'package:bkapp_flutter/src/screens/approvals/widgets/empty_information.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/buySharesModal/buy_shares_modal_content.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/creditAwardedModal/credit_awarded_modal_content.dart';
@@ -11,20 +13,15 @@ import 'package:flutter_svg/svg.dart';
 import 'modals/capitalSubscriptionModal/capital_subscription_modal_content.dart';
 
 class CardDetailMeetingClosedWidget extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String image;
-  final String value;
-  final String descriptionValue;
-
   const CardDetailMeetingClosedWidget(
       {Key key,
-      this.title,
-      this.image,
-      this.value,
-      this.subTitle,
-      this.descriptionValue})
+      this.meetingProps,
+      this.meetingDetail,
+      @required this.sharesCurrent})
       : super(key: key);
+  final MeetingProps meetingProps;
+  final MeetingDetail meetingDetail;
+  final SharesCurrentModel sharesCurrent;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,7 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
               spreadRadius: 0)
         ]),
         child: InkWell(
-          onTap: () => _showDialog(context, image),
+          onTap: () => _showDialog(context, meetingProps.image),
           child: Column(
             children: <Widget>[
               _titleCard(context),
@@ -69,7 +66,8 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
                   child: Container(
                       alignment: Alignment.center,
                       child: Container(
-                        child: SvgPicture.asset('assets/images/$image.svg',
+                        child: SvgPicture.asset(
+                            'assets/images/${meetingProps.image}.svg',
                             fit: BoxFit.contain),
                       ))),
               Expanded(
@@ -87,10 +85,10 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
                                   letterSpacing: 2,
                                   fontWeight: FontWeight.w200),
                               children: [
-                                TextSpan(text: value),
+                                TextSpan(text: meetingProps.value),
                                 TextSpan(
-                                    text: descriptionValue.length > 0
-                                        ? '\n$descriptionValue'
+                                    text: meetingProps.descriptionValue != null
+                                        ? '\n${meetingProps.descriptionValue}'
                                         : '',
                                     style: TextStyle(
                                         fontSize: 14,
@@ -116,28 +114,32 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
             children: <Widget>[
               Expanded(
                   flex: 2,
-                  child: RichText(
-                      key: Key(''),
-                      text: TextSpan(
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Nunito',
-                              fontSize: 13.5,
-                              fontWeight: FontWeight.w700),
-                          children: [
-                            TextSpan(text: title.length > 0 ? '$title\n' : ''),
-                            TextSpan(
-                                text: subTitle,
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w200)),
-                          ]))),
+                  child: Container(
+                    child: RichText(
+                        key: Key(''),
+                        text: TextSpan(
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'Nunito',
+                                fontSize: 13.5,
+                                fontWeight: FontWeight.w700),
+                            children: [
+                              TextSpan(
+                                  text: meetingProps.title != null
+                                      ? '${meetingProps.title}\n'
+                                      : ''),
+                              TextSpan(
+                                  text: meetingProps.subTitle,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w200)),
+                            ])),
+                  )),
               Expanded(
                   flex: 1,
                   child: Container(
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.centerRight,
                       child: Container(
-                        padding: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical * 2.8),
                         child: SvgPicture.asset('assets/images/path.svg',
                             fit: BoxFit.contain),
                       )))
@@ -162,19 +164,44 @@ class CardDetailMeetingClosedWidget extends StatelessWidget {
   StatelessWidget modalContent(type) {
     switch (type) {
       case 'shares_bought':
-        return BuyShareModalContent(image: type);
+        return BuyShareModalContent(image: type, sharesCurrent: sharesCurrent);
         break;
       case 'credit_given':
-        return CreditAwardedModalContent(image: type);
+        return CreditAwardedModalContent(
+            image: type,
+            cashBalance: meetingDetail.cashBalance,
+            activeCredits: meetingDetail.activeCredits,
+            listCreditsThisMeeting: meetingDetail.creditsThisMeeting);
         break;
       case 'capital_icon':
-        return CapitalSubscriptionModalContent(image: type);
+        return CapitalSubscriptionModalContent(
+            image: type,
+            totalCapital: meetingDetail.totalCapital,
+            listPartnertsPayments: meetingDetail.partnertsPayments);
         break;
       case 'oridinary_interest':
-        return InterestPaymentModal(image: type);
+        return InterestPaymentModal(
+            image: type,
+            totalInstallmentsPays: meetingDetail.totalInstallmentsPays,
+            totalAdvanceInsterest: meetingDetail.totalAdanceInsterest,
+            listPartnertsPayments: meetingDetail.partnertsPayments);
         break;
       default:
         return EmptyInformation();
     }
   }
+}
+
+class MeetingProps {
+  MeetingProps(
+      {this.title,
+      this.subTitle,
+      this.image,
+      this.value,
+      this.descriptionValue});
+  final String title;
+  final String subTitle;
+  final String image;
+  final String value;
+  final String descriptionValue;
 }

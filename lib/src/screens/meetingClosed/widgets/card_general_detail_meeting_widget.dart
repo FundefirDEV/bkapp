@@ -81,7 +81,7 @@ class CardGeneralDetailMeetingWidget extends StatelessWidget {
 
   Container _childWhite(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 35),
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(children: <Widget>[
           Expanded(
               child: Container(

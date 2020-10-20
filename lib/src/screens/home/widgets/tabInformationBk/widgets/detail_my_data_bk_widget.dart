@@ -17,6 +17,10 @@ class DetailMyDataBkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    final sizeTitle = SizeConfig.safeBlockHorizontal * 3.5;
+    final sizeTitleValue = sizeTitle * 1.5;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 1.5),
       child: Column(
@@ -44,8 +48,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                   style: TextStyle(
                                       color: Colors.white,
                                       letterSpacing: 1.5,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 4,
+                                      fontSize: sizeTitleValue,
                                       fontWeight: FontWeight.w100)),
                               Container(
                                 margin: EdgeInsets.symmetric(
@@ -55,8 +58,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                   text: TextSpan(
                                       text: I18n.of(context).homeScreenMy,
                                       style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal * 4,
+                                        fontSize: sizeTitle,
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w200,
                                         color: Colors.white,
@@ -154,57 +156,51 @@ class DetailMyDataBkWidget extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: FlatButton(
-                        padding: EdgeInsets.all(0),
+                      child: Container(
+                          child: FlatButton(
                         onPressed: () {
                           context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
                               goTo: HomeRoutesConstant.timeLineMyShares));
                         },
-                        child: Container(
-                            width: SizeConfig.blockSizeHorizontal * 50,
-                            margin: EdgeInsets.only(left: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                RichText(
-                                    text: TextSpan(
-                                        text: I18n.of(context).homeScreenMy,
-                                        style: TextStyle(
-                                          fontSize:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  3,
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w200,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor,
-                                        ),
-                                        children: <TextSpan>[
-                                      TextSpan(
-                                        text:
-                                            ' ${I18n.of(context).homeScreenShares}',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )
-                                    ])),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: SizeConfig.safeBlockVertical * 0.8),
-                                  child: Text(information.shares,
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor[200],
-                                          letterSpacing: 1.5,
-                                          fontSize:
-                                              SizeConfig.safeBlockVertical * 2,
-                                          fontWeight: FontWeight.w100)),
-                                )
-                              ],
-                            )),
-                      ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RichText(
+                                text: TextSpan(
+                                    text: I18n.of(context).homeScreenMy,
+                                    style: TextStyle(
+                                      fontSize: sizeTitle,
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w200,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .grayColor,
+                                    ),
+                                    children: <TextSpan>[
+                                  TextSpan(
+                                    text:
+                                        ' ${I18n.of(context).homeScreenShares}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                ])),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: SizeConfig.safeBlockVertical * 0.8),
+                              child: Text(information.shares,
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .grayColor[200],
+                                      letterSpacing: 1.5,
+                                      fontSize: sizeTitleValue,
+                                      fontWeight: FontWeight.w100)),
+                            )
+                          ],
+                        ),
+                      )),
                     ),
                   ],
                 )),

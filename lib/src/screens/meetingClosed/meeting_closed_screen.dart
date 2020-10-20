@@ -66,7 +66,10 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
               if (isAdmin) _buttonPayFee(context),
               LineSeparatorWidget(),
               _subtitleDetailClosing(context),
-              CarouselCardsDetailWidget(infoMeeting: infoMeeting)
+              CarouselCardsDetailWidget(
+                  infoMeeting: infoMeeting,
+                  meetingDetail: state.meetingDetail,
+                  sharesCurrent: state.sharesCurrent)
             ]),
           ),
         );

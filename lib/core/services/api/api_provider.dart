@@ -219,4 +219,16 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: getMyCreditUrl, token: token);
   }
+
+  Future<Map<String, dynamic>> getCreditsCurrentMeeting(String token) async {
+    final endPoint = ApiEndpoints.getCreditsCurrentMeeting();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: endPoint, token: token);
+  }
+
+  Future<Map<String, dynamic>> getSharesCurrentMeeting(String token) async {
+    final endPoint = ApiEndpoints.getSharesCurrentMeeting();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: endPoint, token: token);
+  }
 }

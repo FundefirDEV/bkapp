@@ -244,4 +244,14 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/my-credits";
   }
+
+  static String getCreditsCurrentMeeting({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/credits-current-meeting";
+  }
+
+  static String getSharesCurrentMeeting({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/shares-current-meeting";
+  }
 }

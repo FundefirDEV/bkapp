@@ -15,10 +15,13 @@ class MeetingLoaded extends MeetingState {
   MeetingLoaded({
     @required this.infoMeeting,
     @required this.isClosedMeeting,
+    @required this.meetingDetail,
+    @required this.sharesCurrent,
   });
   final MeetingModel infoMeeting;
   final bool isClosedMeeting;
-
+  final MeetingDetail meetingDetail;
+  final SharesCurrentModel sharesCurrent;
   @override
   List<Object> get props => [infoMeeting, isClosedMeeting];
 }

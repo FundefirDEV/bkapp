@@ -3,7 +3,6 @@ import 'package:bkapp_flutter/src/screens/profileRegister/widgets/footerSteps/fo
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/button_back_widget.dart';
-import 'package:bkapp_flutter/src/widgets/menuRequests/menu_requests.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class PinCodeStepScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    Offset position = Offset(40.0, 40.0);
+    // Offset position = Offset(40.0, 40.0);
     bool isDisabled = true;
     return BlocProvider(
       create: (context) =>

@@ -1,11 +1,13 @@
+import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TableSubscriptionModal extends StatelessWidget {
-  const TableSubscriptionModal({Key key, this.data}) : super(key: key);
-  final data;
+  const TableSubscriptionModal({Key key, this.listPartnertsPayments})
+      : super(key: key);
+  final List<PartnertsPayments> listPartnertsPayments;
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +56,12 @@ class TableSubscriptionModal extends StatelessWidget {
                   )),
                 )),
               ]),
-          for (var i = 0; i < data.length; i++)
+          for (var i = 0; i < listPartnertsPayments.length; i++)
             TableRow(
                 decoration: BoxDecoration(
                     border: Border(
                   bottom: BorderSide(
-                    color: data.length - 1 != i
+                    color: listPartnertsPayments.length - 1 != i
                         ? Theme.of(context).colorScheme.grayColor[200]
                         : Colors.transparent,
                     width: 1,
@@ -71,7 +73,7 @@ class TableSubscriptionModal extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['name'],
+                        listPartnertsPayments[i].name,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -81,7 +83,7 @@ class TableSubscriptionModal extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['interest'],
+                        listPartnertsPayments[i].capital,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),

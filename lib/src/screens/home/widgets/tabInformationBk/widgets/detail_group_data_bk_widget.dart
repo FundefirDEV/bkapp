@@ -11,6 +11,10 @@ class DetailGroupDataBkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    final sizeTitle = SizeConfig.safeBlockHorizontal * 3.5;
+    final sizeTitleValue = sizeTitle * 1.5;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 1.5),
       child: Column(
@@ -38,7 +42,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                               style: TextStyle(
                                   letterSpacing: 1.5,
                                   fontWeight: FontWeight.w800,
-                                  fontSize: SizeConfig.safeBlockHorizontal * 4,
+                                  fontSize: sizeTitle,
                                   color:
                                       Theme.of(context).colorScheme.grayColor),
                             ),
@@ -46,8 +50,7 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                                 key: Key('group-bk-value-cashbalance'),
                                 style: TextStyle(
                                     letterSpacing: 1.5,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
+                                    fontSize: sizeTitleValue,
                                     color: Theme.of(context)
                                         .colorScheme
                                         .grayColor[200],
@@ -92,80 +95,70 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                         bottomLeft: const Radius.circular(10),
                         bottomRight: const Radius.circular(10))),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Expanded(
+                      flex: 2,
                       child: Container(
-                          width: SizeConfig.blockSizeHorizontal * 50,
-                          child: Container(
-                            margin: EdgeInsets.only(left: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(I18n.of(context).homeScreenShares,
-                                    key: Key('group-bk-title-shares'),
-                                    style: TextStyle(
-                                      letterSpacing: 2,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 3,
-                                      fontWeight: FontWeight.w800,
+                        margin: EdgeInsets.only(left: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(I18n.of(context).homeScreenShares,
+                                key: Key('group-bk-title-shares'),
+                                style: TextStyle(
+                                  letterSpacing: 2,
+                                  fontSize: sizeTitle,
+                                  fontWeight: FontWeight.w800,
+                                  color:
+                                      Theme.of(context).colorScheme.grayColor,
+                                )),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical * 0.8),
+                              child: Text(information.shares,
+                                  style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .grayColor,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 0.8),
-                                  child: Text(information.shares,
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor[200],
-                                          letterSpacing: 1.5,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  3,
-                                          fontWeight: FontWeight.w100)),
-                                )
-                              ],
-                            ),
-                          )),
+                                          .grayColor[200],
+                                      letterSpacing: 1.5,
+                                      fontSize: sizeTitleValue,
+                                      fontWeight: FontWeight.w100)),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     Expanded(
+                      flex: 3,
                       child: Container(
-                          width: SizeConfig.blockSizeHorizontal * 50,
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(I18n.of(context).homeScreenBorrowed,
-                                    key: Key('group-bk-title-creditsgranted'),
-                                    style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(I18n.of(context).homeScreenBorrowed,
+                                key: Key('group-bk-title-creditsgranted'),
+                                style: TextStyle(
+                                  fontSize: sizeTitle,
+                                  letterSpacing: 1.5,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.red,
+                                )),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical * 0.8),
+                              child: Text(information.activeCredits,
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .grayColor[200],
                                       letterSpacing: 1.5,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.red,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 0.8),
-                                  child: Text(information.activeCredits,
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor[200],
-                                          letterSpacing: 1.5,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  3,
-                                          fontWeight: FontWeight.w100)),
-                                )
-                              ],
-                            ),
-                          )),
+                                      fontSize: sizeTitleValue,
+                                      fontWeight: FontWeight.w100)),
+                            )
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 )),

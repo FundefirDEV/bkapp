@@ -1,10 +1,12 @@
+import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
+import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TablePaymentModal extends StatelessWidget {
-  const TablePaymentModal({Key key, this.data}) : super(key: key);
-  final data;
+  const TablePaymentModal({Key key, this.listPartnertsPayments})
+      : super(key: key);
+  final List<PartnertsPayments> listPartnertsPayments;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class TablePaymentModal extends StatelessWidget {
                                   .primaryColor[100]))),
                 )),
               ]),
-          for (var i = 0; i < data.length; i++)
+          for (var item in listPartnertsPayments)
             TableRow(
                 decoration: BoxDecoration(
                     border: Border(
@@ -74,7 +76,7 @@ class TablePaymentModal extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['name'],
+                        item.name,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -84,7 +86,7 @@ class TablePaymentModal extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['quantity'],
+                        item.interest,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),
@@ -94,7 +96,7 @@ class TablePaymentModal extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                           child: Text(
-                        data[i]['total'],
+                        item.creditType,
                         style: TextStyle(fontSize: 11),
                       )),
                     ),

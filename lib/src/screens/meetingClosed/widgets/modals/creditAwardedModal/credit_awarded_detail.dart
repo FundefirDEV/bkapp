@@ -4,8 +4,11 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class CreditAwardedDetail extends StatelessWidget {
-  CreditAwardedDetail({Key key}) : super(key: key);
-
+  CreditAwardedDetail(
+      {Key key, @required this.cashBalance, @required this.activeCredits})
+      : super(key: key);
+  final String cashBalance;
+  final String activeCredits;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +26,7 @@ class CreditAwardedDetail extends StatelessWidget {
                         fontSize: 12,
                         letterSpacing: 2,
                         fontWeight: FontWeight.w600)),
-                Text(r'$4.500.000',
+                Text(cashBalance,
                     style: TextStyle(
                         fontSize: 14,
                         height: 2,
@@ -60,7 +63,7 @@ class CreditAwardedDetail extends StatelessWidget {
                           letterSpacing: 2,
                           height: 3),
                       textAlign: TextAlign.end),
-                  Text(r'$1.500.000',
+                  Text(activeCredits,
                       style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.grayColor[300])),

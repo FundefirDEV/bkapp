@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/button_close_modal_meeting.dart';
 import 'package:bkapp_flutter/src/screens/meetingClosed/widgets/modals/creditAwardedModal/credit_awarded_detail.dart';
@@ -8,20 +9,20 @@ import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter/material.dart';
 
 class CreditAwardedModalContent extends StatelessWidget {
-  const CreditAwardedModalContent({Key key, this.image}) : super(key: key);
-
+  const CreditAwardedModalContent(
+      {Key key,
+      @required this.image,
+      @required this.listCreditsThisMeeting,
+      @required this.cashBalance,
+      @required this.activeCredits})
+      : super(key: key);
   final String image;
+  final String cashBalance;
+  final String activeCredits;
+  final List<CreditsThisMeeting> listCreditsThisMeeting;
 
   @override
   Widget build(BuildContext context) {
-    final data = [
-      {
-        "name": "Javier",
-        "quantity": r"$10.000.000",
-        "interest": r"$40.000.000"
-      },
-      {"name": "Marcos", "quantity": r"$90.000.000", "interest": r"$70.000.00"}
-    ];
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 30),
       child: Column(
@@ -32,10 +33,14 @@ class CreditAwardedModalContent extends StatelessWidget {
             title: UtilsTools.titleCase(
                 I18n.of(context).meetingClosedCreditsAwarded),
           ),
-          CreditAwardedDetail(),
+          CreditAwardedDetail(
+              activeCredits: activeCredits, cashBalance: cashBalance),
           AccordionModalsMeeting(
             titleAccordion: I18n.of(context).meetingClosedCreditsAwarded,
-            children: [TableModalCreditAwarded(data: data)],
+            children: [
+              TableModalCreditAwarded(
+                  listCreditsThisMeeting: listCreditsThisMeeting)
+            ],
           ),
           ButtonCloseModalMeeting()
         ],

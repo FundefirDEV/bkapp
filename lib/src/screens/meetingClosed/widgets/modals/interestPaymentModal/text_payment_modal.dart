@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class TextPaymentModal extends StatelessWidget {
-  const TextPaymentModal({Key key}) : super(key: key);
-
+  const TextPaymentModal(
+      {Key key,
+      @required this.totalInstallmentsPays,
+      @required this.totalAdvanceInsterest})
+      : super(key: key);
+  final String totalInstallmentsPays;
+  final String totalAdvanceInsterest;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -37,7 +42,7 @@ class TextPaymentModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$10.000',
+                      totalInstallmentsPays,
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -70,7 +75,7 @@ class TextPaymentModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$5.000',
+                      totalAdvanceInsterest,
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
@@ -103,7 +108,7 @@ class TextPaymentModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
-                      r'$20.000',
+                      r'$0',
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: 15,
