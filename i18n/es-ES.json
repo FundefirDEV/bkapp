@@ -464,10 +464,30 @@
   },
   "reportsScreen": {
     "title": "Reportes",
-    "chart": {
+    "sustainability": "Fondo de sostenibilidad",
+    "reserve": "Reserva para Incobrables",
+    "detail": "Detalle",
+    "partner": "Socio",
+    "total": "Total:",
+    "sharesChart": {
       "title": "Acciones del grupo",
-      "total": "Total:",
-      "axisTitle": "# ACCIONES"
+      "axisTitle": "ACCIONES",
+      "sharesValue": "Valor en acciones"
+    },
+    "creditsChart": {
+      "title": "Créditos del grupo",
+      "axisTitle": "CRÉDITOS",
+      "sharesValue": "Valor crédito"
+    },
+    "installmentsChart": {
+      "title": "Monto de cuotas",
+      "axisTitle": "CUOTAS PAGADAS",
+      "sharesValue": "Cuotas por pagar"
+    },
+    "profitsChart": {
+      "title": "Ganancias por repartir",
+      "axisTitle": "GANANCIAS",
+      "sharesValue": "Ganancias"
     },
     "tabs": {
       "shares": "ACCIONES",

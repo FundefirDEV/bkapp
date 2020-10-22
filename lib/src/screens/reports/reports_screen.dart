@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/widgets.dart';
@@ -22,22 +23,18 @@ class ReportsScreen extends StatelessWidget {
     return Scaffold(
       body: AppBarWidget(
         userName: userName,
+        enableScrolling: false,
         container: Container(
-          child: Column(
-            children: [
-              MultipleTabs(
-                tabContentSize: SizeConfig.blockSizeVertical * 40,
-                tabsText: tabList,
-                tabsContent: [
-                  Center(child: Chart()),
-                  Center(child: Text('Créditos')),
-                  Center(child: Text('Cuotas')),
-                  Center(child: Text('Ganancias'))
-                ],
-              )
-            ],
-          ),
-        ),
+            child: MultipleTabs(
+          tabContentSize: SizeConfig.blockSizeVertical * 70,
+          tabsText: tabList,
+          tabsContent: [
+            SingleChildScrollView(child: ShareContent()),
+            SingleChildScrollView(child: CreditsContent()),
+            SingleChildScrollView(child: InstallmentsContent()),
+            SingleChildScrollView(child: ProfitsContent())
+          ],
+        )),
       ),
     );
   }

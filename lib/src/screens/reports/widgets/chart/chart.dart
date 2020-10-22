@@ -4,7 +4,20 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class Chart extends StatefulWidget {
-  const Chart({Key key}) : super(key: key);
+  const Chart(
+      {Key key,
+      @required this.title,
+      @required this.total,
+      this.values,
+      @required this.spotList,
+      this.axisTitle})
+      : super(key: key);
+
+  final String title;
+  final String axisTitle;
+  final String total;
+  final List<dynamic> values;
+  final List<FlSpot> spotList;
 
   @override
   _ChartState createState() => _ChartState();
@@ -16,12 +29,6 @@ class _ChartState extends State<Chart> {
     const Color(0xff41B2ED),
   ];
   List<String> months = ['', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', ''];
-  List<FlSpot> spotList = [
-    FlSpot(0, 0),
-    FlSpot(2.5, 3),
-    FlSpot(5.8, 4.5),
-    FlSpot(7.4, 8),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class _ChartState extends State<Chart> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
-            child: Text(I18n.of(context).reportsScreenChartTitle,
+            child: Text(widget.title,
                 style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w700,
@@ -44,9 +51,7 @@ class _ChartState extends State<Chart> {
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: Text(
-                '${I18n.of(context).reportsScreenChartTotal} ' +
-                    r'$' +
-                    '100.000',
+                '${I18n.of(context).reportsScreenTotal} ${widget.total}',
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.grayColor,
                     fontSize: 15.0,
@@ -70,7 +75,7 @@ class _ChartState extends State<Chart> {
                       final flSpot = barSpot;
                       if (flSpot.x == 0 || flSpot.x == 7.4) return null;
                       return LineTooltipItem(
-                          '${months[flSpot.x.toInt()]} \n${flSpot.y} acciones',
+                          '${months[flSpot.x.toInt()]} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
                           TextStyle(color: Colors.white));
                     }).toList();
                   }),
@@ -106,7 +111,7 @@ class _ChartState extends State<Chart> {
           maxY: 10,
           axisTitleData: FlAxisTitleData(
               leftTitle: AxisTitle(
-                  titleText: I18n.of(context).reportsScreenChartAxisTitle,
+                  titleText: '# ${widget.axisTitle}',
                   textStyle: TextStyle(
                       color: Theme.of(context).colorScheme.grayColor,
                       fontSize: 10.0,
@@ -119,7 +124,7 @@ class _ChartState extends State<Chart> {
   List<LineChartBarData> _lineBarsData() {
     return [
       LineChartBarData(
-        spots: spotList,
+        spots: widget.spotList,
         isCurved: true,
         colors: gradientColors,
         barWidth: 0,
@@ -147,7 +152,8 @@ class _ChartState extends State<Chart> {
                   strokeWidth: 1,
                 ),
                 checkToShowSpotLine: (spot) {
-                  if (spot.x == spotList[spotList.length - 2].x) return true;
+                  if (spot.x == widget.spotList[widget.spotList.length - 2].x)
+                    return true;
                   return false;
                 })),
       )

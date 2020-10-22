@@ -8,7 +8,7 @@ class MultipleTabs extends StatefulWidget {
       {Key key,
       @required this.tabsText,
       @required this.tabsContent,
-      @required this.tabContentSize})
+      this.tabContentSize})
       : super(key: key);
 
   final List<String> tabsText;
@@ -36,6 +36,7 @@ class _MultipleTabsState extends State<MultipleTabs>
     return DefaultTabController(
         length: widget.tabsText.length,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               padding: EdgeInsets.symmetric(

@@ -760,12 +760,40 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsCurrent => "Current";
   /// "Reports"
   String get reportsScreenTitle => "Reports";
-  /// "Group's shares"
-  String get reportsScreenChartTitle => "Group's shares";
+  /// "Sustainability fund"
+  String get reportsScreenSustainability => "Sustainability fund";
+  /// "Bad debt reserve"
+  String get reportsScreenReserve => "Bad debt reserve";
+  /// "Detail"
+  String get reportsScreenDetail => "Detail";
+  /// "Partner"
+  String get reportsScreenPartner => "Partner";
   /// "Total:"
-  String get reportsScreenChartTotal => "Total:";
-  /// "# SHARES"
-  String get reportsScreenChartAxisTitle => "# SHARES";
+  String get reportsScreenTotal => "Total:";
+  /// "Group's shares"
+  String get reportsScreenSharesChartTitle => "Group's shares";
+  /// "SHARES"
+  String get reportsScreenSharesChartAxisTitle => "SHARES";
+  /// "Shares value"
+  String get reportsScreenSharesChartSharesValue => "Shares value";
+  /// "Group's credits"
+  String get reportsScreenCreditsChartTitle => "Group's credits";
+  /// "CREDITS"
+  String get reportsScreenCreditsChartAxisTitle => "CREDITS";
+  /// "Credit value"
+  String get reportsScreenCreditsChartSharesValue => "Credit value";
+  /// "Group's Installments"
+  String get reportsScreenInstallmentsChartTitle => "Group's Installments";
+  /// "FEES PAID"
+  String get reportsScreenInstallmentsChartAxisTitle => "FEES PAID";
+  /// "Fees to pay"
+  String get reportsScreenInstallmentsChartSharesValue => "Fees to pay";
+  /// "Profits to be distributed"
+  String get reportsScreenProfitsChartTitle => "Profits to be distributed";
+  /// "PROFITS"
+  String get reportsScreenProfitsChartAxisTitle => "PROFITS";
+  /// "Profits"
+  String get reportsScreenProfitsChartSharesValue => "Profits";
   /// "SHARES"
   String get reportsScreenTabsShares => "SHARES";
   /// "CREDITS"
@@ -1854,15 +1882,57 @@ class _I18n_es_ES extends I18n {
   /// "Reportes"
   @override
   String get reportsScreenTitle => "Reportes";
-  /// "Acciones del grupo"
+  /// "Fondo de sostenibilidad"
   @override
-  String get reportsScreenChartTitle => "Acciones del grupo";
+  String get reportsScreenSustainability => "Fondo de sostenibilidad";
+  /// "Reserva para Incobrables"
+  @override
+  String get reportsScreenReserve => "Reserva para Incobrables";
+  /// "Detalle"
+  @override
+  String get reportsScreenDetail => "Detalle";
+  /// "Socio"
+  @override
+  String get reportsScreenPartner => "Socio";
   /// "Total:"
   @override
-  String get reportsScreenChartTotal => "Total:";
-  /// "# ACCIONES"
+  String get reportsScreenTotal => "Total:";
+  /// "Acciones del grupo"
   @override
-  String get reportsScreenChartAxisTitle => "# ACCIONES";
+  String get reportsScreenSharesChartTitle => "Acciones del grupo";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenSharesChartAxisTitle => "ACCIONES";
+  /// "Valor en acciones"
+  @override
+  String get reportsScreenSharesChartSharesValue => "Valor en acciones";
+  /// "Créditos del grupo"
+  @override
+  String get reportsScreenCreditsChartTitle => "Créditos del grupo";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenCreditsChartAxisTitle => "CRÉDITOS";
+  /// "Valor crédito"
+  @override
+  String get reportsScreenCreditsChartSharesValue => "Valor crédito";
+  /// "Monto de cuotas"
+  @override
+  String get reportsScreenInstallmentsChartTitle => "Monto de cuotas";
+  /// "CUOTAS PAGADAS"
+  @override
+  String get reportsScreenInstallmentsChartAxisTitle => "CUOTAS PAGADAS";
+  /// "Cuotas por pagar"
+  @override
+  String get reportsScreenInstallmentsChartSharesValue => "Cuotas por pagar";
+  /// "Ganancias por repartir"
+  @override
+  String get reportsScreenProfitsChartTitle => "Ganancias por repartir";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenProfitsChartAxisTitle => "GANANCIAS";
+  /// "Ganancias"
+  @override
+  String get reportsScreenProfitsChartSharesValue => "Ganancias";
   /// "ACCIONES"
   @override
   String get reportsScreenTabsShares => "ACCIONES";
