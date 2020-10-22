@@ -31,7 +31,7 @@ class FormFields extends StatelessWidget {
                     TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
                 suffixIcon: Icon(Icons.attach_money)),
             inputFormatters: [
-              WhitelistingTextInputFormatter.digitsOnly,
+              FilteringTextInputFormatter.digitsOnly,
               CurrencyInputFormatter()
             ],
           ),

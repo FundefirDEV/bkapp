@@ -40,7 +40,7 @@ class OptionsBkWidget extends StatelessWidget {
                       child: InkWell(
                         key: Key('inkwell-redirect-meeting-closed'),
                         onTap: () => navigateBloc.add(ButtonPressed(
-                            goTo: HomeRoutesConstant.meetingClosedScreen)),
+                            goTo: HomeRoutesConstant.reportsScreen)),
                         child: Stack(
                           children: <Widget>[
                             new Positioned(

@@ -158,6 +158,10 @@ class I18n implements WidgetsLocalizations {
   String get registerPhoneTextFour => "need your ";
   /// "cell number"
   String get registerPhoneTextFive => "cell number";
+  /// "Check your inbox, if you didn’t"
+  String get registerPhoneSuccesCode => "Check your inbox, if you didn’t";
+  /// "receive the code, please\ncheck the email."
+  String get registerPhoneSuccesCodeBold => "receive the code, please\ncheck the email.";
   /// "VERY "
   String get confimInvitationBankTitleOne => "VERY ";
   /// "GOOD!"
@@ -454,8 +458,8 @@ class I18n implements WidgetsLocalizations {
   String get pinCodeVerificationWeSendToYour => "we send to \n your ";
   /// "cell number"
   String get pinCodeVerificationCellNumber => "cell number";
-  /// "Please fill all the cells correctly"
-  String get pinCodeVerificationPinCodeComplete => "Please fill all the cells correctly";
+  /// "Please enter correct code"
+  String get pinCodeVerificationPinCodeComplete => "Please enter correct code";
   /// "The code entered is not valid"
   String get pinCodeVerificationErrorCodeMessage => "The code entered is not valid";
   /// "Successfully validated code"
@@ -482,8 +486,8 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenUseOfCredit => "Credit use";
   /// "Detail"
   String get creditScreenDetail => "Detail";
-  /// "Way to pay"
-  String get creditScreenWayToPay => "Way to pay";
+  /// "Types of ordinary interest payment"
+  String get creditScreenWayToPay => "Types of ordinary interest payment";
   /// "Advance"
   String get creditScreenAdvances => "Advance";
   /// "Installments"
@@ -574,6 +578,12 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditTotalPayments => "Total payments";
   /// "Application date"
   String get activeCreditApplicationDate => "Application date";
+  /// "Payment interests"
+  String get activeCreditPaymentInterestsMethod => "Payment interests";
+  /// "Advance"
+  String get activeCreditAdvance => "Advance";
+  /// "Installments"
+  String get activeCreditInstallment => "Installments";
   /// "Partners"
   String get addPartnerPartner => "Partners";
   /// "ACTIVES"
@@ -636,10 +646,48 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedCapitalSubscription => "capital subscription";
   /// "interest payment"
   String get meetingClosedInterestPayment => "interest payment";
+  /// "interest payment \nordinary"
+  String get meetingClosedInterestPaymentOrdynary => "interest payment \nordinary";
   /// "Am I sure you want to"
   String get meetingClosedQuestionMeetingClosed1 => "Am I sure you want to";
   /// "close the meeting?"
   String get meetingClosedQuestionMeetingClosed2 => "close the meeting?";
+  /// "The close meeting has been successful"
+  String get meetingClosedCloseMeeting => "The close meeting has been successful";
+  /// "Purchased Shares"
+  String get meetingClosedPurchasedShares => "Purchased Shares";
+  /// "BOX "
+  String get meetingClosedBox => "BOX ";
+  /// "PREVIOUS"
+  String get meetingClosedPrevious => "PREVIOUS";
+  /// "PURCHASED"
+  String get meetingClosedPurchased => "PURCHASED";
+  /// "SHARES"
+  String get meetingClosedShares => "SHARES";
+  /// "CURRENT"
+  String get meetingClosedCurrent => "CURRENT";
+  /// "Name"
+  String get meetingClosedName => "Name";
+  /// "Quantity"
+  String get meetingClosedQuantity => "Quantity";
+  /// "Total"
+  String get meetingClosedTotal => "Total";
+  /// "Interest"
+  String get meetingClosedInterest => "Interest";
+  /// "BORROWED"
+  String get meetingClosedBorrowed => "BORROWED";
+  /// "PAYMENT"
+  String get meetingClosedPayIn => "PAYMENT";
+  /// "OF FEES"
+  String get meetingClosedFees => "OF FEES";
+  /// "PAYMENT"
+  String get meetingClosedPayFor => "PAYMENT";
+  /// "ADVANCE"
+  String get meetingClosedAdvance => "ADVANCE";
+  /// "INTEREST"
+  String get meetingClosedInterests => "INTEREST";
+  /// "DEFAULT"
+  String get meetingClosedDefault => "DEFAULT";
   /// "Profit payment"
   String get profitPaymentTitle => "Profit payment";
   /// "Profit "
@@ -706,6 +754,54 @@ class I18n implements WidgetsLocalizations {
   String get timeLineSharesTitleBox => "SHARES";
   /// "Amount"
   String get timeLineSharesAmount => "Amount";
+  /// "My Credits"
+  String get timeLineCreditsTitle => "My Credits";
+  /// "Current"
+  String get timeLineCreditsCurrent => "Current";
+  /// "Reports"
+  String get reportsScreenTitle => "Reports";
+  /// "Sustainability fund"
+  String get reportsScreenSustainability => "Sustainability fund";
+  /// "Bad debt reserve"
+  String get reportsScreenReserve => "Bad debt reserve";
+  /// "Detail"
+  String get reportsScreenDetail => "Detail";
+  /// "Partner"
+  String get reportsScreenPartner => "Partner";
+  /// "Total:"
+  String get reportsScreenTotal => "Total:";
+  /// "Group's shares"
+  String get reportsScreenSharesChartTitle => "Group's shares";
+  /// "SHARES"
+  String get reportsScreenSharesChartAxisTitle => "SHARES";
+  /// "Shares value"
+  String get reportsScreenSharesChartSharesValue => "Shares value";
+  /// "Group's credits"
+  String get reportsScreenCreditsChartTitle => "Group's credits";
+  /// "CREDITS"
+  String get reportsScreenCreditsChartAxisTitle => "CREDITS";
+  /// "Credit value"
+  String get reportsScreenCreditsChartSharesValue => "Credit value";
+  /// "Group's Installments"
+  String get reportsScreenInstallmentsChartTitle => "Group's Installments";
+  /// "FEES PAID"
+  String get reportsScreenInstallmentsChartAxisTitle => "FEES PAID";
+  /// "Fees to pay"
+  String get reportsScreenInstallmentsChartSharesValue => "Fees to pay";
+  /// "Profits to be distributed"
+  String get reportsScreenProfitsChartTitle => "Profits to be distributed";
+  /// "PROFITS"
+  String get reportsScreenProfitsChartAxisTitle => "PROFITS";
+  /// "Profits"
+  String get reportsScreenProfitsChartSharesValue => "Profits";
+  /// "SHARES"
+  String get reportsScreenTabsShares => "SHARES";
+  /// "CREDITS"
+  String get reportsScreenTabsCredits => "CREDITS";
+  /// "INSTALLMENTS"
+  String get reportsScreenTabsInstallments => "INSTALLMENTS";
+  /// "PROFITS"
+  String get reportsScreenTabsProfits => "PROFITS";
 }
 
 class _I18n_en_US extends I18n {
@@ -907,6 +1003,12 @@ class _I18n_es_ES extends I18n {
   /// "número celular"
   @override
   String get registerPhoneTextFive => "número celular";
+  /// "Verifica tu bandeja de entrada si no recibiste"
+  @override
+  String get registerPhoneSuccesCode => "Verifica tu bandeja de entrada si no recibiste";
+  /// "el código, valida el correo\nelectrónico digitado."
+  @override
+  String get registerPhoneSuccesCodeBold => "el código, valida el correo\nelectrónico digitado.";
   /// "¡MUY "
   @override
   String get confimInvitationBankTitleOne => "¡MUY ";
@@ -1327,9 +1429,9 @@ class _I18n_es_ES extends I18n {
   /// "número celular"
   @override
   String get pinCodeVerificationCellNumber => "número celular";
-  /// "Por favor llene todas las celdas correctamente"
+  /// "Por favor ingrese el código correcto"
   @override
-  String get pinCodeVerificationPinCodeComplete => "Por favor llene todas las celdas correctamente";
+  String get pinCodeVerificationPinCodeComplete => "Por favor ingrese el código correcto";
   /// "El código digitado no es válido"
   @override
   String get pinCodeVerificationErrorCodeMessage => "El código digitado no es válido";
@@ -1369,9 +1471,9 @@ class _I18n_es_ES extends I18n {
   /// "Detalle"
   @override
   String get creditScreenDetail => "Detalle";
-  /// "Forma de pago"
+  /// "Formas de pago del interes ordinarios"
   @override
-  String get creditScreenWayToPay => "Forma de pago";
+  String get creditScreenWayToPay => "Formas de pago del interes ordinarios";
   /// "Por Adelantado"
   @override
   String get creditScreenAdvances => "Por Adelantado";
@@ -1507,6 +1609,15 @@ class _I18n_es_ES extends I18n {
   /// "Fecha de solicitud"
   @override
   String get activeCreditApplicationDate => "Fecha de solicitud";
+  /// "Pago de intereses"
+  @override
+  String get activeCreditPaymentInterestsMethod => "Pago de intereses";
+  /// "Adelantado"
+  @override
+  String get activeCreditAdvance => "Adelantado";
+  /// "Cuotas"
+  @override
+  String get activeCreditInstallment => "Cuotas";
   /// "Socios"
   @override
   String get addPartnerPartner => "Socios";
@@ -1600,12 +1711,69 @@ class _I18n_es_ES extends I18n {
   /// "abono a intereses"
   @override
   String get meetingClosedInterestPayment => "abono a intereses";
+  /// "abono a intereses \nordinarios"
+  @override
+  String get meetingClosedInterestPaymentOrdynary => "abono a intereses \nordinarios";
   /// "¿Segúro que quieres hacer el"
   @override
   String get meetingClosedQuestionMeetingClosed1 => "¿Segúro que quieres hacer el";
   /// "cierre de la reunión?"
   @override
   String get meetingClosedQuestionMeetingClosed2 => "cierre de la reunión?";
+  /// "El cierre de reunión ha sido existoso"
+  @override
+  String get meetingClosedCloseMeeting => "El cierre de reunión ha sido existoso";
+  /// "Acciones compradas"
+  @override
+  String get meetingClosedPurchasedShares => "Acciones compradas";
+  /// "CAJA "
+  @override
+  String get meetingClosedBox => "CAJA ";
+  /// "ANTERIOR"
+  @override
+  String get meetingClosedPrevious => "ANTERIOR";
+  /// "ACCIONES"
+  @override
+  String get meetingClosedPurchased => "ACCIONES";
+  /// "COMPRADAS"
+  @override
+  String get meetingClosedShares => "COMPRADAS";
+  /// "ACTUAL"
+  @override
+  String get meetingClosedCurrent => "ACTUAL";
+  /// "Nombre"
+  @override
+  String get meetingClosedName => "Nombre";
+  /// "Cantidad"
+  @override
+  String get meetingClosedQuantity => "Cantidad";
+  /// "Total"
+  @override
+  String get meetingClosedTotal => "Total";
+  /// "Interés"
+  @override
+  String get meetingClosedInterest => "Interés";
+  /// "PRESTADO"
+  @override
+  String get meetingClosedBorrowed => "PRESTADO";
+  /// "PAGOS EN"
+  @override
+  String get meetingClosedPayIn => "PAGOS EN";
+  /// "LAS CUOTAS"
+  @override
+  String get meetingClosedFees => "LAS CUOTAS";
+  /// "PAGOS POR"
+  @override
+  String get meetingClosedPayFor => "PAGOS POR";
+  /// "ADELANTADO"
+  @override
+  String get meetingClosedAdvance => "ADELANTADO";
+  /// "INTERESES"
+  @override
+  String get meetingClosedInterests => "INTERESES";
+  /// "DE MORA"
+  @override
+  String get meetingClosedDefault => "DE MORA";
   /// "Pago de ganancias"
   @override
   String get profitPaymentTitle => "Pago de ganancias";
@@ -1705,6 +1873,78 @@ class _I18n_es_ES extends I18n {
   /// "Cantidad"
   @override
   String get timeLineSharesAmount => "Cantidad";
+  /// "Mis Créditos"
+  @override
+  String get timeLineCreditsTitle => "Mis Créditos";
+  /// "Vigente"
+  @override
+  String get timeLineCreditsCurrent => "Vigente";
+  /// "Reportes"
+  @override
+  String get reportsScreenTitle => "Reportes";
+  /// "Fondo de sostenibilidad"
+  @override
+  String get reportsScreenSustainability => "Fondo de sostenibilidad";
+  /// "Reserva para Incobrables"
+  @override
+  String get reportsScreenReserve => "Reserva para Incobrables";
+  /// "Detalle"
+  @override
+  String get reportsScreenDetail => "Detalle";
+  /// "Socio"
+  @override
+  String get reportsScreenPartner => "Socio";
+  /// "Total:"
+  @override
+  String get reportsScreenTotal => "Total:";
+  /// "Acciones del grupo"
+  @override
+  String get reportsScreenSharesChartTitle => "Acciones del grupo";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenSharesChartAxisTitle => "ACCIONES";
+  /// "Valor en acciones"
+  @override
+  String get reportsScreenSharesChartSharesValue => "Valor en acciones";
+  /// "Créditos del grupo"
+  @override
+  String get reportsScreenCreditsChartTitle => "Créditos del grupo";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenCreditsChartAxisTitle => "CRÉDITOS";
+  /// "Valor crédito"
+  @override
+  String get reportsScreenCreditsChartSharesValue => "Valor crédito";
+  /// "Monto de cuotas"
+  @override
+  String get reportsScreenInstallmentsChartTitle => "Monto de cuotas";
+  /// "CUOTAS PAGADAS"
+  @override
+  String get reportsScreenInstallmentsChartAxisTitle => "CUOTAS PAGADAS";
+  /// "Cuotas por pagar"
+  @override
+  String get reportsScreenInstallmentsChartSharesValue => "Cuotas por pagar";
+  /// "Ganancias por repartir"
+  @override
+  String get reportsScreenProfitsChartTitle => "Ganancias por repartir";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenProfitsChartAxisTitle => "GANANCIAS";
+  /// "Ganancias"
+  @override
+  String get reportsScreenProfitsChartSharesValue => "Ganancias";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenTabsShares => "ACCIONES";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenTabsCredits => "CRÉDITOS";
+  /// "CUOTAS"
+  @override
+  String get reportsScreenTabsInstallments => "CUOTAS";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenTabsProfits => "GANANCIAS";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

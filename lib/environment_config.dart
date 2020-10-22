@@ -225,4 +225,33 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/profile";
   }
+
+  ///
+  /// Get My Shares
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String getMyShares({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/my-shares";
+  }
+
+  /// Get My Credit
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String getMyCredits({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/my-credits";
+  }
+
+  static String getCreditsCurrentMeeting({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/credits-current-meeting";
+  }
+
+  static String getSharesCurrentMeeting({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/shares-current-meeting";
+  }
 }

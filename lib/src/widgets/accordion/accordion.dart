@@ -36,6 +36,7 @@ class Accordion extends StatefulWidget {
     this.children = const <Widget>[],
     this.trailing,
     this.initiallyExpanded = false,
+    this.isUnderline = true,
   })  : assert(initiallyExpanded != null),
         super(key: key);
 
@@ -75,6 +76,8 @@ class Accordion extends StatefulWidget {
 
   /// Specifies if the list tile is initially expanded (true) or collapsed (false, the default).
   final bool initiallyExpanded;
+
+  final bool isUnderline;
 
   @override
   _AccordionState createState() => _AccordionState();
@@ -153,7 +156,9 @@ class _AccordionState extends State<Accordion>
     return Container(
       decoration: BoxDecoration(
           color: _backgroundColor.value ?? Colors.transparent,
-          border: Border(bottom: BorderSide(color: borderSideColor))),
+          border: widget.isUnderline
+              ? Border(bottom: BorderSide(color: borderSideColor))
+              : null),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

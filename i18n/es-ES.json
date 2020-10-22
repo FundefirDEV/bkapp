@@ -90,7 +90,9 @@
     "textTwo": "tu clave ",
     "textThree": "necesitamos",
     "textFour": "tu ",
-    "textFive": "número celular"
+    "textFive": "número celular",
+    "succesCode":"Verifica tu bandeja de entrada si no recibiste",
+    "succesCodeBold":"el código, valida el correo\nelectrónico digitado."
   },
   "confimInvitationBank": {
     "titleOne": "¡MUY ",
@@ -281,7 +283,7 @@
     "theCode": "el código ",
     "weSendToYour": "que enviamos a \n tu ",
     "cellNumber": "número celular",
-    "pinCodeComplete": "Por favor llene todas las celdas correctamente",
+    "pinCodeComplete": "Por favor ingrese el código correcto",
     "errorCodeMessage": "El código digitado no es válido",
     "goodCodeMessage": "Código validado satisfactoriamente"
   },
@@ -299,7 +301,7 @@
     "numberOfFees": "Número de cuotas",
     "UseOfCredit": "Uso del crédito",
     "Detail": "Detalle",
-    "wayToPay": "Forma de pago",
+    "wayToPay": "Formas de pago del interes ordinarios",
     "advances": "Por Adelantado",
     "installments": "Cuotas"
   },
@@ -350,7 +352,10 @@
     "ordinaryInterest": "Intereses Ordinarios",
     "defaultInterest": "Intereses de mora",
     "totalPayments": "Cantidad otorgada",
-    "applicationDate": "Fecha de solicitud"
+    "applicationDate": "Fecha de solicitud",
+    "paymentInterestsMethod": "Pago de intereses",
+    "advance": "Adelantado",
+    "installment": "Cuotas"
   },
   "addPartner": {
     "partner": "Socios",
@@ -392,8 +397,27 @@
     "creditsAwarded": "créditos otorgados",
     "capitalSubscription": "abono a capital",
     "interestPayment": "abono a intereses",
+    "interestPaymentOrdynary": "abono a intereses \nordinarios",
     "questionMeetingClosed1": "¿Segúro que quieres hacer el",
-    "questionMeetingClosed2": "cierre de la reunión?"
+    "questionMeetingClosed2": "cierre de la reunión?",
+    "closeMeeting": "El cierre de reunión ha sido existoso",
+    "purchasedShares": "Acciones compradas",
+    "box": "CAJA ",
+    "previous": "ANTERIOR",
+    "purchased": "ACCIONES",
+    "shares": "COMPRADAS",
+    "current": "ACTUAL",
+    "name": "Nombre",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "interest": "Interés",
+    "borrowed": "PRESTADO",
+    "payIn": "PAGOS EN",
+    "fees": "LAS CUOTAS",
+    "payFor": "PAGOS POR",
+    "advance": "ADELANTADO",
+    "interests": "INTERESES",
+    "default": "DE MORA"
   },
   "profitPayment": {
     "title": "Pago de ganancias",
@@ -433,5 +457,43 @@
     "title": "Mis Acciones",
     "titleBox": "ACCIONES",
     "amount": "Cantidad"
+  },
+  "timeLineCredits": {
+    "title": "Mis Créditos",
+    "current": "Vigente"
+  },
+  "reportsScreen": {
+    "title": "Reportes",
+    "sustainability": "Fondo de sostenibilidad",
+    "reserve": "Reserva para Incobrables",
+    "detail": "Detalle",
+    "partner": "Socio",
+    "total": "Total:",
+    "sharesChart": {
+      "title": "Acciones del grupo",
+      "axisTitle": "ACCIONES",
+      "sharesValue": "Valor en acciones"
+    },
+    "creditsChart": {
+      "title": "Créditos del grupo",
+      "axisTitle": "CRÉDITOS",
+      "sharesValue": "Valor crédito"
+    },
+    "installmentsChart": {
+      "title": "Monto de cuotas",
+      "axisTitle": "CUOTAS PAGADAS",
+      "sharesValue": "Cuotas por pagar"
+    },
+    "profitsChart": {
+      "title": "Ganancias por repartir",
+      "axisTitle": "GANANCIAS",
+      "sharesValue": "Ganancias"
+    },
+    "tabs": {
+      "shares": "ACCIONES",
+      "credits": "CRÉDITOS",
+      "installments": "CUOTAS",
+      "profits": "GANANCIAS"
+    }
   }
 }

@@ -23,12 +23,12 @@ class ApiProvider {
   }
 
   Future<Map<String, dynamic>> postValidationCode(
-      String phone, String email) async {
+      String phone, String email, String countryCode) async {
     final validationCodeUrl = ApiEndpoints.validationCode();
     final validationCodeResponse = await _httpRequest.post(
         httpClient: httpClient,
         url: validationCodeUrl,
-        body: {"phone": phone, "email": email});
+        body: {"phone": phone, "email": email, "countryCode": countryCode});
     return validationCodeResponse;
   }
 
@@ -206,5 +206,29 @@ class ApiProvider {
         url: postInvitePartner,
         token: token,
         body: bodyRequest);
+  }
+
+  Future<Map<String, dynamic>> myShares(String token) async {
+    final getMySharesUrl = ApiEndpoints.getMyShares();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getMySharesUrl, token: token);
+  }
+
+  Future<Map<String, dynamic>> myCredits(String token) async {
+    final getMyCreditUrl = ApiEndpoints.getMyCredits();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getMyCreditUrl, token: token);
+  }
+
+  Future<Map<String, dynamic>> getCreditsCurrentMeeting(String token) async {
+    final endPoint = ApiEndpoints.getCreditsCurrentMeeting();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: endPoint, token: token);
+  }
+
+  Future<Map<String, dynamic>> getSharesCurrentMeeting(String token) async {
+    final endPoint = ApiEndpoints.getSharesCurrentMeeting();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: endPoint, token: token);
   }
 }

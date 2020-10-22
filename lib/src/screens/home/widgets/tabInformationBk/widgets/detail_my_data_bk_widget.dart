@@ -17,6 +17,10 @@ class DetailMyDataBkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    final sizeTitle = SizeConfig.safeBlockHorizontal * 3.5;
+    final sizeTitleValue = sizeTitle * 1.5;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 1.5),
       child: Column(
@@ -44,8 +48,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                   style: TextStyle(
                                       color: Colors.white,
                                       letterSpacing: 1.5,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
+                                      fontSize: sizeTitleValue,
                                       fontWeight: FontWeight.w100)),
                               Container(
                                 margin: EdgeInsets.symmetric(
@@ -55,9 +58,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                   text: TextSpan(
                                       text: I18n.of(context).homeScreenMy,
                                       style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal *
-                                                3.5,
+                                        fontSize: sizeTitle,
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w200,
                                         color: Colors.white,
@@ -99,19 +100,77 @@ class DetailMyDataBkWidget extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: FlatButton(
+                        padding: EdgeInsets.all(0),
                         onPressed: () {
-                          // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(goTo: HomeRoutesConstant.activeCreditScreen));
+                          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
+                              goTo: HomeRoutesConstant.timeLineMyCredit));
                         },
                         child: Container(
-                            child: Column(
+                            width: SizeConfig.blockSizeHorizontal * 50,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RichText(
+                                      text: TextSpan(
+                                          text: I18n.of(context).homeScreenMe,
+                                          style: TextStyle(
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    3,
+                                            letterSpacing: 1.5,
+                                            fontWeight: FontWeight.w200,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .grayColor,
+                                          ),
+                                          children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              ' ${I18n.of(context).homeScreenCredit}',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        )
+                                      ])),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top:
+                                            SizeConfig.safeBlockVertical * 0.8),
+                                    child: Text(information.activeCredit,
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .grayColor[200],
+                                            letterSpacing: 1.5,
+                                            fontSize:
+                                                SizeConfig.safeBlockVertical *
+                                                    2,
+                                            fontWeight: FontWeight.w100)),
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                          child: FlatButton(
+                        onPressed: () {
+                          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
+                              goTo: HomeRoutesConstant.timeLineMyShares));
+                        },
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RichText(
                                 text: TextSpan(
-                                    text: I18n.of(context).homeScreenMe,
+                                    text: I18n.of(context).homeScreenMy,
                                     style: TextStyle(
-                                      fontSize: 13,
+                                      fontSize: sizeTitle,
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w200,
                                       color: Theme.of(context)
@@ -121,7 +180,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                                     children: <TextSpan>[
                                   TextSpan(
                                     text:
-                                        ' ${I18n.of(context).homeScreenCredit}',
+                                        ' ${I18n.of(context).homeScreenShares}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -130,67 +189,18 @@ class DetailMyDataBkWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   top: SizeConfig.safeBlockVertical * 0.8),
-                              child: Text(information.activeCredit,
+                              child: Text(information.shares,
                                   style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
                                           .grayColor[200],
                                       letterSpacing: 1.5,
-                                      fontSize: 24,
+                                      fontSize: sizeTitleValue,
                                       fontWeight: FontWeight.w100)),
                             )
                           ],
-                        )),
-                      ),
-                    ),
-                    Expanded(
-                      child: FlatButton(
-                        onPressed: () {
-                          // context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
-                          //     goTo: HomeRoutesConstant.timeLineMyShares));
-                        },
-                        child: Container(
-                            padding: EdgeInsets.only(
-                                left: SizeConfig.safeBlockHorizontal * 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                RichText(
-                                    text: TextSpan(
-                                        text: I18n.of(context).homeScreenMy,
-                                        style: TextStyle(
-                                          fontSize: 13,
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w200,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor,
-                                        ),
-                                        children: <TextSpan>[
-                                      TextSpan(
-                                        text:
-                                            ' ${I18n.of(context).homeScreenShares}',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )
-                                    ])),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: SizeConfig.safeBlockVertical * 0.8),
-                                  child: Text(information.shares,
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .grayColor[200],
-                                          letterSpacing: 1.5,
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.w100)),
-                                )
-                              ],
-                            )),
-                      ),
+                        ),
+                      )),
                     ),
                   ],
                 )),

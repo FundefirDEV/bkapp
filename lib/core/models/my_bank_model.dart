@@ -48,6 +48,9 @@ class ActiveCredit {
     this.dueDate,
     this.amount,
     this.installments,
+    this.totalCredit,
+    this.totalInterest,
+    this.isAdvanceCredit,
     this.scheduleInstallment,
   });
 
@@ -56,6 +59,9 @@ class ActiveCredit {
   String dueDate;
   String amount;
   int installments;
+  String totalCredit;
+  String totalInterest;
+  bool isAdvanceCredit;
   List<ScheduleInstallment> scheduleInstallment;
 
   factory ActiveCredit.fromJson(Map<String, dynamic> json) => ActiveCredit(
@@ -67,6 +73,14 @@ class ActiveCredit {
             ? r'$0'
             : formatConfig.format(json["amount"]).toString(),
         installments: json["installments"] == null ? 0 : json["installments"],
+        totalCredit: json["totalCredit"] == null
+            ? r'$0'
+            : formatConfig.format(json["totalCredit"]).toString(),
+        totalInterest: json["totalInterest"] == null
+            ? r'$0'
+            : formatConfig.format(json["totalInterest"]).toString(),
+        isAdvanceCredit:
+            json["isAdvanceCredit"] == null ? null : json["isAdvanceCredit"],
         scheduleInstallment: json["scheduleInstallment"] == null
             ? []
             : List<ScheduleInstallment>.from(json["scheduleInstallment"]
@@ -79,6 +93,9 @@ class ActiveCredit {
         "dueDate": dueDate == null ? null : dueDate,
         "amount": amount == null ? 0.0 : amount,
         "installments": installments == null ? 0 : installments,
+        "totalCredit": totalCredit == null ? 0.0 : totalCredit,
+        "totalInterest": totalInterest == null ? 0.0 : totalInterest,
+        "isAdvanceCredit": isAdvanceCredit == null ? null : isAdvanceCredit,
         "scheduleInstallment": scheduleInstallment == null
             ? []
             : List<dynamic>.from(scheduleInstallment.map((x) => x.toJson())),

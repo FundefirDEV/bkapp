@@ -56,10 +56,13 @@ class ImageBottomModal extends StatelessWidget {
                 key: Key('column_image_bottom_modal'),
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  TitleImageBottomModalWidget(
-                    title: title,
-                    titleBold: titleBold,
-                    isBold: isBold,
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: TitleImageBottomModalWidget(
+                      title: title,
+                      titleBold: titleBold,
+                      isBold: isBold,
+                    ),
                   ),
                   SvgPicture.asset(image),
                   ButtonImageBottonModalWidget(

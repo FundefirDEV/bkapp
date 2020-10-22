@@ -50,14 +50,15 @@ class _TimeLineMySharesScreenState extends State<TimeLineMySharesScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             BoxSharesWidget(
-                                shares: state.timeLineShares.shares),
+                                shares: state.timeLineShares.totalShares),
                             ListView.builder(
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),
                                 itemCount: state.timeLineShares.shares.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return TimeLineWidget(
-                                      model: state.timeLineShares.dates[index]);
+                                      model:
+                                          state.timeLineShares.shares[index]);
                                 })
                           ]))
                 ]));

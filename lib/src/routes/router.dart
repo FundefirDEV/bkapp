@@ -97,11 +97,6 @@ class Router {
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => MenuNavigatorScreen());
-      case profileEditScreen:
-        return PageRouteBuilder(
-            transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => ProfileEditScreen());
-        break;
       case buySharesScreenRoute:
         return MaterialPageRoute(
             builder: (_) => BuySharesScreen(

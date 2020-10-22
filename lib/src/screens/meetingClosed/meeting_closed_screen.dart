@@ -27,8 +27,10 @@ class MeetingClosedScreen extends StatefulWidget {
 }
 
 class _MeetingClosedState extends State<MeetingClosedScreen> {
+  bool isClosedMeeting;
   @override
   void initState() {
+    isClosedMeeting = true;
     BlocProvider.of<MeetingBloc>(context)
         .add(MeetingInitialize(token: widget.tokenUser));
     super.initState();
@@ -41,6 +43,12 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
     return BlocBuilder<MeetingBloc, MeetingState>(builder: (context, state) {
       if (state is MeetingLoaded) {
         final infoMeeting = state.infoMeeting;
+        if (state.isClosedMeeting && !isClosedMeeting)
+          WidgetsBinding.instance
+              .addPostFrameCallback((_) => _showDialogConfirm(context, () {
+                    Navigator.pop(context);
+                    isClosedMeeting = false;
+                  }));
         return Container(
           child: AppBarWidget(
             key: Key('app-bar-widget-meeting-closed'),
@@ -58,7 +66,10 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
               if (isAdmin) _buttonPayFee(context),
               LineSeparatorWidget(),
               _subtitleDetailClosing(context),
-              CarouselCardsDetailWidget(infoMeeting: infoMeeting)
+              CarouselCardsDetailWidget(
+                  infoMeeting: infoMeeting,
+                  meetingDetail: state.meetingDetail,
+                  sharesCurrent: state.sharesCurrent)
             ]),
           ),
         );
@@ -94,6 +105,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
                 true,
                 true,
                 'assets/images/salo_pre_approved_modal.svg', () {
+              isClosedMeeting = false;
               Navigator.pop(context);
               context
                   .bloc<MeetingBloc>()
@@ -136,6 +148,27 @@ void _showDialog(
           titleBold: titleBold,
           isBold: isBold,
           isBtnAccept: true,
+          titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressAccept: function,
+          onPressCancel: () => {Navigator.pop(context)},
+        );
+      });
+}
+
+void _showDialogConfirm(context, Function function) {
+  showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/salo_pre_approved_modal.svg',
+          isImageBg: true,
+          title: I18n.of(context).meetingClosedCloseMeeting,
+          titleBold: '',
+          isBold: false,
+          isBtnAccept: false,
           titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
           titleCloseButton: I18n.of(context).administratorAssignmentClose,
           onPressAccept: function,

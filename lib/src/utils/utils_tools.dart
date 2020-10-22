@@ -6,7 +6,6 @@ import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-
 import 'errorHandler/constans_error.dart';
 import 'errorRequestHandler/error_request_handler.dart';
 
@@ -77,6 +76,9 @@ class UtilsTools {
                   technicalData: error));
         });
   }
+
+  static dynamic formatConfig({decimalDigits = 0}) => NumberFormat.currency(
+      locale: 'en_US', decimalDigits: decimalDigits, symbol: r'$');
 }
 
 class CurrencyInputFormatter extends TextInputFormatter {

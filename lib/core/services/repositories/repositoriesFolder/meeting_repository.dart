@@ -15,4 +15,10 @@ class MeetingRepository {
     final Map infoMeeting = await apiProvider.postMeetingClosed(token);
     return infoMeeting;
   }
+
+  Future<Map<String, dynamic>> creditsCurrentMeeting(String token) async =>
+      await apiProvider.getCreditsCurrentMeeting(token);
+
+  Future<Map<String, dynamic>> sharesCurrentMeeting(String token) async =>
+      await apiProvider.getSharesCurrentMeeting(token);
 }

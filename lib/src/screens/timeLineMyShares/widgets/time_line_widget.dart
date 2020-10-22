@@ -34,7 +34,7 @@ class TimeLineWidget extends StatelessWidget {
                       children: [
                 TextSpan(text: '${I18n.of(context).timeLineSharesAmount}\n'),
                 TextSpan(
-                    text: model.shares,
+                    text: model.quantity,
                     style: TextStyle(fontWeight: FontWeight.bold))
               ])))
         ]);

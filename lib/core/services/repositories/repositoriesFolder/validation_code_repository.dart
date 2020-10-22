@@ -10,9 +10,11 @@ class ValidationCodeRepository {
   ValidationCodeRepository.test({@required this.apiProvider});
 
   Future<Map<String, dynamic>> postValidationCode(
-      {@required String phone, @required String email}) async {
+      {@required String phone,
+      @required String email,
+      String countryCode}) async {
     final Map validationCode =
-        await apiProvider.postValidationCode(phone, email);
+        await apiProvider.postValidationCode(phone, email, countryCode);
     return validationCode;
   }
 }

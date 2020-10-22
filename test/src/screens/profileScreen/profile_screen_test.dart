@@ -1,8 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
 import 'package:bkapp_flutter/src/screens/profile/profile_screen.dart';
-import 'package:bkapp_flutter/src/screens/profileEdit/profile_edit_screen.dart';
-import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -111,16 +110,6 @@ void main() {
 
       expect(find.byType(TitleHeaderWidget), findsOneWidget);
       expect(find.byType(SingleChildScrollView), findsOneWidget);
-    }, skip: true);
-
-    testWidgets('Test edit button pressed', (WidgetTester tester) async {
-      await tester.pumpWidget(baseTester(child: profileTester(testKey)));
-      await tester.pumpAndSettle();
-
-      expect(find.byKey(Key('Edit_button_profile_screen')), findsOneWidget);
-      await tester.tap(find.byKey(Key('Edit_button_profile_screen')));
-      await tester.pumpAndSettle();
-      expect(find.byType(ProfileEditScreen), findsOneWidget);
     }, skip: true);
   });
 }

@@ -14,6 +14,9 @@ String bankInfoToJson(BankInfoModel data) => json.encode(data.toJson());
 final formatConfig =
     NumberFormat.currency(locale: 'en_US', decimalDigits: 0, symbol: r'$');
 
+final formatTwoDigits =
+    NumberFormat.currency(locale: 'en_US', decimalDigits: 2, symbol: r'$');
+
 class BankInfoModel {
   BankInfoModel({this.personal, this.group, this.rules});
 
@@ -69,7 +72,7 @@ class Personal {
   String shares;
 
   factory Personal.fromJson(Map<String, dynamic> json) => Personal(
-        earnings: formatConfig.format(json["cashBalance"]) ?? r'$0',
+        earnings: formatTwoDigits.format(json["cashBalance"]) ?? r'$0',
         activeCredit: formatConfig.format(json["activeCredits"]) ?? r'$0',
         shares: json["shares"]?.toString() ?? '0',
       );

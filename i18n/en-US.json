@@ -90,7 +90,9 @@
     "textTwo": "your password ",
     "textThree": "we ",
     "textFour": "need your ",
-    "textFive": "cell number"
+    "textFive": "cell number",
+    "succesCode":"Check your inbox, if you didn’t",
+    "succesCodeBold":"receive the code, please\ncheck the email."
   },
   "confimInvitationBank": {
     "titleOne": "VERY ",
@@ -291,7 +293,7 @@
     "theCode": "the code ",
     "weSendToYour": "we send to \n your ",
     "cellNumber": "cell number",
-    "pinCodeComplete": "Please fill all the cells correctly",
+    "pinCodeComplete": "Please enter correct code",
     "errorCodeMessage": "The code entered is not valid",
     "goodCodeMessage": "Successfully validated code"
   },
@@ -309,7 +311,7 @@
     "numberOfFees": "Number of fees",
     "UseOfCredit": "Credit use",
     "Detail": "Detail",
-    "wayToPay": "Way to pay",
+    "wayToPay": "Types of ordinary interest payment",
     "advances": "Advance",
     "installments": "Installments"
   },
@@ -360,7 +362,10 @@
     "ordinaryInterest": "Ordinary interest",
     "defaultInterest": "Default interest",
     "totalPayments": "Total payments",
-    "applicationDate": "Application date"
+    "applicationDate": "Application date",
+    "paymentInterestsMethod": "Payment interests",
+    "advance": "Advance",
+    "installment": "Installments"
   },
   "addPartner": {
     "partner": "Partners",
@@ -402,8 +407,27 @@
     "creditsAwarded": "credits awarded",
     "capitalSubscription": "capital subscription",
     "interestPayment": "interest payment",
+    "interestPaymentOrdynary": "interest payment \nordinary",
     "questionMeetingClosed1": "Am I sure you want to",
-    "questionMeetingClosed2": "close the meeting?"
+    "questionMeetingClosed2": "close the meeting?",
+    "closeMeeting": "The close meeting has been successful",
+    "purchasedShares": "Purchased Shares",
+    "box": "BOX ",
+    "previous": "PREVIOUS",
+    "purchased": "PURCHASED",
+    "shares": "SHARES",
+    "current": "CURRENT",
+    "name": "Name",
+    "quantity": "Quantity",
+    "total": "Total",
+    "interest": "Interest",
+    "borrowed": "BORROWED",
+    "payIn": "PAYMENT",
+    "fees": "OF FEES",
+    "payFor": "PAYMENT",
+    "advance": "ADVANCE",
+    "interests": "INTEREST",
+    "default": "DEFAULT"
   },
   "profitPayment": {
     "title": "Profit payment",
@@ -443,5 +467,43 @@
     "title": "My Shares",
     "titleBox": "SHARES",
     "amount": "Amount"
+  },
+  "timeLineCredits": {
+    "title": "My Credits",
+    "current": "Current"
+  },
+  "reportsScreen": {
+    "title": "Reports",
+    "sustainability": "Sustainability fund",
+    "reserve": "Bad debt reserve",
+    "detail": "Detail",
+    "partner": "Partner",
+    "total": "Total:",
+    "sharesChart": {
+      "title": "Group's shares",
+      "axisTitle": "SHARES",
+      "sharesValue": "Shares value"
+    },
+    "creditsChart": {
+      "title": "Group's credits",
+      "axisTitle": "CREDITS",
+      "sharesValue": "Credit value"
+    },
+    "installmentsChart": {
+      "title": "Group's Installments",
+      "axisTitle": "FEES PAID",
+      "sharesValue": "Fees to pay"
+    },
+    "profitsChart": {
+      "title": "Profits to be distributed",
+      "axisTitle": "PROFITS",
+      "sharesValue": "Profits"
+    },
+    "tabs": {
+      "shares": "SHARES",
+      "credits": "CREDITS",
+      "installments": "INSTALLMENTS",
+      "profits": "PROFITS"
+    }
   }
 }

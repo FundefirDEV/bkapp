@@ -49,7 +49,7 @@ class _CountryCarouselState extends State<CountryCarousel> {
           phoneCode: '+57',
           name: 'Colombia',
           image: 'assets/images/colombia.svg',
-          iso: 'CO'),
+          iso: 'COL'),
       ItemCountry(
           phoneCode: '+51',
           name: 'Perú',
