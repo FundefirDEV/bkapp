@@ -54,8 +54,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v0.3.0"
-      resolved-ref: afbcdec22bf455a55efedd3fe703a01d2d899cb7
+      ref: "v1.20.1"
+      resolved-ref: "156df58d75d06b2d8bcc5460b83261fc873a73a8"
       url: "git@github.com:Fundefir-dev/bk_core.git"
     source: git
     version: "0.0.1"
@@ -1063,3 +1063,4 @@ packages:
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
   flutter: ">=1.18.0-6.0.pre <2.0.0"
+  pubspec_parse: ">=0.1.5 <0.2.0"
