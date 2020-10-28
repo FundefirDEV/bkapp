@@ -20,17 +20,6 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
   Credit _credit;
 
   _createCredit() {
-    var credit = Credit(
-        creditAmount: 3000,
-        installments: 3,
-        ordinaryInterestPercentaje: 3,
-        typeOfInterestCalc: TypeOfInterestCalc.CLASSIC,
-        defaultInterestPercentaje: 3);
-
-    setState(() {
-      _credit = credit;
-    });
-
     print('\n============== Classic =====================\n');
     print('List of capital Dues ${_credit.listOfInstallments}');
     print('List of ordinary interest');
@@ -82,7 +71,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                           Text(
                               "Monto: ${_credit?.creditAmount?.toString() ?? 0}"),
                           Text(
-                              "Interés ordinario: ${_credit?.ordinaryInterestPercentaje?.toString() ?? 0}"),
+                              "Interés ordinario: ${_credit?.ordinaryInterestPercentage?.toString() ?? 0}"),
                           // RaisedButton(
                           //   onPressed: () => showModalBottomSheet(
                           //       context: context,
