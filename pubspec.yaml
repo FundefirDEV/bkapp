@@ -16,7 +16,7 @@ dependencies:
     git:
       url: git@github.com:Fundefir-dev/bk_core.git
       # ref: master
-      ref: v0.3.0
+      ref: v1.20.1
   flutter_svg: ^0.18.0
   flutter_form_bloc: ^0.19.0
   form_bloc: ^0.19.0

@@ -13,7 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:bkapp_flutter/src/routes/router.dart';
+import 'package:bkapp_flutter/src/routes/router.dart' as Routes;
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:logger/logger.dart';
 
@@ -145,7 +145,7 @@ class MyApp extends StatelessWidget {
 
           return supportedLocales.first;
         },
-        onGenerateRoute: Router.generateRoute,
+        onGenerateRoute: Routes.Router.generateRoute,
         initialRoute: loginRoute,
       ),
     );

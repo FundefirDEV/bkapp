@@ -1,7 +1,7 @@
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:bk_core/bk_core.dart' as core;
 import 'items_country.dart';
 
 class CountryCarousel extends StatefulWidget {
@@ -44,17 +44,17 @@ class _CountryCarouselState extends State<CountryCarousel> {
           phoneCode: '+54',
           name: 'Argentina',
           image: 'assets/images/argentina.svg',
-          iso: 'AR'),
+          iso: core.CountryCodes.ARGENTINA),
       ItemCountry(
           phoneCode: '+57',
           name: 'Colombia',
           image: 'assets/images/colombia.svg',
-          iso: 'COL'),
+          iso: core.CountryCodes.COLOMBIA),
       ItemCountry(
           phoneCode: '+51',
           name: 'Perú',
           image: 'assets/images/peru.svg',
-          iso: 'PE')
+          iso: core.CountryCodes.PERU)
     ];
 
     double obtainValueOfCurve(PageController pageController) {
