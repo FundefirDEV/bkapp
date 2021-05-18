@@ -36,7 +36,7 @@ class _RegisterPasswordFormListenerWidgetState
 
   Widget _containerInfo(BuildContext context) {
     // ignore: close_sinks
-    final _bankRegisterBloc = context.bloc<AppBloc>().bankRegisterBloc;
+    final _bankRegisterBloc = context.read<AppBloc>().bankRegisterBloc;
     return Column(
         key: Key('column-register-password'),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +53,7 @@ class _RegisterPasswordFormListenerWidgetState
               currentBlocSubmit: () async {
                 try {
                   RegisterUserModel result = await context
-                      .bloc<AppBloc>()
+                      .read<AppBloc>()
                       .profileRegisterBloc
                       .makeSubmit();
                   _bankRegisterBloc.token.updateValue(result.token);

@@ -21,7 +21,7 @@ class RegisterPhoneFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     //ignore: close_sinks
-    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    final profile = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
         child: Row(

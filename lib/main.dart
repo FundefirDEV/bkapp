@@ -65,11 +65,11 @@ class SimpleBlocDelegate extends BlocObserver {
     super.onTransition(bloc, transition);
   }
 
-  @override
-  void onError(Cubit cubit, Object error, StackTrace stackTrace) {
-    logger.e(error);
-    super.onError(cubit, error, stackTrace);
-  }
+  // @override
+  // void onError(Cubit cubit, Object error, StackTrace stackTrace) {
+  //   logger.e(error);
+  //   super.onError(cubit, error, stackTrace);
+  // }
 }
 
 void main({Locale localeDefault}) async {

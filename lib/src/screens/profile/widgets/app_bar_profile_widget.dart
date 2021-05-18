@@ -78,7 +78,7 @@ class AppBarProfileWidget extends StatelessWidget {
               type: MaterialType.transparency,
               child: InkWell(
                 onTap: () =>
-                    context.bloc<AppBloc>().authenticationBloc.add(LoggedOut()),
+                    context.read<AppBloc>().authenticationBloc.add(LoggedOut()),
                 child: Container(
                     key: Key('button-logout'),
                     child: SvgPicture.asset('assets/images/icon_exit.svg',

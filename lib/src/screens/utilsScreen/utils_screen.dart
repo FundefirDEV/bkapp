@@ -20,7 +20,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     List<UtilsCardsItem> characters = [
       UtilsCardsItem(
@@ -79,7 +79,7 @@ class _UtilsScreenState extends State<UtilsScreen> {
                   TitleHeaderWidget(
                       title: I18n.of(context).utilsUtils,
                       showArrow: false,
-                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                      menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                   for (var i = 0; i < characters.length; i++)
                     UtilCardDescription(characters: characters[i]),
                   Row(

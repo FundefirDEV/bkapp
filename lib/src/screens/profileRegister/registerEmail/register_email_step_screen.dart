@@ -20,7 +20,7 @@ class _RegisterEmailStepScreenState extends State<RegisterEmailStepScreen> {
     SizeConfig().init(context);
     return BlocProvider(
         create: (context) =>
-            context.bloc<AppBloc>().profileRegisterBloc.emailBloc,
+            context.read<AppBloc>().profileRegisterBloc.emailBloc,
         child: Builder(builder: (context) {
           return Scaffold(
             body: SafeArea(

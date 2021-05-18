@@ -29,7 +29,7 @@ class GenderButtonsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    var registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
+    var registerBloc = context.read<AppBloc>().profileRegisterBloc;
     return Container(
       alignment: Alignment.center,
       width: SizeConfig.safeBlockHorizontal * 100,

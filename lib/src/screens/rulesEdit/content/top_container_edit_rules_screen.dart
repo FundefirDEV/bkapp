@@ -46,7 +46,7 @@ class TopContainerEditRulesScreen extends StatelessWidget {
             child: TitleHeaderWidget(
                 title: I18n.of(context).rulesScreenBkRules,
                 oldIndex: 8,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           ),
           topContainerInformation(),
           Container(

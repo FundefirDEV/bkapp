@@ -162,6 +162,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  dartx:
+    dependency: transitive
+    description:
+      name: dartx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
+  dartxx:
+    dependency: transitive
+    description:
+      name: dartxx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.4+6"
   dio:
     dependency: transitive
     description:
@@ -177,7 +191,7 @@ packages:
     source: hosted
     version: "3.0.0"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -204,6 +218,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.0"
+  flexidate:
+    dependency: transitive
+    description:
+      name: flexidate
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.4+5"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -216,6 +237,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.0.0"
+  flutter_contact:
+    dependency: "direct main"
+    description:
+      name: flutter_contact
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1+1"
   flutter_driver:
     dependency: "direct dev"
     description: flutter
@@ -360,6 +388,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  inflection3:
+    dependency: transitive
+    description:
+      name: inflection3
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.3+2"
   intl:
     dependency: "direct main"
     description:
@@ -395,6 +430,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  logging_config:
+    dependency: transitive
+    description:
+      name: logging_config
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.7+6"
   matcher:
     dependency: transitive
     description:
@@ -562,7 +604,7 @@ packages:
       name: pin_code_fields
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.1.0"
+    version: "3.1.2"
   platform:
     dependency: transitive
     description:
@@ -612,6 +654,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   remove_from_coverage:
     dependency: "direct dev"
     description:
@@ -778,6 +827,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.19"
+  time:
+    dependency: transitive
+    description:
+      name: time
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0-nullsafety.1"
   timezone:
     dependency: transitive
     description:

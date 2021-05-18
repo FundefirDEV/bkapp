@@ -22,7 +22,7 @@ class _RegisterPasswordStepScreenState
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return BlocProvider(
-        create: (context) => context.bloc<AppBloc>().profileRegisterBloc,
+        create: (context) => context.read<AppBloc>().profileRegisterBloc,
         child: Builder(builder: (context) {
           return Scaffold(
               body: SafeArea(

@@ -29,7 +29,7 @@ class _PartnerRemovalScreenState extends State<PartnerRemovalScreen> {
           TitleHeaderWidget(
               title: I18n.of(context).partnerRemovalTitle,
               oldIndex: widget.oldIndex,
-              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+              menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: Text('David Cuevas',

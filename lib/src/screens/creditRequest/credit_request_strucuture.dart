@@ -24,13 +24,13 @@ class CreditRequestStructure extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    MenuNavigatorBloc menuNavigatorBloc = context.bloc<MenuNavigatorBloc>();
+    MenuNavigatorBloc menuNavigatorBloc = context.read<MenuNavigatorBloc>();
     SizeConfig().init(context);
 
     return Builder(
       builder: (context) {
         // ignore: close_sinks
-        CreditFormBloc creditFormBloc = context.bloc<CreditFormBloc>();
+        CreditFormBloc creditFormBloc = context.read<CreditFormBloc>();
         return FormBlocListener<CreditFormBloc, dynamic, dynamic>(
           key: Key('bloc-listener-buy-share-screen'),
           onSubmitting: (context, state) {
@@ -51,7 +51,7 @@ class CreditRequestStructure extends StatelessWidget {
                   TitleHeaderWidget(
                       title: 'Créditos',
                       oldIndex: oldIndex,
-                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                      menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                   TabCreditTypeWidget(),
                   LineSeparatorWidget(),
                   Container(
@@ -96,7 +96,7 @@ class CreditRequestStructure extends StatelessWidget {
                       key: Key('raisedButton-accept-credit-request'),
                       onPressed: () {
                         context
-                            .bloc<CreditFormBloc>()
+                            .read<CreditFormBloc>()
                             .tokenProfile
                             .updateValue(tokenUser);
                         creditFormBloc.submit();

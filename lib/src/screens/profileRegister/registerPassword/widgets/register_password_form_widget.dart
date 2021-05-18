@@ -18,7 +18,7 @@ class RegisterPasswordFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //ignore: close_sinks
-    final profilePassword = context.bloc<AppBloc>().profileRegisterBloc;
+    final profilePassword = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
         padding:

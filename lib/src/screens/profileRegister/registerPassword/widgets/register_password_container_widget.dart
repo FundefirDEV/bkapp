@@ -59,7 +59,7 @@ class RegisterPasswordContainerWidget extends StatelessWidget {
 
   Container _infoUser(BuildContext context) {
     //ignore: close_sinks
-    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    final profile = context.read<AppBloc>().profileRegisterBloc;
     String firstName = profile.nameBloc.firstName.value;
     String lastName = profile.nameBloc.secondName.value;
 

@@ -38,7 +38,7 @@ class _TimeLineMyCreditScreenState extends State<TimeLineMyCreditScreen> {
                     TitleHeaderWidget(
                         oldIndex: HomeRoutesConstant.homeScreen,
                         title: I18n.of(context).timeLineCreditsTitle,
-                        menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                        menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 30),
                       child: Column(

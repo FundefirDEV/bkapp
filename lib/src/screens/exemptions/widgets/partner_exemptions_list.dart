@@ -11,7 +11,7 @@ class PartnerExemptionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    ExemptionsFormBloc exemptionsBloc = context.bloc<ExemptionsFormBloc>();
+    ExemptionsFormBloc exemptionsBloc = context.read<ExemptionsFormBloc>();
     SizeConfig().init(context);
     return Container(
       height: 137,

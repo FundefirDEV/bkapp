@@ -17,7 +17,7 @@ class ConfirmInvitationBankContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profile = context.bloc<AppBloc>().profileRegisterBloc;
+    final profile = context.read<AppBloc>().profileRegisterBloc;
     return Column(
       children: <Widget>[
         _headerContainer(context, profile),

@@ -102,7 +102,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                       child: FlatButton(
                         padding: EdgeInsets.all(0),
                         onPressed: () {
-                          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
+                          context.read<MenuNavigatorBloc>().add(ButtonPressed(
                               goTo: HomeRoutesConstant.timeLineMyCredit));
                         },
                         child: Container(
@@ -159,7 +159,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                       child: Container(
                           child: FlatButton(
                         onPressed: () {
-                          context.bloc<MenuNavigatorBloc>().add(ButtonPressed(
+                          context.read<MenuNavigatorBloc>().add(ButtonPressed(
                               goTo: HomeRoutesConstant.timeLineMyShares));
                         },
                         child: Column(

@@ -20,7 +20,7 @@ class _RegisterPhoneStepScreenState extends State<RegisterPhoneStepScreen> {
     SizeConfig().init(context);
     return BlocProvider(
       create: (context) =>
-          context.bloc<AppBloc>().profileRegisterBloc.phoneBloc,
+          context.read<AppBloc>().profileRegisterBloc.phoneBloc,
       child: Builder(builder: (context) {
         return Scaffold(
           body: SafeArea(

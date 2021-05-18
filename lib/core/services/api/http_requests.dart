@@ -49,7 +49,7 @@ class HttpRequests {
     var response;
     try {
       final request =
-          await httpClient.get(param != null ? Uri.parse('$url/$param') : url, headers: {
+          await httpClient.get(param != null ? Uri.parse('$url/$param') : Uri.parse(url), headers: {
         "Accept": "application/json",
         "content-type": "application/json",
         "Authorization": 'Bearer $token',

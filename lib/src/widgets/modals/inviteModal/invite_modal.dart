@@ -38,7 +38,7 @@ class _InviteModalState extends State<InviteModal> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    BankRegisterBloc bankBloc = context.bloc<AppBloc>().bankRegisterBloc;
+    BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
     SizeConfig().init(context);
 
     return _popDialog(context, bankBloc);

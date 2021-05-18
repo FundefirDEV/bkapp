@@ -20,7 +20,7 @@ class InterestsFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.ordinaryInterest,
+                    context.read<AppBloc>().rulesEditFormBloc.ordinaryInterest,
                 style: TextStyle(fontSize: 12),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
@@ -37,7 +37,7 @@ class InterestsFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.defaultInterest,
+                    context.read<AppBloc>().rulesEditFormBloc.defaultInterest,
                 style: TextStyle(fontSize: 12),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[

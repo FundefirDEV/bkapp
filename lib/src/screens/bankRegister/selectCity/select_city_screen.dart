@@ -23,9 +23,9 @@ class _SelectCityState extends State<SelectCityScreen>
   void initState() {
     // ignore: close_sinks
     final bloc = BlocProvider.of<AppBloc>(context).bankRegisterBloc.selectPlace;
-    final token = context.bloc<AppBloc>().bankRegisterBloc.token.value;
+    final token = context.read<AppBloc>().bankRegisterBloc.token.value;
     final countryCode =
-        context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.countryCode.value;
+        context.read<AppBloc>().profileRegisterBloc.phoneBloc.countryCode.value;
     bloc.getLocation(token, countryCode);
     super.initState();
     _controller = AnimationController(

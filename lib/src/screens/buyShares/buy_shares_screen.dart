@@ -36,7 +36,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
   @override
   void initState() {
     context
-        .bloc<BuySharesBloc>()
+        .read<BuySharesBloc>()
         .add(BuySharesInitialize(token: widget.tokenUser));
     super.initState();
   }
@@ -72,7 +72,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                         onSuccess: (context, state) {
                           Navigator.pop(context);
                           _showDialog(context, () {
-                            context.bloc<BuySharesBloc>().add(
+                            context.read<BuySharesBloc>().add(
                                 BuySharesInitialize(token: widget.tokenUser));
                             Navigator.pop(context);
                           });
@@ -89,7 +89,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                                 title: I18n.of(context).buySharesActions,
                                 oldIndex: 0,
                                 menuNavigatorBloc:
-                                    context.bloc<MenuNavigatorBloc>()),
+                                    context.read<MenuNavigatorBloc>()),
                             CardInformationBkWidget(
                                 childBlue: NumberActions(
                                     myShares: state.infoShares.shares),
@@ -102,7 +102,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                                 token: widget.tokenUser,
                                 valueShareRuleBank: state.infoShares.shareValue,
                                 buySharesBloc:
-                                    context.bloc<BuySharesFormBloc>())
+                                    context.read<BuySharesFormBloc>())
                           ],
                         ),
                       ),

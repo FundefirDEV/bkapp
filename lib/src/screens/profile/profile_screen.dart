@@ -20,7 +20,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
-    context.bloc<ProfileBloc>().add(ProfileInitialize(token: widget.tokenUser));
+    context.read<ProfileBloc>().add(ProfileInitialize(token: widget.tokenUser));
     super.initState();
   }
 

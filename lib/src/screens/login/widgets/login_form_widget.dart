@@ -14,7 +14,7 @@ class LoginFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget inputUsername = TextFieldBlocBuilder(
         key: Key('input-username'),
-        textFieldBloc: context.bloc<LoginFormBloc>().username,
+        textFieldBloc: context.read<LoginFormBloc>().username,
         keyboardType: TextInputType.emailAddress,
         errorBuilder: errorHandler,
         decoration: InputDecoration(
@@ -23,7 +23,7 @@ class LoginFormWidget extends StatelessWidget {
 
     Widget inputPassword = TextFieldBlocBuilder(
         key: Key('input-password'),
-        textFieldBloc: context.bloc<LoginFormBloc>().password,
+        textFieldBloc: context.read<LoginFormBloc>().password,
         suffixButton: SuffixButton.obscureText,
         errorBuilder: errorHandler,
         decoration: InputDecoration(
@@ -31,7 +31,7 @@ class LoginFormWidget extends StatelessWidget {
             prefixIcon: Icon(Icons.lock_open)));
 
     return CardButtonsWidget(
-        accept: context.bloc<LoginFormBloc>().submit,
+        accept: context.read<LoginFormBloc>().submit,
         cancel: () => Navigator.pushNamed(context, introRoute),
         child: SingleChildScrollView(
           child: Column(

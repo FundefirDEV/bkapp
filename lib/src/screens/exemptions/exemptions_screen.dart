@@ -26,7 +26,7 @@ class _ExemptionsScreenState extends State<ExemptionsScreen>
     with AfterLayoutMixin<ExemptionsScreen> {
   @override
   void afterFirstLayout(BuildContext context) {
-    _showDialog(context, context.bloc<MenuNavigatorBloc>(), widget.oldIndex);
+    _showDialog(context, context.read<MenuNavigatorBloc>(), widget.oldIndex);
   }
 
   @override
@@ -45,7 +45,7 @@ class _ExemptionsScreenState extends State<ExemptionsScreen>
                       title: I18n.of(context).utilsExemptions,
                       showArrow: true,
                       oldIndex: widget.oldIndex,
-                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                      menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                 ),
                 PartnerExemptionList(),
                 LineSeparatorWidget(),

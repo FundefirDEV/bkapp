@@ -29,7 +29,7 @@ class _AdministratorAssignmentScreenState
   @override
   void initState() {
     context
-        .bloc<AdministratorAsignmentBloc>()
+        .read<AdministratorAsignmentBloc>()
         .add(AdministratorAsignmentInitialize(token: widget.tokenUser));
     super.initState();
   }
@@ -47,7 +47,7 @@ class _AdministratorAssignmentScreenState
                 TitleHeaderWidget(
                     title: I18n.of(context).administratorAssignmentTitle,
                     oldIndex: HomeRoutesConstant.utilsScreen,
-                    menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                    menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                 for (var i = 0; i < state.administratorModel.length; i++)
                   SwitchAdmin(
                       customKey: Key('switch_admin_$i'),
@@ -58,7 +58,7 @@ class _AdministratorAssignmentScreenState
                           ? true
                           : false,
                       token: widget.tokenUser,
-                      bloc: context.bloc<AdministratorAsignmentBloc>(),
+                      bloc: context.read<AdministratorAsignmentBloc>(),
                       role: widget.role)
               ],
             ));

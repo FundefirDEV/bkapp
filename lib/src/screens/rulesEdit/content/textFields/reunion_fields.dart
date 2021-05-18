@@ -21,7 +21,7 @@ class ReunionFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.reunionWeek,
+                    context.read<AppBloc>().rulesEditFormBloc.reunionWeek,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   WhitelistingTextInputFormatter.digitsOnly
@@ -37,7 +37,7 @@ class ReunionFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.reunionDay,
+                    context.read<AppBloc>().rulesEditFormBloc.reunionDay,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   WhitelistingTextInputFormatter.digitsOnly

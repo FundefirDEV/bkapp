@@ -48,7 +48,7 @@ class TopContainerRulesSceen extends StatelessWidget {
             child: TitleHeaderWidget(
                 title: I18n.of(context).rulesScreenBkRules,
                 oldIndex: HomeRoutesConstant.utilsScreen,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 1.3,

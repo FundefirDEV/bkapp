@@ -21,7 +21,7 @@ class _RulesScreenState extends State<RulesScreen> {
   @override
   void initState() {
     context
-        .bloc<BankRulesBloc>()
+        .read<BankRulesBloc>()
         .add(BankRulesInitialize(token: widget.tokenUser));
     super.initState();
   }
@@ -29,7 +29,7 @@ class _RulesScreenState extends State<RulesScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
     SizeConfig().init(context);
 
     return BlocBuilder<BankRulesBloc, BankRulesState>(

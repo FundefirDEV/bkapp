@@ -29,10 +29,10 @@ dependencies:
   flutter_sqflite_manager: ^0.1.2
   path_provider: 2.0.1
   mockito: ^4.1.1
-  #equatable: 2.0.0
+  equatable: 2.0.0
   logger: ^0.9.1
   sentry: ">=3.0.0 <4.0.0"
-  #flutter_contact: 0.6.5+1
+  flutter_contact: 0.8.1+1
   easy_permission_validator: 3.0.0
   intl: 0.17.0
   mock_data: ^1.2.8
@@ -51,7 +51,7 @@ dev_dependencies:
   test: any
   bloc_test: 8.0.0
   remove_from_coverage: 2.0.0
-  pin_code_fields: 7.1.0
+  pin_code_fields: 3.1.2
   flutter_launcher_icons: 0.9.0
   #flutter_launcher_name: 0.0.1
   test_api: 0.3.0

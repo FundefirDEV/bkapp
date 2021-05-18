@@ -15,7 +15,7 @@ class FooterNameBkWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     // ignore: close_sinks
-    BankRegisterBloc bankBloc = context.bloc<AppBloc>().bankRegisterBloc;
+    BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
     return Container(
       key: Key('footer-name-bk-container'),
       alignment: Alignment.bottomCenter,

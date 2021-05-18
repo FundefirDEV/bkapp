@@ -21,7 +21,7 @@ class FundFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.spendingReserve,
+                    context.read<AppBloc>().rulesEditFormBloc.spendingReserve,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   WhitelistingTextInputFormatter.digitsOnly
@@ -37,7 +37,7 @@ class FundFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.incobrableFund,
+                    context.read<AppBloc>().rulesEditFormBloc.incobrableFund,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   WhitelistingTextInputFormatter.digitsOnly

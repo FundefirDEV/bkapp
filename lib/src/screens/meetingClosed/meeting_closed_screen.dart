@@ -57,7 +57,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
               TitleHeaderWidget(
                   title: I18n.of(context).meetingClosedMeetingClosing,
                   oldIndex: widget.oldIndex,
-                  menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                  menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
               CardGeneralDetailMeetingWidget(
                   cashBalance: infoMeeting.cashBalance,
                   badDebtReserve: infoMeeting.badDebtReserve,
@@ -108,7 +108,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
               isClosedMeeting = false;
               Navigator.pop(context);
               context
-                  .bloc<MeetingBloc>()
+                  .read<MeetingBloc>()
                   .add(MeetingClosed(token: widget.tokenUser));
             });
           },

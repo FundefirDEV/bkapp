@@ -49,7 +49,7 @@ class _InputCodeState extends State<InputCode> {
   @override
   Widget build(BuildContext context) {
     //ignore: close_sinks
-    final registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
+    final registerBloc = context.read<AppBloc>().profileRegisterBloc;
     SizeConfig().init(context);
     return GestureDetector(
       key: Key('input-code-column-gesture-detector'),
@@ -71,8 +71,8 @@ class _InputCodeState extends State<InputCode> {
                   child: PinCodeTextField(
                     key: Key('input-code-pin-code'),
                     length: 5,
-                    textInputType: TextInputType.number,
-                    obsecureText: true,
+                    //textInputType: TextInputType.number,
+                    //obsecureText: true,
                     animationType: AnimationType.scale,
                     backgroundColor: Colors.transparent,
                     validator: (v) {

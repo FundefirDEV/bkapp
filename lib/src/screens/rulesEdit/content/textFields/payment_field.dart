@@ -19,7 +19,7 @@ class PaymentField extends StatelessWidget {
             width: SizeConfig.blockSizeHorizontal * 40,
             child: TextFieldBlocBuilder(
               textFieldBloc:
-                  context.bloc<AppBloc>().rulesEditFormBloc.typePayment,
+                  context.read<AppBloc>().rulesEditFormBloc.typePayment,
               style: TextStyle(fontSize: 12),
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[

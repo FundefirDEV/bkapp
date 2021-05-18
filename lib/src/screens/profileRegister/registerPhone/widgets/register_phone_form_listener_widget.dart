@@ -34,7 +34,7 @@ class _RegistePhoneFormListenerWidgetState
   @override
   Widget build(BuildContext context) {
     // ignore:close_sinks
-    var registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
+    var registerBloc = context.read<AppBloc>().profileRegisterBloc;
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -103,7 +103,7 @@ class _RegistePhoneFormListenerWidgetState
 
   _receiveCountry(ItemCountry data) {
     // ignore: close_sinks
-    final bloc = context.bloc<AppBloc>().profileRegisterBloc.phoneBloc;
+    final bloc = context.read<AppBloc>().profileRegisterBloc.phoneBloc;
     setState(() {
       country = data;
     });

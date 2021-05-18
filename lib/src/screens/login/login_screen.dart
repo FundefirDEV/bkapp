@@ -9,7 +9,7 @@ import 'package:bkapp_flutter/src/screens/login/widgets/login_form_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get_version/get_version.dart';
+// import 'package:get_version/get_version.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await GetVersion.platformVersion;
+      platformVersion = '';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String projectVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      projectVersion = await GetVersion.projectVersion;
+      projectVersion = '';
     } on PlatformException {
       projectVersion = 'Failed to get project version.';
     }
@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String projectCode;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      projectCode = await GetVersion.projectCode;
+      projectCode = '';
     } on PlatformException {
       projectCode = 'Failed to get build number.';
     }
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String projectAppID;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      projectAppID = await GetVersion.appID;
+      projectAppID = '';
     } on PlatformException {
       projectAppID = 'Failed to get app ID.';
     }
@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String projectName;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      projectName = await GetVersion.appName;
+      projectName = '';
     } on PlatformException {
       projectName = 'Failed to get app name.';
     }

@@ -13,7 +13,7 @@ class RegisterNameFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //ignore: close_sinks
-    final profileRegisterBloc = context.bloc<AppBloc>().profileRegisterBloc;
+    final profileRegisterBloc = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
         padding:

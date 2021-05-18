@@ -24,7 +24,7 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     SizeConfig().init(context);
     return Scaffold(
@@ -104,7 +104,7 @@ class UpdateButton extends StatelessWidget {
           color: Theme.of(context).colorScheme.primaryColor),
       child: FlatButton(
         key: Key('flatButton_rules_edit_screen'),
-        onPressed: context.bloc<AppBloc>().rulesEditFormBloc.submit,
+        onPressed: context.read<AppBloc>().rulesEditFormBloc.submit,
         child: Text(
           I18n.of(context).profileEditScreenUpdate,
           style: TextStyle(color: Colors.white, letterSpacing: 4),
