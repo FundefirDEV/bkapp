@@ -13,7 +13,7 @@ Stage: [![Codemagic build Stage](https://api.codemagic.io/apps/5f03816ef9cfa6000
 ### Cloning
 
 ```sh
-git clone --recursive git@github.com:Fundefir-dev/bk_app.git
+git clone --recursive git@github.com:FundefirTeam/bk_app.git
 ```
 
 ## Get started
