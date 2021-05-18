@@ -38,7 +38,7 @@ class _AddPartnerScreenState extends State<AddPartnerScreen> {
                     key: Key('title_header_top_partner_screen'),
                     title: I18n.of(context).addPartnerPartner,
                     oldIndex: widget.oldIndex,
-                    menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                    menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                 TopContainerAddPartnerScreen(
                   tokenUser: widget.tokenUser,
                 ),

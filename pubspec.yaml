@@ -12,43 +12,50 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bk_core:
-    # path: /home/familia/projects/fundefir/bk_core
-    git:
-      url: git@github.com:Fundefir-dev/bk_core.git
-      # ref: master
-      ref: v1.20.1
-  flutter_svg: ^0.18.0
-  flutter_form_bloc: ^0.19.0
-  form_bloc: ^0.19.0
-  cupertino_icons: ^0.1.2
+    path: /home/alex/Desktop/bankomunal/bk_core
+    # git:
+    #   url: git@github.com:FundefirTeam/bk_core.git
+    #   # ref: master
+    #   ref: v1.20.1
+  flutter_svg: 0.22.0
+  flutter_form_bloc: 0.20.0
+  form_bloc: 0.20.0
+  rxdart: ">=0.24.0 <=0.26.0"
+  cupertino_icons: 1.0.3
   animate_do: ^1.7.2
-  http: ^0.12.2
-  alice: ^0.1.3
+  http: ">=0.12.0 <=1.0.0"
+  alice: 0.2.0
   sqflite: ^1.3.1+1
   flutter_sqflite_manager: ^0.1.2
-  path_provider: ^1.6.10
+  path_provider: 2.0.1
   mockito: ^4.1.1
-  equatable: ^1.2.0
+  #equatable: 2.0.0
   logger: ^0.9.1
   sentry: ">=3.0.0 <4.0.0"
-  flutter_contact: ^0.6.1
-  easy_permission_validator: ^2.0.0
-  intl: ^0.16.1
+  #flutter_contact: 0.6.5+1
+  easy_permission_validator: 3.0.0
+  intl: 0.17.0
   mock_data: ^1.2.8
-  get_version: ^0.2.2
-
+  #get_version: 0.2.2
+  quiver: ">=2.1.3 <=3.0.0"
+  chopper: 4.0.0-nullsafety.0
+  logging: ">=0.11.3 <=1.0.0"
+  uuid: ">=2.0.0-rc1 <=3.0.1"
+  crypto: 3.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_driver:
     sdk: flutter
   test: any
-  bloc_test: ^7.0.0
-  remove_from_coverage: 1.0.7
-  pin_code_fields: ^3.1.2
-  flutter_launcher_icons: "^0.7.0"
-  flutter_launcher_name: "^0.0.1"
-
+  bloc_test: 8.0.0
+  remove_from_coverage: 2.0.0
+  pin_code_fields: 7.1.0
+  flutter_launcher_icons: 0.9.0
+  #flutter_launcher_name: 0.0.1
+  test_api: 0.3.0
+  yaml: 3.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
