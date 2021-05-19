@@ -60,9 +60,11 @@ packages:
   bk_core:
     dependency: "direct main"
     description:
-      path: "/home/alex/Desktop/bankomunal/bk_core"
-      relative: false
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: "51b207cfe707d0c5dd225b06436f100252f4d8f9"
+      url: "git@github.com:FundefirTeam/bk_core.git"
+    source: git
     version: "0.0.1"
   bloc:
     dependency: transitive

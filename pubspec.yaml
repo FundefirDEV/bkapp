@@ -12,10 +12,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bk_core:
-    path: /home/alex/Desktop/bankomunal/bk_core
-    # git:
-    #   url: git@github.com:FundefirTeam/bk_core.git
-    #   # ref: master
+    #path: /home/alex/Desktop/bankomunal/bk_core
+    git:
+      url: git@github.com:FundefirTeam/bk_core.git
+      ref: master
     #   ref: v1.20.1
   flutter_svg: 0.22.0
   flutter_form_bloc: 0.20.0
