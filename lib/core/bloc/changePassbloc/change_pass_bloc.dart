@@ -29,16 +29,11 @@ class ChangePassBloc extends ChangeNotifier with Validators {
 
   Stream<bool> get formValidStream => 
 
-     Rx.combineLatest3(pincodeStream ,passwordStream, confirmPasswordStream , (a, b ,c) => true).asBroadcastStream();
+    Rx.combineLatest3(pincodeStream ,passwordStream, confirmPasswordStream , (a, b ,c) => true).asBroadcastStream();
 
-  bool mathPassAndPassConfirmation (){
+  void passConfirmationError (){
 
-    if(password == confirmPassword){
-      return true;
-    } else {
-      _confirmPasswordController.sink.addError('passwords do not match');
-      return false;
-    }
+    _confirmPasswordController.sink.addError('passwords do not match');
   } 
 
   // insertar los datas del Stream

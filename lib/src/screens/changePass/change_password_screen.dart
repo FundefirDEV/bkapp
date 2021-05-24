@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/bloc/changePassbloc/change_pass_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/changePassbloc/change_pass_provider.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/menuNavigator/bloc_providers.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 
@@ -154,7 +155,7 @@ class _ChangePassPageState extends State<ChangePassPage> {
                   counterText: confirmPasswordsnapshot.data,
                   errorText: confirmPasswordsnapshot.error ,
                 ),
-                onChanged: (value) => changePassBloc.changeConfirmPassword(value),
+                onChanged: (value) => changeConfirmPass(value , changePassBloc),
                 onEditingComplete: 
                   () => formValidsnapshot.hasData ? summit(changePassBloc,context ) : null,
               ),
@@ -163,6 +164,14 @@ class _ChangePassPageState extends State<ChangePassPage> {
         );
       } ,      
     ); 
+  }
+
+  void changeConfirmPass(String value , ChangePassBloc changePassBloc){
+
+    changePassBloc.changeConfirmPassword(value);
+    if(value != changePassBloc.password){
+      changePassBloc.passConfirmationError();
+    }
   }
 
   Widget _create_enter_button( ChangePassBloc changePassBloc ){
@@ -205,9 +214,7 @@ class _ChangePassPageState extends State<ChangePassPage> {
     summit(ChangePassBloc changePassBloc ,BuildContext context ){
       final res = changePassBloc.sumitChangePass(context , email , phone);
 
-      //res.then((value) => value ? notify(changePassBloc) : null);
       res.then((value) => value ? _showConfirmDialog(context , changePassBloc)  : null);
-
     }
 
 

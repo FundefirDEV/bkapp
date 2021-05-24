@@ -475,6 +475,7 @@
 
   "changePassword": {
     "dialogTittle": "Validation",
+    "checkEmail": "The code was send ! \n plis check your email",
     "dialogSend" : "Send",
     "success": "Password changed success",
     "changePassSend": "Send !",

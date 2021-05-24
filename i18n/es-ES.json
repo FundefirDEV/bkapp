@@ -465,6 +465,7 @@
 
   "changePassword": {
     "dialogTittle": "Validación",
+    "checkEmail": "¡ El código fue enviado ! \n por favor revise su email",
     "dialogSend" : "Enviar",
     "success": "Se ha cambiado la contraseña con exito !",
     "changePassSend": "Enviar !",

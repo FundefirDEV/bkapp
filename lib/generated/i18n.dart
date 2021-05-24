@@ -760,6 +760,8 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsCurrent => "Current";
   /// "Validation"
   String get changePasswordDialogTittle => "Validation";
+  /// "The code was send ! \n plis check your email"
+  String get changePasswordCheckEmail => "The code was send ! \n plis check your email";
   /// "Send"
   String get changePasswordDialogSend => "Send";
   /// "Password changed success"
@@ -1849,6 +1851,9 @@ class _I18n_es_ES extends I18n {
   /// "Validación"
   @override
   String get changePasswordDialogTittle => "Validación";
+  /// "¡ El código fue enviado ! \n por favor revise su email"
+  @override
+  String get changePasswordCheckEmail => "¡ El código fue enviado ! \n por favor revise su email";
   /// "Enviar"
   @override
   String get changePasswordDialogSend => "Enviar";

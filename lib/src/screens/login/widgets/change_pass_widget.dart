@@ -4,6 +4,7 @@ import 'package:bkapp_flutter/core/bloc/changePassbloc/change_pass_provider.dart
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/changePass/change_password_screen.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -115,9 +116,32 @@ _congirmEmailAndPass(BuildContext context, DialogChangePassBloc dialogChangePass
   if(res){
 
     //Navigator.pushNamed(context, changePasswordScreen);
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context)=> 
-        ChangePassPage(email: dialogChangePassBloc.email, phone: dialogChangePassBloc.phone)
-    ));
+    _showConfirmDialog(context , dialogChangePassBloc);
   }
 }
+
+void _showConfirmDialog( BuildContext context , DialogChangePassBloc dialogChangePassBloc) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (_) {
+        return ImageBottomModal(
+          modalHeight: 47.0,
+          image: 'assets/images/salo_pre_approved_modal.svg',
+          isImageBg: true,
+          title: I18n.of(context).changePasswordCheckEmail,
+          isBold: true,
+          isBtnAccept: false,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context)=> 
+                ChangePassPage(email: dialogChangePassBloc.email, phone: dialogChangePassBloc.phone)
+            ));
+          }
+        );
+      }
+    );
+  }
