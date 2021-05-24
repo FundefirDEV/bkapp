@@ -1889,9 +1889,9 @@ class _I18n_es_ES extends I18n {
   /// "a tu correo "
   @override
   String get changePasswordToYourEmail => "a tu correo ";
-  /// "por favor, revísalo "
+  /// "\n por favor, revísalo "
   @override
-  String get changePasswordPleaseCheck => "por favor, revísalo ";
+  String get changePasswordPleaseCheck => "\n por favor, revísalo ";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
