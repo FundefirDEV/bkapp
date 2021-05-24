@@ -1,5 +1,8 @@
+import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/login/widgets/change_pass_widget.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_version/get_version.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -163,19 +167,23 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        RichText(
-          text: TextSpan(
-              text: I18n.of(context).loginScreenTextOne,
+        GestureDetector(
+          onTap: ()=> showForgetPasswordAlert(context),
+          child: RichText(
+            text: TextSpan(
+              text: I18n.of(context).loginScreenForgetPassword,
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: SizeConfig.safeBlockHorizontal * 5.5,
-                  fontWeight: FontWeight.w200,
-                  letterSpacing: 1.0),
-              children: <TextSpan>[
+                color: Colors.white,
+                fontSize: SizeConfig.safeBlockHorizontal * 5.5,
+                fontWeight: FontWeight.w300,
+                letterSpacing: 1.0),
+                children: <TextSpan>[
                 TextSpan(
                     text: I18n.of(context).loginScreenTextTwo,
                     style: TextStyle(fontWeight: FontWeight.w700))
-              ]),
+              ],  
+            ),
+          ),
         ),
         Container(
           margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 2),

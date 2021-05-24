@@ -231,4 +231,34 @@ class ApiProvider {
     return await _httpRequest.get(
         httpClient: httpClient, url: endPoint, token: token);
   }
+
+  Future<Map<String, dynamic>> changePassSendMail(
+    {@required String email, @required String phone}) async {
+
+    final endPoint = ApiEndpoints.changePassSendMail();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "phone": phone,
+      "email": email
+    });
+  }
+
+    Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
+      @required String code, 
+      @required String email, 
+      @required String phone, 
+      @required String password,
+      @required String passwordConfirmation
+    }) async {
+
+    final endPoint = ApiEndpoints.changePasswordWithCodeConfirm();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "code": code,
+      "email": email,
+      "phone": phone,
+      "password": password,
+      "passwordConfirmation": passwordConfirmation
+    });
+  }
 }

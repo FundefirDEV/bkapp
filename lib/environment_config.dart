@@ -3,7 +3,7 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bk-service-2foxvegkzq-uc.a.run.app");
+      defaultValue: "https://bk-service-qa-2foxvegkzq-uc.a.run.app");
       
   //"https://bkservice.fundefir-dev.com"
   // https://bkservicestage.fundefir-dev.com
@@ -255,5 +255,25 @@ class ApiEndpoints {
   static String getSharesCurrentMeeting({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/shares-current-meeting";
+  }
+
+  /// Verify email and phone
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String changePassSendMail({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/changePasswordEmail";
+  }
+
+  /// Change pass with code confirm
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String changePasswordWithCodeConfirm({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/validationConfirmChangePassword";
   }
 }

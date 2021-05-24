@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
+import 'package:bkapp_flutter/src/screens/changePass/change_password_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
@@ -122,6 +123,12 @@ class Router {
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => RulesEditScreen());
         break;
+
+        // case changePasswordScreen:
+        // return PageRouteBuilder(
+        //     transitionDuration: Duration(microseconds: 350),
+        //     pageBuilder: (context, _, __) => ChangePassPage());
+        // break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

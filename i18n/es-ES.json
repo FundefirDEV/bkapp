@@ -40,8 +40,8 @@
     "differentPasswords": "Las contraseñas no coinciden"
   },
   "loginScreen": {
-    "textOne": "Entra a ",
-    "textTwo": "tu banko"
+    "textOne": "¿ Has olvidado ",
+    "textTwo": "tu contraseña ?"
   },
   "introScreen": {
     "financialLife": "Empieza a tener el control de tu vida financiera",
@@ -461,5 +461,15 @@
   "timeLineCredits": {
     "title": "Mis Créditos",
     "current": "Vigente"
+  },
+
+  "changePassword": {
+    "dialogTittle": "Validación",
+    "dialogSend" : "Enviar",
+    "success": "Se ha cambiado la contraseña con exito !",
+    "changePassSend": "Enviar !",
+    "confirCode": "código de verificación",
+    "NewPassword": "Nueva contraseña",
+    "ConfirmNewPassword": "Confirmar contrañesa "
   }
 }

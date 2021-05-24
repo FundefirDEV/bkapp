@@ -92,10 +92,10 @@ class I18n implements WidgetsLocalizations {
   String get errorInvalidEmail => "Enter a valid email address";
   /// "Passwords do not match"
   String get errorDifferentPasswords => "Passwords do not match";
-  /// "Go to "
-  String get loginScreenTextOne => "Go to ";
-  /// "your bank"
-  String get loginScreenTextTwo => "your bank";
+  /// "Forgot "
+  String get loginScreenForgetPassword => "Forgot ";
+  /// "password ?"
+  String get loginScreenTextTwo => "password ?";
   /// "Start being in control of your financial life"
   String get introScreenFinancialLife => "Start being in control of your financial life";
   /// "You know what a "
@@ -758,6 +758,20 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsTitle => "My Credits";
   /// "Current"
   String get timeLineCreditsCurrent => "Current";
+  /// "Validation"
+  String get changePasswordDialogTittle => "Validation";
+  /// "Send"
+  String get changePasswordDialogSend => "Send";
+  /// "Password changed success"
+  String get changePasswordSuccess => "Password changed success";
+  /// "Send !"
+  String get changePasswordChangePassSend => "Send !";
+  /// "Validation code"
+  String get changePasswordConfirCode => "Validation code";
+  /// "New password"
+  String get changePasswordNewPassword => "New password";
+  /// "Confirm New passsword"
+  String get changePasswordConfirmNewPassword => "Confirm New passsword";
 }
 
 class _I18n_en_US extends I18n {
@@ -860,12 +874,9 @@ class _I18n_es_ES extends I18n {
   /// "Las contraseñas no coinciden"
   @override
   String get errorDifferentPasswords => "Las contraseñas no coinciden";
-  /// "Entra a "
+  /// "tu contraseña ?"
   @override
-  String get loginScreenTextOne => "Entra a ";
-  /// "tu banko"
-  @override
-  String get loginScreenTextTwo => "tu banko";
+  String get loginScreenTextTwo => "tu contraseña ?";
   /// "Empieza a tener el control de tu vida financiera"
   @override
   String get introScreenFinancialLife => "Empieza a tener el control de tu vida financiera";
@@ -1835,6 +1846,27 @@ class _I18n_es_ES extends I18n {
   /// "Vigente"
   @override
   String get timeLineCreditsCurrent => "Vigente";
+  /// "Validación"
+  @override
+  String get changePasswordDialogTittle => "Validación";
+  /// "Enviar"
+  @override
+  String get changePasswordDialogSend => "Enviar";
+  /// "Se ha cambiado la contraseña con exito !"
+  @override
+  String get changePasswordSuccess => "Se ha cambiado la contraseña con exito !";
+  /// "Enviar !"
+  @override
+  String get changePasswordChangePassSend => "Enviar !";
+  /// "código de verificación"
+  @override
+  String get changePasswordConfirCode => "código de verificación";
+  /// "Nueva contraseña"
+  @override
+  String get changePasswordNewPassword => "Nueva contraseña";
+  /// "Confirmar contrañesa "
+  @override
+  String get changePasswordConfirmNewPassword => "Confirmar contrañesa ";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
