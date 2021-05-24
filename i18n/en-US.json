@@ -289,10 +289,10 @@
     "valueRequested": "Value requested"
   },
   "pinCodeVerification": {
-    "put": "Put ",
+    "put": "Insert ",
     "theCode": "the code ",
-    "weSendToYour": "we send to \n your ",
-    "cellNumber": "cell number",
+    "weSendToYour": "send to \n your ",
+    "cellNumber": "email",
     "pinCodeComplete": "Please enter correct code",
     "errorCodeMessage": "The code entered is not valid",
     "goodCodeMessage": "Successfully validated code"
@@ -474,13 +474,17 @@
   },
 
   "changePassword": {
-    "dialogTittle": "Validation",
-    "checkEmail": "The code was send ! \n plis check your email",
+    "FormTitle": "Change Password",
+    "dialogTittle": "Validate your credentials",
+    "checkEmail": "The code was send ! \n please check your email",
     "dialogSend" : "Send",
     "success": "Password changed success",
-    "changePassSend": "Send !",
+    "changePassSend": "Send",
     "confirCode": "Validation code",
     "NewPassword": "New password",
-    "ConfirmNewPassword": "Confirm New passsword"
+    "ConfirmNewPassword": "Confirm New passsword",
+    "SendTheCode": "Send the code ",
+    "ToYourEmail": "to your email ",
+    "PleaseCheck": "\n please check it out "
   }
 }

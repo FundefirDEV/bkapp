@@ -450,14 +450,14 @@ class I18n implements WidgetsLocalizations {
   String get statusCreditDues => "DUES";
   /// "Value requested"
   String get statusCreditValueRequested => "Value requested";
-  /// "Put "
-  String get pinCodeVerificationPut => "Put ";
+  /// "Insert "
+  String get pinCodeVerificationPut => "Insert ";
   /// "the code "
   String get pinCodeVerificationTheCode => "the code ";
-  /// "we send to \n your "
-  String get pinCodeVerificationWeSendToYour => "we send to \n your ";
-  /// "cell number"
-  String get pinCodeVerificationCellNumber => "cell number";
+  /// "send to \n your "
+  String get pinCodeVerificationWeSendToYour => "send to \n your ";
+  /// "email"
+  String get pinCodeVerificationCellNumber => "email";
   /// "Please enter correct code"
   String get pinCodeVerificationPinCodeComplete => "Please enter correct code";
   /// "The code entered is not valid"
@@ -758,22 +758,30 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsTitle => "My Credits";
   /// "Current"
   String get timeLineCreditsCurrent => "Current";
-  /// "Validation"
-  String get changePasswordDialogTittle => "Validation";
-  /// "The code was send ! \n plis check your email"
-  String get changePasswordCheckEmail => "The code was send ! \n plis check your email";
+  /// "Change Password"
+  String get changePasswordFormTitle => "Change Password";
+  /// "Validate your credentials"
+  String get changePasswordDialogTittle => "Validate your credentials";
+  /// "The code was send ! \n please check your email"
+  String get changePasswordCheckEmail => "The code was send ! \n please check your email";
   /// "Send"
   String get changePasswordDialogSend => "Send";
   /// "Password changed success"
   String get changePasswordSuccess => "Password changed success";
-  /// "Send !"
-  String get changePasswordChangePassSend => "Send !";
+  /// "Send"
+  String get changePasswordChangePassSend => "Send";
   /// "Validation code"
   String get changePasswordConfirCode => "Validation code";
   /// "New password"
   String get changePasswordNewPassword => "New password";
   /// "Confirm New passsword"
   String get changePasswordConfirmNewPassword => "Confirm New passsword";
+  /// "Send the code "
+  String get changePasswordSendTheCode => "Send the code ";
+  /// "to your email "
+  String get changePasswordToYourEmail => "to your email ";
+  /// "\n please check it out "
+  String get changePasswordPleaseCheck => "\n please check it out ";
 }
 
 class _I18n_en_US extends I18n {
@@ -1395,9 +1403,9 @@ class _I18n_es_ES extends I18n {
   /// "que enviamos a \n tu "
   @override
   String get pinCodeVerificationWeSendToYour => "que enviamos a \n tu ";
-  /// "número celular"
+  /// "correo electrónico"
   @override
-  String get pinCodeVerificationCellNumber => "número celular";
+  String get pinCodeVerificationCellNumber => "correo electrónico";
   /// "Por favor ingrese el código correcto"
   @override
   String get pinCodeVerificationPinCodeComplete => "Por favor ingrese el código correcto";
@@ -1848,9 +1856,12 @@ class _I18n_es_ES extends I18n {
   /// "Vigente"
   @override
   String get timeLineCreditsCurrent => "Vigente";
-  /// "Validación"
+  /// "Cambiar contraseña"
   @override
-  String get changePasswordDialogTittle => "Validación";
+  String get changePasswordFormTitle => "Cambiar contraseña";
+  /// "Validemos tus credenciales"
+  @override
+  String get changePasswordDialogTittle => "Validemos tus credenciales";
   /// "¡ El código fue enviado ! \n por favor revise su email"
   @override
   String get changePasswordCheckEmail => "¡ El código fue enviado ! \n por favor revise su email";
@@ -1872,6 +1883,15 @@ class _I18n_es_ES extends I18n {
   /// "Confirmar contrañesa "
   @override
   String get changePasswordConfirmNewPassword => "Confirmar contrañesa ";
+  /// "Enviamos el código "
+  @override
+  String get changePasswordSendTheCode => "Enviamos el código ";
+  /// "a tu correo "
+  @override
+  String get changePasswordToYourEmail => "a tu correo ";
+  /// "por favor, revísalo "
+  @override
+  String get changePasswordPleaseCheck => "por favor, revísalo ";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

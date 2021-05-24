@@ -282,7 +282,7 @@
     "put": "Coloca ",
     "theCode": "el código ",
     "weSendToYour": "que enviamos a \n tu ",
-    "cellNumber": "número celular",
+    "cellNumber": "correo electrónico",
     "pinCodeComplete": "Por favor ingrese el código correcto",
     "errorCodeMessage": "El código digitado no es válido",
     "goodCodeMessage": "Código validado satisfactoriamente"
@@ -464,13 +464,17 @@
   },
 
   "changePassword": {
-    "dialogTittle": "Validación",
+    "FormTitle": "Cambiar contraseña",
+    "dialogTittle": "Validemos tus credenciales",
     "checkEmail": "¡ El código fue enviado ! \n por favor revise su email",
     "dialogSend" : "Enviar",
     "success": "Se ha cambiado la contraseña con exito !",
     "changePassSend": "Enviar !",
     "confirCode": "código de verificación",
     "NewPassword": "Nueva contraseña",
-    "ConfirmNewPassword": "Confirmar contrañesa "
+    "ConfirmNewPassword": "Confirmar contrañesa ",
+    "SendTheCode": "Enviamos el código ",
+    "ToYourEmail": "a tu correo ",
+    "PleaseCheck": "por favor, revísalo "
   }
 }

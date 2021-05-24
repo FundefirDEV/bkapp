@@ -2,9 +2,12 @@ import 'package:bkapp_flutter/core/bloc/changePassbloc/change_pass_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/changePassbloc/change_pass_provider.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/changePass/widgets/input_code.dart';
 import 'package:bkapp_flutter/src/screens/menuNavigator/bloc_providers.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ChangePassPage  extends StatefulWidget {
 
@@ -24,12 +27,26 @@ class _ChangePassPageState extends State<ChangePassPage> {
 
   @override
   Widget build(BuildContext context) {
+  SizeConfig().init(context);
 
   return 
     Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children:<Widget> [
-          _change_pass_form(context),
+          Positioned(
+            bottom: 0,
+            child: Container(
+                width: SizeConfig.blockSizeHorizontal * 100,
+                height: SizeConfig.blockSizeVertical * 50,
+                child: SvgPicture.asset('assets/images/oval.svg',
+                    fit: BoxFit.cover
+              )),
+          ),
+          Positioned(
+            bottom: SizeConfig.blockSizeVertical * 10,
+            child: _change_pass_form(context)
+          ),
         ],
       ),
     );
@@ -46,9 +63,11 @@ class _ChangePassPageState extends State<ChangePassPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SafeArea(
-                child: Container(
-                  height: 180.0,
+              Center(
+                child: SafeArea(
+                  child: Container(
+                    height: SizeConfig.blockSizeHorizontal * 50,
+                  ),
                 ),
               ),
 
@@ -70,9 +89,10 @@ class _ChangePassPageState extends State<ChangePassPage> {
             ),
             child:Column(
               children: <Widget> [
-                Text('Change password' , style: TextStyle(fontSize: 20.0),),
+                Text( I18n.of(context).changePasswordFormTitle, style: TextStyle(fontSize: 20.0),),
                 SizedBox(height: 30.0,),
-                _pincode_form(changePassBloc),
+                InputCode(changePassBloc: changePassBloc,),
+                //_pincode_form(changePassBloc),
                 SizedBox(height: 20.0,),
                 _pass_form(changePassBloc),
                 SizedBox(height: 20.0,),
@@ -89,29 +109,28 @@ class _ChangePassPageState extends State<ChangePassPage> {
   );
 }
 
-  Widget _pincode_form( ChangePassBloc changePassBloc){
-
-   return StreamBuilder(
-      stream: changePassBloc.pincodeStream ,
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextField(
-            keyboardType: TextInputType.number,
-            obscureText: true,
-            maxLength: 5,
-            decoration: InputDecoration(
-              icon: Icon(Icons.pin , color: Colors.deepPurple,),
-              labelText: I18n.of(context).changePasswordConfirCode,
-              counterText: snapshot.data,
-              errorText: snapshot.error,
-            ),
-            onChanged: (value) => changePassBloc.changePincode(value),
-          ),
-        );
-      },
-    );  
-  }
+  // Widget _pincode_form( ChangePassBloc changePassBloc){
+  //  return StreamBuilder(
+  //     stream: changePassBloc.pincodeStream ,
+  //     builder: (BuildContext context, AsyncSnapshot snapshot){
+  //       return Container(
+  //         padding: EdgeInsets.symmetric(horizontal: 20.0),
+  //         child: TextField(
+  //           keyboardType: TextInputType.number,
+  //           obscureText: true,
+  //           maxLength: 5,
+  //           decoration: InputDecoration(
+  //             icon: Icon(Icons.pin , color: Colors.deepPurple,),
+  //             labelText: I18n.of(context).changePasswordConfirCode,
+  //             counterText: snapshot.data,
+  //             errorText: snapshot.error,
+  //           ),
+  //           onChanged: (value) => changePassBloc.changePincode(value),
+  //         ),
+  //       );
+  //     },
+  //   );  
+  // }
 
   Widget _pass_form( ChangePassBloc changePassBloc){
 
@@ -124,7 +143,7 @@ class _ChangePassPageState extends State<ChangePassPage> {
             keyboardType: TextInputType.visiblePassword,
             obscureText: true,
             decoration: InputDecoration(
-              icon: Icon(Icons.lock_outlined , color: Colors.deepPurple,),
+              icon: Icon(Icons.lock_outlined , color: Colors.blue,),
               labelText: I18n.of(context).changePasswordNewPassword,
               counterText: snapshot.data,
               errorText: snapshot.error,
@@ -150,7 +169,7 @@ class _ChangePassPageState extends State<ChangePassPage> {
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
-                  icon: Icon(Icons.lock_outlined , color: Colors.deepPurple,),
+                  icon: Icon(Icons.lock_outlined , color: Colors.blue,),
                   labelText: I18n.of(context).changePasswordConfirmNewPassword,
                   counterText: confirmPasswordsnapshot.data,
                   errorText: confirmPasswordsnapshot.error ,
@@ -194,10 +213,10 @@ class _ChangePassPageState extends State<ChangePassPage> {
                   Text(I18n.of(context).changePasswordChangePassSend) 
               ),
               style: ButtonStyle(
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.deepPurple),
+                // foregroundColor:
+                //     MaterialStateProperty.all<Color>(Colors.white),
+                // backgroundColor:
+                //     MaterialStateProperty.all<Color>(Colors.deepPurple),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),

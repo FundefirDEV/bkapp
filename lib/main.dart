@@ -146,7 +146,7 @@ class MyApp extends StatelessWidget {
           return supportedLocales.first;
         },
         onGenerateRoute: Routes.Router.generateRoute,
-        initialRoute: loginRoute,
+        initialRoute: changePasswordScreen,
       ),
     );
   }
