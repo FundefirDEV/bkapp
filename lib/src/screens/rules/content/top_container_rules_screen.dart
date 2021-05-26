@@ -136,7 +136,7 @@ class TopContainerRulesSceen extends StatelessWidget {
           ),
           children: <TextSpan>[
             TextSpan(
-              text: I18n.of(context).rulesScreenCreationDate + '\n',
+               text: I18n.of(context).rulesScreenCreationDate + '\n',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

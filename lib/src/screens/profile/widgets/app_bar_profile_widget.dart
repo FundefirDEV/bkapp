@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profile/widgets/header_profile_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
@@ -29,7 +30,7 @@ class AppBarProfileWidget extends StatelessWidget {
                   child: Container(
                       key: Key('Top_container_profile_Screen'),
                       width: SizeConfig.safeBlockHorizontal * 100,
-                      height: 280,
+                      height: SizeConfig.screenHeight * .38,
                       margin: EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -91,14 +92,21 @@ class AppBarProfileWidget extends StatelessWidget {
 
   Container _editProfile(BuildContext context) {
     return Container(
-        height: SizeConfig.safeBlockVertical * 4,
-        margin: EdgeInsets.only(bottom: 40),
-        child: FlatButton(
-            key: Key('Edit_button_profile_screen'),
-            onPressed: () {},
-            child: Text(
-              I18n.of(context).profileScreenEdit,
-              style: TextStyle(color: Colors.white, letterSpacing: 2),
-            )));
+      height: SizeConfig.safeBlockVertical * 4,
+      margin: EdgeInsets.only(bottom: 40),
+      child: FlatButton(
+        key: Key('Edit_button_profile_screen'),
+        onPressed: () => {
+          Navigator.pushNamed(
+            context, profileEditScreen,
+            arguments: profile,
+          )
+        },
+        child: Text(
+          I18n.of(context).profileScreenEdit,
+          style: TextStyle(color: Colors.white, letterSpacing: 2),
+        )
+      )
+    );
   }
 }

@@ -276,4 +276,10 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/validationConfirmChangePassword";
   }
+
+  static String updateProfile({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/updateUser";
+  }
 }

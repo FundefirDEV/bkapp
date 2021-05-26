@@ -44,6 +44,11 @@ List<dynamic> blocProviders = [
   BlocProvider(
     create: (context) => ProfileBloc(repository: profileRepository),
   ),
+
+  BlocProvider(
+    create: (context) => ProfileEditFormBloc(repository: profileRepository),
+  ),
+
   BlocProvider(
       create: (context) =>
           ProfitPaymentFormBloc(repository: profitPaymentRepository)),

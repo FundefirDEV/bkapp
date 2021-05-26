@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
@@ -243,7 +244,7 @@ class ApiProvider {
     });
   }
 
-    Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
+  Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
       @required String code, 
       @required String email, 
       @required String phone, 
@@ -260,5 +261,14 @@ class ApiProvider {
       "password": password,
       "passwordConfirmation": passwordConfirmation
     });
+  }
+
+
+  Future<Map<String, dynamic>> updateProfile({@required UpdatePeofile updatePeofile}) async {
+
+    final endPoint = ApiEndpoints.updateProfile();
+      return await _httpRequest.post(
+        httpClient: httpClient, url: endPoint, body: updatePeofile.toJson()
+    );
   }
 }
