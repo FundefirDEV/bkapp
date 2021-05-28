@@ -1,15 +1,13 @@
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-
 import 'dart:async';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
-
 import 'bloc/profile_edit_Bloc.dart';
 
 class ProfileEditFormBloc extends FormBloc<String, String> {
 
-  ProfileEditEvent event;
+  final token = TextFieldBloc();
   final ProfileEditRepository repository;
 
   final firstname = TextFieldBloc(validators: [FieldBlocValidators.required]);
@@ -35,7 +33,7 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
       // scholarship,
       // birthDate,
       // profession
-    ]);
+    ],);
   }
 
   @override
@@ -54,9 +52,15 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
       gender: gender.value
     );
 
-    print( event.props.toString() );
+    if(token.value.isEmpty){
+      print( 'invalid token' );
+      return;
+    }
+
+    print( token.value );
     
-    //final res = await profileRepository.updateProfile(updatePeofile , event.props.toString());
+    final res = await repository.updateProfile(updatePeofile , token.value);
+    print(res);
 
     super.submit();
   }

@@ -14,8 +14,8 @@ class ProfileEditRepository {
     return getProfile;
   }
 
-  Future<Map<String, dynamic>> updateProfile(UpdatePeofile updatePeofile , String token) async {
-    final Map getProfile = await apiProvider.updateProfile(updateProfile: updatePeofile, token: token);
-    return getProfile;
+  updateProfile(UpdatePeofile updatePeofile , String token) async {
+    final updateProfileRes = await apiProvider.updateProfile(updateProfile: updatePeofile, token: token);
+    return updateProfileRes;
   }
 }

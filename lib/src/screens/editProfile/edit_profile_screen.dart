@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileEdition/profile_edit_form_Bloc.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_fields.dart';
@@ -11,7 +12,6 @@ import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-
 
 class ProfileEditScreen extends StatefulWidget {
 
@@ -26,12 +26,6 @@ class ProfileEditScreen extends StatefulWidget {
 
 class _ProfileEditScreen extends State<ProfileEditScreen> {
 
-  // //final ProfileModel profile;
-  // _ProfileEditScreen({
-  //   Key key , 
-  //   //@required this.profile
-  // });
-
   @override
   void initState() {
     context.read<ProfileEditBloc>().add(ProfileEditInitialize(token: widget.token));
@@ -45,7 +39,10 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
 
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(builder: (context, state) {
       if (state is ProfileEditLoaded) {
-        return screenPageBody(state.profileModel);
+        return ProfileEditFormWidget(
+          profile: state.profileModel , 
+          token: widget.token,
+        );
       }
       if (state is ProfileEditFailure) {
         return ErrorPage(errorMessage: state.error);
@@ -55,9 +52,22 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
       );
     });
   }
+}
 
-  Widget screenPageBody(ProfileModel profile){
-  return  Scaffold(
+
+class ProfileEditFormWidget extends StatefulWidget {
+    final String token;
+    final ProfileModel profile;
+    ProfileEditFormWidget({@required this.profile , @required this.token});
+
+  @override
+  _ProfileEditFormWidgetState createState() => _ProfileEditFormWidgetState();
+}
+
+class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
       body: SafeArea(
         child: Column(
         key: Key('main_column_rules_edit_screen'),
@@ -66,7 +76,7 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
             height: SizeConfig.screenHeight * .30,
             color: Colors.grey[100],
             child: TopContainerEditProfileScreen(
-              profile: profile
+              profile: widget.profile
             ),
           ),
           Flexible(
@@ -99,7 +109,7 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
                             ],
                           )),
                       SizedBox(height: SizeConfig.blockSizeVertical * 6),
-                      UpdateButton(),
+                      updatedButton(context , widget.token),
                     ],
                   ),
                 ),
@@ -110,13 +120,14 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
       )),
     );
   }
-}
 
-class UpdateButton extends StatelessWidget {
-  const UpdateButton({Key key}) : super(key: key);
+  Widget updatedButton(
+    BuildContext context,
+    String token,){
 
-  @override
-  Widget build(BuildContext context) {
+    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
+    profileEditFormBloc.token.updateValue(token);
+
     return Container(
       key: Key('container_update_button_rules_edit_screen'),
       height: SizeConfig.blockSizeVertical * 5,
@@ -126,7 +137,7 @@ class UpdateButton extends StatelessWidget {
           color: Theme.of(context).colorScheme.primaryColor),
       child: FlatButton(
         key: Key('flatButton_rules_edit_screen'),
-        onPressed: context.read<AppBloc>().profileEditFormBloc.submit,
+        onPressed: () => profileEditFormBloc.submit(),
         child: Text(
           I18n.of(context).profileEditScreenUpdate,
           style: TextStyle(color: Colors.white, letterSpacing: 4),

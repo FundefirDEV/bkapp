@@ -264,7 +264,7 @@ class ApiProvider {
   }
 
 
-  Future<Map<String, dynamic>> updateProfile(
+  updateProfile(
     {@required UpdatePeofile updateProfile , @required token
     }) async {
 
