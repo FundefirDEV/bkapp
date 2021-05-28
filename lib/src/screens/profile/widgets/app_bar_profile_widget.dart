@@ -1,7 +1,9 @@
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
+import 'package:bkapp_flutter/src/screens/editProfile/edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/screens/profile/widgets/header_profile_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -11,10 +13,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppBarProfileWidget extends StatelessWidget {
-  const AppBarProfileWidget({Key key, @required this.profile, this.container})
+  const AppBarProfileWidget({
+    Key key,
+   @required this.profile,
+   @required this.token,
+   this.container
+  })
       : super(key: key);
   final ProfileModel profile;
   final Widget container;
+  final String token;
 
   @override
   Widget build(BuildContext context) {
@@ -91,17 +99,15 @@ class AppBarProfileWidget extends StatelessWidget {
   }
 
   Container _editProfile(BuildContext context) {
+
     return Container(
       height: SizeConfig.safeBlockVertical * 4,
       margin: EdgeInsets.only(bottom: 40),
       child: FlatButton(
         key: Key('Edit_button_profile_screen'),
-        onPressed: () => {
-          Navigator.pushNamed(
-            context, profileEditScreen,
-            arguments: profile,
-          )
-        },
+        onPressed: () => context.read<MenuNavigatorBloc>().add(ButtonPressed(
+            goTo: HomeRoutesConstant.profileEditScreen)),
+
         child: Text(
           I18n.of(context).profileScreenEdit,
           style: TextStyle(color: Colors.white, letterSpacing: 2),

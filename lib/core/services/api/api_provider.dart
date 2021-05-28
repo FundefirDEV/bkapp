@@ -264,11 +264,14 @@ class ApiProvider {
   }
 
 
-  Future<Map<String, dynamic>> updateProfile({@required UpdatePeofile updatePeofile}) async {
+  Future<Map<String, dynamic>> updateProfile(
+    {@required UpdatePeofile updateProfile , @required token
+    }) async {
 
     final endPoint = ApiEndpoints.updateProfile();
       return await _httpRequest.post(
-        httpClient: httpClient, url: endPoint, body: updatePeofile.toJson()
+        httpClient: httpClient, url: endPoint, body: updateProfile.toJson() , 
+        token: token
     );
   }
 }

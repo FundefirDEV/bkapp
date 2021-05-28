@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/administratorAsignmentBloc/administrator_asignment_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/timeLineCredit/time_line_credit_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/timeLineShares/bloc/time_line_shares_bloc.dart';
@@ -46,10 +47,6 @@ List<dynamic> blocProviders = [
   ),
 
   BlocProvider(
-    create: (context) => ProfileEditFormBloc(repository: profileRepository),
-  ),
-
-  BlocProvider(
       create: (context) =>
           ProfitPaymentFormBloc(repository: profitPaymentRepository)),
   BlocProvider(
@@ -61,5 +58,8 @@ List<dynamic> blocProviders = [
   BlocProvider(create: (context) => ExemptionsFormBloc()),
   BlocProvider(
       create: (context) => TimeLineSharesBloc(homeRepository: homeRepository)),
-  BlocProvider(create: (context) => TimeLineCreditBloc())
+  BlocProvider(create: (context) => TimeLineCreditBloc()),
+  BlocProvider(
+    create: (context) => ProfileEditBloc(repository: profileEditRepository),
+  ),
 ];

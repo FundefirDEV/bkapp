@@ -280,6 +280,6 @@ class ApiEndpoints {
   static String updateProfile({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
-    return "$baseUrl/v3/updateUser";
+    return "$baseUrl/v3/updateProfile";
   }
 }

@@ -1,13 +1,16 @@
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
-import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_repository.dart';
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import 'dart:async';
+import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
+
+import 'bloc/profile_edit_Bloc.dart';
+
 class ProfileEditFormBloc extends FormBloc<String, String> {
 
-  final ProfileRepository repository;
+  ProfileEditEvent event;
+  final ProfileEditRepository repository;
 
   final firstname = TextFieldBloc(validators: [FieldBlocValidators.required]);
   final lastName = TextFieldBloc(validators: [FieldBlocValidators.required]);
@@ -36,14 +39,13 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   }
 
   @override
-  void onSubmitting() async {
+  void submit() async {
 
-    print(firstname.value);
+    print('summiit!');
     print(lastName.value);
     print(cellPhone.value);
     print(email.value);   
     print(gender.value);
-
     final updatePeofile = UpdatePeofile(
       firstname: firstname.value,
       lastname: lastName.value,
@@ -52,19 +54,46 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
       gender: gender.value
     );
 
-    try {
-      
-      final res = await profileRepository.updateProfile(updatePeofile);
+    print( event.props.toString() );
+    
+    //final res = await profileRepository.updateProfile(updatePeofile , event.props.toString());
 
-      emitSuccess(canSubmitAgain: true);
+    super.submit();
+  }
 
-      //Navigator.of(context).pushNamed(profileScreen);
-      
-    } catch (e) {
-      
-      print(e);
-    }
+  // void onsumit(BuildContext context) async {
+  //   print(firstname.value);
+  //   print(lastName.value);
+  //   print(cellPhone.value);
+  //   print(email.value);   
+  //   print(gender.value);
 
+  //   final updatePeofile = UpdatePeofile(
+  //     firstname: firstname.value,
+  //     lastname: lastName.value,
+  //     phone: cellPhone.value,
+  //     email: email.value,
+  //     gender: gender.value
+  //   );
+
+  //   try {
+      
+  //     final res = await profileRepository.updateProfile(updatePeofile);
+
+  //     print(res);
+
+  //     Navigator.pop(context);
+      
+  //   } catch (e) {
+      
+  //     print(e);
+  //   }
+  // }
+
+  @override
+  void onSubmitting() async {
+    
+    emitSuccess(canSubmitAgain: false);
   }
 
   Future<void> close() {

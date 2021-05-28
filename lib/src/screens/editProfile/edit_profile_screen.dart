@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_fields.dart';
@@ -6,6 +7,7 @@ import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/gender_
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/name_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -13,25 +15,49 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class ProfileEditScreen extends StatefulWidget {
 
-  final ProfileModel profile;
-
-  ProfileEditScreen({Key key , @required this.profile}) : super(key: key);
+  //final ProfileModel profile;
+  ProfileEditScreen({ Key key, @required this.token }) : super(key: key);
+  final String token;
 
   @override
-  _ProfileEditScreen createState() => _ProfileEditScreen(key: key , profile: profile);
+  _ProfileEditScreen createState() => 
+  _ProfileEditScreen();
 }
 
 class _ProfileEditScreen extends State<ProfileEditScreen> {
 
-  final ProfileModel profile;
-  _ProfileEditScreen({Key key , @required this.profile});
+  // //final ProfileModel profile;
+  // _ProfileEditScreen({
+  //   Key key , 
+  //   //@required this.profile
+  // });
+
+  @override
+  void initState() {
+    context.read<ProfileEditBloc>().add(ProfileEditInitialize(token: widget.token));
+    super.initState();
+  }
   
   @override
   Widget build(BuildContext context) {
 
    SizeConfig().init(context);
 
-    return  Scaffold(
+    return BlocBuilder<ProfileEditBloc, ProfileEditState>(builder: (context, state) {
+      if (state is ProfileEditLoaded) {
+        return screenPageBody(state.profileModel);
+      }
+      if (state is ProfileEditFailure) {
+        return ErrorPage(errorMessage: state.error);
+      }
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    });
+  }
+
+  Widget screenPageBody(ProfileModel profile){
+  return  Scaffold(
       body: SafeArea(
         child: Column(
         key: Key('main_column_rules_edit_screen'),
@@ -39,7 +65,9 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
           Container(
             height: SizeConfig.screenHeight * .30,
             color: Colors.grey[100],
-            child: TopContainerEditProfileScreen(profile: profile),
+            child: TopContainerEditProfileScreen(
+              profile: profile
+            ),
           ),
           Flexible(
             child: Container(

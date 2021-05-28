@@ -101,11 +101,10 @@ class Router {
 
       case profileEditScreen:
         
-        final ProfileModel profile = settings.arguments;
-
+        final String token = settings.arguments;
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => ProfileEditScreen(profile: profile,));
+            pageBuilder: (context, _, __) => ProfileEditScreen(token: token,));
         break;
 
       case menuNavigator:

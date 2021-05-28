@@ -32,6 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (state is ProfileLoaded) {
         return AppBarProfileWidget(
             profile: state.profileModel,
+            token: widget.tokenUser,
             container: Column(children: [
               CardsInformationProfile(profile: state.profileModel),
               BoxMyEarningsWidget(profile: state.profileModel),

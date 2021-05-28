@@ -54,5 +54,9 @@ final LocationRepository locationRepository =
 
 final ProfileRepository profileRepository =
     ProfileRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final ProfileEditRepository profileEditRepository =
+  ProfileEditRepository(apiProvider: ApiProvider(httpClient: httpClient));
+    
 final ProfitPaymentRepository profitPaymentRepository =
     ProfitPaymentRepository(apiProvider: ApiProvider(httpClient: httpClient));
