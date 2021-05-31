@@ -11,6 +11,9 @@ class EmailAndPhoneFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
+
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
@@ -20,8 +23,7 @@ class EmailAndPhoneFields extends StatelessWidget {
               key: Key('maxCredit_textFields_rules_edit_screen'),
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
-                textFieldBloc:
-                    context.read<AppBloc>().profileEditFormBloc.email,
+                textFieldBloc: profileEditFormBloc.email,
                 keyboardType: TextInputType.emailAddress,
                 
                 style: TextStyle(fontSize: 12),
@@ -34,8 +36,7 @@ class EmailAndPhoneFields extends StatelessWidget {
               key: Key('maxDues_textFields_rules_edit_screen'),
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
-                textFieldBloc:
-                    context.read<AppBloc>().profileEditFormBloc.cellPhone,
+                textFieldBloc: profileEditFormBloc.cellPhone,
                 keyboardType: TextInputType.phone,
                 
                 style: TextStyle(

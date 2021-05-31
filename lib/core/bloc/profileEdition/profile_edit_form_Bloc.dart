@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -31,6 +32,17 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   // final birthDate = TextFieldBloc(validators: [FieldBlocValidators.required]);
   // final profession = TextFieldBloc(validators: [FieldBlocValidators.required]);
 
+  bool validateForm(){
+
+    final valid = FieldBlocValidators.email(email.value) == null
+    && FieldBlocValidators.required(email.value) == null
+    && FieldBlocValidators.required(cellPhone.value) == null
+    && FieldBlocValidators.required(firstname.value) == null
+    && FieldBlocValidators.required(lastName.value) == null;
+  
+    return valid;
+  }
+
   ProfileEditFormBloc({@required this.repository}) {
     addFieldBlocs(fieldBlocs: [
       firstname,
@@ -44,8 +56,29 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     ],);
   }
 
+  void getProfileData(ProfileModel profile){
+    
+    firstname.updateInitialValue(profile.firstname);
+    lastName.updateInitialValue(profile.lastname);
+    email.updateInitialValue(profile.email);
+    cellPhone.updateInitialValue(profile.phone);
+
+  }
+
   @override
   Future<bool> submit() async {
+
+
+    if(!validateForm()){
+      return false;
+    }
+
+
+
+    if(token.value.isEmpty){
+      print( 'invalid token, token is null' );
+      return false;
+    }
 
     _loadingController.sink.add(true);
 
@@ -56,11 +89,6 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
       email: email.value,
       gender: 'Gender.m'
     );
-
-    if(token.value.isEmpty){
-      print( 'invalid token, token is null' );
-      return false;
-    }
 
     try {
 

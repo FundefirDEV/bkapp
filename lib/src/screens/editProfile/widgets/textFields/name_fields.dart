@@ -11,6 +11,8 @@ class NamesFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
+
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
@@ -21,21 +23,21 @@ class NamesFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.read<AppBloc>().profileEditFormBloc.firstname,
+                    profileEditFormBloc.firstname,
                 keyboardType: TextInputType.text,
                 
                 style: TextStyle(fontSize: 12),
                 decoration: InputDecoration(
-                    labelText: "Firts name",
-                    labelStyle:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                  labelText: "Firts name",
+                  labelStyle:
+                  TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
               )),
           Container(
              // key: Key('incobrable_textFields_rules_edit_screen'),
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.read<AppBloc>().profileEditFormBloc.lastName,
+                    profileEditFormBloc.lastName,
                 keyboardType: TextInputType.text,
                
                 style: TextStyle(

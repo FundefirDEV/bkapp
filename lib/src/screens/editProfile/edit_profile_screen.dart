@@ -39,11 +39,15 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
 
    SizeConfig().init(context);
 
+   final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
+    
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(builder: (context, state) {
       if (state is ProfileEditLoaded) {
+
         return ProfileEditFormWidget(
           profile: state.profileModel , 
           token: widget.token,
+          profileEditFormBloc : profileEditFormBloc,
         );
       }
       if (state is ProfileEditFailure) {
@@ -59,15 +63,39 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
 class ProfileEditFormWidget extends StatefulWidget {
     final String token;
     final ProfileModel profile;
-    ProfileEditFormWidget({@required this.profile , @required this.token});
+    final ProfileEditFormBloc profileEditFormBloc;
+    ProfileEditFormWidget({@required this.profile , @required this.token , this.profileEditFormBloc});
 
   @override
-  _ProfileEditFormWidgetState createState() => _ProfileEditFormWidgetState();
+  _ProfileEditFormWidgetState createState() => _ProfileEditFormWidgetState(
+    token: token , 
+    profile: profile , 
+    profileEditFormBloc: profileEditFormBloc
+  );
 }
 
 class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
+
+  final String token;
+  final ProfileModel profile;
+  final ProfileEditFormBloc profileEditFormBloc;
+
+  _ProfileEditFormWidgetState({
+    @required this.profile , 
+    @required this.token , 
+    @required this.profileEditFormBloc}
+  );
+
+  @override
+  void initState() {
+
+   // profileEditFormBloc.getProfileData(profile);
+
+    super.initState();
+  }
     @override
     Widget build(BuildContext context) {
+      
       return Scaffold(
       body: SafeArea(
         child: Column(
@@ -126,7 +154,6 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
 
   Widget textError(){
 
-    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
     return StreamBuilder(
       stream: profileEditFormBloc.errorMessageStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -148,23 +175,18 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     BuildContext context,
     String token,){
 
-    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
     profileEditFormBloc.token.updateValue(token);
-
-    return StreamBuilder(
+      return StreamBuilder(
       stream: profileEditFormBloc.loadingStream,
-      builder: (BuildContext context , AsyncSnapshot snapshot) {
+      builder: (BuildContext context , AsyncSnapshot loadingsnapshot) {
         return Container(
           key: Key('container_update_button_rules_edit_screen'),
           height: SizeConfig.blockSizeVertical * 5,
           width: SizeConfig.blockSizeHorizontal * 45,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              color: Theme.of(context).colorScheme.primaryColor),
-          child: FlatButton(
+          child: ElevatedButton(
             key: Key('flatButton_rules_edit_screen'),
-            onPressed: () => sumit(context , profileEditFormBloc),
-            child: snapshot.data != null && snapshot.data ?
+            onPressed: () => sumit(context),
+            child: loadingsnapshot.data != null && loadingsnapshot.data ?
               Container(
                 height: 20,
                 width: 20,
@@ -182,7 +204,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     );
   }
 
-  void sumit(BuildContext context, ProfileEditFormBloc profileEditFormBloc) async{
+  void sumit(BuildContext context) async{
 
     final res = await profileEditFormBloc.submit();
 
