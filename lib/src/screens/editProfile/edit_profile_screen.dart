@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileEdition/profile_edit_form_Bloc.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
@@ -7,6 +8,7 @@ import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_f
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/gender_field.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/name_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit_profile_screen.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +81,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
               profile: widget.profile
             ),
           ),
+          textError(),
           Flexible(
             child: Container(
               key: Key('container_textFields_rules_edit_screen'),
@@ -121,6 +124,18 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     );
   }
 
+  Widget textError(){
+
+    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc; 
+
+    return Container(
+      child: Text( profileEditFormBloc.errorMessage.value,
+        style: TextStyle(
+          color: Colors.red, fontSize: 12, fontWeight: FontWeight.w400),
+      ),
+    );
+  }
+
   Widget updatedButton(
     BuildContext context,
     String token,){
@@ -137,12 +152,24 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
           color: Theme.of(context).colorScheme.primaryColor),
       child: FlatButton(
         key: Key('flatButton_rules_edit_screen'),
-        onPressed: () => profileEditFormBloc.submit(),
+        onPressed: () => sumit(context , profileEditFormBloc),
         child: Text(
           I18n.of(context).profileEditScreenUpdate,
           style: TextStyle(color: Colors.white, letterSpacing: 4),
         ),
       ),
     );
+  }
+
+  void sumit(BuildContext context, ProfileEditFormBloc profileEditFormBloc) async{
+
+    final res = await profileEditFormBloc.submit();
+
+    print(res);
+
+    if(res){
+      context.read<MenuNavigatorBloc>().add(ButtonPressed(
+        goTo: HomeRoutesConstant.profileScreen));
+    }
   }
 }

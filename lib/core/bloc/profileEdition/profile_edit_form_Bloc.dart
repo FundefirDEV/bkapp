@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'dart:async';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
-import 'bloc/profile_edit_Bloc.dart';
 
 class ProfileEditFormBloc extends FormBloc<String, String> {
 
   final token = TextFieldBloc();
   final ProfileEditRepository repository;
+
+  final errorMessage = TextFieldBloc(initialValue: 'error mensaje');
 
   final firstname = TextFieldBloc(validators: [FieldBlocValidators.required]);
   final lastName = TextFieldBloc(validators: [FieldBlocValidators.required]);
@@ -37,13 +38,8 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   }
 
   @override
-  void submit() async {
+  Future<bool> submit() async {
 
-    print('summiit!');
-    print(lastName.value);
-    print(cellPhone.value);
-    print(email.value);   
-    print(gender.value);
     final updatePeofile = UpdatePeofile(
       firstname: firstname.value,
       lastname: lastName.value,
@@ -53,46 +49,25 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     );
 
     if(token.value.isEmpty){
-      print( 'invalid token' );
-      return;
+      print( 'invalid token, token is null' );
+      return false;
     }
 
-    print( token.value );
-    
-    final res = await repository.updateProfile(updatePeofile , token.value);
-    print(res);
+    try {
 
-    super.submit();
+      await repository.updateProfile(updatePeofile , token.value);
+      return true;
+
+    } catch (e) {
+
+      print(e);
+        if(e.toString().contains('A user already owns that email or phone')){
+          errorMessage.updateValue('A user already owns that email or phone');
+      }
+      return false;
+    }
+    //super.submit();
   }
-
-  // void onsumit(BuildContext context) async {
-  //   print(firstname.value);
-  //   print(lastName.value);
-  //   print(cellPhone.value);
-  //   print(email.value);   
-  //   print(gender.value);
-
-  //   final updatePeofile = UpdatePeofile(
-  //     firstname: firstname.value,
-  //     lastname: lastName.value,
-  //     phone: cellPhone.value,
-  //     email: email.value,
-  //     gender: gender.value
-  //   );
-
-  //   try {
-      
-  //     final res = await profileRepository.updateProfile(updatePeofile);
-
-  //     print(res);
-
-  //     Navigator.pop(context);
-      
-  //   } catch (e) {
-      
-  //     print(e);
-  //   }
-  // }
 
   @override
   void onSubmitting() async {

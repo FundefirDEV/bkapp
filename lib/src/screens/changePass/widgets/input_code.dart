@@ -69,7 +69,7 @@ class _InputCodeState extends State<InputCode> {
                   child: PinCodeTextField(
                     key: Key('input-code-pin-code'),
                     length: 5,
-                    //textInputType: TextInputType.number,
+                    textInputType: TextInputType.number,
                     //obsecureText: true,
                     animationType: AnimationType.scale,
                     backgroundColor: Colors.transparent,
