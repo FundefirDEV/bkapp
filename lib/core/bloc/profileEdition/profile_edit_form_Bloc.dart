@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'dart:async';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
+import 'package:rxdart/rxdart.dart';
 
 class ProfileEditFormBloc extends FormBloc<String, String> {
 
   final token = TextFieldBloc();
   final ProfileEditRepository repository;
-
-  final errorMessage = TextFieldBloc(initialValue: 'error mensaje');
-
   final firstname = TextFieldBloc(validators: [FieldBlocValidators.required]);
   final lastName = TextFieldBloc(validators: [FieldBlocValidators.required]);
   final cellPhone = TextFieldBloc(validators: [FieldBlocValidators.required]);
@@ -19,6 +17,15 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     FieldBlocValidators.email
   ]);
   final gender = TextFieldBloc(validators: [FieldBlocValidators.required]);
+
+
+  final _errorMessageController  = BehaviorSubject<String>();
+  Stream<String> get errorMessageStream => _errorMessageController.stream;
+  String get errorMessage => _errorMessageController.value;
+
+  final _loadingController  = BehaviorSubject<bool>();
+  Stream<bool> get loadingStream => _loadingController.stream;
+  bool get loading => _loadingController.value;
 
   // final scholarship = TextFieldBloc(validators: [FieldBlocValidators.required]);
   // final birthDate = TextFieldBloc(validators: [FieldBlocValidators.required]);
@@ -40,12 +47,14 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   @override
   Future<bool> submit() async {
 
+    _loadingController.sink.add(true);
+
     final updatePeofile = UpdatePeofile(
       firstname: firstname.value,
       lastname: lastName.value,
       phone: cellPhone.value,
       email: email.value,
-      gender: gender.value
+      gender: 'Gender.m'
     );
 
     if(token.value.isEmpty){
@@ -56,17 +65,20 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     try {
 
       await repository.updateProfile(updatePeofile , token.value);
+      _loadingController.sink.add(false);
+      _errorMessageController.add('');
+
       return true;
 
     } catch (e) {
 
       print(e);
         if(e.toString().contains('A user already owns that email or phone')){
-          errorMessage.updateValue('A user already owns that email or phone');
+          _errorMessageController.sink.add('A user already owns that email or phone');
       }
+      _loadingController.sink.add(false);
       return false;
     }
-    //super.submit();
   }
 
   @override
@@ -85,6 +97,8 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     // scholarship.close();
     // birthDate.close();
     // profession.close();
+    _errorMessageController.close();
+    _loadingController.close();
     return super.close();
   }
 }

@@ -56,7 +56,6 @@ class _ProfileEditScreen extends State<ProfileEditScreen> {
   }
 }
 
-
 class ProfileEditFormWidget extends StatefulWidget {
     final String token;
     final ProfileModel profile;
@@ -101,16 +100,16 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
                           NamesFields(),
                         ],
                       ),
-                      Container(
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.blockSizeVertical * 3),
-                          child: Row(
-                            key: Key('row_middle_textFields_rules_edit_screen'),
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              GenderFields(), 
-                            ],
-                          )),
+                      // Container(
+                      //     margin: EdgeInsets.only(
+                      //         top: SizeConfig.blockSizeVertical * 3),
+                      //     child: Row(
+                      //       key: Key('row_middle_textFields_rules_edit_screen'),
+                      //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //       children: <Widget>[
+                      //         GenderFields(), 
+                      //       ],
+                      //     )),
                       SizedBox(height: SizeConfig.blockSizeVertical * 6),
                       updatedButton(context , widget.token),
                     ],
@@ -124,15 +123,24 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     );
   }
 
+
   Widget textError(){
 
-    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc; 
-
-    return Container(
-      child: Text( profileEditFormBloc.errorMessage.value,
-        style: TextStyle(
-          color: Colors.red, fontSize: 12, fontWeight: FontWeight.w400),
-      ),
+    final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
+    return StreamBuilder(
+      stream: profileEditFormBloc.errorMessageStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          color: Colors.grey[100],
+          height: 40,
+          child: Center(
+            child: Text( snapshot.data != null ? snapshot.data: '' ,
+              style: TextStyle(
+                color: Colors.red, fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+          ),
+        );
+      }
     );
   }
 
@@ -143,21 +151,34 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     final profileEditFormBloc = context.read<AppBloc>().profileEditFormBloc;
     profileEditFormBloc.token.updateValue(token);
 
-    return Container(
-      key: Key('container_update_button_rules_edit_screen'),
-      height: SizeConfig.blockSizeVertical * 5,
-      width: SizeConfig.blockSizeHorizontal * 45,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Theme.of(context).colorScheme.primaryColor),
-      child: FlatButton(
-        key: Key('flatButton_rules_edit_screen'),
-        onPressed: () => sumit(context , profileEditFormBloc),
-        child: Text(
-          I18n.of(context).profileEditScreenUpdate,
-          style: TextStyle(color: Colors.white, letterSpacing: 4),
-        ),
-      ),
+    return StreamBuilder(
+      stream: profileEditFormBloc.loadingStream,
+      builder: (BuildContext context , AsyncSnapshot snapshot) {
+        return Container(
+          key: Key('container_update_button_rules_edit_screen'),
+          height: SizeConfig.blockSizeVertical * 5,
+          width: SizeConfig.blockSizeHorizontal * 45,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              color: Theme.of(context).colorScheme.primaryColor),
+          child: FlatButton(
+            key: Key('flatButton_rules_edit_screen'),
+            onPressed: () => sumit(context , profileEditFormBloc),
+            child: snapshot.data != null && snapshot.data ?
+              Container(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ):
+              Text(
+              I18n.of(context).profileEditScreenUpdate,
+              style: TextStyle(color: Colors.white, letterSpacing: 4),
+            ),
+          ),
+        );
+      },
     );
   }
 
