@@ -21,7 +21,17 @@ class EmailAndPhoneFields extends StatelessWidget {
         children: <Widget>[
           Container(
               key: Key('maxCredit_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
+              width: SizeConfig.blockSizeHorizontal * 60,
+              margin: EdgeInsets.only(top: 20) ,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(1),
+                  )
+                ]),
               child: TextFieldBlocBuilder(
                 textFieldBloc: profileEditFormBloc.email,
                 keyboardType: TextInputType.emailAddress,
@@ -34,7 +44,17 @@ class EmailAndPhoneFields extends StatelessWidget {
               )),
           Container(
               key: Key('maxDues_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
+              width: SizeConfig.blockSizeHorizontal * 60,
+              margin: EdgeInsets.only(top: 20) ,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(1),
+                  )
+                ]),
               child: TextFieldBlocBuilder(
                 textFieldBloc: profileEditFormBloc.cellPhone,
                 keyboardType: TextInputType.phone,

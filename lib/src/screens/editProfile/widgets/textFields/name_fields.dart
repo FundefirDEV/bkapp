@@ -19,13 +19,20 @@ class NamesFields extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-              //key: Key('fund_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
+              width: SizeConfig.blockSizeHorizontal * 60,
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(1),
+                  )
+                ]),
               child: TextFieldBlocBuilder(
                 textFieldBloc:
                     profileEditFormBloc.firstname,
                 keyboardType: TextInputType.text,
-                
                 style: TextStyle(fontSize: 12),
                 decoration: InputDecoration(
                   labelText: "Firts name",
@@ -33,8 +40,17 @@ class NamesFields extends StatelessWidget {
                   TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
               )),
           Container(
-             // key: Key('incobrable_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
+              width: SizeConfig.blockSizeHorizontal * 60,
+              margin: EdgeInsets.only(top: 20) ,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(1),
+                  )
+                ]),
               child: TextFieldBlocBuilder(
                 textFieldBloc:
                     profileEditFormBloc.lastName,

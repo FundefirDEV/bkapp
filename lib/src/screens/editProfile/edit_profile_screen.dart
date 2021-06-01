@@ -83,13 +83,13 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
   _ProfileEditFormWidgetState({
     @required this.profile , 
     @required this.token , 
-    @required this.profileEditFormBloc}
-  );
+    @required this.profileEditFormBloc
+  });
 
   @override
   void initState() {
 
-   // profileEditFormBloc.getProfileData(profile);
+    profileEditFormBloc.getProfileData(profile);
 
     super.initState();
   }
@@ -103,7 +103,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
         children: <Widget>[
           Container(
             height: SizeConfig.screenHeight * .30,
-            color: Colors.grey[100],
+            //color: Colors.grey[100],
             child: TopContainerEditProfileScreen(
               profile: widget.profile
             ),
@@ -113,14 +113,14 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
             child: Container(
               key: Key('container_textFields_rules_edit_screen'),
               height: SizeConfig.screenHeight * .70,
-              color: Colors.grey[100],
+              //color: Colors.grey[100],
               child: Container(
                 child: SingleChildScrollView(
                   key: Key('scrollView_rules_edit_screen'),
                   child: Column(
                     key: Key('column_textFields_rules_edit_screen'),
                     children: <Widget>[
-                      Row(
+                      Column(
                         key: Key('row_textFields_rules_edit_screen'),
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
@@ -128,16 +128,6 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
                           NamesFields(),
                         ],
                       ),
-                      // Container(
-                      //     margin: EdgeInsets.only(
-                      //         top: SizeConfig.blockSizeVertical * 3),
-                      //     child: Row(
-                      //       key: Key('row_middle_textFields_rules_edit_screen'),
-                      //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //       children: <Widget>[
-                      //         GenderFields(), 
-                      //       ],
-                      //     )),
                       SizedBox(height: SizeConfig.blockSizeVertical * 6),
                       updatedButton(context , widget.token),
                     ],
@@ -158,7 +148,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
       stream: profileEditFormBloc.errorMessageStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-          color: Colors.grey[100],
+          color: Colors.grey[50],
           height: 40,
           child: Center(
             child: Text( snapshot.data != null ? snapshot.data: '' ,
@@ -180,6 +170,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
       stream: profileEditFormBloc.loadingStream,
       builder: (BuildContext context , AsyncSnapshot loadingsnapshot) {
         return Container(
+          margin: EdgeInsets.only(bottom: 20),
           key: Key('container_update_button_rules_edit_screen'),
           height: SizeConfig.blockSizeVertical * 5,
           width: SizeConfig.blockSizeHorizontal * 45,
