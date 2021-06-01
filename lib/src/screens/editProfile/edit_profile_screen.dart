@@ -128,7 +128,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
                           NamesFields(),
                         ],
                       ),
-                      SizedBox(height: SizeConfig.blockSizeVertical * 6),
+                      //SizedBox(height: SizeConfig.blockSizeVertical * 6),
                       updatedButton(context , widget.token),
                     ],
                   ),
@@ -170,7 +170,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
       stream: profileEditFormBloc.loadingStream,
       builder: (BuildContext context , AsyncSnapshot loadingsnapshot) {
         return Container(
-          margin: EdgeInsets.only(bottom: 20),
+          margin: EdgeInsets.symmetric(vertical: 15),
           key: Key('container_update_button_rules_edit_screen'),
           height: SizeConfig.blockSizeVertical * 5,
           width: SizeConfig.blockSizeHorizontal * 45,

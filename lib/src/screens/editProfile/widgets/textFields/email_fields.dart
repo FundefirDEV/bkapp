@@ -21,21 +21,22 @@ class EmailAndPhoneFields extends StatelessWidget {
         children: <Widget>[
           Container(
               key: Key('maxCredit_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 60,
-              margin: EdgeInsets.only(top: 20) ,
+              width: SizeConfig.blockSizeHorizontal * 80,
+              margin: EdgeInsets.symmetric(horizontal: 10),
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(1),
+                    color: Colors.grey.withOpacity(.5),
+                    blurRadius: 3,
+                    spreadRadius: 3,
                   )
                 ]),
               child: TextFieldBlocBuilder(
                 textFieldBloc: profileEditFormBloc.email,
                 keyboardType: TextInputType.emailAddress,
-                
                 style: TextStyle(fontSize: 12),
                 decoration: InputDecoration(
                     labelText: "Email",
@@ -44,15 +45,17 @@ class EmailAndPhoneFields extends StatelessWidget {
               )),
           Container(
               key: Key('maxDues_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 60,
-              margin: EdgeInsets.only(top: 20) ,
+              width: SizeConfig.blockSizeHorizontal * 80,
+              margin: EdgeInsets.symmetric(horizontal: 10 , vertical: 20),
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(1),
+                    color: Colors.grey.withOpacity(.5),
+                     blurRadius: 3,
+                    spreadRadius: 3,
                   )
                 ]),
               child: TextFieldBlocBuilder(
