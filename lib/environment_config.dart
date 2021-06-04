@@ -282,4 +282,11 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/updateProfile";
   }
+
+
+  static String changeRules({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/addRule";
+  }
 }

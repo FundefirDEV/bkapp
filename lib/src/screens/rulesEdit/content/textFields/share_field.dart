@@ -18,7 +18,7 @@ class ShareField extends StatelessWidget {
             width: SizeConfig.blockSizeHorizontal * 40,
             child: TextFieldBlocBuilder(
               textFieldBloc:
-                  context.read<AppBloc>().rulesEditFormBloc.sharesValue,
+                  context.read<AppBloc>().rulesEditFormBloc.shareValue,
               style: TextStyle(fontSize: 12),
               decoration: InputDecoration(
                   labelText: I18n.of(context).rulesScreenSharesValue,

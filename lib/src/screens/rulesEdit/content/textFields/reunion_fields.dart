@@ -17,40 +17,61 @@ class ReunionFields extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-              key: Key('week_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
-              child: TextFieldBlocBuilder(
-                textFieldBloc:
-                    context.read<AppBloc>().rulesEditFormBloc.reunionWeek,
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
-                ],
-                style: TextStyle(fontSize: 12),
-                decoration: InputDecoration(
-                    labelText: I18n.of(context).rulesScreenWeek + " " + I18n.of(context).rulesScreenReunion,
-                    labelStyle:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
-              )),
-          Container(
-              key: Key('day_textFields_rules_edit_screen'),
-              width: SizeConfig.blockSizeHorizontal * 40,
-              child: TextFieldBlocBuilder(
-                textFieldBloc:
-                    context.read<AppBloc>().rulesEditFormBloc.reunionDay,
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
-                ],
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                ),
-                decoration: InputDecoration(
-                    labelText: I18n.of(context).rulesScreenDay + " " + I18n.of(context).rulesScreenReunion,
-                    labelStyle:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
-              ))
+            key: Key('week_textFields_rules_edit_screen'),
+            width: SizeConfig.blockSizeHorizontal * 40,
+            child: TextFieldBlocBuilder(
+              textFieldBloc:
+                  context.read<AppBloc>().rulesEditFormBloc.maxActiveCreditsByPartner,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                WhitelistingTextInputFormatter.digitsOnly
+              ],
+              style: TextStyle(fontSize: 12),
+              decoration: InputDecoration(
+                  labelText: I18n.of(context).rulesScreenWeek + " " + I18n.of(context).rulesScreenReunion,
+                  labelStyle:
+                      TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+            )),
+        Container(
+            key: Key('day_textFields_rules_edit_screen'),
+            width: SizeConfig.blockSizeHorizontal * 40,
+            child: TextFieldBlocBuilder(
+              textFieldBloc:
+                  context.read<AppBloc>().rulesEditFormBloc.maxCreditFactor,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                WhitelistingTextInputFormatter.digitsOnly
+              ],
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+              decoration: InputDecoration(
+                  labelText: I18n.of(context).rulesScreenDay + " " + I18n.of(context).rulesScreenReunion,
+                  labelStyle:
+                      TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+            )),
+
+        Container(
+            key: Key('day_textFields_rules_edit_screen'),
+            width: SizeConfig.blockSizeHorizontal * 40,
+            child: TextFieldBlocBuilder(
+              textFieldBloc:
+                  context.read<AppBloc>().rulesEditFormBloc.defaultInstallmentsPeriodDays,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                WhitelistingTextInputFormatter.digitsOnly
+              ],
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+              decoration: InputDecoration(
+                  labelText: I18n.of(context).rulesScreenDay + " " + I18n.of(context).rulesScreenReunion,
+                  labelStyle:
+                      TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+            )
+          )
         ],
       ),
     );

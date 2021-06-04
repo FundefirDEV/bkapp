@@ -1,60 +1,95 @@
+import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RulesEditFormBloc extends FormBloc<String, String> {
-  final maxCreditAmount =
+
+  final token = TextFieldBloc();
+  final BankRulesRepository repository;
+
+  final ordinaryInterestPercentage =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final maxDues = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final ordinaryInterest =
+  final defaultRatePercentage = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final creditMaxInstallments =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final defaultInterest =
+  final creditMaxValue =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final typePayment = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final sharesValue = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final spendingReserve =
+  final shareValue = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final expenseFundPercentage = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final badDebtReservePercentage =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final incobrableFund =
+  final maxPercentageShareByPartner =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final reunionWeek = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  final reunionDay =
+  final maxActiveCreditsByPartner = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final maxCreditFactor =
+      TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final defaultInstallmentsPeriodDays =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
 
-  RulesEditFormBloc() {
+  RulesEditFormBloc({@required this.repository}) {
+    
     addFieldBlocs(fieldBlocs: [
-      maxCreditAmount,
-      maxDues,
-      ordinaryInterest,
-      defaultInterest,
-      typePayment,
-      sharesValue,
-      spendingReserve,
-      incobrableFund,
-      reunionWeek,
-      reunionDay
+      ordinaryInterestPercentage,
+      defaultRatePercentage,
+      creditMaxInstallments,
+      creditMaxValue,
+      shareValue,
+      expenseFundPercentage,
+      badDebtReservePercentage,
+      maxPercentageShareByPartner,
+      maxActiveCreditsByPartner,
+      maxCreditFactor,
+      defaultInstallmentsPeriodDays
     ]);
   }
 
-  @override
-  void onSubmitting() async {
-    print(maxCreditAmount.value);
-    print(maxDues.value);
+  Future<bool> sumit() async {
 
-    await Future<void>.delayed(Duration(seconds: 1));
+    try {
+      final bankRules = AddBankRules(
+        ordinaryInterestPercentage: ordinaryInterestPercentage.valueToDouble, 
+        defaultRatePercentage: defaultRatePercentage.valueToDouble, 
+        creditMaxInstallments: creditMaxInstallments.valueToInt, 
+        creditMaxValue: creditMaxValue.valueToDouble, 
+        shareValue: shareValue.valueToDouble, 
+        expenseFundPercentage: expenseFundPercentage.valueToDouble, 
+        badDebtReservePercentage: badDebtReservePercentage.valueToDouble, 
+        maxPercentageShareByPartner: maxPercentageShareByPartner.valueToDouble, 
+        maxActiveCreditsByPartner: maxActiveCreditsByPartner.valueToInt, 
+        maxCreditFactor: maxCreditFactor.valueToInt, 
+        defaultInstallmentsPeriodDays: defaultInstallmentsPeriodDays.valueToInt,
+      );
+      print(bankRules.toJson());
 
-    emitSuccess();
+      await repository.changeRules(bankRules, token.value);
+
+      return true;
+
+    } catch (e) {
+
+      return false;
+    }
   }
 
   Future<void> close() {
-    maxCreditAmount.close();
-    maxDues.close();
-    ordinaryInterest.close();
-    defaultInterest.close();
-    typePayment.close();
-    sharesValue.close();
-    spendingReserve.close();
-    incobrableFund.close();
-    reunionWeek.close();
-    reunionDay.close();
+      ordinaryInterestPercentage.close();
+      defaultRatePercentage.close();
+      creditMaxInstallments.close();
+      creditMaxValue.close();
+      shareValue.close();
+      expenseFundPercentage.close();
+      badDebtReservePercentage.close();
+      maxPercentageShareByPartner.close();
+      maxActiveCreditsByPartner.close();
+      maxCreditFactor.close();
+      defaultInstallmentsPeriodDays.close();
 
     return super.close();
+  }
+
+  @override
+  void onSubmitting() {
+    // TODO: implement onSubmitting
   }
 }

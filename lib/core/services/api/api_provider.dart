@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:bkapp_flutter/environment_config.dart';
@@ -271,6 +272,17 @@ class ApiProvider {
     final endPoint = ApiEndpoints.updateProfile();
       return await _httpRequest.post(
         httpClient: httpClient, url: endPoint, body: updateProfile.toJson() , 
+        token: token
+    );
+  }
+
+  changeRules(
+    {@required AddBankRules bankRules , @required token
+    }) async {
+
+    final endPoint = ApiEndpoints.changeRules();
+      return await _httpRequest.post(
+        httpClient: httpClient, url: endPoint, body: bankRules.toJson() , 
         token: token
     );
   }

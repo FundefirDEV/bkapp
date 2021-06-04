@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/rules/content/top_container_content_rules_screen.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,7 +21,7 @@ class TopContainerEditRulesScreen extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       key: Key('top_container_rules_edit_Screen'),
-      height: SizeConfig.safeBlockVertical * 41,
+      height: SizeConfig.safeBlockVertical * 38,
       width: SizeConfig.safeBlockHorizontal * 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
