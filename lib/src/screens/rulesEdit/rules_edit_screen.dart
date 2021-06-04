@@ -6,7 +6,6 @@ import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'content/top_container_edit_rules_screen.dart';
 
 class RulesEditScreen extends StatefulWidget {
@@ -24,11 +23,18 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
 
   final token;
 
+  @override
+  void initState() {
+    
+    context.read<AppBloc>().rulesEditFormBloc.initValues();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
+
     final navigateBloc = context.read<MenuNavigatorBloc>();
+    final rulesEditFormBloc = context.read<AppBloc>().rulesEditFormBloc;
 
     SizeConfig().init(context);
     return Scaffold(
@@ -55,11 +61,11 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.ordinaryInterestPercentage,
+                            textFieldBloc: rulesEditFormBloc.ordinaryInterestPercentage,
                             title: 'Ordinary interest percentage',
                             textInputType: TextInputType.number),
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.defaultRatePercentage,
+                            textFieldBloc: rulesEditFormBloc.defaultRatePercentage,
                             title: 'defaultRatePercentage',
                             textInputType: TextInputType.number)
                         ],
@@ -68,11 +74,11 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                         ChangeRulesTextFieldWidget(
-                          textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.creditMaxInstallments,
+                          textFieldBloc: rulesEditFormBloc.creditMaxInstallments,
                           title: 'creditMaxInstallments',
                           textInputType: TextInputType.number),
                         ChangeRulesTextFieldWidget(
-                          textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.creditMaxValue,
+                          textFieldBloc: rulesEditFormBloc.creditMaxValue,
                           title: 'creditMaxValue',
                           textInputType: TextInputType.number)
                         ],
@@ -81,11 +87,11 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.shareValue,
+                            textFieldBloc: rulesEditFormBloc.shareValue,
                             title: 'shareValue',
                             textInputType: TextInputType.number),
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.expenseFundPercentage,
+                            textFieldBloc: rulesEditFormBloc.expenseFundPercentage,
                             title: 'expenseFundPercentage',
                             textInputType: TextInputType.number)
                         ],
@@ -94,11 +100,11 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.badDebtReservePercentage,
+                            textFieldBloc: rulesEditFormBloc.badDebtReservePercentage,
                             title: 'badDebtReservePercentage',
                             textInputType: TextInputType.number),
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.maxPercentageShareByPartner,
+                            textFieldBloc: rulesEditFormBloc.maxPercentageShareByPartner,
                             title: 'maxPercentageShareByPartner',
                             textInputType: TextInputType.number)
                         ],
@@ -108,11 +114,11 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.maxActiveCreditsByPartner,
+                            textFieldBloc: rulesEditFormBloc.maxActiveCreditsByPartner,
                             title: 'maxActiveCreditsByPartner',
                             textInputType: TextInputType.number),
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.maxCreditFactor,
+                            textFieldBloc: rulesEditFormBloc.maxCreditFactor,
                             title: 'maxCreditFactor',
                             textInputType: TextInputType.number)
                         ],
@@ -121,7 +127,7 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ChangeRulesTextFieldWidget(
-                            textFieldBloc: context.read<AppBloc>().rulesEditFormBloc.defaultInstallmentsPeriodDays,
+                            textFieldBloc: rulesEditFormBloc.defaultInstallmentsPeriodDays,
                             title: 'defaultInstallmentsPeriodDays',
                             textInputType: TextInputType.number),
                         ],
@@ -147,19 +153,35 @@ class UpdateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: SizeConfig.blockSizeVertical * 5,
-      width: SizeConfig.blockSizeHorizontal * 45,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Theme.of(context).colorScheme.primaryColor),
-      child: FlatButton(
-        onPressed: ()=> _summit(context , token),
-        child: Text(
-          I18n.of(context).profileEditScreenUpdate,
-          style: TextStyle(color: Colors.white, letterSpacing: 4),
-        ),
-      ),
+
+    final rulesEditFormBloc = context.read<AppBloc>().rulesEditFormBloc;
+
+    return StreamBuilder(stream: rulesEditFormBloc.loadingStream,
+      builder:(BuildContext context , AsyncSnapshot loadingsnapshot) {
+        return Container(
+          margin: EdgeInsets.only(bottom: 10),
+          height: SizeConfig.blockSizeVertical * 5,
+          width: SizeConfig.blockSizeHorizontal * 45,
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.all(Radius.circular(30)),
+          //   color: Theme.of(context).colorScheme.primaryColor),
+          child: ElevatedButton(
+            onPressed: loadingsnapshot.data != null && loadingsnapshot.data ? 
+            null : () => _summit(context , token),
+            child: loadingsnapshot.data != null && loadingsnapshot.data ?
+              Container(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ): Text(
+              I18n.of(context).profileEditScreenUpdate,
+              style: TextStyle(color: Colors.white, letterSpacing: 4),
+            ),
+          ),
+        );
+      }
     );
   }
 
@@ -171,7 +193,6 @@ class UpdateButton extends StatelessWidget {
     final res = await rulesEditFormBloc.sumit();
     if(res){
 
-      print('go to rules');
       context.read<MenuNavigatorBloc>().add(ButtonPressed(
         goTo: HomeRoutesConstant.rulesScreen));
     }

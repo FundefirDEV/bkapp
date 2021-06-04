@@ -2,6 +2,7 @@ import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 
 class RulesEditFormBloc extends FormBloc<String, String> {
 
@@ -27,6 +28,10 @@ class RulesEditFormBloc extends FormBloc<String, String> {
   final defaultInstallmentsPeriodDays =
       TextFieldBloc(validators: [FieldBlocValidators.required]);
 
+  final _loadingController  = BehaviorSubject<bool>();
+    Stream<bool> get loadingStream => _loadingController.stream;
+    bool get loading => _loadingController.value;
+
   RulesEditFormBloc({@required this.repository}) {
     
     addFieldBlocs(fieldBlocs: [
@@ -44,7 +49,14 @@ class RulesEditFormBloc extends FormBloc<String, String> {
     ]);
   }
 
+  void initValues(){
+    
+    _loadingController.sink.add(true);
+  }
+
   Future<bool> sumit() async {
+
+     _loadingController.sink.add(true);
 
     try {
       final bankRules = AddBankRules(
@@ -63,10 +75,13 @@ class RulesEditFormBloc extends FormBloc<String, String> {
       print(bankRules.toJson());
 
       await repository.changeRules(bankRules, token.value);
+      
+      _loadingController.sink.add(false);
 
       return true;
 
     } catch (e) {
+      _loadingController.sink.add(false);
 
       return false;
     }
@@ -84,6 +99,7 @@ class RulesEditFormBloc extends FormBloc<String, String> {
       maxActiveCreditsByPartner.close();
       maxCreditFactor.close();
       defaultInstallmentsPeriodDays.close();
+      _loadingController.close();
 
     return super.close();
   }
