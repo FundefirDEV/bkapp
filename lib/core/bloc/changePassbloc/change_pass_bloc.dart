@@ -120,9 +120,17 @@ class DialogChangePassBloc extends ChangeNotifier with Validators {
   Function(bool) get changeLoading => _loadingController.sink.add;
 
 
-  void badRequestErrorPassword(){
-    _phoneController.sink.addError('Invalid credencial');
-    _emailController.sink.addError('Invalid credencial');
+  void badRequestErrorPassword(String error){
+
+    if(error.toUpperCase().contains('PHONE')){
+      _phoneController.sink.addError('invalid Phone');
+
+    } else if(error.toUpperCase().contains('EMAIL')){
+      _emailController.sink.addError('invalid Email');
+
+    } else {
+      _emailController.sink.addError('User not found');
+    }
   } 
 
   dispose(){
@@ -153,7 +161,7 @@ class DialogChangePassBloc extends ChangeNotifier with Validators {
 
 
     } catch (e) {
-      badRequestErrorPassword();
+      badRequestErrorPassword(e.toString());
       print(e);
       changeLoading(false);
       return false;
