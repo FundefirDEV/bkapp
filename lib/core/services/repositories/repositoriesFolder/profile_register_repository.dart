@@ -26,4 +26,14 @@ class ProfileRegisterRepository {
     final res = await apiProvider.validateMailAndPhone(email: email, phone: phone);
     return res;
   }
+
+  validateMail(String email) async {
+    final res = await apiProvider.validateMail(email: email);
+    return res;
+  }
+
+  validatePhone(String phone) async {
+    final res = await apiProvider.validatePhone(phone: phone);
+    return res;
+  }
 }

@@ -299,4 +299,16 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/verify-email-and-phone";
   }
+
+  static String validateMail({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-email";
+  }
+
+  static String validatePhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-phone";
+  }
 }

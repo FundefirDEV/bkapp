@@ -256,6 +256,22 @@ class ApiProvider {
     });
   }
 
+  validateMail(
+    {@required String email}) async {
+
+    final endPoint = ApiEndpoints.validateMail();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint, param: email);
+  }
+
+  validatePhone(
+    {@required String phone}) async {
+
+    final endPoint = ApiEndpoints.validatePhone();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint, param: phone);
+  }
+
   Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
       @required String code, 
       @required String email, 

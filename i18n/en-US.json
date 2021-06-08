@@ -44,7 +44,7 @@
     "differentPasswords": "Passwords do not match"
   },
   "loginScreen": {
-    "forgetPassword": "Forgot ",
+    "textOne": "Forgot ",
     "textTwo": "password ?"
   },
   "introScreen": {

@@ -75,7 +75,7 @@ class _RegistePhoneFormListenerWidgetState
   void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) async {
     // validate mail and phone
 
-    final validateRes = await registerBloc.validateMailAndPhone(context);
+    final validateRes = await registerBloc.validatePhone(context);
 
     if(validateRes){
       showModalBottomSheet(

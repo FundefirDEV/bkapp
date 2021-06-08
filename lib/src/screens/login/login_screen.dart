@@ -171,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: ()=> showForgetPasswordAlert(context),
           child: RichText(
             text: TextSpan(
-              text: I18n.of(context).loginScreenForgetPassword,
+              text: I18n.of(context).loginScreenTextOne,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: SizeConfig.safeBlockHorizontal * 5.5,

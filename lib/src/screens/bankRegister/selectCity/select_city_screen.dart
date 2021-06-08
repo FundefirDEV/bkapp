@@ -26,6 +26,12 @@ class _SelectCityState extends State<SelectCityScreen>
     final token = context.read<AppBloc>().bankRegisterBloc.token.value;
     final countryCode =
         context.read<AppBloc>().profileRegisterBloc.phoneBloc.countryCode.value;
+
+    print('*************************************************');
+    print('TOKEN: $token');
+    print('COUNTRY CODE: $countryCode');
+    print('*************************************************');
+
     bloc.getLocation(token, countryCode);
     super.initState();
     _controller = AnimationController(
@@ -59,7 +65,7 @@ class _SelectCityState extends State<SelectCityScreen>
                 flex: 2,
                 child: SelectCityStateWidget(),
               ),
-              Container(child: FooterSelectCityWidget())
+              Container(child: FooterSelectCityWidget()),
             ],
           ),
         ),

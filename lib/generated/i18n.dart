@@ -101,7 +101,7 @@ class I18n implements WidgetsLocalizations {
   /// "Passwords do not match"
   String get errorDifferentPasswords => "Passwords do not match";
   /// "Forgot "
-  String get loginScreenForgetPassword => "Forgot ";
+  String get loginScreenTextOne => "Forgot ";
   /// "password ?"
   String get loginScreenTextTwo => "password ?";
   /// "Start being in control of your financial life"
@@ -904,6 +904,9 @@ class _I18n_es_ES extends I18n {
   /// "Las contraseñas no coinciden"
   @override
   String get errorDifferentPasswords => "Las contraseñas no coinciden";
+  /// "¿ Has olvidado "
+  @override
+  String get loginScreenTextOne => "¿ Has olvidado ";
   /// "tu contraseña ?"
   @override
   String get loginScreenTextTwo => "tu contraseña ?";

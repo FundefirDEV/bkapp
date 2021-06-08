@@ -103,39 +103,50 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   }
 
 
-  void addTextFieldErrors(String e , BuildContext context){
-
-    if(e.toUpperCase().contains('PHONE')){
-
-      emailBloc.email.addFieldError(I18n.of(context).requestErrorMailNotAviable);
-      Navigator.pop(context);
-
-    } else if(e.toUpperCase().contains('EMAIL')) {
-      phoneBloc.phone.addFieldError(I18n.of(context).requestErrorPhoneNotAviable);
-    }
+  void addErrorPhoneTextField(BuildContext context){
+    phoneBloc.phone.addFieldError(I18n.of(context).requestErrorPhoneNotAviable);
   }
 
-  Future<bool> validateMailAndPhone(BuildContext context) async {
+  void addErrorEmailTextFiel(BuildContext context){
 
-    final email = _emailBloc.email.value;
-    final phone = _phoneBloc.phone.value;
-    print('EMAIL: $email');
+    emailBloc.email.addFieldError(I18n.of(context).requestErrorMailNotAviable);
+    //Navigator.pop(context);
+  }
+
+  Future<bool> validatePhone(BuildContext context) async {
+
+    final phone = _phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), '');
     print('PHONE: $phone');
 
     try {
 
-      await repository.validateMailAndPhone(email, phone);
-
-      return false;
+      await repository.validatePhone(phone);
+      return true;
 
     } catch (e) {
-        print(e);
-        if(e.toString().toUpperCase().contains('USER')){
-          return true;
-      } else  {
-        addTextFieldErrors(e.toString() , context);
-        return false;
-      }
+      
+      print(e);
+
+      addErrorPhoneTextField(context);
+      return false;
+    }
+  }
+
+
+  Future<bool> validateMail(BuildContext context) async {
+
+    final email = _emailBloc.email.value;
+    print('EMAIL: $email');
+
+    try {
+
+      await repository.validateMail(email);
+      return true;
+
+    } catch (e) {
+      print(e.toString());
+      addErrorEmailTextFiel(context);
+      return false;
     }
   }
 
