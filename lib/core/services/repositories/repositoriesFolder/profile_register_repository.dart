@@ -21,4 +21,9 @@ class ProfileRegisterRepository {
         await apiProvider.postNewBank(city, nameBank, partner, token);
     return informationBkHome;
   }
+
+  Future<Map<String, dynamic>> validateMailAndPhone(String email, String phone) async {
+    final res = await apiProvider.validateMailAndPhone(email: email, phone: phone);
+    return res;
+  }
 }

@@ -61,8 +61,8 @@ class Validators {
         sink.add(email);
 
       } else {
-
-        sink.addError('Plis enter a valid email');
+        
+        sink.addError('Please enter a valid email');
       }
     }
   );

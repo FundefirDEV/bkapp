@@ -245,6 +245,17 @@ class ApiProvider {
     });
   }
 
+  Future<Map<String, dynamic>> validateMailAndPhone(
+    {@required String email, @required String phone}) async {
+
+    final endPoint = ApiEndpoints.validateMailAndPhone();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "phone": phone,
+      "email": email
+    });
+  }
+
   Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
       @required String code, 
       @required String email, 

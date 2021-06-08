@@ -3,7 +3,7 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "http://192.168.0.19:8888");
+      defaultValue: "https://bk-service-qa-2foxvegkzq-uc.a.run.app");
 
   //services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
@@ -292,5 +292,11 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
     return "$baseUrl/v3/addRule";
+  }
+
+  static String validateMailAndPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-email-and-phone";
   }
 }

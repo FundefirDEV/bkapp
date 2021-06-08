@@ -20,7 +20,11 @@
   },
   "requestError": {
     "default": "¡Ha habido un problema!, intenta de nuevo",
-    "userNotAvailable": "El usuario ya esta en otro bkgrupo"
+    "userNotAvailable": "El usuario ya esta en otro bkgrupo",
+    "mailNotAviable": "Este email ya está siendo utilizado",
+    "phoneNotAviable": "Este phone ya está siendo utilizado",
+    "mailSendInvalid": "correo electrónico inválido",
+    "phoneSendInvalid": "número de teléfono inválido"
   },
   "form": {
     "user": "Usuario",

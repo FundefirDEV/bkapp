@@ -138,11 +138,11 @@ class Router {
             pageBuilder: (context, _, __) => RulesEditScreen());
         break;
 
-        case changePasswordScreen:
-        return PageRouteBuilder(
-            transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => ChangePassPage());
-        break;
+        // case changePasswordScreen:
+        // return PageRouteBuilder(
+        //     transitionDuration: Duration(microseconds: 350),
+        //     pageBuilder: (context, _, __) => ChangePassPage());
+        // break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(

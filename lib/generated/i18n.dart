@@ -66,6 +66,14 @@ class I18n implements WidgetsLocalizations {
   String get requestErrorDefault => "There has been an error!, try again";
   /// "The user is not available"
   String get requestErrorUserNotAvailable => "The user is not available";
+  /// "this email is not available"
+  String get requestErrorMailNotAviable => "this email is not available";
+  /// "this phone is not available"
+  String get requestErrorPhoneNotAviable => "this phone is not available";
+  /// "Invalid Email"
+  String get requestErrorMailSendInvalid => "Invalid Email";
+  /// "Invalid phone number"
+  String get requestErrorPhoneSendInvalid => "Invalid phone number";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -845,6 +853,18 @@ class _I18n_es_ES extends I18n {
   /// "El usuario ya esta en otro bkgrupo"
   @override
   String get requestErrorUserNotAvailable => "El usuario ya esta en otro bkgrupo";
+  /// "Este email ya está siendo utilizado"
+  @override
+  String get requestErrorMailNotAviable => "Este email ya está siendo utilizado";
+  /// "Este phone ya está siendo utilizado"
+  @override
+  String get requestErrorPhoneNotAviable => "Este phone ya está siendo utilizado";
+  /// "correo electrónico inválido"
+  @override
+  String get requestErrorMailSendInvalid => "correo electrónico inválido";
+  /// "número de teléfono inválido"
+  @override
+  String get requestErrorPhoneSendInvalid => "número de teléfono inválido";
   /// "Usuario"
   @override
   String get formUser => "Usuario";

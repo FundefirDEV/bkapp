@@ -72,8 +72,13 @@ class _RegistePhoneFormListenerWidgetState
             RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
   }
 
-  void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) {
-    showModalBottomSheet(
+  void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) async {
+    // validate mail and phone
+
+    final validateRes = await registerBloc.validateMailAndPhone(context);
+
+    if(validateRes){
+      showModalBottomSheet(
         backgroundColor: Colors.transparent,
         context: context,
         isDismissible: false,
@@ -93,6 +98,10 @@ class _RegistePhoneFormListenerWidgetState
                 nextWidgetTap(registerBloc);
               });
         });
+    }
+
+    // show modal success
+   
   }
 
   _isValidating(String phoneBloc) {

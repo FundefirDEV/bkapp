@@ -51,7 +51,7 @@ class RulesEditFormBloc extends FormBloc<String, String> {
 
   void initValues(){
     
-    _loadingController.sink.add(true);
+    _loadingController.sink.add(false);
   }
 
   Future<bool> sumit() async {

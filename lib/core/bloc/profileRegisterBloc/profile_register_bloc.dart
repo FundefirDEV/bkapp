@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_gender_bloc.
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/errorHandler/constans_error.dart';
 import 'package:bkapp_flutter/src/utils/utils_tools.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +102,44 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
     }
   }
 
+
+  void addTextFieldErrors(String e , BuildContext context){
+
+    if(e.toUpperCase().contains('PHONE')){
+
+      emailBloc.email.addFieldError(I18n.of(context).requestErrorMailNotAviable);
+      Navigator.pop(context);
+
+    } else if(e.toUpperCase().contains('EMAIL')) {
+      phoneBloc.phone.addFieldError(I18n.of(context).requestErrorPhoneNotAviable);
+    }
+  }
+
+  Future<bool> validateMailAndPhone(BuildContext context) async {
+
+    final email = _emailBloc.email.value;
+    final phone = _phoneBloc.phone.value;
+    print('EMAIL: $email');
+    print('PHONE: $phone');
+
+    try {
+
+      await repository.validateMailAndPhone(email, phone);
+
+      return false;
+
+    } catch (e) {
+        print(e);
+        if(e.toString().toUpperCase().contains('USER')){
+          return true;
+      } else  {
+        addTextFieldErrors(e.toString() , context);
+        return false;
+      }
+    }
+  }
+
+
   @override
   void onSubmitting() async {}
 
@@ -110,6 +149,7 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
     return super.close();
   }
 }
+
 
 class RegisterUserModel {
   RegisterUserModel({this.token, this.isInvited});

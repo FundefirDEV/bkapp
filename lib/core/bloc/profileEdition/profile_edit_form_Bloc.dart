@@ -65,6 +65,16 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
 
   }
 
+  void attachError(String error){
+    if(error.toUpperCase().contains('EMAIL')){
+        _errorMessageController.sink.add('A email already used');
+    } else if(error.toUpperCase().contains('PHONE')){
+        _errorMessageController.sink.add('A phone already used');
+    } else {
+      _errorMessageController.sink.add('the user could not be updated');
+    }
+  }
+
   @override
   Future<bool> submit() async {
 
@@ -72,8 +82,6 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     if(!validateForm()){
       return false;
     }
-
-
 
     if(token.value.isEmpty){
       print( 'invalid token, token is null' );
@@ -101,9 +109,8 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     } catch (e) {
 
       print(e);
-        if(e.toString().contains('A user already owns that email or phone')){
-          _errorMessageController.sink.add('A user already owns that email or phone');
-      }
+      attachError(e.toString());
+     
       _loadingController.sink.add(false);
       return false;
     }
