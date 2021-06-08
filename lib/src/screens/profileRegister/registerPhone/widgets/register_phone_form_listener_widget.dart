@@ -116,7 +116,16 @@ class _RegistePhoneFormListenerWidgetState
     setState(() {
       country = data;
     });
-    bloc.countryCode.updateValue(data.iso);
+    
+    print('*************************************************');
+    print('COUNTRY CODE: ${data.iso}');
+    print('*************************************************');
+
+    if(data.iso != null){
+      bloc.countryCode.updateValue(data.iso);
+      bloc.countryCode.updateInitialValue(data.iso);
+    }
+
     bloc.countryCode.value;
   }
 
