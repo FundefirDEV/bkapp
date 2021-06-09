@@ -33,7 +33,7 @@ void main() {
       'test when the button is unpressed',
       build: () => menuBloc,
       act: (bloc) => bloc.add(ButtonUnpressed()),
-      expect: [MenuNavigatorInitial()]
+      expect: ()=> [MenuNavigatorInitial()]
     );
 
     blocTest<MenuNavigatorBloc, MenuNavigatorState>(
@@ -42,7 +42,7 @@ void main() {
         controller: PageController(initialPage: 0)
       ),
       act: (bloc) => bloc.add(ButtonPressed(goTo: 4)),
-      expect: [
+      expect: ()=> [
         MenuNavigatorLoading(),
         MenuNavigatorLoaded()
       ]

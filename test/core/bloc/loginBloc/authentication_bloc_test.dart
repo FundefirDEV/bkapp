@@ -53,14 +53,14 @@ void main() {
         bloc.add(AppStarted());
         await Future.delayed(Duration(milliseconds: 10));
       },
-      expect: [AuthenticationUnauthenticated()],
+      expect: () => [AuthenticationUnauthenticated()],
     );
 
     blocTest<AuthenticationBloc, AuthenticationState>(
       'Test when the user is authenticated',
       build: () => AuthenticationBloc(loginRepository: loginRepository),
       act: (bloc) => bloc.add(LoggedIn(tokenInformation: token)),
-      expect: [
+      expect: () => [
         AuthenticationLoading(),
         AuthenticationAuthenticated(
             token: token['access_token'],
@@ -72,7 +72,7 @@ void main() {
       'Test when the user loggedOut from the app',
       build: () => AuthenticationBloc(loginRepository: loginRepository),
       act: (bloc) => bloc.add(LoggedOut()),
-      expect: [AuthenticationLoading()],
+      expect:  () => [AuthenticationLoading()],
     );
   });
 }

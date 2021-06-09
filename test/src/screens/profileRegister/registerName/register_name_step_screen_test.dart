@@ -11,8 +11,8 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterName extends MockBloc<form_bloc.FormBlocState<String, String>>
-    implements ProfileNameBloc {}
+// class MockRegisterName extends MockBloc<form_bloc.FormBlocState<String, String>>
+//     implements ProfileNameBloc {}
 
 void main() {
   // ProfileNameBloc mockRegisterName;

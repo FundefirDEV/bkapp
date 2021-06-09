@@ -7,17 +7,18 @@ class EnvironmentConfig {
 
   //services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
-  //   Services local 
+  // services stage
+  // https://bk-service-stage-2foxvegkzq-uc.a.run.app
+  // Services local 
   // http://192.168.0.19:8888
 
   //"https://bkservice.fundefir-dev.com"
   // https://bkservicestage.fundefir-dev.com
   // https://bkservice.fundefir-dev.com
-
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
-  static const String ENV = String.fromEnvironment('ENV', defaultValue: "DEV");
+  static const String ENV = String.fromEnvironment('STAGE', defaultValue: "STAGE");
 
   ///
   /// DSN for sentry

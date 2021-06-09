@@ -10,9 +10,9 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterEmail
-    extends MockBloc<form_bloc.FormBlocState<String, String>>
-    implements ProfileEmailBloc {}
+// class MockRegisterEmail
+//     extends MockBloc<form_bloc.FormBlocState<String, String>>
+//     implements ProfileEmailBloc {}
 
 void main() {
   // ProfileEmailBloc mockRegisterEmail;

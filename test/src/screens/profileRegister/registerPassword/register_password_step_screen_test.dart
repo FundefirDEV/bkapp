@@ -10,9 +10,9 @@ import 'package:form_bloc/form_bloc.dart' as form_bloc;
 
 import '../../../../base_tester.dart';
 
-class MockRegisterPassword
-    extends MockBloc<form_bloc.FormBlocState<String, String>>
-    implements ProfileRegisterBloc {}
+// class MockRegisterPassword
+//     extends MockBloc<form_bloc.FormBlocState<String, String>>
+//     implements ProfileRegisterBloc {}
 
 void main() {
   group('Test Register Password Step', () {
