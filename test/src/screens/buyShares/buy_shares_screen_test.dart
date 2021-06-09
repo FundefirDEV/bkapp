@@ -37,13 +37,13 @@ void main() {
   }
 
   group('Test BuySharesScreen  Widget', () {
-    testWidgets('Render BuySharesScreen', (WidgetTester tester) async {
-      final testKey = Key('my-id');
-      await tester.pumpWidget(baseTester(child: buySharesTester(key: testKey)));
-      await tester.pumpAndSettle();
+    // testWidgets('Render BuySharesScreen', (WidgetTester tester) async {
+    //   final testKey = Key('my-id');
+    //   await tester.pumpWidget(baseTester(child: buySharesTester(key: testKey)));
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(testKey), findsOneWidget);
-    });
+    //   expect(find.byKey(testKey), findsOneWidget);
+    // });
 
     testWidgets('Render TitleBuyShareWidget', (WidgetTester tester) async {
       final testKey = Key('my-id');

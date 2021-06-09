@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../base_tester.dart';
 
-class NavigateMockBloc extends MockBloc implements MenuNavigatorBloc {}
+// class NavigateMockBloc extends MockBloc<MenuNavigatorEvent, MenuNavigatorState> implements MenuNavigatorBloc {}
 
 void main() {
-  MenuNavigatorBloc navigateMockBloc;
+  // MenuNavigatorBloc navigateMockBloc;
 
-  setUp(() {
-    navigateMockBloc = NavigateMockBloc();
-  });
+  // setUp(() {
+  //   navigateMockBloc = NavigateMockBloc();
+  // });
 
-  tearDown(() {
-    navigateMockBloc?.close();
-  });
+  // tearDown(() {
+  //   navigateMockBloc?.close();
+  // });
 
   group('Test pre approved credit modal', () {
     testWidgets('Find credit modal', (WidgetTester tester) async {

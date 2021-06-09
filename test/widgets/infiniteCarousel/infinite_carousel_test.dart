@@ -38,7 +38,7 @@ void main() {
       expect(find.byKey(Key('container-infinite-carousel')), findsOneWidget);
       expect(find.byKey(Key('container-pageview-carousel')), findsOneWidget);
       expect(find.byKey(Key('stack-infinite-carousel')), findsNWidgets(3));
-      expect(find.byType(AnimatedBuilder), findsNWidgets(5));
+      expect(find.byType(AnimatedBuilder), findsNWidgets(6));
     });
   });
 }
