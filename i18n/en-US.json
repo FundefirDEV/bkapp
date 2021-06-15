@@ -476,7 +476,40 @@
     "title": "My Credits",
     "current": "Current"
   },
-
+  "reportsScreen": {
+    "title": "Reports",
+    "sustainability": "Sustainability fund",
+    "reserve": "Bad debt reserve",
+    "detail": "Detail",
+    "partner": "Partner",
+    "total": "Total:",
+    "sharesChart": {
+      "title": "Group's shares",
+      "axisTitle": "SHARES",
+      "sharesValue": "Shares value"
+    },
+    "creditsChart": {
+      "title": "Group's credits",
+      "axisTitle": "CREDITS",
+      "sharesValue": "Credit value"
+    },
+    "installmentsChart": {
+      "title": "Group's Installments",
+      "axisTitle": "FEES PAID",
+      "sharesValue": "Fees to pay"
+    },
+    "profitsChart": {
+      "title": "Profits to be distributed",
+      "axisTitle": "PROFITS",
+      "sharesValue": "Profits"
+    },
+    "tabs": {
+      "shares": "SHARES",
+      "credits": "CREDITS",
+      "installments": "INSTALLMENTS",
+      "profits": "PROFITS"
+    }
+  },
   "changePassword": {
     "FormTitle": "Change Password",
     "dialogTittle": "Validate your credentials",

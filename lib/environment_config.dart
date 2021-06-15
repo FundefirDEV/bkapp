@@ -18,7 +18,7 @@ class EnvironmentConfig {
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
-  static const String ENV = String.fromEnvironment('ENV', defaultValue: "DEV");
+  static const String ENV = String.fromEnvironment('PROD', defaultValue: "PROD");
 
   ///
   /// DSN for sentry
