@@ -21,7 +21,7 @@ class CreditFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.maxCreditAmount,
+                    context.read<AppBloc>().rulesEditFormBloc.creditMaxInstallments,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
@@ -39,7 +39,7 @@ class CreditFields extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: TextFieldBlocBuilder(
                 textFieldBloc:
-                    context.bloc<AppBloc>().rulesEditFormBloc.maxDues,
+                    context.read<AppBloc>().rulesEditFormBloc.creditMaxValue,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly

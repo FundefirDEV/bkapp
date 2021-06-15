@@ -66,6 +66,14 @@ class I18n implements WidgetsLocalizations {
   String get requestErrorDefault => "There has been an error!, try again";
   /// "The user is not available"
   String get requestErrorUserNotAvailable => "The user is not available";
+  /// "this email is not available"
+  String get requestErrorMailNotAviable => "this email is not available";
+  /// "this phone is not available"
+  String get requestErrorPhoneNotAviable => "this phone is not available";
+  /// "Invalid Email"
+  String get requestErrorMailSendInvalid => "Invalid Email";
+  /// "Invalid phone number"
+  String get requestErrorPhoneSendInvalid => "Invalid phone number";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -92,10 +100,10 @@ class I18n implements WidgetsLocalizations {
   String get errorInvalidEmail => "Enter a valid email address";
   /// "Passwords do not match"
   String get errorDifferentPasswords => "Passwords do not match";
-  /// "Go to "
-  String get loginScreenTextOne => "Go to ";
-  /// "your bank"
-  String get loginScreenTextTwo => "your bank";
+  /// "Forgot "
+  String get loginScreenTextOne => "Forgot ";
+  /// "password ?"
+  String get loginScreenTextTwo => "password ?";
   /// "Start being in control of your financial life"
   String get introScreenFinancialLife => "Start being in control of your financial life";
   /// "You know what a "
@@ -450,14 +458,14 @@ class I18n implements WidgetsLocalizations {
   String get statusCreditDues => "DUES";
   /// "Value requested"
   String get statusCreditValueRequested => "Value requested";
-  /// "Put "
-  String get pinCodeVerificationPut => "Put ";
+  /// "Insert "
+  String get pinCodeVerificationPut => "Insert ";
   /// "the code "
   String get pinCodeVerificationTheCode => "the code ";
-  /// "we send to \n your "
-  String get pinCodeVerificationWeSendToYour => "we send to \n your ";
-  /// "cell number"
-  String get pinCodeVerificationCellNumber => "cell number";
+  /// "send to \n your "
+  String get pinCodeVerificationWeSendToYour => "send to \n your ";
+  /// "email"
+  String get pinCodeVerificationCellNumber => "email";
   /// "Please enter correct code"
   String get pinCodeVerificationPinCodeComplete => "Please enter correct code";
   /// "The code entered is not valid"
@@ -758,50 +766,30 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsTitle => "My Credits";
   /// "Current"
   String get timeLineCreditsCurrent => "Current";
-  /// "Reports"
-  String get reportsScreenTitle => "Reports";
-  /// "Sustainability fund"
-  String get reportsScreenSustainability => "Sustainability fund";
-  /// "Bad debt reserve"
-  String get reportsScreenReserve => "Bad debt reserve";
-  /// "Detail"
-  String get reportsScreenDetail => "Detail";
-  /// "Partner"
-  String get reportsScreenPartner => "Partner";
-  /// "Total:"
-  String get reportsScreenTotal => "Total:";
-  /// "Group's shares"
-  String get reportsScreenSharesChartTitle => "Group's shares";
-  /// "SHARES"
-  String get reportsScreenSharesChartAxisTitle => "SHARES";
-  /// "Shares value"
-  String get reportsScreenSharesChartSharesValue => "Shares value";
-  /// "Group's credits"
-  String get reportsScreenCreditsChartTitle => "Group's credits";
-  /// "CREDITS"
-  String get reportsScreenCreditsChartAxisTitle => "CREDITS";
-  /// "Credit value"
-  String get reportsScreenCreditsChartSharesValue => "Credit value";
-  /// "Group's Installments"
-  String get reportsScreenInstallmentsChartTitle => "Group's Installments";
-  /// "FEES PAID"
-  String get reportsScreenInstallmentsChartAxisTitle => "FEES PAID";
-  /// "Fees to pay"
-  String get reportsScreenInstallmentsChartSharesValue => "Fees to pay";
-  /// "Profits to be distributed"
-  String get reportsScreenProfitsChartTitle => "Profits to be distributed";
-  /// "PROFITS"
-  String get reportsScreenProfitsChartAxisTitle => "PROFITS";
-  /// "Profits"
-  String get reportsScreenProfitsChartSharesValue => "Profits";
-  /// "SHARES"
-  String get reportsScreenTabsShares => "SHARES";
-  /// "CREDITS"
-  String get reportsScreenTabsCredits => "CREDITS";
-  /// "INSTALLMENTS"
-  String get reportsScreenTabsInstallments => "INSTALLMENTS";
-  /// "PROFITS"
-  String get reportsScreenTabsProfits => "PROFITS";
+  /// "Change Password"
+  String get changePasswordFormTitle => "Change Password";
+  /// "Validate your credentials"
+  String get changePasswordDialogTittle => "Validate your credentials";
+  /// "The code was send ! \n please check your email"
+  String get changePasswordCheckEmail => "The code was send ! \n please check your email";
+  /// "Send"
+  String get changePasswordDialogSend => "Send";
+  /// "Password changed success"
+  String get changePasswordSuccess => "Password changed success";
+  /// "Send"
+  String get changePasswordChangePassSend => "Send";
+  /// "Validation code"
+  String get changePasswordConfirCode => "Validation code";
+  /// "New password"
+  String get changePasswordNewPassword => "New password";
+  /// "Confirm New passsword"
+  String get changePasswordConfirmNewPassword => "Confirm New passsword";
+  /// "Send the code "
+  String get changePasswordSendTheCode => "Send the code ";
+  /// "to your email "
+  String get changePasswordToYourEmail => "to your email ";
+  /// "\n please check it out "
+  String get changePasswordPleaseCheck => "\n please check it out ";
 }
 
 class _I18n_en_US extends I18n {
@@ -865,6 +853,18 @@ class _I18n_es_ES extends I18n {
   /// "El usuario ya esta en otro bkgrupo"
   @override
   String get requestErrorUserNotAvailable => "El usuario ya esta en otro bkgrupo";
+  /// "Este email ya está siendo utilizado"
+  @override
+  String get requestErrorMailNotAviable => "Este email ya está siendo utilizado";
+  /// "Este phone ya está siendo utilizado"
+  @override
+  String get requestErrorPhoneNotAviable => "Este phone ya está siendo utilizado";
+  /// "correo electrónico inválido"
+  @override
+  String get requestErrorMailSendInvalid => "correo electrónico inválido";
+  /// "número de teléfono inválido"
+  @override
+  String get requestErrorPhoneSendInvalid => "número de teléfono inválido";
   /// "Usuario"
   @override
   String get formUser => "Usuario";
@@ -904,12 +904,12 @@ class _I18n_es_ES extends I18n {
   /// "Las contraseñas no coinciden"
   @override
   String get errorDifferentPasswords => "Las contraseñas no coinciden";
-  /// "Entra a "
+  /// "¿ Has olvidado "
   @override
-  String get loginScreenTextOne => "Entra a ";
-  /// "tu banko"
+  String get loginScreenTextOne => "¿ Has olvidado ";
+  /// "tu contraseña ?"
   @override
-  String get loginScreenTextTwo => "tu banko";
+  String get loginScreenTextTwo => "tu contraseña ?";
   /// "Empieza a tener el control de tu vida financiera"
   @override
   String get introScreenFinancialLife => "Empieza a tener el control de tu vida financiera";
@@ -1426,9 +1426,9 @@ class _I18n_es_ES extends I18n {
   /// "que enviamos a \n tu "
   @override
   String get pinCodeVerificationWeSendToYour => "que enviamos a \n tu ";
-  /// "número celular"
+  /// "correo electrónico"
   @override
-  String get pinCodeVerificationCellNumber => "número celular";
+  String get pinCodeVerificationCellNumber => "correo electrónico";
   /// "Por favor ingrese el código correcto"
   @override
   String get pinCodeVerificationPinCodeComplete => "Por favor ingrese el código correcto";
@@ -1879,72 +1879,42 @@ class _I18n_es_ES extends I18n {
   /// "Vigente"
   @override
   String get timeLineCreditsCurrent => "Vigente";
-  /// "Reportes"
+  /// "Cambiar contraseña"
   @override
-  String get reportsScreenTitle => "Reportes";
-  /// "Fondo de sostenibilidad"
+  String get changePasswordFormTitle => "Cambiar contraseña";
+  /// "Validemos tus credenciales"
   @override
-  String get reportsScreenSustainability => "Fondo de sostenibilidad";
-  /// "Reserva para Incobrables"
+  String get changePasswordDialogTittle => "Validemos tus credenciales";
+  /// "¡ El código fue enviado ! \n por favor revise su email"
   @override
-  String get reportsScreenReserve => "Reserva para Incobrables";
-  /// "Detalle"
+  String get changePasswordCheckEmail => "¡ El código fue enviado ! \n por favor revise su email";
+  /// "Enviar"
   @override
-  String get reportsScreenDetail => "Detalle";
-  /// "Socio"
+  String get changePasswordDialogSend => "Enviar";
+  /// "Se ha cambiado la contraseña con exito !"
   @override
-  String get reportsScreenPartner => "Socio";
-  /// "Total:"
+  String get changePasswordSuccess => "Se ha cambiado la contraseña con exito !";
+  /// "Enviar !"
   @override
-  String get reportsScreenTotal => "Total:";
-  /// "Acciones del grupo"
+  String get changePasswordChangePassSend => "Enviar !";
+  /// "código de verificación"
   @override
-  String get reportsScreenSharesChartTitle => "Acciones del grupo";
-  /// "ACCIONES"
+  String get changePasswordConfirCode => "código de verificación";
+  /// "Nueva contraseña"
   @override
-  String get reportsScreenSharesChartAxisTitle => "ACCIONES";
-  /// "Valor en acciones"
+  String get changePasswordNewPassword => "Nueva contraseña";
+  /// "Confirmar contrañesa "
   @override
-  String get reportsScreenSharesChartSharesValue => "Valor en acciones";
-  /// "Créditos del grupo"
+  String get changePasswordConfirmNewPassword => "Confirmar contrañesa ";
+  /// "Enviamos el código "
   @override
-  String get reportsScreenCreditsChartTitle => "Créditos del grupo";
-  /// "CRÉDITOS"
+  String get changePasswordSendTheCode => "Enviamos el código ";
+  /// "a tu correo "
   @override
-  String get reportsScreenCreditsChartAxisTitle => "CRÉDITOS";
-  /// "Valor crédito"
+  String get changePasswordToYourEmail => "a tu correo ";
+  /// "\n por favor, revísalo "
   @override
-  String get reportsScreenCreditsChartSharesValue => "Valor crédito";
-  /// "Monto de cuotas"
-  @override
-  String get reportsScreenInstallmentsChartTitle => "Monto de cuotas";
-  /// "CUOTAS PAGADAS"
-  @override
-  String get reportsScreenInstallmentsChartAxisTitle => "CUOTAS PAGADAS";
-  /// "Cuotas por pagar"
-  @override
-  String get reportsScreenInstallmentsChartSharesValue => "Cuotas por pagar";
-  /// "Ganancias por repartir"
-  @override
-  String get reportsScreenProfitsChartTitle => "Ganancias por repartir";
-  /// "GANANCIAS"
-  @override
-  String get reportsScreenProfitsChartAxisTitle => "GANANCIAS";
-  /// "Ganancias"
-  @override
-  String get reportsScreenProfitsChartSharesValue => "Ganancias";
-  /// "ACCIONES"
-  @override
-  String get reportsScreenTabsShares => "ACCIONES";
-  /// "CRÉDITOS"
-  @override
-  String get reportsScreenTabsCredits => "CRÉDITOS";
-  /// "CUOTAS"
-  @override
-  String get reportsScreenTabsInstallments => "CUOTAS";
-  /// "GANANCIAS"
-  @override
-  String get reportsScreenTabsProfits => "GANANCIAS";
+  String get changePasswordPleaseCheck => "\n por favor, revísalo ";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

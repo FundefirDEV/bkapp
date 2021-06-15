@@ -83,11 +83,11 @@ class BankCreatedScreen extends StatelessWidget {
   }
 
   void _clearInputs(BuildContext context) {
-    context.bloc<AppBloc>().profileRegisterBloc.nameBloc.clear();
-    context.bloc<AppBloc>().profileRegisterBloc.emailBloc.clear();
-    context.bloc<AppBloc>().profileRegisterBloc.phoneBloc.clear();
-    context.bloc<AppBloc>().profileRegisterBloc.password.clear();
-    context.bloc<AppBloc>().profileRegisterBloc.passwordConfirm.clear();
+    context.read<AppBloc>().profileRegisterBloc.nameBloc.clear();
+    context.read<AppBloc>().profileRegisterBloc.emailBloc.clear();
+    context.read<AppBloc>().profileRegisterBloc.phoneBloc.clear();
+    context.read<AppBloc>().profileRegisterBloc.password.clear();
+    context.read<AppBloc>().profileRegisterBloc.passwordConfirm.clear();
   }
 }
 

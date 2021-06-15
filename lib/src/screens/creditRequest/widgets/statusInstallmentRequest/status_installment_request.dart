@@ -48,7 +48,7 @@ class _StatusInstallmentRequestState extends State<StatusInstallmentRequest> {
           TitleHeaderWidget(
               title: I18n.of(context).approvalsScreenCredits,
               oldIndex: HomeRoutesConstant.homeScreen,
-              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+              menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           Container(
             key: Key('status-credit_request-widget-container-text'),
             margin: EdgeInsets.only(bottom: 10),

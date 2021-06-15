@@ -45,7 +45,7 @@ class MenuActions extends StatelessWidget {
 
   Widget _menuContent(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     return Align(
       alignment: Alignment.bottomCenter,
@@ -88,7 +88,7 @@ class MenuActions extends StatelessWidget {
 
   Widget _firstColumn(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,7 +112,7 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('profits-button-line'),
             onPressed: () {
-              _showDialog(context, context.bloc<MenuNavigatorBloc>(), oldIndex);
+              _showDialog(context, context.read<MenuNavigatorBloc>(), oldIndex);
               // navigateBloc.add(
               //     ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
               isPressed();
@@ -126,7 +126,7 @@ class MenuActions extends StatelessWidget {
 
   Widget _thirdColumn(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

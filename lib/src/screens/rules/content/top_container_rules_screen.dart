@@ -12,11 +12,12 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class TopContainerRulesSceen extends StatelessWidget {
-  const TopContainerRulesSceen({Key key, this.navigateBloc, this.bankRules})
+  const TopContainerRulesSceen({Key key, this.navigateBloc, this.bankRules , this.token})
       : super(key: key);
   // ignore: close_sinks
   final navigateBloc;
   final BankRulesModel bankRules;
+  final token;
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +49,13 @@ class TopContainerRulesSceen extends StatelessWidget {
             child: TitleHeaderWidget(
                 title: I18n.of(context).rulesScreenBkRules,
                 oldIndex: HomeRoutesConstant.utilsScreen,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 1.3,
           ),
           topContainerInformation(context),
-          // Container(
-          //     height: SizeConfig.safeBlockVertical * 4,
-          //     child: FlatButton(
-          //         key: Key('edit_button_rules_screen'),
-          //         onPressed: () => navigateBloc.add(ButtonPressed(goTo: 9)),
-          //         child: Text(
-          //           I18n.of(context).profileScreenEdit,
-          //           style: TextStyle(color: Colors.white),
-          //         )))
+          //_editProfile(context),
         ],
       ),
     );
@@ -136,7 +129,7 @@ class TopContainerRulesSceen extends StatelessWidget {
           ),
           children: <TextSpan>[
             TextSpan(
-              text: I18n.of(context).rulesScreenCreationDate + '\n',
+               text: I18n.of(context).rulesScreenCreationDate + '\n',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -152,6 +145,23 @@ class TopContainerRulesSceen extends StatelessWidget {
               ),
             )
           ]),
+    );
+  }
+
+  Container _editProfile(BuildContext context) {
+
+    return Container(
+      height: SizeConfig.safeBlockVertical * 4,
+      child: FlatButton(
+        key: Key('Edit_button_profile_screen'),
+        onPressed: () => context.read<MenuNavigatorBloc>().add(ButtonPressed(
+            goTo: HomeRoutesConstant.rulesEditScreen)),
+
+        child: Text(
+          I18n.of(context).profileScreenEdit,
+          style: TextStyle(color: Colors.white, letterSpacing: 2),
+        )
+      )
     );
   }
 }

@@ -21,21 +21,24 @@ class _RegisterPasswordStepScreenState
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return BlocProvider(
-        create: (context) => context.bloc<AppBloc>().profileRegisterBloc,
-        child: Builder(builder: (context) {
-          return Scaffold(
-              body: SafeArea(
-                  child: Stack(children: [
-            SingleChildScrollView(
-                child: RegisterPasswordFormListenerWidget(data: widget.data)),
-            MenuRequests(
-                position: position,
-                onDragEnd: (details) {
-                  setState(() => position = details.offset);
-                })
-          ])));
-        }));
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: BlocProvider(
+          create: (context) => context.read<AppBloc>().profileRegisterBloc,
+          child: Builder(builder: (context) {
+            return Scaffold(
+                body: SafeArea(
+                    child: Stack(children: [
+              SingleChildScrollView(
+                  child: RegisterPasswordFormListenerWidget(data: widget.data)),
+              MenuRequests(
+                  position: position,
+                  onDragEnd: (details) {
+                    setState(() => position = details.offset);
+                  })
+            ])));
+          })),
+    );
   }
 }
 

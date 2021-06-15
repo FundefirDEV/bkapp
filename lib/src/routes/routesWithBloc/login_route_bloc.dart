@@ -8,12 +8,12 @@ Widget loginRouteBloc() {
   return MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (context) => context.bloc<AppBloc>().authenticationBloc,
+        create: (context) => context.read<AppBloc>().authenticationBloc,
       ),
       BlocProvider<LoginFormBloc>(
         create: (context) => LoginFormBloc(
             repository: loginRepository,
-            authenticationBloc: context.bloc<AppBloc>().authenticationBloc),
+            authenticationBloc: context.read<AppBloc>().authenticationBloc),
       )
     ],
     child: BlocBuilder<AuthenticationBloc, AuthenticationState>(

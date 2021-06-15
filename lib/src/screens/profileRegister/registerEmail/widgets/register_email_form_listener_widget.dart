@@ -33,11 +33,7 @@ class _RegisterEmailFormListenerWidgetState
               currentStep: 2,
               numberOfSteps: 5,
               isDisabled: isDisabled,
-              currentBlocSubmit: () {
-                Navigator.pushNamed(context, registerPhoneUser,
-                    arguments: RegisterPhoneStepArgs(
-                        widget.data.tag, widget.data.image));
-              })
+              currentBlocSubmit: ()=> _validateMail(context))
         ]);
   }
 
@@ -46,5 +42,19 @@ class _RegisterEmailFormListenerWidgetState
             emailBloc.email.value.length > 5
         ? setState(() => isDisabled = false)
         : setState(() => isDisabled = true);
+  }
+
+  _validateMail(BuildContext context) async {
+
+    final registerBloc = context.read<AppBloc>().profileRegisterBloc;
+
+    final res = await registerBloc.validateMail(context);
+
+    if(res){
+      Navigator.pushNamed(context, registerPhoneUser,
+        arguments: RegisterPhoneStepArgs(
+        widget.data.tag, widget.data.image)
+      );
+    }
   }
 }

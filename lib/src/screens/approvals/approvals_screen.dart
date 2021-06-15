@@ -34,7 +34,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
   @override
   void afterFirstLayout(BuildContext context) {
     context
-        .bloc<ApprovalsBloc>()
+        .read<ApprovalsBloc>()
         .add(ApprovalsInitialize(token: widget.tokenUser));
   }
 
@@ -54,7 +54,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen>
                       title: I18n.of(context).approvalsScreenApproval,
                       showArrow: true,
                       oldIndex: widget.oldIndex,
-                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                      menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                 ),
                 CardInformationBkWidget(
                     childBlueWidth: 135.0,

@@ -34,7 +34,7 @@ class _RegistePhoneFormListenerWidgetState
   @override
   Widget build(BuildContext context) {
     // ignore:close_sinks
-    var registerBloc = context.bloc<AppBloc>().profileRegisterBloc;
+    var registerBloc = context.read<AppBloc>().profileRegisterBloc;
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -72,8 +72,13 @@ class _RegistePhoneFormListenerWidgetState
             RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
   }
 
-  void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) {
-    showModalBottomSheet(
+  void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) async {
+    // validate mail and phone
+
+    final validateRes = await registerBloc.validatePhone(context);
+
+    if(validateRes){
+      showModalBottomSheet(
         backgroundColor: Colors.transparent,
         context: context,
         isDismissible: false,
@@ -93,6 +98,10 @@ class _RegistePhoneFormListenerWidgetState
                 nextWidgetTap(registerBloc);
               });
         });
+    }
+
+    // show modal success
+   
   }
 
   _isValidating(String phoneBloc) {
@@ -103,11 +112,20 @@ class _RegistePhoneFormListenerWidgetState
 
   _receiveCountry(ItemCountry data) {
     // ignore: close_sinks
-    final bloc = context.bloc<AppBloc>().profileRegisterBloc.phoneBloc;
+    final bloc = context.read<AppBloc>().profileRegisterBloc.phoneBloc;
     setState(() {
       country = data;
     });
-    bloc.countryCode.updateValue(data.iso);
+    
+    print('*************************************************');
+    print('COUNTRY CODE: ${data.iso}');
+    print('*************************************************');
+
+    if(data.iso != null){
+      bloc.countryCode.updateValue(data.iso);
+      bloc.countryCode.updateInitialValue(data.iso);
+    }
+
     bloc.countryCode.value;
   }
 

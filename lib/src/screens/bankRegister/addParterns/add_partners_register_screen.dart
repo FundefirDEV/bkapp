@@ -73,7 +73,7 @@ class _AddPartnersRegisterScreenState
                   child: FadeTransition(
                     opacity: _animation,
                     child: PartnersStructureWidget(
-                      tokenUser: context.bloc<AppBloc>()
+                      tokenUser: context.read<AppBloc>()
                         .bankRegisterBloc.token.value,
                       onSave: (data) => print(data),
                       partnerDb: pendingPartnersDb

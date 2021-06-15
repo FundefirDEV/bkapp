@@ -18,4 +18,13 @@ class LoginRepository {
     );
     return getToken;
   }
+
+
+  // Future<String> confirmEmailAndPhone({
+  //   @required String email,
+  //   @required String phone
+  // }) async {
+  //   final String res = await apiProvider.changePassSendMail(email: email , phone:  phone);
+  //   return res;
+  // }
 }

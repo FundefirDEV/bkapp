@@ -23,7 +23,7 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
               onPressed: () {
                 _showDialogConvertShares(context, 50.0, () {
                   Navigator.pop(context);
-                  context.bloc<ProfitPaymentBloc>().add(
+                  context.read<ProfitPaymentBloc>().add(
                       TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
                 });
               },
@@ -44,7 +44,7 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
               _showDialogPayment(context, 55.0, () {
                 Navigator.pop(context);
                 context
-                    .bloc<ProfitPaymentBloc>()
+                    .read<ProfitPaymentBloc>()
                     .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
               });
             },

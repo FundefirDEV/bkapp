@@ -10,7 +10,7 @@ class SelectCityStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    BankRegisterBloc bankBloc = context.bloc<AppBloc>().bankRegisterBloc;
+    BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
     SizeConfig().init(context);
 
     return Material(

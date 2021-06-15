@@ -34,7 +34,7 @@ class ConfirmationBuyShares extends StatelessWidget {
             TitleHeaderWidget(
                 title: I18n.of(context).buySharesActions,
                 oldIndex: 0,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: CardInformationBkWidget(

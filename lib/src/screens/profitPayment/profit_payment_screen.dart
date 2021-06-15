@@ -53,7 +53,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
       return Builder(builder: (context) {
         // ignore: close_sinks
         ProfitPaymentFormBloc profitPaymentFormBloc =
-            context.bloc<ProfitPaymentFormBloc>();
+            context.read<ProfitPaymentFormBloc>();
 
         if (state is ProfitPaymentLoaded) {
           historyProfit = state.historyEarnings;
@@ -65,7 +65,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         return FormBlocListener<ProfitPaymentFormBloc, DropDownModel, Object>(
             key: Key('bloc-listener-profit-payment-screen'),
             onSuccess: (context, state) {
-              context.bloc<ProfitPaymentBloc>().add(
+              context.read<ProfitPaymentBloc>().add(
                   ProfitPaymentPartnerSelected(
                       idPartner:
                           profitPaymentFormBloc.idPartner.value.toString()));

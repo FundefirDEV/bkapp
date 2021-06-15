@@ -20,7 +20,11 @@
   },
   "requestError": {
     "default": "There has been an error!, try again",
-    "userNotAvailable": "The user is not available"
+    "userNotAvailable": "The user is not available",
+    "mailNotAviable": "this email is not available",
+    "phoneNotAviable": "this phone is not available",
+    "mailSendInvalid": "Invalid Email",
+    "phoneSendInvalid": "Invalid phone number"
   },
   "form": {
     "user": "User",
@@ -40,8 +44,8 @@
     "differentPasswords": "Passwords do not match"
   },
   "loginScreen": {
-    "textOne": "Go to ",
-    "textTwo": "your bank"
+    "textOne": "Forgot ",
+    "textTwo": "password ?"
   },
   "introScreen": {
     "financialLife": "Start being in control of your financial life",
@@ -289,10 +293,10 @@
     "valueRequested": "Value requested"
   },
   "pinCodeVerification": {
-    "put": "Put ",
+    "put": "Insert ",
     "theCode": "the code ",
-    "weSendToYour": "we send to \n your ",
-    "cellNumber": "cell number",
+    "weSendToYour": "send to \n your ",
+    "cellNumber": "email",
     "pinCodeComplete": "Please enter correct code",
     "errorCodeMessage": "The code entered is not valid",
     "goodCodeMessage": "Successfully validated code"
@@ -472,38 +476,19 @@
     "title": "My Credits",
     "current": "Current"
   },
-  "reportsScreen": {
-    "title": "Reports",
-    "sustainability": "Sustainability fund",
-    "reserve": "Bad debt reserve",
-    "detail": "Detail",
-    "partner": "Partner",
-    "total": "Total:",
-    "sharesChart": {
-      "title": "Group's shares",
-      "axisTitle": "SHARES",
-      "sharesValue": "Shares value"
-    },
-    "creditsChart": {
-      "title": "Group's credits",
-      "axisTitle": "CREDITS",
-      "sharesValue": "Credit value"
-    },
-    "installmentsChart": {
-      "title": "Group's Installments",
-      "axisTitle": "FEES PAID",
-      "sharesValue": "Fees to pay"
-    },
-    "profitsChart": {
-      "title": "Profits to be distributed",
-      "axisTitle": "PROFITS",
-      "sharesValue": "Profits"
-    },
-    "tabs": {
-      "shares": "SHARES",
-      "credits": "CREDITS",
-      "installments": "INSTALLMENTS",
-      "profits": "PROFITS"
-    }
+
+  "changePassword": {
+    "FormTitle": "Change Password",
+    "dialogTittle": "Validate your credentials",
+    "checkEmail": "The code was send ! \n please check your email",
+    "dialogSend" : "Send",
+    "success": "Password changed success",
+    "changePassSend": "Send",
+    "confirCode": "Validation code",
+    "NewPassword": "New password",
+    "ConfirmNewPassword": "Confirm New passsword",
+    "SendTheCode": "Send the code ",
+    "ToYourEmail": "to your email ",
+    "PleaseCheck": "\n please check it out "
   }
 }

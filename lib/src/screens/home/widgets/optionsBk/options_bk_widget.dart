@@ -20,7 +20,7 @@ class OptionsBkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final navigateBloc = context.bloc<MenuNavigatorBloc>();
+    final navigateBloc = context.read<MenuNavigatorBloc>();
 
     return Container(
         child: Column(

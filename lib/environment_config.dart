@@ -3,11 +3,18 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bkservice.fundefir.com");
-  // https://bkservicestage.fundefir-dev.com
-  // https://bkservice.fundefir-dev.com
+      defaultValue: "https://bk-service-qa-2foxvegkzq-uc.a.run.app");
+
+  //services QA
+  // https://bk-service-qa-2foxvegkzq-uc.a.run.app
+  // services stage
+  // https://bk-service-stage-2foxvegkzq-uc.a.run.app
+  // Services local 
   // http://192.168.0.19:8888
 
+  //"https://bkservice.fundefir-dev.com"
+  // https://bkservicestage.fundefir-dev.com
+  // https://bkservice.fundefir-dev.com
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
@@ -253,5 +260,56 @@ class ApiEndpoints {
   static String getSharesCurrentMeeting({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/shares-current-meeting";
+  }
+
+  /// Verify email and phone
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String changePassSendMail({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/changePasswordEmail";
+  }
+
+  /// Change pass with code confirm
+  ///
+  /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
+  ///
+  static String changePasswordWithCodeConfirm({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/validationConfirmChangePassword";
+  }
+
+  static String updateProfile({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/updateProfile";
+  }
+
+
+  static String changeRules({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/addRule";
+  }
+
+  static String validateMailAndPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-email-and-phone";
+  }
+
+  static String validateMail({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-email";
+  }
+
+  static String validatePhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-phone";
   }
 }

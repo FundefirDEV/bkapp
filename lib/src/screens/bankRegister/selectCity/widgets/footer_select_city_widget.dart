@@ -11,7 +11,7 @@ class FooterSelectCityWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    BankRegisterBloc bankBloc = context.bloc<AppBloc>().bankRegisterBloc;
+    BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
     return Container(
       key: Key('footer-select-city-container'),
       alignment: Alignment.bottomCenter,

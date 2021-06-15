@@ -20,7 +20,11 @@
   },
   "requestError": {
     "default": "¡Ha habido un problema!, intenta de nuevo",
-    "userNotAvailable": "El usuario ya esta en otro bkgrupo"
+    "userNotAvailable": "El usuario ya esta en otro bkgrupo",
+    "mailNotAviable": "Este email ya está siendo utilizado",
+    "phoneNotAviable": "Este phone ya está siendo utilizado",
+    "mailSendInvalid": "correo electrónico inválido",
+    "phoneSendInvalid": "número de teléfono inválido"
   },
   "form": {
     "user": "Usuario",
@@ -40,8 +44,8 @@
     "differentPasswords": "Las contraseñas no coinciden"
   },
   "loginScreen": {
-    "textOne": "Entra a ",
-    "textTwo": "tu banko"
+    "textOne": "¿ Has olvidado ",
+    "textTwo": "tu contraseña ?"
   },
   "introScreen": {
     "financialLife": "Empieza a tener el control de tu vida financiera",
@@ -282,7 +286,7 @@
     "put": "Coloca ",
     "theCode": "el código ",
     "weSendToYour": "que enviamos a \n tu ",
-    "cellNumber": "número celular",
+    "cellNumber": "correo electrónico",
     "pinCodeComplete": "Por favor ingrese el código correcto",
     "errorCodeMessage": "El código digitado no es válido",
     "goodCodeMessage": "Código validado satisfactoriamente"
@@ -462,38 +466,19 @@
     "title": "Mis Créditos",
     "current": "Vigente"
   },
-  "reportsScreen": {
-    "title": "Reportes",
-    "sustainability": "Fondo de sostenibilidad",
-    "reserve": "Reserva para Incobrables",
-    "detail": "Detalle",
-    "partner": "Socio",
-    "total": "Total:",
-    "sharesChart": {
-      "title": "Acciones del grupo",
-      "axisTitle": "ACCIONES",
-      "sharesValue": "Valor en acciones"
-    },
-    "creditsChart": {
-      "title": "Créditos del grupo",
-      "axisTitle": "CRÉDITOS",
-      "sharesValue": "Valor crédito"
-    },
-    "installmentsChart": {
-      "title": "Monto de cuotas",
-      "axisTitle": "CUOTAS PAGADAS",
-      "sharesValue": "Cuotas por pagar"
-    },
-    "profitsChart": {
-      "title": "Ganancias por repartir",
-      "axisTitle": "GANANCIAS",
-      "sharesValue": "Ganancias"
-    },
-    "tabs": {
-      "shares": "ACCIONES",
-      "credits": "CRÉDITOS",
-      "installments": "CUOTAS",
-      "profits": "GANANCIAS"
-    }
+
+  "changePassword": {
+    "FormTitle": "Cambiar contraseña",
+    "dialogTittle": "Validemos tus credenciales",
+    "checkEmail": "¡ El código fue enviado ! \n por favor revise su email",
+    "dialogSend" : "Enviar",
+    "success": "Se ha cambiado la contraseña con exito !",
+    "changePassSend": "Enviar !",
+    "confirCode": "código de verificación",
+    "NewPassword": "Nueva contraseña",
+    "ConfirmNewPassword": "Confirmar contrañesa ",
+    "SendTheCode": "Enviamos el código ",
+    "ToYourEmail": "a tu correo ",
+    "PleaseCheck": "\n por favor, revísalo "
   }
 }

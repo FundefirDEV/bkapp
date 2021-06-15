@@ -14,7 +14,7 @@ class FormListPartnerWidget extends StatelessWidget {
     SizeConfig().init(context);
     // ignore: close_sinks
     ProfitPaymentFormBloc profitPaymentFormBloc =
-        context.bloc<ProfitPaymentFormBloc>();
+        context.read<ProfitPaymentFormBloc>();
     return Container(
       width: SizeConfig.blockSizeHorizontal * 100,
       alignment: Alignment.center,

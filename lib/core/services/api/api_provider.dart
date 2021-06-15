@@ -1,4 +1,6 @@
+import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
@@ -230,5 +232,85 @@ class ApiProvider {
     final endPoint = ApiEndpoints.getSharesCurrentMeeting();
     return await _httpRequest.get(
         httpClient: httpClient, url: endPoint, token: token);
+  }
+
+  Future<Map<String, dynamic>> changePassSendMail(
+    {@required String email, @required String phone}) async {
+
+    final endPoint = ApiEndpoints.changePassSendMail();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "phone": phone,
+      "email": email
+    });
+  }
+
+  Future<Map<String, dynamic>> validateMailAndPhone(
+    {@required String email, @required String phone}) async {
+
+    final endPoint = ApiEndpoints.validateMailAndPhone();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "phone": phone,
+      "email": email
+    });
+  }
+
+  validateMail(
+    {@required String email}) async {
+
+    final endPoint = ApiEndpoints.validateMail();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint, param: email);
+  }
+
+  validatePhone(
+    {@required String phone}) async {
+
+    final endPoint = ApiEndpoints.validatePhone();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint, param: phone);
+  }
+
+  Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
+      @required String code, 
+      @required String email, 
+      @required String phone, 
+      @required String password,
+      @required String passwordConfirmation
+    }) async {
+
+    final endPoint = ApiEndpoints.changePasswordWithCodeConfirm();
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint, body: {
+      "code": code,
+      "email": email,
+      "phone": phone,
+      "password": password,
+      "passwordConfirmation": passwordConfirmation
+    });
+  }
+
+
+  updateProfile(
+    {@required UpdatePeofile updateProfile , @required token
+    }) async {
+
+    final endPoint = ApiEndpoints.updateProfile();
+      return await _httpRequest.post(
+        httpClient: httpClient, url: endPoint, body: updateProfile.toJson() , 
+        token: token
+    );
+  }
+
+  changeRules(
+    {@required AddBankRules bankRules , @required token
+    }) async {
+
+    final endPoint = ApiEndpoints.changeRules();
+      return await _httpRequest.post(
+        httpClient: httpClient, url: endPoint, body: bankRules.toJson() , 
+        token: token
+    );
   }
 }

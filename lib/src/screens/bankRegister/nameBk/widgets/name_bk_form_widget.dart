@@ -24,8 +24,8 @@ class NameBkFormWidget extends StatelessWidget {
         ),
         child: TextFieldBlocBuilder(
             key: Key('input-namebk'),
-            maxLengthEnforced: false,
-            textFieldBloc: context.bloc<AppBloc>().bankRegisterBloc.name,
+            //maxLengthEnforced: false,
+            textFieldBloc: context.read<AppBloc>().bankRegisterBloc.name,
             textAlign: TextAlign.center,
             cursorColor: Colors.white,
             padding: EdgeInsets.all(0),

@@ -36,7 +36,7 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
           TitleHeaderWidget(
               title: I18n.of(context).profitPaymentTitle,
               showArrow: false,
-              menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+              menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           BoxProfitHistoyWidget(historyEarnings: historyProfit),
           LineSeparatorWidget(),
           if (showAccordionDetail)

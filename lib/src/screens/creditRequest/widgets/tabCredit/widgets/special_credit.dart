@@ -13,7 +13,7 @@ class SpecialCredit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //ignore: close_sinks
-    CreditFormBloc creditFormBloc = context.bloc<AppBloc>().creditFormBloc;
+    CreditFormBloc creditFormBloc = context.read<AppBloc>().creditFormBloc;
     SizeConfig().init(context);
 
     return Material(

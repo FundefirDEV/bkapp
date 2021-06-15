@@ -18,7 +18,7 @@ class _RegisterNameStepScreenState extends State<RegisterNameStepScreen> {
     SizeConfig().init(context);
     return BlocProvider(
         create: (context) =>
-            context.bloc<AppBloc>().profileRegisterBloc.nameBloc,
+            context.read<AppBloc>().profileRegisterBloc.nameBloc,
         child: Builder(builder: (context) {
           return Scaffold(
               body: SafeArea(

@@ -43,7 +43,7 @@ class _TimeLineMySharesScreenState extends State<TimeLineMySharesScreen> {
                   TitleHeaderWidget(
                       oldIndex: HomeRoutesConstant.homeScreen,
                       title: I18n.of(context).timeLineSharesTitle,
-                      menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                      menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                   Container(
                       margin: EdgeInsets.symmetric(vertical: 30),
                       child: Column(

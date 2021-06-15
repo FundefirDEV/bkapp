@@ -20,7 +20,7 @@ class TopContainerEditRulesScreen extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       key: Key('top_container_rules_edit_Screen'),
-      height: SizeConfig.safeBlockVertical * 41,
+      height: SizeConfig.safeBlockVertical * 38,
       width: SizeConfig.safeBlockHorizontal * 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -46,7 +46,7 @@ class TopContainerEditRulesScreen extends StatelessWidget {
             child: TitleHeaderWidget(
                 title: I18n.of(context).rulesScreenBkRules,
                 oldIndex: 8,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
           ),
           topContainerInformation(),
           Container(

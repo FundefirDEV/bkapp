@@ -38,7 +38,7 @@ class ActiveCreditScreen extends StatelessWidget {
             TitleHeaderWidget(
                 title: I18n.of(context).activeCreditCredits,
                 oldIndex: HomeRoutesConstant.homeScreen,
-                menuNavigatorBloc: context.bloc<MenuNavigatorBloc>()),
+                menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
             _subtitle(context),
             CardInformationBkWidget(
                 childBlueWidth: 120,

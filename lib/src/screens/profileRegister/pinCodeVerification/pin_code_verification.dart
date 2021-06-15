@@ -16,7 +16,7 @@ class PinCodeStepScreen extends StatelessWidget {
     bool isDisabled = true;
     return BlocProvider(
       create: (context) =>
-          context.bloc<AppBloc>().profileRegisterBloc.pinCodeBloc,
+          context.read<AppBloc>().profileRegisterBloc.pinCodeBloc,
       child: Builder(builder: (context) {
         return Material(
           child: SafeArea(
@@ -44,7 +44,7 @@ class PinCodeStepScreen extends StatelessWidget {
                     numberOfSteps: 5,
                     isDisabled: isDisabled,
                     currentBlocSubmit: context
-                        .bloc<AppBloc>()
+                        .read<AppBloc>()
                         .profileRegisterBloc
                         .pinCodeBloc
                         .submit),

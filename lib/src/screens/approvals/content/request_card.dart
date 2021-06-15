@@ -75,7 +75,7 @@ class RequestShareCard extends StatelessWidget {
                               true,
                               'assets/images/salo_pre_approved_modal.svg', () {
                             Navigator.pop(context);
-                            context.bloc<ApprovalsBloc>().add(ApprovalsPost(
+                            context.read<ApprovalsBloc>().add(ApprovalsPost(
                                 token: token,
                                 approvalStatus: 'approve',
                                 idRequest: id,
@@ -102,7 +102,7 @@ class RequestShareCard extends StatelessWidget {
                               false,
                               'assets/images/sad_bot.svg', () {
                             Navigator.pop(context);
-                            context.bloc<ApprovalsBloc>().add(ApprovalsPost(
+                            context.read<ApprovalsBloc>().add(ApprovalsPost(
                                 token: token,
                                 approvalStatus: 'rejected',
                                 idRequest: id,

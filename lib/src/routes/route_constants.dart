@@ -24,6 +24,7 @@ const String creditStatusScreenRoute = '/creditStatusScreenRoute';
 const String rulesScreen = '/rules-screen';
 const String rulesEditScreen = '/rules-edit-screen';
 const String addPartnerScreen = '/add-partner-screen';
+const String changePasswordScreen = '/change-pass';
 
 
 

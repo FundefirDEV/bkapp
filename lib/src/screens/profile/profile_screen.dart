@@ -20,7 +20,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
-    context.bloc<ProfileBloc>().add(ProfileInitialize(token: widget.tokenUser));
+    context.read<ProfileBloc>().add(ProfileInitialize(token: widget.tokenUser));
     super.initState();
   }
 
@@ -32,6 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (state is ProfileLoaded) {
         return AppBarProfileWidget(
             profile: state.profileModel,
+            token: widget.tokenUser,
             container: Column(children: [
               CardsInformationProfile(profile: state.profileModel),
               BoxMyEarningsWidget(profile: state.profileModel),

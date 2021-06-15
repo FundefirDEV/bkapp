@@ -1,4 +1,8 @@
+import 'package:bkapp_flutter/core/bloc/profileEdition/profile_edit_form_Bloc.dart';
+import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/src/routes/routesWithBloc/routes_with_bloc.dart';
+import 'package:bkapp_flutter/src/screens/changePass/change_password_screen.dart';
+import 'package:bkapp_flutter/src/screens/editProfile/edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/screens/rulesEdit/rules_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/screens/screens.dart';
@@ -88,11 +92,21 @@ class Router {
             pageBuilder: (context, _, __) => AddPartnersRegisterScreen());
       case utilsScreenRoute:
         return MaterialPageRoute(builder: (_) => UtilsScreen());
+
       case profileScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => ProfileScreen());
         break;
+
+      case profileEditScreen:
+        
+        final String token = settings.arguments;
+        return PageRouteBuilder(
+            transitionDuration: Duration(microseconds: 350),
+            pageBuilder: (context, _, __) => ProfileEditScreen(token: token,));
+        break;
+
       case menuNavigator:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
@@ -117,11 +131,18 @@ class Router {
                   userName: null,
                 ));
         break;
+
       case rulesEditScreen:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
             pageBuilder: (context, _, __) => RulesEditScreen());
         break;
+
+        // case changePasswordScreen:
+        // return PageRouteBuilder(
+        //     transitionDuration: Duration(microseconds: 350),
+        //     pageBuilder: (context, _, __) => ChangePassPage());
+        // break;
       default:
         return MaterialPageRoute(
             builder: (BuildContext context) => Scaffold(
