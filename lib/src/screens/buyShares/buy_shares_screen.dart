@@ -73,7 +73,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           CircularProgressIndicator();
                         },
                         onSuccess: (context, state) {
-                          Navigator.pop(context);
+                          //Navigator.pop(context);
                           _showDialog(context, () {
                             context.read<BuySharesBloc>().add(
                                 BuySharesInitialize(token: widget.tokenUser));
