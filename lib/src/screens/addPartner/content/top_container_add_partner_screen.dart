@@ -82,6 +82,7 @@ class _TopContainerAddPartnerScreenState
                 isRegister: false,
                 gridViewWidth: 0.0,
                 partnerDb: activePartnersDb,
+                isBankCreation: false,
               ),
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
@@ -90,6 +91,7 @@ class _TopContainerAddPartnerScreenState
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
                 partnerDb: pendingPartnersDb,
+                isBankCreation: false,
               )
             ]),
           ),

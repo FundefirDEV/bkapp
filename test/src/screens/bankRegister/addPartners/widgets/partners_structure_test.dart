@@ -14,7 +14,7 @@ void main() {
 
   Widget partnerTester({key}) {
     return PartnersStructureWidget(
-        key: key, onSave: () {}, partnerDb: pendingPartnersDb);
+        key: key, onSave: () {}, partnerDb: pendingPartnersDb, isBankCreation: false,);
   }
 
   group('Test partner structure', () {

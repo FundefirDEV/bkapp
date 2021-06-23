@@ -10,6 +10,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import '../widgets.dart';
 import './widgets/widgets.dart';
 
 class PartnersStructureWidget extends StatefulWidget {
@@ -21,7 +22,8 @@ class PartnersStructureWidget extends StatefulWidget {
     this.showButton: true,
     this.tokenUser,
     @required this.partnerDb,
-    this.gridViewWidth = 25.0
+    this.gridViewWidth = 25.0,
+    @required this.isBankCreation,
   }) : super(key: key);
 
   final Function onSave;
@@ -31,6 +33,7 @@ class PartnersStructureWidget extends StatefulWidget {
   final String tokenUser;
   final dynamic partnerDb;
   final double gridViewWidth;
+  final bool isBankCreation;
 
   @override
   _PartnersStructureWidgetState createState() =>
@@ -47,16 +50,29 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
   }
 
   void loadPartners() async {
-    var getPartners = await widget.partnerDb.getAllParters();
 
-    if (widget.onSave != null) widget.onSave(getPartners);
-    if (getPartners.length > 0) {
-      getPartners.forEach((partner) {
-        setState(() => partners.add(partner));
-      });
-    } else {
-      setState(() => partners = []);
-    }
+      var getPartners = await widget.partnerDb.getAllParters();
+
+      if (widget.onSave != null) widget.onSave(getPartners);
+      if (getPartners.length > 0) {
+          getPartners.forEach((partner) {
+          setState(() => partners.add(partner));
+        });
+      
+      } else {
+        setState(() => partners = []);
+      }
+
+    print(partners.asMap());
+    print(widget.isBankCreation);
+
+  }
+
+  deletePartner(int index) async {
+
+    final getPartners = await widget.partnerDb.getAllParters();
+    await widget.partnerDb.deletePartnerById(getPartners[index].id);
+    setState(() {});
   }
 
   @override
@@ -177,6 +193,8 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
               name: partner.firstname,
               mobile: partner.phone,
               onSave: () => loadPartners(),
+              onDelete: 
+              widget.isRegister ? () => deletePartner(index) : () => _showModalBankNotAllowed(context),
             );
           });
     } else {
@@ -187,5 +205,27 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
             fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
       ));
     }
+  }
+
+
+  _showModalBankNotAllowed(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (context) {
+          return ImageBottomModal(
+            modalHeight: 40.0,
+            image: 'assets/images/sad_bot.svg',
+            title: I18n.of(context).modalTextsYourBkGroup,
+            titleBold: I18n.of(context).modalTextsIsEnabled,
+            isBold: true,
+            isBtnAccept: false,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressCancel: () => Navigator.pop(context),
+            buttonsFontSize: 14.0,
+          );
+        });
   }
 }

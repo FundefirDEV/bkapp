@@ -76,7 +76,8 @@ class _AddPartnersRegisterScreenState
                       tokenUser: context.read<AppBloc>()
                         .bankRegisterBloc.token.value,
                       onSave: (data) => print(data),
-                      partnerDb: pendingPartnersDb
+                      partnerDb: pendingPartnersDb,
+                      isBankCreation: true,
                     )
                   )
                 ),

@@ -12,6 +12,7 @@ class PartnerCardWidget extends StatelessWidget {
       @required this.id,
       @required this.name,
       @required this.mobile,
+      @required this.onDelete,
       this.onSave})
       : super(key: key);
 
@@ -19,6 +20,7 @@ class PartnerCardWidget extends StatelessWidget {
   final String name;
   final String mobile;
   final Function onSave;
+  final Function onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class PartnerCardWidget extends StatelessWidget {
             top: -5.0,
             right: -9.0,
             child: RawMaterialButton(
-              onPressed: () => _showModalBankNotAllowed(context),
+              onPressed: onDelete,
               elevation: 4.0,
               constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
               shape: CircleBorder(),
@@ -94,24 +96,5 @@ class PartnerCardWidget extends StatelessWidget {
     );
   }
 
-  _showModalBankNotAllowed(BuildContext context) {
-    showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        isDismissible: false,
-        enableDrag: false,
-        builder: (context) {
-          return ImageBottomModal(
-            modalHeight: 40.0,
-            image: 'assets/images/sad_bot.svg',
-            title: I18n.of(context).modalTextsYourBkGroup,
-            titleBold: I18n.of(context).modalTextsIsEnabled,
-            isBold: true,
-            isBtnAccept: false,
-            titleCloseButton: I18n.of(context).administratorAssignmentClose,
-            onPressCancel: () => Navigator.pop(context),
-            buttonsFontSize: 14.0,
-          );
-        });
-  }
+
 }
