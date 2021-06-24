@@ -337,7 +337,18 @@
     "expenseReserve": "Expense reserve",
     "incobrableFund": "Incobrable fund",
     "week": "Week",
-    "day": "Day"
+    "day": "Day",
+
+    "creditMaxInstalment": "Maximum Credit Installments",
+    "creditMaxValue": "Maximum Credit Value",
+    "expenseFoundPercentage": "Expenditure Fund Percentage",
+    "badDebtReservePercentage": "Reserve fund for bad debts",
+    "maxCreditFactor": "Maximum Credit Factor",
+    "defaultInstalmentsPeriodDays": "Payment period of installment",
+
+    "changeRulesErrorTittle": "Error when trying to change",
+    "changeRulesErrorTittleBlond": "bank rules"
+
   },
   "administratorAssignment": {
     "title": "Administrator \nAssignment",

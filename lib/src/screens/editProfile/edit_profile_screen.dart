@@ -5,7 +5,6 @@ import 'package:bkapp_flutter/core/bloc/profileEdition/profile_edit_form_Bloc.da
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_fields.dart';
-import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/gender_field.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/name_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
@@ -13,7 +12,6 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class ProfileEditScreen extends StatefulWidget {
 

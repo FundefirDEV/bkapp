@@ -327,7 +327,19 @@
     "expenseReserve": "Reserva de gastos",
     "incobrableFund": "Fondo incobrable",
     "week": "Semana",
-    "day": "Día"
+    "day": "Día",
+
+
+    "creditMaxInstalment": "Máximo Cuotas del Crédito",
+    "creditMaxValue": "Máximo Valor del Crédito",
+    "expenseFoundPercentage": "Porcentaje fondo de Gastos",
+    "badDebtReservePercentage": "Fondo de reserva para incobrables",
+    "maxCreditFactor": "Maximum Credit Factor",
+    "defaultInstalmentsPeriodDays": "Periodo de Pago de Cuotas",
+
+
+    "changeRulesErrorTittle": "Error al intentar cambiar ",
+    "changeRulesErrorTittleBlond": "las reglas del banco"
   },
   "administratorAssignment": {
     "title": "Asignación de \nAdministradores",

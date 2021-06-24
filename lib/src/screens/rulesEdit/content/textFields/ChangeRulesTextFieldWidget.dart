@@ -23,8 +23,21 @@ class ChangeRulesTextFieldWidget extends StatelessWidget {
       children: <Widget>[
         Container(
           key: Key('payment_textFields_rules_edit_screen'),
-          width: SizeConfig.blockSizeHorizontal * 40,
+          width: SizeConfig.blockSizeHorizontal * 70,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(.5),
+                blurRadius: 3,
+                spreadRadius: 3,
+              )
+            ]),
           child: TextFieldBlocBuilder(
+              
             textFieldBloc: textFieldBloc,
             style: TextStyle(fontSize: 12),
             keyboardType: textInputType,

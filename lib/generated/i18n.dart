@@ -536,6 +536,22 @@ class I18n implements WidgetsLocalizations {
   String get rulesScreenWeek => "Week";
   /// "Day"
   String get rulesScreenDay => "Day";
+  /// "Maximum Credit Installments"
+  String get rulesScreenCreditMaxInstalment => "Maximum Credit Installments";
+  /// "Maximum Credit Value"
+  String get rulesScreenCreditMaxValue => "Maximum Credit Value";
+  /// "Expenditure Fund Percentage"
+  String get rulesScreenExpenseFoundPercentage => "Expenditure Fund Percentage";
+  /// "Reserve fund for bad debts"
+  String get rulesScreenBadDebtReservePercentage => "Reserve fund for bad debts";
+  /// "Maximum Credit Factor"
+  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Payment period of installment"
+  String get rulesScreenDefaultInstalmentsPeriodDays => "Payment period of installment";
+  /// "Error when trying to change"
+  String get rulesScreenChangeRulesErrorTittle => "Error when trying to change";
+  /// "bank rules"
+  String get rulesScreenChangeRulesErrorTittleBlond => "bank rules";
   /// "Administrator \nAssignment"
   String get administratorAssignmentTitle => "Administrator \nAssignment";
   /// "Are you sure you assign \n this partner as administrator?"
@@ -1578,6 +1594,30 @@ class _I18n_es_ES extends I18n {
   /// "Día"
   @override
   String get rulesScreenDay => "Día";
+  /// "Máximo Cuotas del Crédito"
+  @override
+  String get rulesScreenCreditMaxInstalment => "Máximo Cuotas del Crédito";
+  /// "Máximo Valor del Crédito"
+  @override
+  String get rulesScreenCreditMaxValue => "Máximo Valor del Crédito";
+  /// "Porcentaje fondo de Gastos"
+  @override
+  String get rulesScreenExpenseFoundPercentage => "Porcentaje fondo de Gastos";
+  /// "Fondo de reserva para incobrables"
+  @override
+  String get rulesScreenBadDebtReservePercentage => "Fondo de reserva para incobrables";
+  /// "Maximum Credit Factor"
+  @override
+  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Periodo de Pago de Cuotas"
+  @override
+  String get rulesScreenDefaultInstalmentsPeriodDays => "Periodo de Pago de Cuotas";
+  /// "Error al intentar cambiar "
+  @override
+  String get rulesScreenChangeRulesErrorTittle => "Error al intentar cambiar ";
+  /// "las reglas del banco"
+  @override
+  String get rulesScreenChangeRulesErrorTittleBlond => "las reglas del banco";
   /// "Asignación de \nAdministradores"
   @override
   String get administratorAssignmentTitle => "Asignación de \nAdministradores";
