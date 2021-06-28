@@ -21,7 +21,7 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
-  List<Contact> _contactsList = new List<Contact>();
+  List<Contact> _contactsList = List<Contact>();
   List<CustomContact> _uiCustomContacts = List<CustomContact>();
   List<CustomContact> _uiFilteredContacts = List<CustomContact>();
   List<CustomContact> _allContacts = List<CustomContact>();
@@ -68,26 +68,27 @@ class _ContactListState extends State<ContactList> {
                   key: Key('textfield_search'),
                   controller: searchController,
                   decoration: InputDecoration(
-                      labelText: I18n.of(context).actionTextSearch,
-                      border: new OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color:
-                                  Theme.of(context).colorScheme.primaryColor)),
-                      prefixIcon: Icon(Icons.search)),
+                    labelText: I18n.of(context).actionTextSearch,
+                    border: new OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color:
+                          Theme.of(context).colorScheme.primaryColor)),
+                    prefixIcon: Icon(Icons.search)),
                 ),
               ),
             ),
             Expanded(
+              // aca está la lista
               child: ListView.builder(
                   key: Key('list_view_builder_contacts'),
                   shrinkWrap: true,
                   itemCount: isSearching == true
-                      ? _uiFilteredContacts?.length
-                      : _uiCustomContacts.length,
+                      ? filterContactNull(_uiFilteredContacts).length
+                      : filterContactNull(_uiCustomContacts).length,
                   itemBuilder: (BuildContext context, int index) {
                     CustomContact _contact = isSearching == true
-                        ? _uiFilteredContacts[index]
-                        : _uiCustomContacts[index];
+                        ? filterContactNull(_uiFilteredContacts)[index]
+                        : filterContactNull(_uiCustomContacts)[index];
                     List<Item> _phoneList = _contact.contact.phones.toList();
                     return _buildListTile(_contact, _phoneList,
                         BlocProvider.of<PartnerBloc>(context));
@@ -142,18 +143,22 @@ class _ContactListState extends State<ContactList> {
           title: BlocBuilder<PartnerBloc, PartnerState>(
             builder: (context, state) {
               if (state is PartnerUnauthorized &&
-                  state.phoneNumber == list[0].value) {
+                  state.phoneNumber == list[0].value
+                  && c.contact.displayName != null) {
                 c.isUnAuthorized = true;
               }
               if (c.isUnAuthorized) return Text('Ya esta en un bkgrupo');
+
+              // a veces es nulo !
               return Text(c.contact.displayName);
             },
           ),
           subtitle: list.length >= 1 && list[0]?.value != null
               ? Text(list[0].value)
-              : Text(''),
-          leading: (c.contact.avatar != null && c.contact.avatar.length > 0)
+              : Text('.'),
+          leading: (c.contact.avatar != null && c.contact.avatar.length > 0 && c.contact.initials() != null)
               ? CircleAvatar(backgroundImage: MemoryImage(c.contact.avatar))
+                                          // a veces es nulo !
               : CircleAvatar(child: Text(c.contact.initials())),
           trailing:
               BlocBuilder<PartnerBloc, PartnerState>(builder: (context, state) {
@@ -240,3 +245,10 @@ class CustomContact {
   CustomContact(
       {this.contact, this.isChecked: false, this.isUnAuthorized: false});
 }
+
+  List<CustomContact> filterContactNull(List<CustomContact> listContact){
+
+    return listContact.where((contact) => contact?.contact?.displayName != null ).toList();
+
+  }
+

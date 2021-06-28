@@ -67,12 +67,12 @@ class _InviteModalState extends State<InviteModal> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       key: Key('column_invite_modal'),
                       children: <Widget>[
-                        // content.contactButton(
-                        //     context: context,
-                        //     onPressed: () async {
-                        //       List<Map> result = await _showDialog(context);
-                        //       if (result != null) Navigator.pop(context);
-                        //     }),
+                        content.contactButton(
+                            context: context,
+                            onPressed: () async {
+                              List<Map> result = await _showDialog(context);
+                              if (result != null) Navigator.pop(context);
+                            }),
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2,
@@ -119,19 +119,20 @@ class _InviteModalState extends State<InviteModal> {
   // ignore: unused_element
   Future _showDialog(BuildContext context) {
     return showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        isScrollControlled: true,
-        builder: (_) {
-          return BlocProvider.value(
-            value: BlocProvider.of<PartnerBloc>(context),
-            child: BottomModal(
-                width: SizeConfig.blockSizeHorizontal * 100,
-                height: SizeConfig.blockSizeVertical * 90,
-                child: ContactList(
-                    isRegister: widget.isRegister,
-                    tokenUser: widget.tokenUser)),
-          );
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      builder: (_) {
+        return BlocProvider.value(
+          value: BlocProvider.of<PartnerBloc>(context),
+          child: BottomModal(
+            width: SizeConfig.blockSizeHorizontal * 100,
+            height: SizeConfig.blockSizeVertical * 90,
+            child: ContactList(
+                isRegister: widget.isRegister,
+              tokenUser: widget.tokenUser)),
+        );
+      }
+    );
   }
 }
