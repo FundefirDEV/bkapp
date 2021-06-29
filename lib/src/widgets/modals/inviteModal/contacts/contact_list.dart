@@ -1,9 +1,10 @@
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:easy_permission_validator/easy_permission_validator.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-import 'package:flutter_contact/contacts.dart';
+//import 'package:flutter_contact/contacts.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../widgets.dart';
@@ -191,6 +192,7 @@ class _ContactListState extends State<ContactList> {
       appName: 'Bkapp',
     );
     var result = await permissionValidator.contacts();
+
     if (result) {
       _populateContacts();
     } else {
@@ -199,11 +201,29 @@ class _ContactListState extends State<ContactList> {
   }
 
   _populateContacts() async {
-    await Contacts.streamContacts(
-            withThumbnails: false, sortBy: ContactSortOrder.firstName())
-        .forEach((contact) {
+
+    // await Contacts.streamContacts( 
+    //         withThumbnails: false, sortBy: ContactSortOrder.firstName() , withHiResPhoto: false)
+    //     .forEach((contact) {
+    //   print(contact.toString());
+    //   _contactsList.add(contact);
+    // });
+    print('cargando contactos...');
+    final contacts = 
+      await ContactsService.getContacts(
+        photoHighResolution: false , 
+        withThumbnails: false , 
+        iOSLocalizedLabels: false , 
+        androidLocalizedLabels: false
+      ); 
+
+    contacts.forEach((contact) {
       _contactsList.add(contact);
     });
+
+    print('******************** contacts ********************');
+    print(_contactsList.asMap());
+    print('******************** contacts ********************');
 
     _allContacts = _contactsList
         .map((contact) => CustomContact(contact: contact))

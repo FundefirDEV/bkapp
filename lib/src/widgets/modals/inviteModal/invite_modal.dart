@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
@@ -7,6 +8,7 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal_content.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+//import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 
 import 'contacts/contact_list.dart';
 import 'widgets/partner_form.dart';
@@ -18,7 +20,7 @@ class InviteModal extends StatefulWidget {
       : super(key: key);
 
   final int partners;
-  final bool isRegister;
+  final bool isRegister; 
   final String tokenUser;
 
   @override
@@ -72,7 +74,8 @@ class _InviteModalState extends State<InviteModal> {
                             onPressed: () async {
                               List<Map> result = await _showDialog(context);
                               if (result != null) Navigator.pop(context);
-                            }),
+                            }
+                          ),
                         Container(
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2,
@@ -135,4 +138,12 @@ class _InviteModalState extends State<InviteModal> {
       }
     );
   }
+
+  // _showContacts() async {
+  //   final contact = await ContactsService.getContacts(); 
+
+  //   print('******************** contacts ********************');
+  //   print(contact);
+  //   print('******************** contacts ********************');
+  // }
 }
