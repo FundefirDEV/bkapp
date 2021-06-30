@@ -161,7 +161,7 @@ class _ContactListState extends State<ContactList> {
                   && c.contact.displayName != null) {
                 c.isUnAuthorized = true;
               }
-              if (c.isUnAuthorized) return Text('Ya esta en un bkgrupo');
+              if (c.isUnAuthorized) return Text(I18n.of(context).requestErrorUserNotAvailable);
 
               return Text(c.contact.displayName);
             },
@@ -180,7 +180,12 @@ class _ContactListState extends State<ContactList> {
             }
 
       //aca está el checkbox
-      if (c.isUnAuthorized) return Icon(Icons.close);
+      if (c.isUnAuthorized){
+        return Container(
+          margin: EdgeInsets.only(right: 11),
+          child: Icon(Icons.close)
+        );
+      } 
         return Checkbox(
             value: c.isChecked,
             onChanged: (bool value) {
