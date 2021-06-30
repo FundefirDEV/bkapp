@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/services/sql/partner_active_sql.dart';
+import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
@@ -35,10 +37,15 @@ class _ContactListState extends State<ContactList> {
   IconData icon;
   List<CustomContact> _selectedContacts = new List();
 
+  PartnerDatabaseProvider pendingPartnersDb;
+  ActivePartnersDbProvider activePartnersDb;
+
+
   @override
   void initState() {
     super.initState();
     refreshContacts();
+
     searchController.addListener(() => filterContacts());
   }
 
@@ -150,7 +157,6 @@ class _ContactListState extends State<ContactList> {
               }
               if (c.isUnAuthorized) return Text('Ya esta en un bkgrupo');
 
-              // a veces es nulo !
               return Text(c.contact.displayName);
             },
           ),
@@ -159,7 +165,6 @@ class _ContactListState extends State<ContactList> {
               : Text('.'),
           leading: (c.contact.avatar != null && c.contact.avatar.length > 0 && c.contact.initials() != null)
               ? CircleAvatar(backgroundImage: MemoryImage(c.contact.avatar))
-                                          // a veces es nulo !
               : CircleAvatar(child: Text(c.contact.initials())),
           trailing:
               BlocBuilder<PartnerBloc, PartnerState>(builder: (context, state) {
@@ -167,6 +172,8 @@ class _ContactListState extends State<ContactList> {
                 state.phoneNumber == list[0].value) {
               c.isUnAuthorized = true;
             }
+
+            //aca está el checkbox
             if (c.isUnAuthorized) return Icon(Icons.close);
             return Checkbox(
                 value: c.isChecked,
@@ -202,13 +209,20 @@ class _ContactListState extends State<ContactList> {
 
   _populateContacts() async {
 
-    // await Contacts.streamContacts( 
-    //         withThumbnails: false, sortBy: ContactSortOrder.firstName() , withHiResPhoto: false)
-    //     .forEach((contact) {
-    //   print(contact.toString());
-    //   _contactsList.add(contact);
-    // });
-    print('cargando contactos...');
+    pendingPartnersDb = PartnerDatabaseProvider.db;
+    activePartnersDb = ActivePartnersDbProvider.db;
+
+    final allPhoneList = [];
+    final phoneListPending = await pendingPartnersDb.getAllParters();
+    final phoneListActive = await activePartnersDb.getAllParters();
+
+    phoneListPending.forEach((partnet) { 
+      allPhoneList.add(partnet.phone);
+    });
+    phoneListActive.forEach((partnet) { 
+      allPhoneList.add(partnet.phone);
+    });
+
     final contacts = 
       await ContactsService.getContacts(
         photoHighResolution: false , 
@@ -218,16 +232,22 @@ class _ContactListState extends State<ContactList> {
       ); 
 
     contacts.forEach((contact) {
-      _contactsList.add(contact);
+      if(contact.phones.isNotEmpty){
+        _contactsList.add(contact);
+      }      
     });
-
-    print('******************** contacts ********************');
-    print(_contactsList.asMap());
-    print('******************** contacts ********************');
 
     _allContacts = _contactsList
         .map((contact) => CustomContact(contact: contact))
         .toList();
+      
+      // UnAutorised contaad that constain in partners list
+    for (var i = 0; i < _allContacts.length; i++) {
+      if( allPhoneList.contains(_allContacts[i].contact.phones.elementAt(0).value)){
+        _allContacts[i].isUnAuthorized = false;
+      }
+    }
+  
     setState(() => _uiCustomContacts = _allContacts);
   }
 
