@@ -40,6 +40,8 @@ class _ContactListState extends State<ContactList> {
   PartnerDatabaseProvider pendingPartnersDb;
   ActivePartnersDbProvider activePartnersDb;
 
+  bool isLoadingContactList = true;
+
 
   @override
   void initState() {
@@ -87,7 +89,7 @@ class _ContactListState extends State<ContactList> {
             ),
             Expanded(
               // aca está la lista
-              child: ListView.builder(
+              child: !isLoadingContactList ? ListView.builder(
                   key: Key('list_view_builder_contacts'),
                   shrinkWrap: true,
                   itemCount: isSearching == true
@@ -100,7 +102,11 @@ class _ContactListState extends State<ContactList> {
                     List<Item> _phoneList = _contact.contact.phones.toList();
                     return _buildListTile(_contact, _phoneList,
                         BlocProvider.of<PartnerBloc>(context));
-                  }),
+                  }) :  Center(
+                      child: Container(
+                        child: CircularProgressIndicator(),
+                    ),
+                  ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 22.0),
@@ -173,23 +179,24 @@ class _ContactListState extends State<ContactList> {
               c.isUnAuthorized = true;
             }
 
-            //aca está el checkbox
-            if (c.isUnAuthorized) return Icon(Icons.close);
-            return Checkbox(
-                value: c.isChecked,
-                onChanged: (bool value) {
-                  if (!c.isChecked) {
-                    partnerBloc.add(JustValidatePartner(
-                        token: widget.tokenUser,
-                        name: c.contact.displayName,
-                        phoneNumber: list[0]?.value));
-                    setState(() => _selectedContacts.add(c));
-                  } else {
-                    setState(() => _selectedContacts.remove(c));
-                  }
-                  setState(() => c.isChecked = value);
-                });
-          })),
+      //aca está el checkbox
+      if (c.isUnAuthorized) return Icon(Icons.close);
+        return Checkbox(
+            value: c.isChecked,
+            onChanged: (bool value) {
+              if (!c.isChecked) {
+                partnerBloc.add(JustValidatePartner(
+                    token: widget.tokenUser,
+                    name: c.contact.displayName,
+                    phoneNumber: list[0]?.value));
+                setState(() => _selectedContacts.add(c));
+              } else {
+                setState(() => _selectedContacts.remove(c));
+              }
+              setState(() => c.isChecked = value);
+            }
+          );
+      })),
     );
   }
 
@@ -241,7 +248,7 @@ class _ContactListState extends State<ContactList> {
         .map((contact) => CustomContact(contact: contact))
         .toList();
       
-      // UnAutorised contaad that constain in partners list
+    // UnAutorised contaad that constain in partners list
     for (var i = 0; i < _allContacts.length; i++) {
       if( allPhoneList.contains(_allContacts[i].contact.phones.elementAt(0).value)){
         _allContacts[i].isUnAuthorized = false;
@@ -249,6 +256,7 @@ class _ContactListState extends State<ContactList> {
     }
   
     setState(() => _uiCustomContacts = _allContacts);
+    setState(() => isLoadingContactList = false);
   }
 
   void _submitContacts(BuildContext context) {
