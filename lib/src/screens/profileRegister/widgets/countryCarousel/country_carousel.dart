@@ -51,10 +51,35 @@ class _CountryCarouselState extends State<CountryCarousel> {
           image: 'assets/images/colombia.svg',
           iso: core.CountryCodes.COLOMBIA),
       ItemCountry(
+          phoneCode: '+58',
+          name: 'Venezuela',
+          image: 'assets/images/venezuela.svg',
+          iso: core.CountryCodes.VENEZUELA),
+      ItemCountry(
           phoneCode: '+51',
           name: 'Perú',
           image: 'assets/images/peru.svg',
-          iso: core.CountryCodes.PERU)
+          iso: core.CountryCodes.PERU),
+      ItemCountry(
+          phoneCode: '+591',
+          name: 'Bolivia',
+          image: 'assets/images/bolivia.svg',
+          iso: core.CountryCodes.BOLIVIA),
+      ItemCountry(
+          phoneCode: '+56',
+          name: 'Chile',
+          image: 'assets/images/chile.svg',
+          iso: core.CountryCodes.CHILE),
+      ItemCountry(
+          phoneCode: '+221',
+          name: 'Senegal',
+          image: 'assets/images/senegal.svg',
+          iso: core.CountryCodes.SENEGAL),
+      ItemCountry(
+          phoneCode: '+971',
+          name: 'Emiratos',
+          image: 'assets/images/emirates.svg',
+          iso: core.CountryCodes.UNITED_ARAB_EMIRATES),
     ];
 
     double obtainValueOfCurve(PageController pageController) {
@@ -86,10 +111,11 @@ class _CountryCarouselState extends State<CountryCarousel> {
         child: Stack(
           children: <Widget>[
             for (var i = 0; i < country.length; i++)
-              if (index % 3 == i)
+              if (index % country.length == i)
                 Material(
                   color: Colors.transparent,
                   child: InkWell(
+                    
                     key: Key("country${i.toString()}"),
                     onTap: () {
                       widget.callback(country[i]);
