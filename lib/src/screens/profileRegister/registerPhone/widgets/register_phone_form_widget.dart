@@ -24,7 +24,8 @@ class RegisterPhoneFormWidget extends StatelessWidget {
     final profile = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
-        child: Row(
+      height: SizeConfig.blockSizeVertical * 30,
+      child: Row(
       children: <Widget>[
         Container(
           width: SizeConfig.blockSizeHorizontal * 8,
