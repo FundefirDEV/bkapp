@@ -100,7 +100,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
         key: Key('main_column_rules_edit_screen'),
         children: <Widget>[
           Container(
-            height: SizeConfig.screenHeight * .30,
+            height: SizeConfig.screenHeight * .38,
             //color: Colors.grey[100],
             child: TopContainerEditProfileScreen(
               profile: widget.profile

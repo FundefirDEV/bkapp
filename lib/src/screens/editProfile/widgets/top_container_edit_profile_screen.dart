@@ -25,7 +25,7 @@ class TopContainerEditProfileScreen extends StatelessWidget {
             child: Container(
               key: Key('Top_container_profile_Screen'),
               width: SizeConfig.safeBlockHorizontal * 100,
-              height: SizeConfig.screenHeight * .30,
+              height: SizeConfig.screenHeight * .38,
               margin: EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -49,7 +49,7 @@ class TopContainerEditProfileScreen extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.blockSizeHorizontal * 6,
-                vertical: SizeConfig.blockSizeVertical * 4
+                vertical: SizeConfig.blockSizeVertical * 6
               ),
                 child: Column(children: <Widget>[
                   TitleHeaderWidget(
