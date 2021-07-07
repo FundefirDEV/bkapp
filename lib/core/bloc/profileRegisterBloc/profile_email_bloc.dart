@@ -14,8 +14,6 @@ class ProfileEmailBloc extends FormBloc<String, String> {
   bool validEmail(){
 
     final res = FieldBlocValidators.email(email.value) == null && email.value.length > 5;
-
-    print('***** valid: $res *****');
     return !res;
   }
 
