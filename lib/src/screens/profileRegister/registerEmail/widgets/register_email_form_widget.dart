@@ -25,6 +25,7 @@ class RegisterEmailFormWidget extends StatelessWidget {
           errorBuilder: errorHandler,
           onTap: () => isValidating(profile.emailBloc),
           onChanged: (value) => isValidating(profile.emailBloc),
+          onSubmitted: (value) => isValidating(profile.emailBloc),
           decoration:
               InputDecoration(
                 labelText: I18n.of(context).formEmail)
