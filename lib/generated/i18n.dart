@@ -344,6 +344,10 @@ class I18n implements WidgetsLocalizations {
   String get profileEditScreenUpdate => "UPDATE";
   /// "Last Name"
   String get profileEditScreenLastName => "Last Name";
+  /// "Error when trying to update"
+  String get profileEditScreenModalErrorTitile => "Error when trying to update";
+  /// "profile"
+  String get profileEditScreenModalErrorTitleBlond => "profile";
   /// "Credit request"
   String get preApprovedCreditModalCreditrequest => "Credit request";
   /// "pre-approved"
@@ -1330,6 +1334,12 @@ class _I18n_es_ES extends I18n {
   /// "Primer apellido"
   @override
   String get profileEditScreenLastName => "Primer apellido";
+  /// "Ha ocurrido un error al actualizar"
+  @override
+  String get profileEditScreenModalErrorTitile => "Ha ocurrido un error al actualizar";
+  /// "el perfil"
+  @override
+  String get profileEditScreenModalErrorTitleBlond => "el perfil";
   /// "Solicitud de crédito"
   @override
   String get preApprovedCreditModalCreditrequest => "Solicitud de crédito";

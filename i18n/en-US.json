@@ -215,7 +215,9 @@
     "title": "Profile Edit",
     "editionMode": "EDIT MODE",
     "update": "UPDATE",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "modalErrorTitile" : "Error when trying to update",
+    "modalErrorTitleBlond" : "profile"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Credit request",

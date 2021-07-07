@@ -215,7 +215,9 @@
     "title": "Editar Perfil",
     "editionMode": "MODO EDICIÓN",
     "update": "ACTUALIZAR",
-    "lastName": "Primer apellido"
+    "lastName": "Primer apellido",
+    "modalErrorTitile" : "Ha ocurrido un error al actualizar",
+    "modalErrorTitleBlond" : "el perfil"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Solicitud de crédito",

@@ -13,6 +13,7 @@ class HeaderProfileWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
         width: SizeConfig.safeBlockHorizontal * 100,
+        height: SizeConfig.blockSizeVertical * 13,
         child: Row(
           children: [
             Expanded(
