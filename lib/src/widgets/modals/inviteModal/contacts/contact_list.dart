@@ -1,68 +1,51 @@
-import 'package:bkapp_flutter/core/services/sql/partner_active_sql.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
+import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/core/services/api/http_requests.dart';
+import 'package:bkapp_flutter/environment_config.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:easy_permission_validator/easy_permission_validator.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-//import 'package:flutter_contact/contacts.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-
 import '../../../widgets.dart';
+import 'package:http/http.dart' as http;
 
+
+// ignore: must_be_immutable
 class ContactList extends StatefulWidget {
-  ContactList({Key key, this.customContext, this.isRegister, this.tokenUser})
+  ContactList({Key key,
+     this.customContext, 
+     this.isRegister, 
+     @required this.tokenUser , 
+     this.partnerList,
+     })
       : super(key: key);
 
   final BuildContext customContext;
   final bool isRegister;
   final String tokenUser;
+  List<CustomContact> contactsList = [];
+  List<CustomContact> selectContact = [];
+  final List<PartnerModel> partnerList;
 
   @override
   _ContactListState createState() => _ContactListState();
 }
 
 class _ContactListState extends State<ContactList> {
-  List<Contact> _contactsList = List<Contact>();
-  List<CustomContact> _uiCustomContacts = List<CustomContact>();
-  List<CustomContact> _uiFilteredContacts = List<CustomContact>();
-  List<CustomContact> _allContacts = List<CustomContact>();
+
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);
-
-  bool _isSelectedContactsView = false;
-  String floatingButtonLabel;
-  Color floatingButtonColor;
   IconData icon;
-  List<CustomContact> _selectedContacts = new List();
-
-  PartnerDatabaseProvider pendingPartnersDb;
-  ActivePartnersDbProvider activePartnersDb;
 
   bool isLoadingContactList = true;
 
 
   @override
   void initState() {
+    _populateContacts();
     super.initState();
-    refreshContacts();
-
-    searchController.addListener(() => filterContacts());
   }
 
-  filterContacts() {
-    List<CustomContact> _c = [];
-    _c.addAll(_uiCustomContacts);
-    if (searchController.text.isNotEmpty) {
-      _c.retainWhere((contact) {
-        String searchTerm = searchController.text.toLowerCase();
-        String contactName = contact.contact.displayName.toLowerCase();
-        return contactName.contains(searchTerm);
-      });
-      setState(() => _uiFilteredContacts = _c);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,16 +75,11 @@ class _ContactListState extends State<ContactList> {
               child: !isLoadingContactList ? ListView.builder(
                   key: Key('list_view_builder_contacts'),
                   shrinkWrap: true,
-                  itemCount: isSearching == true
-                      ? filterContactNull(_uiFilteredContacts).length
-                      : filterContactNull(_uiCustomContacts).length,
+                  itemCount: filterContactNull(widget.contactsList).length,
                   itemBuilder: (BuildContext context, int index) {
-                    CustomContact _contact = isSearching == true
-                        ? filterContactNull(_uiFilteredContacts)[index]
-                        : filterContactNull(_uiCustomContacts)[index];
+                    CustomContact _contact = filterContactNull(widget.contactsList)[index];
                     List<Item> _phoneList = _contact.contact.phones.toList();
-                    return _buildListTile(_contact, _phoneList,
-                        BlocProvider.of<PartnerBloc>(context));
+                    return _buildListTile(_contact, _phoneList,);
                   }) :  Center(
                       child: Container(
                         child: CircularProgressIndicator(),
@@ -112,16 +90,18 @@ class _ContactListState extends State<ContactList> {
               padding: const EdgeInsets.symmetric(vertical: 22.0),
               child: RaisedButton(
                 key: Key('raisedButton-accept'),
-                onPressed: _selectedContacts.length >= 1
+                onPressed: 
+                    widget.selectContact.length >= 1
                     ? () => _submitContacts(context)
                     : () => Navigator.pop(context),
+
                 color: Theme.of(context).colorScheme.primaryColor,
                 padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 child: Text(
-                  _selectedContacts.length >= 1
+                  widget.selectContact.length >= 1
                       ? I18n.of(context).actionTextAdd
                       : I18n.of(context).actionTextClose,
                   style: TextStyle(
@@ -143,65 +123,25 @@ class _ContactListState extends State<ContactList> {
     );
   }
 
-  Widget _buildListTile(
-      CustomContact c, List<Item> list, PartnerBloc partnerBloc) {
-    return BlocListener<PartnerBloc, PartnerState>(
-      listener: (context, state) {
-        if (state is PartnerUnauthorized &&
-            state.phoneNumber == list[0].value) {
-          c.isChecked = false;
-          setState(() => _selectedContacts.remove(c));
+  Widget _buildListTile(CustomContact c, List<Item> list ) {
+
+    return 
+      ListTile(
+        title: Text(c.contact.displayName),
+        subtitle: Text(list[0].value),
+        leading: CircleAvatar(child: Text(c.contact.initials())),
+        //aca está el checkbox
+        trailing:         Checkbox(
+          value: c.isChecked,
+          onChanged: (bool value) {
+          if (!c.isChecked) {
+            setState(() => widget.selectContact.add(c));
+          } else {
+            setState(() => widget.selectContact.remove(c));
+          }
+          setState(() => c.isChecked = value);
         }
-      },
-      child: ListTile(
-          title: BlocBuilder<PartnerBloc, PartnerState>(
-            builder: (context, state) {
-              if (state is PartnerUnauthorized &&
-                  state.phoneNumber == list[0].value
-                  && c.contact.displayName != null) {
-                c.isUnAuthorized = true;
-              }
-              if (c.isUnAuthorized) return Text(I18n.of(context).requestErrorUserNotAvailable);
-
-              return Text(c.contact.displayName);
-            },
-          ),
-          subtitle: list.length >= 1 && list[0]?.value != null
-              ? Text(list[0].value)
-              : Text('.'),
-          leading: (c.contact.avatar != null && c.contact.avatar.length > 0 && c.contact.initials() != null)
-              ? CircleAvatar(backgroundImage: MemoryImage(c.contact.avatar))
-              : CircleAvatar(child: Text(c.contact.initials())),
-          trailing:
-              BlocBuilder<PartnerBloc, PartnerState>(builder: (context, state) {
-            if (state is PartnerUnauthorized &&
-                state.phoneNumber == list[0].value) {
-              c.isUnAuthorized = true;
-            }
-
-      //aca está el checkbox
-      if (c.isUnAuthorized){
-        return Container(
-          margin: EdgeInsets.only(right: 11),
-          child: Icon(Icons.close)
-        );
-      } 
-        return Checkbox(
-            value: c.isChecked,
-            onChanged: (bool value) {
-              if (!c.isChecked) {
-                partnerBloc.add(JustValidatePartner(
-                    token: widget.tokenUser,
-                    name: c.contact.displayName,
-                    phoneNumber: list[0]?.value));
-                setState(() => _selectedContacts.add(c));
-              } else {
-                setState(() => _selectedContacts.remove(c));
-              }
-              setState(() => c.isChecked = value);
-            }
-          );
-      })),
+      )
     );
   }
 
@@ -221,74 +161,96 @@ class _ContactListState extends State<ContactList> {
 
   _populateContacts() async {
 
-    pendingPartnersDb = PartnerDatabaseProvider.db;
-    activePartnersDb = ActivePartnersDbProvider.db;
-
-    final allPhoneList = [];
-    final phoneListPending = await pendingPartnersDb.getAllParters();
-    final phoneListActive = await activePartnersDb.getAllParters();
-
-    phoneListPending.forEach((partnet) { 
-      allPhoneList.add(partnet.phone);
-    });
-    phoneListActive.forEach((partnet) { 
-      allPhoneList.add(partnet.phone);
-    });
-
     final contacts = 
       await ContactsService.getContacts(
         photoHighResolution: false , 
         withThumbnails: false , 
         iOSLocalizedLabels: false , 
         androidLocalizedLabels: false
-      ); 
+      );
+
+    final List<Contact> _contactsList = []; 
 
     contacts.forEach((contact) {
-      if(contact.phones.isNotEmpty){
+      
+      if(contact.phones.isNotEmpty ){
         _contactsList.add(contact);
       }      
     });
 
-    _allContacts = _contactsList
+    widget.contactsList = _contactsList
         .map((contact) => CustomContact(contact: contact))
         .toList();
       
     // UnAutorised contaad that constain in partners list
-    for (var i = 0; i < _allContacts.length; i++) {
-      if( allPhoneList.contains(_allContacts[i].contact.phones.elementAt(0).value)){
-        _allContacts[i].isUnAuthorized = false;
+    final List<String> allPartnersPhones = [];
+    final List<String> allContactPhones = [];
+
+    widget.partnerList.forEach((partneR) { 
+      allPartnersPhones.add(partneR.phone);
+    });
+
+    // clean contact numbers
+    widget.contactsList.forEach((partner) { 
+      allContactPhones
+        .add(partner.contact.phones.elementAt(0).value.replaceAll(
+            RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
+        );
+    });
+
+    // remove contact that is in partnerList
+    for (var i = 0; i < widget.contactsList.length; i++) {
+      if( allPartnersPhones.contains(allContactPhones[i])){
+        widget.contactsList.removeAt(i);
       }
     }
+
+    setState(() {
+      isLoadingContactList = false;
+    });
   
-    setState(() => _uiCustomContacts = _allContacts);
-    setState(() => isLoadingContactList = false);
   }
 
-  void _submitContacts(BuildContext context) {
-    setState(() {
-      if (!_isSelectedContactsView) {
-        _uiCustomContacts =
-            _allContacts.where((contact) => contact.isChecked == true).toList();
-        var contactSelected = _uiCustomContacts.map((e) {
-          BlocProvider.of<PartnerBloc>(context).add(AddPartnerToDb(
-              token: widget.tokenUser,
-              name: e.contact.displayName,
-              phoneNumber: e.contact.phones.elementAt(0).value,
-              isRegister: widget.isRegister));
-          return {
-            'name': e.contact.displayName,
-            'phone': e.contact.phones.elementAt(0).value
-          };
-        }).toList();
-        _isSelectedContactsView = true;
-        Navigator.pop(context, contactSelected);
-      } else {
-        _uiCustomContacts = _allContacts;
-        _isSelectedContactsView = false;
-      }
+  void _submitContacts(BuildContext context) async {
+
+    print(widget.selectContact.asMap());
+
+    final List<Map<String, dynamic>> partnerBody = [];
+
+    widget.selectContact.forEach((contact) {
+      partnerBody.add({
+        "name": contact.contact.displayName,
+        "phone": contact.contact.phones.elementAt(0).value
+      });
     });
+
+    print('************* token *************');
+    print(widget.tokenUser);
+
+    final res = await postInvitePartner(widget.tokenUser, partnerBody);
+
+    print(res);
+
+    Navigator.pop(context);
+    Navigator.pop(context);
+    setState(() {});
   }
 }
+
+Future<Map<String, dynamic>> postInvitePartner(
+  String token, List<Map<String, dynamic>> partners) async {
+
+  http.Client httpClient = http.Client();
+  HttpRequests _httpRequest = HttpRequests();
+  final postInvitePartner = ApiEndpoints.postInvitePartner();
+  return await _httpRequest.post(
+    httpClient: httpClient,
+    url: postInvitePartner,
+    token: token,
+    body: {"partners": partners}
+  );
+}
+
 
 class CustomContact {
   final Contact contact;
@@ -296,12 +258,9 @@ class CustomContact {
   bool isUnAuthorized;
 
   CustomContact(
-      {this.contact, this.isChecked: false, this.isUnAuthorized: false});
+    {this.contact, this.isChecked: false, this.isUnAuthorized: false});
 }
-
   List<CustomContact> filterContactNull(List<CustomContact> listContact){
-
-    return listContact.where((contact) => contact?.contact?.displayName != null ).toList();
-
-  }
+  return listContact.where((contact) => contact?.contact?.displayName != null ).toList();
+}
 

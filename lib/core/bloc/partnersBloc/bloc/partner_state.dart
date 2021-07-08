@@ -7,45 +7,25 @@ abstract class PartnerState extends Equatable {
   List<Object> get props => [];
 }
 
-class PartnerInitial extends PartnerState {}
 
-class PartnerVerified extends PartnerState {
-  PartnerVerified({ @required this.phoneNumber });
-  final String phoneNumber;
+class PartnerLoaded extends PartnerState {
+  final List<PartnerModel> partnerList;
 
-  @override
-  List<Object> get props => [phoneNumber];
+  PartnerLoaded({this.partnerList});
 
   @override
-  String toString() => 'PartnerVerified { phoneNumber: $phoneNumber }';
+  List<Object> get props => [partnerList];
 }
+
+class PartnerInitial extends PartnerState {}
 
 class PartnerLoading extends PartnerState {}
 
-class PartnerUnauthorized extends PartnerState {
-  PartnerUnauthorized({ @required this.phoneNumber, @required this.error });
-  final String phoneNumber;
+class PartnerFailure extends PartnerState {
+  PartnerFailure({ @required this.error });
   final String error;
 
   @override
-  List<Object> get props => [phoneNumber, error];
+  List<Object> get props => [ error];
 
-  @override
-  String toString() => 'PartnerUnauthorized { phoneNumber: $phoneNumber }';
-}
-
-class PartnerAddedToDb extends PartnerState {}
-
-class PartnerAddedToBack extends PartnerState {}
-
-class PartnerFailureToBack extends PartnerState {
-  PartnerFailureToBack({ @required this.phoneNumber, @required this.error });
-  final String phoneNumber;
-  final String error;
-
-  @override
-  List<Object> get props => [phoneNumber, error];
-
-  @override
-  String toString() => 'PartnerFailureToBack { phoneNumber: $phoneNumber }';
 }

@@ -32,7 +32,7 @@ class ActivePartnersDbProvider {
           "validationCode TEXT,"
           "password TEXT,"
           "passwordConfirmation TEXT,"
-          "isActive INTEGER,"
+          "isActive BOOL,"
           "role TEXT"
           ")");
     });

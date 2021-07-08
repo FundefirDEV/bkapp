@@ -47,6 +47,10 @@ List<dynamic> blocProviders = [
   ),
 
   BlocProvider(
+    create: (context) => PartnerBloc(partnerRepository: partnerRepository),
+  ),
+
+  BlocProvider(
       create: (context) =>
           ProfitPaymentFormBloc(repository: profitPaymentRepository)),
   BlocProvider(

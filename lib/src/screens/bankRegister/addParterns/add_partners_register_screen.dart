@@ -75,9 +75,7 @@ class _AddPartnersRegisterScreenState
                     child: PartnersStructureWidget(
                       tokenUser: context.read<AppBloc>()
                         .bankRegisterBloc.token.value,
-                      onSave: (data) => print(data),
-                      partnerDb: pendingPartnersDb,
-                      isBankCreation: true,
+                     // partnerDb: pendingPartnersDb,
                     )
                   )
                 ),

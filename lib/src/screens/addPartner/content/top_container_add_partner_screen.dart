@@ -77,21 +77,14 @@ class _TopContainerAddPartnerScreenState
             child: TabBarView(controller: _tabController, children: [
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
-                showButton: false,
-                onSave: (data) => print(data),
-                isRegister: false,
+                //showButton: false,
                 gridViewWidth: 0.0,
-                partnerDb: activePartnersDb,
-                isBankCreation: false,
+                tokenUser: widget.tokenUser,
               ),
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
-                onSave: (data) => print(data),
-                isRegister: false,
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
-                partnerDb: pendingPartnersDb,
-                isBankCreation: false,
               )
             ]),
           ),

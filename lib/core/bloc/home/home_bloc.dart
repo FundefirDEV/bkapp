@@ -55,13 +55,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             pendingPartnerDb.addPartnerToDatabase(PartnerModel(
                 firstname: partner["name"],
                 phone: partner["phone"],
-                isActive: 0,
+                isActive: false,
                 role: partner["role"]));
           } else {
             activePartnersDb.addPartnerToDatabase(PartnerModel(
                 firstname: partner["name"],
                 phone: partner["phone"],
-                isActive: 1,
+                isActive: true,
                 role: partner["role"]));
           }
         }

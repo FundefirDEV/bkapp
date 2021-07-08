@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
@@ -13,12 +14,17 @@ import 'widgets/partner_form.dart';
 //NOTE HOW TO CALL IT:
 // showDialog(context: context, builder: (BuildContext context) => InviteModal()),
 class InviteModal extends StatefulWidget {
-  InviteModal({Key key, this.partners, this.isRegister, this.tokenUser})
+  InviteModal({Key key, 
+    this.partners, 
+    this.isRegister, 
+    @required this.tokenUser , 
+    @required this.partnerList})
       : super(key: key);
 
   final int partners;
   final bool isRegister; 
   final String tokenUser;
+  final List<PartnerModel> partnerList;
 
   @override
   _InviteModalState createState() => _InviteModalState();
@@ -89,8 +95,8 @@ class _InviteModalState extends State<InviteModal> {
                           PartnerForm(
                             inviteBloc:
                                 BlocProvider.of<InviteFormBloc>(context),
-                            addPartner: () => _addPartnerForm(context,
-                                BlocProvider.of<InviteFormBloc>(context)),
+                            // addPartner: () => _addPartnerForm(context,
+                            //     BlocProvider.of<InviteFormBloc>(context)),
                           )
                         ],
                       ),
@@ -108,31 +114,31 @@ class _InviteModalState extends State<InviteModal> {
     );
   }
 
-  _addPartnerForm(BuildContext context, InviteFormBloc inviteBloc) async {
-    BlocProvider.of<PartnerBloc>(context).add(AddAndVerifyPartner(
-        token: widget.tokenUser,
-        name: inviteBloc.name.value,
-        phoneNumber: inviteBloc.cellPhone.value,
-        isRegister: widget.isRegister));
-    inviteBloc.submit();
-    Navigator.pop(context);
-  }
+  // _addPartnerForm(BuildContext context, InviteFormBloc inviteBloc) async {
+  //   BlocProvider.of<PartnerBloc>(context).add(AddAndVerifyPartner(
+  //       token: widget.tokenUser,
+  //       name: inviteBloc.name.value,
+  //       phoneNumber: inviteBloc.cellPhone.value,
+  //       isRegister: widget.isRegister));
+  //   inviteBloc.submit();
+  //   Navigator.pop(context);
+  // }
 
-  // ignore: unused_element
   Future _showDialog(BuildContext context) {
     return showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
       builder: (_) {
-        return BlocProvider.value(
-          value: BlocProvider.of<PartnerBloc>(context),
-          child: BottomModal(
+        return 
+          BottomModal(
             width: SizeConfig.blockSizeHorizontal * 100,
             height: SizeConfig.blockSizeVertical * 90,
             child: ContactList(
-                isRegister: widget.isRegister,
-              tokenUser: widget.tokenUser)),
+              isRegister: widget.isRegister,
+              tokenUser: widget.tokenUser,
+              partnerList: widget.partnerList,
+          )
         );
       }
     );
