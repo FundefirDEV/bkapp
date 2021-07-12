@@ -36,20 +36,41 @@ class _ContactListState extends State<ContactList> {
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);
   IconData icon;
-
   bool isLoadingContactList = true;
+  List<CustomContact> contactsList = [];
 
 
   @override
   void initState() {
     _populateContacts();
+
+    searchController.addListener(() => filterContacts());
     super.initState();
+  }
+
+    filterContacts() {
+
+    // print('before: ');
+    // print(widget.contactsList.asMap());
+
+    List<CustomContact> _c = [];
+    _c.addAll(contactsList);
+    if (searchController.text.isNotEmpty) {
+      _c.retainWhere((contact) {
+        String searchTerm = searchController.text.toLowerCase();
+        String contactName = contact.contact.displayName.toLowerCase();
+        return contactName.contains(searchTerm);
+      });
+      setState(() => contactsList = _c);
+
+      print('after: ');
+      print(contactsList.asMap());
+    }
   }
 
 
   @override
   Widget build(BuildContext context) {
-    bool isSearching = searchController.text.isNotEmpty;
     return Stack(
       children: [
         Column(
@@ -59,6 +80,7 @@ class _ContactListState extends State<ContactList> {
               child: Container(
                 child: TextField(
                   key: Key('textfield_search'),
+                  onTap: () => print('ON TAP: ${contactsList.asMap()}'),
                   controller: searchController,
                   decoration: InputDecoration(
                     labelText: I18n.of(context).actionTextSearch,
@@ -75,9 +97,9 @@ class _ContactListState extends State<ContactList> {
               child: !isLoadingContactList ? ListView.builder(
                   key: Key('list_view_builder_contacts'),
                   shrinkWrap: true,
-                  itemCount: filterContactNull(widget.contactsList).length,
+                  itemCount: filterContactNull(contactsList).length,
                   itemBuilder: (BuildContext context, int index) {
-                    CustomContact _contact = filterContactNull(widget.contactsList)[index];
+                    CustomContact _contact = filterContactNull(contactsList)[index];
                     List<Item> _phoneList = _contact.contact.phones.toList();
                     return _buildListTile(_contact, _phoneList,);
                   }) :  Center(
@@ -178,7 +200,7 @@ class _ContactListState extends State<ContactList> {
       }      
     });
 
-    widget.contactsList = _contactsList
+    contactsList = _contactsList
         .map((contact) => CustomContact(contact: contact))
         .toList();
       
@@ -191,7 +213,7 @@ class _ContactListState extends State<ContactList> {
     });
 
     // clean contact numbers
-    widget.contactsList.forEach((partner) { 
+    contactsList.forEach((partner) { 
       allContactPhones
         .add(partner.contact.phones.elementAt(0).value.replaceAll(
             RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
@@ -199,15 +221,18 @@ class _ContactListState extends State<ContactList> {
     });
 
     // remove contact that is in partnerList
-    for (var i = 0; i < widget.contactsList.length; i++) {
+    for (var i = 0; i < contactsList.length; i++) {
       if( allPartnersPhones.contains(allContactPhones[i])){
-        widget.contactsList.removeAt(i);
+        contactsList.removeAt(i);
       }
     }
 
     setState(() {
       isLoadingContactList = false;
     });
+
+    print('POPULATE CONTACTS: ');
+    print(contactsList.asMap());
   
   }
 

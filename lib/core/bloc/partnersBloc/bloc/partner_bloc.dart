@@ -1,6 +1,4 @@
 import 'dart:async';
-
-// import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/partner_repository.dart';
 import 'package:bloc/bloc.dart';

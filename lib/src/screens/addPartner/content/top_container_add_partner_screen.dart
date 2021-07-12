@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/customTabIndicator/custom_tab_indicator_widget.dart';
@@ -23,14 +22,10 @@ class _TopContainerAddPartnerScreenState
     extends State<TopContainerAddPartnerScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  PartnerDatabaseProvider pendingPartnersDb;
-  ActivePartnersDbProvider activePartnersDb;
 
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
-    pendingPartnersDb = PartnerDatabaseProvider.db;
-    activePartnersDb = ActivePartnersDbProvider.db;
     super.initState();
   }
 
@@ -80,11 +75,13 @@ class _TopContainerAddPartnerScreenState
                 //showButton: false,
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
+                guest: false,
               ),
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
+                guest: true,
               )
             ]),
           ),
