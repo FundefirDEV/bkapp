@@ -14,12 +14,14 @@ class PartnersStructureWidget extends StatefulWidget {
     this.tokenUser,
     this.gridViewWidth = 25.0,
     this.guest = false,
+    this.menuNavigatorBloc
   }) : super(key: key);
 
   final Color colorButton;
   final String tokenUser;
   final double gridViewWidth;
   final bool guest;
+  final MenuNavigatorBloc menuNavigatorBloc;
 
   @override
   _PartnersStructureWidgetState createState() =>
@@ -53,6 +55,7 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
           parnersQuantity: state.partnerList.length, 
           showButton: widget.guest, 
           tokenUser: widget.tokenUser,
+          menuNavigatorBloc: widget.menuNavigatorBloc,
       );
       }
       if (state is PartnerFailure) {

@@ -1,5 +1,3 @@
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
-import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';

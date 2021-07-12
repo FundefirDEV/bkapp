@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/customTabIndicator/custom_tab_indicator_widget.dart';
@@ -8,11 +9,12 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 class TopContainerAddPartnerScreen extends StatefulWidget {
   TopContainerAddPartnerScreen({
     Key key,
-    this.tokenUser
+    this.tokenUser,
+    this.menuNavigatorBloc
   }) : super(key: key);
 
   final String tokenUser;
-
+  final MenuNavigatorBloc menuNavigatorBloc;
   @override
   _TopContainerAddPartnerScreenState createState() =>
       _TopContainerAddPartnerScreenState();
@@ -73,6 +75,7 @@ class _TopContainerAddPartnerScreenState
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
                 //showButton: false,
+                menuNavigatorBloc: widget.menuNavigatorBloc,
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
                 guest: false,
@@ -82,6 +85,7 @@ class _TopContainerAddPartnerScreenState
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
                 guest: true,
+                menuNavigatorBloc: widget.menuNavigatorBloc,
               )
             ]),
           ),

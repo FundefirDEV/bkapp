@@ -1,4 +1,7 @@
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:contacts_service/contacts_service.dart';
@@ -17,9 +20,11 @@ class ContactList extends StatefulWidget {
      this.isRegister, 
      @required this.tokenUser , 
      this.partnerList,
+     @required this.menuNavigatorBloc
      })
       : super(key: key);
 
+  final MenuNavigatorBloc menuNavigatorBloc;
   final BuildContext customContext;
   final bool isRegister;
   final String tokenUser;
@@ -66,79 +71,82 @@ class _ContactListState extends State<ContactList> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                child: TextField(
-                  key: Key('textfield_search'),
-                  controller: searchController,
-                  onChanged: (value)=> filterContacts(value),
-                  decoration: InputDecoration(
-                    labelText: I18n.of(context).actionTextSearch,
-                    border: new OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color:
-                          Theme.of(context).colorScheme.primaryColor)),
-                    prefixIcon: Icon(Icons.search)),
-                ),
-              ),
-            ),
-            Expanded(
-              // aca está la lista
-              child: !isLoadingContactList ? ListView.builder(
-                  key: Key('list_view_builder_contacts'),
-                  shrinkWrap: true,
-                  itemCount: filterContactNull(contactsList).length,
-                  itemBuilder: (BuildContext context, int index) {
-                    CustomContact _contact = filterContactNull(contactsList)[index];
-                    List<Item> _phoneList = _contact.contact.phones.toList();
-                    return _buildListTile(_contact, _phoneList,);
-                  }) :  Center(
-                      child: Container(
-                        child: CircularProgressIndicator(),
-                    ),
-                  ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 22.0),
-              child: RaisedButton(
-                key: Key('raisedButton-accept'),
-                onPressed: 
-                    widget.selectContact.length >= 1
-                    ? () => _submitContacts(context)
-                    : () => Navigator.pop(context),
 
-                color: Theme.of(context).colorScheme.primaryColor,
-                padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Text(
-                  widget.selectContact.length >= 1
-                      ? I18n.of(context).actionTextAdd
-                      : I18n.of(context).actionTextClose,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.white,
-                    letterSpacing: 3.0,
+    //MenuNavigatorBloc menuNavigatorBloc = BlocProvider.of<MenuNavigatorBloc>(context);
+
+    return Stack(
+    children: [
+      Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              child: TextField(
+                key: Key('textfield_search'),
+                controller: searchController,
+                onChanged: (value)=> filterContacts(value),
+                decoration: InputDecoration(
+                  labelText: I18n.of(context).actionTextSearch,
+                  border: new OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color:
+                        Theme.of(context).colorScheme.primaryColor)),
+                  prefixIcon: Icon(Icons.search)),
+              ),
+            ),
+          ),
+          Expanded(
+            // aca está la lista
+            child: !isLoadingContactList ? ListView.builder(
+                key: Key('list_view_builder_contacts'),
+                shrinkWrap: true,
+                itemCount: filterContactNull(contactsList).length,
+                itemBuilder: (BuildContext context, int index) {
+                  CustomContact _contact = filterContactNull(contactsList)[index];
+                  List<Item> _phoneList = _contact.contact.phones.toList();
+                  return _buildListTile(_contact, _phoneList,);
+                }) :  Center(
+                    child: Container(
+                      child: CircularProgressIndicator(),
                   ),
+                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 22.0),
+            child: RaisedButton(
+              key: Key('raisedButton-accept'),
+              onPressed: 
+                  widget.selectContact.length >= 1
+                  ? () => _submitContacts(context)
+                  : () => Navigator.pop(context),
+
+              color: Theme.of(context).colorScheme.primaryColor,
+              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0)),
+              child: Text(
+                widget.selectContact.length >= 1
+                    ? I18n.of(context).actionTextAdd
+                    : I18n.of(context).actionTextClose,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white,
+                  letterSpacing: 3.0,
                 ),
               ),
             ),
-          ],
-        ),
-        MenuRequests(
-            position: position,
-            onDragEnd: (details) {
-              setState(() => position = details.offset);
-            })
-      ],
-    );
-  }
+          ),
+        ],
+      ),
+      MenuRequests(
+          position: position,
+          onDragEnd: (details) {
+            setState(() => position = details.offset);
+          })
+    ],
+  );
+}
 
   Widget _buildListTile(CustomContact c, List<Item> list ) {
 
@@ -225,7 +233,7 @@ class _ContactListState extends State<ContactList> {
     });
   }
 
-  void _submitContacts(BuildContext context) async {
+  _submitContacts(BuildContext context) async {
 
     print(widget.selectContact.asMap());
 
@@ -249,6 +257,17 @@ class _ContactListState extends State<ContactList> {
 
       Navigator.pop(context);
       Navigator.pop(context);
+
+      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.homeScreen));
+      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
+
+      widget.selectContact.forEach((contact) {
+        widget.partnerList.add( PartnerModel(
+          firstname: contact.contact.displayName,
+          phone: contact.contact.phones.elementAt(0).value
+        ));
+      });
+
       setState(() {});
       
     } catch (e) {

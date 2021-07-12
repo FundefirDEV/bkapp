@@ -1,7 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/partnersBloc/bloc/partner_bloc.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/widgets/partner_card_widget.dart';
+import 'package:bkapp_flutter/src/widgets/addPartners/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
@@ -14,13 +18,14 @@ import 'package:http/http.dart' as http;
 class PartnersCardList extends StatefulWidget {
   PartnersCardList({ 
     Key key, this.showButton , this.partners , this.parnersQuantity, 
-    @required this.tokenUser 
+    @required this.tokenUser , @required this.menuNavigatorBloc
   }) : super(key: key);
 
   List<PartnerModel> partners  = [];
   bool showButton = false;
   final tokenUser;
   final int parnersQuantity;
+  final MenuNavigatorBloc menuNavigatorBloc;
 
   @override
   _PartnersCardListState createState() =>
@@ -74,32 +79,35 @@ class _PartnersCardListState extends State<PartnersCardList> {
                   ),
               ),
             ),
-            ...[
-              Padding(
-                key: Key('padding-minimum-allowed'),
-                padding: EdgeInsets.symmetric(
-                    vertical: SizeConfig.blockSizeVertical * 3),
-                 //child: PartnersAllowed()
-              )
-            ],
+            // ...[
+            //   Padding(
+            //     key: Key('padding-minimum-allowed'),
+            //     padding: EdgeInsets.symmetric(
+            //         vertical: SizeConfig.blockSizeVertical * 3),
+            //      child: PartnersAllowed()
+            //   )
+            // ],
             if (widget.showButton)...[
-              ButtonLineRoundedWidget(
-                
-                key: Key('add-partner-button'),
-                //color: widget.colorButton,
-                onPressed: () => showDialog(
-                  context: context,
-                  builder: (_) 
-                    => InviteModal(
-                      partners:widget.parnersQuantity ,
-                      partnerList: partners,
-                      tokenUser: widget.tokenUser ,
-                    )
+              Container(
+                margin:EdgeInsets.only(top: 20) ,
+                child: ButtonLineRoundedWidget(
+                  key: Key('add-partner-button'),
+                  color: Colors.blue,
+                  onPressed: () => showDialog(
+                    context: context,
+                    builder: (_) 
+                      => InviteModal(
+                        partners:widget.parnersQuantity ,
+                        partnerList: partners,
+                        tokenUser: widget.tokenUser ,
+                        menuNavigatorBloc: widget.menuNavigatorBloc,
+                      )
+                  ),
+                  firstText:
+                      I18n.of(context).bankRegisterAddPartnersButtonAdd,
+                  secondText:
+                      I18n.of(context).bankRegisterAddPartnersButtonPartner,
                 ),
-                firstText:
-                    I18n.of(context).bankRegisterAddPartnersButtonAdd,
-                secondText:
-                    I18n.of(context).bankRegisterAddPartnersButtonPartner,
               )
             ]
           ],
@@ -122,8 +130,15 @@ class _PartnersCardListState extends State<PartnersCardList> {
 
     print(res);
 
+    widget.partners.add( PartnerModel(
+      firstname: name,
+      phone: phone
+    ));
+
     Navigator.pop(context);
-    Navigator.pop(context);
+    //PartnerInitialize(token: widget.tokenUser);
+    //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
+
     setState(() {});
   }
 }

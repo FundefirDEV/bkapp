@@ -18,9 +18,12 @@ class InviteModal extends StatefulWidget {
     this.partners, 
     this.isRegister, 
     @required this.tokenUser , 
-    @required this.partnerList})
-      : super(key: key);
+    @required this.partnerList,
+    @required this.menuNavigatorBloc
 
+    }) : super(key: key);
+
+  final MenuNavigatorBloc menuNavigatorBloc;
   final int partners;
   final bool isRegister; 
   final String tokenUser;
@@ -130,6 +133,7 @@ class _InviteModalState extends State<InviteModal> {
               isRegister: widget.isRegister,
               tokenUser: widget.tokenUser,
               partnerList: widget.partnerList,
+              menuNavigatorBloc: widget.menuNavigatorBloc,
           )
         );
       }
