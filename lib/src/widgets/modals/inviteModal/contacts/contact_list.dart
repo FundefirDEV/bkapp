@@ -38,33 +38,28 @@ class _ContactListState extends State<ContactList> {
   IconData icon;
   bool isLoadingContactList = true;
   List<CustomContact> contactsList = [];
+  List<CustomContact> allContactsList = [];
 
 
   @override
   void initState() {
     _populateContacts();
 
-    searchController.addListener(() => filterContacts());
+    //searchController.addListener(() => filterContacts());
     super.initState();
   }
 
-    filterContacts() {
-
-    // print('before: ');
-    // print(widget.contactsList.asMap());
+    filterContacts(String value) {
 
     List<CustomContact> _c = [];
-    _c.addAll(contactsList);
-    if (searchController.text.isNotEmpty) {
+    _c.addAll(allContactsList);
+    if (value.isNotEmpty) {      
       _c.retainWhere((contact) {
-        String searchTerm = searchController.text.toLowerCase();
+        String searchTerm = value.toLowerCase();
         String contactName = contact.contact.displayName.toLowerCase();
         return contactName.contains(searchTerm);
       });
       setState(() => contactsList = _c);
-
-      print('after: ');
-      print(contactsList.asMap());
     }
   }
 
@@ -80,8 +75,8 @@ class _ContactListState extends State<ContactList> {
               child: Container(
                 child: TextField(
                   key: Key('textfield_search'),
-                  onTap: () => print('ON TAP: ${contactsList.asMap()}'),
                   controller: searchController,
+                  onChanged: (value)=> filterContacts(value),
                   decoration: InputDecoration(
                     labelText: I18n.of(context).actionTextSearch,
                     border: new OutlineInputBorder(
@@ -206,34 +201,28 @@ class _ContactListState extends State<ContactList> {
       
     // UnAutorised contaad that constain in partners list
     final List<String> allPartnersPhones = [];
-    final List<String> allContactPhones = [];
 
     widget.partnerList.forEach((partneR) { 
-      allPartnersPhones.add(partneR.phone);
+      allPartnersPhones.add(partneR.phone.replaceAll(
+            RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), ''));
     });
 
     // clean contact numbers
-    contactsList.forEach((partner) { 
-      allContactPhones
-        .add(partner.contact.phones.elementAt(0).value.replaceAll(
-            RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
-        );
+    contactsList.forEach((contact) {
+      final cleanPhone =  contact.contact.phones.elementAt(0).value.replaceAll(
+            RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+      contact.clearPhone = cleanPhone;     
     });
 
-    // remove contact that is in partnerList
-    for (var i = 0; i < contactsList.length; i++) {
-      if( allPartnersPhones.contains(allContactPhones[i])){
-        contactsList.removeAt(i);
-      }
-    }
+    contactsList.removeWhere(
+      (contact) => allPartnersPhones.contains(contact.clearPhone)
+    );
+
 
     setState(() {
       isLoadingContactList = false;
+      allContactsList = contactsList;
     });
-
-    print('POPULATE CONTACTS: ');
-    print(contactsList.asMap());
-  
   }
 
   void _submitContacts(BuildContext context) async {
@@ -249,16 +238,24 @@ class _ContactListState extends State<ContactList> {
       });
     });
 
-    print('************* token *************');
-    print(widget.tokenUser);
+    try {
+        
+      print('************* token *************');
+      print(widget.tokenUser);
 
-    final res = await postInvitePartner(widget.tokenUser, partnerBody);
+      final res = await postInvitePartner(widget.tokenUser, partnerBody);
 
-    print(res);
+      print(res);
 
-    Navigator.pop(context);
-    Navigator.pop(context);
-    setState(() {});
+      Navigator.pop(context);
+      Navigator.pop(context);
+      setState(() {});
+      
+    } catch (e) {
+
+      _showDialog(context , e.toString());      
+    }
+    
   }
 }
 
@@ -276,14 +273,35 @@ Future<Map<String, dynamic>> postInvitePartner(
   );
 }
 
+void _showDialog(context , String error) {
+  showModalBottomSheet(
+    backgroundColor: Colors.transparent,
+    context: context,
+    builder: (_) {
+      return ImageBottomModal(
+        modalHeight: 45.0,
+        image: 'assets/images/sad_bot.svg',
+        title: I18n.of(context).requestErrorUserNotAvailable,
+        isBold: true,
+        isBtnAccept: false,
+        isImageBg: false,
+        titleCloseButton: I18n.of(context).administratorAssignmentClose,
+        onPressCancel: ()=> Navigator.pop(context),
+        technicalData: error,
+    );
+  });
+}
+
+
 
 class CustomContact {
   final Contact contact;
   bool isChecked;
   bool isUnAuthorized;
+  String clearPhone;
 
   CustomContact(
-    {this.contact, this.isChecked: false, this.isUnAuthorized: false});
+    {this.contact, this.isChecked: false, this.isUnAuthorized: false , this.clearPhone});
 }
   List<CustomContact> filterContactNull(List<CustomContact> listContact){
   return listContact.where((contact) => contact?.contact?.displayName != null ).toList();

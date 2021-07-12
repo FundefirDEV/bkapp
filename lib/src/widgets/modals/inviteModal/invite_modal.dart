@@ -95,8 +95,8 @@ class _InviteModalState extends State<InviteModal> {
                           PartnerForm(
                             inviteBloc:
                                 BlocProvider.of<InviteFormBloc>(context),
-                            // addPartner: () => _addPartnerForm(context,
-                            //     BlocProvider.of<InviteFormBloc>(context)),
+                                token: widget.tokenUser,
+                            // addPartner: () => _addPartnerForm(context),
                           )
                         ],
                       ),
@@ -114,15 +114,7 @@ class _InviteModalState extends State<InviteModal> {
     );
   }
 
-  // _addPartnerForm(BuildContext context, InviteFormBloc inviteBloc) async {
-  //   BlocProvider.of<PartnerBloc>(context).add(AddAndVerifyPartner(
-  //       token: widget.tokenUser,
-  //       name: inviteBloc.name.value,
-  //       phoneNumber: inviteBloc.cellPhone.value,
-  //       isRegister: widget.isRegister));
-  //   inviteBloc.submit();
-  //   Navigator.pop(context);
-  // }
+
 
   Future _showDialog(BuildContext context) {
     return showModalBottomSheet(
