@@ -1,52 +1,49 @@
-import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
-import 'package:bkapp_flutter/src/widgets/addPartners/widgets/partner_card_widget.dart';
-import 'package:bkapp_flutter/src/widgets/addPartners/widgets/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
-import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/invite_modal_register_bank.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';import 'package:bkapp_flutter/src/widgets/addPartners/widgets/partner_card_widget.dart';
+import 'package:bkapp_flutter/src/widgets/addPartners/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
+import 'package:flutter/material.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:http/http.dart' as http;
 
-
-// ignore: must_be_immutable
-class PartnersCardList extends StatefulWidget {
-  PartnersCardList({ 
-    Key key, this.showButton , this.partners , this.parnersQuantity, 
-    @required this.tokenUser , @required this.menuNavigatorBloc
+class PartnersStructureRegisterBankWidget extends StatefulWidget {
+  const PartnersStructureRegisterBankWidget({
+    Key key,
+    this.colorButton: Colors.transparent,
+    this.tokenUser,
+    this.gridViewWidth = 25.0,
+    this.guest = false,
+    this.menuNavigatorBloc
   }) : super(key: key);
 
-  List<PartnerModel> partners  = [];
-  bool showButton = false;
-  final tokenUser;
-  final int parnersQuantity;
+  final Color colorButton;
+  final String tokenUser;
+  final double gridViewWidth;
+  final bool guest;
   final MenuNavigatorBloc menuNavigatorBloc;
 
   @override
-  _PartnersCardListState createState() =>
-      _PartnersCardListState(partners: partners , showButton: showButton);
+  _PartnersStructureRegisterBankWidget createState() =>
+      _PartnersStructureRegisterBankWidget();
 }
-
-class _PartnersCardListState extends State<PartnersCardList> {
-
-  _PartnersCardListState({this.partners , this.showButton});
-
+class _PartnersStructureRegisterBankWidget extends State<PartnersStructureRegisterBankWidget> {
+  
   List<PartnerModel> partners = [];
-  bool showButton = false;
-
-  final gridViewWidth = 15.0;
 
   @override
   void initState() {
     super.initState();
-  }                                                                                                                                                                           
+  }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     return Align(
       key: Key('Align-partner-structure'),
       alignment: Alignment.center,
@@ -73,29 +70,28 @@ class _PartnersCardListState extends State<PartnersCardList> {
                 child: Padding(
                     padding: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 2),
-                    child: _loadPartnersSelected(gridViewWidth , partners , context),
+                    child: _loadPartnersSelected(widget.gridViewWidth , partners , context),
                   ),
               ),
             ),
-            // ...[
-            //   Padding(
-            //     key: Key('padding-minimum-allowed'),
-            //     padding: EdgeInsets.symmetric(
-            //         vertical: SizeConfig.blockSizeVertical * 3),
-            //      child: PartnersAllowed()
-            //   )
-            // ],
-            if (widget.showButton)...[
+            ...[
+              Padding(
+                key: Key('padding-minimum-allowed'),
+                padding: EdgeInsets.symmetric(
+                  vertical: SizeConfig.blockSizeVertical * 3),
+                  child: PartnersAllowed()
+              )
+            ],
+            ...[
               Container(
                 margin:EdgeInsets.only(top: 20) ,
                 child: ButtonLineRoundedWidget(
                   key: Key('add-partner-button'),
-                  color: Colors.blue,
                   onPressed: () => showDialog(
                     context: context,
                     builder: (_) 
-                      => InviteModal(
-                        partners:widget.parnersQuantity ,
+                      => InviteModalRegisterBank(
+                        partners: partners.length ,
                         partnerList: partners,
                         tokenUser: widget.tokenUser ,
                         menuNavigatorBloc: widget.menuNavigatorBloc,
@@ -128,7 +124,7 @@ class _PartnersCardListState extends State<PartnersCardList> {
 
     print(res);
 
-    widget.partners.add( PartnerModel(
+    partners.add( PartnerModel(
       firstname: name,
       phone: phone
     ));
@@ -139,7 +135,6 @@ class _PartnersCardListState extends State<PartnersCardList> {
 
     setState(() {});
   }
-}
 
 Future<Map<String, dynamic>> postInvitePartner(
   String token, List<Map<String, dynamic>> partners) async {
@@ -183,16 +178,14 @@ Widget _loadPartnersSelected(
           //onSave: () => loadPartners(context ,partner.firstname, partner.phone ),
         );
       });
-  } else {
-    return Center(
-        child: Text(
-      I18n.of(context).bankRegisterAddPartnersNothing,
-      style: TextStyle(
-          fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
-    ));
+    } else {
+      return Center(
+          child: Text(
+        I18n.of(context).bankRegisterAddPartnersNothing,
+        style: TextStyle(
+            fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
+      ));
+    }
   }
 }
-
-
-  
 

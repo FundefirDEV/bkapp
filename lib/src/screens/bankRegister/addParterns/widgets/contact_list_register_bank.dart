@@ -3,18 +3,18 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:easy_permission_validator/easy_permission_validator.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-import '../../../widgets.dart';
 import 'package:http/http.dart' as http;
 
 
 // ignore: must_be_immutable
-class ContactList extends StatefulWidget {
-  ContactList({Key key,
+class ContactListRegisterBank extends StatefulWidget {
+  ContactListRegisterBank({Key key,
      this.customContext, 
      this.isRegister, 
      @required this.tokenUser , 
@@ -32,10 +32,10 @@ class ContactList extends StatefulWidget {
   final List<PartnerModel> partnerList;
 
   @override
-  _ContactListState createState() => _ContactListState();
+  _ContactListRegisterBankState createState() => _ContactListRegisterBankState();
 }
 
-class _ContactListState extends State<ContactList> {
+class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);

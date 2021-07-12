@@ -1,6 +1,6 @@
+import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/partner_structure_register_bank.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/partners_structure.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -25,7 +25,6 @@ class _AddPartnersRegisterScreenState
   AnimationController _controller;
   Animation _animation;
   Offset position = Offset(20.0, 20.0);
-  PartnerDatabaseProvider pendingPartnersDb;
 
   @override
   void initState() {
@@ -41,7 +40,6 @@ class _AddPartnersRegisterScreenState
       parent: _controller,
       curve: Interval(0.2, 1.0, curve: Curves.easeIn)
     ));
-    pendingPartnersDb = PartnerDatabaseProvider.db;
   }
 
   @override
@@ -72,11 +70,7 @@ class _AddPartnersRegisterScreenState
                   flex: 2,
                   child: FadeTransition(
                     opacity: _animation,
-                    child: PartnersStructureWidget(
-                      tokenUser: context.read<AppBloc>()
-                        .bankRegisterBloc.token.value,
-                     // partnerDb: pendingPartnersDb,
-                    )
+                    child: PartnersStructureRegisterBankWidget()
                   )
                 ),
                 FooterBkWidget()
