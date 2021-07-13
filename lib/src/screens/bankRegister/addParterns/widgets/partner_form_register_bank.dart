@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/partnersBloc/invite_form_bloc.dart';
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -12,12 +13,20 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:http/http.dart' as http;
 
 class PartnerFormRegisterBank extends StatefulWidget {
-  const PartnerFormRegisterBank(
-      {Key key, @required this.inviteBloc , @required this.token})
-      : super(key: key);
+  const PartnerFormRegisterBank({ 
+      Key key, 
+      @required this.inviteBloc ,
+      @required this.token ,
+      @required this.addPartner,
+      @required this.partnerList
+    })
+      : super(key: key
+    );
 
   final InviteFormBloc inviteBloc;
   final String token;
+  final Function addPartner;
+  final List<PartnerModel> partnerList;
 
   @override
   _PartnerFormRegisterBankState createState() => _PartnerFormRegisterBankState();
@@ -69,7 +78,7 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(10),
+                      LengthLimitingTextInputFormatter(14),
                       PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
@@ -106,15 +115,34 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
 
     void _submitContacts(BuildContext context , String name , String phone) async {
 
+    final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+
+    final List<String> allPhones = [];
+
+    widget.partnerList.forEach((p) { 
+      allPhones.add(p.phone);
+    });
+
+    if(allPhones.contains(phone)){
+      _showDialog(context , '$phone already exist');
+      return;      
+    }
+
     try {
       print('************* token *************');
-      print(widget.token);
+      print(widget.inviteBloc);
+      print('************* token *************');
+      print(clearPhone);
 
-      final res = await validatePhone(widget.token, phone);
+      final res = await validatePhone(widget.token, clearPhone);
       print(res);
 
-      Navigator.pop(context);
+      widget.addPartner([PartnerModel(
+        firstname: name,
+        phone: phone
+      )]);
 
+      Navigator.pop(context);
       setState(() {});
       
     } catch (e) {

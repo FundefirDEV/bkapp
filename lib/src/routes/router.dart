@@ -89,7 +89,8 @@ class Router {
       case addPartnersRegisterRoute:
         return PageRouteBuilder(
             transitionDuration: Duration(microseconds: 350),
-            pageBuilder: (context, _, __) => AddPartnersRegisterScreen());
+            pageBuilder: (context, _, __) => AddPartnersRegisterScreen(
+          ));
       case utilsScreenRoute:
         return MaterialPageRoute(builder: (_) => UtilsScreen());
 

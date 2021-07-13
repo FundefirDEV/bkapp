@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
@@ -6,16 +5,21 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/invite_modal_register_bank.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';import 'package:bkapp_flutter/src/widgets/addPartners/widgets/partner_card_widget.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/widgets/widgets.dart';
-import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:http/http.dart' as http;
+
+// bloc imports
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/bank_register_bloc.dart';
 
 class PartnersStructureRegisterBankWidget extends StatefulWidget {
   const PartnersStructureRegisterBankWidget({
     Key key,
     this.colorButton: Colors.transparent,
-    this.tokenUser,
+    @required this.tokenUser,
     this.gridViewWidth = 25.0,
     this.guest = false,
     this.menuNavigatorBloc
@@ -33,11 +37,12 @@ class PartnersStructureRegisterBankWidget extends StatefulWidget {
 }
 class _PartnersStructureRegisterBankWidget extends State<PartnersStructureRegisterBankWidget> {
   
-  List<PartnerModel> partners = [];
+  List<PartnerModel> partnersList = [];
 
   @override
   void initState() {
     super.initState();
+    partnersList = context.read<AppBloc>().bankRegisterBloc.partnerList;
   }
 
   @override
@@ -70,7 +75,7 @@ class _PartnersStructureRegisterBankWidget extends State<PartnersStructureRegist
                 child: Padding(
                     padding: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 2),
-                    child: _loadPartnersSelected(widget.gridViewWidth , partners , context),
+                    child: _loadPartnersSelected(widget.gridViewWidth , partnersList , context),
                   ),
               ),
             ),
@@ -91,10 +96,11 @@ class _PartnersStructureRegisterBankWidget extends State<PartnersStructureRegist
                     context: context,
                     builder: (_) 
                       => InviteModalRegisterBank(
-                        partners: partners.length ,
-                        partnerList: partners,
+                        partners: partnersList.length ,
+                        partnerList: partnersList,
                         tokenUser: widget.tokenUser ,
                         menuNavigatorBloc: widget.menuNavigatorBloc,
+                        addPartnerForm : _addPartnerForm
                       )
                   ),
                   firstText:
@@ -110,29 +116,17 @@ class _PartnersStructureRegisterBankWidget extends State<PartnersStructureRegist
     );
   }
 
-  void loadPartners(BuildContext context , String name , String phone) async {
 
-    final partnerBody = {
-      "name": name,
-      "phone": name
-    };    
+  void _addPartnerForm(List<PartnerModel> partner){
+    partnersList.addAll(partner);
 
-    print('************* token *************');
-    print(widget.tokenUser);
+    context.read<AppBloc>().bankRegisterBloc.partnerList = partnersList;
+    
+    setState(() {});
+  }
 
-    final res = await postInvitePartner(widget.tokenUser, [partnerBody]);
-
-    print(res);
-
-    partners.add( PartnerModel(
-      firstname: name,
-      phone: phone
-    ));
-
-    Navigator.pop(context);
-    //PartnerInitialize(token: widget.tokenUser);
-    //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
-
+  void _removePartner(int index){
+    partnersList.removeAt(index);
     setState(() {});
   }
 
@@ -174,7 +168,7 @@ Widget _loadPartnersSelected(
         return PartnerCardWidget(
           name: partner.firstname,
           mobile: partner.phone,
-          onDelete: () => {},
+          onDelete: () => _removePartner(index),
           //onSave: () => loadPartners(context ,partner.firstname, partner.phone ),
         );
       });

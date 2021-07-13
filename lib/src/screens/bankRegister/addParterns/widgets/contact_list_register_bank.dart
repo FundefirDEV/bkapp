@@ -19,7 +19,8 @@ class ContactListRegisterBank extends StatefulWidget {
      this.isRegister, 
      @required this.tokenUser , 
      this.partnerList,
-     @required this.menuNavigatorBloc
+     @required this.menuNavigatorBloc,
+     @required this.addPartnerForm,
      })
       : super(key: key);
 
@@ -30,6 +31,7 @@ class ContactListRegisterBank extends StatefulWidget {
   List<CustomContact> contactsList = [];
   List<CustomContact> selectContact = [];
   final List<PartnerModel> partnerList;
+  final  Function addPartnerForm;
 
   @override
   _ContactListRegisterBankState createState() => _ContactListRegisterBankState();
@@ -235,61 +237,87 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
   _submitContacts(BuildContext context) async {
 
     print(widget.selectContact.asMap());
+    
+    //final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
 
-    final List<Map<String, dynamic>> partnerBody = [];
+    final List<String> allPhones = [];
 
-    widget.selectContact.forEach((contact) {
-      partnerBody.add({
-        "name": contact.contact.displayName,
-        "phone": contact.contact.phones.elementAt(0).value
-      });
+    widget.selectContact.forEach((c) { 
+      allPhones.add(
+        c.contact.phones.elementAt(0).value.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
+      );
     });
 
     try {
-        
-      print('************* token *************');
-      print(widget.tokenUser);
 
-      final res = await postInvitePartner(widget.tokenUser, partnerBody);
-
-      print(res);
-
-      Navigator.pop(context);
-      Navigator.pop(context);
-
-      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.homeScreen));
-      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
-
-      widget.selectContact.forEach((contact) {
-        widget.partnerList.add( PartnerModel(
-          firstname: contact.contact.displayName,
-          phone: contact.contact.phones.elementAt(0).value
-        ));
+      allPhones.forEach((phone) async { 
+        await validatePhone(widget.tokenUser , phone);
       });
-
-      setState(() {});
       
     } catch (e) {
-
       _showDialog(context , e.toString());      
     }
+
+    final List<PartnerModel> partnerList = [];
+
+    widget.selectContact.forEach((contact) { 
+      partnerList.add(PartnerModel(
+        firstname: contact.contact.displayName,
+        phone : contact.contact.phones.elementAt(0).value
+      ));
+    });
+
+    widget.addPartnerForm(partnerList);
+
+    widget.selectContact = [];
+    Navigator.pop(context);
+    Navigator.pop(context);
+
+    setState(() {});
+
+    // try {
+        
+    //   print('************* token *************');
+    //   print(widget.tokenUser);
+
+    //   // final res = await postInvitePartner(widget.tokenUser, partnerBody);
+
+    //   // print(res);
+
+    //   // Navigator.pop(context);
+    //   // Navigator.pop(context);
+
+    //   widget.selectContact.forEach((contact) {
+    //     widget.partnerList.add( PartnerModel(
+    //       firstname: contact.contact.displayName,
+    //       phone: contact.contact.phones.elementAt(0).value
+    //     ));
+    //   });
+
+    //   setState(() {});
+      
+    // } catch (e) {
+
+    //   _showDialog(context , e.toString());      
+    // }
     
   }
 }
 
-Future<Map<String, dynamic>> postInvitePartner(
-  String token, List<Map<String, dynamic>> partners) async {
+Future<String> validatePhone(
+  String token, String phone) async {
 
   http.Client httpClient = http.Client();
   HttpRequests _httpRequest = HttpRequests();
-  final postInvitePartner = ApiEndpoints.postInvitePartner();
-  return await _httpRequest.post(
+  final postInvitePartner = ApiEndpoints.validatePhone();
+  return await _httpRequest.get(
     httpClient: httpClient,
     url: postInvitePartner,
     token: token,
-    body: {"partners": partners}
+    param: phone,
   );
 }
+
 
 void _showDialog(context , String error) {
   showModalBottomSheet(

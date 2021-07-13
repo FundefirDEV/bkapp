@@ -1,13 +1,14 @@
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/bank_register_bloc.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/partner_structure_register_bank.dart';
 import 'package:flutter/material.dart';
-import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/src/widgets/addPartners/partners_structure.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/bg_bank_register.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 
 import 'widgets/widgets.dart';
 
@@ -52,6 +53,8 @@ class _AddPartnersRegisterScreenState
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     _controller.forward();
+    
+    BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
 
     return Stack(
       children: [
@@ -70,7 +73,9 @@ class _AddPartnersRegisterScreenState
                   flex: 2,
                   child: FadeTransition(
                     opacity: _animation,
-                    child: PartnersStructureRegisterBankWidget()
+                    child: PartnersStructureRegisterBankWidget(
+                      tokenUser: bankBloc.token.value,
+                    )
                   )
                 ),
                 FooterBkWidget()

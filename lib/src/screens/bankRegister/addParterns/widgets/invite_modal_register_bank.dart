@@ -19,7 +19,8 @@ class InviteModalRegisterBank extends StatefulWidget {
     this.isRegister, 
     @required this.tokenUser , 
     @required this.partnerList,
-    @required this.menuNavigatorBloc
+    @required this.menuNavigatorBloc,
+    @required this.addPartnerForm,
 
     }) : super(key: key);
 
@@ -28,13 +29,18 @@ class InviteModalRegisterBank extends StatefulWidget {
   final bool isRegister; 
   final String tokenUser;
   final List<PartnerModel> partnerList;
+  final addPartnerForm;
 
   @override
-  _InviteModalRegisterBankState createState() => _InviteModalRegisterBankState();
+  _InviteModalRegisterBankState createState() => _InviteModalRegisterBankState(partnerList: partnerList);
 }
 
 class _InviteModalRegisterBankState extends State<InviteModalRegisterBank> {
+
+  _InviteModalRegisterBankState({this.partnerList});
+
   final content = InviteModalContent();
+  final List<PartnerModel> partnerList;
 
   @override
   void initState() {
@@ -96,8 +102,9 @@ class _InviteModalRegisterBankState extends State<InviteModalRegisterBank> {
                           PartnerFormRegisterBank(
                             inviteBloc:
                               BlocProvider.of<InviteFormBloc>(context),
-                              token: widget.tokenUser,
-                            // addPartner: () => _addPartnerForm(context),
+                              token: bankBloc.token.value,
+                              addPartner: widget.addPartnerForm,
+                              partnerList: partnerList,
                           )
                         ],
                       ),
@@ -130,6 +137,7 @@ class _InviteModalRegisterBankState extends State<InviteModalRegisterBank> {
               tokenUser: widget.tokenUser,
               partnerList: widget.partnerList,
               menuNavigatorBloc: widget.menuNavigatorBloc,
+              addPartnerForm: widget.addPartnerForm,
           )
         );
       }
