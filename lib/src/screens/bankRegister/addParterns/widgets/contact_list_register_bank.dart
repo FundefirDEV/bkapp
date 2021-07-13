@@ -34,17 +34,19 @@ class ContactListRegisterBank extends StatefulWidget {
   final  Function addPartnerForm;
 
   @override
-  _ContactListRegisterBankState createState() => _ContactListRegisterBankState();
+  _ContactListRegisterBankState createState() => _ContactListRegisterBankState(selectContact: this.selectContact);
 }
 
 class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
+  _ContactListRegisterBankState({this.selectContact});
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);
   IconData icon;
   bool isLoadingContactList = true;
   List<CustomContact> contactsList = [];
   List<CustomContact> allContactsList = [];
+  List<CustomContact> selectContact = [];
 
 
   @override
@@ -117,7 +119,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
             child: RaisedButton(
               key: Key('raisedButton-accept'),
               onPressed: 
-                  widget.selectContact.length >= 1
+                  selectContact.length >= 1
                   ? () => _submitContacts(context)
                   : () => Navigator.pop(context),
 
@@ -127,7 +129,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
               child: Text(
-                widget.selectContact.length >= 1
+                selectContact.length >= 1
                     ? I18n.of(context).actionTextAdd
                     : I18n.of(context).actionTextClose,
                 style: TextStyle(

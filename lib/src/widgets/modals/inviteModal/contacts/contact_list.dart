@@ -32,10 +32,12 @@ class ContactList extends StatefulWidget {
   final List<PartnerModel> partnerList;
 
   @override
-  _ContactListState createState() => _ContactListState();
+  _ContactListState createState() => _ContactListState(selectContact: this.selectContact);
 }
 
 class _ContactListState extends State<ContactList> {
+
+  _ContactListState({this.selectContact});
 
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);
@@ -43,6 +45,7 @@ class _ContactListState extends State<ContactList> {
   bool isLoadingContactList = true;
   List<CustomContact> contactsList = [];
   List<CustomContact> allContactsList = [];
+  List<CustomContact> selectContact = [];
 
 
   @override
@@ -70,8 +73,6 @@ class _ContactListState extends State<ContactList> {
 
   @override
   Widget build(BuildContext context) {
-
-    //MenuNavigatorBloc menuNavigatorBloc = BlocProvider.of<MenuNavigatorBloc>(context);
 
     return Stack(
     children: [
@@ -114,8 +115,7 @@ class _ContactListState extends State<ContactList> {
             padding: const EdgeInsets.symmetric(vertical: 22.0),
             child: RaisedButton(
               key: Key('raisedButton-accept'),
-              onPressed: 
-                  widget.selectContact.length >= 1
+              onPressed: selectContact.length >= 1
                   ? () => _submitContacts(context)
                   : () => Navigator.pop(context),
 
@@ -125,9 +125,9 @@ class _ContactListState extends State<ContactList> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
               child: Text(
-                widget.selectContact.length >= 1
-                    ? I18n.of(context).actionTextAdd
-                    : I18n.of(context).actionTextClose,
+                selectContact.length >= 1
+                  ? I18n.of(context).actionTextAdd
+                  : I18n.of(context).actionTextClose,
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.white,
@@ -159,9 +159,9 @@ class _ContactListState extends State<ContactList> {
           value: c.isChecked,
           onChanged: (bool value) {
           if (!c.isChecked) {
-            setState(() => widget.selectContact.add(c));
+            setState(() => selectContact.add(c));
           } else {
-            setState(() => widget.selectContact.remove(c));
+            setState(() => selectContact.remove(c));
           }
           setState(() => c.isChecked = value);
         }
@@ -234,11 +234,15 @@ class _ContactListState extends State<ContactList> {
 
   _submitContacts(BuildContext context) async {
 
-    print(widget.selectContact.asMap());
+
+    if(selectContact.isEmpty)
+      return;
+
+    print(selectContact.asMap());
 
     final List<Map<String, dynamic>> partnerBody = [];
 
-    widget.selectContact.forEach((contact) {
+    selectContact.forEach((contact) {
       partnerBody.add({
         "name": contact.contact.displayName,
         "phone": contact.contact.phones.elementAt(0).value
@@ -257,10 +261,7 @@ class _ContactListState extends State<ContactList> {
       Navigator.pop(context);
       Navigator.pop(context);
 
-      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.homeScreen));
-      //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
-
-      widget.selectContact.forEach((contact) {
+      selectContact.forEach((contact) {
         widget.partnerList.add( PartnerModel(
           firstname: contact.contact.displayName,
           phone: contact.contact.phones.elementAt(0).value
@@ -272,8 +273,7 @@ class _ContactListState extends State<ContactList> {
     } catch (e) {
 
       _showDialog(context , e.toString());      
-    }
-    
+    } 
   }
 }
 
@@ -309,8 +309,6 @@ void _showDialog(context , String error) {
     );
   });
 }
-
-
 
 class CustomContact {
   final Contact contact;

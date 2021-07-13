@@ -3,7 +3,6 @@ import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal_content.dart';
