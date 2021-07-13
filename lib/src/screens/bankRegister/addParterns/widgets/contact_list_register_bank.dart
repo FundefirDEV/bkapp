@@ -168,8 +168,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
             setState(() => selectContact.remove(c));
           }
           setState(() => c.isChecked = value);
-          print(' ********** select list **********');
-          print(selectContact.asMap());
         }
       )
     );
@@ -240,7 +238,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   _submitContacts(BuildContext context) async {
 
-    print(selectContact.asMap());
+    //print(selectContact.asMap());
     
     //final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
 
@@ -280,9 +278,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
     setState(() {});
 
     // try {
-        
-    //   print('************* token *************');
-    //   print(widget.tokenUser);
 
     //   // final res = await postInvitePartner(widget.tokenUser, partnerBody);
 

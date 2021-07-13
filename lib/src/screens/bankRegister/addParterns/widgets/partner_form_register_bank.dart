@@ -129,10 +129,6 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
     }
 
     try {
-      print('************* token *************');
-      print(widget.inviteBloc);
-      print('************* token *************');
-      print(clearPhone);
 
       final res = await validatePhone(widget.token, clearPhone);
       print(res);

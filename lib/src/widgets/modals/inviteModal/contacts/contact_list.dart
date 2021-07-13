@@ -238,8 +238,6 @@ class _ContactListState extends State<ContactList> {
     if(selectContact.isEmpty)
       return;
 
-    print(selectContact.asMap());
-
     final List<Map<String, dynamic>> partnerBody = [];
 
     selectContact.forEach((contact) {
@@ -250,9 +248,6 @@ class _ContactListState extends State<ContactList> {
     });
 
     try {
-        
-      print('************* token *************');
-      print(widget.tokenUser);
 
       final res = await postInvitePartner(widget.tokenUser, partnerBody);
 

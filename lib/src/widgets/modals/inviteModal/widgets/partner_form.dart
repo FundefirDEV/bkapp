@@ -107,8 +107,6 @@ class _PartnerFormState extends State<PartnerForm> {
     void _submitContacts(BuildContext context , String name , String phone) async {
 
     try {
-      print('************* token *************');
-      print(widget.token);
 
       final res = await postInvitePartner(widget.token, [{
         "name" : name,

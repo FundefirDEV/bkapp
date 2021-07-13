@@ -121,9 +121,6 @@ class _PartnersCardListState extends State<PartnersCardList> {
       "phone": name
     };    
 
-    print('************* token *************');
-    print(widget.tokenUser);
-
     final res = await postInvitePartner(widget.tokenUser, [partnerBody]);
 
     print(res);
