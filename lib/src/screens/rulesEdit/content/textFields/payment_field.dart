@@ -23,7 +23,7 @@ class PaymentField extends StatelessWidget {
               style: TextStyle(fontSize: 12),
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
-                WhitelistingTextInputFormatter.digitsOnly
+                FilteringTextInputFormatter.digitsOnly
               ],
               decoration: InputDecoration(
                   labelText: I18n.of(context).rulesScreenPaymentMetods,

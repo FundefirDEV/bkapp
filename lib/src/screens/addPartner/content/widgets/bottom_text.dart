@@ -10,10 +10,10 @@ class BottomText extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       key: Key('container-botom-text-add-partner-screen'),
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 2,
-        bottom: SizeConfig.blockSizeVertical * 2,
-      ),
+      // margin: EdgeInsets.only(
+      //   top: SizeConfig.blockSizeVertical ,
+      //   bottom: SizeConfig.blockSizeVertical ,
+      // ),
       child: RichText(
           key: Key('botom-text-add-partner-screen'),
           textAlign: TextAlign.center,

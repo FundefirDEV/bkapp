@@ -49,12 +49,28 @@ class RulesEditFormBloc extends FormBloc<String, String> {
     ]);
   }
 
-  void initValues(){
+  void initValues(String token) async {
     
     _loadingController.sink.add(false);
+
+    print('********************token********************');
+    print(token);
+    print('********************token********************');
+
+    final rules = await repository.getBankRules(token);
+    ordinaryInterestPercentage.updateInitialValue(rules['ordinaryInterestPercentage'].toString());
+    defaultRatePercentage.updateInitialValue(rules['defaultRatePercentage'].toString());
+    creditMaxInstallments.updateInitialValue(rules['creditMaxInstallments'].toString());
+    creditMaxValue.updateInitialValue(rules['creditMaxValue'].toString());
+    shareValue.updateInitialValue(rules['shareValue'].toString());
+    expenseFundPercentage.updateInitialValue(rules['expenseFundPercentage'].toString());
+    badDebtReservePercentage.updateInitialValue(rules['badDebtReservePercentage'].toString());
+    maxCreditFactor.updateInitialValue(rules['maxCreditFactor'].toString());
+    defaultInstallmentsPeriodDays.updateInitialValue(rules['defaultInstallmentsPeriodDays'].toString());
+
   }
 
-  Future<bool> sumit() async {
+  Future<String> sumit() async {
 
      _loadingController.sink.add(true);
 
@@ -67,8 +83,8 @@ class RulesEditFormBloc extends FormBloc<String, String> {
         shareValue: shareValue.valueToDouble, 
         expenseFundPercentage: expenseFundPercentage.valueToDouble, 
         badDebtReservePercentage: badDebtReservePercentage.valueToDouble, 
-        maxPercentageShareByPartner: maxPercentageShareByPartner.valueToDouble, 
-        maxActiveCreditsByPartner: maxActiveCreditsByPartner.valueToInt, 
+        //maxPercentageShareByPartner: maxPercentageShareByPartner.valueToDouble, 
+        //maxActiveCreditsByPartner: maxActiveCreditsByPartner.valueToInt, 
         maxCreditFactor: maxCreditFactor.valueToInt, 
         defaultInstallmentsPeriodDays: defaultInstallmentsPeriodDays.valueToInt,
       );
@@ -78,12 +94,12 @@ class RulesEditFormBloc extends FormBloc<String, String> {
       
       _loadingController.sink.add(false);
 
-      return true;
+      return 'Success';
 
     } catch (e) {
       _loadingController.sink.add(false);
 
-      return false;
+      return e.toString();
     }
   }
 

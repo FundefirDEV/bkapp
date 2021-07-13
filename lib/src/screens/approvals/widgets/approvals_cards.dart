@@ -43,7 +43,7 @@ class _ApprovalsCardsState extends State<ApprovalsCards> {
                 ),
                 SizedBox(height: 20.0),
                 Carousel(
-                  heigthContainer: 120,
+                  heigthContainer: 140,
                   viewportFraction: 0.5,
                   currentPage: 0,
                   children: <Widget>[

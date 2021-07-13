@@ -13,7 +13,6 @@ class PinCodeStepScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    // Offset position = Offset(40.0, 40.0);
     bool isDisabled = true;
     return BlocProvider(
       create: (context) =>

@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/screens/exemptions/exemptions_screen.dart';
 import 'package:bkapp_flutter/src/screens/timeLineMyCredit/time_line_my_credit_screen.dart';
 import 'package:bkapp_flutter/src/screens/timeLineMyShares/time_line_my_shares_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/activeCredit/active_credit_screen.dart';

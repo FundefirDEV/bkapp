@@ -14,6 +14,7 @@ void main() {
       id: 1,
       name: 'Daniel Tavera',
       mobile: '21332324',
+      onDelete: ()=>{},
     );
   }
   group('Test partner card widget', () {

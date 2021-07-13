@@ -1,4 +1,4 @@
-import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/customTabIndicator/custom_tab_indicator_widget.dart';
@@ -9,11 +9,12 @@ import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 class TopContainerAddPartnerScreen extends StatefulWidget {
   TopContainerAddPartnerScreen({
     Key key,
-    this.tokenUser
+    this.tokenUser,
+    this.menuNavigatorBloc
   }) : super(key: key);
 
   final String tokenUser;
-
+  final MenuNavigatorBloc menuNavigatorBloc;
   @override
   _TopContainerAddPartnerScreenState createState() =>
       _TopContainerAddPartnerScreenState();
@@ -23,14 +24,10 @@ class _TopContainerAddPartnerScreenState
     extends State<TopContainerAddPartnerScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  PartnerDatabaseProvider pendingPartnersDb;
-  ActivePartnersDbProvider activePartnersDb;
 
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
-    pendingPartnersDb = PartnerDatabaseProvider.db;
-    activePartnersDb = ActivePartnersDbProvider.db;
     super.initState();
   }
 
@@ -77,19 +74,18 @@ class _TopContainerAddPartnerScreenState
             child: TabBarView(controller: _tabController, children: [
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
-                showButton: false,
-                onSave: (data) => print(data),
-                isRegister: false,
+                //showButton: false,
+                menuNavigatorBloc: widget.menuNavigatorBloc,
                 gridViewWidth: 0.0,
-                partnerDb: activePartnersDb,
+                tokenUser: widget.tokenUser,
+                guest: false,
               ),
               PartnersStructureWidget(
                 colorButton: Theme.of(context).colorScheme.primaryColor[200],
-                onSave: (data) => print(data),
-                isRegister: false,
                 gridViewWidth: 0.0,
                 tokenUser: widget.tokenUser,
-                partnerDb: pendingPartnersDb,
+                guest: true,
+                menuNavigatorBloc: widget.menuNavigatorBloc,
               )
             ]),
           ),
