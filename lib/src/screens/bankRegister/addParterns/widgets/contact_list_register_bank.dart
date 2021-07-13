@@ -163,11 +163,13 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
           value: c.isChecked,
           onChanged: (bool value) {
           if (!c.isChecked) {
-            setState(() => widget.selectContact.add(c));
+            setState(() => selectContact.add(c));
           } else {
-            setState(() => widget.selectContact.remove(c));
+            setState(() => selectContact.remove(c));
           }
           setState(() => c.isChecked = value);
+          print(' ********** select list **********');
+          print(selectContact.asMap());
         }
       )
     );
@@ -238,13 +240,13 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   _submitContacts(BuildContext context) async {
 
-    print(widget.selectContact.asMap());
+    print(selectContact.asMap());
     
     //final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
 
     final List<String> allPhones = [];
 
-    widget.selectContact.forEach((c) { 
+    selectContact.forEach((c) { 
       allPhones.add(
         c.contact.phones.elementAt(0).value.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
       );
@@ -262,7 +264,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
     final List<PartnerModel> partnerList = [];
 
-    widget.selectContact.forEach((contact) { 
+    selectContact.forEach((contact) { 
       partnerList.add(PartnerModel(
         firstname: contact.contact.displayName,
         phone : contact.contact.phones.elementAt(0).value
@@ -271,7 +273,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
     widget.addPartnerForm(partnerList);
 
-    widget.selectContact = [];
+    selectContact = [];
     Navigator.pop(context);
     Navigator.pop(context);
 
@@ -289,7 +291,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
     //   // Navigator.pop(context);
     //   // Navigator.pop(context);
 
-    //   widget.selectContact.forEach((contact) {
+    //   selectContact.forEach((contact) {
     //     widget.partnerList.add( PartnerModel(
     //       firstname: contact.contact.displayName,
     //       phone: contact.contact.phones.elementAt(0).value
