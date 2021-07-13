@@ -48,7 +48,7 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
         widget.guest ?
         _partnerList = state.partnerList.where((partner) => partner.role == 'guest').toList()
         :
-        _partnerList = state.partnerList.where((partner) => partner.role == 'admin').toList();
+        _partnerList = state.partnerList.where((partner) => partner.role == 'admin' || partner.role == 'partner').toList();
         
         return PartnersCardList(partners: 
           _partnerList ,
