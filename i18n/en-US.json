@@ -24,7 +24,8 @@
     "mailNotAviable": "this email is not available",
     "phoneNotAviable": "this phone is not available",
     "mailSendInvalid": "Invalid Email",
-    "phoneSendInvalid": "Invalid phone number"
+    "phoneSendInvalid": "Invalid phone number",
+    "createdBankInvalid": "The bank is invalid"
   },
   "form": {
     "user": "User",
@@ -215,7 +216,9 @@
     "title": "Profile Edit",
     "editionMode": "EDIT MODE",
     "update": "UPDATE",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "modalErrorTitile" : "Error when trying to update",
+    "modalErrorTitleBlond" : "profile"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Credit request",

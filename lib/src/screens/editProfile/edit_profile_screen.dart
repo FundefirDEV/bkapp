@@ -10,6 +10,7 @@ import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
@@ -106,7 +107,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
               profile: widget.profile
             ),
           ),
-          textError(),
+          //textError(),
           Flexible(
             child: Container(
               key: Key('container_textFields_rules_edit_screen'),
@@ -140,24 +141,24 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
   }
 
 
-  Widget textError(){
+  // Widget textError(){
 
-    return StreamBuilder(
-      stream: profileEditFormBloc.errorMessageStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          color: Colors.grey[50],
-          height: 40,
-          child: Center(
-            child: Text( snapshot.data != null ? snapshot.data: '' ,
-              style: TextStyle(
-                color: Colors.red, fontSize: 14, fontWeight: FontWeight.w400),
-            ),
-          ),
-        );
-      }
-    );
-  }
+  //   return StreamBuilder(
+  //     stream: profileEditFormBloc.errorMessageStream,
+  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+  //       return Container(
+  //         color: Colors.grey[50],
+  //         height: 40,
+  //         child: Center(
+  //           child: Text( snapshot.data != null ? snapshot.data: '' ,
+  //             style: TextStyle(
+  //               color: Colors.red, fontSize: 14, fontWeight: FontWeight.w400),
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   );
+  // }
 
   Widget updatedButton(
     BuildContext context,
@@ -193,6 +194,26 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     );
   }
 
+  void _showDialog(context , String error) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/sad_bot.svg',
+          isImageBg: false,
+          title: I18n.of(context).profileEditScreenModalErrorTitile,
+          titleBold: I18n.of(context).profileEditScreenModalErrorTitleBlond,
+          isBold: true,
+          isBtnAccept: false,
+          technicalData: error,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: () => {Navigator.pop(context)}
+        );
+    });
+  }
+
   void sumit(BuildContext context) async{
 
     final res = await profileEditFormBloc.submit();
@@ -202,6 +223,8 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     if(res){
       context.read<MenuNavigatorBloc>().add(ButtonPressed(
         goTo: HomeRoutesConstant.profileScreen));
+    } else {
+      _showDialog(context , profileEditFormBloc.errorMessage);
     }
   }
 }

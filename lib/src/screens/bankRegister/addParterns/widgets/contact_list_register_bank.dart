@@ -3,23 +3,24 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
+import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:easy_permission_validator/easy_permission_validator.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
-import '../../../widgets.dart';
 import 'package:http/http.dart' as http;
 
 
 // ignore: must_be_immutable
-class ContactList extends StatefulWidget {
-  ContactList({Key key,
+class ContactListRegisterBank extends StatefulWidget {
+  ContactListRegisterBank({Key key,
      this.customContext, 
      this.isRegister, 
      @required this.tokenUser , 
      this.partnerList,
-     @required this.menuNavigatorBloc
+     @required this.menuNavigatorBloc,
+     @required this.addPartnerForm,
      })
       : super(key: key);
 
@@ -30,15 +31,15 @@ class ContactList extends StatefulWidget {
   List<CustomContact> contactsList = [];
   List<CustomContact> selectContact = [];
   final List<PartnerModel> partnerList;
+  final  Function addPartnerForm;
 
   @override
-  _ContactListState createState() => _ContactListState(selectContact: this.selectContact);
+  _ContactListRegisterBankState createState() => _ContactListRegisterBankState(selectContact: this.selectContact);
 }
 
-class _ContactListState extends State<ContactList> {
+class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
-  _ContactListState({this.selectContact});
-
+  _ContactListRegisterBankState({this.selectContact});
   TextEditingController searchController = new TextEditingController();
   Offset position = Offset(20.0, 20.0);
   IconData icon;
@@ -73,6 +74,8 @@ class _ContactListState extends State<ContactList> {
 
   @override
   Widget build(BuildContext context) {
+
+    //MenuNavigatorBloc menuNavigatorBloc = BlocProvider.of<MenuNavigatorBloc>(context);
 
     return Stack(
     children: [
@@ -115,7 +118,8 @@ class _ContactListState extends State<ContactList> {
             padding: const EdgeInsets.symmetric(vertical: 22.0),
             child: RaisedButton(
               key: Key('raisedButton-accept'),
-              onPressed: selectContact.length >= 1
+              onPressed: 
+                  selectContact.length >= 1
                   ? () => _submitContacts(context)
                   : () => Navigator.pop(context),
 
@@ -126,8 +130,8 @@ class _ContactListState extends State<ContactList> {
                   borderRadius: BorderRadius.circular(30.0)),
               child: Text(
                 selectContact.length >= 1
-                  ? I18n.of(context).actionTextAdd
-                  : I18n.of(context).actionTextClose,
+                    ? I18n.of(context).actionTextAdd
+                    : I18n.of(context).actionTextClose,
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.white,
@@ -234,57 +238,85 @@ class _ContactListState extends State<ContactList> {
 
   _submitContacts(BuildContext context) async {
 
+    //print(selectContact.asMap());
+    
+    //final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
 
-    if(selectContact.isEmpty)
-      return;
+    final List<String> allPhones = [];
 
-    final List<Map<String, dynamic>> partnerBody = [];
-
-    selectContact.forEach((contact) {
-      partnerBody.add({
-        "name": contact.contact.displayName,
-        "phone": contact.contact.phones.elementAt(0).value
-      });
+    selectContact.forEach((c) { 
+      allPhones.add(
+        c.contact.phones.elementAt(0).value.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
+      );
     });
 
     try {
 
-      final res = await postInvitePartner(widget.tokenUser, partnerBody);
-
-      print(res);
-
-      Navigator.pop(context);
-      Navigator.pop(context);
-
-      selectContact.forEach((contact) {
-        widget.partnerList.add( PartnerModel(
-          firstname: contact.contact.displayName,
-          phone: contact.contact.phones.elementAt(0).value
-        ));
+      allPhones.forEach((phone) async { 
+        await validatePhone(widget.tokenUser , phone);
       });
-
-      setState(() {});
       
     } catch (e) {
-
       _showDialog(context , e.toString());      
-    } 
+    }
+
+    final List<PartnerModel> partnerList = [];
+
+    selectContact.forEach((contact) { 
+      partnerList.add(PartnerModel(
+        firstname: contact.contact.displayName,
+        phone : contact.contact.phones.elementAt(0).value
+      ));
+    });
+
+    widget.addPartnerForm(partnerList);
+
+    selectContact = [];
+    Navigator.pop(context);
+    Navigator.pop(context);
+
+    setState(() {});
+
+    // try {
+
+    //   // final res = await postInvitePartner(widget.tokenUser, partnerBody);
+
+    //   // print(res);
+
+    //   // Navigator.pop(context);
+    //   // Navigator.pop(context);
+
+    //   selectContact.forEach((contact) {
+    //     widget.partnerList.add( PartnerModel(
+    //       firstname: contact.contact.displayName,
+    //       phone: contact.contact.phones.elementAt(0).value
+    //     ));
+    //   });
+
+    //   setState(() {});
+      
+    // } catch (e) {
+
+    //   _showDialog(context , e.toString());      
+    // }
+    
   }
 }
 
-Future<Map<String, dynamic>> postInvitePartner(
-  String token, List<Map<String, dynamic>> partners) async {
+Future<String> validatePhone(
+  String token, String phone) async {
 
   http.Client httpClient = http.Client();
   HttpRequests _httpRequest = HttpRequests();
-  final postInvitePartner = ApiEndpoints.postInvitePartner();
-  return await _httpRequest.post(
+  final postInvitePartner = ApiEndpoints.validatePhone();
+  return await _httpRequest.get(
     httpClient: httpClient,
     url: postInvitePartner,
     token: token,
-    body: {"partners": partners}
+    param: phone,
   );
 }
+
 
 void _showDialog(context , String error) {
   showModalBottomSheet(
@@ -304,6 +336,8 @@ void _showDialog(context , String error) {
     );
   });
 }
+
+
 
 class CustomContact {
   final Contact contact;

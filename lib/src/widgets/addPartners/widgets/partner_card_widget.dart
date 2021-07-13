@@ -1,6 +1,3 @@
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
-import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -9,14 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class PartnerCardWidget extends StatelessWidget {
   const PartnerCardWidget(
       {Key key,
-      @required this.id,
-      @required this.name,
-      @required this.mobile,
-      @required this.onDelete,
-      this.onSave})
-      : super(key: key);
+        @required this.name,
+        @required this.mobile,
+        @required this.onDelete,
+        this.onSave
+      }) : super(key: key);
 
-  final int id;
   final String name;
   final String mobile;
   final Function onSave;
@@ -25,8 +20,6 @@ class PartnerCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    // ignore: unused_local_variable
-    PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
 
     return Stack(
       key: Key('first-stack-partner-card'),
@@ -95,6 +88,4 @@ class PartnerCardWidget extends StatelessWidget {
       ),
     );
   }
-
-
 }

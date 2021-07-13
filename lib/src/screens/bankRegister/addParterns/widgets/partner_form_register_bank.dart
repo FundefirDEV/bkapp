@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/partnersBloc/invite_form_bloc.dart';
+import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -11,19 +12,27 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:http/http.dart' as http;
 
-class PartnerForm extends StatefulWidget {
-  const PartnerForm(
-      {Key key, @required this.inviteBloc , @required this.token})
-      : super(key: key);
+class PartnerFormRegisterBank extends StatefulWidget {
+  const PartnerFormRegisterBank({ 
+      Key key, 
+      @required this.inviteBloc ,
+      @required this.token ,
+      @required this.addPartner,
+      @required this.partnerList
+    })
+      : super(key: key
+    );
 
   final InviteFormBloc inviteBloc;
   final String token;
+  final Function addPartner;
+  final List<PartnerModel> partnerList;
 
   @override
-  _PartnerFormState createState() => _PartnerFormState();
+  _PartnerFormRegisterBankState createState() => _PartnerFormRegisterBankState();
 }
 
-class _PartnerFormState extends State<PartnerForm> {
+class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
   int minNameValue = 1;
   int minPhoneValue = 12;
   bool isDisabled;
@@ -69,7 +78,7 @@ class _PartnerFormState extends State<PartnerForm> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(10),
+                      LengthLimitingTextInputFormatter(14),
                       PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
@@ -106,14 +115,28 @@ class _PartnerFormState extends State<PartnerForm> {
 
     void _submitContacts(BuildContext context , String name , String phone) async {
 
+    final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+
+    final List<String> allPhones = [];
+
+    widget.partnerList.forEach((p) { 
+      allPhones.add(p.phone);
+    });
+
+    if(allPhones.contains(phone)){
+      _showDialog(context , '$phone already exist');
+      return;      
+    }
+
     try {
 
-      final res = await postInvitePartner(widget.token, [{
-        "name" : name,
-        "phone" : phone
-      }]);
-
+      final res = await validatePhone(widget.token, clearPhone);
       print(res);
+
+      widget.addPartner([PartnerModel(
+        firstname: name,
+        phone: phone
+      )]);
 
       Navigator.pop(context);
       setState(() {});
@@ -125,17 +148,17 @@ class _PartnerFormState extends State<PartnerForm> {
   }
 }
 
-Future<Map<String, dynamic>> postInvitePartner(
-  String token, List<Map<String, dynamic>> partners) async {
+Future<String> validatePhone(
+  String token, String phone) async {
 
   http.Client httpClient = http.Client();
   HttpRequests _httpRequest = HttpRequests();
-  final postInvitePartner = ApiEndpoints.postInvitePartner();
-  return await _httpRequest.post(
+  final postInvitePartner = ApiEndpoints.validatePhone();
+  return await _httpRequest.get(
     httpClient: httpClient,
     url: postInvitePartner,
     token: token,
-    body: {"partners": partners}
+    param: phone,
   );
 }
 

@@ -19,7 +19,7 @@ class PartnerModel {
   String validationCode;
   String password;
   String passwordConfirmation;
-  int isActive;
+  bool isActive;
   String role;
 
   PartnerModel({

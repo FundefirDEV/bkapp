@@ -24,7 +24,9 @@
     "mailNotAviable": "Este email ya está siendo utilizado",
     "phoneNotAviable": "Este phone ya está siendo utilizado",
     "mailSendInvalid": "correo electrónico inválido",
-    "phoneSendInvalid": "número de teléfono inválido"
+    "phoneSendInvalid": "número de teléfono inválido",
+    "createdBankInvalid": "El banco es inválido"
+
   },
   "form": {
     "user": "Usuario",
@@ -215,7 +217,9 @@
     "title": "Editar Perfil",
     "editionMode": "MODO EDICIÓN",
     "update": "ACTUALIZAR",
-    "lastName": "Primer apellido"
+    "lastName": "Primer apellido",
+    "modalErrorTitile" : "Ha ocurrido un error al actualizar",
+    "modalErrorTitleBlond" : "el perfil"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Solicitud de crédito",

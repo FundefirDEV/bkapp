@@ -11,6 +11,12 @@ class ProfileEmailBloc extends FormBloc<String, String> {
     addFieldBlocs(fieldBlocs: [email]);
   }
 
+  bool validEmail(){
+
+    final res = FieldBlocValidators.email(email.value) == null && email.value.length > 5;
+    return !res;
+  }
+
   @override
   void onSubmitting() async {}
 

@@ -43,7 +43,7 @@ class RegisterPhoneFormWidget extends StatelessWidget {
               textFieldBloc: profile.phoneBloc.phone,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(10),
+                LengthLimitingTextInputFormatter(20),
                 PhoneFormatter()
               ],
               errorBuilder: errorHandler,

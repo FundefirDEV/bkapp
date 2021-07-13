@@ -74,6 +74,8 @@ class I18n implements WidgetsLocalizations {
   String get requestErrorMailSendInvalid => "Invalid Email";
   /// "Invalid phone number"
   String get requestErrorPhoneSendInvalid => "Invalid phone number";
+  /// "The bank is invalid"
+  String get requestErrorCreatedBankInvalid => "The bank is invalid";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -344,6 +346,10 @@ class I18n implements WidgetsLocalizations {
   String get profileEditScreenUpdate => "UPDATE";
   /// "Last Name"
   String get profileEditScreenLastName => "Last Name";
+  /// "Error when trying to update"
+  String get profileEditScreenModalErrorTitile => "Error when trying to update";
+  /// "profile"
+  String get profileEditScreenModalErrorTitleBlond => "profile";
   /// "Credit request"
   String get preApprovedCreditModalCreditrequest => "Credit request";
   /// "pre-approved"
@@ -925,6 +931,9 @@ class _I18n_es_ES extends I18n {
   /// "número de teléfono inválido"
   @override
   String get requestErrorPhoneSendInvalid => "número de teléfono inválido";
+  /// "El banco es inválido"
+  @override
+  String get requestErrorCreatedBankInvalid => "El banco es inválido";
   /// "Usuario"
   @override
   String get formUser => "Usuario";
@@ -1330,6 +1339,12 @@ class _I18n_es_ES extends I18n {
   /// "Primer apellido"
   @override
   String get profileEditScreenLastName => "Primer apellido";
+  /// "Ha ocurrido un error al actualizar"
+  @override
+  String get profileEditScreenModalErrorTitile => "Ha ocurrido un error al actualizar";
+  /// "el perfil"
+  @override
+  String get profileEditScreenModalErrorTitleBlond => "el perfil";
   /// "Solicitud de crédito"
   @override
   String get preApprovedCreditModalCreditrequest => "Solicitud de crédito";

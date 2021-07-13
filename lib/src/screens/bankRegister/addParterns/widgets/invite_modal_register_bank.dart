@@ -1,24 +1,26 @@
 import 'dart:ui';
 import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/contact_list_register_bank.dart';
+import 'package:bkapp_flutter/src/screens/bankRegister/addParterns/widgets/partner_form_register_bank.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/bottomModal/bottom_modal.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal_content.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'contacts/contact_list.dart';
-import 'widgets/partner_form.dart';
+
 
 //NOTE HOW TO CALL IT:
 // showDialog(context: context, builder: (BuildContext context) => InviteModal()),
-class InviteModal extends StatefulWidget {
-  InviteModal({Key key, 
+class InviteModalRegisterBank extends StatefulWidget {
+  InviteModalRegisterBank({Key key, 
     this.partners, 
     this.isRegister, 
     @required this.tokenUser , 
     @required this.partnerList,
-    @required this.menuNavigatorBloc
+    @required this.menuNavigatorBloc,
+    @required this.addPartnerForm,
 
     }) : super(key: key);
 
@@ -27,13 +29,18 @@ class InviteModal extends StatefulWidget {
   final bool isRegister; 
   final String tokenUser;
   final List<PartnerModel> partnerList;
+  final addPartnerForm;
 
   @override
-  _InviteModalState createState() => _InviteModalState();
+  _InviteModalRegisterBankState createState() => _InviteModalRegisterBankState(partnerList: partnerList);
 }
 
-class _InviteModalState extends State<InviteModal> {
+class _InviteModalRegisterBankState extends State<InviteModalRegisterBank> {
+
+  _InviteModalRegisterBankState({this.partnerList});
+
   final content = InviteModalContent();
+  final List<PartnerModel> partnerList;
 
   @override
   void initState() {
@@ -92,11 +99,12 @@ class _InviteModalState extends State<InviteModal> {
                       child: Column(
                         children: <Widget>[
                           content.titleContainer(context),
-                          PartnerForm(
+                          PartnerFormRegisterBank(
                             inviteBloc:
-                                BlocProvider.of<InviteFormBloc>(context),
-                                token: widget.tokenUser,
-                            // addPartner: () => _addPartnerForm(context),
+                              BlocProvider.of<InviteFormBloc>(context),
+                              token: bankBloc.token.value,
+                              addPartner: widget.addPartnerForm,
+                              partnerList: partnerList,
                           )
                         ],
                       ),
@@ -114,8 +122,6 @@ class _InviteModalState extends State<InviteModal> {
     );
   }
 
-
-
   Future _showDialog(BuildContext context) {
     return showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -126,11 +132,12 @@ class _InviteModalState extends State<InviteModal> {
           BottomModal(
             width: SizeConfig.blockSizeHorizontal * 100,
             height: SizeConfig.blockSizeVertical * 90,
-            child: ContactList(
+            child: ContactListRegisterBank(
               isRegister: widget.isRegister,
               tokenUser: widget.tokenUser,
               partnerList: widget.partnerList,
               menuNavigatorBloc: widget.menuNavigatorBloc,
+              addPartnerForm: widget.addPartnerForm,
           )
         );
       }
