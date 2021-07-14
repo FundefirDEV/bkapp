@@ -78,7 +78,7 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(14),
+                      LengthLimitingTextInputFormatter(16),
                       PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,

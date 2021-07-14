@@ -19,7 +19,9 @@ class ContactList extends StatefulWidget {
      this.isRegister, 
      @required this.tokenUser , 
      this.partnerList,
-     @required this.menuNavigatorBloc
+     @required this.menuNavigatorBloc,
+     @required this.addPartner
+
      })
       : super(key: key);
 
@@ -27,9 +29,9 @@ class ContactList extends StatefulWidget {
   final BuildContext customContext;
   final bool isRegister;
   final String tokenUser;
-  List<CustomContact> contactsList = [];
   List<CustomContact> selectContact = [];
   final List<PartnerModel> partnerList;
+  final addPartner;
 
   @override
   _ContactListState createState() => _ContactListState(selectContact: this.selectContact);
@@ -51,8 +53,6 @@ class _ContactListState extends State<ContactList> {
   @override
   void initState() {
     _populateContacts();
-
-    //searchController.addListener(() => filterContacts());
     super.initState();
   }
 
@@ -69,6 +69,18 @@ class _ContactListState extends State<ContactList> {
       setState(() => contactsList = _c);
     }
   }
+
+
+
+  void _clearCheckbox(){
+
+    contactsList.forEach((contact) { 
+      contact.isChecked = false;
+    });
+
+    setState(() {});
+  }
+
 
 
   @override
@@ -98,18 +110,18 @@ class _ContactListState extends State<ContactList> {
           Expanded(
             // aca está la lista
             child: !isLoadingContactList ? ListView.builder(
-                key: Key('list_view_builder_contacts'),
-                shrinkWrap: true,
-                itemCount: filterContactNull(contactsList).length,
-                itemBuilder: (BuildContext context, int index) {
-                  CustomContact _contact = filterContactNull(contactsList)[index];
-                  List<Item> _phoneList = _contact.contact.phones.toList();
-                  return _buildListTile(_contact, _phoneList,);
-                }) :  Center(
-                    child: Container(
-                      child: CircularProgressIndicator(),
-                  ),
+              key: Key('list_view_builder_contacts'),
+              shrinkWrap: true,
+              itemCount: filterContactNull(contactsList).length,
+              itemBuilder: (BuildContext context, int index) {
+                CustomContact _contact = filterContactNull(contactsList)[index];
+                List<Item> _phoneList = _contact.contact.phones.toList();
+                return _buildListTile(_contact, _phoneList,);
+              }) : Center(
+                  child: Container(
+                    child: CircularProgressIndicator(),
                 ),
+              ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 22.0),
@@ -239,36 +251,63 @@ class _ContactListState extends State<ContactList> {
       return;
 
     final List<Map<String, dynamic>> partnerBody = [];
+    final List<String> allPhones = [];
 
     selectContact.forEach((contact) {
+
+      String clearPhone = 
+        contact.contact.phones.elementAt(0).value
+        .replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+      
       partnerBody.add({
         "name": contact.contact.displayName,
-        "phone": contact.contact.phones.elementAt(0).value
+        "phone": clearPhone
       });
-    });
+
+      allPhones.add(clearPhone);
+
+    });  
+    
 
     try {
 
-      final res = await postInvitePartner(widget.tokenUser, partnerBody);
+      allPhones.forEach((phone) async {
+        try {
+          await validatePhone(widget.tokenUser , phone);
 
-      print(res);
+        } catch (e) {
+
+          print(e.toString());
+          return;
+        } 
+      });
+
+      await postInvitePartner(widget.tokenUser, partnerBody);
+
 
       Navigator.pop(context);
       Navigator.pop(context);
+
+      final List<PartnerModel> newPartners = [];
 
       selectContact.forEach((contact) {
-        widget.partnerList.add( PartnerModel(
+        newPartners.add( PartnerModel(
           firstname: contact.contact.displayName,
           phone: contact.contact.phones.elementAt(0).value
         ));
       });
+
+      widget.addPartner(newPartners);
 
       setState(() {});
       
     } catch (e) {
 
       _showDialog(context , e.toString());      
-    } 
+    }
+
+    setState(() {selectContact = [];});
+    _clearCheckbox(); 
   }
 }
 
@@ -285,6 +324,21 @@ Future<Map<String, dynamic>> postInvitePartner(
     body: {"partners": partners}
   );
 }
+
+Future<String> validatePhone(
+  String token, String phone) async {
+
+  http.Client httpClient = http.Client();
+  HttpRequests _httpRequest = HttpRequests();
+  final postInvitePartner = ApiEndpoints.validatePhone();
+  return await _httpRequest.get(
+    httpClient: httpClient,
+    url: postInvitePartner,
+    token: token,
+    param: phone,
+  );
+}
+
 
 void _showDialog(context , String error) {
   showModalBottomSheet(

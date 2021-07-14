@@ -11,15 +11,19 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
+
 
 // ignore: must_be_immutable
 class PartnersCardList extends StatefulWidget {
   PartnersCardList({ 
-    Key key, this.showButton , this.partners , this.parnersQuantity, 
+    Key key, this.showButton , this.partnersList , this.parnersQuantity, 
     @required this.tokenUser , @required this.menuNavigatorBloc
   }) : super(key: key);
 
-  List<PartnerModel> partners  = [];
+  List<PartnerModel> partnersList  = [];
   bool showButton = false;
   final tokenUser;
   final int parnersQuantity;
@@ -27,14 +31,14 @@ class PartnersCardList extends StatefulWidget {
 
   @override
   _PartnersCardListState createState() =>
-      _PartnersCardListState(partners: partners , showButton: showButton);
+      _PartnersCardListState(partnersList: partnersList , showButton: showButton);
 }
 
 class _PartnersCardListState extends State<PartnersCardList> {
 
-  _PartnersCardListState({this.partners , this.showButton});
+  _PartnersCardListState({this.partnersList , this.showButton});
 
-  List<PartnerModel> partners = [];
+  List<PartnerModel> partnersList = [];
   bool showButton = false;
 
   final gridViewWidth = 15.0;
@@ -42,6 +46,8 @@ class _PartnersCardListState extends State<PartnersCardList> {
   @override
   void initState() {
     super.initState();
+    partnersList = context.read<AppBloc>().bankRegisterBloc.partnerList;
+
   }                                                                                                                                                                           
 
   @override
@@ -73,18 +79,10 @@ class _PartnersCardListState extends State<PartnersCardList> {
                 child: Padding(
                     padding: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 2),
-                    child: _loadPartnersSelected(gridViewWidth , partners , context),
+                    child: _loadPartnersSelected(gridViewWidth , partnersList , context),
                   ),
               ),
             ),
-            // ...[
-            //   Padding(
-            //     key: Key('padding-minimum-allowed'),
-            //     padding: EdgeInsets.symmetric(
-            //         vertical: SizeConfig.blockSizeVertical * 3),
-            //      child: PartnersAllowed()
-            //   )
-            // ],
             if (widget.showButton)...[
               Container(
                 margin:EdgeInsets.only(top: 20) ,
@@ -96,9 +94,10 @@ class _PartnersCardListState extends State<PartnersCardList> {
                     builder: (_) 
                       => InviteModal(
                         partners:widget.parnersQuantity ,
-                        partnerList: partners,
+                        partnerList: partnersList,
                         tokenUser: widget.tokenUser ,
                         menuNavigatorBloc: widget.menuNavigatorBloc,
+                        addPartner: _addPartnerForm ,
                       )
                   ),
                   firstText:
@@ -114,6 +113,15 @@ class _PartnersCardListState extends State<PartnersCardList> {
     );
   }
 
+
+  void _addPartnerForm(List<PartnerModel> partner){
+    partnersList.addAll(partner);
+
+    context.read<AppBloc>().bankRegisterBloc.partnerList = partnersList;
+    
+    setState(() {});
+  }
+
   void loadPartners(BuildContext context , String name , String phone) async {
 
     final partnerBody = {
@@ -125,15 +133,13 @@ class _PartnersCardListState extends State<PartnersCardList> {
 
     print(res);
 
-    widget.partners.add( PartnerModel(
+    partnersList.add( PartnerModel(
       firstname: name,
       phone: phone
     ));
 
     Navigator.pop(context);
-    //PartnerInitialize(token: widget.tokenUser);
-    //widget.menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
-
+    
     setState(() {});
   }
 }

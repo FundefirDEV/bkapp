@@ -250,15 +250,22 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
       );
     });
 
-    try {
+    // try {
 
-      allPhones.forEach((phone) async { 
-        await validatePhone(widget.tokenUser , phone);
-      });
+    //  allPhones.forEach((phone) async {
+    //     try {
+    //       await validatePhone(widget.tokenUser , phone);
+
+    //     } catch (e) {
+
+    //       print('${e.toString()}');
+    //       return;
+    //     } 
+    //   });
       
-    } catch (e) {
-      _showDialog(context , e.toString());      
-    }
+    // } catch (e) {
+    //   _showDialog(context , e.toString());      
+    // }
 
     final List<PartnerModel> partnerList = [];
 
@@ -276,29 +283,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
     Navigator.pop(context);
 
     setState(() {});
-
-    // try {
-
-    //   // final res = await postInvitePartner(widget.tokenUser, partnerBody);
-
-    //   // print(res);
-
-    //   // Navigator.pop(context);
-    //   // Navigator.pop(context);
-
-    //   selectContact.forEach((contact) {
-    //     widget.partnerList.add( PartnerModel(
-    //       firstname: contact.contact.displayName,
-    //       phone: contact.contact.phones.elementAt(0).value
-    //     ));
-    //   });
-
-    //   setState(() {});
-      
-    // } catch (e) {
-
-    //   _showDialog(context , e.toString());      
-    // }
     
   }
 }
