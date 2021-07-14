@@ -18,8 +18,8 @@ class InviteModal extends StatefulWidget {
     this.isRegister, 
     @required this.tokenUser , 
     @required this.partnerList,
-    @required this.menuNavigatorBloc
-
+    @required this.menuNavigatorBloc,
+    @required this.addPartner
     }) : super(key: key);
 
   final MenuNavigatorBloc menuNavigatorBloc;
@@ -27,6 +27,8 @@ class InviteModal extends StatefulWidget {
   final bool isRegister; 
   final String tokenUser;
   final List<PartnerModel> partnerList;
+  final addPartner;
+
 
   @override
   _InviteModalState createState() => _InviteModalState();
@@ -96,7 +98,7 @@ class _InviteModalState extends State<InviteModal> {
                             inviteBloc:
                                 BlocProvider.of<InviteFormBloc>(context),
                                 token: widget.tokenUser,
-                            // addPartner: () => _addPartnerForm(context),
+                                addPartner: widget.addPartner,
                           )
                         ],
                       ),
@@ -131,6 +133,7 @@ class _InviteModalState extends State<InviteModal> {
               tokenUser: widget.tokenUser,
               partnerList: widget.partnerList,
               menuNavigatorBloc: widget.menuNavigatorBloc,
+              addPartner: widget.addPartner,
           )
         );
       }

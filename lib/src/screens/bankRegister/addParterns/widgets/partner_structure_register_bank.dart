@@ -13,7 +13,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
-import 'package:bkapp_flutter/core/bloc/bankRegisterBloc/bank_register_bloc.dart';
 
 class PartnersStructureRegisterBankWidget extends StatefulWidget {
   const PartnersStructureRegisterBankWidget({

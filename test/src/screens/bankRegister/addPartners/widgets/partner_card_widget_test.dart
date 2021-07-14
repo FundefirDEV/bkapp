@@ -11,7 +11,6 @@ void main() {
   Widget partnerTester({ key }) {
     return PartnerCardWidget(
       key: key,
-      id: 1,
       name: 'Daniel Tavera',
       mobile: '21332324',
       onDelete: ()=>{},

@@ -32,6 +32,7 @@ class FooterNameBkWidget extends StatelessWidget {
               onPressed: () async {
                 final request = await bankBloc.makeSubmit();
                 if (request == 'bank created!'){
+                  bankBloc.partnerList = [];
                   Navigator.pushNamed(context, bankCreatedRoute,
                     arguments: BankCreatedScreenArgs(bankBloc.name.value));
                 } else {

@@ -50,8 +50,11 @@ class _PartnersStructureWidgetState extends State<PartnersStructureWidget> {
         :
         _partnerList = state.partnerList.where((partner) => partner.role == 'admin' || partner.role == 'partner').toList();
         
-        return PartnersCardList(partners: 
-          _partnerList ,
+
+        context.read<AppBloc>().bankRegisterBloc.partnerList = _partnerList;
+        
+        return PartnersCardList(
+          partnersList: _partnerList ,
           parnersQuantity: state.partnerList.length, 
           showButton: widget.guest, 
           tokenUser: widget.tokenUser,
