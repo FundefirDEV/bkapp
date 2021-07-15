@@ -121,27 +121,6 @@ class _PartnersCardListState extends State<PartnersCardList> {
     
     setState(() {});
   }
-
-  void loadPartners(BuildContext context , String name , String phone) async {
-
-    final partnerBody = {
-      "name": name,
-      "phone": name
-    };    
-
-    final res = await postInvitePartner(widget.tokenUser, [partnerBody]);
-
-    print(res);
-
-    partnersList.add( PartnerModel(
-      firstname: name,
-      phone: phone
-    ));
-
-    Navigator.pop(context);
-    
-    setState(() {});
-  }
 }
 
 Future<Map<String, dynamic>> postInvitePartner(
