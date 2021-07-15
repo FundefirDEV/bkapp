@@ -52,8 +52,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
   @override
   void initState() {
     _populateContacts();
-
-    //searchController.addListener(() => filterContacts());
     super.initState();
   }
 
@@ -74,8 +72,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   @override
   Widget build(BuildContext context) {
-
-    //MenuNavigatorBloc menuNavigatorBloc = BlocProvider.of<MenuNavigatorBloc>(context);
 
     return Stack(
     children: [
@@ -238,10 +234,6 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   _submitContacts(BuildContext context) async {
 
-    //print(selectContact.asMap());
-    
-    //final clearPhone = phone.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
-
     final List<String> allPhones = [];
 
     selectContact.forEach((c) { 
@@ -250,54 +242,57 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
       );
     });
 
-    // try {
+    try {
 
-    //  allPhones.forEach((phone) async {
-    //     try {
-    //       await validatePhone(widget.tokenUser , phone);
+      final res = await validateAllPhones(widget.tokenUser , allPhones);
+      print(res);
 
-    //     } catch (e) {
+      final List<PartnerModel> partnerList = [];
 
-    //       print('${e.toString()}');
-    //       return;
-    //     } 
-    //   });
-      
-    // } catch (e) {
-    //   _showDialog(context , e.toString());      
-    // }
+      selectContact.forEach((contact) { 
+        partnerList.add(PartnerModel(
+          firstname: contact.contact.displayName,
+          phone : contact.contact.phones.elementAt(0).value
+        ));
+      });
 
-    final List<PartnerModel> partnerList = [];
+      widget.addPartnerForm(partnerList);
 
-    selectContact.forEach((contact) { 
-      partnerList.add(PartnerModel(
-        firstname: contact.contact.displayName,
-        phone : contact.contact.phones.elementAt(0).value
-      ));
+      selectContact = [];
+      Navigator.pop(context);
+      Navigator.pop(context);
+
+
+    } catch (e) {
+      _showDialog(context , e.toString());      
+    }
+
+    _clearCheckbox();
+  }
+
+
+  void _clearCheckbox(){
+
+    contactsList.forEach((contact) { 
+      contact.isChecked = false;
     });
-
-    widget.addPartnerForm(partnerList);
-
-    selectContact = [];
-    Navigator.pop(context);
-    Navigator.pop(context);
-
-    setState(() {});
     
+    setState(() {selectContact = [];});
   }
 }
 
-Future<String> validatePhone(
-  String token, String phone) async {
+
+Future<String> validateAllPhones(
+  String token, List<String> phoneList) async {
 
   http.Client httpClient = http.Client();
   HttpRequests _httpRequest = HttpRequests();
-  final postInvitePartner = ApiEndpoints.validatePhone();
-  return await _httpRequest.get(
+  final postInvitePartner = ApiEndpoints.validateAllPhone();
+  return await _httpRequest.post(
     httpClient: httpClient,
     url: postInvitePartner,
     token: token,
-    param: phone,
+    body: phoneList
   );
 }
 
@@ -320,8 +315,6 @@ void _showDialog(context , String error) {
     );
   });
 }
-
-
 
 class CustomContact {
   final Contact contact;
