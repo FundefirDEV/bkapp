@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_blo
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/country_modal_content_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_container_widget.dart';
@@ -51,8 +52,8 @@ class _RegistePhoneFormListenerWidgetState
               numberOfSteps: 5,
               isDisabled: isDisabled,
               // currentBlocSubmit: () => nextWidgetTap(registerBloc)
-              currentBlocSubmit: () =>
-                  _showConfirmDialog(context, registerBloc))
+              currentBlocSubmit: () => nextWidgetTap(registerBloc)),
+                  //_showConfirmDialog(context, registerBloc))
         ]);
   }
 
@@ -67,9 +68,18 @@ class _RegistePhoneFormListenerWidgetState
 
     registerBloc.phoneBloc.submit();
 
-    Navigator.pushNamed(context, registerpinCodeVerification,
-        arguments:
-            RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
+    // go to code validation
+
+    Navigator.pushNamed(context, 
+      registerPasswordUser,
+      arguments: RegisterPasswordStepArgs(
+      widget.data.tag, 
+      widget.data.image
+    ));
+
+    // Navigator.pushNamed(context, registerpinCodeVerification,
+    //     arguments:
+    //         RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
   }
 
   void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) async {

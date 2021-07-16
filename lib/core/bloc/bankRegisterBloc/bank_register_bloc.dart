@@ -42,6 +42,12 @@ class BankRegisterBloc extends FormBloc<String, String> {
     methodCount: 0,
   ));
 
+  void clearData(){
+    partnerList = [];
+    name.updateValue('');
+    name.updateInitialValue('');
+  }
+
   Future<String> makeSubmit() async {
     try {
       logger.v({
@@ -64,6 +70,8 @@ class BankRegisterBloc extends FormBloc<String, String> {
           selectedCity, name.value, partners, token.value);
       partnerList = [];
 
+      clearData();
+      
       return 'bank created!';
 
     } catch (e) {
