@@ -38,7 +38,7 @@
   },
   "error": {
     "required": "This field is required",
-    "graterThanNine": "The number should be greater than 9",
+    "graterThanNine": "The number should be greater than 6",
     "isEmpty": "there is nothing here!",
     "invalidUser": "Incorrect username or password",
     "invalidEmail": "Enter a valid email address",
