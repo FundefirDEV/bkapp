@@ -1,6 +1,3 @@
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
-import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -9,22 +6,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 class PartnerCardWidget extends StatelessWidget {
   const PartnerCardWidget(
       {Key key,
-      @required this.id,
-      @required this.name,
-      @required this.mobile,
-      this.onSave})
-      : super(key: key);
+        @required this.name,
+        @required this.mobile,
+        @required this.onDelete,
+        this.onSave
+      }) : super(key: key);
 
-  final int id;
   final String name;
   final String mobile;
   final Function onSave;
+  final Function onDelete;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    // ignore: unused_local_variable
-    PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
 
     return Stack(
       key: Key('first-stack-partner-card'),
@@ -54,7 +49,7 @@ class PartnerCardWidget extends StatelessWidget {
             top: -5.0,
             right: -9.0,
             child: RawMaterialButton(
-              onPressed: () => _showModalBankNotAllowed(context),
+              onPressed: onDelete,
               elevation: 4.0,
               constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
               shape: CircleBorder(),
@@ -83,35 +78,14 @@ class PartnerCardWidget extends StatelessWidget {
           ),
           Text(
             mobile,
-            maxLines: 1,
+            maxLines: 2,
             style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 10.0,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 0.4),
           )
         ],
       ),
     );
-  }
-
-  _showModalBankNotAllowed(BuildContext context) {
-    showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        isDismissible: false,
-        enableDrag: false,
-        builder: (context) {
-          return ImageBottomModal(
-            modalHeight: 40.0,
-            image: 'assets/images/sad_bot.svg',
-            title: I18n.of(context).modalTextsYourBkGroup,
-            titleBold: I18n.of(context).modalTextsIsEnabled,
-            isBold: true,
-            isBtnAccept: false,
-            titleCloseButton: I18n.of(context).administratorAssignmentClose,
-            onPressCancel: () => Navigator.pop(context),
-            buttonsFontSize: 14.0,
-          );
-        });
   }
 }

@@ -62,7 +62,7 @@ void main() {
     // NOTE password
     await tester.enterText(
       find.byKey(Key('input-password')),
-      'xxxx'
+      'xxxxXXXXXXxxxx'
     );
 
     await tester.testTextInput.receiveAction(TextInputAction.done);

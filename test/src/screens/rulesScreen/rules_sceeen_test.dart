@@ -24,14 +24,14 @@ void main() {
         ));
   }
 
-  group('Rules screen', () {
-    testWidgets('Render RulesScreen', (WidgetTester tester) async {
-      final testKey = Key('my-id');
-      await tester.pumpWidget(baseTester(child: bankRulesTester(key: testKey)));
-      await tester.pumpAndSettle();
+  // group('Rules screen', () {
+  //   testWidgets('Render RulesScreen', (WidgetTester tester) async {
+  //     final testKey = Key('my-id');
+  //     await tester.pumpWidget(baseTester(child: bankRulesTester(key: testKey)));
+  //     await tester.pumpAndSettle();
 
-      expect(find.byKey(testKey), findsOneWidget);
-    });
+  //     expect(find.byKey(testKey), findsOneWidget);
+  //   });
 
     // testWidgets('Find rules screen', (WidgetTester tester) async {
     //   final scaffolsKey = Key('scaffold_rules_screen');
@@ -222,5 +222,5 @@ void main() {
     //   expect(find.byKey(middleContainerKey), findsOneWidget);
     //   expect(find.byKey(bottomContainerKey), findsOneWidget);
     // });
-  });
+    //});
 }

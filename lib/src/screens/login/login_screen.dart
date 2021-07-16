@@ -1,7 +1,5 @@
-import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/environment_config.dart';
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
 import 'package:bkapp_flutter/src/screens/login/widgets/change_pass_widget.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
@@ -13,7 +11,6 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_version/get_version.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);

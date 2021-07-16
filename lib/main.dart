@@ -1,12 +1,12 @@
 import 'dart:io'
     show HttpClient, HttpOverrides, Platform, SecurityContext, X509Certificate;
 
+import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/utils/tablet_detector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:flutter/services.dart';
@@ -112,13 +112,16 @@ class MyApp extends StatelessWidget {
   MyApp({this.localeDefault});
   Locale localeDefault;
 
+
   @override
   Widget build(BuildContext context) {
+
     setOrientation(context);
     final i18n = I18n.delegate;
     return BlocProvider(
       create: (context) => AppBloc(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Bk App',
         navigatorKey: navigationKey,
         theme: ThemeData(

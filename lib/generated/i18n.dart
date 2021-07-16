@@ -74,6 +74,8 @@ class I18n implements WidgetsLocalizations {
   String get requestErrorMailSendInvalid => "Invalid Email";
   /// "Invalid phone number"
   String get requestErrorPhoneSendInvalid => "Invalid phone number";
+  /// "The bank is invalid"
+  String get requestErrorCreatedBankInvalid => "The bank is invalid";
   /// "User"
   String get formUser => "User";
   /// "Password"
@@ -90,8 +92,8 @@ class I18n implements WidgetsLocalizations {
   String get formPhone => "Phone";
   /// "This field is required"
   String get errorRequired => "This field is required";
-  /// "The number should be greater than 9"
-  String get errorGraterThanNine => "The number should be greater than 9";
+  /// "The number should be greater than 6"
+  String get errorGraterThanNine => "The number should be greater than 6";
   /// "there is nothing here!"
   String get errorIsEmpty => "there is nothing here!";
   /// "Incorrect username or password"
@@ -344,6 +346,10 @@ class I18n implements WidgetsLocalizations {
   String get profileEditScreenUpdate => "UPDATE";
   /// "Last Name"
   String get profileEditScreenLastName => "Last Name";
+  /// "Error when trying to update"
+  String get profileEditScreenModalErrorTitile => "Error when trying to update";
+  /// "profile"
+  String get profileEditScreenModalErrorTitleBlond => "profile";
   /// "Credit request"
   String get preApprovedCreditModalCreditrequest => "Credit request";
   /// "pre-approved"
@@ -536,6 +542,22 @@ class I18n implements WidgetsLocalizations {
   String get rulesScreenWeek => "Week";
   /// "Day"
   String get rulesScreenDay => "Day";
+  /// "Maximum Credit Installments"
+  String get rulesScreenCreditMaxInstalment => "Maximum Credit Installments";
+  /// "Maximum Credit Value"
+  String get rulesScreenCreditMaxValue => "Maximum Credit Value";
+  /// "Expenditure Fund Percentage"
+  String get rulesScreenExpenseFoundPercentage => "Expenditure Fund Percentage";
+  /// "Reserve fund for bad debts"
+  String get rulesScreenBadDebtReservePercentage => "Reserve fund for bad debts";
+  /// "Maximum Credit Factor"
+  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Payment period of installment"
+  String get rulesScreenDefaultInstalmentsPeriodDays => "Payment period of installment";
+  /// "Error when trying to change"
+  String get rulesScreenChangeRulesErrorTittle => "Error when trying to change";
+  /// "bank rules"
+  String get rulesScreenChangeRulesErrorTittleBlond => "bank rules";
   /// "Administrator \nAssignment"
   String get administratorAssignmentTitle => "Administrator \nAssignment";
   /// "Are you sure you assign \n this partner as administrator?"
@@ -766,6 +788,50 @@ class I18n implements WidgetsLocalizations {
   String get timeLineCreditsTitle => "My Credits";
   /// "Current"
   String get timeLineCreditsCurrent => "Current";
+  /// "Reports"
+  String get reportsScreenTitle => "Reports";
+  /// "Sustainability fund"
+  String get reportsScreenSustainability => "Sustainability fund";
+  /// "Bad debt reserve"
+  String get reportsScreenReserve => "Bad debt reserve";
+  /// "Detail"
+  String get reportsScreenDetail => "Detail";
+  /// "Partner"
+  String get reportsScreenPartner => "Partner";
+  /// "Total:"
+  String get reportsScreenTotal => "Total:";
+  /// "Group's shares"
+  String get reportsScreenSharesChartTitle => "Group's shares";
+  /// "SHARES"
+  String get reportsScreenSharesChartAxisTitle => "SHARES";
+  /// "Shares value"
+  String get reportsScreenSharesChartSharesValue => "Shares value";
+  /// "Group's credits"
+  String get reportsScreenCreditsChartTitle => "Group's credits";
+  /// "CREDITS"
+  String get reportsScreenCreditsChartAxisTitle => "CREDITS";
+  /// "Credit value"
+  String get reportsScreenCreditsChartSharesValue => "Credit value";
+  /// "Group's Installments"
+  String get reportsScreenInstallmentsChartTitle => "Group's Installments";
+  /// "FEES PAID"
+  String get reportsScreenInstallmentsChartAxisTitle => "FEES PAID";
+  /// "Fees to pay"
+  String get reportsScreenInstallmentsChartSharesValue => "Fees to pay";
+  /// "Profits to be distributed"
+  String get reportsScreenProfitsChartTitle => "Profits to be distributed";
+  /// "PROFITS"
+  String get reportsScreenProfitsChartAxisTitle => "PROFITS";
+  /// "Profits"
+  String get reportsScreenProfitsChartSharesValue => "Profits";
+  /// "SHARES"
+  String get reportsScreenTabsShares => "SHARES";
+  /// "CREDITS"
+  String get reportsScreenTabsCredits => "CREDITS";
+  /// "INSTALLMENTS"
+  String get reportsScreenTabsInstallments => "INSTALLMENTS";
+  /// "PROFITS"
+  String get reportsScreenTabsProfits => "PROFITS";
   /// "Change Password"
   String get changePasswordFormTitle => "Change Password";
   /// "Validate your credentials"
@@ -865,6 +931,9 @@ class _I18n_es_ES extends I18n {
   /// "número de teléfono inválido"
   @override
   String get requestErrorPhoneSendInvalid => "número de teléfono inválido";
+  /// "El banco es inválido"
+  @override
+  String get requestErrorCreatedBankInvalid => "El banco es inválido";
   /// "Usuario"
   @override
   String get formUser => "Usuario";
@@ -889,9 +958,9 @@ class _I18n_es_ES extends I18n {
   /// "Este campo es obligatorio"
   @override
   String get errorRequired => "Este campo es obligatorio";
-  /// "El número debe ser mayor a 9"
+  /// "El número debe ser mayor a 6"
   @override
-  String get errorGraterThanNine => "El número debe ser mayor a 9";
+  String get errorGraterThanNine => "El número debe ser mayor a 6";
   /// "¡No hay nada aquí!"
   @override
   String get errorIsEmpty => "¡No hay nada aquí!";
@@ -1270,6 +1339,12 @@ class _I18n_es_ES extends I18n {
   /// "Primer apellido"
   @override
   String get profileEditScreenLastName => "Primer apellido";
+  /// "Ha ocurrido un error al actualizar"
+  @override
+  String get profileEditScreenModalErrorTitile => "Ha ocurrido un error al actualizar";
+  /// "el perfil"
+  @override
+  String get profileEditScreenModalErrorTitleBlond => "el perfil";
   /// "Solicitud de crédito"
   @override
   String get preApprovedCreditModalCreditrequest => "Solicitud de crédito";
@@ -1534,6 +1609,30 @@ class _I18n_es_ES extends I18n {
   /// "Día"
   @override
   String get rulesScreenDay => "Día";
+  /// "Máximo Cuotas del Crédito"
+  @override
+  String get rulesScreenCreditMaxInstalment => "Máximo Cuotas del Crédito";
+  /// "Máximo Valor del Crédito"
+  @override
+  String get rulesScreenCreditMaxValue => "Máximo Valor del Crédito";
+  /// "Porcentaje fondo de Gastos"
+  @override
+  String get rulesScreenExpenseFoundPercentage => "Porcentaje fondo de Gastos";
+  /// "Fondo de reserva para incobrables"
+  @override
+  String get rulesScreenBadDebtReservePercentage => "Fondo de reserva para incobrables";
+  /// "Maximum Credit Factor"
+  @override
+  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Periodo de Pago de Cuotas"
+  @override
+  String get rulesScreenDefaultInstalmentsPeriodDays => "Periodo de Pago de Cuotas";
+  /// "Error al intentar cambiar "
+  @override
+  String get rulesScreenChangeRulesErrorTittle => "Error al intentar cambiar ";
+  /// "las reglas del banco"
+  @override
+  String get rulesScreenChangeRulesErrorTittleBlond => "las reglas del banco";
   /// "Asignación de \nAdministradores"
   @override
   String get administratorAssignmentTitle => "Asignación de \nAdministradores";
@@ -1879,6 +1978,72 @@ class _I18n_es_ES extends I18n {
   /// "Vigente"
   @override
   String get timeLineCreditsCurrent => "Vigente";
+  /// "Reportes"
+  @override
+  String get reportsScreenTitle => "Reportes";
+  /// "Fondo de sostenibilidad"
+  @override
+  String get reportsScreenSustainability => "Fondo de sostenibilidad";
+  /// "Reserva para Incobrables"
+  @override
+  String get reportsScreenReserve => "Reserva para Incobrables";
+  /// "Detalle"
+  @override
+  String get reportsScreenDetail => "Detalle";
+  /// "Socio"
+  @override
+  String get reportsScreenPartner => "Socio";
+  /// "Total:"
+  @override
+  String get reportsScreenTotal => "Total:";
+  /// "Acciones del grupo"
+  @override
+  String get reportsScreenSharesChartTitle => "Acciones del grupo";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenSharesChartAxisTitle => "ACCIONES";
+  /// "Valor en acciones"
+  @override
+  String get reportsScreenSharesChartSharesValue => "Valor en acciones";
+  /// "Créditos del grupo"
+  @override
+  String get reportsScreenCreditsChartTitle => "Créditos del grupo";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenCreditsChartAxisTitle => "CRÉDITOS";
+  /// "Valor crédito"
+  @override
+  String get reportsScreenCreditsChartSharesValue => "Valor crédito";
+  /// "Monto de cuotas"
+  @override
+  String get reportsScreenInstallmentsChartTitle => "Monto de cuotas";
+  /// "CUOTAS PAGADAS"
+  @override
+  String get reportsScreenInstallmentsChartAxisTitle => "CUOTAS PAGADAS";
+  /// "Cuotas por pagar"
+  @override
+  String get reportsScreenInstallmentsChartSharesValue => "Cuotas por pagar";
+  /// "Ganancias por repartir"
+  @override
+  String get reportsScreenProfitsChartTitle => "Ganancias por repartir";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenProfitsChartAxisTitle => "GANANCIAS";
+  /// "Ganancias"
+  @override
+  String get reportsScreenProfitsChartSharesValue => "Ganancias";
+  /// "ACCIONES"
+  @override
+  String get reportsScreenTabsShares => "ACCIONES";
+  /// "CRÉDITOS"
+  @override
+  String get reportsScreenTabsCredits => "CRÉDITOS";
+  /// "CUOTAS"
+  @override
+  String get reportsScreenTabsInstallments => "CUOTAS";
+  /// "GANANCIAS"
+  @override
+  String get reportsScreenTabsProfits => "GANANCIAS";
   /// "Cambiar contraseña"
   @override
   String get changePasswordFormTitle => "Cambiar contraseña";

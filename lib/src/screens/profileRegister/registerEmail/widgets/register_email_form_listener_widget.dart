@@ -32,7 +32,7 @@ class _RegisterEmailFormListenerWidgetState
           FooterStepWidget(
               currentStep: 2,
               numberOfSteps: 5,
-              isDisabled: isDisabled,
+              isDisabled: context.read<ProfileEmailBloc>().validEmail() ,
               currentBlocSubmit: ()=> _validateMail(context))
         ]);
   }

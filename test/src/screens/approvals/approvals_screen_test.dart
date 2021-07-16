@@ -7,18 +7,34 @@ import 'package:bkapp_flutter/src/widgets/appBar/app_bar_widget.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:flutter_test/flutter_test.dart' as flutterTest;
+
+
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../../../base_tester.dart';
 
-class MockApprovalsBloc extends MockBloc<ApprovalsState>
+class MockApprovalsBloc extends MockBloc<ApprovalsEvent, ApprovalsState>
     implements ApprovalsBloc {}
+
+class FakeApprovalsEvent extends Fake implements ApprovalsEvent {}
+class FakeApprovalsState extends Fake implements ApprovalsState {}
+
 
 void main() {
   // ignore: close_sinks
-  ApprovalsBloc mockApprovalsBloc;
+  ApprovalsBloc mockApprovalsBloc = new ApprovalsBloc(repository: null);
   final testKey = Key('my-id');
+
+  setUpAll(() {
+    registerFallbackValue<ApprovalsEvent>(FakeApprovalsEvent());
+    registerFallbackValue<ApprovalsState>(FakeApprovalsState());
+  });
+
+  setUp(() {
+    mockApprovalsBloc = MockApprovalsBloc();
+  });
 
   Map response = {
     "cashBalance": 5000000,
@@ -52,9 +68,7 @@ void main() {
     ]
   };
 
-  setUp(() {
-    mockApprovalsBloc = MockApprovalsBloc();
-  });
+
 //  child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario')),
   Widget approvalTester(Key key) {
     return MultiBlocProvider(providers: [
@@ -66,8 +80,8 @@ void main() {
     ], child: ApprovalsScreen(key: key, oldIndex: 0, userName: 'Usuario'));
   }
 
-  group('Test approvals_screen', () {
-    testWidgets('Find approvalsScreen ', (WidgetTester tester) async {
+  flutterTest.group('Test approvals_screen', () {
+    flutterTest.testWidgets('Find approvalsScreen ', (flutterTest.WidgetTester tester) async {
       await tester.runAsync(() async {
         await tester.pumpWidget(baseTester(
             child: approvalTester(
@@ -75,12 +89,13 @@ void main() {
         )));
         await tester.pump();
 
-        expect(find.byKey(testKey), findsOneWidget);
+        expect(flutterTest.find.byKey(testKey), flutterTest.findsOneWidget);
       });
     });
 
-    testWidgets('Find structure approvals screen', (WidgetTester tester) async {
-      when(mockApprovalsBloc.state)
+    flutterTest.testWidgets('Find structure approvals screen', (flutterTest.WidgetTester tester) async {
+
+      when(() => mockApprovalsBloc.state)
           .thenReturn(ApprovalsLoaded(approvals: response));
       await tester.pumpWidget(baseTester(
           child: MultiBlocProvider(
@@ -94,10 +109,10 @@ void main() {
                   key: testKey, oldIndex: 0, userName: 'Usuario'))));
       await tester.pumpAndSettle();
 
-      expect(find.byType(AppBarWidget), findsOneWidget);
-      expect(find.byType(NumberPetitions), findsOneWidget);
-      expect(find.byType(AcceptedDiscarted), findsOneWidget);
-      expect(find.byKey(Key('column-appbar-approvals-screen')), findsOneWidget);
+      expect(flutterTest.find.byType(AppBarWidget), flutterTest.findsOneWidget);
+      expect(flutterTest.find.byType(NumberPetitions), flutterTest.findsOneWidget);
+      expect(flutterTest.find.byType(AcceptedDiscarted), flutterTest.findsOneWidget);
+      expect(flutterTest.find.byKey(Key('column-appbar-approvals-screen')), flutterTest.findsOneWidget);
     });
   });
 }

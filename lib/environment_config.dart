@@ -8,14 +8,13 @@ class EnvironmentConfig {
   //services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
   // services stage
-  // https://bk-service-stage-2foxvegkzq-uc.a.run.app/
+  // https://bk-service-stage-2foxvegkzq-uc.a.run.app
   // Services local 
   // http://192.168.0.19:8888
 
   //"https://bkservice.fundefir-dev.com"
   // https://bkservicestage.fundefir-dev.com
   // https://bkservice.fundefir-dev.com
-
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
@@ -312,5 +311,11 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
     return "$baseUrl/v3/verify-phone";
+  }
+
+  static String validateAllPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-multiple-phones";
   }
 }

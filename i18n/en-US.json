@@ -24,7 +24,8 @@
     "mailNotAviable": "this email is not available",
     "phoneNotAviable": "this phone is not available",
     "mailSendInvalid": "Invalid Email",
-    "phoneSendInvalid": "Invalid phone number"
+    "phoneSendInvalid": "Invalid phone number",
+    "createdBankInvalid": "The bank is invalid"
   },
   "form": {
     "user": "User",
@@ -37,7 +38,7 @@
   },
   "error": {
     "required": "This field is required",
-    "graterThanNine": "The number should be greater than 9",
+    "graterThanNine": "The number should be greater than 6",
     "isEmpty": "there is nothing here!",
     "invalidUser": "Incorrect username or password",
     "invalidEmail": "Enter a valid email address",
@@ -215,7 +216,9 @@
     "title": "Profile Edit",
     "editionMode": "EDIT MODE",
     "update": "UPDATE",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "modalErrorTitile" : "Error when trying to update",
+    "modalErrorTitleBlond" : "profile"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Credit request",
@@ -337,7 +340,18 @@
     "expenseReserve": "Expense reserve",
     "incobrableFund": "Incobrable fund",
     "week": "Week",
-    "day": "Day"
+    "day": "Day",
+
+    "creditMaxInstalment": "Maximum Credit Installments",
+    "creditMaxValue": "Maximum Credit Value",
+    "expenseFoundPercentage": "Expenditure Fund Percentage",
+    "badDebtReservePercentage": "Reserve fund for bad debts",
+    "maxCreditFactor": "Maximum Credit Factor",
+    "defaultInstalmentsPeriodDays": "Payment period of installment",
+
+    "changeRulesErrorTittle": "Error when trying to change",
+    "changeRulesErrorTittleBlond": "bank rules"
+
   },
   "administratorAssignment": {
     "title": "Administrator \nAssignment",
@@ -476,7 +490,40 @@
     "title": "My Credits",
     "current": "Current"
   },
-
+  "reportsScreen": {
+    "title": "Reports",
+    "sustainability": "Sustainability fund",
+    "reserve": "Bad debt reserve",
+    "detail": "Detail",
+    "partner": "Partner",
+    "total": "Total:",
+    "sharesChart": {
+      "title": "Group's shares",
+      "axisTitle": "SHARES",
+      "sharesValue": "Shares value"
+    },
+    "creditsChart": {
+      "title": "Group's credits",
+      "axisTitle": "CREDITS",
+      "sharesValue": "Credit value"
+    },
+    "installmentsChart": {
+      "title": "Group's Installments",
+      "axisTitle": "FEES PAID",
+      "sharesValue": "Fees to pay"
+    },
+    "profitsChart": {
+      "title": "Profits to be distributed",
+      "axisTitle": "PROFITS",
+      "sharesValue": "Profits"
+    },
+    "tabs": {
+      "shares": "SHARES",
+      "credits": "CREDITS",
+      "installments": "INSTALLMENTS",
+      "profits": "PROFITS"
+    }
+  },
   "changePassword": {
     "FormTitle": "Change Password",
     "dialogTittle": "Validate your credentials",

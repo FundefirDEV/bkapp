@@ -43,9 +43,10 @@ dependencies:
   uuid: ">=2.0.0-rc1 <=3.0.1"
   crypto: 3.0.1
   rflutter_alert: ^2.0.2
+  fl_chart: ^0.36.1
+  contacts_service: 0.6.1
+  #fluttercontactpicker: ^4.5.1
   #flutter_spinkit: "^4.1.2"
-
-
   
 dev_dependencies:
   flutter_test:
@@ -53,7 +54,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   test: any
-  bloc_test: 8.0.0
+  bloc_test: 8.0.2
   remove_from_coverage: 2.0.0
   pin_code_fields: 3.1.2
   flutter_launcher_icons: 0.9.0

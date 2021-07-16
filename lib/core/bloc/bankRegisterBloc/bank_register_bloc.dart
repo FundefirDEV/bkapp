@@ -1,6 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
+import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
-import 'package:bkapp_flutter/core/services/sql/partner_sql.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -21,6 +21,8 @@ class BankRegisterBloc extends FormBloc<String, String> {
   final name = TextFieldBloc();
   final token = TextFieldBloc();
 
+  List<PartnerModel> partnerList = [];
+
   BankRegisterBloc({@required this.repository})
       : _selectPlace = SelectCityBloc(repository: locationRepository),
         _inviteForm = InviteFormBloc(partnerRepository: partnerRepository) {
@@ -40,7 +42,13 @@ class BankRegisterBloc extends FormBloc<String, String> {
     methodCount: 0,
   ));
 
-  Future makeSubmit() async {
+  void clearData(){
+    partnerList = [];
+    name.updateValue('');
+    name.updateInitialValue('');
+  }
+
+  Future<String> makeSubmit() async {
     try {
       logger.v({
         'bank name': '${name.value}',
@@ -49,10 +57,9 @@ class BankRegisterBloc extends FormBloc<String, String> {
         'token': '${token.value}',
       });
 
-      PartnerDatabaseProvider partnerDb = PartnerDatabaseProvider.db;
-      var getPartners = await partnerDb.getAllParters();
-      List<Object> partners = List<Object>();
-      getPartners.forEach((partner) {
+      List<Object> partners = [];
+
+      partnerList.forEach((partner) {
         partners.add({
           "name": "${partner.firstname}",
           "phone": partner.phone.replaceAll(new RegExp(r'\W'), ''),
@@ -61,9 +68,15 @@ class BankRegisterBloc extends FormBloc<String, String> {
       var selectedCity = items.indexOf(_selectPlace.selectCity.value);
       await repository.registerBank(
           selectedCity, name.value, partners, token.value);
+      partnerList = [];
+
+      clearData();
+      
+      return 'bank created!';
+
     } catch (e) {
       print(e);
-      return 'error';
+      return e.toString();
     }
   }
 

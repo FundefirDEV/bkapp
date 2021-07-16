@@ -57,6 +57,8 @@ class _RegisterPasswordFormListenerWidgetState
                       .profileRegisterBloc
                       .makeSubmit();
                   _bankRegisterBloc.token.updateValue(result.token);
+                  _bankRegisterBloc.clearData();
+                  
                   Navigator.pushNamed(context, confirmInvitationBank,
                       arguments: ConfirmInvitationBankStepArgs(widget.data.tag,
                           widget.data.image, result.isInvited));

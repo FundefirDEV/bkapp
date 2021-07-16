@@ -39,8 +39,8 @@ class OptionsBkWidget extends StatelessWidget {
                       borderRadius: radiusCard,
                       child: InkWell(
                         key: Key('inkwell-redirect-meeting-closed'),
-                        onTap: () => navigateBloc.add(ButtonPressed(
-                            goTo: HomeRoutesConstant.meetingClosedScreen)),
+                        // onTap: () => navigateBloc.add(ButtonPressed(
+                        //     goTo: HomeRoutesConstant.reportsScreen)),
                         child: Stack(
                           children: <Widget>[
                             new Positioned(

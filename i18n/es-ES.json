@@ -24,7 +24,9 @@
     "mailNotAviable": "Este email ya está siendo utilizado",
     "phoneNotAviable": "Este phone ya está siendo utilizado",
     "mailSendInvalid": "correo electrónico inválido",
-    "phoneSendInvalid": "número de teléfono inválido"
+    "phoneSendInvalid": "número de teléfono inválido",
+    "createdBankInvalid": "El banco es inválido"
+
   },
   "form": {
     "user": "Usuario",
@@ -37,7 +39,7 @@
   },
   "error": {
     "required": "Este campo es obligatorio",
-    "graterThanNine": "El número debe ser mayor a 9",
+    "graterThanNine": "El número debe ser mayor a 6",
     "isEmpty": "¡No hay nada aquí!",
     "invalidUser": "Usuario o contraseña incorrecto",
     "invalidEmail": "Ingrese un correo electrónico válido",
@@ -215,7 +217,9 @@
     "title": "Editar Perfil",
     "editionMode": "MODO EDICIÓN",
     "update": "ACTUALIZAR",
-    "lastName": "Primer apellido"
+    "lastName": "Primer apellido",
+    "modalErrorTitile" : "Ha ocurrido un error al actualizar",
+    "modalErrorTitleBlond" : "el perfil"
   },
   "preApprovedCreditModal": {
     "Creditrequest": "Solicitud de crédito",
@@ -327,7 +331,19 @@
     "expenseReserve": "Reserva de gastos",
     "incobrableFund": "Fondo incobrable",
     "week": "Semana",
-    "day": "Día"
+    "day": "Día",
+
+
+    "creditMaxInstalment": "Máximo Cuotas del Crédito",
+    "creditMaxValue": "Máximo Valor del Crédito",
+    "expenseFoundPercentage": "Porcentaje fondo de Gastos",
+    "badDebtReservePercentage": "Fondo de reserva para incobrables",
+    "maxCreditFactor": "Maximum Credit Factor",
+    "defaultInstalmentsPeriodDays": "Periodo de Pago de Cuotas",
+
+
+    "changeRulesErrorTittle": "Error al intentar cambiar ",
+    "changeRulesErrorTittleBlond": "las reglas del banco"
   },
   "administratorAssignment": {
     "title": "Asignación de \nAdministradores",
@@ -465,6 +481,41 @@
   "timeLineCredits": {
     "title": "Mis Créditos",
     "current": "Vigente"
+  },
+  "reportsScreen": {
+    "title": "Reportes",
+    "sustainability": "Fondo de sostenibilidad",
+    "reserve": "Reserva para Incobrables",
+    "detail": "Detalle",
+    "partner": "Socio",
+    "total": "Total:",
+    "sharesChart": {
+      "title": "Acciones del grupo",
+      "axisTitle": "ACCIONES",
+      "sharesValue": "Valor en acciones"
+    },
+    "creditsChart": {
+      "title": "Créditos del grupo",
+      "axisTitle": "CRÉDITOS",
+      "sharesValue": "Valor crédito"
+    },
+    "installmentsChart": {
+      "title": "Monto de cuotas",
+      "axisTitle": "CUOTAS PAGADAS",
+      "sharesValue": "Cuotas por pagar"
+    },
+    "profitsChart": {
+      "title": "Ganancias por repartir",
+      "axisTitle": "GANANCIAS",
+      "sharesValue": "Ganancias"
+    },
+    "tabs": {
+      "shares": "ACCIONES",
+      "credits": "CRÉDITOS",
+      "installments": "CUOTAS",
+      "profits": "GANANCIAS"
+    }
+    
   },
 
   "changePassword": {

@@ -23,7 +23,7 @@ class UtilsTools {
   }
 
   static String minPhoneNumber(String number) {
-    if (number.length < 14) return incompletePhone;
+    if (number.length < 6) return incompletePhone;
     return null;
   }
 

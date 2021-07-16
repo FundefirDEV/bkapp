@@ -7,9 +7,13 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppBarWidget extends StatelessWidget {
-  AppBarWidget({Key key, this.container, this.userName}) : super(key: key);
+  AppBarWidget(
+      {Key key, this.container, this.userName, this.enableScrolling: true})
+      : super(key: key);
+
   final Widget container;
   final String userName;
+  final bool enableScrolling;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,11 @@ class AppBarWidget extends StatelessWidget {
                       child: Column(children: <Widget>[
                         _header(context),
                         Expanded(
-                            child: SingleChildScrollView(child: this.container))
+                            child: SingleChildScrollView(
+                                physics: enableScrolling
+                                    ? AlwaysScrollableScrollPhysics()
+                                    : NeverScrollableScrollPhysics(),
+                                child: this.container))
                       ])))
             ])));
   }
