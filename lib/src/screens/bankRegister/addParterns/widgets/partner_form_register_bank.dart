@@ -34,7 +34,7 @@ class PartnerFormRegisterBank extends StatefulWidget {
 
 class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
   int minNameValue = 1;
-  int minPhoneValue = 12;
+  int minPhoneValue = 4;
   bool isDisabled;
 
   @override
@@ -78,8 +78,8 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(14),
-                      PhoneFormatter()
+                      LengthLimitingTextInputFormatter(16),
+                      // PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(

@@ -312,4 +312,10 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/verify-phone";
   }
+
+  static String validateAllPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-multiple-phones";
+  }
 }

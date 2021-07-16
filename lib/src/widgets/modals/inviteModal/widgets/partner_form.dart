@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/bloc/partnersBloc/invite_form_bloc.dart';
+import 'package:bkapp_flutter/core/models/partner_model.dart';
 import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -13,11 +14,16 @@ import 'package:http/http.dart' as http;
 
 class PartnerForm extends StatefulWidget {
   const PartnerForm(
-      {Key key, @required this.inviteBloc , @required this.token})
+      {Key key, 
+      @required this.inviteBloc , 
+      @required this.token,
+      @required this.addPartner
+      })
       : super(key: key);
 
   final InviteFormBloc inviteBloc;
   final String token;
+  final addPartner;
 
   @override
   _PartnerFormState createState() => _PartnerFormState();
@@ -25,7 +31,7 @@ class PartnerForm extends StatefulWidget {
 
 class _PartnerFormState extends State<PartnerForm> {
   int minNameValue = 1;
-  int minPhoneValue = 12;
+  int minPhoneValue = 4;
   bool isDisabled;
 
   @override
@@ -69,8 +75,8 @@ class _PartnerFormState extends State<PartnerForm> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(10),
-                      PhoneFormatter()
+                      LengthLimitingTextInputFormatter(16),
+                      //PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
@@ -108,12 +114,21 @@ class _PartnerFormState extends State<PartnerForm> {
 
     try {
 
-      final res = await postInvitePartner(widget.token, [{
+      final res = await validatePhone(widget.token, phone);
+
+      print(res);
+
+      await postInvitePartner(widget.token, [{
         "name" : name,
         "phone" : phone
       }]);
-
-      print(res);
+      
+      final newPartner = PartnerModel(
+        firstname: name,
+        phone: phone
+      );
+      
+      widget.addPartner([newPartner]);
 
       Navigator.pop(context);
       setState(() {});
@@ -136,6 +151,20 @@ Future<Map<String, dynamic>> postInvitePartner(
     url: postInvitePartner,
     token: token,
     body: {"partners": partners}
+  );
+}
+
+Future<String> validatePhone(
+  String token, String phone) async {
+
+  http.Client httpClient = http.Client();
+  HttpRequests _httpRequest = HttpRequests();
+  final postInvitePartner = ApiEndpoints.validatePhone();
+  return await _httpRequest.get(
+    httpClient: httpClient,
+    url: postInvitePartner,
+    token: token,
+    param: phone,
   );
 }
 
