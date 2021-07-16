@@ -79,7 +79,7 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                       LengthLimitingTextInputFormatter(16),
-                      PhoneFormatter()
+                      // PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(

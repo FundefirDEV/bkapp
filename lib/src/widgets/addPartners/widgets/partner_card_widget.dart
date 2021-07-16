@@ -78,9 +78,9 @@ class PartnerCardWidget extends StatelessWidget {
           ),
           Text(
             mobile,
-            maxLines: 1,
+            maxLines: 2,
             style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 10.0,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 0.4),
           )

@@ -76,7 +76,7 @@ class _PartnerFormState extends State<PartnerForm> {
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                       LengthLimitingTextInputFormatter(16),
-                      PhoneFormatter()
+                      //PhoneFormatter()
                     ],
                     errorBuilder: errorHandler,
                     decoration: InputDecoration(
