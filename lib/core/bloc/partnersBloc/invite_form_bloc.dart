@@ -25,6 +25,16 @@ class InviteFormBloc extends FormBloc<String, String> {
     );
   }
 
+  final isValid = BooleanFieldBloc(initialValue: false) ;
+
+  void isValidUpdated(){
+
+    final res = name.value.length > 1 && cellPhone.value.length > 6;
+    isValid.updateValue(res);
+
+    print(isValid.value);
+  }
+
   @override
   void onSubmitting() async {
     emitSuccess(canSubmitAgain: true);
