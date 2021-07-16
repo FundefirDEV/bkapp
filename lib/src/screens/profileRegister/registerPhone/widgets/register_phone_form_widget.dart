@@ -44,7 +44,7 @@ class RegisterPhoneFormWidget extends StatelessWidget {
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
                 LengthLimitingTextInputFormatter(20),
-                PhoneFormatter()
+                //PhoneFormatter()
               ],
               errorBuilder: errorHandler,
               onChanged: (value) {
