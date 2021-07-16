@@ -34,7 +34,7 @@ class PartnerFormRegisterBank extends StatefulWidget {
 
 class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
   int minNameValue = 1;
-  int minPhoneValue = 12;
+  int minPhoneValue = 4;
   bool isDisabled;
 
   @override

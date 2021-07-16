@@ -115,7 +115,7 @@ class _RegistePhoneFormListenerWidgetState
   }
 
   _isValidating(String phoneBloc) {
-    phoneBloc.length > 13
+    phoneBloc.length > 6
         ? setState(() => isDisabled = false)
         : setState(() => isDisabled = true);
   }
