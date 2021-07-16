@@ -39,7 +39,7 @@
   },
   "error": {
     "required": "Este campo es obligatorio",
-    "graterThanNine": "El número debe ser mayor a 9",
+    "graterThanNine": "El número debe ser mayor a 6",
     "isEmpty": "¡No hay nada aquí!",
     "invalidUser": "Usuario o contraseña incorrecto",
     "invalidEmail": "Ingrese un correo electrónico válido",
