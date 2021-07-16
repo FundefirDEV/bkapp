@@ -17,15 +17,19 @@ class ConfirmInvitationBankFormListenerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Column(children: <Widget>[
-      HeaderContent(
-        width: SizeConfig.safeBlockHorizontal * 60,
-        firstText: I18n.of(context).confimInvitationBankTitleOne,
-        secondText: I18n.of(context).confimInvitationBankTitleTwo,
-        subtitle: I18n.of(context).confimInvitationBankSubtitle,
-      ),
-      Expanded(child: _containerInfo(context))
-    ]);
+    return WillPopScope(
+      
+      onWillPop: () async => false,
+      child: Column(children: <Widget>[
+        HeaderContent(
+          width: SizeConfig.safeBlockHorizontal * 60,
+          firstText: I18n.of(context).confimInvitationBankTitleOne,
+          secondText: I18n.of(context).confimInvitationBankTitleTwo,
+          subtitle: I18n.of(context).confimInvitationBankSubtitle,
+        ),
+        Expanded(child: _containerInfo(context))
+      ]),
+    );
   }
 
   Widget _containerInfo(BuildContext context) {
