@@ -19,7 +19,7 @@ class ProfilePhoneBloc extends FormBloc<String, String> {
   }
 
   @override
-  void onSubmitting() async {
+  Future onSubmitting() async {
     try {
       var formatPhone = UtilsTools.removePhoneFormatter(phone.value);
 
