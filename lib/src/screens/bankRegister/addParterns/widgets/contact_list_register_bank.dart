@@ -51,7 +51,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
 
   @override
   void initState() {
-    _populateContacts();
+    refreshContacts();
     super.initState();
   }
 
@@ -252,7 +252,7 @@ class _ContactListRegisterBankState extends State<ContactListRegisterBank> {
       selectContact.forEach((contact) { 
         partnerList.add(PartnerModel(
           firstname: contact.contact.displayName,
-          phone : contact.contact.phones.elementAt(0).value
+          phone : contact.contact.phones.elementAt(0).value.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
         ));
       });
 
