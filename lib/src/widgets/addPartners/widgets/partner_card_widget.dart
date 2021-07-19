@@ -77,7 +77,7 @@ class PartnerCardWidget extends StatelessWidget {
             ),
           ),
           Text(
-            mobile,
+            '+${mobile.replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')}',
             maxLines: 2,
             style: TextStyle(
                 fontSize: 10.0,

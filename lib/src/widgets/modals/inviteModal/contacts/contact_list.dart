@@ -52,7 +52,9 @@ class _ContactListState extends State<ContactList> {
 
   @override
   void initState() {
-    _populateContacts();
+    //_populateContacts();
+
+    refreshContacts();
     super.initState();
   }
 
@@ -256,8 +258,7 @@ class _ContactListState extends State<ContactList> {
     selectContact.forEach((contact) {
 
       String clearPhone = 
-        contact.contact.phones.elementAt(0).value
-        .replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+        contact.contact.phones.elementAt(0).value;
       
       partnerBody.add({
         "name": contact.contact.displayName,
@@ -293,7 +294,8 @@ class _ContactListState extends State<ContactList> {
       selectContact.forEach((contact) {
         newPartners.add( PartnerModel(
           firstname: contact.contact.displayName,
-          phone: contact.contact.phones.elementAt(0).value
+          phone: contact.contact.phones.elementAt(0).value.replaceAll(
+            RegExp(r'[!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '')
         ));
       });
 
