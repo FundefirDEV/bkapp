@@ -258,8 +258,7 @@ class _ContactListState extends State<ContactList> {
     selectContact.forEach((contact) {
 
       String clearPhone = 
-        contact.contact.phones.elementAt(0).value
-        .replaceAll(RegExp(r'[()!@#<>?":_`~;[\]\\|=+-\s\b|\b\s]'), '');
+        contact.contact.phones.elementAt(0).value;
       
       partnerBody.add({
         "name": contact.contact.displayName,
