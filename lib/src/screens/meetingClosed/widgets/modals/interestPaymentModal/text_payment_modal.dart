@@ -75,6 +75,7 @@ class TextPaymentModal extends StatelessWidget {
                 Container(
                     width: SizeConfig.blockSizeHorizontal * 30,
                     child: Text(
+                      // advance interest
                       totalAdvanceInsterest,
                       textAlign: TextAlign.end,
                       style: TextStyle(

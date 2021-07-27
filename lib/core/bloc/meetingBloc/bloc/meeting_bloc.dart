@@ -26,6 +26,10 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
         final credit = await repository.creditsCurrentMeeting(event.token);
         MeetingDetail meetingDetail = MeetingDetail.fromJson(credit);
         final shares = await repository.sharesCurrentMeeting(event.token);
+        print(' ******************* shares ******************* ');
+        print(shares);
+        print(' ********************************************** ');
+
         SharesCurrentModel sharesCurrent = SharesCurrentModel.fromJson(shares);
         yield MeetingLoaded(
             infoMeeting: infoMeeting,
