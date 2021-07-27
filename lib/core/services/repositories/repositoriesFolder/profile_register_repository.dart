@@ -32,8 +32,8 @@ class ProfileRegisterRepository {
     return res;
   }
 
-  validatePhone(String phone) async {
-    final res = await apiProvider.validatePhone(phone: phone);
+  validateUserPhone(String phone) async {
+    final res = await apiProvider.validateUserPhone(phone: phone);
     return res;
   }
 }
