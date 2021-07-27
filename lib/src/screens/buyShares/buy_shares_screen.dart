@@ -81,7 +81,7 @@ class _BuySharesScreenState extends State<BuySharesScreen> {
                           });
                         },
                         onFailure: (context, state) {
-                          Navigator.pop(context);
+                          //Navigator.pop(context);
                           UtilsTools.showErrorDialog(
                               context, state.failureResponse);
                         },
