@@ -168,7 +168,8 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             
                         ProfileEditScreen(
                           token: widget.tokenUser,
-                        )
+                        ),
+                        ReportsScreen(userName: widget.userName),
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

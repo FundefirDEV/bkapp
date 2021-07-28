@@ -120,13 +120,12 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
 
     try {
 
-      await repository.validatePhone(phone);
+      await repository.validateUserPhone(phone);
       return true;
 
     } catch (e) {
       
       print(e);
-
       addErrorPhoneTextField(context);
       return false;
     }
