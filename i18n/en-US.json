@@ -390,7 +390,8 @@
     "actives": "ACTIVES",
     "pending": "PENDING",
     "bottomText": "You can remove a partner",
-    "anyTime": "at any time"
+    "anyTime": "at any time",
+    "deletePartnerConfirm" : "You want to delete the pending partner"
   },
   "partnerRemoval": {
     "title": "Partner removal",
