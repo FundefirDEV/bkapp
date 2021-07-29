@@ -13,7 +13,7 @@ class HeaderProfileWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
         width: SizeConfig.safeBlockHorizontal * 100,
-        height: SizeConfig.blockSizeVertical * 13,
+        height: SizeConfig.blockSizeVertical * 11.5,
         child: Row(
           children: [
             Expanded(
@@ -49,7 +49,7 @@ class HeaderProfileWidget extends StatelessWidget {
                           TextSpan(
                             text: profile.email,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),

@@ -148,7 +148,7 @@ class _PartnersCardListState extends State<PartnersCardList> {
         return ImageBottomModal(
           modalHeight: 45.0,
           image: 'assets/images/sad_bot.svg',
-          title: I18n.of(context).requestErrorUserNotAvailable,
+          title: I18n.of(context).addPartnerDeletePartnerConfirm,
           isBold: true,
           isBtnAccept: true,
           isImageBg: false,

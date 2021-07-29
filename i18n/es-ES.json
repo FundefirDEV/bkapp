@@ -382,7 +382,8 @@
     "actives": "ACTIVOS",
     "pending": "PENDIENTES",
     "bottomText": "Podrás agregar o eliminar un socio en",
-    "anyTime": "cualquier momento"
+    "anyTime": "cualquier momento",
+    "deletePartnerConfirm" : "Deseas eliminar este socio pendiente"
   },
   "partnerRemoval": {
     "title": "Retirar socio",

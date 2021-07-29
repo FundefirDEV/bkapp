@@ -624,6 +624,8 @@ class I18n implements WidgetsLocalizations {
   String get addPartnerBottomText => "You can remove a partner";
   /// "at any time"
   String get addPartnerAnyTime => "at any time";
+  /// "You want to delete the pending partner"
+  String get addPartnerDeletePartnerConfirm => "You want to delete the pending partner";
   /// "Partner removal"
   String get partnerRemovalTitle => "Partner removal";
   /// "Are you sure to withdraw"
@@ -1732,6 +1734,9 @@ class _I18n_es_ES extends I18n {
   /// "cualquier momento"
   @override
   String get addPartnerAnyTime => "cualquier momento";
+  /// "Deseas eliminar este socio pendiente"
+  @override
+  String get addPartnerDeletePartnerConfirm => "Deseas eliminar este socio pendiente";
   /// "Retirar socio"
   @override
   String get partnerRemovalTitle => "Retirar socio";
