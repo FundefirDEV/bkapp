@@ -64,12 +64,12 @@ class HeaderProfileWidget extends StatelessWidget {
                           margin: EdgeInsets.only(right: 8),
                           child: SvgPicture.asset(
                             imageCountry(profile.country.iso),
-                            height: 18.0,
+                            height: 16.0,
                           ),
                         ),
                         Text(
                           profile.phone,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 11),
                         )
                       ],
                     ),
