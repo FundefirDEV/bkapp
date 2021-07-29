@@ -28,6 +28,7 @@ class HeaderProfileWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   RichText(
+                    overflow:TextOverflow.ellipsis,
                     text: TextSpan(
                         text: UtilsTools.titleCase(profile.firstname) + '\n',
                         style: TextStyle(
@@ -71,6 +72,7 @@ class HeaderProfileWidget extends StatelessWidget {
                           profile.phone,
                           style: TextStyle(
                             color: Colors.white,
+                            
                             fontSize: 11
                           ),
                         )
