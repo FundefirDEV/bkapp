@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/profileEdition/data_edit_profile.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -23,7 +24,10 @@ class CardsInformationProfile extends StatelessWidget {
             _labelsInformation(context, I18n.of(context).profileScreenId,
                 profile.documentNumber),
             _labelsInformation(context, I18n.of(context).profileScreenBirthDate,
-                profile.birthDate)
+              profile.birthDate != 'no data' ? 
+                DateTime.parse(profile.birthDate).toIso8601String():
+                profile.birthDate
+            )
           ]))),
       _box(
           context,
@@ -31,7 +35,7 @@ class CardsInformationProfile extends StatelessWidget {
               child: Column(children: [
             _imageInformation('collage'),
             _labelsInformation(context,
-                I18n.of(context).profileScreenScholarship, profile.scholarship),
+                I18n.of(context).profileScreenScholarship, scholarshipType[profile.scholarship]),
             _labelsInformation(context,
                 I18n.of(context).profileScreenProfession, profile.profession),
           ]))),
