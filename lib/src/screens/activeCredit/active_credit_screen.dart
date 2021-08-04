@@ -10,10 +10,11 @@ import 'package:bkapp_flutter/src/widgets/cardInformationBk/card_information_bk_
 import 'package:bkapp_flutter/src/widgets/lineSeparator/line_separator_widget.dart';
 import 'package:bkapp_flutter/src/widgets/titleHeader/title_header_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter/material.dart';
 
-class ActiveCreditScreen extends StatelessWidget {
+class ActiveCreditScreen extends StatefulWidget {
   ActiveCreditScreen(
       {Key key,
       @required this.oldIndex,
@@ -28,11 +29,28 @@ class ActiveCreditScreen extends StatelessWidget {
   final String token;
 
   @override
+  _ActiveCreditScreenState createState() => _ActiveCreditScreenState();
+}
+
+class _ActiveCreditScreenState extends State<ActiveCreditScreen> {
+  final TextEditingController payAmount = TextEditingController();
+
+  @override
+  void initState() {
+    BlocProvider.of<CreditFormBloc>(context).
+      paymentAmount.updateValue(widget.data?.scheduleInstallment[0]?.totalPayment);    
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    final creditFormBloc = BlocProvider.of<CreditFormBloc>(context);
+
     return AppBarWidget(
         key: Key('active-credit-screen'),
-        userName: this.userName,
+        userName: this.widget.userName,
         container: Column(
           children: <Widget>[
             TitleHeaderWidget(
@@ -43,18 +61,31 @@ class ActiveCreditScreen extends StatelessWidget {
             CardInformationBkWidget(
                 childBlueWidth: 120,
                 childBlue:
-                    FeeNumberWidget(installment: data.scheduleInstallment[0]),
+                    FeeNumberWidget(installment: widget.data.scheduleInstallment[0]),
                 childWhite: FeeDetailWidget(
-                  installment: data.scheduleInstallment[0],
+                  installment: widget.data.scheduleInstallment[0],
                 )),
-            _buttonPayFee(context),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: SizeConfig.safeBlockVertical * 2),
+              width: SizeConfig.safeBlockHorizontal * 40,              
+                child: TextFieldBlocBuilder(
+                textFieldBloc: creditFormBloc.paymentAmount ,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [
+                  //FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(16)
+                ],  
+              ),
+            ),
+            _buttonPayFee(context , creditFormBloc),
             LineSeparatorWidget(),
             _subtitleFeePending(context),
             FeeCarrouselWidget(
-              installments: data.scheduleInstallment,
+              installments: widget.data.scheduleInstallment,
             ),
             DetailCreditWidget(
-              activeCredits: data,
+              activeCredits: widget.data,
             )
           ],
         ));
@@ -71,19 +102,19 @@ class ActiveCreditScreen extends StatelessWidget {
     );
   }
 
-  Padding _buttonPayFee(BuildContext context) {
+  Padding _buttonPayFee(BuildContext context , CreditFormBloc creditFormBloc) {
     double totalPayment = double.parse(UtilsTools.removeMoneyFormatter(
-        data?.scheduleInstallment[0]?.totalPayment));
+        creditFormBloc.paymentAmount.value));
 
     return Padding(
       padding: const EdgeInsets.only(top: 35.0, bottom: 10.0),
       child: RaisedButton(
           key: Key('raisedButton-pay-fee'),
           onPressed: () => BlocProvider.of<InstallmentsPaymentBloc>(context)
-                  .add(PayInstallment(token: token, installmentRequest: {
+                  .add(PayInstallment(token: widget.token, installmentRequest: {
                 "typeRequest": "installmentPayment",
-                "idCredit": data?.id,
-                "idRequestPayment": data?.scheduleInstallment[0]?.id,
+                "idCredit": widget.data?.id,
+                "idRequestPayment": widget.data?.scheduleInstallment[0]?.id,
                 "amount": totalPayment
               })),
           color: Theme.of(context).colorScheme.primaryColor,

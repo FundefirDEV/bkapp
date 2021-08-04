@@ -27,6 +27,10 @@ class CreditFormBloc extends FormBloc<String, String> {
 
   final tokenProfile = TextFieldBloc();
 
+  // PAYMENT
+  final paymentAmount = TextFieldBloc();
+
+
   CreditFormBloc({@required this.creditRepository}) {
     creditUse.updateItems(itemsCreditUse);
     addFieldBlocs(fieldBlocs: [
@@ -36,7 +40,8 @@ class CreditFormBloc extends FormBloc<String, String> {
       installments,
       creditUse,
       paymentMethods,
-      tokenProfile
+      tokenProfile,
+      paymentAmount,
     ]);
     creditUse.onValueChanges(onData: (previous, current) async* {
       removeFieldBlocs(fieldBlocs: [creditDetail]);
@@ -85,6 +90,7 @@ class CreditFormBloc extends FormBloc<String, String> {
     paymentMethods?.close();
     tokenProfile?.close();
     creditDetail?.close();
+    paymentAmount?.close();
     return super.close();
   }
 }
