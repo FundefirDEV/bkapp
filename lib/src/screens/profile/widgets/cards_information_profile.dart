@@ -5,6 +5,7 @@ import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class CardsInformationProfile extends StatelessWidget {
   CardsInformationProfile({Key key, this.profile}) : super(key: key);
@@ -25,7 +26,7 @@ class CardsInformationProfile extends StatelessWidget {
                 profile.documentNumber),
             _labelsInformation(context, I18n.of(context).profileScreenBirthDate,
               profile.birthDate != 'no data' ? 
-                DateTime.parse(profile.birthDate).toIso8601String():
+                DateFormat.yMMMd().format(DateTime.parse(profile.birthDate)):
                 profile.birthDate
             )
           ]))),

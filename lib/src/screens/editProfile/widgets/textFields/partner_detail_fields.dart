@@ -126,7 +126,9 @@ class PartnerDetailFields extends StatelessWidget {
                           onPressed: (){
                             showDatePicker(
                               context: context, 
-                              initialDate: DateTime.now(), 
+                              initialDate: 
+                                birthDateSnapshot.data == 'no data'? DateTime.now(): 
+                                DateTime.parse(birthDateSnapshot.data), 
                               firstDate: DateTime(1900), 
                               lastDate: DateTime(2222)
                             ).then((value){

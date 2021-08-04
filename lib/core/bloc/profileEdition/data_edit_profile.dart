@@ -1,5 +1,5 @@
 const List<String> scholarshipType = [
-  'no data'
+  'no data',
   'primary',
   'secundary',
   'highschool',
