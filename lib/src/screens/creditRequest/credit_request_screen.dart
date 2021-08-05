@@ -35,6 +35,7 @@ class _CreditScreenState extends State<CreditScreen> {
         .add(ApprovalsInitialize(token: widget.tokenUser));
     BlocProvider.of<MyBankBloc>(context)
         .add(GetMyBankInfo(token: widget.tokenUser));
+
     super.initState();
   }
 

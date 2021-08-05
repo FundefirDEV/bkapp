@@ -33,12 +33,12 @@ class ActiveCreditScreen extends StatefulWidget {
 }
 
 class _ActiveCreditScreenState extends State<ActiveCreditScreen> {
+
   final TextEditingController payAmount = TextEditingController();
 
   @override
   void initState() {
-    BlocProvider.of<CreditFormBloc>(context).
-      paymentAmount.updateValue(widget.data?.scheduleInstallment[0]?.totalPayment);    
+    payAmount.text = widget.data.scheduleInstallment[0].totalPayment;
     super.initState();
   }
 
@@ -68,8 +68,8 @@ class _ActiveCreditScreenState extends State<ActiveCreditScreen> {
             Container(
               margin: EdgeInsets.symmetric(vertical: SizeConfig.safeBlockVertical * 2),
               width: SizeConfig.safeBlockHorizontal * 40,              
-                child: TextFieldBlocBuilder(
-                textFieldBloc: creditFormBloc.paymentAmount ,
+                child: TextField(
+                controller: payAmount,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 inputFormatters: [
@@ -103,8 +103,10 @@ class _ActiveCreditScreenState extends State<ActiveCreditScreen> {
   }
 
   Padding _buttonPayFee(BuildContext context , CreditFormBloc creditFormBloc) {
-    double totalPayment = double.parse(UtilsTools.removeMoneyFormatter(
-        creditFormBloc.paymentAmount.value));
+    // double totalPayment = double.parse(UtilsTools.removeMoneyFormatter(
+    //     creditFormBloc.paymentAmount.value));
+    double totalPayment = double.tryParse(UtilsTools.removeMoneyFormatter(
+    payAmount.text));
 
     return Padding(
       padding: const EdgeInsets.only(top: 35.0, bottom: 10.0),

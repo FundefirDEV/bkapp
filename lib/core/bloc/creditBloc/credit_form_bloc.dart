@@ -30,6 +30,17 @@ class CreditFormBloc extends FormBloc<String, String> {
   // PAYMENT
   final paymentAmount = TextFieldBloc();
 
+  void initPaymentAmount(String amount){
+
+    if(amount != null && amount != ''){
+      paymentAmount.updateInitialValue(amount);
+      paymentAmount.updateValue(amount);
+    } else {
+      paymentAmount.updateInitialValue('0.0');
+      paymentAmount.updateValue('0.0');
+    }
+}
+
 
   CreditFormBloc({@required this.creditRepository}) {
     creditUse.updateItems(itemsCreditUse);
