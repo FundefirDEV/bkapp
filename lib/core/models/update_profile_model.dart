@@ -13,6 +13,10 @@ class UpdatePeofile {
     this.gender,
     this.phone,
     this.email,
+    this.documentNumber,
+    this.birthDate,
+    this.profession,
+    this.scholarship,
   });
 
   String firstname;
@@ -20,6 +24,10 @@ class UpdatePeofile {
   String gender;
   String phone;
   String email;
+  String documentNumber;
+  int scholarship;
+  String profession;
+  String birthDate;
 
   factory UpdatePeofile.fromJson(Map<String, dynamic> json) => UpdatePeofile(
     firstname: json["firstname"] ?? null,
@@ -27,6 +35,10 @@ class UpdatePeofile {
     gender: json["gender"] ?? null,
     phone: json["phone"] ?? null,
     email: json["email"] ?? null,
+    documentNumber:json["documentNumber"] ?? null,
+    scholarship:json["scholarship"] ?? null,
+    profession:json["profession"] ?? null,
+    birthDate: json["birthDate"] ?? null,
   );
 
   Map<String, dynamic> toJson() => {
@@ -36,5 +48,9 @@ class UpdatePeofile {
     "phone": phone,
     "email": email,
     "username" : email,
+    "documentNumber": documentNumber,
+    "scholarship" : scholarship,
+    "profession": profession,
+    "birthDate" : birthDate,
   };
 }

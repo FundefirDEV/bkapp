@@ -23,6 +23,7 @@ class PartnerBloc extends Bloc<PartnerEvent, PartnerState> {
         response.forEach((partner) { 
           partnerList.add(
             PartnerModel(
+              id:partner['id'] ,
               phone: partner['phone'],
               firstname: partner['name'],
               isActive: partner['isActive'],

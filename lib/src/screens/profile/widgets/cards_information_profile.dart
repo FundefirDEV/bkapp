@@ -1,9 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/profileEdition/data_edit_profile.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class CardsInformationProfile extends StatelessWidget {
   CardsInformationProfile({Key key, this.profile}) : super(key: key);
@@ -23,7 +25,10 @@ class CardsInformationProfile extends StatelessWidget {
             _labelsInformation(context, I18n.of(context).profileScreenId,
                 profile.documentNumber),
             _labelsInformation(context, I18n.of(context).profileScreenBirthDate,
-                profile.birthDate)
+              profile.birthDate != 'no data' ? 
+                DateFormat.yMMMd().format(DateTime.parse(profile.birthDate)):
+                profile.birthDate
+            )
           ]))),
       _box(
           context,
@@ -31,7 +36,7 @@ class CardsInformationProfile extends StatelessWidget {
               child: Column(children: [
             _imageInformation('collage'),
             _labelsInformation(context,
-                I18n.of(context).profileScreenScholarship, profile.scholarship),
+                I18n.of(context).profileScreenScholarship, scholarshipType[profile.scholarship]),
             _labelsInformation(context,
                 I18n.of(context).profileScreenProfession, profile.profession),
           ]))),

@@ -580,8 +580,8 @@ class I18n implements WidgetsLocalizations {
   String get activeCreditMaximumPaymentDate => "Maximum payment date";
   /// "Pay"
   String get activeCreditAmountToBePaid => "Pay";
-  /// "Default interest"
-  String get activeCreditDefault => "Default interest";
+  /// "Def Int"
+  String get activeCreditDefault => "Def Int";
   /// "Capital"
   String get activeCreditCapital => "Capital";
   /// "Interest"
@@ -624,6 +624,8 @@ class I18n implements WidgetsLocalizations {
   String get addPartnerBottomText => "You can remove a partner";
   /// "at any time"
   String get addPartnerAnyTime => "at any time";
+  /// "You want to delete the pending partner"
+  String get addPartnerDeletePartnerConfirm => "You want to delete the pending partner";
   /// "Partner removal"
   String get partnerRemovalTitle => "Partner removal";
   /// "Are you sure to withdraw"
@@ -650,8 +652,8 @@ class I18n implements WidgetsLocalizations {
   String get deletePartnerModalDeletePartner => "delete this partner?";
   /// "DELETE"
   String get deletePartnerModalDelete => "DELETE";
-  /// "Meeting closing"
-  String get meetingClosedMeetingClosing => "Meeting closing";
+  /// "Meeting Closing"
+  String get meetingClosedMeetingClosing => "Meeting Closing";
   /// "Cash balance\n"
   String get meetingClosedCashBalance => "Cash balance\n";
   /// "Earnings\nper shares\n"
@@ -666,18 +668,18 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedMeeting => "CLOSURES";
   /// "Detail closing"
   String get meetingClosedDetailClosing => "Detail closing";
-  /// "shares purchased"
-  String get meetingClosedSharesPurchased => "shares purchased";
+  /// "Purchased Shares"
+  String get meetingClosedSharesPurchased => "Purchased Shares";
   /// "Accumulable to capital"
   String get meetingClosedAccumulableToCapital => "Accumulable to capital";
   /// "credits awarded"
   String get meetingClosedCreditsAwarded => "credits awarded";
-  /// "capital subscription"
-  String get meetingClosedCapitalSubscription => "capital subscription";
+  /// "Subscribed Capital"
+  String get meetingClosedCapitalSubscription => "Subscribed Capital";
   /// "interest payment"
   String get meetingClosedInterestPayment => "interest payment";
-  /// "interest payment \nordinary"
-  String get meetingClosedInterestPaymentOrdynary => "interest payment \nordinary";
+  /// "ordinary interest payment"
+  String get meetingClosedInterestPaymentOrdynary => "ordinary interest payment";
   /// "Am I sure you want to"
   String get meetingClosedQuestionMeetingClosed1 => "Am I sure you want to";
   /// "close the meeting?"
@@ -1732,6 +1734,9 @@ class _I18n_es_ES extends I18n {
   /// "cualquier momento"
   @override
   String get addPartnerAnyTime => "cualquier momento";
+  /// "Deseas eliminar este socio pendiente"
+  @override
+  String get addPartnerDeletePartnerConfirm => "Deseas eliminar este socio pendiente";
   /// "Retirar socio"
   @override
   String get partnerRemovalTitle => "Retirar socio";

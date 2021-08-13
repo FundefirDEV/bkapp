@@ -4,6 +4,7 @@ import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/widgets/partner_card_widget.dart';
 import 'package:bkapp_flutter/src/widgets/addPartners/widgets/widgets.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
@@ -79,7 +80,7 @@ class _PartnersCardListState extends State<PartnersCardList> {
                 child: Padding(
                     padding: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 2),
-                    child: _loadPartnersSelected(gridViewWidth , partnersList , context),
+                    child: _loadPartnersSelected(gridViewWidth , partnersList , context , widget.tokenUser),
                   ),
               ),
             ),
@@ -113,68 +114,140 @@ class _PartnersCardListState extends State<PartnersCardList> {
     );
   }
 
-
   void _addPartnerForm(List<PartnerModel> partner){
     partnersList.addAll(partner);
-
     context.read<AppBloc>().bankRegisterBloc.partnerList = partnersList;
-    
     setState(() {});
   }
-}
 
-Future<Map<String, dynamic>> postInvitePartner(
-  String token, List<Map<String, dynamic>> partners) async {
 
-  http.Client httpClient = http.Client();
-  HttpRequests _httpRequest = HttpRequests();
-  final postInvitePartner = ApiEndpoints.postInvitePartner();
-  return await _httpRequest.post(
-    httpClient: httpClient,
-    url: postInvitePartner,
-    token: token,
-    body: {"partners": partners}
-  );
-}
+  void _removePartner(BuildContext context, String phoneNumber) {
 
-Widget _loadPartnersSelected(
-    double gridViewWidth,
-    List<PartnerModel> partners,
-    BuildContext context) {
-  if ( partners.length > 0 ) {
-    return GridView.builder(
-      key: Key('gridview-partner-structure'),
-      primary: false,
-      padding: EdgeInsets.symmetric(
-        vertical: 0.0,
-        horizontal: gridViewWidth
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 0.0,
-        crossAxisCount: 2,
-        childAspectRatio: 1.3,
-      ),
-      itemCount: partners.length,
-      itemBuilder: (context, index) {
-        PartnerModel partner = partners[index];
-        return PartnerCardWidget(
-          name: partner.firstname,
-          mobile: partner.phone,
-          onDelete: () => {},
-          //onSave: () => loadPartners(context ,partner.firstname, partner.phone ),
-        );
-      });
-  } else {
-    return Center(
-        child: Text(
-      I18n.of(context).bankRegisterAddPartnersNothing,
-      style: TextStyle(
-          fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
-    ));
+    partnersList.removeWhere((partner) => partner.phone == phoneNumber);
+    context.read<AppBloc>().bankRegisterBloc.partnerList = partnersList;
+    setState(() {}); 
   }
+
+  Future _deletePartner(
+    BuildContext context, String token, String phoneNumber) async {
+      try {
+        print('deleting: $phoneNumber');
+        await _deletePartnerSercice(token, phoneNumber);
+        Navigator.pop(context);
+        _removePartner(context, phoneNumber);
+      } catch (e) {
+        _showDialogError(context, e.toString());
+      }
+  }
+
+  void _showDialogDeletePartner(context, String token, String phoneNumber) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/sad_bot.svg',
+          title: I18n.of(context).addPartnerDeletePartnerConfirm,
+          isBold: true,
+          isBtnAccept: true,
+          isImageBg: false,
+          titleAcceptButton: I18n.of(context).administratorAssignmentAccept,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: ()=> Navigator.pop(context),
+          onPressAccept: () => _deletePartner(context ,token, phoneNumber),
+          technicalData: '',
+      );
+    });
+  }
+
+
+  Future<Map<String, dynamic>> postInvitePartner(
+    String token, List<Map<String, dynamic>> partners) async {
+
+    http.Client httpClient = http.Client();
+    HttpRequests _httpRequest = HttpRequests();
+    final postInvitePartner = ApiEndpoints.postInvitePartner();
+    return await _httpRequest.post(
+      httpClient: httpClient,
+      url: postInvitePartner,
+      token: token,
+      body: {"partners": partners}
+    );
+  }
+
+  Future<String> _deletePartnerSercice(
+    String token, String phoneNumber) async {
+
+    http.Client httpClient = http.Client();
+    HttpRequests _httpRequest = HttpRequests();
+    final postInvitePartner = ApiEndpoints.deleteGuestPartner();
+    return await _httpRequest.post(
+      httpClient: httpClient,
+      url: postInvitePartner,
+      token: token,
+      body: phoneNumber,
+    );
+  }
+
+  void _showDialogError(context , String error) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/sad_bot.svg',
+          title: I18n.of(context).requestErrorDefault,
+          isBold: true,
+          isBtnAccept: false,
+          isImageBg: false,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: ()=> {Navigator.pop(context) },
+          technicalData: error,
+      );
+    });
+  }
+
+
+  Widget _loadPartnersSelected(
+      double gridViewWidth,
+      List<PartnerModel> partners,
+      BuildContext context,
+      String token) {
+    if ( partners.length > 0 ) {
+      return GridView.builder(
+        key: Key('gridview-partner-structure'),
+        primary: false,
+        padding: EdgeInsets.symmetric(
+          vertical: 0.0,
+          horizontal: gridViewWidth
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 10.0,
+          mainAxisSpacing: 0.0,
+          crossAxisCount: 2,
+          childAspectRatio: 1.3,
+        ),
+        itemCount: partners.length,
+        itemBuilder: (context, index) {
+          PartnerModel partner = partners[index];
+          return PartnerCardWidget(
+            name: partner.firstname,
+            mobile: partner.phone,
+            onDelete: () => _showDialogDeletePartner(context , token , partner.phone),
+            //onSave: () => loadPartners(context ,partner.firstname, partner.phone ),
+          );
+        });
+    } else {
+      return Center(
+          child: Text(
+        I18n.of(context).bankRegisterAddPartnersNothing,
+        style: TextStyle(
+            fontSize: 20.0, fontWeight: FontWeight.w100, color: Colors.white),
+      ));
+    }
+  }
+
 }
-
-
-  
 

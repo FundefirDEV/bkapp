@@ -24,9 +24,10 @@ class SharesCurrentModel {
         lastCashBalance: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["lastCashBalance"]) ??
             r'$0',
-        totalSharesMeeting: UtilsTools.formatConfig(decimalDigits: 2)
-                .format(json["totalSharesMeeting"]) ??
-            r'$0',
+        // totalSharesMeeting: UtilsTools.formatConfig(decimalDigits: 2)
+        //         .format(json["totalSharesMeeting"]) ??
+            //r'$0',
+        totalSharesMeeting: json["totalSharesMeeting"].toString() ?? r'0',
         newCashBalance: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["newCashBalance"]) ??
             r'$0',
@@ -57,9 +58,10 @@ class SharesByPartner {
   factory SharesByPartner.fromJson(Map<String, dynamic> json) =>
       SharesByPartner(
         partnerName: json["partnerName"] ?? '',
-        sharesQuantity: UtilsTools.formatConfig(decimalDigits: 2)
-                .format(json["sharesQuantity"]) ??
-            r'$0',
+        // sharesQuantity: UtilsTools.formatConfig(decimalDigits: 2)
+        //         .format(json["sharesQuantity"]) ??
+        //     r'$0',
+        sharesQuantity: json["sharesQuantity"].toString() ?? r'0',
         sharesAmmount: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["sharesAmmount"]) ??
             r'$0',
