@@ -48,6 +48,11 @@ class SelectCityBloc extends FormBloc<String, String> {
 
   Future getLocation(String token, String countyCode) async {
     try {
+
+      if(countyCode == '' || countyCode == null){
+        countyCode = 'CO';
+      }
+
       listCountry.item.clear();
       List<String> department = [];
       final response = await repository.getLocation(token: token);

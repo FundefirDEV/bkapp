@@ -6,6 +6,8 @@ import 'dart:async';
 import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
 import 'package:rxdart/rxdart.dart';
 
+import 'data_edit_profile.dart';
+
 class ProfileEditFormBloc extends FormBloc<String, String> {
 
   final token = TextFieldBloc();
@@ -19,7 +21,6 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   ]);
   final gender = TextFieldBloc(validators: [FieldBlocValidators.required]);
 
-
   final _errorMessageController  = BehaviorSubject<String>();
   Stream<String> get errorMessageStream => _errorMessageController.stream;
   String get errorMessage => _errorMessageController.value;
@@ -28,9 +29,26 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
   Stream<bool> get loadingStream => _loadingController.stream;
   bool get loading => _loadingController.value;
 
-  // final scholarship = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  // final birthDate = TextFieldBloc(validators: [FieldBlocValidators.required]);
-  // final profession = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final _birthDateController  = BehaviorSubject<String>();
+  Stream<String> get birthDateStream => _birthDateController.stream;
+  String get birthDate => _birthDateController.value;
+
+  void updateBirdate(String birthdate){
+    _birthDateController.sink.add(birthdate);
+  }
+
+  String birthDateFormat(){
+
+    if(birthDate != 'no data') 
+      return DateFormat.yMMMd().format(DateTime.parse(birthDate));
+    
+    return birthDate;
+  }
+
+
+  final scholarship = SelectFieldBloc(items: ['']);
+  final profession = TextFieldBloc();
+  final documentNumber = TextFieldBloc();
 
   bool validateForm(){
 
@@ -38,23 +56,31 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     && FieldBlocValidators.required(email.value) == null
     && FieldBlocValidators.required(cellPhone.value) == null
     && FieldBlocValidators.required(firstname.value) == null
-    && FieldBlocValidators.required(lastName.value) == null;
+    && FieldBlocValidators.required(documentNumber.value) == null;
+    // && FieldBlocValidators.required(scholarship.value) == null
+    // && FieldBlocValidators.required(profession.value) == null
+    // && FieldBlocValidators.required(birthDate.value) == null
+    // && FieldBlocValidators.required(lastName.value) == null;
   
     return valid;
   }
 
   ProfileEditFormBloc({@required this.repository}) {
+
+    scholarship.updateItems(scholarshipType);
+
     addFieldBlocs(fieldBlocs: [
       firstname,
       lastName,
       cellPhone,
       email,
       gender,
-      // scholarship,
-      // birthDate,
-      // profession
+      profession,
+      documentNumber,
     ],);
-  }
+
+  addFieldBlocs(fieldBlocs: [scholarship]);
+}
 
   void getProfileData(ProfileModel profile){
     
@@ -62,7 +88,12 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     lastName.updateInitialValue(profile.lastname);
     email.updateInitialValue(profile.email);
     cellPhone.updateInitialValue(profile.phone);
+    documentNumber.updateInitialValue(profile.documentNumber);
+    profession.updateInitialValue(profile.profession);
 
+    _birthDateController.sink.add(profile.birthDate);
+
+    //scholarship.updateInitialValue(profile.scholarship.toString());
   }
 
   void attachError(String error){
@@ -71,13 +102,12 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     } else if(error.toUpperCase().contains('PHONE')){
         _errorMessageController.sink.add('A phone already used');
     } else {
-      _errorMessageController.sink.add('the user could not be updated');
+      _errorMessageController.sink.add(error);
     }
   }
 
   @override
   Future<bool> submit() async {
-
 
     if(!validateForm()){
       return false;
@@ -95,11 +125,17 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
       lastname: lastName.value,
       phone: cellPhone.value,
       email: email.value,
-      gender: 'Gender.m'
+      gender: 'Gender.m',
+      documentNumber: documentNumber.value,
+      scholarship: scholarshipType.indexOf(scholarship.value) != -1 ? 
+      scholarshipType.indexOf(scholarship.value) : null,
+      birthDate: birthDate,
+      profession: profession.value,
     );
 
     try {
-
+      print(scholarship.value);
+      print(scholarshipType.indexOf(scholarship.value));
       await repository.updateProfile(updatePeofile , token.value);
       _loadingController.sink.add(false);
       _errorMessageController.add('');
@@ -128,12 +164,13 @@ class ProfileEditFormBloc extends FormBloc<String, String> {
     cellPhone.close();
     email.close();
     gender.close();
-    // id.close();
-    // scholarship.close();
-    // birthDate.close();
-    // profession.close();
+    scholarship.close();
+    profession.close();
+    documentNumber.close();
     _errorMessageController.close();
     _loadingController.close();
+    _birthDateController.close();
+
     return super.close();
   }
 }

@@ -186,6 +186,10 @@ class ApiEndpoints {
     return "$baseUrl/v3/partners";
   }
 
+  static String deleteGuestPartner({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/delete-partners-guest";
+  }
   /// POST meeting closed
   ///
   /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases

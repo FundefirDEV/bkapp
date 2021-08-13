@@ -61,6 +61,8 @@ class PartnerCardWidget extends StatelessWidget {
     );
   }
 
+  
+
   Widget _dataPartner() {
     return Container(
       width: SizeConfig.safeBlockHorizontal * 27,

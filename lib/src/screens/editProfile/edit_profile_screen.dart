@@ -6,6 +6,7 @@ import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/name_fields.dart';
+import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/partner_detail_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -125,6 +126,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
                         children: <Widget>[
                           EmailAndPhoneFields(), 
                           NamesFields(),
+                          PartnerDetailFields(),
                         ],
                       ),
                       //SizedBox(height: SizeConfig.blockSizeVertical * 6),
@@ -139,26 +141,6 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
       )),
     );
   }
-
-
-  // Widget textError(){
-
-  //   return StreamBuilder(
-  //     stream: profileEditFormBloc.errorMessageStream,
-  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //       return Container(
-  //         color: Colors.grey[50],
-  //         height: 40,
-  //         child: Center(
-  //           child: Text( snapshot.data != null ? snapshot.data: '' ,
-  //             style: TextStyle(
-  //               color: Colors.red, fontSize: 14, fontWeight: FontWeight.w400),
-  //           ),
-  //         ),
-  //       );
-  //     }
-  //   );
-  // }
 
   Widget updatedButton(
     BuildContext context,

@@ -37,7 +37,7 @@ class ProfileModel {
   String phone;
   String email;
   String documentNumber;
-  String scholarship;
+  int scholarship;
   String profession;
   String birthDate;
   String earnings;
