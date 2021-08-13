@@ -36,7 +36,7 @@ class BuySharesFormWidget extends StatelessWidget {
                     I18n.of(context).errorRequired,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(10)
+                  LengthLimitingTextInputFormatter(16)
                 ],
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(0),

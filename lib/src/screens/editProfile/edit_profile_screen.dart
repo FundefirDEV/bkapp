@@ -5,15 +5,15 @@ import 'package:bkapp_flutter/core/bloc/profileEdition/profile_edit_form_Bloc.da
 import 'package:bkapp_flutter/core/models/profile_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/email_fields.dart';
-import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/gender_field.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/name_fields.dart';
+import 'package:bkapp_flutter/src/screens/editProfile/widgets/textFields/partner_detail_fields.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/widgets/top_container_edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/widgets/errorPage/error_page.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
 class ProfileEditScreen extends StatefulWidget {
 
@@ -102,13 +102,13 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
         key: Key('main_column_rules_edit_screen'),
         children: <Widget>[
           Container(
-            height: SizeConfig.screenHeight * .30,
+            height: SizeConfig.screenHeight * .38,
             //color: Colors.grey[100],
             child: TopContainerEditProfileScreen(
               profile: widget.profile
             ),
           ),
-          textError(),
+          //textError(),
           Flexible(
             child: Container(
               key: Key('container_textFields_rules_edit_screen'),
@@ -126,6 +126,7 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
                         children: <Widget>[
                           EmailAndPhoneFields(), 
                           NamesFields(),
+                          PartnerDetailFields(),
                         ],
                       ),
                       //SizedBox(height: SizeConfig.blockSizeVertical * 6),
@@ -138,26 +139,6 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
           )
         ],
       )),
-    );
-  }
-
-
-  Widget textError(){
-
-    return StreamBuilder(
-      stream: profileEditFormBloc.errorMessageStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          color: Colors.grey[50],
-          height: 40,
-          child: Center(
-            child: Text( snapshot.data != null ? snapshot.data: '' ,
-              style: TextStyle(
-                color: Colors.red, fontSize: 14, fontWeight: FontWeight.w400),
-            ),
-          ),
-        );
-      }
     );
   }
 
@@ -195,6 +176,26 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     );
   }
 
+  void _showDialog(context , String error) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/sad_bot.svg',
+          isImageBg: false,
+          title: I18n.of(context).profileEditScreenModalErrorTitile,
+          titleBold: I18n.of(context).profileEditScreenModalErrorTitleBlond,
+          isBold: true,
+          isBtnAccept: false,
+          technicalData: error,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: () => {Navigator.pop(context)}
+        );
+    });
+  }
+
   void sumit(BuildContext context) async{
 
     final res = await profileEditFormBloc.submit();
@@ -204,6 +205,8 @@ class _ProfileEditFormWidgetState extends State<ProfileEditFormWidget> {
     if(res){
       context.read<MenuNavigatorBloc>().add(ButtonPressed(
         goTo: HomeRoutesConstant.profileScreen));
+    } else {
+      _showDialog(context , profileEditFormBloc.errorMessage);
     }
   }
 }

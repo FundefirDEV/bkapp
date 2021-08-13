@@ -55,7 +55,7 @@ class TopContainerRulesSceen extends StatelessWidget {
             height: SizeConfig.blockSizeVertical * 1.3,
           ),
           topContainerInformation(context),
-          //_editProfile(context),
+          _editProfile(context),
         ],
       ),
     );

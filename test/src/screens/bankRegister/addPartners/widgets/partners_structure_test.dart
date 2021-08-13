@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/screens/bankRegister/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/widgets/modals/inviteModal/invite_modal.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -10,11 +9,10 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../../base_tester.dart';
 
 void main() {
-  PartnerDatabaseProvider pendingPartnersDb = PartnerDatabaseProvider.db;
-
   Widget partnerTester({key}) {
     return PartnersStructureWidget(
-        key: key, onSave: () {}, partnerDb: pendingPartnersDb);
+        key: key, 
+    );
   }
 
   group('Test partner structure', () {

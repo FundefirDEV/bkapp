@@ -6,8 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NumberPageNameBkWidget extends StatelessWidget {
   const NumberPageNameBkWidget({Key key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
     SizeConfig().init(context);
     return Container(
       child: Row(
@@ -62,6 +64,6 @@ class NumberPageNameBkWidget extends StatelessWidget {
   }
 
   void _prevStepWidget(BuildContext context) {
-    Navigator.pushNamed(context, addPartnersRegisterRoute);
+    Navigator.pushNamed(context, addPartnersRegisterRoute , arguments: {'token' : ''});
   }
 }

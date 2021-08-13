@@ -1,7 +1,7 @@
 name: bkapp_flutter
 description: A new way for saving money in communities.
 
-version: 1.0.0+1
+version: 2.0.0+2
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -44,9 +44,9 @@ dependencies:
   crypto: 3.0.1
   rflutter_alert: ^2.0.2
   fl_chart: ^0.36.1
+  contacts_service: 0.6.1
+  #fluttercontactpicker: ^4.5.1
   #flutter_spinkit: "^4.1.2"
-
-
   
 dev_dependencies:
   flutter_test:

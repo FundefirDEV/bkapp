@@ -58,7 +58,8 @@ class AppBarProfileWidget extends StatelessWidget {
               SafeArea(
                   child: Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 6),
+                          horizontal: SizeConfig.blockSizeHorizontal * 4,
+                          vertical: SizeConfig.blockSizeHorizontal * 2),
                       child: Column(children: <Widget>[
                         _header(context),
                         TitleHeaderWidget(
@@ -74,7 +75,7 @@ class AppBarProfileWidget extends StatelessWidget {
 
   Container _header(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.5),
+        padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

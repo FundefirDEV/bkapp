@@ -41,6 +41,7 @@ class _AddPartnerScreenState extends State<AddPartnerScreen> {
                     menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
                 TopContainerAddPartnerScreen(
                   tokenUser: widget.tokenUser,
+                  menuNavigatorBloc: context.read<MenuNavigatorBloc>()
                 ),
                 BottomText()
               ],

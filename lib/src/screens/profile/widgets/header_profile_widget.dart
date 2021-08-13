@@ -13,6 +13,7 @@ class HeaderProfileWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
         width: SizeConfig.safeBlockHorizontal * 100,
+        height: SizeConfig.blockSizeVertical * 11.5,
         child: Row(
           children: [
             Expanded(
@@ -27,6 +28,7 @@ class HeaderProfileWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   RichText(
+                    overflow:TextOverflow.ellipsis,
                     text: TextSpan(
                         text: UtilsTools.titleCase(profile.firstname) + '\n',
                         style: TextStyle(
@@ -48,7 +50,7 @@ class HeaderProfileWidget extends StatelessWidget {
                           TextSpan(
                             text: profile.email,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
@@ -63,12 +65,16 @@ class HeaderProfileWidget extends StatelessWidget {
                           margin: EdgeInsets.only(right: 8),
                           child: SvgPicture.asset(
                             imageCountry(profile.country.iso),
-                            height: 18.0,
+                            height: 16.0,
                           ),
                         ),
                         Text(
                           profile.phone,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: Colors.white,
+                            
+                            fontSize: 11
+                          ),
                         )
                       ],
                     ),

@@ -112,13 +112,16 @@ class MyApp extends StatelessWidget {
   MyApp({this.localeDefault});
   Locale localeDefault;
 
+
   @override
   Widget build(BuildContext context) {
+
     setOrientation(context);
     final i18n = I18n.delegate;
     return BlocProvider(
       create: (context) => AppBloc(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Bk App',
         navigatorKey: navigationKey,
         theme: ThemeData(

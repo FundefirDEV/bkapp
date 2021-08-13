@@ -21,8 +21,8 @@ class AddBankRules {
     @required this.shareValue,//
     @required this.expenseFundPercentage,//
     @required this.badDebtReservePercentage,//
-    @required this.maxPercentageShareByPartner,//
-    @required this.maxActiveCreditsByPartner,//
+    this.maxPercentageShareByPartner,//
+    this.maxActiveCreditsByPartner,//
     @required this.maxCreditFactor,//
     @required this.defaultInstallmentsPeriodDays,
   });

@@ -78,25 +78,25 @@ Column interestColumn(context, BankRulesModel bankRules) {
                 ])),
         alignment: Alignment(-0.7, -1.0),
       ),
-      Container(
-        key: Key('bottom_container_interest_rules'),
-        margin: EdgeInsets.only(top: 10),
-        child: RichText(
-            textAlign: TextAlign.left,
-            text: TextSpan(
-                text: I18n.of(context).rulesScreenDefaultInterest + '\n',
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.grayColor[300],
-                    fontSize: 12),
-                children: <TextSpan>[
-                  TextSpan(
-                      text: '${bankRules.defaultRatePercentage} %',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.grayColor[200],
-                          fontSize: 12))
-                ])),
-        alignment: Alignment(-0.7, -1.0),
-      ),
+      // Container(
+      //   key: Key('bottom_container_interest_rules'),
+      //   margin: EdgeInsets.only(top: 10),
+      //   child: RichText(
+      //       textAlign: TextAlign.left,
+      //       text: TextSpan(
+      //           text: I18n.of(context).rulesScreenDefaultInterest + '\n',
+      //           style: TextStyle(
+      //               color: Theme.of(context).colorScheme.grayColor[300],
+      //               fontSize: 12),
+      //           children: <TextSpan>[
+      //             TextSpan(
+      //                 text: '${bankRules.defaultRatePercentage} %',
+      //                 style: TextStyle(
+      //                     color: Theme.of(context).colorScheme.grayColor[200],
+      //                     fontSize: 12))
+      //           ])),
+      //   alignment: Alignment(-0.7, -1.0),
+      // ),
     ],
   );
 }

@@ -5,48 +5,19 @@ abstract class PartnerEvent extends Equatable {
 
   @override
   List<Object> get props => [];
+
 }
 
-class AddAndVerifyPartner extends PartnerEvent {
-  AddAndVerifyPartner({
-    @required this.token,
-    this.name,
-    @required this.phoneNumber,
-    this.isRegister
-  });
+
+class PartnerInitialize extends PartnerEvent {
   final String token;
-  final String name;
-  final String phoneNumber;
-  final bool isRegister;
+  PartnerInitialize({@required this.token});
 
   @override
-  List<Object> get props => [token, name, phoneNumber, isRegister];
-}
+  List<Object> get props => [token];
 
-class JustValidatePartner extends PartnerEvent {
-  JustValidatePartner({
-    @required this.token, this.name, @required this.phoneNumber
-  });
-  final String token;
-  final String name;
-  final String phoneNumber;
+  String get gettoken => token;
 
   @override
-  List<Object> get props => [token, name, phoneNumber];
-}
-
-class AddPartnerToDb extends PartnerEvent {
-  AddPartnerToDb({
-    @required this.name,
-    @required this.phoneNumber,
-    this.isRegister,
-    this.token
-  });
-  final String name;
-  final String phoneNumber;
-  final bool isRegister;
-  final String token;
-
-  @override
-  List<Object> get props => [name, phoneNumber, isRegister, token];
+  String toString() => 'PartnerInitialize { token: $token }';
 }

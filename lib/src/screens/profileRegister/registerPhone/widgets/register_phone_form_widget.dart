@@ -24,7 +24,8 @@ class RegisterPhoneFormWidget extends StatelessWidget {
     final profile = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
-        child: Row(
+      height: SizeConfig.blockSizeVertical * 30,
+      child: Row(
       children: <Widget>[
         Container(
           width: SizeConfig.blockSizeHorizontal * 8,
@@ -42,8 +43,8 @@ class RegisterPhoneFormWidget extends StatelessWidget {
               textFieldBloc: profile.phoneBloc.phone,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(10),
-                PhoneFormatter()
+                LengthLimitingTextInputFormatter(20),
+                //PhoneFormatter()
               ],
               errorBuilder: errorHandler,
               onChanged: (value) {

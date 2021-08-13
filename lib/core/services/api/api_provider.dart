@@ -272,6 +272,14 @@ class ApiProvider {
       httpClient: httpClient, url: endPoint, param: phone);
   }
 
+  validateUserPhone(
+    {@required String phone}) async {
+
+    final endPoint = ApiEndpoints.validateUserPhone();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint, param: phone);
+  }
+
   Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
       @required String code, 
       @required String email, 

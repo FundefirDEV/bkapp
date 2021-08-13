@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
-import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

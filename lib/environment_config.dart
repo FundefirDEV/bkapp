@@ -188,6 +188,10 @@ class ApiEndpoints {
     return "$baseUrl/v3/partners";
   }
 
+  static String deleteGuestPartner({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+    return "$baseUrl/v3/delete-partners-guest";
+  }
   /// POST meeting closed
   ///
   /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
@@ -313,5 +317,17 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
     return "$baseUrl/v3/verify-phone";
+  }
+
+  static String validateUserPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-user-phone";
+  }
+
+  static String validateAllPhone({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/verify-multiple-phones";
   }
 }

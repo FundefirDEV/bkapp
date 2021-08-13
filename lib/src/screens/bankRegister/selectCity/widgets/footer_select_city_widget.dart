@@ -12,6 +12,7 @@ class FooterSelectCityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     BankRegisterBloc bankBloc = context.read<AppBloc>().bankRegisterBloc;
+    //MenuNavigatorBloc menuNavigatorBloc = context.read<MenuNavigatorBloc>();
     return Container(
       key: Key('footer-select-city-container'),
       alignment: Alignment.bottomCenter,
@@ -63,6 +64,8 @@ class FooterSelectCityWidget extends StatelessWidget {
   }
 
   void _nextStepWidget(BuildContext context, BankRegisterBloc bankBloc) {
-    Navigator.pushNamed(context, addPartnersRegisterRoute);
+    print('REGISTER TOKEN : ${bankBloc.token.value}');
+    Navigator.pushNamed(context, addPartnersRegisterRoute );
+    //menuNavigatorBloc.add(ButtonPressed(goTo: HomeRoutesConstant.addPartnerScreen));
   }
 }

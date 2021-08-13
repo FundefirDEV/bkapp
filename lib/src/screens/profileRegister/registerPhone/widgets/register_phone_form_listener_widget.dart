@@ -2,7 +2,8 @@ import 'package:bkapp_flutter/core/bloc/app_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileRegisterBloc/profile_register_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
+//import 'package:bkapp_flutter/src/screens/profileRegister/pinCodeVerification/pin_code_verification.dart';
+import 'package:bkapp_flutter/src/screens/profileRegister/registerPassword/register_password_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/register_phone_step_screen.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/country_modal_content_widget.dart';
 import 'package:bkapp_flutter/src/screens/profileRegister/registerPhone/widgets/register_phone_container_widget.dart';
@@ -51,8 +52,8 @@ class _RegistePhoneFormListenerWidgetState
               numberOfSteps: 5,
               isDisabled: isDisabled,
               // currentBlocSubmit: () => nextWidgetTap(registerBloc)
-              currentBlocSubmit: () =>
-                  _showConfirmDialog(context, registerBloc))
+              currentBlocSubmit: () => nextWidgetTap(registerBloc)),
+                  //_showConfirmDialog(context, registerBloc))
         ]);
   }
 
@@ -61,15 +62,27 @@ class _RegistePhoneFormListenerWidgetState
     showDialog(context);
   }
 
-  nextWidgetTap(ProfileRegisterBloc registerBloc) {
-    registerBloc.phoneBloc.email
-        .updateValue(registerBloc.emailBloc.email.value);
+  nextWidgetTap(ProfileRegisterBloc registerBloc) async  {
+
+    final validateRes = await registerBloc.validatePhone(context);
 
     registerBloc.phoneBloc.submit();
+    if(validateRes){
+      // go to code validation
+      registerBloc.phoneBloc.email
+        .updateValue(registerBloc.emailBloc.email.value);
 
-    Navigator.pushNamed(context, registerpinCodeVerification,
-        arguments:
-            RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
+      Navigator.pushNamed(context, 
+        registerPasswordUser,
+        arguments: RegisterPasswordStepArgs(
+        widget.data.tag, 
+        widget.data.image
+      ));
+    }
+
+    // Navigator.pushNamed(context, registerpinCodeVerification,
+    //     arguments:
+    //         RegisterPinCodeScreenStepArgs(widget.data.tag, widget.data.image));
   }
 
   void _showConfirmDialog(context, ProfileRegisterBloc registerBloc) async {
@@ -105,7 +118,7 @@ class _RegistePhoneFormListenerWidgetState
   }
 
   _isValidating(String phoneBloc) {
-    phoneBloc.length > 13
+    phoneBloc.length > 6
         ? setState(() => isDisabled = false)
         : setState(() => isDisabled = true);
   }

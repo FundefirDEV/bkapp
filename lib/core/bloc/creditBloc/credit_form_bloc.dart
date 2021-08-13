@@ -27,6 +27,21 @@ class CreditFormBloc extends FormBloc<String, String> {
 
   final tokenProfile = TextFieldBloc();
 
+  // PAYMENT
+  final paymentAmount = TextFieldBloc();
+
+  void initPaymentAmount(String amount){
+
+    if(amount != null && amount != ''){
+      paymentAmount.updateInitialValue(amount);
+      paymentAmount.updateValue(amount);
+    } else {
+      paymentAmount.updateInitialValue('0.0');
+      paymentAmount.updateValue('0.0');
+    }
+}
+
+
   CreditFormBloc({@required this.creditRepository}) {
     creditUse.updateItems(itemsCreditUse);
     addFieldBlocs(fieldBlocs: [
@@ -36,7 +51,8 @@ class CreditFormBloc extends FormBloc<String, String> {
       installments,
       creditUse,
       paymentMethods,
-      tokenProfile
+      tokenProfile,
+      paymentAmount,
     ]);
     creditUse.onValueChanges(onData: (previous, current) async* {
       removeFieldBlocs(fieldBlocs: [creditDetail]);
@@ -85,6 +101,7 @@ class CreditFormBloc extends FormBloc<String, String> {
     paymentMethods?.close();
     tokenProfile?.close();
     creditDetail?.close();
+    paymentAmount?.close();
     return super.close();
   }
 }
