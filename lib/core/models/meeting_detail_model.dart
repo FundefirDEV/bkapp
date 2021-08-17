@@ -32,25 +32,25 @@ class MeetingDetail {
   factory MeetingDetail.fromJson(Map<String, dynamic> json) => MeetingDetail(
         totalCapital: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["totalCapital"]) ??
-            r'$0',
+            r'$0.0',
         totalInterest: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["totalInterest"]) ??
-            r'$0',
+            r'$0.0',
         totalInstallmentsPays: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["totalInstallmentsPays"]) ??
-            r'$0',
+            r'$0.0',
         totalAdanceInsterest: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["totalAdanceInsterest"]) ??
-            r'$0',
+            r'$0.0',
         totalEarning: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["totalEarning"]) ??
-            r'$0',
+            r'$0.0',
         cashBalance: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["cashBalance"]) ??
-            r'$0',
+            r'$0.0',
         activeCredits: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["activeCredits"]) ??
-            r'$0',
+            r'$0.0',
         creditsThisMeeting: List<CreditsThisMeeting>.from(
             json["creditsThisMeetig"]
                 .map((x) => CreditsThisMeeting.fromJson(x))),
@@ -87,10 +87,10 @@ class CreditsThisMeeting {
         partnerName: json["partnerName"],
         quantity: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["quantity"]) ??
-            r'$0',
+            r'$0.0',
         interest: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["interest"]) ??
-            r'$0',
+            r'$0.0',
         creditType: json["creditType"],
       );
 
@@ -120,10 +120,10 @@ class PartnertsPayments {
         name: json["name"],
         capital:
             UtilsTools.formatConfig(decimalDigits: 2).format(json["capital"]) ??
-                r'$0',
+                r'$0.0',
         interest: UtilsTools.formatConfig(decimalDigits: 2)
                 .format(json["interest"]) ??
-            r'$0',
+            r'$0.0',
         creditType: json["creditType"],
       );
 

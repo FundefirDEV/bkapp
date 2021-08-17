@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class TablePaymentModal extends StatelessWidget {
@@ -62,7 +63,8 @@ class TablePaymentModal extends StatelessWidget {
                 )),
               ]),
           for (var item in listPartnertsPayments)
-            TableRow(
+            if( double.parse(UtilsTools.removeMoneyFormatter(item.interest)) != 0.0 )
+              TableRow(
                 decoration: BoxDecoration(
                     border: Border(
                   bottom: BorderSide(
@@ -98,10 +100,12 @@ class TablePaymentModal extends StatelessWidget {
                           child: Text(
                         item.creditType,
                         style: TextStyle(fontSize: 11),
-                      )),
+                      )
                     ),
                   ),
-                ]),
+                ),
+              ]
+            ),
         ],
       ),
     );
