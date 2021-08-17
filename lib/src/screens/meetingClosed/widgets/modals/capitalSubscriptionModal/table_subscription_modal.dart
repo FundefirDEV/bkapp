@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/models/meeting_detail_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 
@@ -57,7 +58,8 @@ class TableSubscriptionModal extends StatelessWidget {
                 )),
               ]),
           for (var i = 0; i < listPartnertsPayments.length; i++)
-            TableRow(
+            if( double.parse(UtilsTools.removeMoneyFormatter(listPartnertsPayments[i].capital)) != 0.0 )
+              TableRow(
                 decoration: BoxDecoration(
                     border: Border(
                   bottom: BorderSide(
@@ -66,7 +68,8 @@ class TableSubscriptionModal extends StatelessWidget {
                         : Colors.transparent,
                     width: 1,
                   ),
-                )),
+                )
+              ),
                 children: [
                   TableCell(
                     child: Padding(
@@ -75,20 +78,23 @@ class TableSubscriptionModal extends StatelessWidget {
                           child: Text(
                         listPartnertsPayments[i].name,
                         style: TextStyle(fontSize: 11),
-                      )),
+                      )
                     ),
                   ),
-                  TableCell(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Center(
-                          child: Text(
-                        listPartnertsPayments[i].capital,
-                        style: TextStyle(fontSize: 11),
-                      )),
-                    ),
+                ),
+                TableCell(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Center(
+                        child: Text(
+                      listPartnertsPayments[i].capital,
+                      style: TextStyle(fontSize: 11),
+                    )
                   ),
-                ]),
+                ),
+              ),
+            ]
+          ),
         ],
       ),
     );
