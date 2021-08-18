@@ -4,6 +4,7 @@ import 'package:bkapp_flutter/src/screens/home/widgets/optionsBk/widgets/rotatin
 import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -39,8 +40,9 @@ class OptionsBkWidget extends StatelessWidget {
                       borderRadius: radiusCard,
                       child: InkWell(
                         key: Key('inkwell-redirect-meeting-closed'),
-                        onTap: () => navigateBloc.add(ButtonPressed(
-                            goTo: HomeRoutesConstant.reportsScreen)),
+                        onTap: () => _showDialog(context),
+                        // onTap: () => navigateBloc.add(ButtonPressed(
+                        //     goTo: HomeRoutesConstant.reportsScreen)),
                         child: Stack(
                           children: <Widget>[
                             new Positioned(
@@ -120,5 +122,24 @@ class OptionsBkWidget extends StatelessWidget {
             ))
       ],
     ));
+  }
+
+  void _showDialog(context,) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ImageBottomModal(
+          modalHeight: 45.0,
+          image: 'assets/images/sad_bot.svg',
+          title: I18n.of(context).modalTextsYourBkGroup,
+          titleBold: I18n.of(context).modalTextsIsEnabled,
+          isBold: true,
+          isBtnAccept: false,
+          titleCloseButton: I18n.of(context).administratorAssignmentClose,
+          onPressCancel: () => {Navigator.pop(context)},
+        );
+      }
+    );
   }
 }
