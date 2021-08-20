@@ -321,4 +321,10 @@ class ApiProvider {
         token: token
     );
   }
+
+  getReports({@required String token}) async{
+ final endPoint = ApiEndpoints.reports();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint);
+  }
 }
