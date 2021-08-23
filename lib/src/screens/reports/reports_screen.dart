@@ -43,10 +43,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
               tabContentSize: SizeConfig.blockSizeVertical * 70,
               tabsText: tabList,
               tabsContent: [
-                SingleChildScrollView(child: ShareContent()),
-                SingleChildScrollView(child: CreditsContent()),
-                SingleChildScrollView(child: InstallmentsContent()),
-                SingleChildScrollView(child: ProfitsContent())
+                SingleChildScrollView(child: ShareContent(report: state.reportsModel,)),
+                SingleChildScrollView(child: CreditsContent(report: state.reportsModel)),
+                SingleChildScrollView(child: InstallmentsContent(report: state.reportsModel)),
+                SingleChildScrollView(child: ProfitsContent(report: state.reportsModel))
             ],
           )
         ),

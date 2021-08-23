@@ -14,13 +14,15 @@ class PartnerCard extends StatelessWidget {
       @required this.gender,
       @required this.partnerName,
       @required this.titleDetail,
-      @required this.detailValue})
+      @required this.detailValue1,
+      @required this.detailValue2})
       : super(key: key);
 
   final String gender;
   final String partnerName;
   final String titleDetail;
-  final String detailValue;
+  final String detailValue1;
+  final String detailValue2;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,8 @@ class PartnerCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
-              Text(detailValue)
+              Text(detailValue1),
+              Text(detailValue2)
             ],
           )
         ],

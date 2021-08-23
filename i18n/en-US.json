@@ -511,7 +511,9 @@
     "installmentsChart": {
       "title": "Group's Installments",
       "axisTitle": "FEES PAID",
-      "sharesValue": "Fees to pay"
+      "sharesValue": "Fees to pay",
+      "debt": "Amount to pay"
+
     },
     "profitsChart": {
       "title": "Profits to be distributed",

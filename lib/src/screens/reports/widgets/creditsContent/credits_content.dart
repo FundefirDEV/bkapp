@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/reports_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -5,14 +6,10 @@ import 'package:flutter/material.dart';
 
 import '../widgets.dart';
 
-final List _partnersInfo = [
-  {"gender": "m", "name": "Daniel Tavera", "shareValue": r'$1.200.000'},
-  {"gender": "o", "name": "Javier Cantor", "shareValue": r'$540.000'},
-  {"gender": "f", "name": "Maria Camila", "shareValue": r'$760.000'}
-];
 
 class CreditsContent extends StatelessWidget {
-  const CreditsContent({Key key}) : super(key: key);
+  const CreditsContent({Key key , @required this.report}) : super(key: key);
+  final ReportsModel report;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class CreditsContent extends StatelessWidget {
             child: Chart(
               title: I18n.of(context).reportsScreenCreditsChartTitle,
               axisTitle: I18n.of(context).reportsScreenCreditsChartAxisTitle,
-              total: r'$2.500.000',
+              total: report.creditsInfo.totalAmountCredit.toString(),
               spotList: [
                 FlSpot(0, 0),
                 FlSpot(2, 6),
@@ -35,12 +32,12 @@ class CreditsContent extends StatelessWidget {
             ),
           ),
           DoubleCardsInfo(
-            totalSustainability: r'$213.000',
-            totalReserve: r'$55.000',
+            totalSustainability:report.expenseFund.toString(),
+            totalReserve: report.badDebtReserve.toString(),
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenCreditsChartSharesValue,
-            partners: _partnersInfo,
+            partnersInfo: report.creditsPartnerList(),
           )
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/reports_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -12,7 +13,8 @@ final List _partnersInfo = [
 ];
 
 class ShareContent extends StatelessWidget {
-  const ShareContent({Key key}) : super(key: key);
+  ShareContent({Key key , @required this.report});
+  final ReportsModel report;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ShareContent extends StatelessWidget {
             child: Chart(
               title: I18n.of(context).reportsScreenSharesChartTitle,
               axisTitle: I18n.of(context).reportsScreenSharesChartAxisTitle,
-              total: r'$1.000.000',
+              total: report.totalAmountShares.toString(),
               spotList: [
                 FlSpot(0, 0),
                 FlSpot(2.5, 3),
@@ -35,12 +37,12 @@ class ShareContent extends StatelessWidget {
             ),
           ),
           DoubleCardsInfo(
-            totalSustainability: r'$213.000',
-            totalReserve: r'$55.000',
+            totalSustainability:report.expenseFund.toString(),
+            totalReserve: report.badDebtReserve.toString(),
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenSharesChartSharesValue,
-            partners: _partnersInfo,
+            partnersInfo: report.sharePartnerList(),
           )
         ],
       ),

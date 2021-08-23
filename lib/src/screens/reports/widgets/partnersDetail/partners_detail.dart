@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import '../widgets.dart';
 
 class PartnersDetail extends StatelessWidget {
-  const PartnersDetail({Key key, @required this.partners, this.titleDetail})
+  const PartnersDetail({Key key, 
+    @required this.titleDetail,
+    @required this.partnersInfo,
+    })
       : super(key: key);
 
-  final List partners;
   final String titleDetail;
+  final List<Map<String , String>> partnersInfo;
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +25,13 @@ class PartnersDetail extends StatelessWidget {
             child: Text(I18n.of(context).reportsScreenDetail,
                 style: TextStyle(fontSize: 18.0)),
           ),
-          for (var partner in partners) ...[
+          for (var partner in partnersInfo) ...[
             PartnerCard(
               gender: partner['gender'],
               partnerName: partner['name'],
               titleDetail: titleDetail,
-              detailValue: partner['shareValue'],
+              detailValue1: partner['detailValue1'],
+              detailValue2: partner['detailValue2'],
             ),
           ]
         ],

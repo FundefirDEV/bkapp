@@ -25,20 +25,21 @@ class ReportsModel {
     this.earnings,
   });
 
-  final badDebtReserve;
-  final expenseFund;
-  final totalQuantityShares;
-  final totalAmountShares;
-  final totalAmountEarning;
-  final shares;
-  final creditsInfo;
-  final earnings;
+  final double badDebtReserve;
+  final double expenseFund;
+  final double totalQuantityShares;
+  final double totalAmountShares;
+  final double totalAmountEarning;
+  final ReportShares shares;
+  final ReportCredit creditsInfo;
+  final ReportEarning earnings;
 
   factory ReportsModel.fromJson(Map<String, dynamic> json) => ReportsModel(
     badDebtReserve: json["badDebtReserve"] ?? null,
     expenseFund: json["expenseFund"] ?? null,
     totalQuantityShares: json["totalQuantityShares"] ?? null,
     totalAmountShares: json["totalAmountShares"] ?? null,
+    totalAmountEarning: json["totalAmountEarning"] ?? null,
     shares: ReportShares.fromJson(json["shares"]) ?? null,
     creditsInfo: ReportCredit.fromJson(json["creditsInfo"]) ?? null,
     earnings: ReportEarning.fromJson(json["earnings"]) ?? null,
@@ -53,6 +54,60 @@ class ReportsModel {
     "shares": shares,
     "earnings": earnings,
   };
+
+  List<Map<String , String>> sharePartnerList(){
+    final List<Map<String , String>> dataList = [];
+    shares.sharesPerPartner.forEach((element) { 
+      dataList.add({
+        "gender": "o", 
+        "name": element.partner, 
+        "detailValue1": element.amount.toString(),
+        "detailValue2": element.quantity.toString()
+        }
+      );
+    });
+    return dataList;
+  } 
+    List<Map<String , String>> creditsPartnerList(){
+
+    final List<Map<String , String>> dataList = [];
+    creditsInfo.activesCredits.forEach((element) { 
+      dataList.add({
+        "gender": "o", 
+        "name": element.partner, 
+        "detailValue1": element.amount.toString(),
+        "detailValue2": element.approvalDate.toString()
+        }
+      );
+    });
+    return dataList;
+  } 
+  List<Map<String , String>> instalmentPartnerList(){
+    final List<Map<String , String>> dataList = [];
+    creditsInfo.activesCredits.forEach((element) { 
+      dataList.add({
+        "gender": "o", 
+        "name": element.partner, 
+        "detailValue1": element.currentDebt.toString(),
+        "detailValue2": '',
+        }
+      );
+    });
+    return dataList;
+  }
+  List<Map<String , String>> earningPartnerList(){
+    final List<Map<String , String>> dataList = [];
+    earnings.earningPerPartner.forEach((element) { 
+      dataList.add({
+        "gender": "o", 
+        "name": element.partner, 
+        "detailValue1": element.earning.toString(),
+        "detailValue2":'',
+        }
+      );
+    });
+    return dataList;
+  }
 }
 
 
@@ -101,7 +156,7 @@ class SharesPerPartner{
   final int quantity;
 
     factory SharesPerPartner.fromJson(Map<String, dynamic> json) => SharesPerPartner(
-        partner: json["partner"] ?? null,
+        partner: json["partner"] ?? '',
         amount: json["amount"] ?? null,
         quantity: json["quantity"] ?? null,
       );
@@ -123,24 +178,24 @@ class ReportEarning{
  ReportEarning({
     this.earningsBySharePerMeeting,
     this.totalEarningPerMeeting,
-    this.totalearningsPerMeeting,
+    this.earningPerPartner,
   });
   
   final List<double> earningsBySharePerMeeting;
   final List<double> totalEarningPerMeeting;
-  final List<EarningPerPartner> totalearningsPerMeeting;
+  final List<EarningPerPartner> earningPerPartner;
 
    factory ReportEarning.fromJson(Map<String, dynamic> json) => ReportEarning(
     earningsBySharePerMeeting: List<double>.from(json["earningsBySharePerMeeting"]) ?? null,
     totalEarningPerMeeting: List<double>.from(json["totalEarningPerMeeting"]) ?? null,
-    totalearningsPerMeeting: List<EarningPerPartner>.from(
+    earningPerPartner: List<EarningPerPartner>.from(
                 json["totalearningsPerMeeting"].map((x) => EarningPerPartner.fromJson(x))) ?? null,
   );
 
     Map<String, dynamic> toJson() => {
     "earningsBySharePerMeeting": earningsBySharePerMeeting,
     "totalEarningPerMeeting": totalEarningPerMeeting,
-    "totalearningsPerMeeting": List<dynamic>.from(totalearningsPerMeeting.map((x) => x.toJson())),
+    "totalearningsPerMeeting": List<dynamic>.from(earningPerPartner.map((x) => x.toJson())),
   };
 }
 
@@ -160,8 +215,8 @@ class EarningPerPartner{
   final double earning;
 
    factory EarningPerPartner.fromJson(Map<String, dynamic> json) => EarningPerPartner(
-    partner: json["earningsBySharePerMeeting"] ?? null,
-    earning: json["totalEarningPerMeeting"] ?? null,
+    partner: json["partner"] ?? null,
+    earning: json["earning"] ?? null,
   );
 
     Map<String, dynamic> toJson() => {
@@ -228,29 +283,29 @@ class ActivesCredits{
 
   ActivesCredits({
     this.partner,
-    this.earning,
+    this.amount,
     this.approvalDate,
     this.currentDebt,
     this.payedValue,
   });
   
   final String partner;
-  final double earning;
+  final double amount;
   final double payedValue;
   final double currentDebt;
   final String approvalDate;
 
     factory ActivesCredits.fromJson(Map<String, dynamic> json) => ActivesCredits(
     partner: json["partner"] ?? null,
-    earning: json["earning"] ?? null,
+    amount: json["amount"] ?? null,
     payedValue: json["payedValue"] ?? null,
     currentDebt: json["currentDebt"] ?? null,
-    approvalDate: json["approvalDate"] ?? null,  
+    approvalDate: DateFormat.yMMMd().format(DateTime.parse(json["approvalDate"])) ?? null,  
   );
 
     Map<String, dynamic> toJson() => {
     "partner": partner,
-    "earning": earning,
+    "earning": amount,
     "payedValue": payedValue,
     "currentDebt": currentDebt,
     "approvalDate": approvalDate,
