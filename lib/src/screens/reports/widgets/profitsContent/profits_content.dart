@@ -23,12 +23,7 @@ class ProfitsContent extends StatelessWidget {
               title: I18n.of(context).reportsScreenProfitsChartTitle,
               axisTitle: I18n.of(context).reportsScreenProfitsChartAxisTitle,
               total: report.totalAmountEarning.toString(),
-              spotList: [
-                FlSpot(0, 0),
-                FlSpot(4, 2),
-                FlSpot(6, 5),
-                FlSpot(7.4, 0),
-              ],
+              spotList: report.makeEarningFlSpot(),
             ),
           ),
          DoubleCardsInfo(

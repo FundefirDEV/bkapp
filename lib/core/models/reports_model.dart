@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
 ReportsModel reportsModelFromJson(Map<String, dynamic> data) =>
@@ -67,8 +68,17 @@ class ReportsModel {
       );
     });
     return dataList;
+  }
+
+  List<FlSpot> makeShareFlSpot(){
+    final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
+    shares.totalSharesPerMeeting.asMap().forEach((index, value) { 
+      dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
+    });
+    return dataList;
   } 
-    List<Map<String , String>> creditsPartnerList(){
+
+  List<Map<String , String>> creditsPartnerList(){
 
     final List<Map<String , String>> dataList = [];
     creditsInfo.activesCredits.forEach((element) { 
@@ -81,7 +91,16 @@ class ReportsModel {
       );
     });
     return dataList;
-  } 
+  }
+
+  List<FlSpot> makeCreditFlSpot(){
+    final List<FlSpot> dataList = [FlSpot(0.0 , 0.0)];
+    creditsInfo.totalCreditsPerMeeting.asMap().forEach((index, value) { 
+      dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
+    });
+    return dataList;
+  }  
+
   List<Map<String , String>> instalmentPartnerList(){
     final List<Map<String , String>> dataList = [];
     creditsInfo.activesCredits.forEach((element) { 
@@ -95,6 +114,15 @@ class ReportsModel {
     });
     return dataList;
   }
+
+  List<FlSpot> makeInstallmentFlSpot(){
+    final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
+    creditsInfo.totalCapitalPayPerMeeting.asMap().forEach((index, value) { 
+      dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
+    });
+    return dataList;
+  }  
+
   List<Map<String , String>> earningPartnerList(){
     final List<Map<String , String>> dataList = [];
     earnings.earningPerPartner.forEach((element) { 
@@ -108,6 +136,14 @@ class ReportsModel {
     });
     return dataList;
   }
+
+  List<FlSpot> makeEarningFlSpot(){
+    final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
+    earnings.totalEarningPerMeeting.asMap().forEach((index, value) { 
+      dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
+    });
+    return dataList;
+  }  
 }
 
 

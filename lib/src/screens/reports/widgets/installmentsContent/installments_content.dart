@@ -23,12 +23,7 @@ class InstallmentsContent extends StatelessWidget {
               axisTitle:
                   I18n.of(context).reportsScreenInstallmentsChartAxisTitle,
               total: report.creditsInfo.totalPayedValue.toString(),
-              spotList: [
-                FlSpot(0, 0),
-                FlSpot(2, 2),
-                FlSpot(5, 5),
-                FlSpot(7.4, 0),
-              ],
+              spotList: report.makeInstallmentFlSpot(),
             ),
           ),
           DoubleCardsInfo(

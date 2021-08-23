@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 
 class Chart extends StatefulWidget {
   const Chart(
-      {Key key,
+  {Key key,
       @required this.title,
       @required this.total,
       this.values,
       @required this.spotList,
-      this.axisTitle})
+      this.axisTitle,
+      this.maxY
+  })
       : super(key: key);
 
   final String title;
@@ -18,6 +20,7 @@ class Chart extends StatefulWidget {
   final String total;
   final List<dynamic> values;
   final List<FlSpot> spotList;
+  final double maxY;
 
   @override
   _ChartState createState() => _ChartState();
@@ -75,7 +78,7 @@ class _ChartState extends State<Chart> {
                       final flSpot = barSpot;
                       if (flSpot.x == 0 || flSpot.x == 7.4) return null;
                       return LineTooltipItem(
-                          '${months[flSpot.x.toInt()]} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
+                          'Meeting ${flSpot.x.toInt()} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
                           TextStyle(color: Colors.white));
                     }).toList();
                   }),
@@ -97,7 +100,7 @@ class _ChartState extends State<Chart> {
             leftTitles: SideTitles(showTitles: false),
             bottomTitles: SideTitles(
               showTitles: true,
-              getTitles: (value) => months[value.toInt()],
+              getTitles: (value) => '# ${value.toInt().toString()}',
               getTextStyles: (value) => TextStyle(
                   color: Theme.of(context).colorScheme.grayColor,
                   fontSize: 10,
@@ -106,9 +109,9 @@ class _ChartState extends State<Chart> {
           ),
           borderData: FlBorderData(show: false),
           minX: 0,
-          maxX: 7.4,
+          maxX: 6.5,
           minY: 0,
-          maxY: 10,
+          maxY: widget.maxY,
           axisTitleData: FlAxisTitleData(
               leftTitle: AxisTitle(
                   titleText: '# ${widget.axisTitle}',
@@ -125,9 +128,11 @@ class _ChartState extends State<Chart> {
     return [
       LineChartBarData(
         spots: widget.spotList,
-        isCurved: true,
+        isCurved: false,
+        isStepLineChart: false,
         colors: gradientColors,
-        barWidth: 0,
+        barWidth: 3,
+
         isStrokeCapRound: false,
         dotData: FlDotData(
             show: true,

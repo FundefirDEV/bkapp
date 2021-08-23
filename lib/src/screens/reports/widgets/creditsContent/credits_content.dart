@@ -23,12 +23,7 @@ class CreditsContent extends StatelessWidget {
               title: I18n.of(context).reportsScreenCreditsChartTitle,
               axisTitle: I18n.of(context).reportsScreenCreditsChartAxisTitle,
               total: report.creditsInfo.totalAmountCredit.toString(),
-              spotList: [
-                FlSpot(0, 0),
-                FlSpot(2, 6),
-                FlSpot(5.8, 3.5),
-                FlSpot(7.4, 7),
-              ],
+              spotList: report.makeCreditFlSpot(),
             ),
           ),
           DoubleCardsInfo(

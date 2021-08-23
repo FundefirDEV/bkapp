@@ -6,11 +6,6 @@ import 'package:flutter/material.dart';
 
 import '../widgets.dart';
 
-final List _partnersInfo = [
-  {"gender": "m", "name": "Daniel Tavera", "shareValue": r'$250.000'},
-  {"gender": "o", "name": "Javier Cantor", "shareValue": r'$250.000'},
-  {"gender": "f", "name": "Maria Camila", "shareValue": r'$500.000'}
-];
 
 class ShareContent extends StatelessWidget {
   ShareContent({Key key , @required this.report});
@@ -28,12 +23,7 @@ class ShareContent extends StatelessWidget {
               title: I18n.of(context).reportsScreenSharesChartTitle,
               axisTitle: I18n.of(context).reportsScreenSharesChartAxisTitle,
               total: report.totalAmountShares.toString(),
-              spotList: [
-                FlSpot(0, 0),
-                FlSpot(2.5, 3),
-                FlSpot(5.8, 4.5),
-                FlSpot(7.4, 7),
-              ],
+              spotList: report.makeShareFlSpot(),
             ),
           ),
           DoubleCardsInfo(
