@@ -1,4 +1,3 @@
-import 'package:bkapp_flutter/core/models/update_profile_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 
