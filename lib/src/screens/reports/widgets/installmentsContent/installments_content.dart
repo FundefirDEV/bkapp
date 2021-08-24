@@ -21,13 +21,13 @@ class InstallmentsContent extends StatelessWidget {
               title: I18n.of(context).reportsScreenInstallmentsChartTitle,
               axisTitle:
                   I18n.of(context).reportsScreenInstallmentsChartAxisTitle,
-              total: report.creditsInfo.totalPayedValue.toString(),
+              total: ReportsModel.formatNumber(report.creditsInfo.totalPayedValue.toString()),
               spotList: report.makeInstallmentFlSpot(),
             ),
           ),
           DoubleCardsInfo(
-            totalSustainability:report.expenseFund.toString(),
-            totalReserve: report.badDebtReserve.toString(),
+            totalSustainability:ReportsModel.formatNumber(report.expenseFund.toString()) ,
+            totalReserve:ReportsModel.formatNumber(report.badDebtReserve.toString()) ,
           ),
           PartnersDetail(
             titleDetail:

@@ -22,10 +22,29 @@ class PartnersDetail extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 50.0),
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 25),
-            child: Text(I18n.of(context).reportsScreenDetail,
-                style: TextStyle(fontSize: 18.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 25 , left: 25),
+                child: Text(I18n.of(context).reportsScreenPartner,
+                
+                    style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700) ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 25),
+                child: Text(titleDetail2,
+                textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14.0 , 
+                  fontWeight: FontWeight.w700,
+                )),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 25 , right: 15),
+                child: Text(titleDetail,textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700)),
+              ),
+            ],
           ),
           for (var partner in partnersInfo) ...[
             PartnerCard(

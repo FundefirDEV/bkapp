@@ -21,13 +21,13 @@ class ProfitsContent extends StatelessWidget {
             child: Chart(
               title: I18n.of(context).reportsScreenProfitsChartTitle,
               axisTitle: I18n.of(context).reportsScreenProfitsChartAxisTitle,
-              total: report.totalAmountEarning.toString(),
+              total:ReportsModel.formatNumber(report.totalAmountEarning.toString()) ,
               spotList: report.makeEarningFlSpot(),
             ),
           ),
          DoubleCardsInfo(
-            totalSustainability:report.expenseFund.toString(),
-            totalReserve: report.badDebtReserve.toString(),
+            totalSustainability:ReportsModel.formatNumber(report.expenseFund.toString()) ,
+            totalReserve:ReportsModel.formatNumber(report.badDebtReserve.toString()) ,
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenProfitsChartSharesValue,

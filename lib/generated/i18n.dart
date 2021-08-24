@@ -802,6 +802,8 @@ class I18n implements WidgetsLocalizations {
   String get reportsScreenPartner => "Partner";
   /// "Total:"
   String get reportsScreenTotal => "Total:";
+  /// "QAT"
+  String get reportsScreenQuantity => "QAT";
   /// "Approve Data"
   String get reportsScreenApproveCreditDate => "Approve Data";
   /// "Group's shares"
@@ -2005,6 +2007,9 @@ class _I18n_es_ES extends I18n {
   /// "Total:"
   @override
   String get reportsScreenTotal => "Total:";
+  /// "CAN"
+  @override
+  String get reportsScreenQuantity => "CAN";
   /// "Fecha de aprobación"
   @override
   String get reportsScreenApproveCreditDate => "Fecha de aprobación";

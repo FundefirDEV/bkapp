@@ -1,4 +1,6 @@
+import 'package:bkapp_flutter/core/models/reports_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -41,8 +43,8 @@ class PartnerCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(I18n.of(context).reportsScreenPartner,
-                      style: TextStyle(fontWeight: FontWeight.w700)),
+                    // Text(I18n.of(context).reportsScreenPartner,
+                    //   style: TextStyle(fontWeight: FontWeight.w700)),
                     Container(
                       width: 50.0,
                       child: Text(partnerName , overflow: TextOverflow.clip,)
@@ -56,8 +58,8 @@ class PartnerCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(titleDetail2,
-                          style: TextStyle(fontWeight: FontWeight.w700)),
+                      // Text(titleDetail2,
+                      //     style: TextStyle(fontWeight: FontWeight.w700)),
                       Text(detailValue2)
                   ],
                 ),
@@ -67,8 +69,8 @@ class PartnerCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
-                Text(detailValue1)
+                //Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
+                Text(ReportsModel.formatNumber(detailValue1))
             ],
           )
         ],

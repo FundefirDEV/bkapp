@@ -21,13 +21,13 @@ class CreditsContent extends StatelessWidget {
             child: Chart(
               title: I18n.of(context).reportsScreenCreditsChartTitle,
               axisTitle: I18n.of(context).reportsScreenCreditsChartAxisTitle,
-              total: report.creditsInfo.totalAmountCredit.toString(),
+              total:ReportsModel.formatNumber(report.creditsInfo.totalAmountCredit.toString()) ,
               spotList: report.makeCreditFlSpot(),
             ),
           ),
           DoubleCardsInfo(
-            totalSustainability:report.expenseFund.toString(),
-            totalReserve: report.badDebtReserve.toString(),
+            totalSustainability:ReportsModel.formatNumber(report.expenseFund.toString()) ,
+            totalReserve:ReportsModel.formatNumber(report.badDebtReserve.toString()) ,
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenCreditsChartSharesValue,

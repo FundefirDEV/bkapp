@@ -489,6 +489,7 @@
     "reserve": "Reserva para Incobrables",
     "detail": "Detalle",
     "partner": "Socio",
+    "quantity" : "CAN",
     "total": "Total:",
     "ApproveCreditDate": "Fecha de aprobación",
     "sharesChart": {

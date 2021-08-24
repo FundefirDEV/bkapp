@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
@@ -55,6 +56,10 @@ class ReportsModel {
     "shares": shares,
     "earnings": earnings,
   };
+
+  static String formatNumber(String num){
+    return UtilsTools.formatConfig(decimalDigits: 2).format(double.tryParse(num));
+  }
 
   List<Map<String , String>> sharePartnerList(){
     final List<Map<String , String>> dataList = [];

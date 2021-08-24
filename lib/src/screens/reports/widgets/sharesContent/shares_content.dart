@@ -21,17 +21,17 @@ class ShareContent extends StatelessWidget {
             child: Chart(
               title: I18n.of(context).reportsScreenSharesChartTitle,
               axisTitle: I18n.of(context).reportsScreenSharesChartAxisTitle,
-              total: report.totalAmountShares.toString(),
+              total: ReportsModel.formatNumber(report.totalAmountShares.toString()) ,
               spotList: report.makeShareFlSpot(),
             ),
           ),
           DoubleCardsInfo(
-            totalSustainability:report.expenseFund.toString(),
-            totalReserve: report.badDebtReserve.toString(),
+            totalSustainability:ReportsModel.formatNumber(report.expenseFund.toString()) ,
+            totalReserve:ReportsModel.formatNumber(report.badDebtReserve.toString()) ,
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenSharesChartSharesValue,
-            titleDetail2:I18n.of(context).meetingClosedQuantity ,
+            titleDetail2:I18n.of(context).reportsScreenQuantity ,
             partnersInfo: report.sharePartnerList(),
           )
         ],
