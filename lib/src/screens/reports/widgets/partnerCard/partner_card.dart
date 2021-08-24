@@ -14,6 +14,7 @@ class PartnerCard extends StatelessWidget {
       @required this.gender,
       @required this.partnerName,
       @required this.titleDetail,
+      @required this.titleDetail2,
       @required this.detailValue1,
       @required this.detailValue2})
       : super(key: key);
@@ -21,6 +22,7 @@ class PartnerCard extends StatelessWidget {
   final String gender;
   final String partnerName;
   final String titleDetail;
+  final String titleDetail2;
   final String detailValue1;
   final String detailValue2;
 
@@ -40,19 +42,33 @@ class PartnerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(I18n.of(context).reportsScreenPartner,
-                        style: TextStyle(fontWeight: FontWeight.w700)),
-                    Text(partnerName)
+                      style: TextStyle(fontWeight: FontWeight.w700)),
+                    Container(
+                      width: 50.0,
+                      child: Text(partnerName , overflow: TextOverflow.clip,)
+                    )
+                  ],
+                ),
+              ),
+              if(titleDetail2 != '')
+                Padding(
+                  padding: EdgeInsets.only(left: 30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(titleDetail2,
+                          style: TextStyle(fontWeight: FontWeight.w700)),
+                      Text(detailValue2)
                   ],
                 ),
               ),
             ],
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
-              Text(detailValue1),
-              Text(detailValue2)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
+                Text(detailValue1)
             ],
           )
         ],

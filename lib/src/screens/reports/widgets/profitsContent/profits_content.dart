@@ -32,6 +32,7 @@ class ProfitsContent extends StatelessWidget {
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenProfitsChartSharesValue,
+            titleDetail2: '',
             partnersInfo: report.earningPartnerList(),
           )
         ],

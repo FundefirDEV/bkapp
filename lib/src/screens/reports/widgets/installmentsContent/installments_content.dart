@@ -33,6 +33,7 @@ class InstallmentsContent extends StatelessWidget {
           PartnersDetail(
             titleDetail:
                 I18n.of(context).reportsScreenInstallmentsChartDebt,
+            titleDetail2: '',
             partnersInfo: report.instalmentPartnerList(),
           )
         ],

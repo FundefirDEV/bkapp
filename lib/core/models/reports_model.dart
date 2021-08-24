@@ -60,7 +60,7 @@ class ReportsModel {
     final List<Map<String , String>> dataList = [];
     shares.sharesPerPartner.forEach((element) { 
       dataList.add({
-        "gender": "o", 
+        "gender": element.gender, 
         "name": element.partner, 
         "detailValue1": element.amount.toString(),
         "detailValue2": element.quantity.toString()
@@ -83,7 +83,7 @@ class ReportsModel {
     final List<Map<String , String>> dataList = [];
     creditsInfo.activesCredits.forEach((element) { 
       dataList.add({
-        "gender": "o", 
+        "gender": element.gender, 
         "name": element.partner, 
         "detailValue1": element.amount.toString(),
         "detailValue2": element.approvalDate.toString()
@@ -105,7 +105,7 @@ class ReportsModel {
     final List<Map<String , String>> dataList = [];
     creditsInfo.activesCredits.forEach((element) { 
       dataList.add({
-        "gender": "o", 
+        "gender": element.gender, 
         "name": element.partner, 
         "detailValue1": element.currentDebt.toString(),
         "detailValue2": '',
@@ -127,7 +127,7 @@ class ReportsModel {
     final List<Map<String , String>> dataList = [];
     earnings.earningPerPartner.forEach((element) { 
       dataList.add({
-        "gender": "o", 
+        "gender": element.gender, 
         "name": element.partner, 
         "detailValue1": element.earning.toString(),
         "detailValue2":'',
@@ -139,7 +139,7 @@ class ReportsModel {
 
   List<FlSpot> makeEarningFlSpot(){
     final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
-    earnings.totalEarningPerMeeting.asMap().forEach((index, value) { 
+    earnings.earningsBySharePerMeeting.asMap().forEach((index, value) { 
       dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
     });
     return dataList;
@@ -185,22 +185,26 @@ class SharesPerPartner{
     this.partner,
     this.amount,
     this.quantity,
+    this.gender,
   });
     
   final String partner;
+  final String gender;
   final double amount;
   final int quantity;
 
     factory SharesPerPartner.fromJson(Map<String, dynamic> json) => SharesPerPartner(
-        partner: json["partner"] ?? '',
-        amount: json["amount"] ?? null,
-        quantity: json["quantity"] ?? null,
-      );
+      partner: json["partner"] ?? '',
+      amount: json["amount"] ?? null,
+      quantity: json["quantity"] ?? null,
+      gender: json["gender"] ?? null,
+    );
 
   Map<String, dynamic> toJson() => {
     "partner": partner,
     "amount": amount,
     "quantity": quantity,
+    "gender" : gender,
   };
 }
 
@@ -225,13 +229,13 @@ class ReportEarning{
     earningsBySharePerMeeting: List<double>.from(json["earningsBySharePerMeeting"]) ?? null,
     totalEarningPerMeeting: List<double>.from(json["totalEarningPerMeeting"]) ?? null,
     earningPerPartner: List<EarningPerPartner>.from(
-                json["totalearningsPerMeeting"].map((x) => EarningPerPartner.fromJson(x))) ?? null,
+                json["earningPerPartner"].map((x) => EarningPerPartner.fromJson(x))) ?? null,
   );
 
     Map<String, dynamic> toJson() => {
     "earningsBySharePerMeeting": earningsBySharePerMeeting,
     "totalEarningPerMeeting": totalEarningPerMeeting,
-    "totalearningsPerMeeting": List<dynamic>.from(earningPerPartner.map((x) => x.toJson())),
+    "earningPerPartner": List<dynamic>.from(earningPerPartner.map((x) => x.toJson())),
   };
 }
 
@@ -245,19 +249,25 @@ class EarningPerPartner{
   EarningPerPartner({
     this.partner,
     this.earning,
+    this.gender,
+
   });
 
   final String partner;
   final double earning;
+  final String gender;
 
    factory EarningPerPartner.fromJson(Map<String, dynamic> json) => EarningPerPartner(
     partner: json["partner"] ?? null,
     earning: json["earning"] ?? null,
+    gender: json["gender"] ?? null,
+
   );
 
     Map<String, dynamic> toJson() => {
     "partner": partner,
     "earning": earning,
+    "gender" : gender,
   };
 }
 
@@ -323,12 +333,14 @@ class ActivesCredits{
     this.approvalDate,
     this.currentDebt,
     this.payedValue,
+    this.gender,
   });
   
   final String partner;
   final double amount;
   final double payedValue;
   final double currentDebt;
+  final String gender;
   final String approvalDate;
 
     factory ActivesCredits.fromJson(Map<String, dynamic> json) => ActivesCredits(
@@ -336,6 +348,7 @@ class ActivesCredits{
     amount: json["amount"] ?? null,
     payedValue: json["payedValue"] ?? null,
     currentDebt: json["currentDebt"] ?? null,
+    gender: json["gender"] ?? null,
     approvalDate: DateFormat.yMMMd().format(DateTime.parse(json["approvalDate"])) ?? null,  
   );
 
@@ -345,6 +358,7 @@ class ActivesCredits{
     "payedValue": payedValue,
     "currentDebt": currentDebt,
     "approvalDate": approvalDate,
+    "gender" : gender,
   };
 }
 

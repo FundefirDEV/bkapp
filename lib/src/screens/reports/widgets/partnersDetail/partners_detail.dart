@@ -6,11 +6,13 @@ import '../widgets.dart';
 class PartnersDetail extends StatelessWidget {
   const PartnersDetail({Key key, 
     @required this.titleDetail,
+    @required this.titleDetail2,
     @required this.partnersInfo,
     })
       : super(key: key);
 
   final String titleDetail;
+  final String titleDetail2;
   final List<Map<String , String>> partnersInfo;
 
 
@@ -30,6 +32,7 @@ class PartnersDetail extends StatelessWidget {
               gender: partner['gender'],
               partnerName: partner['name'],
               titleDetail: titleDetail,
+              titleDetail2: titleDetail2,
               detailValue1: partner['detailValue1'],
               detailValue2: partner['detailValue2'],
             ),

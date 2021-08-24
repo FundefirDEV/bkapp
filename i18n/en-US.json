@@ -498,6 +498,7 @@
     "detail": "Detail",
     "partner": "Partner",
     "total": "Total:",
+    "ApproveCreditDate": "Approve Data",
     "sharesChart": {
       "title": "Group's shares",
       "axisTitle": "SHARES",

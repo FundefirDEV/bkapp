@@ -490,6 +490,7 @@
     "detail": "Detalle",
     "partner": "Socio",
     "total": "Total:",
+    "ApproveCreditDate": "Fecha de aprobación",
     "sharesChart": {
       "title": "Acciones del grupo",
       "axisTitle": "ACCIONES",

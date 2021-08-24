@@ -32,6 +32,7 @@ class CreditsContent extends StatelessWidget {
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenCreditsChartSharesValue,
+            titleDetail2:I18n.of(context).reportsScreenApproveCreditDate ,
             partnersInfo: report.creditsPartnerList(),
           )
         ],

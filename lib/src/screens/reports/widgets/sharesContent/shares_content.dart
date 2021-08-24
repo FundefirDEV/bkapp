@@ -1,7 +1,6 @@
 import 'package:bkapp_flutter/core/models/reports_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets.dart';
@@ -32,6 +31,7 @@ class ShareContent extends StatelessWidget {
           ),
           PartnersDetail(
             titleDetail: I18n.of(context).reportsScreenSharesChartSharesValue,
+            titleDetail2:I18n.of(context).meetingClosedQuantity ,
             partnersInfo: report.sharePartnerList(),
           )
         ],
