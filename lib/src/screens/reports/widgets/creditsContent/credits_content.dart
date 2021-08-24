@@ -33,6 +33,7 @@ class CreditsContent extends StatelessWidget {
             titleDetail: I18n.of(context).reportsScreenCreditsChartSharesValue,
             titleDetail2:I18n.of(context).reportsScreenApproveCreditDate ,
             partnersInfo: report.creditsPartnerList(),
+            padingMiddle: 0.0,
           )
         ],
       ),

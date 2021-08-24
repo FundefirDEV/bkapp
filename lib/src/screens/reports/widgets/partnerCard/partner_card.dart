@@ -1,6 +1,4 @@
 import 'package:bkapp_flutter/core/models/reports_model.dart';
-import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,14 +9,16 @@ Map<String, String> imageGender = {
 };
 
 class PartnerCard extends StatelessWidget {
-  const PartnerCard(
-      {Key key,
-      @required this.gender,
-      @required this.partnerName,
-      @required this.titleDetail,
-      @required this.titleDetail2,
-      @required this.detailValue1,
-      @required this.detailValue2})
+  const PartnerCard({ 
+    Key key,
+    @required this.gender,
+    @required this.partnerName,
+    @required this.titleDetail,
+    @required this.titleDetail2,
+    @required this.detailValue1,
+    @required this.detailValue2,
+    @required this.padingMiddle
+  })
       : super(key: key);
 
   final String gender;
@@ -27,6 +27,7 @@ class PartnerCard extends StatelessWidget {
   final String titleDetail2;
   final String detailValue1;
   final String detailValue2;
+  final double padingMiddle;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class PartnerCard extends StatelessWidget {
               ),
               if(titleDetail2 != '')
                 Padding(
-                  padding: EdgeInsets.only(left: 30.0),
+                  padding: EdgeInsets.only(left: 30.0 + padingMiddle),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

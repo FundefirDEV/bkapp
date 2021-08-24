@@ -33,6 +33,7 @@ class ShareContent extends StatelessWidget {
             titleDetail: I18n.of(context).reportsScreenSharesChartSharesValue,
             titleDetail2:I18n.of(context).reportsScreenQuantity ,
             partnersInfo: report.sharePartnerList(),
+            padingMiddle: 25.0,
           )
         ],
       ),

@@ -8,9 +8,11 @@ class PartnersDetail extends StatelessWidget {
     @required this.titleDetail,
     @required this.titleDetail2,
     @required this.partnersInfo,
+    @required this.padingMiddle,
     })
       : super(key: key);
 
+  final double padingMiddle;
   final String titleDetail;
   final String titleDetail2;
   final List<Map<String , String>> partnersInfo;
@@ -32,7 +34,7 @@ class PartnersDetail extends StatelessWidget {
                     style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700) ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 25),
+                padding: EdgeInsets.only(bottom: 25 , left: 50),
                 child: Text(titleDetail2,
                 textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14.0 , 
@@ -54,6 +56,7 @@ class PartnersDetail extends StatelessWidget {
               titleDetail2: titleDetail2,
               detailValue1: partner['detailValue1'],
               detailValue2: partner['detailValue2'],
+              padingMiddle: padingMiddle,
             ),
           ]
         ],

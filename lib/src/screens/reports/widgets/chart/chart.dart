@@ -128,7 +128,7 @@ class _ChartState extends State<Chart> {
     return [
       LineChartBarData(
         spots: widget.spotList,
-        isCurved: false,
+        isCurved: true,
         isStepLineChart: false,
         colors: gradientColors,
         barWidth: 3,
