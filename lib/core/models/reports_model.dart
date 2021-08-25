@@ -77,9 +77,12 @@ class ReportsModel {
 
   List<FlSpot> makeShareFlSpot(){
     final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
-    shares.totalSharesPerMeeting.asMap().forEach((index, value) { 
+    final xData = limitData(shares.totalSharesPerMeeting);
+
+    xData.asMap().forEach((index, value) { 
       dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
     });
+
     return dataList;
   } 
 
@@ -100,7 +103,10 @@ class ReportsModel {
 
   List<FlSpot> makeCreditFlSpot(){
     final List<FlSpot> dataList = [FlSpot(0.0 , 0.0)];
-    creditsInfo.totalCreditsPerMeeting.asMap().forEach((index, value) { 
+
+    final xData = limitData(creditsInfo.totalCreditsPerMeeting);
+
+    xData.asMap().forEach((index, value) { 
       dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
     });
     return dataList;
@@ -122,7 +128,10 @@ class ReportsModel {
 
   List<FlSpot> makeInstallmentFlSpot(){
     final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
-    creditsInfo.totalCapitalPayPerMeeting.asMap().forEach((index, value) { 
+
+    final xData = limitData(creditsInfo.totalCapitalPayPerMeeting);
+
+    xData.asMap().forEach((index, value) { 
       dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
     });
     return dataList;
@@ -144,12 +153,39 @@ class ReportsModel {
 
   List<FlSpot> makeEarningFlSpot(){
     final List<FlSpot>  dataList = [FlSpot(0.0 , 0.0)];
-    earnings.earningsBySharePerMeeting.asMap().forEach((index, value) { 
+
+    final xData = limitData(earnings.earningsBySharePerMeeting);
+
+    xData.asMap().forEach((index, value) { 
       dataList.add(FlSpot(index.toDouble() + 1 , value.toDouble()));
     });
     return dataList;
   }  
+
+  List<dynamic> limitData(List<dynamic> dataList){
+    
+    if(dataList.length <= 6)
+      return dataList;
+
+    final initIndex = dataList.length - 6;
+
+    return dataList.sublist(initIndex);
+  }
+
+  List<int> meettingNumber(){
+    
+    final dataList = limitData(shares.totalSharesPerMeeting);
+    final List<int> resList = [];
+
+    dataList.asMap().forEach((index, value) { 
+      resList.add(index);
+    });
+
+    return resList;
+  }
 }
+
+
 
 
 ReportShares reportsSharesFromJson(Map<String, dynamic> data) =>

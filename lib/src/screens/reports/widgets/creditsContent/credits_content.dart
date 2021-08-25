@@ -23,6 +23,7 @@ class CreditsContent extends StatelessWidget {
               axisTitle: I18n.of(context).reportsScreenCreditsChartAxisTitle,
               total:ReportsModel.formatNumber(report.creditsInfo.totalAmountCredit.toString()) ,
               spotList: report.makeCreditFlSpot(),
+              meetingNumber: report.meettingNumber(),
             ),
           ),
           DoubleCardsInfo(

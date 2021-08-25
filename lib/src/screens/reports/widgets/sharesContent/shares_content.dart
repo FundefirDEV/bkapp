@@ -23,6 +23,7 @@ class ShareContent extends StatelessWidget {
               axisTitle: I18n.of(context).reportsScreenSharesChartAxisTitle,
               total: ReportsModel.formatNumber(report.totalAmountShares.toString()) ,
               spotList: report.makeShareFlSpot(),
+              meetingNumber: report.meettingNumber(),
             ),
           ),
           DoubleCardsInfo(

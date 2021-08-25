@@ -23,6 +23,7 @@ class InstallmentsContent extends StatelessWidget {
                   I18n.of(context).reportsScreenInstallmentsChartAxisTitle,
               total: ReportsModel.formatNumber(report.creditsInfo.totalPayedValue.toString()),
               spotList: report.makeInstallmentFlSpot(),
+              meetingNumber: report.meettingNumber(),
             ),
           ),
           DoubleCardsInfo(

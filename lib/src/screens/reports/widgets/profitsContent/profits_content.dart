@@ -23,6 +23,7 @@ class ProfitsContent extends StatelessWidget {
               axisTitle: I18n.of(context).reportsScreenProfitsChartEarningPerShare,
               total:ReportsModel.formatNumber(report.totalAmountEarning.toString()) ,
               spotList: report.makeEarningFlSpot(),
+              meetingNumber: report.meettingNumber(),
             ),
           ),
          DoubleCardsInfo(

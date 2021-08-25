@@ -11,7 +11,8 @@ class Chart extends StatefulWidget {
       this.values,
       @required this.spotList,
       this.axisTitle,
-      this.maxY
+      this.maxY,
+      @required this.meetingNumber
   })
       : super(key: key);
 
@@ -21,6 +22,7 @@ class Chart extends StatefulWidget {
   final List<dynamic> values;
   final List<FlSpot> spotList;
   final double maxY;
+  final List<int> meetingNumber;
 
   @override
   _ChartState createState() => _ChartState();
@@ -76,9 +78,10 @@ class _ChartState extends State<Chart> {
                   getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                     return touchedBarSpots.map((barSpot) {
                       final flSpot = barSpot;
-                      if (flSpot.x == 0 || flSpot.x == 7.4) return null;
+                      if (flSpot.x == 0 ) return null;
                       return LineTooltipItem(
-                          'Meeting ${flSpot.x.toInt()} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
+                          //'Meeting ${flSpot.x.toInt()} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
+                          '${flSpot.y} ${widget.axisTitle.toLowerCase()}',
                           TextStyle(color: Colors.white));
                     }).toList();
                   }),
@@ -102,9 +105,9 @@ class _ChartState extends State<Chart> {
               showTitles: true,
               getTitles: (value) => '# ${value.toInt().toString()}',
               getTextStyles: (value) => TextStyle(
-                  color: Theme.of(context).colorScheme.grayColor,
-                  fontSize: 10,
-                  letterSpacing: 1),
+                color: Theme.of(context).colorScheme.grayColor,
+                fontSize: 10,
+                letterSpacing: 1),
             ),
           ),
           borderData: FlBorderData(show: false),
