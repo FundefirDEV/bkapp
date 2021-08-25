@@ -512,7 +512,8 @@
     "profitsChart": {
       "title": "Ganancias por repartir",
       "axisTitle": "GANANCIAS",
-      "sharesValue": "Ganancias"
+      "sharesValue": "Ganancias",
+      "earningPerShare" : "Ganancia por acción"
     },
     "tabs": {
       "shares": "ACCIONES",

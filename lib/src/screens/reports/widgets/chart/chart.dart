@@ -132,12 +132,16 @@ class _ChartState extends State<Chart> {
         isStepLineChart: false,
         colors: gradientColors,
         barWidth: 3,
+        preventCurveOverShooting: true,
 
         isStrokeCapRound: false,
         dotData: FlDotData(
             show: true,
+            // checkToShowDot: (spot, barData) {
+            //   return spot.x != 7.4 && spot.x != 0;
+            // },
             checkToShowDot: (spot, barData) {
-              return spot.x != 7.4 && spot.x != 0;
+              return spot.x >= 0;
             },
             getDotPainter: (spot, percent, barData, index) {
               return FlDotCirclePainter(

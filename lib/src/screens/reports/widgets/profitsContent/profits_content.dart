@@ -20,7 +20,7 @@ class ProfitsContent extends StatelessWidget {
             height: SizeConfig.blockSizeVertical * 40,
             child: Chart(
               title: I18n.of(context).reportsScreenProfitsChartTitle,
-              axisTitle: I18n.of(context).reportsScreenProfitsChartAxisTitle,
+              axisTitle: I18n.of(context).reportsScreenProfitsChartEarningPerShare,
               total:ReportsModel.formatNumber(report.totalAmountEarning.toString()) ,
               spotList: report.makeEarningFlSpot(),
             ),

@@ -520,7 +520,8 @@
     "profitsChart": {
       "title": "Profits to be distributed",
       "axisTitle": "PROFITS",
-      "sharesValue": "Profits"
+      "sharesValue": "Profits",
+      "earningPerShare" : "Share Earning"
     },
     "tabs": {
       "shares": "SHARES",

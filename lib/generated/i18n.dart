@@ -832,6 +832,8 @@ class I18n implements WidgetsLocalizations {
   String get reportsScreenProfitsChartAxisTitle => "PROFITS";
   /// "Profits"
   String get reportsScreenProfitsChartSharesValue => "Profits";
+  /// "Share Earning"
+  String get reportsScreenProfitsChartEarningPerShare => "Share Earning";
   /// "SHARES"
   String get reportsScreenTabsShares => "SHARES";
   /// "CREDITS"
@@ -2052,6 +2054,9 @@ class _I18n_es_ES extends I18n {
   /// "Ganancias"
   @override
   String get reportsScreenProfitsChartSharesValue => "Ganancias";
+  /// "Ganancia por acción"
+  @override
+  String get reportsScreenProfitsChartEarningPerShare => "Ganancia por acción";
   /// "ACCIONES"
   @override
   String get reportsScreenTabsShares => "ACCIONES";
