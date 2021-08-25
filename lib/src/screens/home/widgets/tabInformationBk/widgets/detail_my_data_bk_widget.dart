@@ -18,6 +18,8 @@ class DetailMyDataBkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    final navigateBloc = context.read<MenuNavigatorBloc>();
     final sizeTitle = SizeConfig.safeBlockHorizontal * 3.5;
     final sizeTitleValue = sizeTitle * 1.5;
 
@@ -79,12 +81,17 @@ class DetailMyDataBkWidget extends StatelessWidget {
                         )),
                     Container(
                         alignment: Alignment.topRight,
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical * 4,
-                              right: SizeConfig.safeBlockHorizontal * 7),
-                          child: SvgPicture.asset('assets/images/path.svg',
-                              fit: BoxFit.contain),
+                        child: GestureDetector(
+                          onTap: () => navigateBloc.add(ButtonPressed(
+                            goTo: HomeRoutesConstant.profileScreen)
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                top: SizeConfig.safeBlockVertical * 4,
+                                right: SizeConfig.safeBlockHorizontal * 7),
+                            child: SvgPicture.asset('assets/images/path.svg',
+                                fit: BoxFit.contain),
+                          ),
                         ))
                   ],
                 )),
