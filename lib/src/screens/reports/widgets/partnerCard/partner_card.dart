@@ -61,7 +61,10 @@ class PartnerCard extends StatelessWidget {
                     children: [
                       // Text(titleDetail2,
                       //     style: TextStyle(fontWeight: FontWeight.w700)),
-                      Text(detailValue2)
+                      Text(detailValue2 ,
+                      overflow: TextOverflow.clip, 
+                      style: TextStyle(fontSize: 12.0)
+                    )
                   ],
                 ),
               ),
@@ -71,7 +74,9 @@ class PartnerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 //Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
-                Text(ReportsModel.formatNumber(detailValue1))
+                Text(ReportsModel.formatNumber(detailValue1),
+                style: TextStyle(fontSize: 13.0)
+              )
             ],
           )
         ],
