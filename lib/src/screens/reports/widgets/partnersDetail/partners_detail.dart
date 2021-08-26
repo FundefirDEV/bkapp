@@ -34,7 +34,7 @@ class PartnersDetail extends StatelessWidget {
                     style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700) ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 25 , left: 50),
+                padding: EdgeInsets.only(bottom: 25 , left: 60),
                 child: Text(titleDetail2,
                 textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14.0 , 
@@ -42,7 +42,7 @@ class PartnersDetail extends StatelessWidget {
                 )),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 25 , right: 15),
+                padding: EdgeInsets.only(bottom: 25 , right: 5),
                 child: Text(titleDetail,textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700)),
               ),

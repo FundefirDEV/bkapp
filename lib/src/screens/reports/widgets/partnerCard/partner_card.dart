@@ -47,15 +47,16 @@ class PartnerCard extends StatelessWidget {
                     // Text(I18n.of(context).reportsScreenPartner,
                     //   style: TextStyle(fontWeight: FontWeight.w700)),
                     Container(
-                      width: 50.0,
-                      child: Text(partnerName , overflow: TextOverflow.clip,)
+                      width: 80.0,
+                      child: Text(partnerName , overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 11.5))
                     )
                   ],
                 ),
               ),
               if(titleDetail2 != '')
                 Padding(
-                  padding: EdgeInsets.only(left: 30.0 + padingMiddle),
+                  padding: EdgeInsets.only(left: 10.0 + padingMiddle),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
