@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/models/reports_model.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -31,54 +32,50 @@ class PartnerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+
+    SizeConfig().init(context);
+
+    return Container(
       padding: EdgeInsets.only(bottom: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              SvgPicture.asset(imageGender[gender.toLowerCase()]),
-              Padding(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Text(I18n.of(context).reportsScreenPartner,
-                    //   style: TextStyle(fontWeight: FontWeight.w700)),
-                    Container(
-                      width: 80.0,
-                      child: Text(partnerName , overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 11.5))
-                    )
-                  ],
-                ),
-              ),
-              if(titleDetail2 != '')
-                Padding(
-                  padding: EdgeInsets.only(left: 10.0 + padingMiddle),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Text(titleDetail2,
-                      //     style: TextStyle(fontWeight: FontWeight.w700)),
-                      Text(detailValue2 ,
-                      overflow: TextOverflow.clip, 
-                      style: TextStyle(fontSize: 12.0)
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+          Container(
+            width:SizeConfig.blockSizeHorizontal * 30 ,
+            child: Row(
               children: [
-                //Text(titleDetail, style: TextStyle(fontWeight: FontWeight.w700)),
-                Text(ReportsModel.formatNumber(detailValue1),
-                style: TextStyle(fontSize: 13.0)
-              )
-            ],
+                SvgPicture.asset(
+                  imageGender[gender.toLowerCase()] , 
+                  width:SizeConfig.blockSizeHorizontal * 10 
+                ),
+                Container(
+                  width: SizeConfig.blockSizeHorizontal * 18,
+                  padding: EdgeInsets.only(
+                    left:SizeConfig.blockSizeHorizontal* 2
+                  ),
+                  child: Text(partnerName , overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3)
+                  ),
+                ),
+              ],
+            ),
+          ),
+            if(titleDetail2 != '')
+                Container(
+                  width:  SizeConfig.blockSizeHorizontal * 25,
+                  child: Text(detailValue2 ,
+                    overflow: TextOverflow.clip, 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3)
+                ),
+              ),
+            Container(
+              width:  SizeConfig.blockSizeHorizontal * 25,
+              child: Text(
+                ReportsModel.formatNumber(detailValue1),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3)
+            ),
           )
         ],
       ),

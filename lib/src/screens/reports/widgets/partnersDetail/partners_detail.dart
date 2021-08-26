@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets.dart';
@@ -20,31 +21,47 @@ class PartnersDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+
+    SizeConfig().init(context);
+
+    return Container(
+      width: SizeConfig.screenWidth,
       padding: EdgeInsets.only(bottom: 50.0),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 25 , left: 25),
-                child: Text(I18n.of(context).reportsScreenPartner,
-                
-                    style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700) ),
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 30,
+                padding: EdgeInsets.only(bottom: 25 , 
+                  //left: 25
+                ),
+                child: 
+                  Text(I18n.of(context).reportsScreenPartner, textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.3 , 
+                  fontWeight: FontWeight.w700) ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 25 , left: 60),
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 25,
+                padding: EdgeInsets.only(bottom: 25 , 
+                //left: 60
+                ),
                 child: Text(titleDetail2,
                 textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 14.0 , 
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.3 , 
                   fontWeight: FontWeight.w700,
                 )),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 25 , right: 5),
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 25,
+                padding: EdgeInsets.only(bottom: 25 , 
+                //right: 5
+                ),
                 child: Text(titleDetail,textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 14.0 , fontWeight: FontWeight.w700)),
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.3 , 
+                  fontWeight: FontWeight.w700)
+                ),
               ),
             ],
           ),
