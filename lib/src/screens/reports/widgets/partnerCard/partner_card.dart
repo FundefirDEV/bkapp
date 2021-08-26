@@ -35,13 +35,17 @@ class PartnerCard extends StatelessWidget {
 
     SizeConfig().init(context);
 
+    double partnerContainerExtraSize = detailValue2 == '' ?
+      40 : 0;
+
     return Container(
       padding: EdgeInsets.only(bottom: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width:SizeConfig.blockSizeHorizontal * 30 ,
+            width:
+              SizeConfig.blockSizeHorizontal * 30 + partnerContainerExtraSize ,
             child: Row(
               children: [
                 SvgPicture.asset(
@@ -49,12 +53,20 @@ class PartnerCard extends StatelessWidget {
                   width:SizeConfig.blockSizeHorizontal * 10 
                 ),
                 Container(
-                  width: SizeConfig.blockSizeHorizontal * 18,
+                  width: 
+                    SizeConfig.blockSizeHorizontal * 18 + partnerContainerExtraSize ,
                   padding: EdgeInsets.only(
                     left:SizeConfig.blockSizeHorizontal* 2
                   ),
-                  child: Text(partnerName , overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3)
+                  child: Tooltip(
+                    message: partnerName,
+                    preferBelow: false,
+                    waitDuration: const Duration(milliseconds: 250),
+                    child: Text(
+                      partnerName , 
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3)
+                    ),
                   ),
                 ),
               ],

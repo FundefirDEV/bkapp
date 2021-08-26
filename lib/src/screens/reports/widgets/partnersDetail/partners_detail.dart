@@ -35,7 +35,6 @@ class PartnersDetail extends StatelessWidget {
               Container(
                 width: SizeConfig.blockSizeHorizontal * 30,
                 padding: EdgeInsets.only(bottom: 25 , 
-                  //left: 25
                 ),
                 child: 
                   Text(I18n.of(context).reportsScreenPartner, textAlign: TextAlign.center,
@@ -45,7 +44,6 @@ class PartnersDetail extends StatelessWidget {
               Container(
                 width: SizeConfig.blockSizeHorizontal * 25,
                 padding: EdgeInsets.only(bottom: 25 , 
-                //left: 60
                 ),
                 child: Text(titleDetail2,
                 textAlign: TextAlign.center,
@@ -56,7 +54,6 @@ class PartnersDetail extends StatelessWidget {
               Container(
                 width: SizeConfig.blockSizeHorizontal * 25,
                 padding: EdgeInsets.only(bottom: 25 , 
-                //right: 5
                 ),
                 child: Text(titleDetail,textAlign: TextAlign.center,
                   style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.3 , 
