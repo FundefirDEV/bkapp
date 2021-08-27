@@ -1,5 +1,3 @@
-import 'package:bkapp_flutter/src/routes/route_constants.dart';
-import 'package:bkapp_flutter/src/screens/editProfile/edit_profile_screen.dart';
 import 'package:bkapp_flutter/src/screens/profile/widgets/header_profile_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/core/models/profile_model.dart';

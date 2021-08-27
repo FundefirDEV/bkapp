@@ -40,7 +40,7 @@ class TopContainerEditRulesScreen extends StatelessWidget {
         key: Key('top_container_column_rules_edit_Screen'),
         children: <Widget>[
           SizedBox(height: SizeConfig.blockSizeVertical * 2.6),
-          TopContainerContentRulesScreen().saloAndArrow(),
+          TopContainerContentRulesScreen(context).saloAndArrow(),
           Container(
             margin: EdgeInsets.only(left: SizeConfig.safeBlockVertical * 3.5),
             child: TitleHeaderWidget(
