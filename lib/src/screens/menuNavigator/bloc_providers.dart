@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profileEdition/bloc/profile_edit_Bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/reporstBloc/reports_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/timeLineCredit/time_line_credit_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/timeLineShares/bloc/time_line_shares_bloc.dart';
 import 'package:bkapp_flutter/core/services/repositories/http_repositories.dart';
@@ -65,5 +66,9 @@ List<dynamic> blocProviders = [
   BlocProvider(create: (context) => TimeLineCreditBloc()),
   BlocProvider(
     create: (context) => ProfileEditBloc(repository: profileEditRepository),
+  ),
+
+  BlocProvider(
+    create: (context) => ReportsBloc(repository: reportsRepository),
   ),
 ];

@@ -489,7 +489,9 @@
     "reserve": "Reserva para Incobrables",
     "detail": "Detalle",
     "partner": "Socio",
+    "quantity" : "CANT",
     "total": "Total:",
+    "ApproveCreditDate": "Fecha de aprobación",
     "sharesChart": {
       "title": "Acciones del grupo",
       "axisTitle": "ACCIONES",
@@ -503,12 +505,15 @@
     "installmentsChart": {
       "title": "Monto de cuotas",
       "axisTitle": "CUOTAS PAGADAS",
-      "sharesValue": "Cuotas por pagar"
+      "sharesValue": "Cuotas por pagar",
+      "debt": "Monto por pagar"
+
     },
     "profitsChart": {
       "title": "Ganancias por repartir",
       "axisTitle": "GANANCIAS",
-      "sharesValue": "Ganancias"
+      "sharesValue": "Ganancias",
+      "earningPerShare" : "Ganancia por acción"
     },
     "tabs": {
       "shares": "ACCIONES",

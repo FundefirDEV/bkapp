@@ -43,7 +43,7 @@ class TopContainerRulesSceen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          TopContainerContentRulesScreen().saloAndArrow(),
+          TopContainerContentRulesScreen(context).saloAndArrow(),
           Container(
             margin: EdgeInsets.only(left: SizeConfig.safeBlockVertical * 3.5),
             child: TitleHeaderWidget(

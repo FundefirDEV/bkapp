@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 
 class Chart extends StatefulWidget {
   const Chart(
-      {Key key,
+  {Key key,
       @required this.title,
       @required this.total,
       this.values,
       @required this.spotList,
-      this.axisTitle})
+      this.axisTitle,
+      this.maxY,
+      @required this.meetingNumber
+  })
       : super(key: key);
 
   final String title;
@@ -18,6 +21,8 @@ class Chart extends StatefulWidget {
   final String total;
   final List<dynamic> values;
   final List<FlSpot> spotList;
+  final double maxY;
+  final List<int> meetingNumber;
 
   @override
   _ChartState createState() => _ChartState();
@@ -73,9 +78,10 @@ class _ChartState extends State<Chart> {
                   getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                     return touchedBarSpots.map((barSpot) {
                       final flSpot = barSpot;
-                      if (flSpot.x == 0 || flSpot.x == 7.4) return null;
+                      if (flSpot.x == 0 ) return null;
                       return LineTooltipItem(
-                          '${months[flSpot.x.toInt()]} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
+                          //'Meeting ${flSpot.x.toInt()} \n${flSpot.y} ${widget.axisTitle.toLowerCase()}',
+                          '${flSpot.y} ${widget.axisTitle.toLowerCase()}',
                           TextStyle(color: Colors.white));
                     }).toList();
                   }),
@@ -97,18 +103,18 @@ class _ChartState extends State<Chart> {
             leftTitles: SideTitles(showTitles: false),
             bottomTitles: SideTitles(
               showTitles: true,
-              getTitles: (value) => months[value.toInt()],
+              getTitles: (value) => '# ${value.toInt().toString()}',
               getTextStyles: (value) => TextStyle(
-                  color: Theme.of(context).colorScheme.grayColor,
-                  fontSize: 10,
-                  letterSpacing: 1),
+                color: Theme.of(context).colorScheme.grayColor,
+                fontSize: 10,
+                letterSpacing: 1),
             ),
           ),
           borderData: FlBorderData(show: false),
           minX: 0,
-          maxX: 7.4,
+          maxX: 6.5,
           minY: 0,
-          maxY: 10,
+          maxY: widget.maxY,
           axisTitleData: FlAxisTitleData(
               leftTitle: AxisTitle(
                   titleText: '# ${widget.axisTitle}',
@@ -126,13 +132,19 @@ class _ChartState extends State<Chart> {
       LineChartBarData(
         spots: widget.spotList,
         isCurved: true,
+        isStepLineChart: false,
         colors: gradientColors,
-        barWidth: 0,
+        barWidth: 3,
+        preventCurveOverShooting: true,
+
         isStrokeCapRound: false,
         dotData: FlDotData(
             show: true,
+            // checkToShowDot: (spot, barData) {
+            //   return spot.x != 7.4 && spot.x != 0;
+            // },
             checkToShowDot: (spot, barData) {
-              return spot.x != 7.4 && spot.x != 0;
+              return spot.x >= 0;
             },
             getDotPainter: (spot, percent, barData, index) {
               return FlDotCirclePainter(

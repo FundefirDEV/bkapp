@@ -498,6 +498,8 @@
     "detail": "Detail",
     "partner": "Partner",
     "total": "Total:",
+    "quantity" : "QTY",
+    "ApproveCreditDate": "Approve Data",
     "sharesChart": {
       "title": "Group's shares",
       "axisTitle": "SHARES",
@@ -511,12 +513,15 @@
     "installmentsChart": {
       "title": "Group's Installments",
       "axisTitle": "FEES PAID",
-      "sharesValue": "Fees to pay"
+      "sharesValue": "Fees to pay",
+      "debt": "Amount to pay"
+
     },
     "profitsChart": {
       "title": "Profits to be distributed",
       "axisTitle": "PROFITS",
-      "sharesValue": "Profits"
+      "sharesValue": "Profits",
+      "earningPerShare" : "Share Earning"
     },
     "tabs": {
       "shares": "SHARES",
