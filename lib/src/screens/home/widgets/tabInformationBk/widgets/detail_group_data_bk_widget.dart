@@ -1,9 +1,12 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/core/models/bank_info_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class DetailGroupDataBkWidget extends StatelessWidget {
   final Group information;
@@ -12,6 +15,8 @@ class DetailGroupDataBkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final navigateBloc = context.read<MenuNavigatorBloc>();
+
     final sizeTitle = SizeConfig.safeBlockHorizontal * 3.5;
     final sizeTitleValue = sizeTitle * 1.5;
 
@@ -61,18 +66,23 @@ class DetailGroupDataBkWidget extends StatelessWidget {
                     ),
                     Container(
                         alignment: Alignment.topRight,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: SizeConfig.safeBlockVertical * 4,
-                              horizontal: SizeConfig.safeBlockHorizontal * 7),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .primaryColor[100],
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: const Radius.circular(10))),
-                          child: SvgPicture.asset('assets/images/path.svg',
-                              fit: BoxFit.contain),
+                        child: GestureDetector(
+                          onTap: () => navigateBloc.add(ButtonPressed(
+                            goTo: HomeRoutesConstant.reportsScreen)
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.safeBlockVertical * 4,
+                                horizontal: SizeConfig.safeBlockHorizontal * 7),
+                            decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryColor[100],
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: const Radius.circular(10))),
+                            child: SvgPicture.asset('assets/images/path.svg',
+                                fit: BoxFit.contain),
+                          ),
                         ))
                   ],
                 )),

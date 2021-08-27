@@ -1,5 +1,4 @@
 import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
-import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
@@ -20,7 +19,7 @@ class RegisterPhoneFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    //ignore: close_sinks
+
     final profile = context.read<AppBloc>().profileRegisterBloc;
 
     return Container(
@@ -30,29 +29,37 @@ class RegisterPhoneFormWidget extends StatelessWidget {
         Container(
           width: SizeConfig.blockSizeHorizontal * 8,
           margin: EdgeInsets.only(
-              right: SizeConfig.blockSizeHorizontal * 1,
-              top: SizeConfig.blockSizeVertical * 4),
+            right: SizeConfig.blockSizeHorizontal * 1,
+            top: SizeConfig.blockSizeVertical * 4),
           child: SvgPicture.asset(country.image),
         ),
         Container(
-          width: SizeConfig.blockSizeHorizontal * 75,
+          width: SizeConfig.blockSizeHorizontal * 12,
+          margin: EdgeInsets.only(
+            left: SizeConfig.blockSizeHorizontal * 1,
+            top: SizeConfig.blockSizeVertical * 4),
+          child: Text('${country.phoneCode}'),
+        ),
+        Container(
+          width: SizeConfig.blockSizeHorizontal * 60,
           height: SizeConfig.blockSizeVertical * 15,
           child: TextFieldBlocBuilder(
-              key: Key('phone-input-field'),
-              keyboardType: TextInputType.number,
-              textFieldBloc: profile.phoneBloc.phone,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(20),
-                //PhoneFormatter()
-              ],
-              errorBuilder: errorHandler,
-              onChanged: (value) {
-                isValidating(value);
-                return value;
-              },
-              decoration:
-                  InputDecoration(labelText: I18n.of(context).formPhone)),
+            key: Key('phone-input-field'),
+            keyboardType: TextInputType.number,
+            textFieldBloc: profile.phoneBloc.phone,
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(20),
+              //PhoneFormatter()
+            ],
+            errorBuilder: errorHandler,
+            onChanged: (value) {
+              isValidating(value);
+              return value;
+            },
+            decoration: 
+              InputDecoration(labelText: I18n.of(context).formPhone)
+          ),
         ),
       ],
     ));

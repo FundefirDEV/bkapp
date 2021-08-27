@@ -330,4 +330,10 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/verify-multiple-phones";
   }
+
+  static String reports({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/report";
+  }
 }
