@@ -323,8 +323,15 @@ class ApiProvider {
   }
 
   getReports({@required String token}) async{
- final endPoint = ApiEndpoints.reports();
+    final endPoint = ApiEndpoints.reports();
     return await _httpRequest.get(
       httpClient: httpClient, url: endPoint , token: token);
+  }
+
+  profitPayment({@required String token , @required String partnerId}) async{
+    final endPoint = ApiEndpoints.profitPayment();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint , token: token,
+      param: partnerId );
   }
 }

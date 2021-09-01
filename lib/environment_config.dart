@@ -334,4 +334,10 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/report";
   }
+
+  static String profitPayment({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/profit-payment-partners";
+  }
 }

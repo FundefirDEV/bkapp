@@ -7,8 +7,13 @@ class ProfitPaymentRepository {
       : assert(apiProvider != null);
   ProfitPaymentRepository.test({@required this.apiProvider});
 
-  Future<Map<String, dynamic>> getProfitPayment(String token) async {
-    final Map profitPayment = {'hola': 'hola'};
+  Future<Map<String, dynamic>> getProfitPayment(String token , String partnerId) async {
+    final Map profitPayment = await apiProvider.profitPayment(token: token, partnerId: partnerId);
     return profitPayment;
+  }
+
+  Future<List<dynamic>> getPartners(String token) async {
+    final List<dynamic> partners = await apiProvider.getPartners(token);
+    return partners;
   }
 }

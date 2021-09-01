@@ -19,8 +19,9 @@ class ProfitPaymentInitialize extends ProfitPaymentEvent {
 }
 
 class ProfitPaymentPartnerSelected extends ProfitPaymentEvent {
-  ProfitPaymentPartnerSelected({this.idPartner});
+  ProfitPaymentPartnerSelected({@required this.idPartner , @required this.token});
   final String idPartner;
+  final String token;
 
   @override
   List<Object> get props => [idPartner];

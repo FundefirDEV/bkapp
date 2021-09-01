@@ -66,33 +66,39 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
             key: Key('bloc-listener-profit-payment-screen'),
             onSuccess: (context, state) {
               context.read<ProfitPaymentBloc>().add(
-                  ProfitPaymentPartnerSelected(
-                      idPartner:
-                          profitPaymentFormBloc.idPartner.value.toString()));
+                ProfitPaymentPartnerSelected(
+                  idPartner:
+                    profitPaymentFormBloc.idPartner.value.toString(),
+                  token:widget.tokenUser )
+              );
             },
             onFailure: (context, state) {
               UtilsTools.showErrorDialog(context, state.failureResponse);
             },
             child: AppBarWidget(
-                userName: widget.userName,
-                container: ContainerProfitPaymentWidget(
-                    historyProfit: historyProfit,
-                    profitPartner: profitPartner,
-                    profitPaymentFormBloc: profitPaymentFormBloc,
-                    selectedYearProfitPayment: selectedYearProfitPayment,
-                    showAccordionDetail:
-                        state is ProfitPaymentDetail ? true : false,
-                    onSelectedProfitPayment: (value) {
-                      setState(() {
-                        value.pay
-                            // ignore: unnecessary_statements
-                            ? {
-                                print('Año a pagar ganancias: ' + value.year),
-                                selectedYearProfitPayment.add(value.year)
-                              }
-                            : selectedYearProfitPayment.remove(value.year);
-                      });
-                    })));
+              userName: widget.userName,
+              container: ContainerProfitPaymentWidget(
+                historyProfit: historyProfit,
+                profitPartner: profitPartner,
+                profitPaymentFormBloc: profitPaymentFormBloc,
+                selectedYearProfitPayment: selectedYearProfitPayment,
+                showAccordionDetail:
+                    state is ProfitPaymentDetail ? true : false,
+                onSelectedProfitPayment: (value) {
+                  setState(() {
+                    value.pay
+                        // ignore: unnecessary_statements
+                        ? {
+                            print('Año a pagar ganancias: ' + value.year),
+                            selectedYearProfitPayment.add(value.year)
+                          }
+                        : selectedYearProfitPayment.remove(value.year);
+                  }
+                );
+              }
+            )
+          )
+        );
       });
     });
   }
