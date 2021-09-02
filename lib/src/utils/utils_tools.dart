@@ -80,6 +80,9 @@ class UtilsTools {
   static dynamic formatConfig({decimalDigits = 0}) => NumberFormat.currency(
       locale: 'en_US', decimalDigits: decimalDigits, symbol: r'$');
 
+  static dynamic formatTwoDecimals({decimalDigits = 2}) => NumberFormat.currency(
+      locale: 'en_US', decimalDigits: decimalDigits, symbol: r'$');
+
   static String getMounthWithNumber(mount){
     switch (mount) {
       case 1:

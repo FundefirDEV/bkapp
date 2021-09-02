@@ -30,7 +30,7 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
           earningsMonth: widget.profitDetail.earningsMonth,
           detail: widget.profitDetail.detail
               .map((detail) => EnarningsPerYear(
-                  earning: detail.earning, year: detail.year, pay: detail.pay))
+                  earning: detail.getEarning, year: detail.year, pay: detail.isPaid))
               .toList());
     });
   }
@@ -78,7 +78,7 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
               Text(detail.earning),
               Checkbox(
                   value: detail.pay,
-                  onChanged: !widget.profitDetail.detail[index].pay
+                  onChanged: !widget.profitDetail.detail[index].isPaid
                       ? (bool value) {
                           setState(() => detail.pay = value);
                           widget.onSelectedProfitPayment(detail);
@@ -99,7 +99,7 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
                   fontSize: SizeConfig.blockSizeHorizontal * 4,
                   color: Theme.of(context).colorScheme.grayColor,
                   fontWeight: FontWeight.bold)),
-          Text(widget.profitDetail.earningsMonth ??
+          Text(widget.profitDetail.getEarningsMonth ??
               I18n.of(context).profitPaymentPaid)
         ]));
   }

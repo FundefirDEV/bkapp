@@ -35,38 +35,10 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
     if (event is ProfitPaymentPartnerSelected) {
       try {
         yield ProfitPaymentLoading();
-        print(event.idPartner);
-
+        
         final profitResponse = await repository.getProfitPayment(event.token, event.idPartner);
 
-        //print(profitResponse);
-
-        YearProfitPayment year1 =
-           YearProfitPayment(year: '2018', earning: r'$220.000');
-        YearProfitPayment year2 =
-           YearProfitPayment(year: '2019', earning: r'$20.000');
-        YearProfitPayment year3 =
-           YearProfitPayment(year: '2020', earning: r'$100.300');
-        List<YearProfitPayment> listProfit = [];
-        listProfit.add(year1);
-        listProfit.add(year2);
-        listProfit.add(year3);
-        ProfitPartnerDetailModel profitDetail1 = ProfitPartnerDetailModel(
-            month: 'Agosto', earningsMonth: r'$100.300', detail: listProfit);
-        ProfitPartnerDetailModel profitDetail2 = ProfitPartnerDetailModel(
-            month: 'Septiembre',
-            earningsMonth: r'$250.300',
-            detail: listProfit);
-        List<ProfitPartnerDetailModel> listProfileDetail = [];
-        listProfileDetail.add(profitDetail1);
-        listProfileDetail.add(profitDetail2);
-        // ProfitPartnerModel profitPartner = ProfitPartnerModel(
-        //     accumulableEarnings: profitResponse['totalEarning'].toString(), profitDetail: listProfileDetail);
-
         ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
-        profitPartner.profitDetail = listProfileDetail;
-
-        print(profitPartner.toJson());
 
         yield ProfitPaymentDetail(profitPartner: profitPartner);
       } catch (e) {
@@ -77,26 +49,26 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
     if (event is TurnIntoShares) {
       yield ProfitPaymentLoading();
       print(event.yearsTurnIntoShares);
-      YearProfitPayment year1 =
-        YearProfitPayment(year: '2018', earning: r'$220.000', pay: true);
-      YearProfitPayment year2 =
-        YearProfitPayment(year: '2019', earning: r'$20.000', pay: true);
-      YearProfitPayment year3 =
-        YearProfitPayment(year: '2020', earning: r'$100.300', pay: true);
-      List<YearProfitPayment> listProfit = [];
+      DataEarningPerMonth year1 =
+        DataEarningPerMonth(year: '2018', earning: 200.0, isPaid: true);
+      DataEarningPerMonth year2 =
+        DataEarningPerMonth(year: '2019', earning: 200.0, isPaid: true);
+      DataEarningPerMonth year3 =
+        DataEarningPerMonth(year: '2020', earning: 200.0, isPaid: true);
+      List<DataEarningPerMonth> listProfit = [];
       listProfit.add(year1);
       listProfit.add(year2);
       listProfit.add(year3);
       ProfitPartnerDetailModel profitDetail1 = ProfitPartnerDetailModel(
           month: 'Agosto', earningsMonth: null, detail: listProfit);
 
-      YearProfitPayment year4 =
-        YearProfitPayment(year: '2018', earning: r'$220.000');
-      YearProfitPayment year5 =
-        YearProfitPayment(year: '2019', earning: r'$20.000');
-      YearProfitPayment year6 =
-        YearProfitPayment(year: '2020', earning: r'$100.300');
-      List<YearProfitPayment> listProfit2 = [];
+      DataEarningPerMonth year4 =
+        DataEarningPerMonth(year: '2018', earning: 200.0);
+      DataEarningPerMonth year5 =
+        DataEarningPerMonth(year: '2019', earning: 200.0);
+      DataEarningPerMonth year6 =
+        DataEarningPerMonth(year: '2020', earning: 200.0);
+      List<DataEarningPerMonth> listProfit2 = [];
       listProfit2.add(year4);
       listProfit2.add(year5);
       listProfit2.add(year6);
@@ -106,7 +78,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
       listProfileDetail.add(profitDetail1);
       listProfileDetail.add(profitDetail2);
       ProfitPartnerModel profitPartner = ProfitPartnerModel(
-          accumulableEarnings: r'$780.600', profitDetail: listProfileDetail);
+          accumulableEarnings: r'$780.600');
       yield ProfitPaymentDetail(profitPartner: profitPartner);
     }
   }
