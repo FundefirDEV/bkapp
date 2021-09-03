@@ -338,7 +338,7 @@
     "creditMaxValue": "Máximo Valor del Crédito",
     "expenseFoundPercentage": "Porcentaje fondo de Gastos",
     "badDebtReservePercentage": "Fondo de reserva para incobrables",
-    "maxCreditFactor": "Maximum Credit Factor",
+    "maxCreditFactor": "Relación Credito Inversion",
     "defaultInstalmentsPeriodDays": "Periodo de Pago de Cuotas",
 
 

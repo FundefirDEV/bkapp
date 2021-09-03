@@ -346,7 +346,7 @@
     "creditMaxValue": "Maximum Credit Value",
     "expenseFoundPercentage": "Expenditure Fund Percentage",
     "badDebtReservePercentage": "Reserve fund for bad debts",
-    "maxCreditFactor": "Maximum Credit Factor",
+    "maxCreditFactor": "Credit Investment Relationship",
     "defaultInstalmentsPeriodDays": "Payment period of installment",
 
     "changeRulesErrorTittle": "Error when trying to change",

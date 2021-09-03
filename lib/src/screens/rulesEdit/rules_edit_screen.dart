@@ -64,7 +64,7 @@ class _RulesEditScreenState extends State<RulesEditScreen> {
                       textInputType: TextInputType.number),
                     ChangeRulesTextFieldWidget(
                       textFieldBloc: rulesEditFormBloc.defaultRatePercentage,
-                      title: I18n.of(context).rulesScreenBadDebtReservePercentage,
+                      title: I18n.of(context).rulesScreenDefaultInterest,
                       textInputType: TextInputType.number),
                     ChangeRulesTextFieldWidget(
                       textFieldBloc: rulesEditFormBloc.creditMaxInstallments,
