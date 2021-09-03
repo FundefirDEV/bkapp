@@ -550,8 +550,8 @@ class I18n implements WidgetsLocalizations {
   String get rulesScreenExpenseFoundPercentage => "Expenditure Fund Percentage";
   /// "Reserve fund for bad debts"
   String get rulesScreenBadDebtReservePercentage => "Reserve fund for bad debts";
-  /// "Maximum Credit Factor"
-  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Credit Investment Relationship"
+  String get rulesScreenMaxCreditFactor => "Credit Investment Relationship";
   /// "Payment period of installment"
   String get rulesScreenDefaultInstalmentsPeriodDays => "Payment period of installment";
   /// "Error when trying to change"
@@ -802,6 +802,10 @@ class I18n implements WidgetsLocalizations {
   String get reportsScreenPartner => "Partner";
   /// "Total:"
   String get reportsScreenTotal => "Total:";
+  /// "QTY"
+  String get reportsScreenQuantity => "QTY";
+  /// "Approve Data"
+  String get reportsScreenApproveCreditDate => "Approve Data";
   /// "Group's shares"
   String get reportsScreenSharesChartTitle => "Group's shares";
   /// "SHARES"
@@ -820,12 +824,16 @@ class I18n implements WidgetsLocalizations {
   String get reportsScreenInstallmentsChartAxisTitle => "FEES PAID";
   /// "Fees to pay"
   String get reportsScreenInstallmentsChartSharesValue => "Fees to pay";
+  /// "Amount to pay"
+  String get reportsScreenInstallmentsChartDebt => "Amount to pay";
   /// "Profits to be distributed"
   String get reportsScreenProfitsChartTitle => "Profits to be distributed";
   /// "PROFITS"
   String get reportsScreenProfitsChartAxisTitle => "PROFITS";
   /// "Profits"
   String get reportsScreenProfitsChartSharesValue => "Profits";
+  /// "Share Earning"
+  String get reportsScreenProfitsChartEarningPerShare => "Share Earning";
   /// "SHARES"
   String get reportsScreenTabsShares => "SHARES";
   /// "CREDITS"
@@ -1623,9 +1631,9 @@ class _I18n_es_ES extends I18n {
   /// "Fondo de reserva para incobrables"
   @override
   String get rulesScreenBadDebtReservePercentage => "Fondo de reserva para incobrables";
-  /// "Maximum Credit Factor"
+  /// "Relación Credito Inversion"
   @override
-  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  String get rulesScreenMaxCreditFactor => "Relación Credito Inversion";
   /// "Periodo de Pago de Cuotas"
   @override
   String get rulesScreenDefaultInstalmentsPeriodDays => "Periodo de Pago de Cuotas";
@@ -2001,6 +2009,12 @@ class _I18n_es_ES extends I18n {
   /// "Total:"
   @override
   String get reportsScreenTotal => "Total:";
+  /// "CANT"
+  @override
+  String get reportsScreenQuantity => "CANT";
+  /// "Fecha de aprobación"
+  @override
+  String get reportsScreenApproveCreditDate => "Fecha de aprobación";
   /// "Acciones del grupo"
   @override
   String get reportsScreenSharesChartTitle => "Acciones del grupo";
@@ -2028,6 +2042,9 @@ class _I18n_es_ES extends I18n {
   /// "Cuotas por pagar"
   @override
   String get reportsScreenInstallmentsChartSharesValue => "Cuotas por pagar";
+  /// "Monto por pagar"
+  @override
+  String get reportsScreenInstallmentsChartDebt => "Monto por pagar";
   /// "Ganancias por repartir"
   @override
   String get reportsScreenProfitsChartTitle => "Ganancias por repartir";
@@ -2037,6 +2054,9 @@ class _I18n_es_ES extends I18n {
   /// "Ganancias"
   @override
   String get reportsScreenProfitsChartSharesValue => "Ganancias";
+  /// "Ganancia por acción"
+  @override
+  String get reportsScreenProfitsChartEarningPerShare => "Ganancia por acción";
   /// "ACCIONES"
   @override
   String get reportsScreenTabsShares => "ACCIONES";

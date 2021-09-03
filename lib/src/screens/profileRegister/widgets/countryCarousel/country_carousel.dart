@@ -112,10 +112,9 @@ class _CountryCarouselState extends State<CountryCarousel> {
           children: <Widget>[
             for (var i = 0; i < country.length; i++)
               if (index % country.length == i)
-                Material(
+                Container(
                   color: Colors.transparent,
                   child: InkWell(
-                    
                     key: Key("country${i.toString()}"),
                     onTap: () {
                       widget.callback(country[i]);
@@ -128,7 +127,7 @@ class _CountryCarouselState extends State<CountryCarousel> {
                       ),
                     ),
                   ),
-                )
+                ),
           ],
         ),
       ),
