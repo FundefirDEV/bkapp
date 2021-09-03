@@ -14,7 +14,7 @@ class ProfitPartnerModel {
   factory ProfitPartnerModel.fromJson(Map<String, dynamic> json) => ProfitPartnerModel(
     accumulableEarnings: UtilsTools.formatTwoDecimals().format((json["totalEarning"])) ?? null,
     earningPerMonthModel: List<EarningPerMonthModel>.from(
-      json["earningPerMonth"].map((x) => EarningPerMonthModel.fromJson(x))) ?? [],
+      json["earningPerYear"].map((x) => EarningPerMonthModel.fromJson(x))) ?? [],
   );
 
   Map<String, dynamic> toJson() => {

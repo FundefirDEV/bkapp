@@ -327,6 +327,12 @@ class ApiProvider {
     return await _httpRequest.get(
       httpClient: httpClient, url: endPoint , token: token);
   }
+  
+  profitPaymentGetPartners(String token) async {
+    final getPartnersUrl = ApiEndpoints.profitPayment();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
+  }
 
   profitPayment({@required String token , @required String partnerId}) async{
     final endPoint = ApiEndpoints.profitPayment();

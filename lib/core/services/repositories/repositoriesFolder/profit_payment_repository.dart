@@ -12,8 +12,8 @@ class ProfitPaymentRepository {
     return profitPayment;
   }
 
-  Future<List<dynamic>> getPartners(String token) async {
-    final List<dynamic> partners = await apiProvider.getPartners(token);
+  Future<Map<String, dynamic>> getPartners(String token) async {
+    final Map<String, dynamic> partners = await apiProvider.profitPaymentGetPartners(token);
     return partners;
   }
 }
