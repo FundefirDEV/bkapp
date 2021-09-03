@@ -45,14 +45,16 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
         headerBackgroundColor: Colors.white,
         title: _titleAccordion(context),
         children: [
-          ListView.builder(
+          if(detailProfitPayment.detail.length > 1)
+            ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: detailProfitPayment.detail.length,
               itemBuilder: (BuildContext context, int index) {
                 EnarningsPerYear detail = detailProfitPayment.detail[index];
                 return _boxEarningsPerYear(detail, context, index);
-              })
+            }
+          )
         ],
       ),
     );
