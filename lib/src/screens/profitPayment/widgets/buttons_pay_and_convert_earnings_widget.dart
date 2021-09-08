@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profit_payment_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/modal_profit_pay_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -9,9 +10,11 @@ import 'package:flutter/material.dart';
 import 'modal_convert_shares_widget.dart';
 
 class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
-  const ButtonsPayAndConvertEarningsWidget({Key key, this.selectedYearsPay})
+  const ButtonsPayAndConvertEarningsWidget({Key key, this.selectedYearsPay,
+  @required this.profitDetail})
       : super(key: key);
   final List<String> selectedYearsPay;
+  final ProfitPartnerModel profitDetail;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -43,9 +46,9 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
             onPressed: () {
               _showDialogPayment(context, 55.0, () {
                 Navigator.pop(context);
-                context
-                    .read<ProfitPaymentBloc>()
-                    .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
+                // context
+                //     .read<ProfitPaymentBloc>()
+                //     .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
               });
             },
             child: Text(
@@ -80,7 +83,8 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
         context: context,
         builder: (context) {
           return ModalProfitPayWidget(
-              modalHeight: modalHeight, onTapAccept: onTapConvertShares);
+              modalHeight: modalHeight, onTapAccept: onTapConvertShares,
+              profitDetail: profitDetail);
         });
   }
 }

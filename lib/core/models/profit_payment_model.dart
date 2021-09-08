@@ -90,13 +90,16 @@ class DataEarningPerMonth{
     {this.month,
     this.year,
     this.earning,
-    this.isPaid = false}
+    this.isPaid = false,
+    this.earningShareIds}
   );
 
   final String month;
   final String year;
   final double earning; 
   final bool isPaid;
+  final List<int> earningShareIds;
+
 
   final formatConfig =
     NumberFormat.currency(locale: 'en_US', decimalDigits: 2, symbol: r'$');
@@ -109,6 +112,8 @@ class DataEarningPerMonth{
     month: UtilsTools.getMounthWithNumber(json["month"])  ?? [],
     earning: json["amount"] as double ?? null,
     isPaid: json["isPaid"] ?? null,
+    earningShareIds: List<int>.from(
+      json["earningShareIds"]) ?? []
   );
 
   Map<String, dynamic> toJson() => {
@@ -116,6 +121,7 @@ class DataEarningPerMonth{
     "month": month,
     "amount": earning,
     "isPaid": isPaid,
+    "earningShareIds": earningShareIds,
   };
 }
 

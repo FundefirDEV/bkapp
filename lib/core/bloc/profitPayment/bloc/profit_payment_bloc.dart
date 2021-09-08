@@ -27,7 +27,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
             dropDownModelFromJson(response['partners'], 'id', 'name');
 
         final totalEarning =UtilsTools.formatTwoDecimals()
-          .format(response['totalEarning']);
+          .format(response['totalProfitPayment']);
 
         yield ProfitPaymentLoaded(
             historyEarnings: totalEarning , partners: partners);

@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/profit_payment_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -5,9 +6,13 @@ import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ModalProfitPayWidget extends StatelessWidget {
-  const ModalProfitPayWidget({Key key, this.modalHeight, this.onTapAccept})
+  const ModalProfitPayWidget({Key key, this.modalHeight, 
+    this.onTapAccept,
+    @required this.profitDetail
+  })
       : super(key: key);
   final double modalHeight;
+  final ProfitPartnerModel profitDetail;
   final Function onTapAccept;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class ModalProfitPayWidget extends StatelessWidget {
                             fontWeight: FontWeight.w100,
                             color: Theme.of(context).colorScheme.grayColor,
                           ),
-                          text: r'$100.000',
+                          text: profitDetail.accumulableEarnings,
                           children: [
                             TextSpan(
                                 text:

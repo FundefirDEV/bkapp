@@ -19,7 +19,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       this.showAccordionDetail,
       this.profitPartner,
       this.selectedYearProfitPayment,
-      this.onSelectedProfitPayment})
+      this.onSelectedProfitPayment
+      })
       : super(key: key);
   final String historyProfit;
   final ProfitPartnerModel profitPartner;
@@ -56,7 +57,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       _detailProfitAcordion(detail.profitDetail, selectedYearProfitPayment),
       if (selectedYearProfitPayment.length > 0)
         ButtonsPayAndConvertEarningsWidget(
-            selectedYearsPay: selectedYearProfitPayment)
+            selectedYearsPay: selectedYearProfitPayment,
+            profitDetail: detail)
     ]));
   }
 

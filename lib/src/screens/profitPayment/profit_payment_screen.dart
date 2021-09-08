@@ -85,6 +85,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
                 showAccordionDetail:
                     state is ProfitPaymentDetail ? true : false,
                 onSelectedProfitPayment: (value) {
+                 print('value: ${value.earningShareIds}');
                   setState(() {
                     value.pay
                         // ignore: unnecessary_statements

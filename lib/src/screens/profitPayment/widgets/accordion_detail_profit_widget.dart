@@ -26,12 +26,15 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
     super.initState();
     setState(() {
       detailProfitPayment = DetailProfitPayment(
-          month: widget.profitDetail.month,
-          earningsMonth: widget.profitDetail.earningsMonth,
-          detail: widget.profitDetail.detail
-              .map((detail) => EnarningsPerYear(
-                  earning: detail.getEarning, year: detail.year, pay: detail.isPaid))
-              .toList());
+        month: widget.profitDetail.month,
+        earningsMonth: widget.profitDetail.earningsMonth,
+        detail: widget.profitDetail.detail
+          .map((detail) => EnarningsPerYear(
+              earning: detail.getEarning, 
+              year: detail.year, 
+              pay: detail.isPaid , 
+              earningShareIds: detail.earningShareIds)
+          ).toList());
     });
   }
 
@@ -45,7 +48,7 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
         headerBackgroundColor: Colors.white,
         title: _titleAccordion(context),
         children: [
-          if(detailProfitPayment.detail.length > 1)
+          //if(detailProfitPayment.detail.length > 1)
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -115,8 +118,9 @@ class DetailProfitPayment {
 }
 
 class EnarningsPerYear {
-  EnarningsPerYear({this.year, this.earning, this.pay});
+  EnarningsPerYear({this.year, this.earning, this.pay , @required this.earningShareIds});
   String year;
   String earning;
+  List<int> earningShareIds;
   bool pay;
 }
