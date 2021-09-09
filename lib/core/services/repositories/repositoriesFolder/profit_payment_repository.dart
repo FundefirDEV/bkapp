@@ -12,7 +12,21 @@ class ProfitPaymentRepository {
     return profitPayment;
   }
 
-  Future<Map<String, dynamic>> getPartners(String token) async {
+  postProfitPayment({
+      @required String token , 
+      @required String partnerId,
+      @required List<int> earningShareIds
+    }
+    ) async {
+    final Map profitPayment = await apiProvider.postProfitPayment(
+      token: token, partnerId: partnerId,
+      earningShareIds: earningShareIds,
+    );
+    return profitPayment;
+  }
+
+
+  getPartners(String token) async {
     final Map<String, dynamic> partners = await apiProvider.profitPaymentGetPartners(token);
     return partners;
   }

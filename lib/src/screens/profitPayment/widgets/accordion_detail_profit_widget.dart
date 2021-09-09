@@ -9,10 +9,13 @@ class AccordionDetailProfitWidget extends StatefulWidget {
   const AccordionDetailProfitWidget(
       {Key key,
       @required this.profitDetail,
-      @required this.onSelectedProfitPayment})
+      @required this.onSelectedProfitPayment,
+      //@required this.earningsMonth
+    })
       : super(key: key);
   final ProfitPartnerDetailModel profitDetail;
   final Function onSelectedProfitPayment;
+  //final DataEarningPerMonth earningsMonth;
 
   @override
   _AccordionDetailProfitState createState() => _AccordionDetailProfitState();
@@ -32,8 +35,11 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
           .map((detail) => EnarningsPerYear(
               earning: detail.getEarning, 
               year: detail.year, 
-              pay: detail.isPaid , 
-              earningShareIds: detail.earningShareIds)
+              pay: detail.isPaid ,
+              month: detail.month, 
+              earningShareIds: detail.earningShareIds,
+              earningWihtOutFotmat: detail.earning
+          )
           ).toList());
     });
   }
@@ -118,9 +124,17 @@ class DetailProfitPayment {
 }
 
 class EnarningsPerYear {
-  EnarningsPerYear({this.year, this.earning, this.pay , @required this.earningShareIds});
+  EnarningsPerYear({this.year, 
+    this.earning, 
+    this.pay ,
+    @required this.earningShareIds,
+    @required this.month,
+    @required this.earningWihtOutFotmat
+  });
   String year;
   String earning;
   List<int> earningShareIds;
   bool pay;
+  String month;
+  double earningWihtOutFotmat;
 }

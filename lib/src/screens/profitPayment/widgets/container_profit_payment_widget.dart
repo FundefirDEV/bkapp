@@ -19,7 +19,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       this.showAccordionDetail,
       this.profitPartner,
       this.selectedYearProfitPayment,
-      this.onSelectedProfitPayment
+      this.onSelectedProfitPayment,
+      @required this.dataEarningPerMonth
       })
       : super(key: key);
   final String historyProfit;
@@ -28,6 +29,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
   final bool showAccordionDetail;
   final List<String> selectedYearProfitPayment;
   final Function onSelectedProfitPayment;
+  final DataEarningPerMonth dataEarningPerMonth;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -57,8 +60,9 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       _detailProfitAcordion(detail.profitDetail, selectedYearProfitPayment),
       if (selectedYearProfitPayment.length > 0)
         ButtonsPayAndConvertEarningsWidget(
-            selectedYearsPay: selectedYearProfitPayment,
-            profitDetail: detail)
+          selectedYearsPay: selectedYearProfitPayment,
+          earningPerMonth: dataEarningPerMonth  
+        )
     ]));
   }
 
@@ -73,6 +77,7 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return AccordionDetailProfitWidget(
                 profitDetail: profitDetail[index],
+                //earningsMonth: profitDetail[index].getEarningsMonth ,
                 onSelectedProfitPayment: onSelectedProfitPayment);
           }),
     );

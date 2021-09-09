@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/profitPayment/bloc/profit_payment_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/src/screens/profitPayment/widgets/accordion_detail_profit_widget.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/container_profit_payment_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
@@ -55,6 +56,8 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         ProfitPaymentFormBloc profitPaymentFormBloc =
             context.read<ProfitPaymentFormBloc>();
 
+        profitPaymentFormBloc.userToken.updateValue(widget.tokenUser);
+
         if (state is ProfitPaymentLoaded) {
           historyProfit = state.historyEarnings;
           profitPaymentFormBloc.userList.updateItems(state.partners);
@@ -62,6 +65,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         if (state is ProfitPaymentDetail) {
           profitPartner = state.profitPartner;
         }
+
         return FormBlocListener<ProfitPaymentFormBloc, DropDownModel, Object>(
             key: Key('bloc-listener-profit-payment-screen'),
             onSuccess: (context, state) {
@@ -82,18 +86,26 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
                 profitPartner: profitPartner,
                 profitPaymentFormBloc: profitPaymentFormBloc,
                 selectedYearProfitPayment: selectedYearProfitPayment,
+                dataEarningPerMonth: profitPaymentFormBloc.dataEarningPerMonth,
                 showAccordionDetail:
                     state is ProfitPaymentDetail ? true : false,
-                onSelectedProfitPayment: (value) {
+                onSelectedProfitPayment: (EnarningsPerYear value) {
                  print('value: ${value.earningShareIds}');
                   setState(() {
                     value.pay
-                        // ignore: unnecessary_statements
-                        ? {
-                            print('Año a pagar ganancias: ' + value.year),
-                            selectedYearProfitPayment.add(value.year)
-                          }
-                        : selectedYearProfitPayment.remove(value.year);
+                     // ignore: unnecessary_statements
+                    ? {
+                        print('Año a pagar ganancias: ' + value.year),
+                        selectedYearProfitPayment.add(value.year),
+                        profitPaymentFormBloc.dataEarningPerMonth = DataEarningPerMonth(
+                          earning: value.earningWihtOutFotmat ,
+                          year: value.year,
+                          isPaid: value.pay,
+                          month: value.month,
+                          earningShareIds: value.earningShareIds,
+                        ),
+                      }
+                    : selectedYearProfitPayment.remove(value.year);
                   }
                 );
               }

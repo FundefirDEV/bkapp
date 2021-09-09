@@ -22,7 +22,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
       yield ProfitPaymentLoading();
       try {
         final response = await repository.getPartners(event.token);
-        //final profitResponse = await repository.getProfitPayment(event.token, '1');
+
         List<DropDownModel> partners =
             dropDownModelFromJson(response['partners'], 'id', 'name');
 
@@ -84,6 +84,45 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
       ProfitPartnerModel profitPartner = ProfitPartnerModel(
           accumulableEarnings: r'$780.600');
       yield ProfitPaymentDetail(profitPartner: profitPartner);
+    }
+
+    if (event is PayProfits) {
+      try {
+        
+        yield ProfitPaymentLoading();
+
+        try {
+
+          final profitPayPostRes = await repository.postProfitPayment(
+            token: event.token,  
+            partnerId: event.idPartner , 
+            earningShareIds: event.earningShareIds
+          );
+          print('PAY PROFIT RES: $profitPayPostRes ');
+          print('PAY PROFIT: ${event.token} ${event.idPartner} ${event.earningShareIds}');
+          
+        } catch (e) {
+          print(e);
+          yield ProfitPaymentFailure(error: e.toString());
+        }
+
+        yield ProfitPaymentLoading();
+
+        final getProfitResponse = await repository.getPartners(event.token);
+
+        List<DropDownModel> partners =
+            dropDownModelFromJson(getProfitResponse['partners'], 'id', 'name');
+
+        final totalEarning =UtilsTools.formatTwoDecimals()
+          .format(getProfitResponse['totalProfitPayment']);
+
+        yield ProfitPaymentLoaded(
+            historyEarnings: totalEarning , partners: partners);
+
+      } catch (e) {
+        print(e);
+        yield ProfitPaymentFailure(error: e.toString());
+      }
     }
   }
 }

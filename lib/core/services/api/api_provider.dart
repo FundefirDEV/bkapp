@@ -340,4 +340,21 @@ class ApiProvider {
       httpClient: httpClient, url: endPoint , token: token,
       param: partnerId );
   }
+
+  postProfitPayment({
+    @required String token , 
+    @required String partnerId , 
+    @required List<int> earningShareIds
+    
+  }) async{
+    final endPoint = ApiEndpoints.profitPayment();
+    print('PAY PROFIT: $token $partnerId $earningShareIds');    
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint , token: token,
+      body: {
+        "earningShareIds": earningShareIds,
+        "partnerId": int.tryParse(partnerId),
+      }
+    );
+  }
 }

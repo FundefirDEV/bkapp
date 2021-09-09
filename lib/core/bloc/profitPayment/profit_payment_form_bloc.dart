@@ -15,6 +15,9 @@ class ProfitPaymentFormBloc extends FormBloc<DropDownModel, Object> {
   final ProfitPaymentRepository repository;
   final userList = SelectFieldBloc<DropDownModel, Object>();
   final idPartner = TextFieldBloc();
+  final userToken = TextFieldBloc();
+
+  DataEarningPerMonth dataEarningPerMonth;
 
   @override
   void onSubmitting() async {

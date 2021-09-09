@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/profit_payment_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/modal_profit_pay_widget.dart';
@@ -11,10 +12,10 @@ import 'modal_convert_shares_widget.dart';
 
 class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
   const ButtonsPayAndConvertEarningsWidget({Key key, this.selectedYearsPay,
-  @required this.profitDetail})
+  @required this.earningPerMonth})
       : super(key: key);
   final List<String> selectedYearsPay;
-  final ProfitPartnerModel profitDetail;
+  final DataEarningPerMonth earningPerMonth;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -49,6 +50,14 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
                 // context
                 //     .read<ProfitPaymentBloc>()
                 //     .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
+                final profitForm = context.read<ProfitPaymentFormBloc>();
+                 context
+                  .read<ProfitPaymentBloc>().add(
+                    PayProfits(
+                      earningShareIds: profitForm.dataEarningPerMonth.earningShareIds, 
+                      idPartner: profitForm.idPartner.value, 
+                      token: profitForm.userToken.value )
+                );
               });
             },
             child: Text(
@@ -77,14 +86,15 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
         });
   }
 
-  void _showDialogPayment(context, modalHeight, Function onTapConvertShares) {
+  void _showDialogPayment(context, modalHeight, Function onTapPaymentProfit) {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return ModalProfitPayWidget(
-              modalHeight: modalHeight, onTapAccept: onTapConvertShares,
-              profitDetail: profitDetail);
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ModalProfitPayWidget(
+            modalHeight: modalHeight, onTapAccept: onTapPaymentProfit,
+            earningsMonth: earningPerMonth);
+      }
+    );
   }
 }
