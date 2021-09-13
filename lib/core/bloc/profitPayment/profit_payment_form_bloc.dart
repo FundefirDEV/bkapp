@@ -19,6 +19,10 @@ class ProfitPaymentFormBloc extends FormBloc<DropDownModel, Object> {
 
   DataEarningPerMonth dataEarningPerMonth;
 
+  void clearDataEarning(){
+    dataEarningPerMonth = DataEarningPerMonth();
+  }
+
   @override
   void onSubmitting() async {
     emitSuccess(canSubmitAgain: true);

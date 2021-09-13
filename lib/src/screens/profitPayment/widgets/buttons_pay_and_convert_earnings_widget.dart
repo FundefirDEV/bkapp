@@ -58,6 +58,7 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
                       idPartner: profitForm.idPartner.value, 
                       token: profitForm.userToken.value )
                 );
+                profitForm.clearDataEarning();
               });
             },
             child: Text(

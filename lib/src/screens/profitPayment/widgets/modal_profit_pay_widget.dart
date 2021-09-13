@@ -19,7 +19,8 @@ class ModalProfitPayWidget extends StatelessWidget {
     SizeConfig().init(context);
 
     return BottomModal(
-      height: SizeConfig.blockSizeVertical * modalHeight,
+      //height: SizeConfig.blockSizeVertical * modalHeight,
+      height: SizeConfig.blockSizeVertical * 30,
       child: Padding(
         padding: EdgeInsets.all(35),
         child: Container(
@@ -45,64 +46,64 @@ class ModalProfitPayWidget extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 15, fontWeight: FontWeight.w800))
                 ])),
-        Container(
-        width: SizeConfig.blockSizeHorizontal * 80,
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontFamily: 'nunito',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .grayColor),
-                              text: '10\n',
-                              children: [
-                                TextSpan(
-                                    text: I18n.of(context)
-                                        .profitPaymentSharesToWithdraw,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight:
-                                            FontWeight.w100))
-                              ])))),
-              Container(
-                  width: SizeConfig.blockSizeHorizontal * 0.2,
-                  height: 50,
-                  color: Theme.of(context).colorScheme.grayColor),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          style: TextStyle(
-                              fontFamily: 'nunito',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .grayColor),
-                          text: r'$350.000',
-                          children: [
-                            TextSpan(
-                                text:
-                                    '\n${I18n.of(context).profitPaymentRemainderOfMoney}',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w100))
-                          ])),
-                ),
-              ),
-            ])),
+        // Container(
+        // width: SizeConfig.blockSizeHorizontal * 80,
+        // child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     crossAxisAlignment: CrossAxisAlignment.center,
+        //     children: [
+        //       Expanded(
+        //           child: Container(
+        //               alignment: Alignment.center,
+        //               child: RichText(
+        //                   textAlign: TextAlign.center,
+        //                   text: TextSpan(
+        //                       style: TextStyle(
+        //                           fontFamily: 'nunito',
+        //                           fontSize: 18,
+        //                           fontWeight: FontWeight.bold,
+        //                           color: Theme.of(context)
+        //                               .colorScheme
+        //                               .grayColor),
+        //                       text: '10\n',
+        //                       children: [
+        //                         TextSpan(
+        //                             text: I18n.of(context)
+        //                                 .profitPaymentSharesToWithdraw,
+        //                             style: TextStyle(
+        //                                 fontSize: 16,
+        //                                 fontWeight:
+        //                                     FontWeight.w100))
+        //                       ])))),
+        //       Container(
+        //           width: SizeConfig.blockSizeHorizontal * 0.2,
+        //           height: 50,
+        //           color: Theme.of(context).colorScheme.grayColor),
+        //       Expanded(
+        //         child: Container(
+        //           alignment: Alignment.center,
+        //           child: RichText(
+        //               textAlign: TextAlign.center,
+        //               text: TextSpan(
+        //                   style: TextStyle(
+        //                       fontFamily: 'nunito',
+        //                       fontSize: 18,
+        //                       fontWeight: FontWeight.bold,
+        //                       color: Theme.of(context)
+        //                           .colorScheme
+        //                           .grayColor),
+        //                   text: r'$350.000',
+        //                   children: [
+        //                     TextSpan(
+        //                         text:
+        //                             '\n${I18n.of(context).profitPaymentRemainderOfMoney}',
+        //                         style: TextStyle(
+        //                             fontSize: 16,
+        //                             fontWeight: FontWeight.w100))
+        //                   ])),
+        //         ),
+        //       ),
+        //     ])),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           FlatButton(
               key: Key('flat_button_image_botton_modal_accept'),

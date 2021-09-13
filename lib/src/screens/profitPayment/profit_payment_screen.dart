@@ -61,6 +61,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         if (state is ProfitPaymentLoaded) {
           historyProfit = state.historyEarnings;
           profitPaymentFormBloc.userList.updateItems(state.partners);
+          selectedYearProfitPayment = [];
         }
         if (state is ProfitPaymentDetail) {
           profitPartner = state.profitPartner;
