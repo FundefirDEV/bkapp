@@ -550,8 +550,8 @@ class I18n implements WidgetsLocalizations {
   String get rulesScreenExpenseFoundPercentage => "Expenditure Fund Percentage";
   /// "Reserve fund for bad debts"
   String get rulesScreenBadDebtReservePercentage => "Reserve fund for bad debts";
-  /// "Maximum Credit Factor"
-  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  /// "Credit Investment Relationship"
+  String get rulesScreenMaxCreditFactor => "Credit Investment Relationship";
   /// "Payment period of installment"
   String get rulesScreenDefaultInstalmentsPeriodDays => "Payment period of installment";
   /// "Error when trying to change"
@@ -1631,9 +1631,9 @@ class _I18n_es_ES extends I18n {
   /// "Fondo de reserva para incobrables"
   @override
   String get rulesScreenBadDebtReservePercentage => "Fondo de reserva para incobrables";
-  /// "Maximum Credit Factor"
+  /// "Relación Credito Inversion"
   @override
-  String get rulesScreenMaxCreditFactor => "Maximum Credit Factor";
+  String get rulesScreenMaxCreditFactor => "Relación Credito Inversion";
   /// "Periodo de Pago de Cuotas"
   @override
   String get rulesScreenDefaultInstalmentsPeriodDays => "Periodo de Pago de Cuotas";
