@@ -16,8 +16,20 @@ class ProfitPaymentFormBloc extends FormBloc<DropDownModel, Object> {
   final userList = SelectFieldBloc<DropDownModel, Object>();
   final idPartner = TextFieldBloc();
   final userToken = TextFieldBloc();
+  final shareValue = TextFieldBloc();
 
   DataEarningPerMonth dataEarningPerMonth;
+
+
+  int getShareQuantity(){
+
+    return dataEarningPerMonth.earning ~/ shareValue.valueToDouble;
+  }
+
+  double getProfitRes(){
+
+    return dataEarningPerMonth.earning % shareValue.valueToDouble;
+  }    
 
   void clearDataEarning(){
     dataEarningPerMonth = DataEarningPerMonth();

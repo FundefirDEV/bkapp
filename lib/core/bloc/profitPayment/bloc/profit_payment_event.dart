@@ -30,13 +30,6 @@ class ProfitPaymentPartnerSelected extends ProfitPaymentEvent {
   String toString() => 'ProfitPaymentPartnerSelected { idPartner: $idPartner }';
 }
 
-class TurnIntoShares extends ProfitPaymentEvent {
-  TurnIntoShares({this.yearsTurnIntoShares});
-  final List<String> yearsTurnIntoShares;
-
-  @override
-  List<Object> get props => [yearsTurnIntoShares];
-}
 
 class PayProfits extends ProfitPaymentEvent {
   PayProfits({
@@ -53,5 +46,29 @@ class PayProfits extends ProfitPaymentEvent {
 
   @override
   List<Object> get props => [earningShareIds , idPartner , token];
+}
+
+class ConvertShares extends ProfitPaymentEvent {
+  ConvertShares({
+    @required this.token , 
+    @required this.partnerId , 
+    @required this.earningShareIds,
+    @required this.quantity,
+    @required this.earning,
+    @required this.shareValue,
+    
+  });
+  final List<int> earningShareIds;
+  final String partnerId;
+  final String token;
+  final int quantity;
+  final double earning;
+  final shareValue;
+
+  @override
+  String toString() => 'ConvertShares { earningShareIds: $earningShareIds partnerId: $partnerId token: $token quantity $quantity earing $earning }';
+
+  @override
+  List<Object> get props => [earningShareIds , partnerId , token , quantity , earning];
 }
 

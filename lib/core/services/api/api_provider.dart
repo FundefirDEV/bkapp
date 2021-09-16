@@ -348,12 +348,30 @@ class ApiProvider {
     
   }) async{
     final endPoint = ApiEndpoints.profitPayment();
-    print('PAY PROFIT: $token $partnerId $earningShareIds');    
+
     return await _httpRequest.post(
       httpClient: httpClient, url: endPoint , token: token,
       body: {
         "earningShareIds": earningShareIds,
         "partnerId": int.tryParse(partnerId),
+      }
+    );
+  }
+  convertShares({
+    @required String token , 
+    @required String partnerId , 
+    @required List<int> earningShareIds,
+    @required int quantity,
+    
+  }) async{
+    final endPoint = ApiEndpoints.convertShares();
+
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint , token: token,
+      body: {
+        "earningShareIds": earningShareIds,
+        "partnerId": int.tryParse(partnerId),
+        'quantity': quantity,
       }
     );
   }

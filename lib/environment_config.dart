@@ -340,4 +340,10 @@ class ApiEndpoints {
 
     return "$baseUrl/v3/profit-payment-partners";
   }
+
+  static String convertShares({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/convert-shares";
+  }
 }

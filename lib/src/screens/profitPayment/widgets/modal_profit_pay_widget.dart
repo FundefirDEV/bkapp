@@ -20,7 +20,7 @@ class ModalProfitPayWidget extends StatelessWidget {
 
     return BottomModal(
       //height: SizeConfig.blockSizeVertical * modalHeight,
-      height: SizeConfig.blockSizeVertical * 30,
+      height: SizeConfig.blockSizeVertical * 40,
       child: Padding(
         padding: EdgeInsets.all(35),
         child: Container(

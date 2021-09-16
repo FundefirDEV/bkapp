@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/bloc/profit_payment_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
@@ -10,11 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ProfitPaymentScreen extends StatefulWidget {
-  ProfitPaymentScreen(
-      {Key key,
-      @required this.userName,
-      @required this.tokenUser,
-      this.oldIndex})
+  ProfitPaymentScreen({
+    Key key,
+    @required this.userName,
+    @required this.tokenUser,
+    this.oldIndex ,
+  })
       : super(key: key);
   final String userName;
   final String tokenUser;
@@ -47,6 +49,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         return ErrorPage(errorMessage: state.error);
       }
       if (state is ProfitPaymentLoading) {
+        selectedYearProfitPayment = [];
         return Center(
           child: CircularProgressIndicator(),
         );
@@ -61,6 +64,7 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
         if (state is ProfitPaymentLoaded) {
           historyProfit = state.historyEarnings;
           profitPaymentFormBloc.userList.updateItems(state.partners);
+          profitPaymentFormBloc.shareValue.updateValue(state.shareValue.toString());
           selectedYearProfitPayment = [];
         }
         if (state is ProfitPaymentDetail) {

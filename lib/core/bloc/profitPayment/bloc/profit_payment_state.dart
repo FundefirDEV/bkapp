@@ -12,9 +12,10 @@ class ProfitPaymentInitial extends ProfitPaymentState {}
 class ProfitPaymentLoading extends ProfitPaymentState {}
 
 class ProfitPaymentLoaded extends ProfitPaymentState {
-  ProfitPaymentLoaded({this.historyEarnings, this.partners});
+  ProfitPaymentLoaded({this.historyEarnings, this.partners , @required this.shareValue});
   final String historyEarnings;
   final List<DropDownModel> partners;
+  final double shareValue;
   @override
   List<Object> get props => [historyEarnings, partners];
 }

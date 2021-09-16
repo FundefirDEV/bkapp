@@ -25,9 +25,29 @@ class ProfitPaymentRepository {
     return profitPayment;
   }
 
+  Future convertShares({
+      @required String token , 
+      @required String partnerId,
+      @required List<int> earningShareIds,
+      @required int quantity,
+    }
+    ) async {
+    final Map profitPayment = await apiProvider.convertShares(
+      token: token, partnerId: partnerId,
+      earningShareIds: earningShareIds,
+      quantity: quantity,
+    );
+    return profitPayment;
+  }
+
 
   getPartners(String token) async {
     final Map<String, dynamic> partners = await apiProvider.profitPaymentGetPartners(token);
     return partners;
+  }
+
+  getShareValue(String token) async {
+    final Map<String, dynamic> rules = await apiProvider.getBankRules(token);
+    return rules['shareValue'];
   }
 }

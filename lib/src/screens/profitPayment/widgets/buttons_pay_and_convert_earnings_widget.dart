@@ -25,10 +25,19 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
           RaisedButton(
               key: Key('raised-button-profit-payment'),
               onPressed: () {
-                _showDialogConvertShares(context, 50.0, () {
+                final profitForm = context.read<ProfitPaymentFormBloc>();
+                _showDialogConvertShares(context,50.0,profitForm, () {
                   Navigator.pop(context);
-                  context.read<ProfitPaymentBloc>().add(
-                      TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
+                  print(profitForm.getProfitRes());
+
+                  context.read<ProfitPaymentBloc>().add(ConvertShares(
+                    token: profitForm.userToken.value, 
+                    partnerId: profitForm.idPartner.value, 
+                    earningShareIds: profitForm.dataEarningPerMonth.earningShareIds,  
+                    earning: profitForm.dataEarningPerMonth.earning,
+                    shareValue: profitForm.shareValue.valueToDouble,
+                    quantity: profitForm.getShareQuantity())
+                  );
                 });
               },
               color: Theme.of(context).colorScheme.primaryColor,
@@ -77,14 +86,22 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
   }
 
   void _showDialogConvertShares(
-      context, modalHeight, Function onTapConvertShares) {
+    context, modalHeight,
+    ProfitPaymentFormBloc profitForm, 
+    Function onTapConvertShares , 
+  ) {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return ModalConvertSharesWidget(
-              modalHeight: modalHeight, onTapAccept: onTapConvertShares);
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ModalConvertSharesWidget(
+          modalHeight: modalHeight, 
+          onTapAccept: onTapConvertShares , 
+          shareQuantity: profitForm.getShareQuantity(), 
+          profitRes: profitForm.getProfitRes()
+        );
+      }
+    );
   }
 
   void _showDialogPayment(context, modalHeight, Function onTapPaymentProfit) {

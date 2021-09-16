@@ -5,12 +5,14 @@ import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+
 
 part 'profit_payment_event.dart';
 part 'profit_payment_state.dart';
 
 class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
-  ProfitPaymentBloc({@required this.repository})
+  ProfitPaymentBloc({@required this.repository })
       : super(ProfitPaymentInitial());
   final ProfitPaymentRepository repository;
 
@@ -21,21 +23,30 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
     if (event is ProfitPaymentInitialize) {
       yield ProfitPaymentLoading();
       try {
+
         final response = await repository.getPartners(event.token);
+
+        final shareValue = await repository.getShareValue(event.token) as double;
+
+        print(shareValue);
 
         List<DropDownModel> partners =
             dropDownModelFromJson(response['partners'], 'id', 'name');
 
-        final totalEarning =UtilsTools.formatTwoDecimals()
+        final totalEarning = UtilsTools.formatTwoDecimals()
           .format(response['totalProfitPayment']);
 
         yield ProfitPaymentLoaded(
-            historyEarnings: totalEarning , partners: partners);
+            historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
+
       } catch (e) {
+
         print(e);
         yield ProfitPaymentFailure(error: e.toString());
+
       }
     }
+
     if (event is ProfitPaymentPartnerSelected) {
       try {
         yield ProfitPaymentLoading();
@@ -49,41 +60,6 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
         print(e);
         yield ProfitPaymentFailure(error: e.toString());
       }
-    }
-    if (event is TurnIntoShares) {
-      yield ProfitPaymentLoading();
-      print(event.yearsTurnIntoShares);
-      DataEarningPerMonth year1 =
-        DataEarningPerMonth(year: '2018', earning: 200.0, isPaid: true);
-      DataEarningPerMonth year2 =
-        DataEarningPerMonth(year: '2019', earning: 200.0, isPaid: true);
-      DataEarningPerMonth year3 =
-        DataEarningPerMonth(year: '2020', earning: 200.0, isPaid: true);
-      List<DataEarningPerMonth> listProfit = [];
-      listProfit.add(year1);
-      listProfit.add(year2);
-      listProfit.add(year3);
-      ProfitPartnerDetailModel profitDetail1 = ProfitPartnerDetailModel(
-          month: 'Agosto', earningsMonth: null, detail: listProfit);
-
-      DataEarningPerMonth year4 =
-        DataEarningPerMonth(year: '2018', earning: 200.0);
-      DataEarningPerMonth year5 =
-        DataEarningPerMonth(year: '2019', earning: 200.0);
-      DataEarningPerMonth year6 =
-        DataEarningPerMonth(year: '2020', earning: 200.0);
-      List<DataEarningPerMonth> listProfit2 = [];
-      listProfit2.add(year4);
-      listProfit2.add(year5);
-      listProfit2.add(year6);
-      ProfitPartnerDetailModel profitDetail2 = ProfitPartnerDetailModel(
-          month: 'Septiembre', earningsMonth: r'$100.300', detail: listProfit2);
-      List<ProfitPartnerDetailModel> listProfileDetail = [];
-      listProfileDetail.add(profitDetail1);
-      listProfileDetail.add(profitDetail2);
-      ProfitPartnerModel profitPartner = ProfitPartnerModel(
-          accumulableEarnings: r'$780.600');
-      yield ProfitPaymentDetail(profitPartner: profitPartner);
     }
 
     if (event is PayProfits) {
@@ -108,16 +84,55 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
 
         yield ProfitPaymentLoading();
 
-        final getProfitResponse = await repository.getPartners(event.token);
+        final profitResponse = await repository.getProfitPayment(event.token, event.idPartner);
+        ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+        
+        yield ProfitPaymentDetail(profitPartner: profitPartner);
 
-        List<DropDownModel> partners =
-            dropDownModelFromJson(getProfitResponse['partners'], 'id', 'name');
+      } catch (e) {
+        print(e);
+        yield ProfitPaymentFailure(error: e.toString());
+      }
+    }
 
-        final totalEarning =UtilsTools.formatTwoDecimals()
-          .format(getProfitResponse['totalProfitPayment']);
+    if (event is ConvertShares) {
+      try {
+        
+        yield ProfitPaymentLoading();
 
-        yield ProfitPaymentLoaded(
-            historyEarnings: totalEarning , partners: partners);
+        try {
+
+          final profitPayPostRes = await repository.convertShares(
+            token: event.token,  
+            partnerId: event.partnerId , 
+            earningShareIds: event.earningShareIds,
+            quantity: event.quantity,
+          );
+          print('PAY PROFIT RES: $profitPayPostRes ');
+          print(event.toString());
+          
+        } catch (e) {
+          print(e);
+          yield ProfitPaymentFailure(error: e.toString());
+        }
+
+        yield ProfitPaymentLoading();
+
+        // final getProfitResponse = await repository.getPartners(event.token);
+        // final shareValue = await repository.getShareValue(event.token) as double;
+
+        // List<DropDownModel> partners =
+        //     dropDownModelFromJson(getProfitResponse['partners'], 'id', 'name');
+
+        // final totalEarning =UtilsTools.formatTwoDecimals()
+        //   .format(getProfitResponse['totalProfitPayment']);
+
+        // yield ProfitPaymentLoaded(
+        //     historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
+
+        final profitResponse = await repository.getProfitPayment(event.token, event.partnerId);
+        ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+        yield ProfitPaymentDetail(profitPartner: profitPartner);
 
       } catch (e) {
         print(e);
