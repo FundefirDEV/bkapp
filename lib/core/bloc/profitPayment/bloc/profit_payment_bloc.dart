@@ -102,6 +102,7 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
 
         try {
 
+          print(event.quantity);
           final profitPayPostRes = await repository.convertShares(
             token: event.token,  
             partnerId: event.partnerId , 

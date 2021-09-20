@@ -28,16 +28,16 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
                 final profitForm = context.read<ProfitPaymentFormBloc>();
                 _showDialogConvertShares(context,50.0,profitForm, () {
                   Navigator.pop(context);
-                  print(profitForm.getProfitRes());
 
                   context.read<ProfitPaymentBloc>().add(ConvertShares(
                     token: profitForm.userToken.value, 
                     partnerId: profitForm.idPartner.value, 
                     earningShareIds: profitForm.dataEarningPerMonth.earningShareIds,  
                     earning: profitForm.dataEarningPerMonth.earning,
-                    shareValue: profitForm.shareValue.valueToDouble,
-                    quantity: profitForm.getShareQuantity())
+                    shareValue: profitForm.shareValue,
+                    quantity: profitForm.shareQuantity)
                   );
+                  profitForm.initShareQuantityAndProfitRes();
                 });
               },
               color: Theme.of(context).colorScheme.primaryColor,
@@ -56,9 +56,6 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
             onPressed: () {
               _showDialogPayment(context, 55.0, () {
                 Navigator.pop(context);
-                // context
-                //     .read<ProfitPaymentBloc>()
-                //     .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
                 final profitForm = context.read<ProfitPaymentFormBloc>();
                  context
                   .read<ProfitPaymentBloc>().add(
@@ -94,11 +91,11 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) {
+        profitForm.initShareQuantityAndProfitRes();
         return ModalConvertSharesWidget(
           modalHeight: modalHeight, 
           onTapAccept: onTapConvertShares , 
-          shareQuantity: profitForm.getShareQuantity(), 
-          profitRes: profitForm.getProfitRes()
+          profitForm: profitForm,
         );
       }
     );

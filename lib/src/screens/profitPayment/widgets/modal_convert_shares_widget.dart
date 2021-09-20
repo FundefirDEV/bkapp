@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
@@ -5,26 +6,50 @@ import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class ModalConvertSharesWidget extends StatelessWidget {
+class ModalConvertSharesWidget extends StatefulWidget {
   const ModalConvertSharesWidget({
     Key key, 
     @required this.modalHeight, 
     @required this.onTapAccept,
-    @required this.profitRes,
-    @required this.shareQuantity,
+    @required this.profitForm,
   })
 
       : super(key: key);
   final double modalHeight;
   final Function onTapAccept;
-  final double profitRes;
-  final int shareQuantity;
+  final ProfitPaymentFormBloc profitForm;
+
+  @override
+  _ModalConvertSharesWidgetState createState() => _ModalConvertSharesWidgetState();
+}
+
+class _ModalConvertSharesWidgetState extends State<ModalConvertSharesWidget> {
+
+  int shareQuantity = 0;
+  int maxShares = 0;
+  double earning = 0.0;
+  double profitRes = 0.0;
+  double shareValue = 0.0;
+
+  @override
+  void initState() {
+    widget.profitForm.initShareQuantityAndProfitRes();
+    shareQuantity = widget.profitForm.shareQuantity;
+    maxShares = shareQuantity;
+    earning = widget.profitForm.dataEarningPerMonth.earning;
+    shareValue = widget.profitForm.shareValue;
+    profitRes = widget.profitForm.profitRes;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
+
     return BottomModal(
-      height: SizeConfig.blockSizeVertical * modalHeight,
+      height: SizeConfig.blockSizeVertical * widget.modalHeight,
       child: Padding(
         padding: EdgeInsets.all(35),
         child: Container(
@@ -32,25 +57,71 @@ class ModalConvertSharesWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    style: TextStyle(
-                      fontFamily: 'nunito',
-                      fontSize: 32,
-                      letterSpacing: 3,
-                      fontWeight: FontWeight.w100,
-                      color: Theme.of(context).colorScheme.grayColor,
-                    ),
-                    text: shareQuantity.toString(),
-                    children: [
-                      TextSpan(
-                        text: I18n.of(context).profitPaymentShares,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w800))
-                    ]  
+                          fontFamily: 'nunito',
+                          fontSize: 32,
+                          letterSpacing: 3,
+                          fontWeight: FontWeight.w100,
+                          color: Theme.of(context).colorScheme.grayColor,
+                        ),
+                        text: shareQuantity.toString(),
+                        children: [
+                          TextSpan(
+                            text:' ' + I18n.of(context).profitPaymentShares,
+                            style:TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w800)),
+                        ]  
+                      )
+                    ),
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            //shareQuantity = widget.profitForm.shareQuantity.valueToInt;
+                            if(shareQuantity < maxShares){
+                              shareQuantity ++;
+                              widget.profitForm.updateShareQuantity(shareQuantity);
+                              updateProfitRes();
+                            }
+                          });
+                        } ,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: SizeConfig.safeBlockVertical *0.5,
+                            horizontal: SizeConfig.safeBlockVertical * 3),
+                          child: Icon(Icons.keyboard_arrow_up , size: 35),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            //shareQuantity = widget.profitForm.shareQuantity.valueToInt;
+
+                            if(shareQuantity > 0){
+                              shareQuantity --;
+                              widget.profitForm.updateShareQuantity(shareQuantity);
+                              updateProfitRes();
+                            }
+                          });
+                        } ,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: SizeConfig.safeBlockVertical *0.5,
+                            horizontal: SizeConfig.safeBlockVertical * 3),
+                          child: Icon(Icons.keyboard_arrow_down , size: 35,),
+                        ),
+                      ),
+                    ],
                   )
-                ),
+                ],
+              ),
               Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -77,7 +148,7 @@ class ModalConvertSharesWidget extends StatelessWidget {
                       fontWeight: FontWeight.w100,
                       color: Colors.white,
                       letterSpacing: 3),
-                      text:UtilsTools.formatTwoDecimals().format(profitRes) ,
+                      text: UtilsTools.formatTwoDecimals().format(profitRes) ,
                       children: [
                         TextSpan(
                           text:
@@ -96,7 +167,7 @@ class ModalConvertSharesWidget extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                onPressed: onTapAccept,
+                onPressed: widget.onTapAccept,
                 child: Text(
                   I18n.of(context).profitPaymentConvert,
                   key: Key('text_image_botton_modal_accept'),
@@ -130,5 +201,9 @@ class ModalConvertSharesWidget extends StatelessWidget {
         ),
       )
     );
+  }
+  void updateProfitRes(){
+    final shareAmount =  shareQuantity * shareValue;
+    profitRes = (earning - shareAmount);
   }
 }

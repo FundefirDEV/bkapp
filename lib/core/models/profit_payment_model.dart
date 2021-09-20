@@ -96,7 +96,7 @@ class DataEarningPerMonth{
 
   final String month;
   final String year;
-  final double earning; 
+  double earning; 
   final bool isPaid;
   final List<int> earningShareIds;
 
