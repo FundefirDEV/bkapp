@@ -26,18 +26,34 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
 
         final response = await repository.getPartners(event.token);
 
-        final shareValue = await repository.getShareValue(event.token) as double;
+        if(event.role == "admin"){
 
-        print(shareValue);
+          final shareValue = await repository.getShareValue(event.token) as double;
 
-        List<DropDownModel> partners =
-            dropDownModelFromJson(response['partners'], 'id', 'name');
+          print(shareValue);
 
-        final totalEarning = UtilsTools.formatTwoDecimals()
-          .format(response['totalProfitPayment']);
+          List<DropDownModel> partners =
+              dropDownModelFromJson(response['partners'], 'id', 'name');
 
-        yield ProfitPaymentLoaded(
-            historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
+          final totalEarning = UtilsTools.formatTwoDecimals()
+            .format(response['totalProfitPayment']);
+
+          yield ProfitPaymentLoaded(
+              historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
+
+        } else {
+
+          final profitResponse = await repository.getProfitPayment(event.token, event.parnerId.toString());
+          final totalEarning = UtilsTools.formatTwoDecimals()
+            .format(response['totalProfitPayment']);
+          ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+
+          yield ProfitPaymentPartnerNotAdmin(
+            parnerId: event.parnerId , 
+            profitPartner: profitPartner,
+            historyEarnings: totalEarning
+          );
+        }
 
       } catch (e) {
 
@@ -118,18 +134,6 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
         }
 
         yield ProfitPaymentLoading();
-
-        // final getProfitResponse = await repository.getPartners(event.token);
-        // final shareValue = await repository.getShareValue(event.token) as double;
-
-        // List<DropDownModel> partners =
-        //     dropDownModelFromJson(getProfitResponse['partners'], 'id', 'name');
-
-        // final totalEarning =UtilsTools.formatTwoDecimals()
-        //   .format(getProfitResponse['totalProfitPayment']);
-
-        // yield ProfitPaymentLoaded(
-        //     historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
 
         final profitResponse = await repository.getProfitPayment(event.token, event.partnerId);
         ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);

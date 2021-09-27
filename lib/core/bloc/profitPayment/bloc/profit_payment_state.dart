@@ -20,6 +20,22 @@ class ProfitPaymentLoaded extends ProfitPaymentState {
   List<Object> get props => [historyEarnings, partners];
 }
 
+class ProfitPaymentPartnerNotAdmin extends ProfitPaymentState {
+  ProfitPaymentPartnerNotAdmin({
+    @required this.parnerId , 
+    @required this.profitPartner,
+    @required this.historyEarnings,
+  });
+
+  final int parnerId;
+  ProfitPartnerModel profitPartner;
+  final String historyEarnings;
+
+  @override
+  List<Object> get props => [parnerId];
+}
+
+
 class ProfitPaymentDetail extends ProfitPaymentState {
   ProfitPaymentDetail({this.profitPartner});
   final ProfitPartnerModel profitPartner;

@@ -26,6 +26,7 @@ Widget loginRouteBloc() {
           tokenUser: state.token,
           userName: state.userName,
           role: state.role,
+          partnerId: state.partnerId
         );
       }
       if (state is AuthenticationUnauthenticated) {

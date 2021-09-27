@@ -10,12 +10,12 @@ class AccordionDetailProfitWidget extends StatefulWidget {
       {Key key,
       @required this.profitDetail,
       @required this.onSelectedProfitPayment,
-      //@required this.earningsMonth
+      @required this.showSelectCheckBox
     })
       : super(key: key);
   final ProfitPartnerDetailModel profitDetail;
   final Function onSelectedProfitPayment;
-  //final DataEarningPerMonth earningsMonth;
+  final bool showSelectCheckBox;
 
   @override
   _AccordionDetailProfitState createState() => _AccordionDetailProfitState();
@@ -79,25 +79,36 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
             Container(
               padding: EdgeInsets.only(left: 15),
               child: Text(detail.year,
-                  style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 4,
-                      color: Theme.of(context).colorScheme.grayColor,
-                      fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4,
+                  color: Theme.of(context).colorScheme.grayColor,
+                  fontWeight: FontWeight.bold)
+                ),
             ),
             Container(
-                child: Row(children: [
-              Text(detail.earning),
-              Checkbox(
-                  value: detail.pay,
-                  onChanged: !widget.profitDetail.detail[index].isPaid
-                      ? (bool value) {
-                          setState(() => detail.pay = value);
-                          widget.onSelectedProfitPayment(detail);
-                        }
-                      : null)
-            ]))
-          ],
-        ));
+              child: Row(children: [
+                Text(detail.earning),
+                  widget.showSelectCheckBox ? 
+                  Checkbox(
+                    value: detail.pay,
+                    onChanged: !widget.profitDetail.detail[index].isPaid
+                        ? (bool value) {
+                            setState(() => detail.pay = value);
+                            widget.onSelectedProfitPayment(detail);
+                          }
+                    : null)
+                : Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: widget.profitDetail.detail[index].isPaid ?
+                    Icon(Icons.done , color: Colors.green,) :
+                    null
+                ), 
+              ]
+            )
+          )
+        ],
+      )
+    );
   }
 
   Container _titleAccordion(BuildContext context) {
