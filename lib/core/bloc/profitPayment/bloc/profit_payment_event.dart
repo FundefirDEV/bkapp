@@ -8,18 +8,32 @@ abstract class ProfitPaymentEvent extends Equatable {
 }
 
 class ProfitPaymentInitialize extends ProfitPaymentEvent {
-  ProfitPaymentInitialize({this.token});
+  ProfitPaymentInitialize({this.token , @required this.role , @required this.parnerId});
   final String token;
+  final String role;
+  final int parnerId;
 
   @override
-  List<Object> get props => [token];
+  List<Object> get props => [token , role , parnerId];
 
   @override
-  String toString() => 'ProfiPaymentInitialize { token: $token }';
+  String toString() => 'ProfiPaymentInitialize { token: $token role: $role }';
 }
 
 class ProfitPaymentPartnerSelected extends ProfitPaymentEvent {
   ProfitPaymentPartnerSelected({@required this.idPartner , @required this.token});
+  final String idPartner;
+  final String token;
+
+  @override
+  List<Object> get props => [idPartner];
+
+  @override
+  String toString() => 'ProfitPaymentPartnerSelected { idPartner: $idPartner }';
+}
+
+class ProfitPaymentPartnerNotAdminEvent extends ProfitPaymentEvent {
+  ProfitPaymentPartnerNotAdminEvent({@required this.idPartner , @required this.token});
   final String idPartner;
   final String token;
 

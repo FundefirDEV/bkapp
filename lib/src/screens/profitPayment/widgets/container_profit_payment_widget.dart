@@ -41,7 +41,7 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
               title: I18n.of(context).profitPaymentTitle,
               showArrow: false,
               menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
-          BoxProfitHistoyWidget(historyEarnings: historyProfit),
+          BoxProfitHistoyWidget(historyEarnings: historyProfit , showSelecPartner: true,),
           LineSeparatorWidget(),
           if (showAccordionDetail)
             _detailProfitPayment(
@@ -78,7 +78,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
             return AccordionDetailProfitWidget(
                 profitDetail: profitDetail[index],
                 //earningsMonth: profitDetail[index].getEarningsMonth ,
-                onSelectedProfitPayment: onSelectedProfitPayment);
+                onSelectedProfitPayment: onSelectedProfitPayment,
+                showSelectCheckBox: true,);
           }),
     );
   }

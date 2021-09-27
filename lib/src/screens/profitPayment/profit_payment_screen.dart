@@ -3,6 +3,7 @@ import 'package:bkapp_flutter/core/bloc/profitPayment/bloc/profit_payment_bloc.d
 import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/accordion_detail_profit_widget.dart';
+import 'package:bkapp_flutter/src/screens/profitPayment/widgets/container_profit_payment_not_admin_widget.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/container_profit_payment_widget.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
@@ -15,12 +16,16 @@ class ProfitPaymentScreen extends StatefulWidget {
     Key key,
     @required this.userName,
     @required this.tokenUser,
+    @required this.role,
+    @required this.partnerId,
     this.oldIndex ,
   })
       : super(key: key);
   final String userName;
   final String tokenUser;
   final int oldIndex;
+  final String role;
+  final int partnerId;
 
   @override
   _ProfitPaymentScreenState createState() => _ProfitPaymentScreenState();
@@ -34,7 +39,9 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
   @override
   void initState() {
     BlocProvider.of<ProfitPaymentBloc>(context)
-        .add(ProfitPaymentInitialize(token: widget.tokenUser));
+        .add(ProfitPaymentInitialize(token: widget.tokenUser , 
+          role: widget.role , 
+          parnerId: widget.partnerId));
     super.initState();
     selectedYearProfitPayment = new List<String>();
   }
@@ -48,12 +55,26 @@ class _ProfitPaymentScreenState extends State<ProfitPaymentScreen> {
       if (state is ProfitPaymentFailure) {
         return ErrorPage(errorMessage: state.error);
       }
+
       if (state is ProfitPaymentLoading) {
         selectedYearProfitPayment = [];
         return Center(
           child: CircularProgressIndicator(),
         );
       }
+
+      if (state is ProfitPaymentPartnerNotAdmin) {
+
+        profitPartner = state.profitPartner;
+        return AppBarWidget(
+          userName: widget.userName,
+          container: ContainerProfitPaymentNotAdminWidget(
+            historyProfit: state.historyEarnings,
+            profitPartner: profitPartner,
+          ),
+        );
+      }   
+
       return Builder(builder: (context) {
         // ignore: close_sinks
         ProfitPaymentFormBloc profitPaymentFormBloc =

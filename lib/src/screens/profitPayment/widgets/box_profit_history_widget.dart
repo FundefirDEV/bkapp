@@ -5,9 +5,10 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class BoxProfitHistoyWidget extends StatelessWidget {
-  BoxProfitHistoyWidget({@required this.historyEarnings});
+  BoxProfitHistoyWidget({@required this.historyEarnings , @required this.showSelecPartner});
 
   final String historyEarnings;
+  final bool showSelecPartner;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -35,20 +36,27 @@ class BoxProfitHistoyWidget extends StatelessWidget {
                           fontWeight: FontWeight.w100,
                           letterSpacing: 2),
                     ),
-                    RichText(
-                        text: TextSpan(
-                            style: TextStyle(
-                                fontFamily: 'nunito',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w100),
-                            children: [
-                          TextSpan(text: I18n.of(context).profitPaymentHistory),
-                          TextSpan(
-                              text: I18n.of(context).profitPaymentProfits,
-                              style: TextStyle(fontWeight: FontWeight.bold))
-                        ]))
-                  ])),
-          FormListPartnerWidget()
-        ]));
+                      RichText(
+                          text: TextSpan(
+                              style: TextStyle(
+                                  fontFamily: 'nunito',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w100),
+                              children: [
+                            TextSpan(text: I18n.of(context).profitPaymentHistory),
+                            TextSpan(
+                                text: I18n.of(context).profitPaymentProfits,
+                                style: TextStyle(fontWeight: FontWeight.bold))
+                          ]
+                        )
+                      )
+                  ]
+                )
+              ),
+          if(showSelecPartner)
+            FormListPartnerWidget()
+        ]
+      )
+    );
   }
 }

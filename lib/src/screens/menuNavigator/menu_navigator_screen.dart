@@ -21,11 +21,16 @@ import 'bloc_providers.dart';
 import 'widgets/widgets.dart';
 
 class MenuNavigatorScreen extends StatefulWidget {
-  MenuNavigatorScreen({Key key, this.tokenUser, this.userName, this.role})
+  MenuNavigatorScreen({Key key, 
+    this.tokenUser, 
+    this.userName, 
+    this.role , 
+    @required this.partnerId})
       : super(key: key);
   final String tokenUser;
   final String userName;
   final String role;
+  final int partnerId;
   @override
   _MenuNavigatorState createState() => _MenuNavigatorState();
 }
@@ -149,7 +154,9 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         ProfitPaymentScreen(
                             oldIndex: currentIndex,
                             userName: widget.userName,
-                            tokenUser: widget.tokenUser), // NOTE 14
+                            tokenUser: widget.tokenUser,
+                            role: widget.role,
+                            partnerId: widget.partnerId,), // NOTE 14
                         PartnerRemovalScreen(
                           oldIndex: currentIndex,
                           userName: widget.userName,
