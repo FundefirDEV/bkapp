@@ -92,14 +92,15 @@ class DetailCreditWidget extends StatelessWidget {
                           Text(activeCredits?.totalInterest ?? r'$0',
                               style: TextStyle(fontWeight: FontWeight.w700))
                         ])),
-                    Expanded(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                          Text(I18n.of(context).activeCreditDefaultInterest),
-                          Text(r'$0.000',
-                              style: TextStyle(fontWeight: FontWeight.w700))
-                        ])),
+                    // TODO DISCOMMENT WHEN DETERMINATION INTEREST IS PUTTED INTO USE
+                    // Expanded(
+                        // child: Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // children: <Widget>[
+                          // Text(I18n.of(context).activeCreditDefaultInterest),
+                          // Text(r'$0.000',
+                              // style: TextStyle(fontWeight: FontWeight.w700))
+                        // ])),
                     Expanded(
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
