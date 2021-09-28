@@ -31,15 +31,16 @@ class LoginFormWidget extends StatelessWidget {
             prefixIcon: Icon(Icons.lock_open)));
 
     return CardButtonsWidget(
-        accept: context.read<LoginFormBloc>().submit,
-        cancel: () => Navigator.pushNamed(context, introRoute),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              inputUsername,
-              inputPassword,
-            ],
-          ),
-        ));
+      accept: context.read<LoginFormBloc>().submit,
+      cancel: () => Navigator.pushNamed(context, introRoute),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            inputUsername,
+            inputPassword,
+          ],
+        ),
+      )
+    );
   }
 }

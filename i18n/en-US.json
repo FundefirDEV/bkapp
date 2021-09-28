@@ -12,7 +12,8 @@
     "close": "CLOSE",
     "request": "REQUEST",
     "add": "ADD",
-    "search": "Search"
+    "search": "Search",
+    "wait": "Please wait"
   },
   "modalTexts": {
     "yourBkGroup": "Your BkGroup has not reached the goals",

@@ -58,6 +58,8 @@ class I18n implements WidgetsLocalizations {
   String get actionTextAdd => "ADD";
   /// "Search"
   String get actionTextSearch => "Search";
+  /// "Please wait"
+  String get actionTextWait => "Please wait";
   /// "Your BkGroup has not reached the goals"
   String get modalTextsYourBkGroup => "Your BkGroup has not reached the goals";
   /// "for getting enable this function"
@@ -917,6 +919,9 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
+  /// "Cargando"
+  @override
+  String get actionTextWait => "Cargando";
   /// "Su grupoBk no ha alcanzado las metas"
   @override
   String get modalTextsYourBkGroup => "Su grupoBk no ha alcanzado las metas";

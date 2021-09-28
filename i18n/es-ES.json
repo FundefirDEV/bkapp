@@ -12,7 +12,8 @@
     "close": "CERRAR",
     "request": "SOLICITAR",
     "add": "AGREGAR",
-    "search": "Buscar"
+    "search": "Buscar",
+    "wait": "Cargando"
   },
   "modalTexts": {
     "yourBkGroup": "Su grupoBk no ha alcanzado las metas",
