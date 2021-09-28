@@ -41,7 +41,7 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
               title: I18n.of(context).profitPaymentTitle,
               showArrow: false,
               menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
-          BoxProfitHistoyWidget(historyEarnings: historyProfit , showSelecPartner: true,),
+          BoxProfitHistoyWidget(historyEarnings: historyProfit , isAdmin: true,),
           LineSeparatorWidget(),
           if (showAccordionDetail)
             _detailProfitPayment(

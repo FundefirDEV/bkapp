@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class ContainerProfitPaymentNotAdminWidget extends StatelessWidget {
-  const ContainerProfitPaymentNotAdminWidget({
-      Key key,      
+  const ContainerProfitPaymentNotAdminWidget(
+      {Key key,
       @required this.historyProfit,
       @required this.profitPartner,
-    })
+      })
       : super(key: key);
   final String historyProfit;
   final ProfitPartnerModel profitPartner;
@@ -28,7 +28,11 @@ class ContainerProfitPaymentNotAdminWidget extends StatelessWidget {
               title: I18n.of(context).profitPaymentTitle,
               showArrow: false,
               menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
-          BoxProfitHistoyWidget(historyEarnings: historyProfit , showSelecPartner: false,),
+          BoxProfitHistoyWidget(
+            historyEarnings: historyProfit ,
+            isAdmin: false,
+            accumulableEarnings: profitPartner.accumulableEarnings
+          ),
           LineSeparatorWidget(),
            _detailProfitPayment(
                context, profitPartner)
@@ -40,10 +44,9 @@ class ContainerProfitPaymentNotAdminWidget extends StatelessWidget {
   Widget _detailProfitPayment(BuildContext context, ProfitPartnerModel detail,
       ) {
     return Container(
-      child: Column(children: [
-          _detailProfitAcordion(detail.profitDetail), 
-      ])
-    );
+        child: Column(children: [
+      _detailProfitAcordion(detail.profitDetail),
+    ]));
   }
 
   Container _detailProfitAcordion(List<ProfitPartnerDetailModel> profitDetail,) {
@@ -57,7 +60,6 @@ class ContainerProfitPaymentNotAdminWidget extends StatelessWidget {
           return AccordionDetailProfitWidget(
             profitDetail: profitDetail[index],
             showSelectCheckBox: false,
-            //earningsMonth: profitDetail[index].getEarningsMonth ,
             onSelectedProfitPayment: ()=>{}
           );
         }
