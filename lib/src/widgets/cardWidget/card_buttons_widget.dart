@@ -60,7 +60,7 @@ class CardButtonsWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)
                       ),
-                      child: !loading ? 
+                      child: loading ? 
                        loginLoadingText(context) :
                        loginText(context),
                     ),
