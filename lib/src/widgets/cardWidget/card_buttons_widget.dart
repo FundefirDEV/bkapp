@@ -60,7 +60,7 @@ class CardButtonsWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)
                       ),
-                      child: loading ? 
+                      child: !loading ? 
                        loginLoadingText(context) :
                        loginText(context),
                     ),
@@ -104,8 +104,10 @@ class CardButtonsWidget extends StatelessWidget {
             ),
           ),
           Container(
-            width: SizeConfig.safeBlockHorizontal * 7.5,
-            height: SizeConfig.safeBlockVertical * 3.5,
+            // width: SizeConfig.safeBlockHorizontal * 7.5,
+            // height: SizeConfig.safeBlockVertical * 3.5,
+            height: 18,
+            width: 18,
             margin: EdgeInsets.only(left: 15) ,
             child: CircularProgressIndicator(
               color: Colors.white,
