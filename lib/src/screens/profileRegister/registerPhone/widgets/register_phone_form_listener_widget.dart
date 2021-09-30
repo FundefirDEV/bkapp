@@ -64,7 +64,11 @@ class _RegistePhoneFormListenerWidgetState
 
   nextWidgetTap(ProfileRegisterBloc registerBloc) async  {
 
+    setState(() { });
+
     final validateRes = await registerBloc.validatePhone(context);
+    
+    setState(() { });
 
     registerBloc.phoneBloc.submit();
     if(validateRes){

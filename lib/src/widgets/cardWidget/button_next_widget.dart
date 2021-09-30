@@ -1,8 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 class ButtonNextWidget extends StatelessWidget {
   final Function onTap;
 
@@ -14,9 +17,13 @@ class ButtonNextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    final profileRegisterBloc = context.watch<AppBloc>().profileRegisterBloc;
+
     return Hero(
       tag: 'bg-next-register',
-      child: Container(
+      child: !profileRegisterBloc.loading.value ?  
+       Container(
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(colors: [
@@ -31,16 +38,23 @@ class ButtonNextWidget extends StatelessWidget {
             key: Key('buttonNextStep'),
             borderRadius: BorderRadius.circular(100),
             onTap: this.onTap,
-            child: Container(
+            child: 
+              Container(
                 width: 85.0,
                 height: 85.0,
                 child: SvgPicture.asset(
                   'assets/images/path.svg',
                   fit: BoxFit.scaleDown,
-                )),
+              )
+            )
           ),
           color: Colors.transparent,
         ),
+      ): Container(
+        width: SizeConfig.blockSizeHorizontal * 17,
+        height: SizeConfig.blockSizeVertical * 8,
+
+        child: CircularProgressIndicator()
       ),
     );
   }

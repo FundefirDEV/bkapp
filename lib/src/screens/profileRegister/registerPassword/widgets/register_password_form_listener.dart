@@ -51,6 +51,7 @@ class _RegisterPasswordFormListenerWidgetState
               numberOfSteps: 5,
               isDisabled: isDisabled,
               currentBlocSubmit: () async {
+                setState(() { });
                 try {
                   RegisterUserModel result = await context
                       .read<AppBloc>()
@@ -65,6 +66,7 @@ class _RegisterPasswordFormListenerWidgetState
                 } catch (e) {
                   _showMaterialDialog(e.toString());
                 }
+                setState(() { });
               })
         ]);
   }
