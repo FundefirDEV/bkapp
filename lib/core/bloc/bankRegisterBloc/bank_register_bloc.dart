@@ -20,13 +20,14 @@ class BankRegisterBloc extends FormBloc<String, String> {
 
   final name = TextFieldBloc();
   final token = TextFieldBloc();
+  final loading = BooleanFieldBloc(initialValue : false);
 
   List<PartnerModel> partnerList = [];
 
   BankRegisterBloc({@required this.repository})
       : _selectPlace = SelectCityBloc(repository: locationRepository),
         _inviteForm = InviteFormBloc(partnerRepository: partnerRepository) {
-    addFieldBlocs(fieldBlocs: [name]);
+    addFieldBlocs(fieldBlocs: [name , loading]);
   }
 
   SelectCityBloc get selectPlace => _selectPlace;
@@ -49,6 +50,8 @@ class BankRegisterBloc extends FormBloc<String, String> {
   }
 
   Future<String> makeSubmit() async {
+
+    loading.updateValue(true);
     try {
       logger.v({
         'bank name': '${name.value}',
@@ -71,10 +74,14 @@ class BankRegisterBloc extends FormBloc<String, String> {
       partnerList = [];
 
       clearData();
+
+      loading.updateValue(false);
       
       return 'bank created!';
 
     } catch (e) {
+      
+      loading.updateValue(false);
       print(e);
       return e.toString();
     }
