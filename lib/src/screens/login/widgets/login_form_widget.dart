@@ -33,6 +33,7 @@ class LoginFormWidget extends StatelessWidget {
     return CardButtonsWidget(
       accept: context.read<LoginFormBloc>().submit,
       cancel: () => Navigator.pushNamed(context, introRoute),
+      loading: context.watch<LoginFormBloc>().loading.value,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[

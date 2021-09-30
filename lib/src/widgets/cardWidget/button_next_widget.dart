@@ -51,8 +51,8 @@ class ButtonNextWidget extends StatelessWidget {
           color: Colors.transparent,
         ),
       ): Container(
-        width: SizeConfig.blockSizeHorizontal * 17,
-        height: SizeConfig.blockSizeVertical * 8,
+        width: 60.0,
+        height: 60.0,
 
         child: CircularProgressIndicator()
       ),
