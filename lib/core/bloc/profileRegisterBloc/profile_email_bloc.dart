@@ -20,8 +20,11 @@ class ProfileEmailBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {}
 
+  @override
   Future<void> close() {
-    email?.close();
-    return super.close();
+    //email?.clear();
+    // email.state.toString();
+    // print('manso');
+    //return super.close();
   }
 }
