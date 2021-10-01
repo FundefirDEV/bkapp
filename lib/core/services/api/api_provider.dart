@@ -323,8 +323,56 @@ class ApiProvider {
   }
 
   getReports({@required String token}) async{
- final endPoint = ApiEndpoints.reports();
+    final endPoint = ApiEndpoints.reports();
     return await _httpRequest.get(
       httpClient: httpClient, url: endPoint , token: token);
+  }
+  
+  profitPaymentGetPartners(String token) async {
+    final getPartnersUrl = ApiEndpoints.profitPayment();
+    return await _httpRequest.get(
+        httpClient: httpClient, url: getPartnersUrl, token: token);
+  }
+
+  profitPayment({@required String token , @required String partnerId}) async{
+    final endPoint = ApiEndpoints.profitPayment();
+    return await _httpRequest.get(
+      httpClient: httpClient, url: endPoint , token: token,
+      param: partnerId );
+  }
+
+  postProfitPayment({
+    @required String token , 
+    @required String partnerId , 
+    @required List<int> earningShareIds
+    
+  }) async{
+    final endPoint = ApiEndpoints.profitPayment();
+
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint , token: token,
+      body: {
+        "earningShareIds": earningShareIds,
+        "partnerId": int.tryParse(partnerId),
+      }
+    );
+  }
+  convertShares({
+    @required String token , 
+    @required String partnerId , 
+    @required List<int> earningShareIds,
+    @required int quantity,
+    
+  }) async{
+    final endPoint = ApiEndpoints.convertShares();
+
+    return await _httpRequest.post(
+      httpClient: httpClient, url: endPoint , token: token,
+      body: {
+        "earningShareIds": earningShareIds,
+        "partnerId": int.tryParse(partnerId),
+        'quantity': quantity,
+      }
+    );
   }
 }

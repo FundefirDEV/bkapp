@@ -175,7 +175,7 @@ class _AccordionState extends State<Accordion>
                   style: Theme.of(context)
                       .textTheme
                       // ignore: deprecated_member_use
-                      .subhead
+                      .subtitle1
                       .copyWith(color: titleColor),
                   child: widget.title,
                 ),
@@ -207,7 +207,7 @@ class _AccordionState extends State<Accordion>
     _borderColorTween..end = theme.dividerColor;
     _headerColorTween
       // ignore: deprecated_member_use
-      ..begin = theme.textTheme.subhead.color
+      ..begin = theme.textTheme.headline1.color
       ..end = theme.accentColor;
     _iconColorTween
       ..begin = theme.unselectedWidgetColor

@@ -80,6 +80,26 @@ class _CountryCarouselState extends State<CountryCarousel> {
           name: 'Emiratos',
           image: 'assets/images/emirates.svg',
           iso: core.CountryCodes.UNITED_ARAB_EMIRATES),
+       ItemCountry(
+          phoneCode: '+598',
+          name: 'Uruguay',
+          image: 'assets/images/uruguay.svg',
+          iso: core.CountryCodes.URUGUAY),
+        ItemCountry(
+          phoneCode: '+1',
+          name: 'Republica Dominicana',
+          image: 'assets/images/republica-dominicana.svg',
+          iso: core.CountryCodes.DOMINICAN_REPUBLIC),
+        ItemCountry(
+          phoneCode: '+66',
+          name: 'Tailandia',
+          image: 'assets/images/tailandia.svg',
+          iso: core.CountryCodes.THAILAND),
+        ItemCountry(
+          phoneCode: '+234',
+          name: 'Nigeria',
+          image: 'assets/images/nigeria.svg',
+          iso: core.CountryCodes.NIGERIA),
     ];
 
     double obtainValueOfCurve(PageController pageController) {

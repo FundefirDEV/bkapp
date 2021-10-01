@@ -58,6 +58,8 @@ class I18n implements WidgetsLocalizations {
   String get actionTextAdd => "ADD";
   /// "Search"
   String get actionTextSearch => "Search";
+  /// "Please wait"
+  String get actionTextWait => "Please wait";
   /// "Your BkGroup has not reached the goals"
   String get modalTextsYourBkGroup => "Your BkGroup has not reached the goals";
   /// "for getting enable this function"
@@ -76,8 +78,8 @@ class I18n implements WidgetsLocalizations {
   String get requestErrorPhoneSendInvalid => "Invalid phone number";
   /// "The bank is invalid"
   String get requestErrorCreatedBankInvalid => "The bank is invalid";
-  /// "User"
-  String get formUser => "User";
+  /// "E-mail"
+  String get formUser => "E-mail";
   /// "Password"
   String get formPassword => "Password";
   /// "Confirm password"
@@ -262,8 +264,8 @@ class I18n implements WidgetsLocalizations {
   String get utilsKnowManageBk => "Know how to\nmanage your banko";
   /// "Delete and\ndeliver shares"
   String get utilsDeleteDeliverActions => "Delete and\ndeliver shares";
-  /// "Know your\nearnings for the year"
-  String get utilsKnowEarningsYear => "Know your\nearnings for the year";
+  /// "Know your\nprofit for the year"
+  String get utilsKnowEarningsYear => "Know your\nprofit for the year";
   /// "Exemptions"
   String get utilsExemptions => "Exemptions";
   /// "Assignment"
@@ -296,8 +298,8 @@ class I18n implements WidgetsLocalizations {
   String get homeScreenMe => "ME";
   /// "MY"
   String get homeScreenMy => "MY";
-  /// "EARNINGS"
-  String get homeScreenEarnings => "EARNINGS";
+  /// "PROFITS"
+  String get homeScreenEarnings => "PROFITS";
   /// "CREDIT"
   String get homeScreenCredit => "CREDIT";
   /// "SHARES"
@@ -332,8 +334,8 @@ class I18n implements WidgetsLocalizations {
   String get profileScreenMys => "MY";
   /// "MY"
   String get profileScreenMy => "MY";
-  /// "EARNINGS"
-  String get profileScreenEarnings => "EARNINGS";
+  /// "PROFITS"
+  String get profileScreenEarnings => "PROFITS";
   /// "CREDIT"
   String get profileScreenCredit => "CREDIT";
   /// "SHARES"
@@ -656,8 +658,8 @@ class I18n implements WidgetsLocalizations {
   String get meetingClosedMeetingClosing => "Meeting Closing";
   /// "Cash balance\n"
   String get meetingClosedCashBalance => "Cash balance\n";
-  /// "Earnings\nper shares\n"
-  String get meetingClosedEarningsPerShares => "Earnings\nper shares\n";
+  /// "Profits\nper shares\n"
+  String get meetingClosedEarningsPerShares => "Profits\nper shares\n";
   /// "Bad debt reserve\n"
   String get meetingClosedExpenseFund => "Bad debt reserve\n";
   /// "Sustainability\nfund\n"
@@ -832,8 +834,8 @@ class I18n implements WidgetsLocalizations {
   String get reportsScreenProfitsChartAxisTitle => "PROFITS";
   /// "Profits"
   String get reportsScreenProfitsChartSharesValue => "Profits";
-  /// "Share Earning"
-  String get reportsScreenProfitsChartEarningPerShare => "Share Earning";
+  /// "Share Profits"
+  String get reportsScreenProfitsChartEarningPerShare => "Share Profits";
   /// "SHARES"
   String get reportsScreenTabsShares => "SHARES";
   /// "CREDITS"
@@ -917,6 +919,9 @@ class _I18n_es_ES extends I18n {
   /// "Buscar"
   @override
   String get actionTextSearch => "Buscar";
+  /// "Cargando"
+  @override
+  String get actionTextWait => "Cargando";
   /// "Su grupoBk no ha alcanzado las metas"
   @override
   String get modalTextsYourBkGroup => "Su grupoBk no ha alcanzado las metas";
@@ -944,9 +949,9 @@ class _I18n_es_ES extends I18n {
   /// "El banco es inválido"
   @override
   String get requestErrorCreatedBankInvalid => "El banco es inválido";
-  /// "Usuario"
+  /// "Correo Electronico"
   @override
-  String get formUser => "Usuario";
+  String get formUser => "Correo Electronico";
   /// "Clave"
   @override
   String get formPassword => "Clave";
@@ -974,9 +979,9 @@ class _I18n_es_ES extends I18n {
   /// "¡No hay nada aquí!"
   @override
   String get errorIsEmpty => "¡No hay nada aquí!";
-  /// "Usuario o contraseña incorrecto"
+  /// "Correo Electronico o contraseña incorrecto"
   @override
-  String get errorInvalidUser => "Usuario o contraseña incorrecto";
+  String get errorInvalidUser => "Correo Electronico o contraseña incorrecto";
   /// "Ingrese un correo electrónico válido"
   @override
   String get errorInvalidEmail => "Ingrese un correo electrónico válido";
