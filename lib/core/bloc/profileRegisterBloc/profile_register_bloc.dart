@@ -21,6 +21,9 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   final passwordConfirm = TextFieldBloc(
       validators: [UtilsTools.required, FieldBlocValidators.passwordMin6Chars]);
 
+  final loading = BooleanFieldBloc(initialValue: false);
+
+
   Validator<String> _confirmPassword(TextFieldBloc passwordTextField) {
     return (String passwordConfirm) {
       return passwordConfirm == passwordTextField.value
@@ -42,7 +45,7 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
         _phoneBloc = ProfilePhoneBloc(repository: validationCodeRepository),
         _profilePinCodeVerificationBloc = ProfilePinCodeVerificationBloc(
             repository: validationCodeConfirmRepository) {
-    addFieldBlocs(fieldBlocs: [inputTest, password, passwordConfirm]);
+    addFieldBlocs(fieldBlocs: [inputTest, password, passwordConfirm , loading]);
     passwordConfirm
       ..addValidators([_confirmPassword(password)])
       ..subscribeToFieldBlocs([password]);
@@ -66,9 +69,14 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   ));
 
   Future makeSubmit() async {
+
+    loading.updateValue(true);
+
     try {
       print(password.value);
       print(passwordConfirm.value);
+      
+
 
       logger.v({
         'gender': '${_genderBloc.gender.value[0].toUpperCase()}',
@@ -96,8 +104,13 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
           isInvited: response['partner_id'] != null);
       print('Token usuario nuevo: ' + newUser.token);
       print('Es invitado?: ' + newUser.isInvited.toString());
+      
+      loading.updateValue(false);
+
       return newUser;
     } catch (e) {
+
+      loading.updateValue(false);
       throw Exception(e.toString());
     }
   }
@@ -110,23 +123,28 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   void addErrorEmailTextFiel(BuildContext context){
 
     emailBloc.email.addFieldError(I18n.of(context).requestErrorMailNotAviable);
-    //Navigator.pop(context);
   }
 
   Future<bool> validatePhone(BuildContext context) async {
 
     final phone = _phoneBloc.phone.value.replaceAll(new RegExp(r'\W'), '');
+    loading.updateValue(true);
+
     print('PHONE: $phone');
 
     try {
 
       await repository.validateUserPhone(phone);
+      loading.updateValue(false);
+
       return true;
 
     } catch (e) {
       
       print(e);
       addErrorPhoneTextField(context);
+      loading.updateValue(false);
+
       return false;
     }
   }
@@ -135,16 +153,23 @@ class ProfileRegisterBloc extends FormBloc<String, String> {
   Future<bool> validateMail(BuildContext context) async {
 
     final email = _emailBloc.email.value;
-    print('EMAIL: $email');
+    loading.updateValue(true);
+    loading.updateInitialValue(true);
+
+    print('${loading.value}');
 
     try {
 
       await repository.validateMail(email);
+      loading.updateValue(false);
+
       return true;
 
     } catch (e) {
       print(e.toString());
       addErrorEmailTextFiel(context);
+      
+      loading.updateValue(false);
       return false;
     }
   }

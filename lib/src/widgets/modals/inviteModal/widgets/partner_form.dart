@@ -4,7 +4,6 @@ import 'package:bkapp_flutter/core/services/api/http_requests.dart';
 import 'package:bkapp_flutter/environment_config.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
-import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/cardWidget/card_buttons_widget.dart';
 import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +53,7 @@ class _PartnerFormState extends State<PartnerForm> {
           child: CardButtonsWidget(
             acceptText: I18n.of(context).inviteModalAdd,
             accept: isDisabled ? null : () => _addPartnerForm(context),
+            loading: false,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[

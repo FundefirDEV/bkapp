@@ -46,9 +46,12 @@ class _RegisterEmailFormListenerWidgetState
 
   _validateMail(BuildContext context) async {
 
-    final registerBloc = context.read<AppBloc>().profileRegisterBloc;
+    setState(() { });
 
+    final registerBloc = context.read<AppBloc>().profileRegisterBloc;
     final res = await registerBloc.validateMail(context);
+
+    setState(() { });
 
     if(res){
       Navigator.pushNamed(context, registerPhoneUser,

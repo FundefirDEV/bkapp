@@ -9,10 +9,13 @@ class AccordionDetailProfitWidget extends StatefulWidget {
   const AccordionDetailProfitWidget(
       {Key key,
       @required this.profitDetail,
-      @required this.onSelectedProfitPayment})
+      @required this.onSelectedProfitPayment,
+      @required this.showSelectCheckBox
+    })
       : super(key: key);
   final ProfitPartnerDetailModel profitDetail;
   final Function onSelectedProfitPayment;
+  final bool showSelectCheckBox;
 
   @override
   _AccordionDetailProfitState createState() => _AccordionDetailProfitState();
@@ -26,12 +29,18 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
     super.initState();
     setState(() {
       detailProfitPayment = DetailProfitPayment(
-          month: widget.profitDetail.month,
-          earningsMonth: widget.profitDetail.earningsMonth,
-          detail: widget.profitDetail.detail
-              .map((detail) => EnarningsPerYear(
-                  earning: detail.earning, year: detail.year, pay: detail.pay))
-              .toList());
+        month: widget.profitDetail.month,
+        earningsMonth: widget.profitDetail.earningsMonth,
+        detail: widget.profitDetail.detail
+          .map((detail) => EnarningsPerYear(
+              earning: detail.getEarning, 
+              year: detail.year, 
+              pay: detail.isPaid ,
+              month: detail.month, 
+              earningShareIds: detail.earningShareIds,
+              earningWihtOutFotmat: detail.earning
+          )
+          ).toList());
     });
   }
 
@@ -45,14 +54,16 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
         headerBackgroundColor: Colors.white,
         title: _titleAccordion(context),
         children: [
-          ListView.builder(
+          //if(detailProfitPayment.detail.length > 1)
+            ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: detailProfitPayment.detail.length,
               itemBuilder: (BuildContext context, int index) {
                 EnarningsPerYear detail = detailProfitPayment.detail[index];
                 return _boxEarningsPerYear(detail, context, index);
-              })
+            }
+          )
         ],
       ),
     );
@@ -68,25 +79,36 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
             Container(
               padding: EdgeInsets.only(left: 15),
               child: Text(detail.year,
-                  style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 4,
-                      color: Theme.of(context).colorScheme.grayColor,
-                      fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4,
+                  color: Theme.of(context).colorScheme.grayColor,
+                  fontWeight: FontWeight.bold)
+                ),
             ),
             Container(
-                child: Row(children: [
-              Text(detail.earning),
-              Checkbox(
-                  value: detail.pay,
-                  onChanged: !widget.profitDetail.detail[index].pay
-                      ? (bool value) {
-                          setState(() => detail.pay = value);
-                          widget.onSelectedProfitPayment(detail);
-                        }
-                      : null)
-            ]))
-          ],
-        ));
+              child: Row(children: [
+                Text(detail.earning),
+                  widget.showSelectCheckBox ? 
+                  Checkbox(
+                    value: detail.pay,
+                    onChanged: !widget.profitDetail.detail[index].isPaid
+                        ? (bool value) {
+                            setState(() => detail.pay = value);
+                            widget.onSelectedProfitPayment(detail);
+                          }
+                    : null)
+                : Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: widget.profitDetail.detail[index].isPaid ?
+                    Icon(Icons.done , color: Colors.green,) :
+                    null
+                ), 
+              ]
+            )
+          )
+        ],
+      )
+    );
   }
 
   Container _titleAccordion(BuildContext context) {
@@ -99,7 +121,7 @@ class _AccordionDetailProfitState extends State<AccordionDetailProfitWidget> {
                   fontSize: SizeConfig.blockSizeHorizontal * 4,
                   color: Theme.of(context).colorScheme.grayColor,
                   fontWeight: FontWeight.bold)),
-          Text(widget.profitDetail.earningsMonth ??
+          Text(widget.profitDetail.getEarningsMonth ??
               I18n.of(context).profitPaymentPaid)
         ]));
   }
@@ -113,8 +135,17 @@ class DetailProfitPayment {
 }
 
 class EnarningsPerYear {
-  EnarningsPerYear({this.year, this.earning, this.pay});
+  EnarningsPerYear({this.year, 
+    this.earning, 
+    this.pay ,
+    @required this.earningShareIds,
+    @required this.month,
+    @required this.earningWihtOutFotmat
+  });
   String year;
   String earning;
+  List<int> earningShareIds;
   bool pay;
+  String month;
+  double earningWihtOutFotmat;
 }

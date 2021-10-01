@@ -19,7 +19,9 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       this.showAccordionDetail,
       this.profitPartner,
       this.selectedYearProfitPayment,
-      this.onSelectedProfitPayment})
+      this.onSelectedProfitPayment,
+      @required this.dataEarningPerMonth
+      })
       : super(key: key);
   final String historyProfit;
   final ProfitPartnerModel profitPartner;
@@ -27,6 +29,8 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
   final bool showAccordionDetail;
   final List<String> selectedYearProfitPayment;
   final Function onSelectedProfitPayment;
+  final DataEarningPerMonth dataEarningPerMonth;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -37,7 +41,7 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
               title: I18n.of(context).profitPaymentTitle,
               showArrow: false,
               menuNavigatorBloc: context.read<MenuNavigatorBloc>()),
-          BoxProfitHistoyWidget(historyEarnings: historyProfit),
+          BoxProfitHistoyWidget(historyEarnings: historyProfit , isAdmin: true,),
           LineSeparatorWidget(),
           if (showAccordionDetail)
             _detailProfitPayment(
@@ -56,7 +60,9 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
       _detailProfitAcordion(detail.profitDetail, selectedYearProfitPayment),
       if (selectedYearProfitPayment.length > 0)
         ButtonsPayAndConvertEarningsWidget(
-            selectedYearsPay: selectedYearProfitPayment)
+          selectedYearsPay: selectedYearProfitPayment,
+          earningPerMonth: dataEarningPerMonth  
+        )
     ]));
   }
 
@@ -71,7 +77,9 @@ class ContainerProfitPaymentWidget extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return AccordionDetailProfitWidget(
                 profitDetail: profitDetail[index],
-                onSelectedProfitPayment: onSelectedProfitPayment);
+                //earningsMonth: profitDetail[index].getEarningsMonth ,
+                onSelectedProfitPayment: onSelectedProfitPayment,
+                showSelectCheckBox: true,);
           }),
     );
   }

@@ -12,7 +12,8 @@
     "close": "CLOSE",
     "request": "REQUEST",
     "add": "ADD",
-    "search": "Search"
+    "search": "Search",
+    "wait": "Please wait"
   },
   "modalTexts": {
     "yourBkGroup": "Your BkGroup has not reached the goals",
@@ -28,7 +29,7 @@
     "createdBankInvalid": "The bank is invalid"
   },
   "form": {
-    "user": "User",
+    "user": "E-mail",
     "password": "Password",
     "confirmPassword": "Confirm password",
     "firstName": "First name",
@@ -163,7 +164,7 @@
     "approveCreditActions": "Approve credits\nand shares",
     "KnowManageBk": "Know how to\nmanage your banko",
     "DeleteDeliverActions": "Delete and\ndeliver shares",
-    "KnowEarningsYear": "Know your\nearnings for the year",
+    "KnowEarningsYear": "Know your\nprofit for the year",
     "exemptions": "Exemptions",
     "assignment": "Assignment",
     "administrator": "administrator"
@@ -188,7 +189,7 @@
     "groupBk": "GROUP BK",
     "me": "ME",
     "my": "MY",
-    "earnings": "EARNINGS",
+    "earnings": "PROFITS",
     "credit": "CREDIT",
     "shares": "SHARES",
     "market": "MARKET",
@@ -208,7 +209,7 @@
     "profession": "Profession",
     "mys": "MY",
     "my": "MY",
-    "earnings": "EARNINGS",
+    "earnings": "PROFITS",
     "credit": "CREDIT",
     "shares": "SHARES"
   },
@@ -346,7 +347,7 @@
     "creditMaxValue": "Maximum Credit Value",
     "expenseFoundPercentage": "Expenditure Fund Percentage",
     "badDebtReservePercentage": "Reserve fund for bad debts",
-    "maxCreditFactor": "Maximum Credit Factor",
+    "maxCreditFactor": "Credit Investment Relationship",
     "defaultInstalmentsPeriodDays": "Payment period of installment",
 
     "changeRulesErrorTittle": "Error when trying to change",
@@ -415,7 +416,7 @@
   "meetingClosed": {
     "meetingClosing": "Meeting Closing",
     "cashBalance": "Cash balance\n",
-    "earningsPerShares": "Earnings\nper shares\n",
+    "earningsPerShares": "Profits\nper shares\n",
     "expenseFund": "Bad debt reserve\n",
     "sustainabilityFund": "Sustainability\nfund\n",
     "closing": "CHECK",
@@ -521,7 +522,7 @@
       "title": "Profits to be distributed",
       "axisTitle": "PROFITS",
       "sharesValue": "Profits",
-      "earningPerShare" : "Share Earning"
+      "earningPerShare" : "Share Profits"
     },
     "tabs": {
       "shares": "SHARES",

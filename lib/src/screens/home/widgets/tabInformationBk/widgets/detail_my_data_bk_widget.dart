@@ -83,7 +83,7 @@ class DetailMyDataBkWidget extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: GestureDetector(
                           onTap: () => navigateBloc.add(ButtonPressed(
-                            goTo: HomeRoutesConstant.profileScreen)
+                            goTo: HomeRoutesConstant.profitPaymentScreen)
                           ),
                           child: Container(
                             padding: EdgeInsets.only(

@@ -55,7 +55,7 @@ List<dynamic> blocProviders = [
       create: (context) =>
           ProfitPaymentFormBloc(repository: profitPaymentRepository)),
   BlocProvider(
-      create: (context) => ProfitPaymentBloc(repository: partnerRepository)),
+      create: (context) => ProfitPaymentBloc(repository: profitPaymentRepository)),
   BlocProvider(
       create: (context) => InstallmentsPaymentBloc(
           creditRepository: creditRepository,

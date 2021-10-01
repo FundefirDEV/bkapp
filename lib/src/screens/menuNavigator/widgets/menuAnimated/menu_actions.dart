@@ -112,9 +112,9 @@ class MenuActions extends StatelessWidget {
           child: ButtonLine(
             key: Key('profits-button-line'),
             onPressed: () {
-              _showDialog(context, context.read<MenuNavigatorBloc>(), oldIndex);
-              // navigateBloc.add(
-              //     ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
+              // _showDialog(context, context.read<MenuNavigatorBloc>(), oldIndex);
+              navigateBloc.add(
+                  ButtonPressed(goTo: HomeRoutesConstant.profitPaymentScreen));
               isPressed();
             },
             text: I18n.of(context).mainMenuActionsProfits,

@@ -3,12 +3,15 @@ import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
+// import 'package:bkapp_flutter/core/bloc/loginFormBloc/login_form_bloc.dart';
+// import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 class CardButtonsWidget extends StatelessWidget {
   final Widget child;
   final Function accept;
   final String acceptText;
   final Function cancel;
   final String cancelText;
+  final bool loading;
 
   const CardButtonsWidget({
     Key key,
@@ -16,12 +19,15 @@ class CardButtonsWidget extends StatelessWidget {
     @required this.child,
     this.cancel,
     this.acceptText,
-    this.cancelText
+    this.cancelText,
+    @required this.loading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    // final loginBloc = context.watch<LoginFormBloc>();
 
     return Card(
       elevation: 10.0,
@@ -54,14 +60,9 @@ class CardButtonsWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)
                       ),
-                      child: Text(
-                        this.acceptText ?? I18n.of(context).actionTextEnter,
-                        style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
-                          color: Colors.white,
-                          letterSpacing: 3.0,
-                        ),
-                      ),
+                      child: loading ? 
+                       loginLoadingText(context) :
+                       loginText(context),
                     ),
                     if (this.cancel != null) ...[
                       FlatButton(
@@ -82,6 +83,53 @@ class CardButtonsWidget extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+  Widget loginLoadingText(BuildContext context){
+    return Container(
+      width: SizeConfig.safeBlockHorizontal * 55,
+      height: SizeConfig.safeBlockVertical * 3.5,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            this.acceptText ?? I18n.of(context).actionTextWait,
+            style: TextStyle(
+              fontSize: SizeConfig.safeBlockHorizontal * 4,
+              color: Colors.white,
+              letterSpacing: 3.0,
+            ),
+          ),
+          Container(
+            // width: SizeConfig.safeBlockHorizontal * 7.5,
+            // height: SizeConfig.safeBlockVertical * 3.5,
+            height: 18,
+            width: 18,
+            margin: EdgeInsets.only(left: 15) ,
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+    
+  Widget loginText(BuildContext context){
+    return Container(
+      width: SizeConfig.safeBlockHorizontal * 55,
+      height: SizeConfig.safeBlockVertical * 3.5,
+      alignment: Alignment.center  ,
+      child: Text(
+        this.acceptText ?? I18n.of(context).actionTextEnter,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: SizeConfig.safeBlockHorizontal * 4,
+          color: Colors.white,
+          letterSpacing: 3.0,
         ),
       ),
     );

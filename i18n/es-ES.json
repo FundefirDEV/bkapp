@@ -12,7 +12,8 @@
     "close": "CERRAR",
     "request": "SOLICITAR",
     "add": "AGREGAR",
-    "search": "Buscar"
+    "search": "Buscar",
+    "wait": "Cargando"
   },
   "modalTexts": {
     "yourBkGroup": "Su grupoBk no ha alcanzado las metas",
@@ -29,7 +30,7 @@
 
   },
   "form": {
-    "user": "Usuario",
+    "user": "Correo Electronico",
     "password": "Clave",
     "confirmPassword": "Confirmar clave",
     "firstName": "Nombre",
@@ -41,7 +42,7 @@
     "required": "Este campo es obligatorio",
     "graterThanNine": "El número debe ser mayor a 6",
     "isEmpty": "¡No hay nada aquí!",
-    "invalidUser": "Usuario o contraseña incorrecto",
+    "invalidUser": "Correo Electronico o contraseña incorrecto",
     "invalidEmail": "Ingrese un correo electrónico válido",
     "differentPasswords": "Las contraseñas no coinciden"
   },
@@ -338,7 +339,7 @@
     "creditMaxValue": "Máximo Valor del Crédito",
     "expenseFoundPercentage": "Porcentaje fondo de Gastos",
     "badDebtReservePercentage": "Fondo de reserva para incobrables",
-    "maxCreditFactor": "Maximum Credit Factor",
+    "maxCreditFactor": "Relación Credito Inversion",
     "defaultInstalmentsPeriodDays": "Periodo de Pago de Cuotas",
 
 
