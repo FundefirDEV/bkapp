@@ -5,9 +5,9 @@ class EnvironmentConfig {
   static const String API_URL = String.fromEnvironment('API_URL',
       defaultValue: "https://bk-service-2foxvegkzq-uc.a.run.app");
 
-  //services PROD
-  //https://bk-service-2foxvegkzq-uc.a.run.app
-  //services QA
+  // services PROD
+  // https://bk-service-2foxvegkzq-uc.a.run.app
+  // services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
   // services stage
   // https://bk-service-stage-2foxvegkzq-uc.a.run.app
