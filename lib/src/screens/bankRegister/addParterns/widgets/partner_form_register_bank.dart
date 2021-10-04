@@ -57,6 +57,7 @@ class _PartnerFormRegisterBankState extends State<PartnerFormRegisterBank> {
           child: CardButtonsWidget(
             acceptText: I18n.of(context).inviteModalAdd,
             accept: isDisabled ? null : () => _addPartnerForm(context),
+            loading: false,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[

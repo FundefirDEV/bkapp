@@ -34,7 +34,8 @@ class AuthenticationBloc
           token: event.tokenInformation['access_token'],
           userName: UtilsTools.titleCase(
               '${event.tokenInformation['firstname']} ${event.tokenInformation['lastname']}'),
-          role: event.tokenInformation['role']);
+          role: event.tokenInformation['role'],
+          partnerId: event.tokenInformation['partnerId']);
     }
 
     if (event is LoggedOut) {

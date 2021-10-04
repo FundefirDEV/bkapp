@@ -11,19 +11,22 @@ class LoginFormBloc extends FormBloc<String, String> {
     FieldBlocValidators.required,
     FieldBlocValidators.email,
   ]);
-  final password = TextFieldBloc(validators: [FieldBlocValidators.required]);
 
+  final password = TextFieldBloc(validators: [FieldBlocValidators.required]);
+  final loading = BooleanFieldBloc(initialValue: false);
+  
   LoginFormBloc(
       {@required this.repository, @required this.authenticationBloc}) {
-    addFieldBlocs(fieldBlocs: [username, password]);
+    addFieldBlocs(fieldBlocs: [username, password , loading]);
   }
 
   @override
   void onSubmitting() async {
     try {
+      loading.updateValue(true);
+
       final tokenInformation = await repository.postLogin(
           username: username.value, password: password.value);
-
       authenticationBloc.add(LoggedIn(tokenInformation: tokenInformation));
       emitSuccess(canSubmitAgain: true);
       clear();
@@ -32,6 +35,8 @@ class LoginFormBloc extends FormBloc<String, String> {
       password.addFieldError('Bad credentials');
       emitFailure(failureResponse: e.message);
     }
+
+    loading.updateValue(false);
   }
 
   Future<void> close() {

@@ -5,12 +5,14 @@ class EnvironmentConfig {
   static const String API_URL = String.fromEnvironment('API_URL',
       defaultValue: "https://bk-service-2foxvegkzq-uc.a.run.app");
 
-  //services PROD
-  //https://bk-service-2foxvegkzq-uc.a.run.app
-  //services QA
+  // services PROD
+  // https://bk-service-2foxvegkzq-uc.a.run.app
+  // services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
   // services stage
   // https://bk-service-stage-2foxvegkzq-uc.a.run.app
+  // services PROD
+  // https://bk-service-2foxvegkzq-uc.a.run.app
   // Services local 
   // http://192.168.0.19:8888
 
@@ -335,5 +337,17 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
     return "$baseUrl/v3/report";
+  }
+
+  static String profitPayment({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/profit-payment-partners";
+  }
+
+  static String convertShares({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/convert-shares";
   }
 }

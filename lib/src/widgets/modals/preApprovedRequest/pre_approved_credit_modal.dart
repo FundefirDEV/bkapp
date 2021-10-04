@@ -105,7 +105,7 @@ class PreApprovedCreditModal extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                   )),
               TextSpan(
-                  text: I18n.of(context).preApprovedCreditModalYourPosition,
+                  text: '',//I18n.of(context).preApprovedCreditModalYourPosition,
                   style: TextStyle(
                     fontFamily: 'Nunito',
                     color: Theme.of(context).colorScheme.grayColor,
@@ -115,7 +115,7 @@ class PreApprovedCreditModal extends StatelessWidget {
                     letterSpacing: 0,
                   )),
               TextSpan(
-                  text: "1",
+                  text: "",
                   style: TextStyle(
                     fontFamily: 'Nunito',
                     color: Colors.black,

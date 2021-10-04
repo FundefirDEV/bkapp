@@ -1,17 +1,20 @@
 import 'dart:async';
 import 'package:bkapp_flutter/core/models/models.dart';
-import 'package:bkapp_flutter/core/services/repositories/repositories.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profit_payment_repository.dart';
+import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+
 
 part 'profit_payment_event.dart';
 part 'profit_payment_state.dart';
 
 class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
-  ProfitPaymentBloc({@required this.repository})
+  ProfitPaymentBloc({@required this.repository })
       : super(ProfitPaymentInitial());
-  final PartnerRepository repository;
+  final ProfitPaymentRepository repository;
 
   @override
   Stream<ProfitPaymentState> mapEventToState(
@@ -20,83 +23,126 @@ class ProfitPaymentBloc extends Bloc<ProfitPaymentEvent, ProfitPaymentState> {
     if (event is ProfitPaymentInitialize) {
       yield ProfitPaymentLoading();
       try {
+
         final response = await repository.getPartners(event.token);
-        List<DropDownModel> partners =
-            dropDownModelFromJson(response, 'phone', 'name');
-        yield ProfitPaymentLoaded(
-            historyEarnings: r'$10.540.200', partners: partners);
+
+        if(event.role == "admin"){
+
+          final shareValue = await repository.getShareValue(event.token) as double;
+
+          print(shareValue);
+
+          List<DropDownModel> partners =
+              dropDownModelFromJson(response['partners'], 'id', 'name');
+
+          final totalEarning = UtilsTools.formatTwoDecimals()
+            .format(response['totalProfitPayment']);
+
+          yield ProfitPaymentLoaded(
+              historyEarnings: totalEarning , partners: partners , shareValue: shareValue);
+
+        } else {
+
+          final profitResponse = await repository.getProfitPayment(event.token, event.parnerId.toString());
+          final totalEarning = UtilsTools.formatTwoDecimals()
+            .format(response['totalProfitPayment']);
+          ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+
+          yield ProfitPaymentPartnerNotAdmin(
+            parnerId: event.parnerId , 
+            profitPartner: profitPartner,
+            historyEarnings: totalEarning
+          );
+        }
+
       } catch (e) {
+
         print(e);
         yield ProfitPaymentFailure(error: e.toString());
+
       }
     }
+
     if (event is ProfitPaymentPartnerSelected) {
       try {
         yield ProfitPaymentLoading();
-        print(event.idPartner);
-        YearProfitPayment year1 =
-            new YearProfitPayment(year: '2018', earning: r'$220.000');
-        YearProfitPayment year2 =
-            new YearProfitPayment(year: '2019', earning: r'$20.000');
-        YearProfitPayment year3 =
-            new YearProfitPayment(year: '2020', earning: r'$100.300');
-        List<YearProfitPayment> listProfit = new List<YearProfitPayment>();
-        listProfit.add(year1);
-        listProfit.add(year2);
-        listProfit.add(year3);
-        ProfitPartnerDetailModel profitDetail1 = new ProfitPartnerDetailModel(
-            month: 'Agosto', earningsMonth: r'$100.300', detail: listProfit);
-        ProfitPartnerDetailModel profitDetail2 = new ProfitPartnerDetailModel(
-            month: 'Septiembre',
-            earningsMonth: r'$250.300',
-            detail: listProfit);
-        List<ProfitPartnerDetailModel> listProfileDetail =
-            new List<ProfitPartnerDetailModel>();
-        listProfileDetail.add(profitDetail1);
-        listProfileDetail.add(profitDetail2);
-        ProfitPartnerModel profitPartner = new ProfitPartnerModel(
-            accumulableEarnings: r'$780.600', profitDetail: listProfileDetail);
+        
+        final profitResponse = await repository.getProfitPayment(event.token, event.idPartner);
+
+        ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+
         yield ProfitPaymentDetail(profitPartner: profitPartner);
       } catch (e) {
         print(e);
         yield ProfitPaymentFailure(error: e.toString());
       }
     }
-    if (event is TurnIntoShares) {
-      yield ProfitPaymentLoading();
-      print(event.yearsTurnIntoShares);
-      YearProfitPayment year1 =
-          new YearProfitPayment(year: '2018', earning: r'$220.000', pay: true);
-      YearProfitPayment year2 =
-          new YearProfitPayment(year: '2019', earning: r'$20.000', pay: true);
-      YearProfitPayment year3 =
-          new YearProfitPayment(year: '2020', earning: r'$100.300', pay: true);
-      List<YearProfitPayment> listProfit = new List<YearProfitPayment>();
-      listProfit.add(year1);
-      listProfit.add(year2);
-      listProfit.add(year3);
-      ProfitPartnerDetailModel profitDetail1 = new ProfitPartnerDetailModel(
-          month: 'Agosto', earningsMonth: null, detail: listProfit);
 
-      YearProfitPayment year4 =
-          new YearProfitPayment(year: '2018', earning: r'$220.000');
-      YearProfitPayment year5 =
-          new YearProfitPayment(year: '2019', earning: r'$20.000');
-      YearProfitPayment year6 =
-          new YearProfitPayment(year: '2020', earning: r'$100.300');
-      List<YearProfitPayment> listProfit2 = new List<YearProfitPayment>();
-      listProfit2.add(year4);
-      listProfit2.add(year5);
-      listProfit2.add(year6);
-      ProfitPartnerDetailModel profitDetail2 = new ProfitPartnerDetailModel(
-          month: 'Septiembre', earningsMonth: r'$100.300', detail: listProfit2);
-      List<ProfitPartnerDetailModel> listProfileDetail =
-          new List<ProfitPartnerDetailModel>();
-      listProfileDetail.add(profitDetail1);
-      listProfileDetail.add(profitDetail2);
-      ProfitPartnerModel profitPartner = new ProfitPartnerModel(
-          accumulableEarnings: r'$780.600', profitDetail: listProfileDetail);
-      yield ProfitPaymentDetail(profitPartner: profitPartner);
+    if (event is PayProfits) {
+      try {
+        
+        yield ProfitPaymentLoading();
+
+        try {
+
+          final profitPayPostRes = await repository.postProfitPayment(
+            token: event.token,  
+            partnerId: event.idPartner , 
+            earningShareIds: event.earningShareIds
+          );
+          print('PAY PROFIT RES: $profitPayPostRes ');
+          print('PAY PROFIT: ${event.token} ${event.idPartner} ${event.earningShareIds}');
+          
+        } catch (e) {
+          print(e);
+          yield ProfitPaymentFailure(error: e.toString());
+        }
+
+        yield ProfitPaymentLoading();
+
+        final profitResponse = await repository.getProfitPayment(event.token, event.idPartner);
+        ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+        
+        yield ProfitPaymentDetail(profitPartner: profitPartner);
+
+      } catch (e) {
+        print(e);
+        yield ProfitPaymentFailure(error: e.toString());
+      }
+    }
+
+    if (event is ConvertShares) {
+      try {
+        
+        yield ProfitPaymentLoading();
+
+        try {
+
+          print(event.quantity);
+          final profitPayPostRes = await repository.convertShares(
+            token: event.token,  
+            partnerId: event.partnerId , 
+            earningShareIds: event.earningShareIds,
+            quantity: event.quantity,
+          );
+          print('PAY PROFIT RES: $profitPayPostRes ');
+          print(event.toString());
+          
+        } catch (e) {
+          print(e);
+          yield ProfitPaymentFailure(error: e.toString());
+        }
+
+        yield ProfitPaymentLoading();
+
+        final profitResponse = await repository.getProfitPayment(event.token, event.partnerId);
+        ProfitPartnerModel profitPartner = ProfitPartnerModel.fromJson(profitResponse);
+        yield ProfitPaymentDetail(profitPartner: profitPartner);
+
+      } catch (e) {
+        print(e);
+        yield ProfitPaymentFailure(error: e.toString());
+      }
     }
   }
 }

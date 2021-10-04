@@ -1,3 +1,5 @@
+import 'package:bkapp_flutter/core/bloc/profitPayment/profit_payment_form_bloc.dart';
+import 'package:bkapp_flutter/core/models/profit_payment_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/screens/profitPayment/widgets/modal_profit_pay_widget.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
@@ -9,9 +11,11 @@ import 'package:flutter/material.dart';
 import 'modal_convert_shares_widget.dart';
 
 class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
-  const ButtonsPayAndConvertEarningsWidget({Key key, this.selectedYearsPay})
+  const ButtonsPayAndConvertEarningsWidget({Key key, this.selectedYearsPay,
+  @required this.earningPerMonth})
       : super(key: key);
   final List<String> selectedYearsPay;
+  final DataEarningPerMonth earningPerMonth;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -21,10 +25,19 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
           RaisedButton(
               key: Key('raised-button-profit-payment'),
               onPressed: () {
-                _showDialogConvertShares(context, 50.0, () {
+                final profitForm = context.read<ProfitPaymentFormBloc>();
+                _showDialogConvertShares(context,50.0,profitForm, () {
                   Navigator.pop(context);
-                  context.read<ProfitPaymentBloc>().add(
-                      TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
+
+                  context.read<ProfitPaymentBloc>().add(ConvertShares(
+                    token: profitForm.userToken.value, 
+                    partnerId: profitForm.idPartner.value, 
+                    earningShareIds: profitForm.dataEarningPerMonth.earningShareIds,  
+                    earning: profitForm.dataEarningPerMonth.earning,
+                    shareValue: profitForm.shareValue,
+                    quantity: profitForm.shareQuantity)
+                  );
+                  profitForm.initShareQuantityAndProfitRes();
                 });
               },
               color: Theme.of(context).colorScheme.primaryColor,
@@ -43,9 +56,15 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
             onPressed: () {
               _showDialogPayment(context, 55.0, () {
                 Navigator.pop(context);
-                context
-                    .read<ProfitPaymentBloc>()
-                    .add(TurnIntoShares(yearsTurnIntoShares: selectedYearsPay));
+                final profitForm = context.read<ProfitPaymentFormBloc>();
+                 context
+                  .read<ProfitPaymentBloc>().add(
+                    PayProfits(
+                      earningShareIds: profitForm.dataEarningPerMonth.earningShareIds, 
+                      idPartner: profitForm.idPartner.value, 
+                      token: profitForm.userToken.value )
+                );
+                profitForm.clearDataEarning();
               });
             },
             child: Text(
@@ -64,23 +83,33 @@ class ButtonsPayAndConvertEarningsWidget extends StatelessWidget {
   }
 
   void _showDialogConvertShares(
-      context, modalHeight, Function onTapConvertShares) {
+    context, modalHeight,
+    ProfitPaymentFormBloc profitForm, 
+    Function onTapConvertShares , 
+  ) {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return ModalConvertSharesWidget(
-              modalHeight: modalHeight, onTapAccept: onTapConvertShares);
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        profitForm.initShareQuantityAndProfitRes();
+        return ModalConvertSharesWidget(
+          modalHeight: modalHeight, 
+          onTapAccept: onTapConvertShares , 
+          profitForm: profitForm,
+        );
+      }
+    );
   }
 
-  void _showDialogPayment(context, modalHeight, Function onTapConvertShares) {
+  void _showDialogPayment(context, modalHeight, Function onTapPaymentProfit) {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return ModalProfitPayWidget(
-              modalHeight: modalHeight, onTapAccept: onTapConvertShares);
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return ModalProfitPayWidget(
+            modalHeight: modalHeight, onTapAccept: onTapPaymentProfit,
+            earningsMonth: earningPerMonth);
+      }
+    );
   }
 }
