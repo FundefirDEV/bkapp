@@ -63,7 +63,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
                   badDebtReserve: infoMeeting.badDebtReserve,
                   earningByShare: infoMeeting.earningByShare,
                   fundReserve: infoMeeting.fundReserve),
-              if (isAdmin) _buttonPayFee(context),
+              if (isAdmin) _buttonPayFee(context , state.closeMettingActivate),
               LineSeparatorWidget(),
               _subtitleDetailClosing(context),
               CarouselCardsDetailWidget(
@@ -92,12 +92,12 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
     );
   }
 
-  Padding _buttonPayFee(BuildContext context) {
+  Padding _buttonPayFee(BuildContext context , bool closeMettingActivate) {
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
       child: RaisedButton(
           key: Key('raisedButton-pay-fee'),
-          onPressed: () {
+          onPressed: closeMettingActivate?   () {
             _showDialog(
                 context,
                 I18n.of(context).meetingClosedQuestionMeetingClosed1,
@@ -111,7 +111,7 @@ class _MeetingClosedState extends State<MeetingClosedScreen> {
                   .read<MeetingBloc>()
                   .add(MeetingClosed(token: widget.tokenUser));
             });
-          },
+          } : null,
           color: Theme.of(context).colorScheme.primaryColor,
           padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
           elevation: 0,

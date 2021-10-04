@@ -22,6 +22,14 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       yield MeetingLoading();
       try {
         final response = await repository.infoMeeting(event.token);
+
+        final int totalShares = response['totalShares']; 
+        final double totalCredit = response['totalCredit']; 
+        final double totalPayment = response['capitalBalance'] + response['totalOrdinaryInterest'];
+
+        final bool closeMettingActivate 
+          = activateCloseMettingButton(totalShares , totalCredit , totalPayment);
+
         final infoMeeting = MeetingModel.fromJson(response);
         final credit = await repository.creditsCurrentMeeting(event.token);
         MeetingDetail meetingDetail = MeetingDetail.fromJson(credit);
@@ -35,7 +43,8 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
             infoMeeting: infoMeeting,
             isClosedMeeting: false,
             meetingDetail: meetingDetail,
-            sharesCurrent: sharesCurrent);
+            sharesCurrent: sharesCurrent,
+            closeMettingActivate: closeMettingActivate,);
       } catch (e) {
         yield MeetingFailure(error: e.toString());
       }
@@ -54,10 +63,19 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
             infoMeeting: infoMeeting,
             isClosedMeeting: true,
             meetingDetail: meetingDetail,
-            sharesCurrent: sharesCurrent);
+            sharesCurrent: sharesCurrent,
+            closeMettingActivate: false);
       } catch (e) {
         yield MeetingFailure(error: e.toString());
       }
     }
+  }
+
+  bool activateCloseMettingButton(
+    int totalShares , 
+    double totalCredit, 
+    double totalPayment){
+
+    return !(totalShares == 0 && totalCredit == 0.0 && totalPayment == 0.0);
   }
 }
