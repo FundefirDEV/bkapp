@@ -1,7 +1,8 @@
-import 'package:bkapp_flutter/core/bloc/creditBloc/data_use_credit.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/credit_repository.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import 'requestHandler/request_credit_handler.dart';
@@ -45,7 +46,38 @@ class CreditFormBloc extends FormBloc<String, String> {
       paymentAmount.updateInitialValue('0.0');
       paymentAmount.updateValue('0.0');
     }
-}
+  }
+
+  void initItems(BuildContext context) {
+    creditItems = [
+      I18n.of(context).creditScreenItemsCreditUseGenerationincome,
+      I18n.of(context).creditScreenItemsCreditUseFamilystrengthening,
+      I18n.of(context).creditScreenItemsCreditUseConsumption,
+    ];
+    
+    useCreditOption0 = [
+      I18n.of(context).creditScreenUseCreditOption0Smallcompany,
+      I18n.of(context).creditScreenUseCreditOption0Trade,
+    ];
+    
+    useCreditOption1 = [
+      I18n.of(context).creditScreenUseCreditOption1HousingImprovement,
+      I18n.of(context).creditScreenUseCreditOption1HouseholdEquipment,
+      I18n.of(context).creditScreenUseCreditOption1Education,
+      I18n.of(context).creditScreenUseCreditOption1Health,
+    ];
+    
+    useCreditOption2 = [
+      I18n.of(context).creditScreenUseCreditOption2Debtpayment,
+      I18n.of(context).creditScreenUseCreditOption2FoodAndClothing,
+      I18n.of(context).creditScreenUseCreditOption2Recreation,
+      I18n.of(context).creditScreenUseCreditOption2ServicesPay,
+      I18n.of(context).creditScreenUseCreditOption2Transport,
+      I18n.of(context).creditScreenUseCreditOption2Travels,
+    ];
+      
+    creditUse.updateItems(creditItems);
+  }
 
 
   CreditFormBloc({@required this.creditRepository}) {
