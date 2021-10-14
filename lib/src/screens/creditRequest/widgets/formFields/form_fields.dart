@@ -14,6 +14,9 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    initItems(context);
+    
     return Container(
       key: Key('credit-form-container'),
       width: SizeConfig.blockSizeHorizontal * 70,
@@ -67,5 +70,37 @@ class FormFields extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void initItems(BuildContext context) {
+    creditFormBloc.creditItems = [
+      I18n.of(context).creditScreenItemsCreditUseGenerationincome,
+      I18n.of(context).creditScreenItemsCreditUseFamilystrengthening,
+      I18n.of(context).creditScreenItemsCreditUseConsumption,
+    ];
+    
+    creditFormBloc.useCreditOption0 = [
+      I18n.of(context).creditScreenUseCreditOption0Smallcompany,
+      I18n.of(context).creditScreenUseCreditOption0Trade,
+    ];
+    
+    creditFormBloc.useCreditOption1 = [
+      I18n.of(context).creditScreenUseCreditOption1HousingImprovement,
+      I18n.of(context).creditScreenUseCreditOption1HouseholdEquipment,
+      I18n.of(context).creditScreenUseCreditOption1Education,
+      I18n.of(context).creditScreenUseCreditOption1Health,
+    ];
+    
+    creditFormBloc.useCreditOption2 = [
+      I18n.of(context).creditScreenUseCreditOption2Debtpayment,
+      I18n.of(context).creditScreenUseCreditOption2FoodAndClothing,
+      I18n.of(context).creditScreenUseCreditOption2Recreation,
+      I18n.of(context).creditScreenUseCreditOption2ServicesPay,
+      I18n.of(context).creditScreenUseCreditOption2Transport,
+      I18n.of(context).creditScreenUseCreditOption2Travels,
+    ];
+    
+    creditFormBloc.creditUse.updateItems(creditFormBloc.creditItems);
+    
   }
 }

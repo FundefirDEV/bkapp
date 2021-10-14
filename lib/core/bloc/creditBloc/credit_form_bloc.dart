@@ -30,6 +30,12 @@ class CreditFormBloc extends FormBloc<String, String> {
   // PAYMENT
   final paymentAmount = TextFieldBloc();
 
+  List<String> creditItems = [];
+  List<String> useCreditOption0 = [];
+  List<String> useCreditOption1 = [];
+  List<String> useCreditOption2 = [];
+
+
   void initPaymentAmount(String amount){
 
     if(amount != null && amount != ''){
@@ -43,7 +49,7 @@ class CreditFormBloc extends FormBloc<String, String> {
 
 
   CreditFormBloc({@required this.creditRepository}) {
-    creditUse.updateItems(itemsCreditUse);
+    creditUse.updateItems(creditItems);
     addFieldBlocs(fieldBlocs: [
       specialPerson,
       specialInterest,
@@ -56,7 +62,7 @@ class CreditFormBloc extends FormBloc<String, String> {
     ]);
     creditUse.onValueChanges(onData: (previous, current) async* {
       removeFieldBlocs(fieldBlocs: [creditDetail]);
-      switch (itemsCreditUse.indexOf(current.value)) {
+      switch (creditItems.indexOf(current.value)) {
         case 0:
           creditDetail.updateItems(useCreditOption0);
           break;

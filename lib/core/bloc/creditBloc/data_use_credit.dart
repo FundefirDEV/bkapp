@@ -4,6 +4,25 @@ const List<String> itemsCreditUse = [
   'Consumo'
 ];
 
+// List<String> getItems(BuildContext context){
+  
+//   return [
+//     I18n.of(context).meetingClosedMeetingClosing,
+//     I18n.of(context).meetingClosedMeetingClosing,
+//     I18n.of(context).meetingClosedMeetingClosing,
+//   ];
+// }
+
+
+// List<String> getItems1(BuildContext context){
+  
+//   return [
+//     I18n.of(context).meetingClosedMeetingClosing,
+//     I18n.of(context).meetingClosedMeetingClosing,
+//     I18n.of(context).meetingClosedMeetingClosing,
+//   ];
+// }
+
 const List<String> useCreditOption0 = [
   'Comercio (compra y venta)',
   'Pequeña empresa'

@@ -508,6 +508,36 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenAdvances => "Advance";
   /// "Installments"
   String get creditScreenInstallments => "Installments";
+  /// "Generation of income"
+  String get creditScreenItemsCreditUseGenerationincome => "Generation of income";
+  /// "Family strengthening"
+  String get creditScreenItemsCreditUseFamilystrengthening => "Family strengthening";
+  /// "Consumption"
+  String get creditScreenItemsCreditUseConsumption => "Consumption";
+  /// "Trade (buying and selling)"
+  String get creditScreenUseCreditOption0Trade => "Trade (buying and selling)";
+  /// "Small company"
+  String get creditScreenUseCreditOption0Smallcompany => "Small company";
+  /// "Housing Improvement"
+  String get creditScreenUseCreditOption1HousingImprovement => "Housing Improvement";
+  /// "Education"
+  String get creditScreenUseCreditOption1Education => "Education";
+  /// "Household Equipment"
+  String get creditScreenUseCreditOption1HouseholdEquipment => "Household Equipment";
+  /// "Health"
+  String get creditScreenUseCreditOption1Health => "Health";
+  /// "Debt payment"
+  String get creditScreenUseCreditOption2Debtpayment => "Debt payment";
+  /// "Services pay"
+  String get creditScreenUseCreditOption2ServicesPay => "Services pay";
+  /// "Food and Clothing"
+  String get creditScreenUseCreditOption2FoodAndClothing => "Food and Clothing";
+  /// "Transport"
+  String get creditScreenUseCreditOption2Transport => "Transport";
+  /// "Travels"
+  String get creditScreenUseCreditOption2Travels => "Travels";
+  /// "Recreation"
+  String get creditScreenUseCreditOption2Recreation => "Recreation";
   /// "BK rules"
   String get rulesScreenBkRules => "BK rules";
   /// "Creation date: "
@@ -1570,6 +1600,51 @@ class _I18n_es_ES extends I18n {
   /// "Cuotas"
   @override
   String get creditScreenInstallments => "Cuotas";
+  /// "Generación de ingresos"
+  @override
+  String get creditScreenItemsCreditUseGenerationincome => "Generación de ingresos";
+  /// "Fortalecimiento familiar"
+  @override
+  String get creditScreenItemsCreditUseFamilystrengthening => "Fortalecimiento familiar";
+  /// "Consumo"
+  @override
+  String get creditScreenItemsCreditUseConsumption => "Consumo";
+  /// "Comercio (compra y venta)"
+  @override
+  String get creditScreenUseCreditOption0Trade => "Comercio (compra y venta)";
+  /// "Pequeña empresa"
+  @override
+  String get creditScreenUseCreditOption0Smallcompany => "Pequeña empresa";
+  /// "Mejoramiento de Vivienda"
+  @override
+  String get creditScreenUseCreditOption1HousingImprovement => "Mejoramiento de Vivienda";
+  /// "Educación"
+  @override
+  String get creditScreenUseCreditOption1Education => "Educación";
+  /// "Equipamiento del Hogar"
+  @override
+  String get creditScreenUseCreditOption1HouseholdEquipment => "Equipamiento del Hogar";
+  /// "Salud"
+  @override
+  String get creditScreenUseCreditOption1Health => "Salud";
+  /// "Pago de Deudas"
+  @override
+  String get creditScreenUseCreditOption2Debtpayment => "Pago de Deudas";
+  /// "Pago de Servicios"
+  @override
+  String get creditScreenUseCreditOption2ServicesPay => "Pago de Servicios";
+  /// "Alimentación y Vestido"
+  @override
+  String get creditScreenUseCreditOption2FoodAndClothing => "Alimentación y Vestido";
+  /// "Transporte"
+  @override
+  String get creditScreenUseCreditOption2Transport => "Transporte";
+  /// "Viajes"
+  @override
+  String get creditScreenUseCreditOption2Travels => "Viajes";
+  /// "Recreación"
+  @override
+  String get creditScreenUseCreditOption2Recreation => "Recreación";
   /// "Reglas del BK"
   @override
   String get rulesScreenBkRules => "Reglas del BK";

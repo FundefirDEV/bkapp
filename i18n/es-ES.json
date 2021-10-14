@@ -312,7 +312,31 @@
     "Detail": "Detalle",
     "wayToPay": "Formas de pago del interes ordinarios",
     "advances": "Por Adelantado",
-    "installments": "Cuotas"
+    "installments": "Cuotas",
+
+    "itemsCreditUse": {
+      "Generationincome": "Generación de ingresos",
+      "Familystrengthening": "Fortalecimiento familiar",
+      "Consumption": "Consumo"
+    },
+    "useCreditOption0": {
+      "Trade": "Comercio (compra y venta)",
+      "Smallcompany": "Pequeña empresa"
+    },
+    "useCreditOption1": {
+      "HousingImprovement": "Mejoramiento de Vivienda",
+      "Education": "Educación",
+      "HouseholdEquipment": "Equipamiento del Hogar",
+      "Health": "Salud"
+    },
+    "useCreditOption2": {
+      "Debtpayment": "Pago de Deudas",
+      "ServicesPay": "Pago de Servicios",
+      "FoodAndClothing": "Alimentación y Vestido",
+      "Transport": "Transporte",
+      "Travels": "Viajes",
+      "Recreation": "Recreación"
+    }
   },
   "rulesScreen": {
     "bkRules": "Reglas del BK",

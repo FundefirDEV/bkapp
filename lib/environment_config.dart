@@ -3,7 +3,7 @@ class EnvironmentConfig {
   /// Url for service
   ///
   static const String API_URL = String.fromEnvironment('API_URL',
-      defaultValue: "https://bk-service-stage-2foxvegkzq-uc.a.run.app");
+      defaultValue: "https://bk-service-qa-2foxvegkzq-uc.a.run.app");
 
   // services QA
   // https://bk-service-qa-2foxvegkzq-uc.a.run.app
@@ -20,7 +20,7 @@ class EnvironmentConfig {
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
-  static const String ENV = String.fromEnvironment('ENV', defaultValue: "STAGE");
+  static const String ENV = String.fromEnvironment('ENV', defaultValue: "DEV");
 
   ///
   /// DSN for sentry
