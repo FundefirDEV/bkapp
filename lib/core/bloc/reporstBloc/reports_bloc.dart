@@ -22,7 +22,12 @@ class ReportsBloc extends Bloc<ReportsEvent, ReportsState> {
       try {
         final response = await repository.getReports(event.token);
         ReportsModel reportsModel = reportsModelFromJson(response);
-        yield ReportsLoaded(reportsModel: reportsModel);
+
+        if(reportsModel.shares.totalSharesPerMeeting.length == 0){
+          yield NoDataReport();
+        } else {
+          yield ReportsLoaded(reportsModel: reportsModel);
+        }
       } catch (e) {
         yield ReportsFailure(error: e.toString());
       }

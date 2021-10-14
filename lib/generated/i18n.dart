@@ -658,6 +658,10 @@ class I18n implements WidgetsLocalizations {
   String get addPartnerAnyTime => "at any time";
   /// "You want to delete the pending partner"
   String get addPartnerDeletePartnerConfirm => "You want to delete the pending partner";
+  /// "No data"
+  String get noDataScreenNoDataMessage => "No data";
+  /// "No meetings yet"
+  String get noDataScreenReportsMessage => "No meetings yet";
   /// "Partner removal"
   String get partnerRemovalTitle => "Partner removal";
   /// "Are you sure to withdraw"
@@ -1825,6 +1829,12 @@ class _I18n_es_ES extends I18n {
   /// "Deseas eliminar este socio pendiente"
   @override
   String get addPartnerDeletePartnerConfirm => "Deseas eliminar este socio pendiente";
+  /// "No hay datos"
+  @override
+  String get noDataScreenNoDataMessage => "No hay datos";
+  /// "Aún no se han realizado reuniones"
+  @override
+  String get noDataScreenReportsMessage => "Aún no se han realizado reuniones";
   /// "Retirar socio"
   @override
   String get partnerRemovalTitle => "Retirar socio";

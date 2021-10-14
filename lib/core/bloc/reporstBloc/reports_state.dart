@@ -27,3 +27,10 @@ class ReportsFailure extends ReportsState {
   @override
   List<Object> get props => [error];
 }
+
+class NoDataReport extends ReportsState {
+
+  @override
+  List<Object> get props => [];
+}
+

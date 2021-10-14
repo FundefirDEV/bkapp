@@ -410,6 +410,11 @@
     "anyTime": "cualquier momento",
     "deletePartnerConfirm" : "Deseas eliminar este socio pendiente"
   },
+
+  "noDataScreen": {
+    "noDataMessage": "No hay datos",
+    "reportsMessage": "Aún no se han realizado reuniones"
+  },
   "partnerRemoval": {
     "title": "Retirar socio",
     "modalRemoval": {

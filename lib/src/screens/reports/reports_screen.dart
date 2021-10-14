@@ -1,6 +1,7 @@
 import 'package:bkapp_flutter/core/bloc/reporstBloc/reports_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
+import 'package:bkapp_flutter/src/widgets/noDataScreen/no_data_screen.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -54,6 +55,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
       }
       if (state is ReportsFailure) {
         return ErrorPage(errorMessage: state.error);
+      }
+      if (state is NoDataReport) {
+        return NoDataScreen(noDataMessage: I18n.of(context).noDataScreenReportsMessage,);
       }
       return Center(
         child: CircularProgressIndicator(),
