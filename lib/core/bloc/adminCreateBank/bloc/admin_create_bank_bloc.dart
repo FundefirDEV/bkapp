@@ -22,8 +22,9 @@ class AdminCreateBankBloc
     if (event is AdminCreateBankInitialize) {
       yield AdminCreateBankLoading();
       try {
-        final response = await repository.adminCreateBank(
-            event.token, event.parnerId.toString());
+        // final response = await repository.adminCreateBank(
+        //   event.token,
+        // );
       } catch (e) {
         print(e);
         yield AdminCreateBankFailure(error: e.toString());

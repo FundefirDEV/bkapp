@@ -8,14 +8,15 @@ abstract class AdminCreateBankEvent extends Equatable {
 }
 
 class AdminCreateBankInitialize extends AdminCreateBankEvent {
-  AdminCreateBankInitialize(
-      {this.token, @required this.role, @required this.parnerId});
+  AdminCreateBankInitialize({
+    this.token,
+    @required this.role,
+  });
   final String token;
   final String role;
-  final int parnerId;
 
   @override
-  List<Object> get props => [token, role, parnerId];
+  List<Object> get props => [token, role];
 
   @override
   String toString() => 'ProfiPaymentInitialize { token: $token role: $role }';

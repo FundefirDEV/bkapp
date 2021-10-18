@@ -24,13 +24,9 @@ class AdminCreateBankLoaded extends AdminCreateBankState {
 class AdminCreateBankPartnerNotAdmin extends AdminCreateBankState {
   AdminCreateBankPartnerNotAdmin({
     @required this.parnerId,
-    @required this.profitPartner,
-    @required this.historyEarnings,
   });
 
   final int parnerId;
-  ProfitPartnerModel profitPartner;
-  final String historyEarnings;
 
   @override
   List<Object> get props => [parnerId];

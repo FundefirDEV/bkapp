@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/src/screens/adminCreateBank/admin_create_bank_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bkapp_flutter/core/services/sql/sqflite.dart';
 import 'package:bkapp_flutter/src/screens/editProfile/edit_profile_screen.dart';
@@ -174,13 +175,17 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         TimeLineMyCreditScreen(
                             userName: widget.userName,
                             tokenUser: widget.tokenUser),
-
                         ProfileEditScreen(
                           token: widget.tokenUser,
                         ),
                         ReportsScreen(
-                            userName: widget.userName, token: widget.tokenUser),
-                        //
+                            userName: widget.userName,
+                            token: widget.tokenUser), // 20
+                        AdminCreateBankScreen(
+                          userName: widget.userName,
+                          tokenUser: widget.tokenUser,
+                          role: widget.role,
+                        ),
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

@@ -56,7 +56,7 @@ class RotatingOptionsWidget extends StatelessWidget {
                               fontWeight: FontWeight.w100))),
                   InkWell(
                     onTap: () => navigateBloc.add(ButtonPressed(
-                        goTo: HomeRoutesConstant.addPartnerScreen)),
+                        goTo: HomeRoutesConstant.adminCreateBankScreen)),
                   ),
                 ],
               )),

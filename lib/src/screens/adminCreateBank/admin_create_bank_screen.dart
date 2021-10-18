@@ -8,18 +8,13 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class AdminCreateBankScreen extends StatefulWidget {
   AdminCreateBankScreen({
-    Key key,
     @required this.userName,
     @required this.tokenUser,
     @required this.role,
-    @required this.partnerId,
-    this.oldIndex,
-  }) : super(key: key);
+  });
   final String userName;
   final String tokenUser;
-  final int oldIndex;
   final String role;
-  final int partnerId;
 
   @override
   _AdminCreateBankScreenState createState() => _AdminCreateBankScreenState();
@@ -29,9 +24,9 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
   @override
   void initState() {
     BlocProvider.of<AdminCreateBankBloc>(context).add(AdminCreateBankInitialize(
-        token: widget.tokenUser,
-        role: widget.role,
-        parnerId: widget.partnerId));
+      token: widget.tokenUser,
+      role: widget.role,
+    ));
     super.initState();
   }
 
@@ -64,13 +59,7 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
 
         return FormBlocListener<AdminCreateBankFormBloc, dynamic, dynamic>(
             key: Key('bloc-listener-profit-payment-screen'),
-            // onSuccess: (context, state) {
-            //   context.read<AdminCreateBankBloc>().add(
-            //       AdminCreateBankPartnerSelected(
-            //           idPartner:
-            //               adminCreateBankFormBloc.idPartner.value.toString(),
-            //           token: widget.tokenUser));
-            // },
+            onSuccess: (context, state) {},
             onFailure: (context, state) {
               UtilsTools.showErrorDialog(context, state.failureResponse);
             },
