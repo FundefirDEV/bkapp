@@ -1,4 +1,5 @@
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
+import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/admin_create_bank_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/meeting_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/bank_rules_repository.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/profile_register_repository.dart';
@@ -57,11 +58,13 @@ final ProfileRepository profileRepository =
     ProfileRepository(apiProvider: ApiProvider(httpClient: httpClient));
 
 final ProfileEditRepository profileEditRepository =
-  ProfileEditRepository(apiProvider: ApiProvider(httpClient: httpClient));
-    
+    ProfileEditRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
 final ProfitPaymentRepository profitPaymentRepository =
     ProfitPaymentRepository(apiProvider: ApiProvider(httpClient: httpClient));
 
-        
 final ReportsRepository reportsRepository =
     ReportsRepository(apiProvider: ApiProvider(httpClient: httpClient));
+
+final AdminCreateBankRepository adminCreateBankRepository =
+    AdminCreateBankRepository(apiProvider: ApiProvider(httpClient: httpClient));

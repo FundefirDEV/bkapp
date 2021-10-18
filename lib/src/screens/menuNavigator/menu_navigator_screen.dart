@@ -21,11 +21,12 @@ import 'bloc_providers.dart';
 import 'widgets/widgets.dart';
 
 class MenuNavigatorScreen extends StatefulWidget {
-  MenuNavigatorScreen({Key key, 
-    this.tokenUser, 
-    this.userName, 
-    this.role , 
-    @required this.partnerId})
+  MenuNavigatorScreen(
+      {Key key,
+      this.tokenUser,
+      this.userName,
+      this.role,
+      @required this.partnerId})
       : super(key: key);
   final String tokenUser;
   final String userName;
@@ -152,11 +153,12 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                             tokenUser: widget.tokenUser,
                             role: widget.role),
                         ProfitPaymentScreen(
-                            oldIndex: currentIndex,
-                            userName: widget.userName,
-                            tokenUser: widget.tokenUser,
-                            role: widget.role,
-                            partnerId: widget.partnerId,), // NOTE 14
+                          oldIndex: currentIndex,
+                          userName: widget.userName,
+                          tokenUser: widget.tokenUser,
+                          role: widget.role,
+                          partnerId: widget.partnerId,
+                        ), // NOTE 14
                         PartnerRemovalScreen(
                           oldIndex: currentIndex,
                           userName: widget.userName,
@@ -172,13 +174,13 @@ class _MenuNavigatorState extends State<MenuNavigatorScreen>
                         TimeLineMyCreditScreen(
                             userName: widget.userName,
                             tokenUser: widget.tokenUser),
-                            
+
                         ProfileEditScreen(
                           token: widget.tokenUser,
                         ),
                         ReportsScreen(
-                          userName: widget.userName, 
-                          token: widget.tokenUser),
+                            userName: widget.userName, token: widget.tokenUser),
+                        //
                       ],
                       physics:
                           NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.

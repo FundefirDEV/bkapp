@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/bloc/adminCreateBank/admin_create_bank_form_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/administratorAsignmentBloc/administrator_asignment_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/bloc/profileBloc/profile_bloc.dart';
@@ -46,16 +47,15 @@ List<dynamic> blocProviders = [
   BlocProvider(
     create: (context) => ProfileBloc(repository: profileRepository),
   ),
-
   BlocProvider(
     create: (context) => PartnerBloc(partnerRepository: partnerRepository),
   ),
-
   BlocProvider(
       create: (context) =>
           ProfitPaymentFormBloc(repository: profitPaymentRepository)),
   BlocProvider(
-      create: (context) => ProfitPaymentBloc(repository: profitPaymentRepository)),
+      create: (context) =>
+          ProfitPaymentBloc(repository: profitPaymentRepository)),
   BlocProvider(
       create: (context) => InstallmentsPaymentBloc(
           creditRepository: creditRepository,
@@ -67,8 +67,11 @@ List<dynamic> blocProviders = [
   BlocProvider(
     create: (context) => ProfileEditBloc(repository: profileEditRepository),
   ),
-
   BlocProvider(
     create: (context) => ReportsBloc(repository: reportsRepository),
+  ),
+  BlocProvider(
+    create: (context) =>
+        AdminCreateBankFormBloc(repository: adminCreateBankRepository),
   ),
 ];
