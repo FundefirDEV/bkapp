@@ -22,28 +22,13 @@ class AdminCreateBankInitialize extends AdminCreateBankEvent {
   String toString() => 'ProfiPaymentInitialize { token: $token role: $role }';
 }
 
-class AdminCreateBankPartnerNotAdminEvent extends AdminCreateBankEvent {
-  AdminCreateBankPartnerNotAdminEvent(
-      {@required this.idPartner, @required this.token});
-  final String idPartner;
-  final String token;
-
-  @override
-  List<Object> get props => [idPartner];
-
-  @override
-  String toString() =>
-      'AdminCreateBankPartnerSelected { idPartner: $idPartner }';
-}
-
 class CreateBank extends AdminCreateBankEvent {
-  CreateBank({@required this.idPartner, @required this.token});
-  final String idPartner;
+  CreateBank({@required this.token});
   final String token;
 
   @override
-  String toString() => 'CreateBank { idPartner: $idPartner token: $token }';
+  String toString() => 'CreateBank { token: $token }';
 
   @override
-  List<Object> get props => [idPartner, token];
+  List<Object> get props => [token];
 }

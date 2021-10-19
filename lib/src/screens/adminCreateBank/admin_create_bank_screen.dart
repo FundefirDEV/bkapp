@@ -1,5 +1,6 @@
 import 'package:bkapp_flutter/core/bloc/adminCreateBank/admin_create_bank_form_bloc.dart';
 import 'package:bkapp_flutter/core/bloc/adminCreateBank/bloc/admin_create_bank_bloc.dart';
+import 'package:bkapp_flutter/src/screens/adminCreateBank/widgets/admin_create_bank_sreen_container.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
 import 'package:bkapp_flutter/src/widgets/widgets.dart';
@@ -46,16 +47,10 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
         );
       }
 
-      if (state is AdminCreateBankPartnerNotAdmin) {
-        return AppBarWidget(userName: widget.userName, container: Container());
-      }
-
       return Builder(builder: (context) {
         // ignore: close_sinks
         AdminCreateBankFormBloc adminCreateBankFormBloc =
             context.read<AdminCreateBankFormBloc>();
-
-        if (state is AdminCreateBankLoaded) {}
 
         return FormBlocListener<AdminCreateBankFormBloc, dynamic, dynamic>(
             key: Key('bloc-listener-profit-payment-screen'),
@@ -64,9 +59,10 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
               UtilsTools.showErrorDialog(context, state.failureResponse);
             },
             child: AppBarWidget(
-              userName: widget.userName,
-              container: Container(),
-            ));
+                userName: widget.userName,
+                container: AdminCreateBankScreenContainer(
+                  isAdmin: true,
+                )));
       });
     });
   }

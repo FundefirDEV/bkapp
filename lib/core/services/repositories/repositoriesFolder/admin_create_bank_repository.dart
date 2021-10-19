@@ -9,7 +9,7 @@ class AdminCreateBankRepository {
   Future<Map<String, dynamic>> adminCreateBank(
     String token,
   ) async {
-    final Map profitPayment = await apiProvider.adminCreateBank(token: token);
-    return profitPayment;
+    final Map createBankRes = await apiProvider.adminCreateBank(token: token);
+    return createBankRes;
   }
 }

@@ -25,6 +25,8 @@ class AdminCreateBankBloc
         // final response = await repository.adminCreateBank(
         //   event.token,
         // );
+
+        yield AdminCreateBankInitial();
       } catch (e) {
         print(e);
         yield AdminCreateBankFailure(error: e.toString());
