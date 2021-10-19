@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:bkapp_flutter/core/bloc/adminCreateBank/admin_create_bank_form_bloc.dart';
 import 'package:bkapp_flutter/core/models/dropdown_model.dart';
+import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/screens/menuNavigator/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class AdminCreateBankScreenContainer extends StatelessWidget {
@@ -36,13 +42,18 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
                 bottomRight: Radius.circular(10)),
             title: 'Select city',
           ),
-          addPartnerButton(context)
+          addPartnerButton(context, adminCreateBankFormBloc)
         ]));
   }
 
-  GestureDetector addPartnerButton(BuildContext context) {
+  GestureDetector addPartnerButton(
+      BuildContext context, AdminCreateBankFormBloc adminCreateBankFormBloc) {
     return GestureDetector(
-      onTap: () => print('manaos'),
+      onTap: () => showDialog(
+          context: context,
+          builder: (_) => AddUserForm(
+                adminCreateBankFormBloc: adminCreateBankFormBloc,
+              )),
       child: Container(
         width: SizeConfig.blockSizeHorizontal * 100,
         padding: EdgeInsets.symmetric(vertical: 20),
@@ -107,6 +118,108 @@ class SelectItemContainer extends StatelessWidget {
                   size: 32.0,
                   color: Theme.of(context).colorScheme.primaryColor[100])),
           itemBuilder: (context, value) => value.text),
+    );
+  }
+}
+
+class AddUserForm extends StatelessWidget {
+  const AddUserForm({Key key, this.adminCreateBankFormBloc}) : super(key: key);
+
+  final AdminCreateBankFormBloc adminCreateBankFormBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            width: SizeConfig.blockSizeHorizontal * 80,
+            height: SizeConfig.blockSizeVertical * 70,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: Colors.white),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.all(15),
+                  child: Column(
+                    children: <Widget>[
+                      TextFieldBlocBuilder(
+                          textFieldBloc: adminCreateBankFormBloc.userName,
+                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          errorBuilder: (context, string) =>
+                              I18n.of(context).errorRequired,
+                          decoration: InputDecoration(
+                              labelText: I18n.of(context).formFirstName,
+                              prefixIcon: Icon(Icons.account_circle))),
+                      TextFieldBlocBuilder(
+                          textFieldBloc: adminCreateBankFormBloc.email,
+                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          errorBuilder: (context, string) =>
+                              I18n.of(context).errorRequired,
+                          decoration: InputDecoration(
+                              labelText: I18n.of(context).formEmail,
+                              prefixIcon: Icon(Icons.email_sharp))),
+                      TextFieldBlocBuilder(
+                          textFieldBloc: adminCreateBankFormBloc.phone,
+                          //onTap: () => _isEmpty(widget.inviteBloc),
+                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(16),
+                            //PhoneFormatter()
+                          ],
+                          errorBuilder: errorHandler,
+                          decoration: InputDecoration(
+                              labelText: I18n.of(context).inviteModalCellPhone,
+                              prefixIcon: Icon(Icons.phone))),
+                      TextFieldBlocBuilder(
+                          textFieldBloc: adminCreateBankFormBloc.documenNumber,
+                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          errorBuilder: (context, string) =>
+                              I18n.of(context).errorRequired,
+                          decoration: InputDecoration(
+                              labelText: I18n.of(context).profileScreenId,
+                              prefixIcon: Icon(Icons.perm_identity))),
+                      CheckboxFieldBlocBuilder(
+                        booleanFieldBloc: adminCreateBankFormBloc.isAdmin,
+                        body: Text('admin'),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        child: TextButton(
+                          onPressed: () {
+                            adminCreateBankFormBloc.addUser();
+                          },
+                          child: Container(
+                              width: 250,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(45)),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primaryColor[100]),
+                              child: Center(
+                                child: Text(
+                                  'Add',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )),
     );
   }
 }

@@ -5,13 +5,13 @@ class AdminCreateBankUser {
   String gender;
   int country;
   String countryIso;
-  String phone;
-  String email;
-  String validationCode;
+  final String phone;
+  final String email;
   String password;
   String passwordConfirmation;
-  bool isActive;
+  final bool isActive;
   String role;
+  String documenNumber;
 
   AdminCreateBankUser(
       {this.id,
@@ -19,13 +19,15 @@ class AdminCreateBankUser {
       this.lastname,
       this.gender,
       this.country,
+      this.countryIso,
       this.phone,
       this.email,
-      this.validationCode,
-      this.password,
-      this.passwordConfirmation,
       this.isActive,
-      this.role});
+      this.role,
+      this.documenNumber}) {
+    password = documenNumber;
+    passwordConfirmation = documenNumber;
+  }
 
   Map<String, dynamic> toJson() => {
         "password": password != null ? password : null,
@@ -42,7 +44,7 @@ class AdminCreateBankUser {
         "isActive": isActive != null ? isActive : null,
         "isCreator": true,
         "role": role != null ? role : null,
-        // "documentNumber": "000000001",
+        "documentNumber": documenNumber,
         // "profession": "developer",
         // "scholarship": 1,
         // "birthDate": "2021-07-30 18:51:19.177365Z"
