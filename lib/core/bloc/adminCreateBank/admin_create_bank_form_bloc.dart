@@ -54,19 +54,44 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
   final documenNumber = TextFieldBloc(validators: [UtilsTools.required]);
   final isAdmin = BooleanFieldBloc(initialValue: false);
 
+  bool verifyEmail(String email) {
+    return !userList.any((user) => user.email == email);
+  }
+
+  bool verifyPhone(String phone) {
+    return !userList.any((user) => user.phone == phone);
+  }
+
+  void clearPartnerForm() {
+    firtsName.clear();
+    lastName.clear();
+    phone.clear();
+    email.clear();
+    documenNumber.clear();
+    isAdmin.clear();
+  }
+
   addUser(BuildContext context) async {
     // ferify if phone or email are abiable before add
+
+    if (!verifyEmail(email.value)) {
+      addEmailError(context);
+      return;
+    }
+    if (!verifyPhone(phone.value)) {
+      addPhoneError(context);
+      return;
+    }
+
     final emailRes = await repository.verifyEmail(email.value);
     final phoneRes = await repository.verifyPhone(phone.value);
 
     if (!emailRes) {
-      email.addFieldError(I18n.of(context).requestErrorMailNotAviable,
-          isPermanent: true);
+      addEmailError(context);
       return;
     }
     if (!phoneRes) {
-      phone.addFieldError(I18n.of(context).requestErrorPhoneNotAviable,
-          isPermanent: true);
+      addPhoneError(context);
       return;
     }
     final adminCreateBankUser = AdminCreateBankUser(
@@ -83,7 +108,18 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     userList.add(adminCreateBankUser);
     updateUserList(userList);
     print(adminCreateBankUser.toJson());
+    clearPartnerForm();
     Navigator.pop(context);
+  }
+
+  void addPhoneError(BuildContext context) {
+    phone.addFieldError(I18n.of(context).requestErrorPhoneNotAviable,
+        isPermanent: true);
+  }
+
+  void addEmailError(BuildContext context) {
+    email.addFieldError(I18n.of(context).requestErrorMailNotAviable,
+        isPermanent: true);
   }
 
   void deletePartner(int index) {

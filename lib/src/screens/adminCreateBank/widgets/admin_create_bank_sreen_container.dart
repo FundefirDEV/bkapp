@@ -45,7 +45,8 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
             title: 'Select city',
           ),
           addPartnerButton(context, adminCreateBankFormBloc),
-          partnerList(adminCreateBankFormBloc)
+          partnerList(adminCreateBankFormBloc),
+          createBankButton(context, adminCreateBankFormBloc)
         ]));
   }
 
@@ -150,6 +151,34 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
     );
   }
 
+  Container createBankButton(
+      BuildContext context, AdminCreateBankFormBloc adminCreateBankFormBloc) {
+    return Container(
+      width: SizeConfig.blockSizeHorizontal * 100,
+      padding: EdgeInsets.symmetric(vertical: 20),
+      alignment: Alignment.center,
+      child: TextButton(
+        onPressed: () async {
+          print('Create Bank');
+        },
+        child: Container(
+            width: 250,
+            height: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(45)),
+                color: Theme.of(context).colorScheme.primaryColor[200]),
+            child: Center(
+                child: Text(
+              'Create Bank !',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800),
+            ))),
+      ),
+    );
+  }
+
   Widget _dataPartner(AdminCreateBankUser user) {
     return Container(
       width: SizeConfig.safeBlockHorizontal * 50,
@@ -157,13 +186,13 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            width: SizeConfig.safeBlockHorizontal * 40,
+            width: SizeConfig.safeBlockHorizontal * 50,
             child: Text(
               user.firstname,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 height: 1,
-                fontSize: SizeConfig.safeBlockHorizontal * 6,
+                fontSize: SizeConfig.safeBlockHorizontal * 5.5,
                 fontWeight: FontWeight.w300,
               ),
             ),
