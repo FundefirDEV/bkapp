@@ -1,15 +1,14 @@
-import 'dart:async';
-
 import 'package:bkapp_flutter/core/bloc/adminCreateBank/admin_create_bank_form_bloc.dart';
+import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_user_model.dart';
 import 'package:bkapp_flutter/core/models/dropdown_model.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
-import 'package:bkapp_flutter/src/screens/menuNavigator/widgets/widgets.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
 import 'package:bkapp_flutter/src/utils/errorHandler/error_handler.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AdminCreateBankScreenContainer extends StatelessWidget {
   AdminCreateBankScreenContainer({@required this.isAdmin});
@@ -20,7 +19,10 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
     SizeConfig().init(context);
 
     AdminCreateBankFormBloc adminCreateBankFormBloc =
-        context.read<AdminCreateBankFormBloc>();
+        context.watch<AdminCreateBankFormBloc>();
+
+    adminCreateBankFormBloc.updateUserList(adminCreateBankFormBloc.userList);
+
     return Container(
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
         child: Column(children: [
@@ -42,8 +44,70 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
                 bottomRight: Radius.circular(10)),
             title: 'Select city',
           ),
-          addPartnerButton(context, adminCreateBankFormBloc)
+          addPartnerButton(context, adminCreateBankFormBloc),
+          partnerList(adminCreateBankFormBloc)
         ]));
+  }
+
+  StreamBuilder<Object> partnerList(
+      AdminCreateBankFormBloc adminCreateBankFormBloc) {
+    return StreamBuilder<Object>(
+        stream: adminCreateBankFormBloc.userListStream,
+        builder: (context, AsyncSnapshot snapshot) {
+          return Column(
+            children: [
+              for (var i = 0; i < snapshot.data.length; i++)
+                Container(
+                  width: SizeConfig.blockSizeHorizontal * 60,
+                  child: userListItem(
+                      context, snapshot.data[i], adminCreateBankFormBloc, i),
+                ) //userListItem(context, user),
+            ],
+          );
+        });
+  }
+
+  Widget userListItem(BuildContext context, AdminCreateBankUser user,
+      AdminCreateBankFormBloc adminCreateBankFormBloc, int index) {
+    return Stack(
+      key: Key('first-stack-partner-card'),
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 15.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Container(
+              height: 100.0,
+              width: double.infinity,
+              color: Colors.white,
+              child: Stack(
+                key: Key('second-stack-partner-card'),
+                children: <Widget>[
+                  SvgPicture.asset(
+                    'assets/images/user_icon_yellow.svg',
+                    width: SizeConfig.safeBlockHorizontal * 10,
+                  ),
+                  Positioned(
+                      bottom: 15.0, right: 10.0, child: _dataPartner(user))
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+            top: -5.0,
+            right: -9.0,
+            child: RawMaterialButton(
+              onPressed: () => {adminCreateBankFormBloc.deletePartner(index)},
+              elevation: 4.0,
+              constraints: BoxConstraints(minWidth: 23.0, minHeight: 23.0),
+              shape: CircleBorder(),
+              fillColor: Colors.white,
+              child: Icon(Icons.close,
+                  size: 17.0, color: Theme.of(context).colorScheme.errorColor),
+            )),
+      ],
+    );
   }
 
   GestureDetector addPartnerButton(
@@ -82,6 +146,37 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _dataPartner(AdminCreateBankUser user) {
+    return Container(
+      width: SizeConfig.safeBlockHorizontal * 50,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: SizeConfig.safeBlockHorizontal * 40,
+            child: Text(
+              user.firstname,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                height: 1,
+                fontSize: SizeConfig.safeBlockHorizontal * 6,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ),
+          Text(
+            user.phone,
+            textAlign: TextAlign.start,
+            style: TextStyle(
+                fontSize: 13.0,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.4),
+          )
+        ],
       ),
     );
   }
@@ -126,7 +221,6 @@ class AddUserForm extends StatelessWidget {
   const AddUserForm({Key key, this.adminCreateBankFormBloc}) : super(key: key);
 
   final AdminCreateBankFormBloc adminCreateBankFormBloc;
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -139,7 +233,7 @@ class AddUserForm extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 20),
             width: SizeConfig.blockSizeHorizontal * 80,
-            height: SizeConfig.blockSizeVertical * 70,
+            height: SizeConfig.blockSizeVertical * 80,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Colors.white),
@@ -150,30 +244,31 @@ class AddUserForm extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       TextFieldBlocBuilder(
-                          textFieldBloc: adminCreateBankFormBloc.userName,
-                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          textFieldBloc: adminCreateBankFormBloc.firtsName,
                           errorBuilder: (context, string) =>
                               I18n.of(context).errorRequired,
                           decoration: InputDecoration(
                               labelText: I18n.of(context).formFirstName,
                               prefixIcon: Icon(Icons.account_circle))),
                       TextFieldBlocBuilder(
-                          textFieldBloc: adminCreateBankFormBloc.email,
-                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
+                          textFieldBloc: adminCreateBankFormBloc.lastName,
                           errorBuilder: (context, string) =>
                               I18n.of(context).errorRequired,
+                          decoration: InputDecoration(
+                              labelText: I18n.of(context).formSecondName,
+                              prefixIcon: Icon(Icons.account_circle_outlined))),
+                      TextFieldBlocBuilder(
+                          textFieldBloc: adminCreateBankFormBloc.email,
+                          errorBuilder: errorHandler,
                           decoration: InputDecoration(
                               labelText: I18n.of(context).formEmail,
                               prefixIcon: Icon(Icons.email_sharp))),
                       TextFieldBlocBuilder(
                           textFieldBloc: adminCreateBankFormBloc.phone,
-                          //onTap: () => _isEmpty(widget.inviteBloc),
-                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(16),
-                            //PhoneFormatter()
                           ],
                           errorBuilder: errorHandler,
                           decoration: InputDecoration(
@@ -181,25 +276,30 @@ class AddUserForm extends StatelessWidget {
                               prefixIcon: Icon(Icons.phone))),
                       TextFieldBlocBuilder(
                           textFieldBloc: adminCreateBankFormBloc.documenNumber,
-                          //onChanged: (value) => _isEmpty(widget.inviteBloc),
                           errorBuilder: (context, string) =>
                               I18n.of(context).errorRequired,
                           decoration: InputDecoration(
                               labelText: I18n.of(context).profileScreenId,
-                              prefixIcon: Icon(Icons.perm_identity))),
+                              prefixIcon: Icon(Icons.badge))),
                       CheckboxFieldBlocBuilder(
                         booleanFieldBloc: adminCreateBankFormBloc.isAdmin,
-                        body: Text('admin'),
+                        body: Container(
+                          child: Text('admin'),
+                          alignment: Alignment.centerLeft,
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         child: TextButton(
-                          onPressed: () {
-                            adminCreateBankFormBloc.addUser();
+                          onPressed: () async {
+                            if (adminCreateBankFormBloc.state.isValid()) {
+                              print('valid');
+                              await adminCreateBankFormBloc.addUser(context);
+                            }
                           },
                           child: Container(
                               width: 250,
-                              height: 40,
+                              height: 60,
                               decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(45)),
@@ -207,11 +307,13 @@ class AddUserForm extends StatelessWidget {
                                       .colorScheme
                                       .primaryColor[100]),
                               child: Center(
-                                child: Text(
-                                  'Add',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              )),
+                                  child: Text(
+                                I18n.of(context).actionTextAdd,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800),
+                              ))),
                         ),
                       )
                     ],

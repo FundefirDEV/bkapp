@@ -12,4 +12,26 @@ class AdminCreateBankRepository {
     final Map createBankRes = await apiProvider.adminCreateBank(token: token);
     return createBankRes;
   }
+
+  Future<bool> verifyEmail(
+    String email,
+  ) async {
+    try {
+      await apiProvider.validateMail(email: email);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> verifyPhone(
+    String phone,
+  ) async {
+    try {
+      await apiProvider.validatePhone(phone: phone);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

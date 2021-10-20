@@ -25,8 +25,8 @@ class AdminCreateBankUser {
       this.isActive,
       this.role,
       this.documenNumber}) {
-    password = documenNumber;
-    passwordConfirmation = documenNumber;
+    password = documenNumber.substring(documenNumber.length - 6);
+    passwordConfirmation = documenNumber.substring(documenNumber.length - 6);
   }
 
   Map<String, dynamic> toJson() => {
