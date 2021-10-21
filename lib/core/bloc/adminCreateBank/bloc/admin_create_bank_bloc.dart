@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:bkapp_flutter/core/models/models.dart';
+import 'package:bkapp_flutter/core/models/location_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/admin_create_bank_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -15,6 +15,11 @@ class AdminCreateBankBloc
       : super(AdminCreateBankInitial());
   final AdminCreateBankRepository repository;
 
+  List<dynamic> locations = [];
+  List<String> department = [];
+  List<dynamic> locationModel = [];
+  final listCountry = AddFieldBlocItem([]);
+
   @override
   Stream<AdminCreateBankState> mapEventToState(
     AdminCreateBankEvent event,
@@ -22,9 +27,8 @@ class AdminCreateBankBloc
     if (event is AdminCreateBankInitialize) {
       yield AdminCreateBankLoading();
       try {
-        // final response = await repository.adminCreateBank(
-        //   event.token,
-        // );
+        final response = await repository.getLocation(token: event.token);
+        locationModel = locationModelFromJson(response);
 
         yield AdminCreateBankInitial();
       } catch (e) {

@@ -34,4 +34,9 @@ class AdminCreateBankRepository {
       return false;
     }
   }
+
+  Future<List<dynamic>> getLocation({@required String token}) async {
+    final List<dynamic> getLocation = await apiProvider.getLocation(token);
+    return getLocation;
+  }
 }

@@ -28,6 +28,7 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
       token: widget.tokenUser,
       role: widget.role,
     ));
+
     super.initState();
   }
 
@@ -48,12 +49,9 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
       }
 
       return Builder(builder: (context) {
-        // ignore: close_sinks
         AdminCreateBankFormBloc adminCreateBankFormBloc =
             context.read<AdminCreateBankFormBloc>();
-
         return FormBlocListener<AdminCreateBankFormBloc, dynamic, dynamic>(
-            key: Key('bloc-listener-profit-payment-screen'),
             onSuccess: (context, state) {},
             onFailure: (context, state) {
               UtilsTools.showErrorDialog(context, state.failureResponse);
@@ -62,6 +60,7 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
                 userName: widget.userName,
                 container: AdminCreateBankScreenContainer(
                   isAdmin: true,
+                  adminCreateBankFormBloc: adminCreateBankFormBloc,
                 )));
       });
     });

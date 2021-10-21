@@ -10,44 +10,59 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class AdminCreateBankScreenContainer extends StatelessWidget {
-  AdminCreateBankScreenContainer({@required this.isAdmin});
+class AdminCreateBankScreenContainer extends StatefulWidget {
+  AdminCreateBankScreenContainer(
+      {@required this.isAdmin, @required this.adminCreateBankFormBloc});
 
   final bool isAdmin;
+  final AdminCreateBankFormBloc adminCreateBankFormBloc;
+
+  @override
+  State<AdminCreateBankScreenContainer> createState() =>
+      _AdminCreateBankScreenContainerState();
+}
+
+class _AdminCreateBankScreenContainerState
+    extends State<AdminCreateBankScreenContainer> {
+  @override
+  void initState() {
+    widget.adminCreateBankFormBloc.initCountry(context);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
-    AdminCreateBankFormBloc adminCreateBankFormBloc =
-        context.watch<AdminCreateBankFormBloc>();
-
-    adminCreateBankFormBloc.updateUserList(adminCreateBankFormBloc.userList);
+    widget.adminCreateBankFormBloc
+        .updateUserList(widget.adminCreateBankFormBloc.userList);
 
     return Container(
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
         child: Column(children: [
           TitleCard(),
-          BankNameInput(adminCreateBankFormBloc: adminCreateBankFormBloc),
+          BankNameInput(
+              adminCreateBankFormBloc: widget.adminCreateBankFormBloc),
           SelectItemContainer(
-            selectFieldBloc: adminCreateBankFormBloc.countryList,
+            selectFieldBloc: widget.adminCreateBankFormBloc.countryList,
             title: 'Select country',
             borderRadius: null,
           ),
           SelectItemContainer(
-            selectFieldBloc: adminCreateBankFormBloc.departamentList,
+            selectFieldBloc: widget.adminCreateBankFormBloc.departamentList,
             title: 'Select departament',
             borderRadius: null,
           ),
           SelectItemContainer(
-            selectFieldBloc: adminCreateBankFormBloc.cityList,
+            selectFieldBloc: widget.adminCreateBankFormBloc.cityList,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10)),
             title: 'Select city',
           ),
-          addPartnerButton(context, adminCreateBankFormBloc),
-          partnerList(adminCreateBankFormBloc),
-          createBankButton(context, adminCreateBankFormBloc)
+          addPartnerButton(context, widget.adminCreateBankFormBloc),
+          partnerList(widget.adminCreateBankFormBloc),
+          createBankButton(context, widget.adminCreateBankFormBloc)
         ]));
   }
 
