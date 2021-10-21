@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_model.dart';
 import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_user_model.dart';
 import 'package:bkapp_flutter/core/models/dropdown_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/admin_create_bank_repository.dart';
@@ -43,7 +44,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
       items: [DropDownModel(id: '1', text: 'cundinadarca')]);
   final cityList = SelectFieldBloc<DropDownModel, String>(
       items: [DropDownModel(id: '1', text: 'bogotá')]);
-  final bankName = TextFieldBloc();
+  final bankName = TextFieldBloc(validators: [UtilsTools.required]);
   final firtsName = TextFieldBloc(validators: [UtilsTools.required]);
   final lastName = TextFieldBloc(validators: [UtilsTools.required]);
 
@@ -125,6 +126,16 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
   void deletePartner(int index) {
     userList.removeAt(index);
     updateUserList(userList);
+  }
+
+  void createBank(BuildContext context) {
+    final adminBank = AdminCreateBankModel(
+      bankName: 'manaos',
+      city: 1,
+      users: userList,
+    );
+
+    print(adminBank.toJson());
   }
 
   @override

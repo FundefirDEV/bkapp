@@ -27,6 +27,7 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
         child: Column(children: [
           TitleCard(),
+          BankNameInput(adminCreateBankFormBloc: adminCreateBankFormBloc),
           SelectItemContainer(
             selectFieldBloc: adminCreateBankFormBloc.countryList,
             title: 'Select country',
@@ -114,11 +115,18 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
   GestureDetector addPartnerButton(
       BuildContext context, AdminCreateBankFormBloc adminCreateBankFormBloc) {
     return GestureDetector(
-      onTap: () => showDialog(
-          context: context,
-          builder: (_) => AddUserForm(
-                adminCreateBankFormBloc: adminCreateBankFormBloc,
-              )),
+      onTap: () => {
+        if (adminCreateBankFormBloc.bankName.state.isValid)
+          {
+            showDialog(
+                context: context,
+                builder: (_) => AddUserForm(
+                      adminCreateBankFormBloc: adminCreateBankFormBloc,
+                    ))
+          }
+        else
+          {adminCreateBankFormBloc.bankName.addFieldError('')}
+      },
       child: Container(
         width: SizeConfig.blockSizeHorizontal * 100,
         padding: EdgeInsets.symmetric(vertical: 20),
@@ -159,7 +167,7 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
       alignment: Alignment.center,
       child: TextButton(
         onPressed: () async {
-          print('Create Bank');
+          adminCreateBankFormBloc.createBank(context);
         },
         child: Container(
             width: 250,
@@ -207,6 +215,32 @@ class AdminCreateBankScreenContainer extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class BankNameInput extends StatelessWidget {
+  const BankNameInput({
+    Key key,
+    @required this.adminCreateBankFormBloc,
+  }) : super(key: key);
+
+  final AdminCreateBankFormBloc adminCreateBankFormBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: SizeConfig.blockSizeHorizontal * 100,
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(left: 45.0, right: 25.0),
+      decoration: BoxDecoration(borderRadius: null, color: Colors.white),
+      child: TextFieldBlocBuilder(
+          textFieldBloc: adminCreateBankFormBloc.bankName,
+          errorBuilder: (context, string) => I18n.of(context).errorRequired,
+          decoration: InputDecoration(
+            labelText: I18n.of(context).bankNamePutName,
+            border: InputBorder.none,
+          )),
     );
   }
 }
