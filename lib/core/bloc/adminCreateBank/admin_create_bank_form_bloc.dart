@@ -1,10 +1,13 @@
 import 'package:bkapp_flutter/core/bloc/adminCreateBank/bloc/admin_create_bank_bloc.dart';
+import 'package:bkapp_flutter/core/bloc/blocs.dart';
 import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_model.dart';
 import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_user_model.dart';
 import 'package:bkapp_flutter/core/models/dropdown_model.dart';
 import 'package:bkapp_flutter/core/services/repositories/repositoriesFolder/admin_create_bank_repository.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/utils.dart';
+import 'package:bkapp_flutter/src/widgets/modals/ImageBottomModal/Image_bottom_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:rxdart/rxdart.dart';
@@ -245,11 +248,37 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
 
     try {
       await repository.adminCreateBank(token.value, adminBank);
+
+      clear();
+      //Navigator.pop(context);
+      context
+          .read<MenuNavigatorBloc>()
+          .add(ButtonPressed(goTo: HomeRoutesConstant.homeScreen));
       //print('Bank created !, res : ${res.toString()}');
     } catch (e) {
       print('Error: ${e.toString()}');
+      _showDialog(context, e.toString());
     }
     updateLoading(false);
+  }
+
+  void _showDialog(BuildContext context, String error) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (_) {
+          return ImageBottomModal(
+            modalHeight: 45.0,
+            image: 'assets/images/sad_bot.svg',
+            title: I18n.of(context).requestErrorCreatedBankInvalid,
+            isBold: true,
+            isBtnAccept: false,
+            isImageBg: false,
+            titleCloseButton: I18n.of(context).administratorAssignmentClose,
+            onPressCancel: () => Navigator.pop(context),
+            technicalData: error,
+          );
+        });
   }
 
   //final listCountry = AddFieldBlocItem([]);
