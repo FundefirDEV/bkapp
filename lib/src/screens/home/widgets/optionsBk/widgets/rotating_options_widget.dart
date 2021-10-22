@@ -55,9 +55,9 @@ class RotatingOptionsWidget extends StatelessWidget {
                               fontSize: sizeTitleCard,
                               fontWeight: FontWeight.w100))),
                   InkWell(
-                    onTap: () => navigateBloc.add(ButtonPressed(
-                        goTo: HomeRoutesConstant.adminCreateBankScreen)),
-                  ),
+                      // onTap: () => navigateBloc.add(ButtonPressed(
+                      //     goTo: HomeRoutesConstant.adminCreateBankScreen)),
+                      ),
                 ],
               )),
         ),
