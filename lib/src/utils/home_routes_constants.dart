@@ -19,5 +19,5 @@ class HomeRoutesConstant {
   static int timeLineMyCredit = 18;
   static int profileEditScreen = 19;
   static int reportsScreen = 20;
-
+  static int adminCreateBankScreen = 21;
 }

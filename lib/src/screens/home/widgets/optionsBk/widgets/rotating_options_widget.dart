@@ -1,8 +1,11 @@
+import 'package:bkapp_flutter/core/bloc/menuNavigatorBloc/menunavigator_bloc.dart';
 import 'package:bkapp_flutter/generated/i18n.dart';
+import 'package:bkapp_flutter/src/utils/home_routes_constants.dart';
 import 'package:bkapp_flutter/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:bkapp_flutter/src/utils/custom_color_scheme.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class RotatingOptionsWidget extends StatelessWidget {
   RotatingOptionsWidget({Key key}) : super(key: key);
@@ -16,6 +19,8 @@ class RotatingOptionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final navigateBloc = context.read<MenuNavigatorBloc>();
+
     return Container(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +53,11 @@ class RotatingOptionsWidget extends StatelessWidget {
                               letterSpacing: letterSpacingTitle,
                               color: Theme.of(context).colorScheme.grayColor,
                               fontSize: sizeTitleCard,
-                              fontWeight: FontWeight.w100)))
+                              fontWeight: FontWeight.w100))),
+                  InkWell(
+                      // onTap: () => navigateBloc.add(ButtonPressed(
+                      //     goTo: HomeRoutesConstant.adminCreateBankScreen)),
+                      ),
                 ],
               )),
         ),

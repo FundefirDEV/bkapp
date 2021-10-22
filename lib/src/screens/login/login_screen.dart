@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> initPlatformState() async {
-        String platformVersion;
+    String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await GetVersion.platformVersion;
@@ -165,20 +165,20 @@ class _LoginScreenState extends State<LoginScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         GestureDetector(
-          onTap: ()=> showForgetPasswordAlert(context),
+          onTap: () => showForgetPasswordAlert(context),
           child: RichText(
             text: TextSpan(
               text: I18n.of(context).loginScreenTextOne,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: SizeConfig.safeBlockHorizontal * 5.5,
-                fontWeight: FontWeight.w300,
-                letterSpacing: 1.0),
-                children: <TextSpan>[
+                  color: Colors.white,
+                  fontSize: SizeConfig.safeBlockHorizontal * 5.5,
+                  fontWeight: FontWeight.w300,
+                  letterSpacing: 1.0),
+              children: <TextSpan>[
                 TextSpan(
                     text: I18n.of(context).loginScreenTextTwo,
                     style: TextStyle(fontWeight: FontWeight.w700))
-              ],  
+              ],
             ),
           ),
         ),

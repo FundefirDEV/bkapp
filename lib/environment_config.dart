@@ -13,7 +13,7 @@ class EnvironmentConfig {
   // https://bk-service-stage-2foxvegkzq-uc.a.run.app
   // services PROD
   // https://bk-service-2foxvegkzq-uc.a.run.app
-  // Services local 
+  // Services local
   // http://192.168.0.19:8888
 
   //"https://bkservice.fundefir-dev.com"
@@ -22,7 +22,8 @@ class EnvironmentConfig {
   ///
   /// Environment PROD; QA; STAGE or DEV
   ///
-  static const String ENV = String.fromEnvironment('PROD', defaultValue: "PROD");
+  static const String ENV =
+      String.fromEnvironment('PROD', defaultValue: "PROD");
 
   ///
   /// DSN for sentry
@@ -194,6 +195,7 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
     return "$baseUrl/v3/delete-partners-guest";
   }
+
   /// POST meeting closed
   ///
   /// @deprecated [baseUrl]: Base of endpoint, only for dev or temporal cases
@@ -296,7 +298,6 @@ class ApiEndpoints {
     return "$baseUrl/v3/updateProfile";
   }
 
-
   static String changeRules({@deprecated baseUrl}) {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
@@ -349,5 +350,29 @@ class ApiEndpoints {
     if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
 
     return "$baseUrl/v3/convert-shares";
+  }
+
+  static String adminCreateBank({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/admin/createBank";
+  }
+
+  static String byShares({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/admin/byShares";
+  }
+
+  static String requestCredits({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/admin/RequestCredits";
+  }
+
+  static String payInstallment({@deprecated baseUrl}) {
+    if (baseUrl == null) baseUrl = EnvironmentConfig.API_URL;
+
+    return "$baseUrl/v3/admin/payInstallment";
   }
 }

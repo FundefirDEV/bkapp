@@ -14,6 +14,9 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    creditFormBloc.initItems(context);
+    
     return Container(
       key: Key('credit-form-container'),
       width: SizeConfig.blockSizeHorizontal * 70,

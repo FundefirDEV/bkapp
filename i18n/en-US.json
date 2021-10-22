@@ -321,7 +321,31 @@
     "Detail": "Detail",
     "wayToPay": "Types of ordinary interest payment",
     "advances": "Advance",
-    "installments": "Installments"
+    "installments": "Installments",
+
+    "itemsCreditUse": {
+      "Generationincome": "Generation of income",
+      "Familystrengthening": "Family strengthening",
+      "Consumption": "Consumption"
+    },
+    "useCreditOption0": {
+      "Trade": "Trade (buying and selling)",
+      "Smallcompany": "Small company"
+    },
+    "useCreditOption1": {
+      "HousingImprovement": "Housing Improvement",
+      "Education": "Education",
+      "HouseholdEquipment": "Household Equipment",
+      "Health": "Health"
+    },
+    "useCreditOption2": {
+      "Debtpayment": "Debt payment",
+      "ServicesPay": "Services pay",
+      "FoodAndClothing": "Food and Clothing",
+      "Transport": "Transport",
+      "Travels": "Travels",
+      "Recreation": "Recreation"
+    }
   },
   "rulesScreen": {
     "bkRules": "BK rules",
@@ -393,6 +417,11 @@
     "bottomText": "You can remove a partner",
     "anyTime": "at any time",
     "deletePartnerConfirm" : "You want to delete the pending partner"
+  },
+
+  "noDataScreen": {
+    "noDataMessage": "No data",
+    "reportsMessage": "No meetings yet"
   },
   "partnerRemoval": {
     "title": "Partner removal",

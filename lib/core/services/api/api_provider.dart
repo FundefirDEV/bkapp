@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_model.dart';
 import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
@@ -235,62 +236,50 @@ class ApiProvider {
   }
 
   Future<Map<String, dynamic>> changePassSendMail(
-    {@required String email, @required String phone}) async {
-
+      {@required String email, @required String phone}) async {
     final endPoint = ApiEndpoints.changePassSendMail();
     return await _httpRequest.post(
-      httpClient: httpClient, url: endPoint, body: {
-      "phone": phone,
-      "email": email
-    });
+        httpClient: httpClient,
+        url: endPoint,
+        body: {"phone": phone, "email": email});
   }
 
   Future<Map<String, dynamic>> validateMailAndPhone(
-    {@required String email, @required String phone}) async {
-
+      {@required String email, @required String phone}) async {
     final endPoint = ApiEndpoints.validateMailAndPhone();
     return await _httpRequest.post(
-      httpClient: httpClient, url: endPoint, body: {
-      "phone": phone,
-      "email": email
-    });
+        httpClient: httpClient,
+        url: endPoint,
+        body: {"phone": phone, "email": email});
   }
 
-  validateMail(
-    {@required String email}) async {
-
+  validateMail({@required String email}) async {
     final endPoint = ApiEndpoints.validateMail();
     return await _httpRequest.get(
-      httpClient: httpClient, url: endPoint, param: email);
+        httpClient: httpClient, url: endPoint, param: email);
   }
 
-  validatePhone(
-    {@required String phone}) async {
-
+  validatePhone({@required String phone}) async {
     final endPoint = ApiEndpoints.validatePhone();
     return await _httpRequest.get(
-      httpClient: httpClient, url: endPoint, param: phone);
+        httpClient: httpClient, url: endPoint, param: phone);
   }
 
-  validateUserPhone(
-    {@required String phone}) async {
-
+  validateUserPhone({@required String phone}) async {
     final endPoint = ApiEndpoints.validateUserPhone();
     return await _httpRequest.get(
-      httpClient: httpClient, url: endPoint, param: phone);
+        httpClient: httpClient, url: endPoint, param: phone);
   }
 
-  Future<Map<String, dynamic>> changePasswordWithCodeConfirm({
-      @required String code, 
-      @required String email, 
-      @required String phone, 
+  Future<Map<String, dynamic>> changePasswordWithCodeConfirm(
+      {@required String code,
+      @required String email,
+      @required String phone,
       @required String password,
-      @required String passwordConfirmation
-    }) async {
-
+      @required String passwordConfirmation}) async {
     final endPoint = ApiEndpoints.changePasswordWithCodeConfirm();
-    return await _httpRequest.post(
-      httpClient: httpClient, url: endPoint, body: {
+    return await _httpRequest
+        .post(httpClient: httpClient, url: endPoint, body: {
       "code": code,
       "email": email,
       "phone": phone,
@@ -299,80 +288,82 @@ class ApiProvider {
     });
   }
 
-
   updateProfile(
-    {@required UpdatePeofile updateProfile , @required token
-    }) async {
-
+      {@required UpdatePeofile updateProfile, @required token}) async {
     final endPoint = ApiEndpoints.updateProfile();
-      return await _httpRequest.post(
-        httpClient: httpClient, url: endPoint, body: updateProfile.toJson() , 
-        token: token
-    );
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: endPoint,
+        body: updateProfile.toJson(),
+        token: token);
   }
 
-  changeRules(
-    {@required AddBankRules bankRules , @required token
-    }) async {
-
+  changeRules({@required AddBankRules bankRules, @required token}) async {
     final endPoint = ApiEndpoints.changeRules();
-      return await _httpRequest.post(
-        httpClient: httpClient, url: endPoint, body: bankRules.toJson() , 
-        token: token
-    );
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: endPoint,
+        body: bankRules.toJson(),
+        token: token);
   }
 
-  getReports({@required String token}) async{
+  getReports({@required String token}) async {
     final endPoint = ApiEndpoints.reports();
     return await _httpRequest.get(
-      httpClient: httpClient, url: endPoint , token: token);
+        httpClient: httpClient, url: endPoint, token: token);
   }
-  
+
   profitPaymentGetPartners(String token) async {
     final getPartnersUrl = ApiEndpoints.profitPayment();
     return await _httpRequest.get(
         httpClient: httpClient, url: getPartnersUrl, token: token);
   }
 
-  profitPayment({@required String token , @required String partnerId}) async{
+  profitPayment({@required String token, @required String partnerId}) async {
     final endPoint = ApiEndpoints.profitPayment();
     return await _httpRequest.get(
-      httpClient: httpClient, url: endPoint , token: token,
-      param: partnerId );
+        httpClient: httpClient, url: endPoint, token: token, param: partnerId);
   }
 
-  postProfitPayment({
-    @required String token , 
-    @required String partnerId , 
-    @required List<int> earningShareIds
-    
-  }) async{
+  postProfitPayment(
+      {@required String token,
+      @required String partnerId,
+      @required List<int> earningShareIds}) async {
     final endPoint = ApiEndpoints.profitPayment();
 
-    return await _httpRequest.post(
-      httpClient: httpClient, url: endPoint , token: token,
-      body: {
-        "earningShareIds": earningShareIds,
-        "partnerId": int.tryParse(partnerId),
-      }
-    );
+    return await _httpRequest
+        .post(httpClient: httpClient, url: endPoint, token: token, body: {
+      "earningShareIds": earningShareIds,
+      "partnerId": int.tryParse(partnerId),
+    });
   }
+
   convertShares({
-    @required String token , 
-    @required String partnerId , 
+    @required String token,
+    @required String partnerId,
     @required List<int> earningShareIds,
     @required int quantity,
-    
-  }) async{
+  }) async {
     final endPoint = ApiEndpoints.convertShares();
 
+    return await _httpRequest
+        .post(httpClient: httpClient, url: endPoint, token: token, body: {
+      "earningShareIds": earningShareIds,
+      "partnerId": int.tryParse(partnerId),
+      'quantity': quantity,
+    });
+  }
+
+  adminCreateBank({
+    @required String token,
+    @required AdminCreateBankModel body,
+  }) async {
+    final endPoint = ApiEndpoints.adminCreateBank();
+
     return await _httpRequest.post(
-      httpClient: httpClient, url: endPoint , token: token,
-      body: {
-        "earningShareIds": earningShareIds,
-        "partnerId": int.tryParse(partnerId),
-        'quantity': quantity,
-      }
-    );
+        httpClient: httpClient,
+        url: endPoint,
+        token: token,
+        body: body.toJson());
   }
 }

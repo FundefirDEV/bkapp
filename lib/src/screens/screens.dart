@@ -29,3 +29,4 @@ export 'profitPayment/profit_payment_screen.dart';
 export 'reports/reports_screen.dart';
 export 'utilsScreen/utils_screen.dart';
 export 'utilsScreen/administratorAssignment/administrator_assignment_screen.dart';
+export 'adminCreateBank/admin_create_bank_screen.dart';
