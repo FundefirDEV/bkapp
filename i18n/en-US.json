@@ -324,7 +324,7 @@
     "installments": "Installments",
 
     "itemsCreditUse": {
-      "Generationincome": "Generation of income",
+      "Generationincome": "Income Generation",
       "Familystrengthening": "Family strengthening",
       "Consumption": "Consumption"
     },
@@ -340,7 +340,7 @@
     },
     "useCreditOption2": {
       "Debtpayment": "Debt payment",
-      "ServicesPay": "Services pay",
+      "ServicesPay": "Pay Services",
       "FoodAndClothing": "Food and Clothing",
       "Transport": "Transport",
       "Travels": "Travels",

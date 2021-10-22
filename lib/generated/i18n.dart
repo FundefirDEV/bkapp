@@ -508,8 +508,8 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenAdvances => "Advance";
   /// "Installments"
   String get creditScreenInstallments => "Installments";
-  /// "Generation of income"
-  String get creditScreenItemsCreditUseGenerationincome => "Generation of income";
+  /// "Income Generation"
+  String get creditScreenItemsCreditUseGenerationincome => "Income Generation";
   /// "Family strengthening"
   String get creditScreenItemsCreditUseFamilystrengthening => "Family strengthening";
   /// "Consumption"
@@ -528,8 +528,8 @@ class I18n implements WidgetsLocalizations {
   String get creditScreenUseCreditOption1Health => "Health";
   /// "Debt payment"
   String get creditScreenUseCreditOption2Debtpayment => "Debt payment";
-  /// "Services pay"
-  String get creditScreenUseCreditOption2ServicesPay => "Services pay";
+  /// "Pay Services"
+  String get creditScreenUseCreditOption2ServicesPay => "Pay Services";
   /// "Food and Clothing"
   String get creditScreenUseCreditOption2FoodAndClothing => "Food and Clothing";
   /// "Transport"
