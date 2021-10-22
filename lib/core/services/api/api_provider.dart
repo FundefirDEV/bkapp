@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_model.dart';
 import 'package:bkapp_flutter/core/models/bank_rules_model%20copy.dart';
 import 'package:bkapp_flutter/core/models/models.dart';
 import 'package:bkapp_flutter/core/models/update_profile_model.dart';
@@ -355,10 +356,14 @@ class ApiProvider {
 
   adminCreateBank({
     @required String token,
+    @required AdminCreateBankModel body,
   }) async {
     final endPoint = ApiEndpoints.adminCreateBank();
 
-    return await _httpRequest
-        .post(httpClient: httpClient, url: endPoint, token: token, body: {});
+    return await _httpRequest.post(
+        httpClient: httpClient,
+        url: endPoint,
+        token: token,
+        body: body.toJson());
   }
 }

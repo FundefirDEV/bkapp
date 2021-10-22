@@ -24,17 +24,17 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
       isAdmin,
     ]);
 
+    updateLoading(false);
+
     countryList.onValueChanges(onData: (previous, current) async* {
       departamentList.clear();
       cityList.clear();
       countryCode = current.value.id;
-      //updateCountry(locationModel);
       updateDepartament(locationModel);
       updateCitys(current);
     });
 
     departamentList.onValueChanges(onData: (previous, current) async* {
-      //updateCountry(locationModel);
       cityList.clear();
       updateCitys(current);
     });
@@ -60,13 +60,14 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     });
 
     countryList.updateItems(_countryList);
+    //countryList.updateInitialValue(_countryList.first);
   }
 
   void updateDepartament(List<dynamic> locationModel) {
     print(countryCode);
     final country = locationModel.where((l) => l.code == countryCode).first;
     print(country);
-    listCountry.item.add(country);
+    //listCountry.item.add(country);
     List<DropDownModel> _departamentList = [];
 
     country.departaments.forEach((dep) {
@@ -74,6 +75,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
           .add(DropDownModel(id: dep.id.toString(), text: dep.name));
     });
     departamentList.updateItems(_departamentList);
+    //departamentList.updateInitialValue(_departamentList.first);
   }
 
   void updateCitys(SelectFieldBlocState<DropDownModel, String> current) {
@@ -88,6 +90,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
       });
       if (city.length > 0) {
         cityList.updateItems(city);
+        //cityList.updateInitialValue(city.first);
       }
     }
   }
@@ -101,15 +104,23 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
   Function(List<AdminCreateBankUser>) get updateUserList =>
       _userListController.sink.add;
 
+  final _loadingController = BehaviorSubject<bool>();
+  Stream<bool> get loadingStream =>
+      _loadingController.stream.asBroadcastStream();
+
+  Function(bool) get updateLoading => _loadingController.sink.add;
+
   final List<AdminCreateBankUser> userList = [
     // AdminCreateBankUser(email: 'manaos'),
     // AdminCreateBankUser(email: 'manaos 2')
   ];
 
-  final countryList = SelectFieldBloc<DropDownModel, String>(
-      items: [DropDownModel(id: 'CO', text: 'colombia')]);
-  final departamentList = SelectFieldBloc<DropDownModel, String>();
-  final cityList = SelectFieldBloc<DropDownModel, String>();
+  final countryList =
+      SelectFieldBloc<DropDownModel, String>(validators: [UtilsTools.required]);
+  final departamentList =
+      SelectFieldBloc<DropDownModel, String>(validators: [UtilsTools.required]);
+  final cityList =
+      SelectFieldBloc<DropDownModel, String>(validators: [UtilsTools.required]);
   final bankName = TextFieldBloc(validators: [UtilsTools.required]);
   final firtsName = TextFieldBloc(validators: [UtilsTools.required]);
   final lastName = TextFieldBloc(validators: [UtilsTools.required]);
@@ -120,6 +131,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
       validators: [UtilsTools.required, FieldBlocValidators.email]);
   final documenNumber = TextFieldBloc(validators: [UtilsTools.required]);
   final isAdmin = BooleanFieldBloc(initialValue: false);
+  final token = TextFieldBloc();
 
   String countryCode = 'CO';
   List<dynamic> locationModel = [];
@@ -143,11 +155,16 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
 
   addUser(BuildContext context) async {
     // ferify if phone or email are abiable before add
+
+    updateLoading(true);
+
     if (!verifyEmail(email.value)) {
+      updateLoading(false);
       addEmailError(context);
       return;
     }
     if (!verifyPhone(phone.value)) {
+      updateLoading(false);
       addPhoneError(context);
       return;
     }
@@ -156,10 +173,12 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     final phoneRes = await repository.verifyPhone(phone.value);
 
     if (!emailRes) {
+      updateLoading(false);
       addEmailError(context);
       return;
     }
     if (!phoneRes) {
+      updateLoading(false);
       addPhoneError(context);
       return;
     }
@@ -170,7 +189,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
       phone: phone.value,
       documenNumber: documenNumber.value,
       country: int.tryParse(countryList.value.id),
-      isActive: true,
+      isActive: false,
       role: isAdmin.value ? 'admin' : 'partner',
       // Add countryIso when post create bank
       //countryIso: countryList.value.id.toString()
@@ -180,6 +199,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     updateUserList(userList);
     print(adminCreateBankUser.toJson());
     clearPartnerForm();
+    updateLoading(false);
     Navigator.pop(context);
   }
 
@@ -198,10 +218,22 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     updateUserList(userList);
   }
 
-  void createBank(BuildContext context) {
+  Future createBank(BuildContext context) async {
+    updateLoading(true);
     userList.forEach((user) {
       user.countryIso = countryCode;
     });
+    print(_loadingController.stream.value);
+
+    if (userList.length == 0) {
+      updateLoading(false);
+      print('no partners');
+      return;
+    }
+
+    // one admin minimum
+    final thereAdmin = userList.any((user) => user.role == 'admin');
+    if (thereAdmin) userList.first.role = 'admin';
 
     final adminBank = AdminCreateBankModel(
       bankName: bankName.value,
@@ -210,9 +242,35 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
     );
 
     print(adminBank.toJson());
+
+    try {
+      await repository.adminCreateBank(token.value, adminBank);
+      //print('Bank created !, res : ${res.toString()}');
+    } catch (e) {
+      print('Error: ${e.toString()}');
+    }
+    updateLoading(false);
   }
 
-  final listCountry = AddFieldBlocItem([]);
+  //final listCountry = AddFieldBlocItem([]);
+
+  bool validateBoxSelect() {
+    return bankName.state.isValid &&
+        countryList.state.isValid &&
+        departamentList.state.isValid &&
+        cityList.state.isValid;
+  }
+
+  void boxSelectAddError(BuildContext context) {
+    if (!bankName.state.isValid)
+      bankName.addFieldError(I18n.of(context).errorRequired);
+    if (!countryList.state.isValid)
+      countryList.addFieldError(I18n.of(context).errorRequired);
+    if (!departamentList.state.isValid)
+      departamentList.addFieldError(I18n.of(context).errorRequired);
+    if (!cityList.state.isValid)
+      cityList.addFieldError(I18n.of(context).errorRequired);
+  }
 
   @override
   void onSubmitting() async {
@@ -221,6 +279,7 @@ class AdminCreateBankFormBloc extends FormBloc<dynamic, dynamic> {
 
   Future<void> close() {
     _userListController.close();
+    _loadingController.close();
     return super.close();
   }
 }

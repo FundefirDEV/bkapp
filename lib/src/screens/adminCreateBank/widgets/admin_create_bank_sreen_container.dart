@@ -131,7 +131,7 @@ class _AdminCreateBankScreenContainerState
       BuildContext context, AdminCreateBankFormBloc adminCreateBankFormBloc) {
     return GestureDetector(
       onTap: () => {
-        if (adminCreateBankFormBloc.bankName.state.isValid)
+        if (adminCreateBankFormBloc.validateBoxSelect())
           {
             showDialog(
                 context: context,
@@ -140,7 +140,7 @@ class _AdminCreateBankScreenContainerState
                     ))
           }
         else
-          {adminCreateBankFormBloc.bankName.addFieldError('')}
+          {adminCreateBankFormBloc.boxSelectAddError(context)}
       },
       child: Container(
         width: SizeConfig.blockSizeHorizontal * 100,
@@ -174,32 +174,44 @@ class _AdminCreateBankScreenContainerState
     );
   }
 
-  Container createBankButton(
+  StreamBuilder<bool> createBankButton(
       BuildContext context, AdminCreateBankFormBloc adminCreateBankFormBloc) {
-    return Container(
-      width: SizeConfig.blockSizeHorizontal * 100,
-      padding: EdgeInsets.symmetric(vertical: 20),
-      alignment: Alignment.center,
-      child: TextButton(
-        onPressed: () async {
-          adminCreateBankFormBloc.createBank(context);
-        },
-        child: Container(
-            width: 250,
-            height: 60,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(45)),
-                color: Theme.of(context).colorScheme.primaryColor[200]),
-            child: Center(
-                child: Text(
-              'Create Bank !',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800),
-            ))),
-      ),
-    );
+    return StreamBuilder<bool>(
+        stream: adminCreateBankFormBloc.loadingStream,
+        builder: (context, snapshotLoading) {
+          return Container(
+            width: SizeConfig.blockSizeHorizontal * 100,
+            padding: EdgeInsets.symmetric(vertical: 20),
+            alignment: Alignment.center,
+            child: TextButton(
+              onPressed: () async {
+                print(snapshotLoading.data);
+                await adminCreateBankFormBloc.createBank(context);
+              },
+              child: Container(
+                  width: 250,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(45)),
+                      color: Theme.of(context).colorScheme.primaryColor[200]),
+                  child: !snapshotLoading.data
+                      ? Center(
+                          child: Text(
+                          'Create Bank !',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800),
+                        ))
+                      : Container(
+                          width: 10,
+                          alignment: Alignment.center,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ))),
+            ),
+          );
+        });
   }
 
   Widget _dataPartner(AdminCreateBankUser user) {

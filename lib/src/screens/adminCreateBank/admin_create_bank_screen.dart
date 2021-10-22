@@ -51,6 +51,7 @@ class _AdminCreateBankScreenState extends State<AdminCreateBankScreen> {
       return Builder(builder: (context) {
         AdminCreateBankFormBloc adminCreateBankFormBloc =
             context.read<AdminCreateBankFormBloc>();
+        adminCreateBankFormBloc.token.updateValue(widget.tokenUser);
         return FormBlocListener<AdminCreateBankFormBloc, dynamic, dynamic>(
             onSuccess: (context, state) {},
             onFailure: (context, state) {

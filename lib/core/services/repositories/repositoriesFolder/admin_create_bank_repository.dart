@@ -1,3 +1,4 @@
+import 'package:bkapp_flutter/core/models/adminModels/admin_create_bank_model.dart';
 import 'package:bkapp_flutter/core/services/api/api_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,9 @@ class AdminCreateBankRepository {
       : assert(apiProvider != null);
 
   Future<Map<String, dynamic>> adminCreateBank(
-    String token,
-  ) async {
-    final Map createBankRes = await apiProvider.adminCreateBank(token: token);
+      String token, AdminCreateBankModel body) async {
+    final Map createBankRes =
+        await apiProvider.adminCreateBank(token: token, body: body);
     return createBankRes;
   }
 
